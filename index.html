@@ -1,0 +1,122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Travel Planner</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #f4f7fb;
+            color: #172033;
+        }
+
+        header {
+            padding: 24px 8%;
+            background: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 90px 20px;
+            background: linear-gradient(135deg, #dbeafe, #eff6ff);
+        }
+
+        .hero h1 {
+            font-size: 46px;
+            margin-bottom: 16px;
+        }
+
+        .hero p {
+            font-size: 18px;
+            color: #475569;
+            line-height: 1.6;
+        }
+
+        .button {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 14px 24px;
+            background: #2563eb;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+        }
+
+        .features {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            padding: 40px 20px;
+            flex-wrap: wrap;
+        }
+
+        .feature {
+            background: white;
+            padding: 24px;
+            border-radius: 12px;
+            width: 260px;
+            box-shadow: 0 4px 15px #0000000a;
+        }
+
+        footer {
+            text-align: center;
+            padding: 24px;
+            color: #64748b;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Travel Planner</div>
+        <div>Explore Europe</div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h1>Your next adventure starts here</h1>
+            <p>
+                Plan your trip, compare travel options,
+                and discover amazing destinations across Europe.
+            </p>
+            <a class="button" href="#features">Explore features</a>
+        </section>
+
+        <section class="features" id="features">
+            <div class="feature">
+                <h2>✈️ Flights</h2>
+                <p>Find flight options for your next journey.</p>
+            </div>
+
+            <div class="feature">
+                <h2>🏨 Hotels</h2>
+                <p>Explore accommodation options for your stay.</p>
+            </div>
+
+            <div class="feature">
+                <h2>💰 Budget</h2>
+                <p>Plan your travel expenses in one place.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        Travel Planner — Plan smarter, travel better.
+    </footer>
+</body>
+</html>
