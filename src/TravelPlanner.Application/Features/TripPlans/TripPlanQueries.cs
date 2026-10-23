@@ -1,0 +1,77 @@
+using System.Text.Json;
+using MediatR;
+using Microsoft.EntityFrameworkCore;
+using TravelPlanner.Application.Common;
+using TravelPlanner.Application.Dtos;
+using TravelPlanner.Application.Planning;
+using TravelPlanner.Domain.Entities;
+using TravelPlanner.Domain.Enums;
+
+namespace TravelPlanner.Application.Features.TripPlans;
+
+public sealed record GetTripPlanQuery(Guid Id) : IRequest<TripPlanDetailDto>;
+
+public sealed record GetOutboundLinksQuery(Guid Id) : IRequest<IReadOnlyList<OutboundLinkDto>>;
+
+internal static class TripPlanLoader
+{
+    public static Task<TripPlan?> LoadAsync(IApplicationDbContext db, Guid id, bool tracking, CancellationToken ct)
+    {
+        var query = tracking ? db.TripPlans : db.TripPlans.AsNoTracking();
+        return query
+            .Include(p => p.Items)
+            .Include(p => p.TripSearch)
+            .Include(p => p.Destination).ThenInclude(d => d!.Airports)
+            .Include(p => p.Destination).ThenInclude(d => d!.TransportLinks)
+            .AsSplitQuery()
+            .FirstOrDefaultAsync(p => p.Id == id, ct);
+    }
+}
+
+public sealed class GetTripPlanHandler(IApplicationDbContext db, IOutboundLinkPolicy linkPolicy, TimeProvider timeProvider)
+    : IRequestHandler<GetTripPlanQuery, TripPlanDetailDto>
+{
+    public async Task<TripPlanDetailDto> Handle(GetTripPlanQuery request, CancellationToken cancellationToken)
+    {
+        var plan = await TripPlanLoader.LoadAsync(db, request.Id, tracking: false, cancellationToken)
+                   ?? throw new NotFoundException("resource.tripPlan", request.Id);
+        return plan.ToDetail(timeProvider.GetUtcNow(), linkPolicy);
+    }
+}
+
+/// <summary>
+/// Official provider links for each offer. Only URLs that pass the allow-list are returned;
+/// the server never fetches them, and clients must open them with rel="noopener noreferrer".
+/// </summary>
+public sealed class GetOutboundLinksHandler(IApplicationDbContext db, IOutboundLinkPolicy linkPolicy)
+    : IRequestHandler<GetOutboundLinksQuery, IReadOnlyList<OutboundLinkDto>>
+{
+    public async Task<IReadOnlyList<OutboundLinkDto>> Handle(GetOutboundLinksQuery request, CancellationToken cancellationToken)
+    {
+        var plan = await TripPlanLoader.LoadAsync(db, request.Id, tracking: false, cancellationToken)
+                   ?? throw new NotFoundException("resource.tripPlan", request.Id);
+
+        var links = new List<OutboundLinkDto>();
+        foreach (var item in plan.Items.OrderBy(i => i.SortOrder))
+        {
+            if (linkPolicy.Sanitize(item.BookingUrl) is { } booking)
+                links.Add(new OutboundLinkDto(item.Id, item.Type, item.Direction, T.Get("link.book", item.Title), item.ProviderName, booking, item.Verification, "Booking"));
+
+            if (item.Type != PlanItemType.Transfer) continue;
+            TransferItemDetails? details;
+            try { details = JsonSerializer.Deserialize<TransferItemDetails>(item.DetailsJson, AppJson.Options); }
+            catch (JsonException) { continue; }
+            if (details is null) continue;
+
+            if (linkPolicy.Sanitize(details.MapsDirectionsUrl) is { } maps)
+                links.Add(new OutboundLinkDto(item.Id, item.Type, item.Direction, T.Get("link.directions", item.Title), "Google Maps", maps, VerificationStatus.Estimate, "Map"));
+
+            foreach (var option in details.Options)
+            {
+                if (linkPolicy.Sanitize(option.Url) is { } url && links.All(l => l.Url != url))
+                    links.Add(new OutboundLinkDto(item.Id, item.Type, item.Direction, option.Title, option.Provider, url, option.InfoVerification, "Information"));
+            }
+        }
+        return links;
+    }
+}

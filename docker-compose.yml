@@ -1,0 +1,56 @@
+# Local development stack.
+#   docker compose up -d postgres            -> database only (run API/frontend from source)
+#   docker compose --profile app up -d --build -> database + API + web
+name: travel-planner
+
+services:
+  postgres:
+    image: postgres:17-alpine
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-travel_planner}
+      POSTGRES_USER: ${POSTGRES_USER:-travel_planner}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-travel_planner_dev}
+    ports:
+      - "${POSTGRES_PORT:-5433}:5432"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    profiles: ["app"]
+    build:
+      context: .
+      dockerfile: src/TravelPlanner.API/Dockerfile
+    env_file:
+      - path: .env
+        required: false
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: http://+:8080
+      ConnectionStrings__TravelPlanner: Host=postgres;Port=5432;Database=${POSTGRES_DB:-travel_planner};Username=${POSTGRES_USER:-travel_planner};Password=${POSTGRES_PASSWORD:-travel_planner_dev}
+      Database__MigrateOnStartup: "true"
+      Swagger__Enabled: "true"
+      Cors__AllowedOrigins__0: http://localhost:4200
+      Cors__AllowedOrigins__1: http://localhost:8081
+      Cors__AllowedOrigins__2: https://goga0101.github.io
+    ports:
+      - "5080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+  web:
+    profiles: ["app"]
+    build:
+      context: frontend/travel-planner-web
+    ports:
+      - "8081:80"
+    depends_on:
+      - api
+
+volumes:
+  postgres-data:

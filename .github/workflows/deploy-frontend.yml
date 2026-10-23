@@ -1,0 +1,60 @@
+# Builds the Angular app and publishes it to GitHub Pages (project site: https://<user>.github.io/travel-planner/).
+# The API is not hosted here: by default the site calls http://localhost:5080, so run the backend locally.
+# To point it elsewhere, set the repository variable API_BASE_URL (Settings > Secrets and variables > Actions > Variables).
+name: Deploy frontend to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'frontend/travel-planner-web/**'
+      - '.github/workflows/deploy-frontend.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: frontend/travel-planner-web
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: frontend/travel-planner-web/package-lock.json
+
+      - run: npm ci
+
+      - run: npx ng test --watch=false
+
+      - run: npm run build:gh-pages
+        env:
+          API_BASE_URL: ${{ vars.API_BASE_URL || 'http://localhost:5080' }}
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: frontend/travel-planner-web/dist/travel-planner-web/browser
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4

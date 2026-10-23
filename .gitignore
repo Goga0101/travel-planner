@@ -1,0 +1,25 @@
+# .NET
+bin/
+obj/
+*.user
+*.suo
+.vs/
+TestResults/
+*.trx
+
+# Secrets / local config
+.env
+appsettings.*.local.json
+
+# Node / Angular
+node_modules/
+dist/
+.angular/
+coverage/
+
+# OS / IDE
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json

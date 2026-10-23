@@ -1,0 +1,123 @@
+<p class="breadcrumb"><a [routerLink]="i18n.path()">{{ 'results.back' | t }}</a></p>
+
+<app-error-banner [error]="loadError()" />
+
+@if (search(); as s) {
+  <section class="card search-summary">
+    <div>
+      <h1>
+        @if (s.criteria.destinationMode === 'Automatic') { {{ 'results.tripsFrom' | t: { origin: s.criteria.originAirportIata } }} }
+        @else { {{ s.criteria.originAirportIata }} → {{ destinationNames() }} }
+      </h1>
+      <p class="muted">
+        {{ s.criteria.earliestDeparture | ldate: 'd MMM' }} – {{ s.criteria.latestReturn | ldate: 'd MMM y' }} ·
+        {{ 'unit.days' | t: { count: s.criteria.durationDays } }} / {{ 'unit.nights' | t: { count: s.criteria.nights } }} ·
+        {{ 'unit.travelers' | t: { count: s.criteria.travelers } }} ·
+        {{ 'results.budget' | t: { amount: (s.criteria.budgetAmount | money: s.criteria.budgetCurrency) } }}
+      </p>
+    </div>
+    @if (s.dataMode === 'Demo') { <span class="demo-tag">{{ 'common.demoData' | t }}</span> }
+  </section>
+
+  @if (!s.isFinished) {
+    <section class="card progress-card" aria-live="polite" aria-busy="true">
+      <div class="progress-head">
+        <span class="spinner" aria-hidden="true"></span>
+        <strong>{{ s.status === 'Queued' ? ('results.waiting' | t) : s.progressMessage }}</strong>
+        <span class="muted">{{ s.progressPercent }}%</span>
+      </div>
+      <div class="progress" role="progressbar" [attr.aria-valuenow]="s.progressPercent" aria-valuemin="0" aria-valuemax="100">
+        <div class="progress-bar" [style.width.%]="s.progressPercent"></div>
+      </div>
+      @if (transientError()) {
+        <p class="small text-warn">{{ 'results.connectionProblem' | t }}</p>
+      }
+      <button type="button" class="btn btn-ghost" (click)="cancel()" [disabled]="cancelling()">
+        {{ (cancelling() ? 'results.cancelling' : 'results.cancel') | t }}
+      </button>
+    </section>
+  }
+
+  @if (s.status === 'Failed') {
+    <div class="alert alert-error" role="alert">
+      <strong>{{ 'results.failed' | t }}</strong> {{ s.errorMessage ?? ('results.tryAgain' | t) }}
+      <a [routerLink]="i18n.path()">{{ 'results.startNew' | t }}</a>
+    </div>
+  }
+  @if (s.status === 'Cancelled') {
+    <div class="alert alert-info" role="status">{{ 'results.cancelled' | t }} <a [routerLink]="i18n.path()">{{ 'results.startNew' | t }}</a></div>
+  }
+
+  @if (s.warnings.length) {
+    <details class="warnings" [open]="s.warnings.length <= 3">
+      <summary>{{ 'results.notes' | t: { count: s.warnings.length } }}</summary>
+      <ul>
+        @for (w of s.warnings; track w) { <li>{{ w }}</li> }
+      </ul>
+    </details>
+  }
+
+  @if (hasCompleted()) {
+    <section class="results">
+      @if (isNoMatch()) {
+        <h2 class="text-danger">{{ 'results.noMatchTitle' | t }}</h2>
+        <p class="muted">{{ 'results.noMatchText' | t }}</p>
+      } @else {
+        <h2>{{ 'results.bestTitle' | t }}</h2>
+      }
+
+      <div class="toolbar">
+        <div class="field inline">
+          <label for="sort">{{ 'results.sortBy' | t }}</label>
+          <select id="sort" [ngModel]="sort()" (ngModelChange)="changeSort($event)">
+            @for (o of sortOptions; track o.value) { <option [value]="o.value">{{ o.label | t }}</option> }
+          </select>
+        </div>
+        <div class="field inline">
+          <label for="maxTotal">{{ 'results.maxTotal' | t }}</label>
+          <input id="maxTotal" type="number" min="0" [placeholder]="'common.any' | t" (input)="setMaxTotal($any($event.target).value)" />
+        </div>
+        <div class="field inline">
+          <label for="destFilter">{{ 'results.destination' | t }}</label>
+          <select id="destFilter" [ngModel]="destinationFilter()" (ngModelChange)="destinationFilter.set($event)">
+            <option value="">{{ 'common.all' | t }}</option>
+            @for (d of destinationsInResults(); track d.id) { <option [value]="d.id">{{ d.city }}</option> }
+          </select>
+        </div>
+        <label class="checkbox">
+          <input type="checkbox" [ngModel]="hideIncomplete()" (ngModelChange)="hideIncomplete.set($event)" /> {{ 'results.onlyComplete' | t }}
+        </label>
+      </div>
+
+      <app-verification-legend />
+      <app-error-banner [error]="plansError()" />
+
+      @if (plansLoading() && plans().length === 0) {
+        <div class="skeleton-list" aria-busy="true">
+          @for (i of [1, 2, 3]; track i) { <div class="card skeleton"></div> }
+        </div>
+      } @else {
+        <div class="plan-list">
+          @for (p of visiblePlans(); track p.id) {
+            <app-plan-card [plan]="p" />
+          } @empty {
+            <div class="card empty-state">
+              @if (plans().length === 0) {
+                <h3>{{ 'results.noTrips' | t }}</h3>
+                <p class="muted">{{ 'results.noTripsText' | t }}</p>
+                <a class="btn btn-primary" [routerLink]="i18n.path()">{{ 'common.newSearch' | t }}</a>
+              } @else {
+                <p class="muted">{{ 'results.noFilterMatch' | t }}</p>
+              }
+            </div>
+          }
+        </div>
+      }
+    </section>
+  }
+} @else if (!loadError()) {
+  <section class="card progress-card" aria-busy="true">
+    <span class="spinner" aria-hidden="true"></span> {{ 'results.loading' | t }}
+    @if (transientError()) { <p class="small text-warn">{{ 'results.connectionProblem' | t }}</p> }
+  </section>
+}

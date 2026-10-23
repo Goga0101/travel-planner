@@ -1,0 +1,12 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/TravelPlanner.API/TravelPlanner.API.csproj" />
+    <Project Path="src/TravelPlanner.Application/TravelPlanner.Application.csproj" />
+    <Project Path="src/TravelPlanner.Domain/TravelPlanner.Domain.csproj" />
+    <Project Path="src/TravelPlanner.Infrastructure/TravelPlanner.Infrastructure.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/TravelPlanner.IntegrationTests/TravelPlanner.IntegrationTests.csproj" />
+    <Project Path="tests/TravelPlanner.UnitTests/TravelPlanner.UnitTests.csproj" />
+  </Folder>
+</Solution>
