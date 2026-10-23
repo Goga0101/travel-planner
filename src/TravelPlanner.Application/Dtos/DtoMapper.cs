@@ -82,13 +82,20 @@ public static class DtoMapper
     {
         var details = Deserialize<FlightItemDetails>(item.DetailsJson);
         return new FlightSummaryDto(ProviderLabel(item.ProviderName), item.ConvertedPrice ?? item.Price, CurrencyOf(item, planCurrency),
-            item.Verification, details is null ? null : Leg(details.Outbound), details is null ? null : Leg(details.Inbound),
+            item.Verification, details is null ? null : Leg(details.Outbound, details.ValidatingCarrier),
+            details is null ? null : Leg(details.Inbound, details.ValidatingCarrier),
             details?.IncludedCheckedBags, item.BookingUrl is not null);
     }
 
-    private static FlightLegSummaryDto Leg(FlightItinerary it) =>
-        new(it.DepartureAirport, it.ArrivalAirport, it.DepartureLocal, it.ArrivalLocal, it.Duration is { } d ? (int)d.TotalMinutes : null,
-            it.Stops, it.Segments.Select(s => s.CarrierCode).Distinct().ToList());
+    /// <summary>Carriers come from the segments; providers without segment data (Travelpayouts connections) fall back to the validating carrier.</summary>
+    private static FlightLegSummaryDto Leg(FlightItinerary it, string? validatingCarrier)
+    {
+        IReadOnlyList<string> carriers = it.Segments.Count > 0
+            ? it.Segments.Select(s => s.CarrierCode).Distinct().ToList()
+            : string.IsNullOrWhiteSpace(validatingCarrier) ? [] : [validatingCarrier];
+        return new(it.DepartureAirport, it.ArrivalAirport, it.DepartureLocal, it.ArrivalLocal, it.Duration is { } d ? (int)d.TotalMinutes : null,
+            it.Stops, carriers);
+    }
 
     private static AccommodationSummaryDto AccommodationSummary(TripPlanItem item, string planCurrency)
     {
