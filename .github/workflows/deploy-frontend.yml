@@ -7,9 +7,6 @@ name: Deploy frontend to GitHub Pages
 on:
   push:
     branches: [main]
-    paths:
-      - 'frontend/travel-planner-web/**'
-      - '.github/workflows/deploy-frontend.yml'
   workflow_dispatch:
 
 permissions:
