@@ -1,6 +1,7 @@
 # Builds the Angular app and publishes it to GitHub Pages (project site: https://<user>.github.io/travel-planner/).
-# The API is not hosted here: by default the site calls http://localhost:5080, so run the backend locally.
-# To point it elsewhere, set the repository variable API_BASE_URL (Settings > Secrets and variables > Actions > Variables).
+# The API is not hosted here. The site calls the URL in frontend/travel-planner-web/gh-pages-api-url.txt
+# (scripts/start-public-api.ps1 updates it with the current Cloudflare tunnel); the repository variable
+# API_BASE_URL (Settings > Secrets and variables > Actions > Variables) overrides it.
 name: Deploy frontend to GitHub Pages
 
 on:
@@ -41,7 +42,7 @@ jobs:
 
       - run: npm run build:gh-pages
         env:
-          API_BASE_URL: ${{ vars.API_BASE_URL || 'http://localhost:5080' }}
+          API_BASE_URL: ${{ vars.API_BASE_URL }}
 
       - uses: actions/configure-pages@v5
 
