@@ -7109,6 +7109,1988 @@
    },
    "taxiCompanies": [],
    "retrievedOn": "2026-10-26"
+  },
+  {
+   "code": "krakow",
+   "airports": [
+    {
+     "iata": "KRK",
+     "hotels": [
+      {
+       "osmId": "way/19796313",
+       "name": "Hilton Garden Inn Krakow Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 50.071561,
+       "longitude": 19.8027194,
+       "distanceMeters": 1450,
+       "address": "Kapitana Mieczysława Medweckiego 3, 32-083, Balice",
+       "phone": "+48 12 340 00 00",
+       "website": "https://www.hilton.com/en/hotels/krkapgi-hilton-garden-inn-krakow-airport/"
+      },
+      {
+       "osmId": "way/254793040",
+       "name": "Hotel \"Kochanów\"",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 50.1151282,
+       "longitude": 19.7559397,
+       "distanceMeters": 4643,
+       "address": "Lubomirskich 61, 32-064, Kochanów",
+       "phone": "+48 505 003 468;+48 12 285 37 97",
+       "website": "https://www.kochanow.pl/"
+      },
+      {
+       "osmId": "way/989237516",
+       "name": "Hampton by Hilton Krakow Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 50.0666024,
+       "longitude": 19.801065,
+       "distanceMeters": 1694,
+       "address": "Kapitana Mieczysława Medweckiego 22, 32-083, Balice",
+       "phone": "+48 12 354 48 00",
+       "website": "https://www.hilton.com/en/hotels/krkmahx-hampton-krakow-airport/"
+      },
+      {
+       "osmId": "relation/4481646",
+       "name": "Hotel Polin",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 50.0785158,
+       "longitude": 19.7610742,
+       "distanceMeters": 1695,
+       "address": "285, 32-084",
+       "phone": null,
+       "website": null
+      },
+      {
+       "osmId": "way/791803930",
+       "name": "AirPark Blice",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 50.0643415,
+       "longitude": 19.8040205,
+       "distanceMeters": 2022,
+       "address": "Kapitana Mieczysława Medweckiego 79, 32-083, Balice",
+       "phone": "+48 603 292 953; +48 609 773 870",
+       "website": "https://airparkbalice.pl/"
+      },
+      {
+       "osmId": "node/2720073965",
+       "name": "Pod Kamykiem",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 50.090839,
+       "longitude": 19.8294178,
+       "distanceMeters": 3503,
+       "address": "Balicka 51, 30-199, Rząska",
+       "phone": null,
+       "website": null
+      },
+      {
+       "osmId": "node/3677829257",
+       "name": "Hotel Romantica",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 50.0608357,
+       "longitude": 19.7414835,
+       "distanceMeters": 3616,
+       "address": null,
+       "phone": "+48 12 452 00 27; +48 506 861 712",
+       "website": null
+      },
+      {
+       "osmId": "way/321728253",
+       "name": "Neohotel",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 50.091872,
+       "longitude": 19.8323709,
+       "distanceMeters": 3742,
+       "address": "Topolowa 12, 30-199, Rząska",
+       "phone": "+48 12 626 06 88",
+       "website": "https://neohotel.pl/"
+      },
+      {
+       "osmId": "way/321728425",
+       "name": "Pokoje Pod Różą",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 50.0939092,
+       "longitude": 19.8356389,
+       "distanceMeters": 4050,
+       "address": "Topolowa 21, 30-199, Rząska",
+       "phone": "+48 505 010 512",
+       "website": null
+      },
+      {
+       "osmId": "node/2639071662",
+       "name": "Villa Zakamycze",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 50.0603309,
+       "longitude": 19.837484,
+       "distanceMeters": 4227,
+       "address": "Zakamycze 38, 30-240, Kraków",
+       "phone": "+48 12 425 28 26",
+       "website": null
+      },
+      {
+       "osmId": "way/230412088",
+       "name": "Hotel Zakliki",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 50.0816366,
+       "longitude": 19.8492224,
+       "distanceMeters": 4618,
+       "address": null,
+       "phone": null,
+       "website": "https://zaklikihotel.pl/"
+      },
+      {
+       "osmId": "way/321552461",
+       "name": "A&J",
+       "nameEn": null,
+       "kind": "guest_house",
+       "stars": null,
+       "latitude": 50.0477549,
+       "longitude": 19.8022476,
+       "distanceMeters": 3555,
+       "address": "Pod Borem 1, 32-060, Kryspinów",
+       "phone": "+48 607 313 627",
+       "website": null
+      }
+     ],
+     "transitLines": [
+      {
+       "mode": "train",
+       "ref": "SKA1",
+       "name": "SKA1: Kraków Lotnisko - Wieliczka Rynek-Kopalnia",
+       "from": "Kraków Lotnisko",
+       "to": "Wieliczka Rynek-Kopalnia",
+       "operator": "Koleje Małopolskie",
+       "network": "Szybka Kolej Aglomeracyjna w Aglomeracji Krakowskiej",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "209",
+       "name": "Bus 209: Morawica Centrum => Salwator",
+       "from": "Morawica Centrum",
+       "to": "Salwator",
+       "operator": null,
+       "network": "KMK",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "218",
+       "name": "Bus 218: Bronowice Małe => Zabierzów Młyn",
+       "from": "Bronowice Małe",
+       "to": "Zabierzów Młyn",
+       "operator": null,
+       "network": "KMK",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "228",
+       "name": "Bus 228: Bronowice Małe => Chrosna Pętla",
+       "from": "Bronowice Małe",
+       "to": "Chrosna Pętla",
+       "operator": null,
+       "network": "KMK",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "258",
+       "name": "Bus 258: Bronowice Małe => Nielepice Pętla",
+       "from": "Bronowice Małe",
+       "to": "Nielepice Pętla",
+       "operator": null,
+       "network": "Komunikacja Miejska w Krakowie",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "300",
+       "name": "Bus 300: Kraków Airport => Osiedle Podwawelskie",
+       "from": "Kraków Airport",
+       "to": "Osiedle Podwawelskie",
+       "operator": null,
+       "network": "KMK",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "902",
+       "name": "Bus 902: Dworzec Główny Wschód => Kraków Airport",
+       "from": "Dworzec Główny Wschód",
+       "to": "Kraków Airport",
+       "operator": "Zarząd Transportu Publicznego w Krakowie",
+       "network": "KMK",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "918",
+       "name": "Bus 918 (nocny): Bronowice Małe => Rudawa Rynek",
+       "from": "Bronowice Małe",
+       "to": "Rudawa Rynek",
+       "operator": null,
+       "network": "KMK",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "N913",
+       "name": "Flixbus N913: Kraków, przystanek autobusowy MDA => Praha, ÚAN Florenc",
+       "from": "Kraków, przystanek autobusowy MDA",
+       "to": "Praha, ÚAN Florenc",
+       "operator": "Flixbus",
+       "network": "Flixbus",
+       "website": null
+      }
+     ],
+     "taxiRanks": [
+      {
+       "name": null,
+       "operator": null,
+       "phone": null,
+       "latitude": 50.0719316,
+       "longitude": 19.8018465,
+       "distanceMeters": 1375
+      },
+      {
+       "name": null,
+       "operator": null,
+       "phone": null,
+       "latitude": 50.0720089,
+       "longitude": 19.8024345,
+       "distanceMeters": 1409
+      }
+     ]
+    }
+   ],
+   "centre": {
+    "hotels": [
+     {
+      "osmId": "node/699690064",
+      "name": "Elektor",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 50.0631939,
+      "longitude": 19.9412087,
+      "distanceMeters": 318,
+      "address": "Szpitalna 28, 31-024, Kraków",
+      "phone": null,
+      "website": "https://www.hotelelektor.com/"
+     },
+     {
+      "osmId": "node/490986139",
+      "name": "Hotel Saski Krakow, Curio Collection by Hilton",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 50.0633379,
+      "longitude": 19.9374505,
+      "distanceMeters": 560,
+      "address": "Sławkowska 3, 31-014, Kraków",
+      "phone": "+48 12 333 42 70",
+      "website": "https://www.hilton.com/en/hotels/krkshqq-hotel-saski-krakow"
+     },
+     {
+      "osmId": "node/475613591",
+      "name": "Hotel Wentzl",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 50.0607812,
+      "longitude": 19.936909,
+      "distanceMeters": 723,
+      "address": "Rynek Główny 19, Kraków",
+      "phone": null,
+      "website": "https://wentzl.pl"
+     },
+     {
+      "osmId": "node/3441032963",
+      "name": "Rezydent",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 50.0597801,
+      "longitude": 19.9375194,
+      "distanceMeters": 764,
+      "address": "Grodzka 9, 31-006, Kraków",
+      "phone": "+48124295410",
+      "website": "https://www.rezydent.krakow.pl/"
+     },
+     {
+      "osmId": "node/752177385",
+      "name": "Logos",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 50.0640869,
+      "longitude": 19.9288994,
+      "distanceMeters": 1151,
+      "address": null,
+      "phone": "+48126316200",
+      "website": "https://hotel-logos.pl/"
+     },
+     {
+      "osmId": "node/2638505708",
+      "name": "Matejko",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 50.067138,
+      "longitude": 19.9431302,
+      "distanceMeters": 302,
+      "address": "Plac Jana Matejki 8, 31-157, Kraków",
+      "phone": "+48 12 422 47 37",
+      "website": null
+     },
+     {
+      "osmId": "node/699690067",
+      "name": "Unicus Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 50.0636034,
+      "longitude": 19.9407569,
+      "distanceMeters": 326,
+      "address": "Świętego Marka 20, Kraków",
+      "phone": null,
+      "website": null
+     },
+     {
+      "osmId": "node/1514597730",
+      "name": "Hotel Campanile",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 2,
+      "latitude": 50.0619244,
+      "longitude": 19.9431644,
+      "distanceMeters": 335,
+      "address": "Świętego Tomasza 34, 31-027, Kraków",
+      "phone": null,
+      "website": null
+     },
+     {
+      "osmId": "node/1936191430",
+      "name": "Laiko Apartments",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 50.0682605,
+      "longitude": 19.9433333,
+      "distanceMeters": 413,
+      "address": "Warszawska 3, 31-155, Kraków",
+      "phone": "+48 508 701 958",
+      "website": "https://laikoapartments.pl/"
+     },
+     {
+      "osmId": "node/3787323833",
+      "name": "Rakowicka Residence",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 50.0657064,
+      "longitude": 19.9515091,
+      "distanceMeters": 478,
+      "address": "Rakowicka 6, Kraków",
+      "phone": null,
+      "website": "https://rakowickaresidence.pl"
+     },
+     {
+      "osmId": "node/2611470235",
+      "name": "Atrium",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 50.0675017,
+      "longitude": 19.9395373,
+      "distanceMeters": 499,
+      "address": "Krzywa 7, 31-149, Kraków",
+      "phone": null,
+      "website": null
+     },
+     {
+      "osmId": "node/4745690474",
+      "name": "Betmanowska",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 50.0624289,
+      "longitude": 19.9386097,
+      "distanceMeters": 521,
+      "address": "Rynek Główny 44, Krakow",
+      "phone": "+48 12 426 40 81",
+      "website": "https://betmanowska.com/eng/"
+     }
+    ]
+   },
+   "taxiCompanies": [],
+   "retrievedOn": "2026-10-26"
+  },
+  {
+   "code": "istanbul",
+   "airports": [
+    {
+     "iata": "IST",
+     "hotels": [
+      {
+       "osmId": "node/6313204370",
+       "name": "Yotelair Istanbul Airport (Airside)",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 41.2608422,
+       "longitude": 28.7398398,
+       "distanceMeters": 1897,
+       "address": null,
+       "phone": null,
+       "website": "https://www.yotel.com/en/hotels/yotelair-istanbul-airport-airside"
+      },
+      {
+       "osmId": "node/6153093769",
+       "name": "Yotel Istanbul Airport (Landside)",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 41.2604478,
+       "longitude": 28.7399471,
+       "distanceMeters": 1930,
+       "address": null,
+       "phone": null,
+       "website": "https://www.yotel.com/en/hotels/yotel-istanbul-airport-landside"
+      }
+     ],
+     "transitLines": [],
+     "taxiRanks": []
+    }
+   ],
+   "centre": {
+    "hotels": [
+     {
+      "osmId": "node/2768450499",
+      "name": "Levni Hotel & SPA",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 41.0130358,
+      "longitude": 28.9756727,
+      "distanceMeters": 584,
+      "address": "Ebusuud Caddesi 31, İstanbul",
+      "phone": "+90 212 519 1019",
+      "website": "https://levnihotel.com/"
+     },
+     {
+      "osmId": "node/1632649056",
+      "name": "Radisson Hotel Istanbul Sultanahmet",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 41.0033858,
+      "longitude": 28.98156,
+      "distanceMeters": 597,
+      "address": "Kennedy Caddesi 12, İstanbul",
+      "phone": null,
+      "website": "https://www.radissonhotels.com/tr-tr/oteller/radisson-istanbul-sultanahmet"
+     },
+     {
+      "osmId": "node/2519859562",
+      "name": "Santa Sophia",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 41.0070836,
+      "longitude": 28.9706285,
+      "distanceMeters": 664,
+      "address": null,
+      "phone": "+902125174176",
+      "website": null
+     },
+     {
+      "osmId": "node/1885894932",
+      "name": "Zeynep Sultan Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 41.0100651,
+      "longitude": 28.9780687,
+      "distanceMeters": 209,
+      "address": "Zeynepsultan Camii Sokağı 25",
+      "phone": "+90 212 514 50 01",
+      "website": "https://zeynepsultanhotel.com/indexmobile.php"
+     },
+     {
+      "osmId": "node/1325246155",
+      "name": "Armagrandi Spina Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 41.0059321,
+      "longitude": 28.9791644,
+      "distanceMeters": 260,
+      "address": "Utangaç Sokağı 19, 34122, İstanbul",
+      "phone": "+90 212 638 17 27",
+      "website": "https://www.armagrandi.com/"
+     },
+     {
+      "osmId": "node/1251645280",
+      "name": "Hotel Peninsula",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 41.0061282,
+      "longitude": 28.9813913,
+      "distanceMeters": 341,
+      "address": "6",
+      "phone": null,
+      "website": "https://www.hotelpeninsula.com/"
+     },
+     {
+      "osmId": "node/4086861008",
+      "name": "Marmara Guesthouse",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 41.0058542,
+      "longitude": 28.981342,
+      "distanceMeters": 359,
+      "address": "akbiyik caddesi terbiyik Sokak 15 15",
+      "phone": "+902126383638",
+      "website": "https://www.marmaraguesthouse.com/"
+     },
+     {
+      "osmId": "node/1325246139",
+      "name": "Nobel Hostel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 41.0049321,
+      "longitude": 28.9790616,
+      "distanceMeters": 368,
+      "address": null,
+      "phone": "+90 212 516 3177",
+      "website": "https://www.nobelhostel.com/"
+     },
+     {
+      "osmId": "node/2524535697",
+      "name": "Sultan Ahmet Palace",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 41.0045657,
+      "longitude": 28.9780948,
+      "distanceMeters": 405,
+      "address": null,
+      "phone": "+902124580460",
+      "website": "https://www.sultanahmetpalace.com/"
+     },
+     {
+      "osmId": "node/1937914694",
+      "name": "Hotel Arcadia Blue",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 41.0068739,
+      "longitude": 28.9736116,
+      "distanceMeters": 428,
+      "address": "İmran Öktem Caddesi 1, 34400, İstanbul",
+      "phone": "+90 212 516 9696",
+      "website": "https://www.hotelarcadiablue.com/en"
+     },
+     {
+      "osmId": "node/1914160117",
+      "name": "Avicenna Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 41.0041915,
+      "longitude": 28.9798421,
+      "distanceMeters": 462,
+      "address": "Amiral Tafdil Sokağı 19, 34122, Istanbul",
+      "phone": "+90 5055267434",
+      "website": "https://www.avicennahotel.com/pages/contact"
+     },
+     {
+      "osmId": "node/2239749973",
+      "name": "Celine Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 41.0059122,
+      "longitude": 28.973221,
+      "distanceMeters": 504,
+      "address": "Peykhane Caddesi 28, 34122, İstanbul",
+      "phone": "+90 212 517 19 19",
+      "website": "https://www.hotelceline.com/"
+     }
+    ]
+   },
+   "taxiCompanies": [
+    {
+     "name": "Çamlıca Taksi",
+     "phone": "+90 216 318 18 59",
+     "website": null
+    },
+    {
+     "name": "İdil Taksi",
+     "phone": "+902122660530",
+     "website": "https://www.onlinetaksi.com/idil-taksi.html"
+    },
+    {
+     "name": "cihan",
+     "phone": "+902122720307",
+     "website": "https://www.onlinetaksi.com/cihan-taksi.html"
+    },
+    {
+     "name": "Merkez Stad Taksi",
+     "phone": "+90 212 501 18 16",
+     "website": null
+    },
+    {
+     "name": "Şehremini taxi",
+     "phone": "+90 212 513 10 02",
+     "website": null
+    },
+    {
+     "name": "Koç Taksi",
+     "phone": "+90 212 613 87 87",
+     "website": null
+    }
+   ],
+   "retrievedOn": "2026-10-26"
+  },
+  {
+   "code": "copenhagen",
+   "airports": [
+    {
+     "iata": "CPH",
+     "hotels": [
+      {
+       "osmId": "node/297309578",
+       "name": "Best Western Plus Airport Hotel Copenhagen",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 55.6371074,
+       "longitude": 12.6420358,
+       "distanceMeters": 2195,
+       "address": null,
+       "phone": "+45 3251 1400",
+       "website": "https://www.bestwestern.dk/booking-path/hotel-details/best-western-plus-airport-hotel-copenhagen-kastrup-96098"
+      },
+      {
+       "osmId": "way/150201581",
+       "name": "Dragør Badehotel",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 55.5901832,
+       "longitude": 12.6733314,
+       "distanceMeters": 3402,
+       "address": null,
+       "phone": "+45 32530500",
+       "website": "https://badehotellet.dk/"
+      },
+      {
+       "osmId": "way/25706010",
+       "name": "Clarion Hotel Copenhagen Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 55.6305427,
+       "longitude": 12.6509248,
+       "distanceMeters": 1395,
+       "address": null,
+       "phone": "+45 32 501 501",
+       "website": null
+      },
+      {
+       "osmId": "node/2555513787",
+       "name": "Cottage Farm",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 55.6019866,
+       "longitude": 12.6469895,
+       "distanceMeters": 1797,
+       "address": null,
+       "phone": "+45 3253 2831",
+       "website": null
+      },
+      {
+       "osmId": "node/9044612586",
+       "name": "Scandic CPH Strandpark",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 55.635382,
+       "longitude": 12.654912,
+       "distanceMeters": 1950,
+       "address": null,
+       "phone": null,
+       "website": "https://www.scandichotels.dk/hoteller/danmark/kobenhavn/scandic-cph-strandpark"
+      },
+      {
+       "osmId": "way/145555230",
+       "name": "Four Points Flex by Sheraton Copenhagen Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 55.622619,
+       "longitude": 12.6157128,
+       "distanceMeters": 2262,
+       "address": null,
+       "phone": null,
+       "website": "https://www.marriott.com/en-us/hotels/cphaf-four-points-flex-copenhagen-airport/"
+      },
+      {
+       "osmId": "way/316607710",
+       "name": "Go Hotel Copenhagen",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 55.6284821,
+       "longitude": 12.6047465,
+       "distanceMeters": 3118,
+       "address": null,
+       "phone": null,
+       "website": "https://go-hotel.com/hoteller/go-hotel-copenhagen"
+      },
+      {
+       "osmId": "way/350076482",
+       "name": "CPH Studio Hotel",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 55.6587118,
+       "longitude": 12.6316689,
+       "distanceMeters": 4683,
+       "address": null,
+       "phone": "+45 3171 6664",
+       "website": null
+      },
+      {
+       "osmId": "node/8089020102",
+       "name": "Four Points Flex by Sheraton Copenhagen Arena",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 55.625586,
+       "longitude": 12.577203,
+       "distanceMeters": 4697,
+       "address": null,
+       "phone": null,
+       "website": "https://www.marriott.com/en-us/hotels/cphnf-four-points-flex-copenhagen-arena/"
+      },
+      {
+       "osmId": "node/12831796281",
+       "name": "Crowne Plaza Copenhagen Towers",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 55.6269452,
+       "longitude": 12.5771785,
+       "distanceMeters": 4728,
+       "address": null,
+       "phone": "+45 88776655",
+       "website": "https://www.cpcopenhagen.dk/"
+      },
+      {
+       "osmId": "node/10833912065",
+       "name": "Ibis Styles Copenhagen Ørestad",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 55.6371284,
+       "longitude": 12.5831317,
+       "distanceMeters": 4751,
+       "address": null,
+       "phone": null,
+       "website": "https://all.accor.com/hotel/B5E3/index.en.shtml"
+      },
+      {
+       "osmId": "way/844511703",
+       "name": "Comfort Hotel Copenhagen Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 55.6306778,
+       "longitude": 12.6524358,
+       "distanceMeters": 1413,
+       "address": null,
+       "phone": null,
+       "website": null
+      }
+     ],
+     "transitLines": [
+      {
+       "mode": "train",
+       "ref": "4",
+       "name": "Esbjerg => Fredericia => København CPH Lufthavn",
+       "from": "Esbjerg",
+       "to": "København",
+       "operator": "DSB",
+       "network": null,
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "80",
+       "name": "Train 80: Copenhagen => Stockholm",
+       "from": "København",
+       "to": "Stockholm",
+       "operator": "SJ",
+       "network": "SJ",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "90;101",
+       "name": "Train 90: Karlskrona => Malmö => København",
+       "from": "Karlskrona",
+       "to": "København",
+       "operator": "Transdev;DSB Øresund",
+       "network": "Øresundståg",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "95",
+       "name": "Train 95: Kalmar => Malmö => København",
+       "from": "Kalmar",
+       "to": "Østerport",
+       "operator": "Transdev;DSB Øresund",
+       "network": "Øresundståg",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "100;101",
+       "name": "Train 100: Gothenburg => Malmö => Copenhagen",
+       "from": "Göteborg",
+       "to": "København",
+       "operator": "Transdev;DSB Øresund",
+       "network": "Øresundståg",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "101;90",
+       "name": "Train 90: Helsingør => København => Malmø => Karlskrona",
+       "from": "Helsingør",
+       "to": "Karlskrona",
+       "operator": "DSB Øresund;Transdev",
+       "network": "Øresundståg",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "101;100",
+       "name": "Train 100: Copenhagen => Malmö => Gothenburg",
+       "from": "København",
+       "to": "Göteborg",
+       "operator": "Transdev",
+       "network": "Øresundståg",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "IC1",
+       "name": "InterCity 1: København => Aalborg",
+       "from": "CPH Lufthavn",
+       "to": "Aalborg",
+       "operator": "DSB",
+       "network": null,
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "ICL5",
+       "name": "InterCityLyn 5: Sønderborg => Københavns Lufthavn",
+       "from": "Sønderborg",
+       "to": "Københavns Lufthavn",
+       "operator": "DSB",
+       "network": null,
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "RE40",
+       "name": "Regionaltog 40: Nivå => CPH Lufthavn",
+       "from": "Nivå",
+       "to": "CPH Lufthavn",
+       "operator": "DSB",
+       "network": "Takst Sjælland",
+       "website": "https://www.dsb.dk"
+      },
+      {
+       "mode": "train",
+       "ref": "RE50",
+       "name": "Regionaltog 50: CPH Lufthavn => København S => Høje Taastrup => Slagelse",
+       "from": "CPH Lufthavn",
+       "to": "Slagelse",
+       "operator": "DSB",
+       "network": "Takst Sjælland",
+       "website": "https://www.dsb.dk"
+      },
+      {
+       "mode": "subway",
+       "ref": "M2",
+       "name": "Metro M2: Vanløse => Lufthavnen",
+       "from": "Vanløse",
+       "to": "Lufthavnen",
+       "operator": "Inmetro",
+       "network": "Takst Sjælland",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "5C",
+       "name": "Bus 5C: Københavns Lufthavn => Herlev Hospital, Sløjfen",
+       "from": "Københavns Lufthavn",
+       "to": "Herlev Hospital, Sløjfen",
+       "operator": "Movia",
+       "network": "Movia",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "35",
+       "name": "Bus 35: Københavns Lufthavn => Sundbyvester Plads",
+       "from": "Københavns Lufthavn",
+       "to": "Sundbyvester Plads",
+       "operator": "Movia",
+       "network": "Movia",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "602",
+       "name": "Flixbus 602: Københavns Ingerslevsgade => Stockholm, Arlanda flygplats 2-3",
+       "from": "Københavns Ingerslevsgade",
+       "to": "Stockholm, Arlanda flygplats 2-3",
+       "operator": "Flixbus",
+       "network": "Flixbus",
+       "website": null
+      }
+     ],
+     "taxiRanks": [
+      {
+       "name": null,
+       "operator": null,
+       "phone": null,
+       "latitude": 55.6287047,
+       "longitude": 12.6518289,
+       "distanceMeters": 1192
+      },
+      {
+       "name": null,
+       "operator": null,
+       "phone": null,
+       "latitude": 55.6351398,
+       "longitude": 12.6545546,
+       "distanceMeters": 1920
+      },
+      {
+       "name": null,
+       "operator": null,
+       "phone": null,
+       "latitude": 55.635191,
+       "longitude": 12.6545662,
+       "distanceMeters": 1926
+      },
+      {
+       "name": null,
+       "operator": null,
+       "phone": null,
+       "latitude": 55.635242,
+       "longitude": 12.6545777,
+       "distanceMeters": 1932
+      },
+      {
+       "name": null,
+       "operator": null,
+       "phone": null,
+       "latitude": 55.6228887,
+       "longitude": 12.6149999,
+       "distanceMeters": 2313
+      }
+     ]
+    }
+   ],
+   "centre": {
+    "hotels": [
+     {
+      "osmId": "node/279691844",
+      "name": "The Square",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 55.6761571,
+      "longitude": 12.5669727,
+      "distanceMeters": 83,
+      "address": null,
+      "phone": null,
+      "website": "https://www.thesquare.dk"
+     },
+     {
+      "osmId": "node/4013660820",
+      "name": "Imperial",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 55.6756448,
+      "longitude": 12.5616263,
+      "distanceMeters": 421,
+      "address": null,
+      "phone": "+45 3312 8000",
+      "website": "https://www.imperial-hotel-copenhagen.com"
+     },
+     {
+      "osmId": "node/7179104554",
+      "name": "Villa Copenhagen",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 55.6714034,
+      "longitude": 12.5677356,
+      "distanceMeters": 523,
+      "address": null,
+      "phone": null,
+      "website": "https://villacopenhagen.com/"
+     },
+     {
+      "osmId": "node/298796069",
+      "name": "Hotel Du Nord",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 55.6720731,
+      "longitude": 12.5619597,
+      "distanceMeters": 599,
+      "address": null,
+      "phone": "+45 33224433",
+      "website": "https://hoteldunord.dk/"
+     },
+     {
+      "osmId": "node/298795772",
+      "name": "Go Hotel Saga",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 2,
+      "latitude": 55.6715774,
+      "longitude": 12.5624497,
+      "distanceMeters": 622,
+      "address": null,
+      "phone": "+45 32520030",
+      "website": "https://go-hotel.com/hoteller/go-hotel-saga"
+     },
+     {
+      "osmId": "way/14310073",
+      "name": "Copenhagen Marriott Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 55.6685574,
+      "longitude": 12.5737511,
+      "distanceMeters": 906,
+      "address": null,
+      "phone": null,
+      "website": "https://www.marriott.com/hotels/travel/cphdk-copenhagen-marriott-hotel/"
+     },
+     {
+      "osmId": "node/2363337466",
+      "name": "Scandic Palace Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 55.6762339,
+      "longitude": 12.5703021,
+      "distanceMeters": 126,
+      "address": null,
+      "phone": null,
+      "website": "https://www.scandichotels.dk/Hotels/Danmark/Kobenhavn/Palace-Hotel/"
+     },
+     {
+      "osmId": "node/6699489668",
+      "name": "CitizenM Rådhuspladsen",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 55.676601,
+      "longitude": 12.566396,
+      "distanceMeters": 132,
+      "address": null,
+      "phone": null,
+      "website": "https://www.citizenm.com/destinations/copenhagen/copenhagen-radhuspladsen-hotel"
+     },
+     {
+      "osmId": "node/12097446278",
+      "name": "Hotel Bella Grande",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 55.6775123,
+      "longitude": 12.5676777,
+      "distanceMeters": 162,
+      "address": null,
+      "phone": "+45 7060 1021",
+      "website": "https://hotelbellagrande.com/"
+     },
+     {
+      "osmId": "node/4460697679",
+      "name": "Hotel Alexandra",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 55.67701,
+      "longitude": 12.56607,
+      "distanceMeters": 173,
+      "address": null,
+      "phone": "+45 33744444",
+      "website": "https://hotelalexandra.dk/"
+     },
+     {
+      "osmId": "node/4460697542",
+      "name": "Ascot Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 55.67687,
+      "longitude": 12.56538,
+      "distanceMeters": 202,
+      "address": null,
+      "phone": "+45 33 12 60 00",
+      "website": "https://www.ascot-hotel.dk/"
+     },
+     {
+      "osmId": "way/133041576",
+      "name": "Motel One Copenhagen",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 55.6752804,
+      "longitude": 12.5727071,
+      "distanceMeters": 291,
+      "address": null,
+      "phone": "+4570275627",
+      "website": "https://www.motel-one.com/en/hotels/copenhagen/hotel-copenhagen/"
+     }
+    ]
+   },
+   "taxiCompanies": [],
+   "retrievedOn": "2026-10-26"
+  },
+  {
+   "code": "venice",
+   "airports": [
+    {
+     "iata": "VCE",
+     "hotels": [
+      {
+       "osmId": "node/4254149464",
+       "name": "Hotel Marco Polo",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 45.4868868,
+       "longitude": 12.2949059,
+       "distanceMeters": 4891,
+       "address": "Via Orlanda 115",
+       "phone": "+39 041 900344",
+       "website": "https://www.hotelmarcopolovenezia.com/"
+      },
+      {
+       "osmId": "node/4384948168",
+       "name": "Parkhotel Annia",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 45.5073658,
+       "longitude": 12.3325209,
+       "distanceMeters": 1528,
+       "address": null,
+       "phone": "+39 041 5415200",
+       "website": "https://www.anniaparkhotel.it/"
+      },
+      {
+       "osmId": "node/11123620467",
+       "name": "Lucy",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 45.4880573,
+       "longitude": 12.3017335,
+       "distanceMeters": 4355,
+       "address": null,
+       "phone": null,
+       "website": null
+      },
+      {
+       "osmId": "node/3848902223",
+       "name": "Hotel Mary",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 45.486905,
+       "longitude": 12.2959386,
+       "distanceMeters": 4818,
+       "address": "Via Orlanda 152",
+       "phone": null,
+       "website": null
+      },
+      {
+       "osmId": "node/10961568634",
+       "name": "Il Casolare",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 45.5268748,
+       "longitude": 12.3533681,
+       "distanceMeters": 2402,
+       "address": null,
+       "phone": null,
+       "website": null
+      },
+      {
+       "osmId": "node/11818353161",
+       "name": "Antony Hotel",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 45.4871937,
+       "longitude": 12.2991627,
+       "distanceMeters": 4577,
+       "address": null,
+       "phone": null,
+       "website": null
+      },
+      {
+       "osmId": "node/6468709304",
+       "name": "Dolce Laguna B&B",
+       "nameEn": null,
+       "kind": "guest_house",
+       "stars": null,
+       "latitude": 45.5025017,
+       "longitude": 12.3302047,
+       "distanceMeters": 1719,
+       "address": null,
+       "phone": null,
+       "website": "https://www.dolcelaguna.com/"
+      },
+      {
+       "osmId": "node/3674488671",
+       "name": "Venice Lagoon House B&B",
+       "nameEn": null,
+       "kind": "guest_house",
+       "stars": null,
+       "latitude": 45.5013912,
+       "longitude": 12.3262886,
+       "distanceMeters": 2043,
+       "address": "Via Tenda 11, 30173, Tessera",
+       "phone": "+39 328 4774554",
+       "website": null
+      },
+      {
+       "osmId": "node/12673541964",
+       "name": "Agriturismo Ca' Beatrice",
+       "nameEn": null,
+       "kind": "guest_house",
+       "stars": null,
+       "latitude": 45.5041682,
+       "longitude": 12.2986914,
+       "distanceMeters": 4149,
+       "address": null,
+       "phone": null,
+       "website": "https://www.agriturismocabeatrice.it/"
+      },
+      {
+       "osmId": "node/4239906090",
+       "name": "Agriturismo Il Melograno",
+       "nameEn": null,
+       "kind": "guest_house",
+       "stars": null,
+       "latitude": 45.5018817,
+       "longitude": 12.3064685,
+       "distanceMeters": 3561,
+       "address": "Via Spigariola 10a",
+       "phone": null,
+       "website": null
+      },
+      {
+       "osmId": "node/4258395148",
+       "name": "B&B Rododendri Garden",
+       "nameEn": null,
+       "kind": "guest_house",
+       "stars": null,
+       "latitude": 45.4938342,
+       "longitude": 12.2962713,
+       "distanceMeters": 4519,
+       "address": "Via dei Rododendri 18",
+       "phone": null,
+       "website": null
+      },
+      {
+       "osmId": "way/437132186",
+       "name": "B&B Dream",
+       "nameEn": null,
+       "kind": "guest_house",
+       "stars": null,
+       "latitude": 45.5323171,
+       "longitude": 12.3052351,
+       "distanceMeters": 4716,
+       "address": "Via delle Garzette 5, 30173, Venezia",
+       "phone": null,
+       "website": null
+      }
+     ],
+     "transitLines": [
+      {
+       "mode": "bus",
+       "ref": "5",
+       "name": "Bus Actv 5: Venezia => Aeroporto Marco Polo",
+       "from": "Venezia",
+       "to": "Aeroporto Marco Polo",
+       "operator": "Actv",
+       "network": "Urbano Mestre",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "10",
+       "name": "Caprile -> Colle S.Lucia -> Longarone -> Aeroporto -> Venezia P.le Roma",
+       "from": "caprile",
+       "to": "Venezia Piazzale Roma",
+       "operator": "DolomitiBus",
+       "network": "DolomitiBus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "10A",
+       "name": "Bus 10A: Lido di Jesolo → Venezia",
+       "from": "Lido di Jesolo",
+       "to": "Venezia",
+       "operator": "ATVO",
+       "network": "ATVO",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "15",
+       "name": "Bus Actv 15: Aeroporto Marco Polo => Mestre FS C1",
+       "from": "Aeroporto Marco Polo",
+       "to": "Mestre FS C1",
+       "operator": "Actv",
+       "network": "Urbano Mestre",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "45",
+       "name": "Bus Actv 45: Favaro - Via Monte Cervino =>Aeroporto Marco Polo => Ca' Noghera",
+       "from": "Favaro - Via Monte Cervino",
+       "to": "Ca' Noghera",
+       "operator": "Actv",
+       "network": "Rete Urbana di Mestre",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "45H",
+       "name": "Bus Actv 45H: Ospedale dell'Angelo => Ca' Noghera",
+       "from": "Ospedale dell'Angelo",
+       "to": "Ca' Noghera",
+       "operator": "Actv",
+       "network": "Rete Urbana di Mestre",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "85",
+       "name": "Arriva Veneto 85: Sottomarina => Aeroporto Marco Polo",
+       "from": "Sottomarina, Piazzale Europa",
+       "to": "Marco Polo",
+       "operator": "Arriva Veneto",
+       "network": null,
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "K330",
+       "name": "Flixbus K330 (Fly Bus): Aeroporto di Venezia Marco Polo, 2 => Mestre, Stazione Ferroviaria",
+       "from": "Aeroporto di Venezia Marco Polo, 2",
+       "to": "Mestre, Stazione Ferroviaria",
+       "operator": "ATVO",
+       "network": "Flixbus",
+       "website": null
+      }
+     ],
+     "taxiRanks": []
+    }
+   ],
+   "centre": {
+    "hotels": [
+     {
+      "osmId": "node/1522311611",
+      "name": "Hotel Canal",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 45.439276,
+      "longitude": 12.3211262,
+      "distanceMeters": 471,
+      "address": "553, 30135",
+      "phone": "+39 041 5238480",
+      "website": "https://www.hotelcanal.com/"
+     },
+     {
+      "osmId": "node/1522308704",
+      "name": "Hotel Walter",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 2,
+      "latitude": 45.4391075,
+      "longitude": 12.321078,
+      "distanceMeters": 474,
+      "address": "240, 30135, Venezia",
+      "phone": "+39 041 5238480",
+      "website": null
+     },
+     {
+      "osmId": "node/3396925559",
+      "name": "Hotel Airone",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 2,
+      "latitude": 45.439452,
+      "longitude": 12.3212579,
+      "distanceMeters": 474,
+      "address": "557, 30135, Venezia",
+      "phone": "+39 041 5204800",
+      "website": null
+     },
+     {
+      "osmId": "node/3123060946",
+      "name": "Hotel Alloggi agli Artisti",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 45.4424676,
+      "longitude": 12.3212068,
+      "distanceMeters": 482,
+      "address": "99a, 30121",
+      "phone": "+39 041 716270",
+      "website": null
+     },
+     {
+      "osmId": "node/1341099997",
+      "name": "Hotel Gardena",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 45.4389856,
+      "longitude": 12.3211755,
+      "distanceMeters": 487,
+      "address": "239, 30135, Venezia",
+      "phone": "+39 041 0993670",
+      "website": "https://www.hotelgardenavenice.it/"
+     },
+     {
+      "osmId": "node/2482210447",
+      "name": "Hotel Dolomiti",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 2,
+      "latitude": 45.442158,
+      "longitude": 12.3215065,
+      "distanceMeters": 492,
+      "address": "74, 30121",
+      "phone": "+39 041 715113",
+      "website": null
+     },
+     {
+      "osmId": "node/2482210446",
+      "name": "Hotel Abbazia",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 45.4420147,
+      "longitude": 12.3217072,
+      "distanceMeters": 503,
+      "address": "68, 30121",
+      "phone": "+39 041 717333",
+      "website": "https://www.abbaziahotel.com/"
+     },
+     {
+      "osmId": "node/2704266280",
+      "name": "Hotel Carlton on the Grand Canal",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 45.4400882,
+      "longitude": 12.3218885,
+      "distanceMeters": 505,
+      "address": "578, 30135, Venezia",
+      "phone": "+39 041 2752200",
+      "website": "https://www.carltongrandcanal.com/it/"
+     },
+     {
+      "osmId": "node/3123060945",
+      "name": "A La Locanda di Orsaria",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 45.4420527,
+      "longitude": 12.3217919,
+      "distanceMeters": 510,
+      "address": "103, 30121",
+      "phone": null,
+      "website": "https://www.locandaorsaria.com/it/"
+     },
+     {
+      "osmId": "node/2704266279",
+      "name": "Hotel Antiche Figure",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 45.4402371,
+      "longitude": 12.322059,
+      "distanceMeters": 516,
+      "address": "687, 30135, Venezia",
+      "phone": "+39 041 2759486",
+      "website": "https://www.hotelantichefigure.it/"
+     },
+     {
+      "osmId": "node/1386050717",
+      "name": "Hotel Florida",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 2,
+      "latitude": 45.4418661,
+      "longitude": 12.322053,
+      "distanceMeters": 525,
+      "address": "106a, 30121",
+      "phone": "+39 041 715253",
+      "website": "https://www.hotel-florida.com"
+     },
+     {
+      "osmId": "node/1522282289",
+      "name": "Hotel Olimpia",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 45.4368756,
+      "longitude": 12.3193943,
+      "distanceMeters": 532,
+      "address": "395, 30135",
+      "phone": "+39 041 711041",
+      "website": "https://www.hotel-olimpia.com/"
+     }
+    ]
+   },
+   "taxiCompanies": [],
+   "retrievedOn": "2026-10-26"
+  },
+  {
+   "code": "larnaca",
+   "airports": [
+    {
+     "iata": "LCA",
+     "hotels": [
+      {
+       "osmId": "node/3377058914",
+       "name": "Cactus Hotel",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 2,
+       "latitude": 34.9006031,
+       "longitude": 33.6355832,
+       "distanceMeters": 2999,
+       "address": "Georgiou kai Marias Tyrimou 6-8, Larnaka",
+       "phone": "+357 24627400",
+       "website": "https://www.cactushotel-larnaka.com"
+      },
+      {
+       "osmId": "way/318692574",
+       "name": "San Remo Hotel",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 2,
+       "latitude": 34.9005881,
+       "longitude": 33.6360444,
+       "distanceMeters": 3011,
+       "address": "Shakespeare 1, 6531, Larnaka",
+       "phone": null,
+       "website": "https://www.sanremocyprus.com/"
+      },
+      {
+       "osmId": "node/2753209820",
+       "name": "Larco Hotel",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 2,
+       "latitude": 34.9015997,
+       "longitude": 33.6347597,
+       "distanceMeters": 3081,
+       "address": "Pontou 10, 6301, Larnaka",
+       "phone": "357 24 657006",
+       "website": null
+      },
+      {
+       "osmId": "node/7029894786",
+       "name": "Flat41",
+       "nameEn": "Flat41",
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 34.9002534,
+       "longitude": 33.6343584,
+       "distanceMeters": 2927,
+       "address": "Shakespeare",
+       "phone": "+3579915473",
+       "website": null
+      },
+      {
+       "osmId": "node/4827654434",
+       "name": "Leonardo boutiques hotel",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 34.9144877,
+       "longitude": 33.633874,
+       "distanceMeters": 4456,
+       "address": "Constantinou Kalogera 57",
+       "phone": null,
+       "website": "https://www.leonardo-hotels.com/larnaca/leonardo-boutique-hotel-larnaca"
+      },
+      {
+       "osmId": "node/4895208788",
+       "name": "Blazer Residence",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 34.9154887,
+       "longitude": 33.6355053,
+       "distanceMeters": 4594,
+       "address": "Armenikis Ekklisias 1, 6022, Larnaca",
+       "phone": "+357 24665558",
+       "website": "https://blazerresidence.com/"
+      },
+      {
+       "osmId": "node/9229621017",
+       "name": "Jimmy's Suites Larnaca",
+       "nameEn": "Jimmy's Suites Larnaca",
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 34.9162985,
+       "longitude": 33.633464,
+       "distanceMeters": 4647,
+       "address": "Ermou 29, 6023",
+       "phone": "+357  95 106 000",
+       "website": "https://jimmyssuiteslarnaca.com"
+      },
+      {
+       "osmId": "node/12182543914",
+       "name": "Sun Hall Beach Hotel",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 34.916117,
+       "longitude": 33.6376228,
+       "distanceMeters": 4706,
+       "address": "Evryviadou 4, 6023, Larnaca",
+       "phone": "+357 24 400888",
+       "website": "https://sunhallbeachhotelapts.com/"
+      },
+      {
+       "osmId": "node/10673115706",
+       "name": "La Veranda Hotel",
+       "nameEn": "La Veranda Hotel",
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 34.8927402,
+       "longitude": 33.6351938,
+       "distanceMeters": 2175,
+       "address": "Michael Angelou 3, 6028",
+       "phone": null,
+       "website": null
+      },
+      {
+       "osmId": "way/392938277",
+       "name": "Dinglis",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 34.892956,
+       "longitude": 33.6383763,
+       "distanceMeters": 2335,
+       "address": "Piyiale Pasa, Larnaka",
+       "phone": null,
+       "website": null
+      },
+      {
+       "osmId": "way/392938275",
+       "name": "The Ciao Stelio Deluxe Boutique Hotel",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 34.8931355,
+       "longitude": 33.6384046,
+       "distanceMeters": 2354,
+       "address": "Piyiale Pasa / Tasou Mitsopoulou 158",
+       "phone": null,
+       "website": null
+      },
+      {
+       "osmId": "way/392938270",
+       "name": "LIV MACKENZIE BEACH SUITES",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 34.8934176,
+       "longitude": 33.6383493,
+       "distanceMeters": 2378,
+       "address": "Piyiale Pasa 154",
+       "phone": null,
+       "website": null
+      }
+     ],
+     "transitLines": [
+      {
+       "mode": "bus",
+       "ref": "425",
+       "name": null,
+       "from": "Airport",
+       "to": "Dekeleia",
+       "operator": "CPT",
+       "network": "LPT",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "429",
+       "name": "429: Faros ⇒ Meneou ⇒ Airport ⇒ Larnaca",
+       "from": "Faros",
+       "to": "Larnaca Station",
+       "operator": null,
+       "network": null,
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "430",
+       "name": "430: Larnaca ⇒ Airport ⇒ Kiti ⇒ Pervolia",
+       "from": "Larnaca Station",
+       "to": "Anexartisias - Venetikou Pyrgou",
+       "operator": null,
+       "network": null,
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "431",
+       "name": "431: Dromolaxia ⇒ Meneou ⇒ Airport ⇒ Larnaca",
+       "from": "Dromolaxia",
+       "to": "Larnaca Station",
+       "operator": null,
+       "network": null,
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "432",
+       "name": "432: Larnaca ⇒ Airport ⇒ Dromoloxia ⇒ Kiti ⇒ Tersefanou",
+       "from": "Larnaca Station",
+       "to": "Tersefanou",
+       "operator": null,
+       "network": null,
+       "website": null
+      }
+     ],
+     "taxiRanks": [
+      {
+       "name": null,
+       "operator": null,
+       "phone": null,
+       "latitude": 34.8923166,
+       "longitude": 33.6380409,
+       "distanceMeters": 2259
+      }
+     ]
+    }
+   ],
+   "centre": {
+    "hotels": [
+     {
+      "osmId": "node/2753209820",
+      "name": "Larco Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 2,
+      "latitude": 34.9015997,
+      "longitude": 33.6347597,
+      "distanceMeters": 1064,
+      "address": "Pontou 10, 6301, Larnaka",
+      "phone": "357 24 657006",
+      "website": null
+     },
+     {
+      "osmId": "node/3377058914",
+      "name": "Cactus Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 2,
+      "latitude": 34.9006031,
+      "longitude": 33.6355832,
+      "distanceMeters": 1130,
+      "address": "Georgiou kai Marias Tyrimou 6-8, Larnaka",
+      "phone": "+357 24627400",
+      "website": "https://www.cactushotel-larnaka.com"
+     },
+     {
+      "osmId": "way/318692574",
+      "name": "San Remo Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 2,
+      "latitude": 34.9005881,
+      "longitude": 33.6360444,
+      "distanceMeters": 1172,
+      "address": "Shakespeare 1, 6531, Larnaka",
+      "phone": null,
+      "website": "https://www.sanremocyprus.com/"
+     },
+     {
+      "osmId": "node/7029894786",
+      "name": "Flat41",
+      "nameEn": "Flat41",
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 34.9002534,
+      "longitude": 33.6343584,
+      "distanceMeters": 1018,
+      "address": "Shakespeare",
+      "phone": "+3579915473",
+      "website": null
+     },
+     {
+      "osmId": "node/4340315489",
+      "name": "paradisos Hill hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 34.9109796,
+      "longitude": 33.6232162,
+      "distanceMeters": 1188,
+      "address": null,
+      "phone": null,
+      "website": null
+     },
+     {
+      "osmId": "node/7107606786",
+      "name": "Home N.A.",
+      "nameEn": "Home N.A.",
+      "kind": "apartment",
+      "stars": null,
+      "latitude": 34.900343,
+      "longitude": 33.6343364,
+      "distanceMeters": 1016,
+      "address": "Shakespeare 2",
+      "phone": "+35799154731",
+      "website": null
+     },
+     {
+      "osmId": "node/7029911285",
+      "name": "Pakore Apts No 6",
+      "nameEn": null,
+      "kind": "apartment",
+      "stars": null,
+      "latitude": 34.8996975,
+      "longitude": 33.6344556,
+      "distanceMeters": 1029,
+      "address": "Tuzhane",
+      "phone": "+35799154731",
+      "website": null
+     },
+     {
+      "osmId": "node/6986594986",
+      "name": "Relaxing holiday apartment",
+      "nameEn": "Relaxing holiday apartment",
+      "kind": "apartment",
+      "stars": null,
+      "latitude": 34.9008536,
+      "longitude": 33.634007,
+      "distanceMeters": 987,
+      "address": "Tuzhane 66",
+      "phone": null,
+      "website": null
+     },
+     {
+      "osmId": "node/6469259640",
+      "name": "Swallows Nest",
+      "nameEn": null,
+      "kind": "apartment",
+      "stars": null,
+      "latitude": 34.9096499,
+      "longitude": 33.6294111,
+      "distanceMeters": 1184,
+      "address": null,
+      "phone": null,
+      "website": null
+     },
+     {
+      "osmId": "node/6469258279",
+      "name": "Sparrows Nest",
+      "nameEn": null,
+      "kind": "apartment",
+      "stars": null,
+      "latitude": 34.9096983,
+      "longitude": 33.6293977,
+      "distanceMeters": 1188,
+      "address": null,
+      "phone": null,
+      "website": null
+     }
+    ]
+   },
+   "taxiCompanies": [
+    {
+     "name": "taxi costas",
+     "phone": "0035796899571",
+     "website": null
+    },
+    {
+     "name": "Kolonaki",
+     "phone": "0035724657777",
+     "website": null
+    },
+    {
+     "name": "Acropolis Vassos Taxi Cyprus",
+     "phone": "+357 24 622000;+357 99 561146",
+     "website": "https://www.acropolis-transport.com"
+    }
+   ],
+   "retrievedOn": "2026-10-26"
   }
  ]
 }
