@@ -10,7 +10,7 @@
   ],
   "destinations": [
     {
-      "code": "barcelona", "city": "Barcelona", "country": "Spain", "countryCode": "ES", "latitude": 41.3874, "longitude": 2.1686, "popularity": 95,
+      "code": "barcelona", "city": "Barcelona", "country": "Spain", "countryCode": "ES", "latitude": 41.3874, "longitude": 2.1686, "popularity": 95, "tripAdvisorGeoKey": "g187497",
       "description": "Gaudí architecture, beaches and Catalan food.", "bookingComCityId": -372490,
       "translations": { "ka": { "city": "ბარსელონა", "country": "ესპანეთი", "description": "გაუდის არქიტექტურა, პლაჟები და კატალონიური სამზარეულო." } },
       "airports": [ { "iata": "BCN", "name": "Josep Tarradellas Barcelona-El Prat Airport", "latitude": 41.2974, "longitude": 2.0833, "officialWebsiteUrl": "https://www.aena.es", "isDepartureOption": true,
@@ -19,7 +19,7 @@
         "nameTranslations": { "ka": "TMB – ბარსელონის საზოგადოებრივი ტრანსპორტი (ოფიციალური)" } } ]
     },
     {
-      "code": "paris", "city": "Paris", "country": "France", "countryCode": "FR", "latitude": 48.8566, "longitude": 2.3522, "popularity": 98,
+      "code": "paris", "city": "Paris", "country": "France", "countryCode": "FR", "latitude": 48.8566, "longitude": 2.3522, "popularity": 98, "tripAdvisorGeoKey": "g187147",
       "description": "Museums, cafés and boulevards.", "bookingComCityId": -1456928,
       "translations": { "ka": { "city": "პარიზი", "country": "საფრანგეთი", "description": "მუზეუმები, კაფეები და ბულვარები." } },
       "airports": [ { "iata": "CDG", "name": "Paris Charles de Gaulle Airport", "latitude": 49.0097, "longitude": 2.5479, "officialWebsiteUrl": "https://www.parisaeroport.fr", "isDepartureOption": true,
@@ -28,7 +28,7 @@
         "nameTranslations": { "ka": "RATP – პარიზის საზოგადოებრივი ტრანსპორტი (ოფიციალური)" } } ]
     },
     {
-      "code": "london", "city": "London", "country": "United Kingdom", "countryCode": "GB", "latitude": 51.5074, "longitude": -0.1278, "popularity": 97,
+      "code": "london", "city": "London", "country": "United Kingdom", "countryCode": "GB", "latitude": 51.5074, "longitude": -0.1278, "popularity": 97, "tripAdvisorGeoKey": "g186338",
       "description": "Royal landmarks, theatre and markets.", "bookingComCityId": -2601889,
       "translations": { "ka": { "city": "ლონდონი", "country": "გაერთიანებული სამეფო", "description": "სამეფო ღირსშესანიშნაობები, თეატრები და ბაზრები." } },
       "airports": [ { "iata": "LHR", "name": "London Heathrow Airport", "latitude": 51.4700, "longitude": -0.4543, "officialWebsiteUrl": "https://www.heathrow.com", "isDepartureOption": true,
@@ -37,7 +37,7 @@
         "nameTranslations": { "ka": "Transport for London – ლონდონის ტრანსპორტი (ოფიციალური)" } } ]
     },
     {
-      "code": "rome", "city": "Rome", "country": "Italy", "countryCode": "IT", "latitude": 41.9028, "longitude": 12.4964, "popularity": 96,
+      "code": "rome", "city": "Rome", "country": "Italy", "countryCode": "IT", "latitude": 41.9028, "longitude": 12.4964, "popularity": 96, "tripAdvisorGeoKey": "g187791",
       "description": "Ancient history and Italian cuisine.", "bookingComCityId": -126693,
       "translations": { "ka": { "city": "რომი", "country": "იტალია", "description": "ანტიკური ისტორია და იტალიური სამზარეულო." } },
       "airports": [ { "iata": "FCO", "name": "Rome Fiumicino Airport", "latitude": 41.8003, "longitude": 12.2389, "officialWebsiteUrl": "https://www.adr.it", "isDepartureOption": true,
@@ -46,7 +46,7 @@
         "nameTranslations": { "ka": "ATAC – რომის საზოგადოებრივი ტრანსპორტი (ოფიციალური)" } } ]
     },
     {
-      "code": "amsterdam", "city": "Amsterdam", "country": "Netherlands", "countryCode": "NL", "latitude": 52.3676, "longitude": 4.9041, "popularity": 90,
+      "code": "amsterdam", "city": "Amsterdam", "country": "Netherlands", "countryCode": "NL", "latitude": 52.3676, "longitude": 4.9041, "popularity": 90, "tripAdvisorGeoKey": "g188590",
       "description": "Canals, bikes and world-class museums.", "bookingComCityId": -2140479,
       "translations": { "ka": { "city": "ამსტერდამი", "country": "ნიდერლანდები", "description": "არხები, ველოსიპედები და მსოფლიო დონის მუზეუმები." } },
       "airports": [ { "iata": "AMS", "name": "Amsterdam Airport Schiphol", "latitude": 52.3105, "longitude": 4.7683, "officialWebsiteUrl": "https://www.schiphol.nl", "isDepartureOption": true,
@@ -55,7 +55,7 @@
         "nameTranslations": { "ka": "GVB – ამსტერდამის საზოგადოებრივი ტრანსპორტი (ოფიციალური)" } } ]
     },
     {
-      "code": "prague", "city": "Prague", "country": "Czechia", "countryCode": "CZ", "latitude": 50.0755, "longitude": 14.4378, "popularity": 88,
+      "code": "prague", "city": "Prague", "country": "Czechia", "countryCode": "CZ", "latitude": 50.0755, "longitude": 14.4378, "popularity": 88, "tripAdvisorGeoKey": "g274707",
       "description": "Medieval old town and Czech beer halls.", "bookingComCityId": -553173,
       "translations": { "ka": { "city": "პრაღა", "country": "ჩეხეთი", "description": "შუა საუკუნეების ძველი ქალაქი და ჩეხური ლუდის დარბაზები." } },
       "airports": [ { "iata": "PRG", "name": "Václav Havel Airport Prague", "latitude": 50.1008, "longitude": 14.2600, "officialWebsiteUrl": "https://www.prg.aero", "isDepartureOption": true,
@@ -64,7 +64,7 @@
         "nameTranslations": { "ka": "PID – პრაღის ინტეგრირებული ტრანსპორტი (ოფიციალური)" } } ]
     },
     {
-      "code": "vienna", "city": "Vienna", "country": "Austria", "countryCode": "AT", "latitude": 48.2082, "longitude": 16.3738, "popularity": 87,
+      "code": "vienna", "city": "Vienna", "country": "Austria", "countryCode": "AT", "latitude": 48.2082, "longitude": 16.3738, "popularity": 87, "tripAdvisorGeoKey": "g190454",
       "description": "Imperial palaces, coffee houses and music.", "bookingComCityId": -1995499,
       "translations": { "ka": { "city": "ვენა", "country": "ავსტრია", "description": "იმპერიული სასახლეები, ყავის სახლები და მუსიკა." } },
       "airports": [ { "iata": "VIE", "name": "Vienna International Airport", "latitude": 48.1103, "longitude": 16.5697, "officialWebsiteUrl": "https://www.viennaairport.com", "isDepartureOption": true,
@@ -73,7 +73,7 @@
         "nameTranslations": { "ka": "Wiener Linien – ვენის საზოგადოებრივი ტრანსპორტი (ოფიციალური)" } } ]
     },
     {
-      "code": "budapest", "city": "Budapest", "country": "Hungary", "countryCode": "HU", "latitude": 47.4979, "longitude": 19.0402, "popularity": 86,
+      "code": "budapest", "city": "Budapest", "country": "Hungary", "countryCode": "HU", "latitude": 47.4979, "longitude": 19.0402, "popularity": 86, "tripAdvisorGeoKey": "g274887",
       "description": "Thermal baths and the Danube.", "bookingComCityId": -850553,
       "translations": { "ka": { "city": "ბუდაპეშტი", "country": "უნგრეთი", "description": "თერმული აბანოები და დუნაი." } },
       "airports": [ { "iata": "BUD", "name": "Budapest Ferenc Liszt International Airport", "latitude": 47.4394, "longitude": 19.2618, "officialWebsiteUrl": "https://www.bud.hu", "isDepartureOption": true,
@@ -82,7 +82,7 @@
         "nameTranslations": { "ka": "BKK – ბუდაპეშტის საზოგადოებრივი ტრანსპორტი (ოფიციალური)" } } ]
     },
     {
-      "code": "berlin", "city": "Berlin", "country": "Germany", "countryCode": "DE", "latitude": 52.5200, "longitude": 13.4050, "popularity": 89,
+      "code": "berlin", "city": "Berlin", "country": "Germany", "countryCode": "DE", "latitude": 52.5200, "longitude": 13.4050, "popularity": 89, "tripAdvisorGeoKey": "g187323",
       "description": "History, art and nightlife.", "bookingComCityId": -1746443,
       "translations": { "ka": { "city": "ბერლინი", "country": "გერმანია", "description": "ისტორია, ხელოვნება და ღამის ცხოვრება." } },
       "airports": [ { "iata": "BER", "name": "Berlin Brandenburg Airport", "latitude": 52.3667, "longitude": 13.5033, "officialWebsiteUrl": "https://www.berlin-airport.de", "isDepartureOption": true,
@@ -91,7 +91,7 @@
         "nameTranslations": { "ka": "BVG – ბერლინის საზოგადოებრივი ტრანსპორტი (ოფიციალური)" } } ]
     },
     {
-      "code": "lisbon", "city": "Lisbon", "country": "Portugal", "countryCode": "PT", "latitude": 38.7223, "longitude": -9.1393, "popularity": 85,
+      "code": "lisbon", "city": "Lisbon", "country": "Portugal", "countryCode": "PT", "latitude": 38.7223, "longitude": -9.1393, "popularity": 85, "tripAdvisorGeoKey": "g189158",
       "description": "Hills, trams and pastéis de nata.", "bookingComCityId": -2167973,
       "translations": { "ka": { "city": "ლისაბონი", "country": "პორტუგალია", "description": "ბორცვები, ტრამვაები და პასტეის დე ნატა." } },
       "airports": [ { "iata": "LIS", "name": "Humberto Delgado Airport (Lisbon)", "latitude": 38.7742, "longitude": -9.1342, "officialWebsiteUrl": "https://www.ana.pt", "isDepartureOption": true,
@@ -100,7 +100,7 @@
         "nameTranslations": { "ka": "Carris – ლისაბონის ავტობუსები და ტრამვაები (ოფიციალური)" } } ]
     },
     {
-      "code": "athens", "city": "Athens", "country": "Greece", "countryCode": "GR", "latitude": 37.9838, "longitude": 23.7275, "popularity": 84,
+      "code": "athens", "city": "Athens", "country": "Greece", "countryCode": "GR", "latitude": 37.9838, "longitude": 23.7275, "popularity": 84, "tripAdvisorGeoKey": "g189400",
       "description": "The Acropolis and Greek tavernas.", "bookingComCityId": -814876,
       "translations": { "ka": { "city": "ათენი", "country": "საბერძნეთი", "description": "აკროპოლისი და ბერძნული ტავერნები." } },
       "airports": [ { "iata": "ATH", "name": "Athens International Airport", "latitude": 37.9364, "longitude": 23.9445, "officialWebsiteUrl": "https://www.aia.gr", "isDepartureOption": true,
@@ -109,7 +109,7 @@
         "nameTranslations": { "ka": "OASA – ათენის საზოგადოებრივი ტრანსპორტი (ოფიციალური)" } } ]
     },
     {
-      "code": "milan", "city": "Milan", "country": "Italy", "countryCode": "IT", "latitude": 45.4642, "longitude": 9.1900, "popularity": 82,
+      "code": "milan", "city": "Milan", "country": "Italy", "countryCode": "IT", "latitude": 45.4642, "longitude": 9.1900, "popularity": 82, "tripAdvisorGeoKey": "g187849",
       "description": "Fashion, design and the Duomo.", "bookingComCityId": -121726,
       "translations": { "ka": { "city": "მილანი", "country": "იტალია", "description": "მოდა, დიზაინი და დუომო." } },
       "airports": [ { "iata": "MXP", "name": "Milan Malpensa Airport", "latitude": 45.6306, "longitude": 8.7281, "officialWebsiteUrl": "https://www.seamilano.eu", "isDepartureOption": true,
@@ -118,7 +118,7 @@
         "nameTranslations": { "ka": "ATM – მილანის საზოგადოებრივი ტრანსპორტი (ოფიციალური)" } } ]
     },
     {
-      "code": "madrid", "city": "Madrid", "country": "Spain", "countryCode": "ES", "latitude": 40.4168, "longitude": -3.7038, "popularity": 83,
+      "code": "madrid", "city": "Madrid", "country": "Spain", "countryCode": "ES", "latitude": 40.4168, "longitude": -3.7038, "popularity": 83, "tripAdvisorGeoKey": "g187514",
       "description": "Art museums, parks and tapas.", "bookingComCityId": -390625,
       "translations": { "ka": { "city": "მადრიდი", "country": "ესპანეთი", "description": "სამხატვრო მუზეუმები, პარკები და ტაპასი." } },
       "airports": [ { "iata": "MAD", "name": "Adolfo Suárez Madrid-Barajas Airport", "latitude": 40.4983, "longitude": -3.5676, "officialWebsiteUrl": "https://www.aena.es", "isDepartureOption": true,
@@ -127,7 +127,7 @@
         "nameTranslations": { "ka": "CRTM – მადრიდის რეგიონული ტრანსპორტი (ოფიციალური)" } } ]
     },
     {
-      "code": "munich", "city": "Munich", "country": "Germany", "countryCode": "DE", "latitude": 48.1351, "longitude": 11.5820, "popularity": 78,
+      "code": "munich", "city": "Munich", "country": "Germany", "countryCode": "DE", "latitude": 48.1351, "longitude": 11.5820, "popularity": 78, "tripAdvisorGeoKey": "g187309",
       "description": "Bavarian culture and Alpine day trips.", "bookingComCityId": -1829149,
       "translations": { "ka": { "city": "მიუნხენი", "country": "გერმანია", "description": "ბავარიული კულტურა და ერთდღიანი გასვლები ალპებში." } },
       "airports": [ { "iata": "MUC", "name": "Munich Airport", "latitude": 48.3538, "longitude": 11.7861, "officialWebsiteUrl": "https://www.munich-airport.de", "isDepartureOption": true,
@@ -136,7 +136,7 @@
         "nameTranslations": { "ka": "MVV – მიუნხენის საზოგადოებრივი ტრანსპორტი (ოფიციალური)" } } ]
     },
     {
-      "code": "warsaw", "city": "Warsaw", "country": "Poland", "countryCode": "PL", "latitude": 52.2297, "longitude": 21.0122, "popularity": 74,
+      "code": "warsaw", "city": "Warsaw", "country": "Poland", "countryCode": "PL", "latitude": 52.2297, "longitude": 21.0122, "popularity": 74, "tripAdvisorGeoKey": "g274856",
       "description": "Rebuilt old town and modern skyline.", "bookingComCityId": -534433,
       "translations": { "ka": { "city": "ვარშავა", "country": "პოლონეთი", "description": "აღდგენილი ძველი ქალაქი და თანამედროვე ცათამბჯენები." } },
       "airports": [ { "iata": "WAW", "name": "Warsaw Chopin Airport", "latitude": 52.1657, "longitude": 20.9671, "officialWebsiteUrl": "https://www.lotnisko-chopina.pl", "isDepartureOption": true,
@@ -145,7 +145,7 @@
         "nameTranslations": { "ka": "WTP – ვარშავის საზოგადოებრივი ტრანსპორტი (ოფიციალური)" } } ]
     },
     {
-      "code": "krakow", "city": "Kraków", "country": "Poland", "countryCode": "PL", "latitude": 50.0647, "longitude": 19.9450, "popularity": 76,
+      "code": "krakow", "city": "Kraków", "country": "Poland", "countryCode": "PL", "latitude": 50.0647, "longitude": 19.9450, "popularity": 76, "tripAdvisorGeoKey": "g274772",
       "description": "Historic market square and Wawel Castle.", "bookingComCityId": -510625,
       "translations": { "ka": { "city": "კრაკოვი", "country": "პოლონეთი", "description": "ისტორიული საბაზრო მოედანი და ვაველის ციხესიმაგრე." } },
       "airports": [ { "iata": "KRK", "name": "Kraków John Paul II International Airport", "latitude": 50.0777, "longitude": 19.7848, "officialWebsiteUrl": "https://www.krakowairport.pl", "isDepartureOption": true,
@@ -154,7 +154,7 @@
         "nameTranslations": { "ka": "MPK – კრაკოვის საზოგადოებრივი ტრანსპორტი (ოფიციალური)" } } ]
     },
     {
-      "code": "istanbul", "city": "Istanbul", "country": "Türkiye", "countryCode": "TR", "latitude": 41.0082, "longitude": 28.9784, "popularity": 80,
+      "code": "istanbul", "city": "Istanbul", "country": "Türkiye", "countryCode": "TR", "latitude": 41.0082, "longitude": 28.9784, "popularity": 80, "tripAdvisorGeoKey": "g293974",
       "description": "Where Europe meets Asia.", "bookingComCityId": -755070,
       "translations": { "ka": { "city": "სტამბოლი", "country": "თურქეთი", "description": "ქალაქი, სადაც ევროპა აზიას ხვდება." } },
       "airports": [ { "iata": "IST", "name": "Istanbul Airport", "latitude": 41.2753, "longitude": 28.7519, "officialWebsiteUrl": "https://www.istairport.com", "isDepartureOption": true,
@@ -163,7 +163,7 @@
         "nameTranslations": { "ka": "სტამბოლის მეტრო (ოფიციალური)" } } ]
     },
     {
-      "code": "copenhagen", "city": "Copenhagen", "country": "Denmark", "countryCode": "DK", "latitude": 55.6761, "longitude": 12.5683, "popularity": 72,
+      "code": "copenhagen", "city": "Copenhagen", "country": "Denmark", "countryCode": "DK", "latitude": 55.6761, "longitude": 12.5683, "popularity": 72, "tripAdvisorGeoKey": "g189541",
       "description": "Design, harbour life and New Nordic food.",
       "translations": { "ka": { "city": "კოპენჰაგენი", "country": "დანია", "description": "დიზაინი, ნავსადგურის ცხოვრება და ახალი სკანდინავიური სამზარეულო." } },
       "airports": [ { "iata": "CPH", "name": "Copenhagen Airport", "latitude": 55.6180, "longitude": 12.6508, "officialWebsiteUrl": "https://www.cph.dk", "isDepartureOption": true,
@@ -172,7 +172,7 @@
         "nameTranslations": { "ka": "DOT – დანიის საზოგადოებრივი ტრანსპორტი (ოფიციალური)" } } ]
     },
     {
-      "code": "venice", "city": "Venice", "country": "Italy", "countryCode": "IT", "latitude": 45.4408, "longitude": 12.3155, "popularity": 79,
+      "code": "venice", "city": "Venice", "country": "Italy", "countryCode": "IT", "latitude": 45.4408, "longitude": 12.3155, "popularity": 79, "tripAdvisorGeoKey": "g187870",
       "description": "Canals, gondolas and Renaissance art.",
       "translations": { "ka": { "city": "ვენეცია", "country": "იტალია", "description": "არხები, გონდოლები და რენესანსის ხელოვნება." } },
       "airports": [ { "iata": "VCE", "name": "Venice Marco Polo Airport", "latitude": 45.5053, "longitude": 12.3519, "officialWebsiteUrl": "https://www.veniceairport.it", "isDepartureOption": false,
@@ -181,7 +181,7 @@
         "nameTranslations": { "ka": "ACTV – ვენეციის საზოგადოებრივი ტრანსპორტი (ოფიციალური)" } } ]
     },
     {
-      "code": "larnaca", "city": "Larnaca", "country": "Cyprus", "countryCode": "CY", "latitude": 34.9003, "longitude": 33.6232, "popularity": 65,
+      "code": "larnaca", "city": "Larnaca", "country": "Cyprus", "countryCode": "CY", "latitude": 34.9003, "longitude": 33.6232, "popularity": 65, "tripAdvisorGeoKey": "g190379",
       "description": "Mediterranean beaches and a seaside promenade.",
       "translations": { "ka": { "city": "ლარნაკა", "country": "კვიპროსი", "description": "ხმელთაშუა ზღვის პლაჟები და სანაპირო პრომენადი." } },
       "airports": [ { "iata": "LCA", "name": "Larnaca International Airport", "latitude": 34.8751, "longitude": 33.6249, "officialWebsiteUrl": "https://www.hermesairports.com", "isDepartureOption": false,

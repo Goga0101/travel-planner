@@ -9,8 +9,9 @@ using TravelPlanner.Application.Providers;
 namespace TravelPlanner.Infrastructure.Providers.Geoapify;
 
 /// <summary>
-/// Loads live nearby places for every active destination shortly after startup and again before the cache expires,
-/// so travellers never wait for the first Geoapify round trip (about 6 requests per destination per day).
+/// Loads live nearby places and sights (English and Georgian) for every active destination shortly after startup and
+/// again before the caches expire, so travellers never wait for the first Geoapify/Wikimedia round trips
+/// (about 20 Geoapify requests per destination per day).
 /// </summary>
 public sealed class NearbyCacheWarmer(IServiceScopeFactory scopes, IOptions<GeoapifyOptions> options, ILogger<NearbyCacheWarmer> logger)
     : BackgroundService
@@ -39,6 +40,7 @@ public sealed class NearbyCacheWarmer(IServiceScopeFactory scopes, IOptions<Geoa
         using var scope = scopes.CreateScope();
         var db = scope.ServiceProvider.GetRequiredService<IApplicationDbContext>();
         var source = scope.ServiceProvider.GetRequiredService<INearbyPlacesSource>();
+        var attractions = scope.ServiceProvider.GetRequiredService<IAttractionSource>();
         var destinations = await db.Destinations.AsNoTracking().Include(d => d.Airports)
             .Where(d => d.IsActive).OrderByDescending(d => d.Popularity).ToListAsync(ct);
 
@@ -50,6 +52,8 @@ public sealed class NearbyCacheWarmer(IServiceScopeFactory scopes, IOptions<Geoa
                 var query = new NearbyQuery(d.Code, d.Latitude, d.Longitude,
                     d.Airports.Select(a => new NearbyAirportPoint(a.IataCode, a.Latitude, a.Longitude)).ToList());
                 if (await source.FindAsync(query, ct) is not null) warmed++;
+                foreach (var lang in new[] { "ka", "en" })
+                    await attractions.GetAsync(new AttractionQuery(d.Code, d.Latitude, d.Longitude, lang), ct);
             }
             catch (Exception ex) when (ex is not OperationCanceledException)
             {

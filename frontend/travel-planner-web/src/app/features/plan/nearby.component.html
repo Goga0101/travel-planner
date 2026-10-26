@@ -19,6 +19,12 @@
     <p class="small muted">{{ 'nearby.priceNote' | t: { dates: dates(), guests: ('unit.guests' | t: { count: travelers() }) } }}</p>
 
     <div class="segmented tabs" role="tablist" [attr.aria-label]="'nearby.stayTitle' | t">
+      @if (prices()?.hotels?.length || pricesLoading()) {
+        <button type="button" role="tab" id="tab-prices" [attr.aria-selected]="area() === 'prices'" [class.active]="area() === 'prices'"
+                aria-controls="hotel-panel" (click)="setArea('prices')">
+          <app-icon name="wallet" [size]="16" /> {{ 'prices.tab' | t }}@if (prices(); as hp) { ({{ hp.hotels.length }}) }
+        </button>
+      }
       <button type="button" role="tab" id="tab-airport" [attr.aria-selected]="area() === 'airport'" [class.active]="area() === 'airport'"
               aria-controls="hotel-panel" (click)="setArea('airport')">
         <app-icon name="plane" [size]="16" /> {{ 'nearby.nearAirport' | t: { iata: d.airport?.iataCode ?? '' } }} ({{ d.airportHotels.length }})
@@ -29,7 +35,71 @@
       </button>
     </div>
 
-    <div id="hotel-panel" role="tabpanel" [attr.aria-labelledby]="area() === 'airport' ? 'tab-airport' : 'tab-centre'">
+    <div id="hotel-panel" role="tabpanel" [attr.aria-labelledby]="'tab-' + area()">
+      @if (area() === 'prices') {
+        @if (prices(); as hp) {
+          <div class="price-summary">
+            @if (hp.bookingComNightlyMin !== undefined && hp.bookingComNightlyMin !== null) {
+              <div><span class="small muted">{{ 'prices.bookingRange' | t }}</span>
+                <strong>{{ hp.bookingComNightlyMin | money: hp.currency }} – {{ hp.bookingComNightlyMax | money: hp.currency }}</strong></div>
+            }
+            <div><span class="small muted">{{ 'prices.typicalStay' | t: { nights: ('unit.nights' | t: { count: hp.nights }) } }}</span>
+              <strong>≈ {{ hp.estimatedStayTypical | money: hp.currency }}</strong></div>
+            <div><span class="small muted">{{ 'prices.tripWithStay' | t }}</span>
+              <strong>≈ {{ hp.estimatedTripTotal | money: hp.currency }}</strong></div>
+          </div>
+          <p class="small muted">{{ 'prices.note' | t: { rooms: ('unit.rooms' | t: { count: hp.rooms }), guests: ('unit.guests' | t: { count: hp.adults }) } }}</p>
+          <ul class="hotel-grid">
+            @for (ph of hp.hotels; track ph.name) {
+              <li class="hotel-card">
+                <div class="hotel-head">
+                  <h3>{{ ph.name }}</h3>
+                  <p class="small muted">
+                    @if (ph.rating) { <span class="rating">★ {{ ph.rating }}</span> @if (ph.reviewCount) { ({{ 'prices.reviews' | t: { count: ph.reviewCount } }}) } }
+                    @if (ph.distanceFromCentreMeters !== undefined && ph.distanceFromCentreMeters !== null) { · {{ 'nearby.fromCentre' | t: { distance: (ph.distanceFromCentreMeters | distance) } }} }
+                  </p>
+                </div>
+                <div class="price-box">
+                  @if (ph.bookingComNightly !== undefined && ph.bookingComNightly !== null) {
+                    <span class="small muted">Booking.com</span>
+                    <span class="price-main">{{ ph.bookingComNightly | money: hp.currency }} <span class="small muted">{{ 'card.perNight' | t }}</span></span>
+                  } @else {
+                    <span class="small muted">{{ ph.lowestAgency }}</span>
+                    <span class="price-main">{{ ph.lowestNightly | money: hp.currency }} <span class="small muted">{{ 'card.perNight' | t }}</span></span>
+                  }
+                  <span class="small">{{ 'prices.stayTotal' | t: { amount: (ph.stayTotal | money: hp.currency), nights: ('unit.nights' | t: { count: hp.nights }) } }}</span>
+                </div>
+                @if (ph.rates.length > 1) {
+                  <details class="rates small">
+                    <summary>{{ 'prices.compare' | t: { count: ph.rates.length } }}</summary>
+                    <ul>
+                      @for (r of ph.rates; track r.code) { <li><span>{{ r.name }}</span> <strong>{{ r.nightly | money: hp.currency }}</strong></li> }
+                    </ul>
+                  </details>
+                }
+                <div class="hotel-actions">
+                  @if (ph.bookingUrl) {
+                    <a class="btn btn-primary btn-sm" [href]="ph.bookingUrl" target="_blank" rel="noopener noreferrer nofollow">
+                      {{ 'prices.checkBooking' | t }} <app-icon name="external" [size]="14" /><span class="visually-hidden">{{ 'link.newTab' | t }}</span>
+                    </a>
+                  }
+                  <div class="hotel-links small">
+                    @if (ph.transitDirectionsUrl) {
+                      <a [href]="ph.transitDirectionsUrl" target="_blank" rel="noopener noreferrer nofollow"><app-icon name="train" [size]="14" /> {{ 'nearby.transitRoute' | t }}</a>
+                    }
+                    @if (ph.mapUrl) {
+                      <a [href]="ph.mapUrl" target="_blank" rel="noopener noreferrer nofollow"><app-icon name="pin" [size]="14" /> {{ 'nearby.map' | t }}</a>
+                    }
+                  </div>
+                </div>
+              </li>
+            }
+          </ul>
+          <p class="small muted source-note">{{ 'prices.source' | t: { source: hp.source, time: (hp.retrievedAtUtc | ldate: 'd MMM HH:mm') } }}</p>
+        } @else {
+          <p class="small muted"><span class="spinner" aria-hidden="true"></span> {{ 'card.pricesLoading' | t }}</p>
+        }
+      } @else {
       <ul class="hotel-grid">
         @for (h of visibleHotels(); track h.id) {
           <li class="hotel-card">
@@ -94,6 +164,7 @@
         <button type="button" class="btn btn-ghost btn-sm" (click)="showAll.set(!showAll())" [attr.aria-expanded]="showAll()">
           {{ (showAll() ? 'nearby.showFewer' : 'nearby.showAll') | t: { count: hotels().length } }}
         </button>
+      }
       }
     </div>
   </section>

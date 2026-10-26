@@ -43,4 +43,15 @@ public sealed class TripPlansController(ISender sender) : ControllerBase
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
     public Task<NearbyPlacesDto> GetNearby(Guid id, CancellationToken cancellationToken) =>
         sender.Send(new GetNearbyPlacesQuery(id), cancellationToken);
+
+    /// <summary>
+    /// Indicative hotel prices per night for the plan's dates (Booking.com and other agencies, via a price-comparison feed).
+    /// 204 when no estimates are available. Never added to the plan total.
+    /// </summary>
+    [HttpGet("{id:guid}/hotel-prices")]
+    [ProducesResponseType<HotelPricesDto>(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<HotelPricesDto>> GetHotelPrices(Guid id, CancellationToken cancellationToken) =>
+        await sender.Send(new GetHotelPricesQuery(id), cancellationToken) is { } prices ? prices : NoContent();
 }

@@ -6,12 +6,12 @@ import { formatLocalDate } from '../../core/format';
 import { TranslationKey } from '../../core/i18n/en';
 import { I18nService } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
-import { NearbyPlacesDto, TransitMode, TripPlanSummaryDto } from '../../core/models';
+import { HotelPricesDto, NearbyPlacesDto, TransitMode, TripPlanSummaryDto } from '../../core/models';
 import { ErrorBannerComponent } from '../../shared/error-banner.component';
 import { IconComponent, IconName } from '../../shared/icon.component';
-import { DistancePipe, LocalDatePipe } from '../../shared/pipes';
+import { DistancePipe, LocalDatePipe, MoneyPipe } from '../../shared/pipes';
 
-type Area = 'airport' | 'centre';
+type Area = 'prices' | 'airport' | 'centre';
 
 const HOTEL_KINDS = ['hotel', 'hostel', 'guest_house', 'motel', 'apartment'];
 const MODE_KEYS: Record<TransitMode, TranslationKey> = {
@@ -31,7 +31,7 @@ const MODE_KEYS: Record<TransitMode, TranslationKey> = {
 @Component({
   selector: 'app-nearby',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TranslatePipe, IconComponent, DistancePipe, LocalDatePipe, ErrorBannerComponent],
+  imports: [TranslatePipe, IconComponent, DistancePipe, LocalDatePipe, MoneyPipe, ErrorBannerComponent],
   templateUrl: './nearby.component.html',
 })
 export class NearbyComponent {
@@ -46,6 +46,8 @@ export class NearbyComponent {
   protected readonly data = signal<NearbyPlacesDto | null>(null);
   protected readonly error = signal<ApiError | null>(null);
   protected readonly area = signal<Area>('airport');
+  protected readonly prices = signal<HotelPricesDto | null>(null);
+  protected readonly pricesLoading = signal(false);
   protected readonly showAll = signal(false);
   protected readonly showAllLines = signal(false);
   protected readonly linesPageSize = 6;
@@ -79,6 +81,7 @@ export class NearbyComponent {
 
   load(): void {
     this.error.set(null);
+    this.loadPrices();
     this.api
       .getNearbyPlaces(this.planId())
       .pipe(takeUntilDestroyed(this.destroyRef))
@@ -86,9 +89,25 @@ export class NearbyComponent {
         next: (d) => {
           this.data.set(d);
           // Airports far from any hotel: start on the city-centre tab instead of an empty list.
-          if (!d.airportHotels.length && d.centreHotels.length) this.area.set('centre');
+          if (this.area() === 'airport' && !d.airportHotels.length && d.centreHotels.length) this.area.set('centre');
         },
         error: (e) => this.error.set(toApiError(e)),
+      });
+  }
+
+  /** Indicative prices for the plan dates; when available they become the first tab. */
+  private loadPrices(): void {
+    this.pricesLoading.set(true);
+    this.api
+      .getHotelPrices(this.planId())
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (hp) => {
+          this.prices.set(hp);
+          this.pricesLoading.set(false);
+          if (hp?.hotels.length && this.area() === 'airport') this.area.set('prices');
+        },
+        error: () => this.pricesLoading.set(false),
       });
   }
 

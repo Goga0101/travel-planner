@@ -680,6 +680,52 @@ a.ext-link.btn:hover { background: var(--primary-dark); border-color: var(--prim
   border: 1px solid var(--border); background: var(--bg);
 }
 
+// ---------- Hotel price estimates ----------
+.trip-estimate { color: var(--primary-dark); font-weight: 600; }
+.price-hint { margin: 0.35rem 0 0.15rem; color: var(--primary-dark); }
+.price-summary {
+  display: grid; gap: 0.75rem; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); margin-bottom: 0.5rem;
+}
+.price-summary > div {
+  display: grid; gap: 0.15rem; padding: 0.75rem 0.9rem; border-radius: 12px; background: var(--primary-soft); color: var(--primary-dark);
+}
+.price-summary strong { font-size: 1.2rem; color: var(--navy); }
+.price-box { display: grid; gap: 0.1rem; padding: 0.6rem 0.75rem; border-radius: 10px; background: var(--surface); border: 1px solid var(--border); }
+.price-main { font-size: 1.35rem; font-weight: 700; color: var(--navy); }
+.rating { color: #b07a0c; font-weight: 600; }
+.rates summary { cursor: pointer; color: var(--primary-dark); font-weight: 600; }
+.rates ul { list-style: none; padding: 0; margin: 0.4rem 0 0; display: grid; gap: 0.2rem; }
+.rates li { display: flex; justify-content: space-between; gap: 1rem; padding: 0.2rem 0; border-bottom: 1px dashed var(--border); }
+
+// ---------- Sights ----------
+.chip-filter { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.75rem 0 1rem; }
+.filter-chip {
+  font: inherit; font-size: 0.85rem; border: 1px solid var(--border-strong); background: var(--surface); color: var(--text);
+  border-radius: 999px; padding: 0.35rem 0.8rem; cursor: pointer; min-height: 2.1rem;
+}
+.filter-chip:hover { border-color: var(--primary); }
+.filter-chip.active { background: var(--navy); border-color: var(--navy); color: #fff; }
+.sight-grid { list-style: none; padding: 0; margin: 0 0 0.75rem; display: grid; gap: 1rem; grid-template-columns: 1fr; }
+@media (min-width: 720px) { .sight-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1100px) { .sight-grid { grid-template-columns: repeat(3, 1fr); } }
+.sight-card { display: flex; flex-direction: column; border-radius: 14px; overflow: hidden; border: 1px solid var(--border); background: var(--bg); min-width: 0; }
+.sight-media { position: relative; aspect-ratio: 16 / 10; overflow: hidden; background: var(--bg-warm); }
+.sight-media img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.sight-placeholder { display: flex; align-items: center; justify-content: center; height: 100%; color: var(--accent); }
+.sight-rank {
+  position: absolute; top: 0.6rem; left: 0.6rem; width: 1.9rem; height: 1.9rem; border-radius: 50%; background: var(--navy); color: #fff;
+  display: inline-flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.85rem; box-shadow: var(--shadow);
+}
+.sight-body { padding: 0.9rem 1rem 1rem; display: flex; flex-direction: column; gap: 0.45rem; flex: 1; }
+.sight-body h3 { margin: 0; font-size: 1.05rem; overflow-wrap: anywhere; }
+.sight-kind { margin: 0; color: var(--primary-dark); font-weight: 600; }
+.sight-summary { margin: 0; color: #34465f; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
+.sight-hours { margin: 0; display: flex; gap: 0.35rem; align-items: baseline; color: var(--muted); overflow-wrap: anywhere; }
+.sight-stops { list-style: none; padding: 0; margin: 0; display: grid; gap: 0.35rem; }
+.sight-stops li { display: flex; flex-wrap: wrap; gap: 0.3rem 0.4rem; align-items: center; padding: 0.4rem 0.55rem; border-radius: 10px; background: var(--surface); border: 1px solid var(--border); }
+.sight-stops li > .icon { color: var(--primary); }
+.sight-links { margin-top: auto; padding-top: 0.25rem; }
+
 // ---------- Saved trips ----------
 .saved-grid { list-style: none; padding: 0; margin: 0; }
 .saved-card { cursor: default; }

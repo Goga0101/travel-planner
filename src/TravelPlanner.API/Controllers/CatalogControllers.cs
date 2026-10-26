@@ -27,6 +27,16 @@ public sealed class DestinationsController(ISender sender) : ControllerBase
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
     public Task<DestinationDetailDto> Get(Guid id, CancellationToken cancellationToken) =>
         sender.Send(new GetDestinationByIdQuery(id), cancellationToken);
+
+    /// <summary>
+    /// The city's best-known sights (OpenStreetMap + Wikidata ranking + Wikipedia summary in the request language) with the
+    /// metro/bus stops next to each. Empty when the places provider is not configured.
+    /// </summary>
+    [HttpGet("{id:guid}/attractions")]
+    [ProducesResponseType<IReadOnlyList<AttractionDto>>(StatusCodes.Status200OK)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
+    public Task<IReadOnlyList<AttractionDto>> GetAttractions(Guid id, CancellationToken cancellationToken) =>
+        sender.Send(new GetAttractionsQuery(id), cancellationToken);
 }
 
 [ApiController]

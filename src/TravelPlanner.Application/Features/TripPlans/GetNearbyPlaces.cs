@@ -124,7 +124,7 @@ public sealed class GetNearbyPlacesHandler(
     }
 
     /// <summary>The airport the outbound flight lands at, falling back to the destination's first airport.</summary>
-    private static Airport? ArrivalAirport(TripPlan plan)
+    internal static Airport? ArrivalAirport(TripPlan plan)
     {
         var airports = plan.Destination!.Airports;
         var flight = plan.Items.FirstOrDefault(i => i.Type == PlanItemType.Flight);
@@ -166,6 +166,10 @@ public static class NearbyLinks
     /// <summary>Google Maps public-transport directions between two points (Google computes the actual lines and times).</summary>
     public static string TransitDirections(double fromLat, double fromLon, double toLat, double toLon) =>
         $"https://www.google.com/maps/dir/?api=1&origin={Coord(fromLat)},{Coord(fromLon)}&destination={Coord(toLat)},{Coord(toLon)}&travelmode=transit";
+
+    /// <summary>Google Maps public-transport directions from the visitor's current location (no origin = "your location").</summary>
+    public static string TransitDirectionsTo(double toLat, double toLon) =>
+        $"https://www.google.com/maps/dir/?api=1&destination={Coord(toLat)},{Coord(toLon)}&travelmode=transit";
 
     /// <summary>Uber universal link with pickup and drop-off pre-filled; Uber shows the fare estimate and availability.</summary>
     public static string Uber(double fromLat, double fromLon, string fromName, double toLat, double toLon, string toName) =>

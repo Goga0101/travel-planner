@@ -496,3 +496,75 @@ export interface NearbyPlacesDto {
   centreUberUrl?: string;
   hotelSearchUrl?: string;
 }
+
+// ---- Indicative hotel prices (price-comparison feed; never part of a plan total) ----
+
+export interface AgencyRateDto {
+  code: string;
+  name: string;
+  nightly: number;
+}
+
+export interface HotelPriceDto {
+  name: string;
+  rating?: number;
+  reviewCount?: number;
+  distanceFromCentreMeters?: number;
+  bookingComNightly?: number;
+  lowestNightly: number;
+  lowestAgency: string;
+  stayTotal: number;
+  rates: AgencyRateDto[];
+  bookingUrl?: string;
+  mapUrl?: string;
+  transitDirectionsUrl?: string;
+}
+
+export interface HotelPricesDto {
+  source: string;
+  currency: string;
+  retrievedAtUtc: string;
+  nights: number;
+  rooms: number;
+  adults: number;
+  bookingComNightlyMin?: number;
+  bookingComNightlyMax?: number;
+  lowestNightly: number;
+  typicalNightly: number;
+  estimatedStayFrom: number;
+  estimatedStayTypical: number;
+  estimatedTripTotal: number;
+  hotels: HotelPriceDto[];
+}
+
+// ---- Sights (OpenStreetMap + Wikidata ranking + Wikipedia summaries) ----
+
+export type AttractionKind = 'museum' | 'castle' | 'worship' | 'park' | 'monument' | 'heritage' | 'viewpoint' | 'sight';
+
+export interface AttractionStopDto {
+  name: string;
+  mode: TransitMode;
+  lines: string[];
+  distanceMeters: number;
+}
+
+export interface AttractionDto {
+  id: string;
+  name: string;
+  kind: AttractionKind;
+  latitude: number;
+  longitude: number;
+  distanceFromCentreMeters: number;
+  wikipediaEditions: number;
+  shortDescription?: string;
+  summary?: string;
+  summaryLanguage?: string;
+  imageUrl?: string;
+  wikipediaUrl?: string;
+  website?: string;
+  openingHours?: string;
+  fee?: string;
+  stops: AttractionStopDto[];
+  mapUrl?: string;
+  directionsUrl?: string;
+}

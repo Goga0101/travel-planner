@@ -17,6 +17,7 @@ using TravelPlanner.Infrastructure.Providers.Demo;
 using TravelPlanner.Infrastructure.Providers.Geoapify;
 using TravelPlanner.Infrastructure.Providers.Google;
 using TravelPlanner.Infrastructure.Providers.Travelpayouts;
+using TravelPlanner.Infrastructure.Providers.Xotelo;
 
 namespace TravelPlanner.Infrastructure;
 
@@ -77,9 +78,33 @@ public static class DependencyInjection
             services.AddHttpClient<GeoapifyPlacesClient>(c => c.BaseAddress = BaseUri(geoapify.BaseUrl))
                 .AddStandardResilienceHandler(o => Configure(o, providers.Http));
             services.AddHostedService<NearbyCacheWarmer>();
+            services.AddTransient<IAttractionSource, AttractionSource>();
         }
+        else
+        {
+            services.AddSingleton<IAttractionSource, NoAttractionSource>();
+        }
+        // Wikimedia asks API clients to identify themselves with a descriptive User-Agent.
+        services.AddHttpClient(AttractionSource.WikimediaClient, c =>
+            {
+                c.DefaultRequestHeaders.UserAgent.ParseAdd("TravelPlanner/1.0 (https://github.com/Goga0101/travel-planner)");
+                c.Timeout = TimeSpan.FromSeconds(20);
+            })
+            .AddStandardResilienceHandler(o => Configure(o, providers.Http));
         status.Add(new ProviderStatus("Places", GeoapifyPlacesClient.ProviderName, geoapify.IsConfigured, false,
             geoapify.IsConfigured ? "status.geoapifyOn" : "status.geoapifyOff"));
+
+        // Indicative hotel prices (never part of a plan total). Off in Demo mode, where everything must be sample data.
+        services.Configure<XoteloOptions>(configuration.GetSection(XoteloOptions.SectionName));
+        var xotelo = configuration.GetSection(XoteloOptions.SectionName).Get<XoteloOptions>() ?? new XoteloOptions();
+        var xoteloActive = xotelo.Enabled && providers.Mode == DataMode.Live;
+        if (xoteloActive)
+            services.AddHttpClient<IHotelPriceSource, XoteloHotelPriceSource>(c => c.BaseAddress = BaseUri(xotelo.BaseUrl))
+                .AddStandardResilienceHandler(o => Configure(o, providers.Http));
+        else
+            services.AddSingleton<IHotelPriceSource, NoHotelPriceSource>();
+        status.Add(new ProviderStatus("Accommodation", XoteloHotelPriceSource.SourceName, xoteloActive, false,
+            xoteloActive ? "status.xoteloOn" : "status.xoteloOff"));
 
         return services;
     }

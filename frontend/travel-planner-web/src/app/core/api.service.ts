@@ -1,13 +1,15 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, map } from 'rxjs';
 import {
   AirportDto,
   ClientConfigDto,
   CreateTripSearchCommand,
   CreateTripSearchResponse,
   DestinationDetailDto,
+  AttractionDto,
   DestinationSummaryDto,
+  HotelPricesDto,
   NearbyPlacesDto,
   OutboundLinkDto,
   PagedResult,
@@ -68,6 +70,17 @@ export class ApiService {
 
   getNearbyPlaces(id: string): Observable<NearbyPlacesDto> {
     return this.http.get<NearbyPlacesDto>(`${BASE}/trip-plans/${encodeURIComponent(id)}/nearby`);
+  }
+
+  /** Indicative hotel prices for the plan's dates; null when none are available (HTTP 204). */
+  getHotelPrices(id: string): Observable<HotelPricesDto | null> {
+    return this.http
+      .get<HotelPricesDto>(`${BASE}/trip-plans/${encodeURIComponent(id)}/hotel-prices`, { observe: 'response' })
+      .pipe(map((r) => (r.status === 204 ? null : r.body)));
+  }
+
+  getAttractions(destinationId: string): Observable<AttractionDto[]> {
+    return this.http.get<AttractionDto[]>(`${BASE}/destinations/${encodeURIComponent(destinationId)}/attractions`);
   }
 
   getClientConfig(): Observable<ClientConfigDto> {

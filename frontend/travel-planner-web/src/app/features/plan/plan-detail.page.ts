@@ -26,6 +26,7 @@ import { IconComponent } from '../../shared/icon.component';
 import { destinationPhoto } from '../../core/destination-photos';
 import { buildIcs, downloadFile } from '../../core/calendar';
 import { SavedTripsService } from '../../core/local-lists';
+import { AttractionsComponent } from './attractions.component';
 import { NearbyComponent } from './nearby.component';
 import { WeatherComponent } from './weather.component';
 import { DistancePipe, LocalDatePipe, LocalNumberPipe, MoneyPipe, StopsPipe, TimeSpanPipe } from '../../shared/pipes';
@@ -61,6 +62,7 @@ export function buildEmbedUrl(key: string, fromLat: number, fromLng: number, toL
     ErrorBannerComponent,
     IconComponent,
     NearbyComponent,
+    AttractionsComponent,
     WeatherComponent,
   ],
   templateUrl: './plan-detail.page.html',

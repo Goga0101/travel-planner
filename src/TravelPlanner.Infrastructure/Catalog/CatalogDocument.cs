@@ -56,6 +56,8 @@ public sealed class CatalogDestination
     public string? Description { get; set; }
     public bool IsActive { get; set; } = true;
     public long? BookingComCityId { get; set; }
+    /// <summary>TripAdvisor geo id (e.g. "g187497"), used for indicative hotel prices (Xotelo). Optional.</summary>
+    public string? TripAdvisorGeoKey { get; set; }
     /// <summary>Per-language city/country/description, e.g. { "ka": { "city": "ვენა", ... } }.</summary>
     public Dictionary<string, DestinationTranslation> Translations { get; set; } = new();
     public CatalogTaxiTariff? TaxiTariff { get; set; }

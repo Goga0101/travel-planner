@@ -6,6 +6,7 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using TravelPlanner.Application.Common;
+using TravelPlanner.Application.Providers;
 using TravelPlanner.Application.Planning;
 using TravelPlanner.Domain.Enums;
 using TravelPlanner.Infrastructure.Persistence;
@@ -109,6 +110,8 @@ public sealed class TripSearchWorker(
                 {
                     await using var scope = scopeFactory.CreateAsyncScope();
                     await scope.ServiceProvider.GetRequiredService<TripSearchProcessor>().ProcessAsync(searchId, token);
+                    // Hotel price estimates are slow to fetch (~8 s); start them now so they are cached when results open.
+                    _ = Task.Run(() => PrefetchHotelPricesAsync(searchId, stoppingToken), CancellationToken.None);
                 }
                 catch (Exception ex) when (ex is not OperationCanceledException)
                 {
@@ -119,6 +122,27 @@ public sealed class TripSearchWorker(
                     cancellationRegistry.Unregister(searchId);
                 }
             });
+
+    private async Task PrefetchHotelPricesAsync(Guid searchId, CancellationToken ct)
+    {
+        try
+        {
+            await using var scope = scopeFactory.CreateAsyncScope();
+            var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            var prices = scope.ServiceProvider.GetRequiredService<IHotelPriceSource>();
+            var stays = await db.TripPlans.AsNoTracking()
+                .Where(p => p.TripSearchId == searchId)
+                .Select(p => new { p.Destination!.Code, p.DepartureDate, p.ReturnDate, p.Travelers, p.Currency })
+                .Distinct()
+                .ToListAsync(ct);
+            await Task.WhenAll(stays.Select(x => prices.GetAsync(
+                new HotelPriceQuery(x.Code, x.DepartureDate, x.ReturnDate, x.Travelers, Math.Max(1, (x.Travelers + 1) / 2), x.Currency), ct)));
+        }
+        catch (Exception ex) when (ex is not OperationCanceledException)
+        {
+            logger.LogDebug(ex, "Prefetching hotel prices for search {SearchId} failed", searchId);
+        }
+    }
 
     private async Task RecoverAsync(CancellationToken stoppingToken)
     {

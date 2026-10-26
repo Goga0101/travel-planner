@@ -1,10 +1,12 @@
-import { ChangeDetectionStrategy, Component, computed, inject, input } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, computed, effect, inject, input, signal, untracked } from '@angular/core';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { ApiService } from '../../core/api.service';
 import { RouterLink } from '@angular/router';
 import { CategoryPipe } from '../../core/i18n/category.pipe';
 import { TranslationKey, en } from '../../core/i18n/en';
 import { I18nService } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
-import { SourceVerificationDto, TripPlanSummaryDto } from '../../core/models';
+import { HotelPricesDto, SourceVerificationDto, TripPlanSummaryDto } from '../../core/models';
 import { BudgetFitBadgeComponent, VerificationBadgeComponent } from '../../shared/badges';
 import { destinationPhoto, destinationSrcset } from '../../core/destination-photos';
 import { SavedTripsService } from '../../core/local-lists';
@@ -39,6 +41,11 @@ import { LocalDatePipe, MinutesPipe, MoneyPipe, StopsPipe } from '../../shared/p
             }
           </span>
           <app-budget-fit-badge [fit]="p.budgetFit" />
+          @if (prices(); as hp) {
+            <span class="small trip-estimate" [title]="'card.tripEstimateHint' | t">
+              {{ 'card.tripEstimate' | t: { amount: (hp.estimatedTripTotal | money: hp.currency) } }}
+            </span>
+          }
         </div>
       </header>
 
@@ -71,7 +78,19 @@ import { LocalDatePipe, MinutesPipe, MoneyPipe, StopsPipe } from '../../shared/p
           @if (p.accommodation; as a) {
             <p>{{ a.name }}</p>
             @if (a.verification === 'Unavailable') {
-              <p class="small muted">{{ 'card.stayPriceMissing' | t }} @if (a.hasBookingLink) { {{ 'card.searchLinkInDetails' | t }} }</p>
+              @if (prices(); as hp) {
+                @if (hp.bookingComNightlyMin !== undefined && hp.bookingComNightlyMin !== null) {
+                  <p class="price-hint"><strong>Booking.com: {{ hp.bookingComNightlyMin | money: hp.currency }} – {{ hp.bookingComNightlyMax | money: hp.currency }}</strong> {{ 'card.perNight' | t }}</p>
+                } @else {
+                  <p class="price-hint"><strong>{{ 'card.fromPerNight' | t: { amount: (hp.lowestNightly | money: hp.currency) } }}</strong></p>
+                }
+                <p class="small">{{ 'card.stayEstimate' | t: { amount: (hp.estimatedStayTypical | money: hp.currency), nights: ('unit.nights' | t: { count: hp.nights }) } }}</p>
+                <p class="small muted">{{ 'card.estimateNote' | t }}</p>
+              } @else if (pricesLoading()) {
+                <p class="small muted"><span class="spinner" aria-hidden="true"></span> {{ 'card.pricesLoading' | t }}</p>
+              } @else {
+                <p class="small muted">{{ 'card.stayPriceMissing' | t }} @if (a.hasBookingLink) { {{ 'card.searchLinkInDetails' | t }} }</p>
+              }
             } @else {
               <p class="small">
                 @if (a.stars) { {{ a.stars }}★ · }
@@ -131,6 +150,32 @@ import { LocalDatePipe, MinutesPipe, MoneyPipe, StopsPipe } from '../../shared/p
 export class PlanCardComponent {
   protected readonly i18n = inject(I18nService);
   readonly plan = input.required<TripPlanSummaryDto>();
+  private readonly api = inject(ApiService);
+  private readonly destroyRef = inject(DestroyRef);
+  /** Indicative hotel prices for this plan's dates (loaded after the card renders; never part of the total). */
+  protected readonly prices = signal<HotelPricesDto | null>(null);
+  protected readonly pricesLoading = signal(false);
+
+  constructor() {
+    effect(() => {
+      const p = this.plan();
+      untracked(() => {
+        // Only plans without a priced stay need the estimate.
+        if (p.accommodation && p.accommodation.verification !== 'Unavailable') return;
+        this.pricesLoading.set(true);
+        this.api
+          .getHotelPrices(p.id)
+          .pipe(takeUntilDestroyed(this.destroyRef))
+          .subscribe({
+            next: (hp) => {
+              this.prices.set(hp);
+              this.pricesLoading.set(false);
+            },
+            error: () => this.pricesLoading.set(false),
+          });
+      });
+    });
+  }
   protected readonly photo = computed(() => destinationPhoto(this.plan().destination.code));
   protected readonly srcset = computed(() => destinationSrcset(this.plan().destination.code));
   private readonly savedTrips = inject(SavedTripsService);

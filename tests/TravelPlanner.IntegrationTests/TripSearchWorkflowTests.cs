@@ -146,7 +146,10 @@ public sealed class TripSearchWorkflowTests(PostgresFixture fixture) : ApiTestBa
 
         var config = await client.GetFromJsonAsync<JsonElement>("/api/v1/client-config", Ct);
         Assert.Equal("Live", config.GetProperty("dataMode").GetString());
-        Assert.All(config.GetProperty("providers").EnumerateArray(), p => Assert.False(p.GetProperty("active").GetBoolean()));
+        // Every provider that needs credentials is inactive. The keyless hotel-price estimate feed (Xotelo) stays on: it never
+        // produces offers or plans, only indicative prices next to existing plans.
+        Assert.All(config.GetProperty("providers").EnumerateArray().Where(p => !p.GetProperty("name").GetString()!.StartsWith("Xotelo")),
+            p => Assert.False(p.GetProperty("active").GetBoolean()));
 
         var response = await client.PostAsJsonAsync("/api/v1/trip-searches", SearchBody(), Ct);
         var searchId = (await response.Content.ReadFromJsonAsync<JsonElement>(Ct)).GetProperty("id").GetString()!;

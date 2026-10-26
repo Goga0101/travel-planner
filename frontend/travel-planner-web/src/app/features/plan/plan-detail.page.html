@@ -48,6 +48,7 @@
       <a [routerLink]="[]" fragment="costs">{{ 'plan.navCosts' | t }}</a>
       @if (flight()) { <a [routerLink]="[]" fragment="flight">{{ 'plan.flightTitle' | t }}</a> }
       <a [routerLink]="[]" fragment="stay">{{ 'nearby.stayTitle' | t }}</a>
+      <a [routerLink]="[]" fragment="sights">{{ 'plan.navSights' | t }}</a>
       <a [routerLink]="[]" fragment="getting-around">{{ 'plan.navTransport' | t }}</a>
     </nav>
     <div class="plan-actions">
@@ -238,6 +239,9 @@
 
   <!-- Hotels near the airport / centre and getting around (OpenStreetMap) -->
   <app-nearby [planId]="s.id" [summary]="s" />
+
+  <!-- Sights and how to reach them -->
+  <app-attractions [destinationId]="p.destination.id" [city]="p.destination.city" />
 
   <!-- Transfers -->
   @if (transfers().length) {
