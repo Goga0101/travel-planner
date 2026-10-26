@@ -14,7 +14,13 @@ public sealed record GetNearbyPlacesQuery(Guid Id) : IRequest<NearbyPlacesDto>;
 
 public sealed record NearbyAirportDto(string IataCode, string Name, double Latitude, double Longitude, string? OfficialWebsiteUrl);
 
-/// <summary>A hotel from OpenStreetMap. There is no price: BookingUrl opens a Booking.com search for it with the plan's dates.</summary>
+/// <summary>The stop closest to a hotel and its lines.</summary>
+public sealed record HotelStopDto(string Name, string Mode, IReadOnlyList<string> Lines, int DistanceMeters);
+
+/// <summary>
+/// A hotel from OpenStreetMap. There is no price: BookingUrl opens a Booking.com search for it with the plan's dates.
+/// DirectLines are lines that serve both a stop at the airport and a stop next to the hotel (no change needed).
+/// </summary>
 public sealed record NearbyHotelDto(
     string Id,
     string Name,
@@ -30,7 +36,9 @@ public sealed record NearbyHotelDto(
     string? BookingUrl,
     string? MapUrl,
     string? TransitDirectionsUrl,
-    string? UberUrl);
+    string? UberUrl,
+    HotelStopDto? NearestStop,
+    IReadOnlyList<string> DirectLines);
 
 public sealed record TransitLineDto(string Mode, string? Ref, string? Name, string? From, string? To, string? Operator, string? Network, string? Website);
 
@@ -90,7 +98,9 @@ public sealed class GetNearbyPlacesHandler(
                 linkPolicy.Sanitize(booking?.Url),
                 linkPolicy.Sanitize(NearbyLinks.MapSearch($"{h.Name}, {h.Address ?? destination.City}")),
                 airport is null ? null : linkPolicy.Sanitize(NearbyLinks.TransitDirections(airport.Latitude, airport.Longitude, h.Latitude, h.Longitude)),
-                airport is null ? null : linkPolicy.Sanitize(NearbyLinks.Uber(airport.Latitude, airport.Longitude, airport.IataCode, h.Latitude, h.Longitude, h.Name)));
+                airport is null ? null : linkPolicy.Sanitize(NearbyLinks.Uber(airport.Latitude, airport.Longitude, airport.IataCode, h.Latitude, h.Longitude, h.Name)),
+                h.NearestStop is { } st ? new HotelStopDto(st.Name, st.Mode, st.Lines, st.DistanceMeters) : null,
+                h.DirectLines ?? []);
         }
 
         var centreName = destination.CityIn(lang);

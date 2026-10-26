@@ -378,6 +378,8 @@ export const ka: Dictionary = {
   'nearby.linesTitle': 'ხაზები, რომლებიც აეროპორტში ჩერდება',
   'nearby.stopsTitle': 'გაჩერებები აეროპორტთან და მათი ხაზები',
   'nearby.linesAtStop': 'ხაზები',
+  'nearby.directFrom': 'პირდაპირ {iata}-დან:',
+  'nearby.nearestStop': 'უახლოესი გაჩერება: {name} ({distance})',
   'nearby.timetable': 'განრიგი',
   'nearby.noLines': 'ამ აეროპორტში საზოგადოებრივი ტრანსპორტის ხაზები აღრიცხული არ არის. გამოიყენეთ ზემოთ მოცემული Google Maps-ის მარშრუტი.',
   'nearby.taxiTitle': 'ადგილობრივი ტაქსი',

@@ -12,7 +12,7 @@ import { switchMap } from 'rxjs';
 import { TranslationKey } from '../../core/i18n/en';
 import { I18nService, TranslateParams } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
-import { CTA_PHOTO, HERO_PHOTO, destinationPhoto } from '../../core/destination-photos';
+import { CTA_PHOTO, CTA_SRCSET, HERO_PHOTO, HERO_SRCSET, destinationPhoto, destinationSrcset } from '../../core/destination-photos';
 import { RecentSearchesService } from '../../core/local-lists';
 import { LocalDatePipe, MoneyPipe } from '../../shared/pipes';
 import { ErrorBannerComponent } from '../../shared/error-banner.component';
@@ -57,8 +57,11 @@ export class TripSearchPage {
   protected readonly announcement = signal('');
 
   protected readonly heroPhoto = HERO_PHOTO;
+  protected readonly heroSrcset = HERO_SRCSET;
   protected readonly ctaPhoto = CTA_PHOTO;
+  protected readonly ctaSrcset = CTA_SRCSET;
   protected readonly photo = destinationPhoto;
+  protected readonly srcset = destinationSrcset;
   protected readonly featuredCode = 'lisbon';
   protected readonly featuredDays = 5;
   protected readonly featuredHighlights: TranslationKey[] = ['featured.h1', 'featured.h2', 'featured.h3'];

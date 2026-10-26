@@ -1,4 +1,5 @@
 using System.Text.Json;
+using TravelPlanner.Application.Providers;
 using TravelPlanner.Infrastructure.Providers.Geoapify;
 
 namespace TravelPlanner.UnitTests;
@@ -61,6 +62,35 @@ public class GeoapifyMapperTests
 
         Assert.Equal("bus", stop.Mode);
         Assert.Equal(["46", "N18", "N19"], stop.Lines);
+    }
+
+    [Fact]
+    public void Hotel_Gets_Nearest_Stop_And_Lines_Shared_With_The_Airport()
+    {
+        var hotel = new NearbyHotel("node/1", "Hotel", null, "hotel", null, 41.3800, 2.1500, null, null, null);
+        var stops = new List<NearbyTransitStop>
+        {
+            new("Far stop", "bus", ["A1"], 41.3900, 2.1500),         // ~1.1 km: outside walking distance
+            new("Corner", "bus", ["46", "V7"], 41.3810, 2.1500),     // ~110 m
+            new("Square", "subway", ["L9S", "L1"], 41.3830, 2.1500), // ~330 m
+        };
+        var airportLines = new HashSet<string>(["46", "L9S", "A1"], StringComparer.OrdinalIgnoreCase);
+
+        var result = NearbyPlacesService.WithStops([hotel], stops, airportLines, 450).Single();
+
+        Assert.Equal("Corner", result.NearestStop!.Name);
+        Assert.InRange(result.NearestStop.DistanceMeters, 100, 125);
+        Assert.Equal(["46", "L9S"], result.DirectLines);
+    }
+
+    [Fact]
+    public void Hotel_Without_Stops_In_Walking_Distance_Is_Unchanged()
+    {
+        var hotel = new NearbyHotel("node/1", "Hotel", null, "hotel", null, 41.38, 2.15, null, null, null);
+
+        var result = NearbyPlacesService.WithStops([hotel], [new("Far", "bus", ["1"], 41.40, 2.15)], new HashSet<string>(), 450).Single();
+
+        Assert.Same(hotel, result);
     }
 
     [Fact]

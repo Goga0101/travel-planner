@@ -47,6 +47,20 @@
               <li><app-icon name="pin" [size]="14" /> {{ 'nearby.fromCentre' | t: { distance: (h.distanceFromCentreMeters | distance) } }}</li>
               @if (h.address) { <li class="muted">{{ h.address }}</li> }
             </ul>
+            @if (h.directLines.length) {
+              <p class="direct-lines small">
+                <app-icon name="check" [size]="14" />
+                <span>{{ 'nearby.directFrom' | t: { iata: d.airport?.iataCode ?? '' } }}</span>
+                @for (ln of h.directLines; track ln) { <span class="line-badge line-badge-sm" [attr.data-mode]="h.nearestStop?.mode ?? 'bus'">{{ ln }}</span> }
+              </p>
+            }
+            @if (h.nearestStop; as st) {
+              <p class="nearest-stop small muted">
+                <app-icon [name]="modeIcon(st.mode)" [size]="14" />
+                {{ 'nearby.nearestStop' | t: { name: st.name, distance: (st.distanceMeters | distance) } }}
+                @if (!h.directLines.length && st.lines.length) { · {{ st.lines.slice(0, 5).join(', ') }} }
+              </p>
+            }
             <div class="hotel-actions">
               @if (h.bookingUrl) {
                 <a class="btn btn-primary btn-sm" [href]="h.bookingUrl" target="_blank" rel="noopener noreferrer nofollow">

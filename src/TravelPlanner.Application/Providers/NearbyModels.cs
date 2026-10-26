@@ -41,7 +41,12 @@ public sealed record NearbyHotel(
     double Longitude,
     string? Address,
     string? Phone,
-    string? Website);
+    string? Website,
+    NearbyHotelStop? NearestStop = null,
+    IReadOnlyList<string>? DirectLines = null);
+
+/// <summary>The closest public-transport stop to a hotel (live data) and the line numbers serving it.</summary>
+public sealed record NearbyHotelStop(string Name, string Mode, IReadOnlyList<string> Lines, int DistanceMeters);
 
 public sealed record NearbyTransitLine(
     string Mode,

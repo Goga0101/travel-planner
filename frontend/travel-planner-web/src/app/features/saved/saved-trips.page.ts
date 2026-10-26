@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { destinationPhoto } from '../../core/destination-photos';
+import { destinationPhoto, destinationSrcset } from '../../core/destination-photos';
 import { I18nService } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
 import { SavedTripsService } from '../../core/local-lists';
@@ -25,7 +25,7 @@ import { LocalDatePipe, MoneyPipe } from '../../shared/pipes';
           @for (t of saved.trips(); track t.id) {
             <li class="mini-card saved-card">
               <a [routerLink]="i18n.path('plans', t.id)" class="saved-link">
-                @if (photo(t.code); as src) { <img [src]="src" alt="" loading="lazy" decoding="async" width="600" height="400" /> }
+                @if (photo(t.code); as src) { <img [src]="src" [attr.srcset]="srcset(t.code)" sizes="(min-width: 960px) 280px, (min-width: 560px) 46vw, 92vw" alt="" loading="lazy" decoding="async" width="600" height="400" /> }
                 <span class="mini-card-body">
                   <span class="mini-name">{{ t.city }}, {{ t.country }}</span>
                   <span class="small muted">{{ t.departureDate | ldate: 'd MMM' }} – {{ t.returnDate | ldate: 'd MMM y' }} · {{ 'unit.nights' | t: { count: t.nights } }}</span>
@@ -53,4 +53,5 @@ export class SavedTripsPage {
   protected readonly saved = inject(SavedTripsService);
   protected readonly i18n = inject(I18nService);
   protected readonly photo = destinationPhoto;
+  protected readonly srcset = destinationSrcset;
 }

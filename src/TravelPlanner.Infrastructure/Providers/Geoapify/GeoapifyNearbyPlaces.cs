@@ -4,6 +4,7 @@ using System.Text.Json;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using TravelPlanner.Application.Features.TripPlans;
 using TravelPlanner.Application.Providers;
 using TravelPlanner.Infrastructure.Catalog;
 
@@ -24,6 +25,8 @@ public sealed class GeoapifyOptions
     public int StopRadiusMeters { get; set; } = 1500;
     public int TaxiRadiusMeters { get; set; } = 2500;
     public int MaxHotels { get; set; } = 12;
+    /// <summary>A stop counts as "at the hotel" within this walking distance.</summary>
+    public int HotelStopWalkMeters { get; set; } = 450;
 
     public bool IsConfigured => Enabled && ProviderHttp.HasValue(ApiKey);
 }
@@ -156,30 +159,67 @@ public sealed class NearbyPlacesService(
     private async Task<NearbySnapshot> LoadLiveAsync(NearbyQuery query, CancellationToken ct)
     {
         var o = options.Value;
-        var centreTask = geoapify!.SearchAsync(GeoapifyMapper.HotelCategories, query.CentreLatitude, query.CentreLongitude, o.CentreHotelRadiusMeters, o.MaxHotels * 2, ct);
+        // Stops cover the hotel search areas (plus a walking margin) so each hotel can be matched to its nearest stop.
+        var stopReach = o.HotelStopWalkMeters + 100;
+        var centreHotelsTask = geoapify!.SearchAsync(GeoapifyMapper.HotelCategories, query.CentreLatitude, query.CentreLongitude, o.CentreHotelRadiusMeters, o.MaxHotels * 2, ct);
+        var centreStopsTask = geoapify.SearchAsync(GeoapifyMapper.StopCategories, query.CentreLatitude, query.CentreLongitude, o.CentreHotelRadiusMeters + stopReach, 300, ct);
         var airportTasks = query.Airports.Select(async a =>
         {
             var hotels = geoapify.SearchAsync(GeoapifyMapper.HotelCategories, a.Latitude, a.Longitude, o.AirportHotelRadiusMeters, o.MaxHotels * 2, ct);
-            var stops = geoapify.SearchAsync(GeoapifyMapper.StopCategories, a.Latitude, a.Longitude, o.StopRadiusMeters, 40, ct);
+            var stops = geoapify.SearchAsync(GeoapifyMapper.StopCategories, a.Latitude, a.Longitude, o.AirportHotelRadiusMeters + stopReach, 300, ct);
             var taxis = geoapify.SearchAsync(GeoapifyMapper.TaxiCategories, a.Latitude, a.Longitude, o.TaxiRadiusMeters, 6, ct);
             await Task.WhenAll(hotels, stops, taxis);
-            return new NearbyAirport(
-                a.Iata,
-                BestHotels(hotels.Result, o.MaxHotels),
-                [],
-                Stops(stops.Result),
-                taxis.Result.Select(GeoapifyMapper.ToTaxiRank).OfType<NearbyTaxiRank>().ToList());
+            var areaStops = StopPoints(stops.Result);
+            var atAirport = areaStops.Where(st => NearbyLinks.DistanceMeters(a.Latitude, a.Longitude, st.Latitude, st.Longitude) <= o.StopRadiusMeters).ToList();
+            return (Airport: new NearbyAirport(
+                    a.Iata,
+                    BestHotels(hotels.Result, o.MaxHotels),
+                    [],
+                    GroupStops(atAirport),
+                    taxis.Result.Select(GeoapifyMapper.ToTaxiRank).OfType<NearbyTaxiRank>().ToList()),
+                AreaStops: areaStops,
+                AirportLines: atAirport.SelectMany(st => st.Lines).ToHashSet(StringComparer.OrdinalIgnoreCase));
         }).ToList();
 
-        await Task.WhenAll(airportTasks.Cast<Task>().Append(centreTask));
+        await Task.WhenAll(airportTasks.Cast<Task>().Append(centreHotelsTask).Append(centreStopsTask));
+        var results = airportTasks.Select(t => t.Result).ToList();
+        var airportLines = results.SelectMany(r => r.AirportLines).ToHashSet(StringComparer.OrdinalIgnoreCase);
+        var centreStops = StopPoints(centreStopsTask.Result);
+
         return new NearbySnapshot(
             query.DestinationCode,
             DateOnly.FromDateTime(DateTime.UtcNow),
             $"{NearbyPlacesFile.DefaultAttribution} · {GeoapifyPlacesClient.ProviderName}",
-            airportTasks.Select(t => t.Result).ToList(),
-            new NearbyArea(BestHotels(centreTask.Result, o.MaxHotels)),
+            results.Select(r => r.Airport with { Hotels = WithStops(r.Airport.Hotels, r.AreaStops, airportLines, o.HotelStopWalkMeters) }).ToList(),
+            new NearbyArea(WithStops(BestHotels(centreHotelsTask.Result, o.MaxHotels), centreStops, airportLines, o.HotelStopWalkMeters)),
             []);
     }
+
+    /// <summary>All named stops that list at least one line.</summary>
+    private static List<NearbyTransitStop> StopPoints(IReadOnlyList<JsonElement> features) =>
+        features.Select(GeoapifyMapper.ToStop).OfType<NearbyTransitStop>().Where(s => s.Lines.Count > 0).ToList();
+
+    /// <summary>
+    /// Adds the nearest stop within walking distance and the "direct" lines: lines that also stop at the airport,
+    /// so the traveller can ride from the terminal to the hotel without changing.
+    /// </summary>
+    public static List<NearbyHotel> WithStops(IReadOnlyList<NearbyHotel> hotels, IReadOnlyList<NearbyTransitStop> stops, IReadOnlySet<string> airportLines, int walkMeters) =>
+        hotels.Select(h =>
+        {
+            var near = stops
+                .Select(st => (st, d: NearbyLinks.DistanceMeters(h.Latitude, h.Longitude, st.Latitude, st.Longitude)))
+                .Where(x => x.d <= walkMeters)
+                .OrderBy(x => x.d)
+                .ToList();
+            if (near.Count == 0) return h;
+            var nearest = near[0];
+            var direct = near.SelectMany(x => x.st.Lines).Where(airportLines.Contains).Distinct(StringComparer.OrdinalIgnoreCase).Take(6).ToList();
+            return h with
+            {
+                NearestStop = new NearbyHotelStop(nearest.st.Name, nearest.st.Mode, nearest.st.Lines, nearest.d),
+                DirectLines = direct,
+            };
+        }).ToList();
 
     /// <summary>Named, well-described hotels first (stars, phone or website), in the API's distance order otherwise.</summary>
     private static List<NearbyHotel> BestHotels(IReadOnlyList<JsonElement> features, int max) =>
@@ -192,11 +232,10 @@ public sealed class NearbyPlacesService(
             .ToList();
 
     /// <summary>Stops that list their lines, grouped by name (a terminal often has several platforms), rail before bus.</summary>
-    private static List<NearbyTransitStop> Stops(IReadOnlyList<JsonElement> features)
+    private static List<NearbyTransitStop> GroupStops(IReadOnlyList<NearbyTransitStop> stops)
     {
         var order = new[] { "train", "subway", "light_rail", "tram", "bus" };
-        return features.Select(GeoapifyMapper.ToStop).OfType<NearbyTransitStop>()
-            .Where(s => s.Lines.Count > 0)
+        return stops
             .GroupBy(s => (s.Name, s.Mode))
             .Select(g => g.First() with { Lines = g.SelectMany(s => s.Lines).Distinct(StringComparer.OrdinalIgnoreCase).Take(12).ToList() })
             .OrderBy(s => Array.IndexOf(order, s.Mode))

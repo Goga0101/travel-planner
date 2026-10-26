@@ -5743,6 +5743,1372 @@
     }
    ],
    "retrievedOn": "2026-10-26"
+  },
+  {
+   "code": "madrid",
+   "airports": [
+    {
+     "iata": "MAD",
+     "hotels": [
+      {
+       "osmId": "node/9307436328",
+       "name": "Hostal Viky",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 2,
+       "latitude": 40.4737012,
+       "longitude": -3.5756957,
+       "distanceMeters": 2820,
+       "address": "Calle de Marte 2, 28042, Barajas",
+       "phone": "+34 913 054 812",
+       "website": "https://hostal-viky.com/"
+      },
+      {
+       "osmId": "node/2289226446",
+       "name": "Hotel Don Luis",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 40.4727052,
+       "longitude": -3.578643,
+       "distanceMeters": 2995,
+       "address": null,
+       "phone": "+34 913120430",
+       "website": null
+      },
+      {
+       "osmId": "relation/17989643",
+       "name": "täCH Hotel",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 40.4731316,
+       "longitude": -3.585607,
+       "distanceMeters": 3186,
+       "address": null,
+       "phone": null,
+       "website": "https://www.tach-hotel.es/"
+      },
+      {
+       "osmId": "node/254186223",
+       "name": "Hotel Clement Barajas",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 40.4709687,
+       "longitude": -3.5799099,
+       "distanceMeters": 3212,
+       "address": "Avenida General 43",
+       "phone": "+34917460330",
+       "website": "https://www.clementhoteles.com/"
+      },
+      {
+       "osmId": "node/252162464",
+       "name": "Ibis Madrid Aeropuerto Barajas",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 2,
+       "latitude": 40.4698335,
+       "longitude": -3.5807416,
+       "distanceMeters": 3355,
+       "address": "Avenida General 49, 28042, Madrid",
+       "phone": "+34 913 010 999",
+       "website": "https://all.accor.com/hotel/3753/index.es.shtml"
+      },
+      {
+       "osmId": "way/157412480",
+       "name": "Hotel Madrid Alameda Aeropuerto",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 40.4691428,
+       "longitude": -3.5802519,
+       "distanceMeters": 3414,
+       "address": null,
+       "phone": null,
+       "website": "https://www.melia.com/en/hotels/spain/madrid/hotel-madrid-alameda-aeropuerto-by-melia"
+      },
+      {
+       "osmId": "node/3219512224",
+       "name": "Hostal Aeropuerto",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 40.4689912,
+       "longitude": -3.5808289,
+       "distanceMeters": 3446,
+       "address": "Avenida de Logroño 102, 28042, Madrid",
+       "phone": "+34917475311",
+       "website": "https://hostalaeropuerto.com/"
+      },
+      {
+       "osmId": "node/13680244801",
+       "name": "GettSleep Madrid",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 40.4950156,
+       "longitude": -3.5670727,
+       "distanceMeters": 368,
+       "address": "Planta 1, Lado Aire, MAD Terminal 4S, después del control de seguridad (CapsuleHotel) Barajas, 28042",
+       "phone": "+34628466830",
+       "website": "https://gettsleep.es/"
+      },
+      {
+       "osmId": "node/13680211002",
+       "name": "Aerotel Madrid Airport - Terminal 4",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 40.4919933,
+       "longitude": -3.5921613,
+       "distanceMeters": 2192,
+       "address": "Aeropuerto de Madrid, Barajas, Terminal T4, Planta -1 (Zona tierra), 28042",
+       "phone": "+34913276015",
+       "website": null
+      },
+      {
+       "osmId": "node/2078657580",
+       "name": "Hostal Viky",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 2,
+       "latitude": 40.4736986,
+       "longitude": -3.5759037,
+       "distanceMeters": 2824,
+       "address": "Calle de las Fraguas, Barajas",
+       "phone": null,
+       "website": null
+      },
+      {
+       "osmId": "node/603606242",
+       "name": "Hotel Barajas Plaza",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 40.4728793,
+       "longitude": -3.5769167,
+       "distanceMeters": 2934,
+       "address": "Calle de Camarillas 5/7, 28042, Madrid",
+       "phone": null,
+       "website": "https://hotelbarajasplaza.es/"
+      },
+      {
+       "osmId": "node/4252269410",
+       "name": "Hotel Villa de Barajas",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 40.4728446,
+       "longitude": -3.5821523,
+       "distanceMeters": 3086,
+       "address": null,
+       "phone": "+34 91 329 28 18",
+       "website": "https://www.hotelvilladebarajas.com/"
+      }
+     ],
+     "transitLines": [
+      {
+       "mode": "monorail",
+       "ref": null,
+       "name": "Monorraíl T4",
+       "from": null,
+       "to": null,
+       "operator": null,
+       "network": null,
+       "website": null
+      }
+     ],
+     "taxiRanks": []
+    }
+   ],
+   "centre": {
+    "hotels": [
+     {
+      "osmId": "node/184049280",
+      "name": "Hotel Europa",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 40.4175269,
+      "longitude": -3.7035489,
+      "distanceMeters": 84,
+      "address": "Calle del Carmen 4, 28013, Madrid",
+      "phone": "+34 91 521 46 96",
+      "website": "https://www.hoteleuropa.eu/"
+     },
+     {
+      "osmId": "node/184049319",
+      "name": "Hotel Liabeny",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 40.4187423,
+      "longitude": -3.7039628,
+      "distanceMeters": 216,
+      "address": "Calle de la Salud 3, 28013, Madrid",
+      "phone": "+34 91 531 90 00",
+      "website": "https://www.liabeny.es/"
+     },
+     {
+      "osmId": "node/184049325",
+      "name": "Petit Palace Plaza del Carmen",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 40.4189577,
+      "longitude": -3.7028511,
+      "distanceMeters": 253,
+      "address": "Plaza del Carmen 4, 28013, Madrid",
+      "phone": "+34 915238845",
+      "website": "https://www.petitpalaceplazadelcarmen.com/"
+     },
+     {
+      "osmId": "node/184049190",
+      "name": "Palacio San Martín",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 40.4186548,
+      "longitude": -3.7066997,
+      "distanceMeters": 321,
+      "address": "Plaza de San Martín 5, 28013, Madrid",
+      "phone": "+34 917015000",
+      "website": "https://www.hotelpalaciosanmartin.es/"
+     },
+     {
+      "osmId": "node/1782593899",
+      "name": "Hotel Quatro Puerta del Sol",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 40.417044,
+      "longitude": -3.699962,
+      "distanceMeters": 326,
+      "address": "Calle de Sevilla 4, 28014, Madrid",
+      "phone": "+34 91 532 90 49",
+      "website": "https://www.hotelquatropuertadelsol.com/"
+     },
+     {
+      "osmId": "node/184049345",
+      "name": "Hotel Arosa",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 40.419776,
+      "longitude": -3.7031275,
+      "distanceMeters": 336,
+      "address": "Calle de la Salud 21, 28013, Madrid",
+      "phone": "+34 91 532 16 00",
+      "website": null
+     },
+     {
+      "osmId": "node/2631111008",
+      "name": "Líbere Madrid Palacio Real",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 40.4186044,
+      "longitude": -3.7073053,
+      "distanceMeters": 358,
+      "address": "Travesía de los Trujillos 3, 28013, Madrid",
+      "phone": "+34 917 011 670",
+      "website": null
+     },
+     {
+      "osmId": "node/1956470842",
+      "name": "Hotel Madrid Gran Vía 25",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 40.4198819,
+      "longitude": -3.7021748,
+      "distanceMeters": 369,
+      "address": "Gran Vía 25, 28013, Madrid",
+      "phone": "+34 91 5221121",
+      "website": "https://www.melia.com/es/hoteles/espana/madrid/hotel-madrid-gran-via-25-by-melia"
+     },
+     {
+      "osmId": "node/1530664314",
+      "name": "Innside Madrid Gran Vía",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 40.4205001,
+      "longitude": -3.7039558,
+      "distanceMeters": 412,
+      "address": "Calle de Mesonero Romanos 13, 28004, Madrid",
+      "phone": null,
+      "website": "https://www.melia.com/es/hoteles/espana/madrid/innside-madrid-gran-via"
+     },
+     {
+      "osmId": "node/27505490",
+      "name": "Room Mate Mario Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 2,
+      "latitude": 40.4188562,
+      "longitude": -3.7093262,
+      "distanceMeters": 521,
+      "address": "Calle de Campomanes 4, 28013, Madrid",
+      "phone": "+34 915 488 548",
+      "website": "https://room-matehotels.com/en/mario/"
+     },
+     {
+      "osmId": "node/2630205965",
+      "name": "Hotel Emperador",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 40.4214124,
+      "longitude": -3.7081031,
+      "distanceMeters": 629,
+      "address": "Gran Vía 53, 28013, Madrid",
+      "phone": "+34 91 547 28 00",
+      "website": "https://www.emperadorhotel.com/es/"
+     },
+     {
+      "osmId": "node/167302776",
+      "name": "The Palace",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 40.4154544,
+      "longitude": -3.6958024,
+      "distanceMeters": 693,
+      "address": "Plaza de las Cortes 7, 28014, Madrid",
+      "phone": "+34 913 60 80 00",
+      "website": "https://www.marriott.com/es/hotels/madcl-the-palace-a-luxury-collection-hotel-madrid/overview/"
+     }
+    ]
+   },
+   "taxiCompanies": [],
+   "retrievedOn": "2026-10-26"
+  },
+  {
+   "code": "munich",
+   "airports": [
+    {
+     "iata": "MUC",
+     "hotels": [
+      {
+       "osmId": "way/4447196",
+       "name": "Hilton Munich Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 5,
+       "latitude": 48.3556274,
+       "longitude": 11.7887236,
+       "distanceMeters": 281,
+       "address": "Terminalstraße Mitte 20, 85356, Freising",
+       "phone": "+49 89 97820",
+       "website": "https://www.hilton.com/en/hotels/muctmhi-hilton-munich-airport/"
+      },
+      {
+       "osmId": "relation/3251110",
+       "name": "Novotel München Airport",
+       "nameEn": "Novotel Munich Airport",
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 48.3546592,
+       "longitude": 11.7589926,
+       "distanceMeters": 2005,
+       "address": "Nordallee 29, 85356, Freising",
+       "phone": null,
+       "website": "https://all.accor.com/hotel/6711/index.de.shtml"
+      },
+      {
+       "osmId": "way/26805386",
+       "name": "Mövenpick Hotel München Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 48.3314541,
+       "longitude": 11.7423794,
+       "distanceMeters": 4076,
+       "address": "Ludwigstraße 43, 85399, Hallbergmoos",
+       "phone": "+49 811 888 0",
+       "website": "https://www.movenpick.com/en/europe/germany/munich/hotel-munich-airport/overview/"
+      },
+      {
+       "osmId": "relation/6793936",
+       "name": "Airport Hotel Regentpark",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 48.3261709,
+       "longitude": 11.7494114,
+       "distanceMeters": 4098,
+       "address": "Wilhelmstraße 1;5, 85399, Hallbergmoos",
+       "phone": "+49 811 550410",
+       "website": "https://www.airport-hotel-regent.com/"
+      },
+      {
+       "osmId": "node/4810055846",
+       "name": "VIP Wing",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 48.3489532,
+       "longitude": 11.7848406,
+       "distanceMeters": 547,
+       "address": null,
+       "phone": "+49 89 9751333",
+       "website": "https://www.munich-airport.de/vip"
+      },
+      {
+       "osmId": "way/1300934949",
+       "name": "Ibis Styles München Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 48.3540579,
+       "longitude": 11.7591063,
+       "distanceMeters": 1995,
+       "address": "Nordallee 31, 85356, München-Flughafen",
+       "phone": null,
+       "website": "https://all.accor.com/hotel/B1M9/index.de.shtml"
+      },
+      {
+       "osmId": "node/7083550817",
+       "name": "Mühle Attaching",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 48.3712694,
+       "longitude": 11.7735863,
+       "distanceMeters": 2151,
+       "address": "Zur Mühle 9, 85356, Freising",
+       "phone": "+49 170 2943620",
+       "website": "https://monteurzimmer-freising.de/"
+      },
+      {
+       "osmId": "way/38378941",
+       "name": "NH München Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 48.3518994,
+       "longitude": 11.8292899,
+       "distanceMeters": 3198,
+       "address": "Lohstraße 21, 85445, Oberding",
+       "phone": "+49 8122 9670",
+       "website": "https://www.nh-hotels.de/hotel/nh-munchen-airport"
+      },
+      {
+       "osmId": "way/447867744",
+       "name": "Moxy Hotel Munich Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 48.3524653,
+       "longitude": 11.8318116,
+       "distanceMeters": 3381,
+       "address": "Eichenstraße 1, 85445, Oberding",
+       "phone": "+49 8122 5683006",
+       "website": "https://www.marriott.de/hotels/travel/mucox-moxy-munich-airport/"
+      },
+      {
+       "osmId": "way/383255139",
+       "name": "Grand Excelsior Hotel München Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 48.3422422,
+       "longitude": 11.8331368,
+       "distanceMeters": 3706,
+       "address": "Freisinger Straße 80, 85445, Oberding",
+       "phone": null,
+       "website": "https://www.grandexcelsiormunich.com/"
+      },
+      {
+       "osmId": "way/454857445",
+       "name": "Ramada München Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 48.3409525,
+       "longitude": 11.832651,
+       "distanceMeters": 3725,
+       "address": "Freisinger Straße 77, 85445, Oberding",
+       "phone": null,
+       "website": "https://www.wyndhamhotels.com/de-de/ramada/schwaig-ot-oberding-germany/ramada-by-wyndham-muenchen-airport/overview?CID=LC:RA::GGL:RIO:National:52520&iata=00093796"
+      },
+      {
+       "osmId": "node/2288391429",
+       "name": "Hotel Garni »Haus zum Gutenberg«",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 48.3265793,
+       "longitude": 11.7546254,
+       "distanceMeters": 3818,
+       "address": "Tassiloweg 18, 85399, Hallbergmoos",
+       "phone": "+49 811 555 37-0",
+       "website": null
+      }
+     ],
+     "transitLines": [
+      {
+       "mode": "train",
+       "ref": "RE 22",
+       "name": "RE 22 Flughafenexpress: München Flughafen => Regensburg, Hbf.",
+       "from": "München Flughafen",
+       "to": "Regensburg, Hbf.",
+       "operator": "DB Regio AG Bayern",
+       "network": "Alex;agilis;DB Regio;Münchner Verkehrs- und Tarifverbund;RVV;VGN",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "S1",
+       "name": "S-Bahn S1: Flughafen München => Leuchtenbergring",
+       "from": "Flughafen München",
+       "to": "Leuchtenbergring",
+       "operator": "DB Regio AG/S-Bahn München",
+       "network": "Münchner Verkehrs- und Tarifverbund",
+       "website": "https://www.mvv-muenchen.de/"
+      },
+      {
+       "mode": "train",
+       "ref": "S8",
+       "name": "S-Bahn S8: Flughafen München => Herrsching",
+       "from": "Flughafen München",
+       "to": "Herrsching",
+       "operator": "DB Regio AG/S-Bahn München",
+       "network": "Münchner Verkehrs- und Tarifverbund",
+       "website": "https://www.mvv-muenchen.de/"
+      },
+      {
+       "mode": "bus",
+       "ref": "006",
+       "name": "Flixbus 006(Nordteil): Meersburg, Fährhafen => München, Flughafen",
+       "from": "Meersburg, Fährhafen",
+       "to": "München, Flughafen",
+       "operator": "Dr. Richard",
+       "network": "Flixbus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "20",
+       "name": "Linie 20: Flughafen München, Besucherpark => Oberbierbach",
+       "from": "Flughafen München, Besucherpark",
+       "to": "Oberbierbach",
+       "operator": "Scharf Omnibusbetrieb GmbH",
+       "network": "Scharf Omnibusbetrieb",
+       "website": "https://scharf-reisen.de/wp-content/uploads/2024/05/20231013_Fpl-Linie-20-ab-10.12.2023.pdf"
+      },
+      {
+       "mode": "bus",
+       "ref": "040",
+       "name": "Flixbus 040: Innsbruck, Südbahnstraße => München Flughafen",
+       "from": "Innsbruck, Südbahnstraße",
+       "to": "München Flughafen",
+       "operator": "Dr. Richard",
+       "network": "Flixbus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "086",
+       "name": "Flixbus 086: Schönau am Königssee, Busparkplatz => München, Flughafen",
+       "from": "Schönau am Königssee, Busparkplatz",
+       "to": "München, Flughafen",
+       "operator": "Blaguss Slovakia s.r.o",
+       "network": "Flixbus",
+       "website": "https://www.flixbus.de/busverbindung/fernbus-salzburg-muenchen"
+      },
+      {
+       "mode": "bus",
+       "ref": "095",
+       "name": "Flixbus 095: Meran, Therme => München Flughafen",
+       "from": "Meran, Therme",
+       "to": "München Flughafen",
+       "operator": "Silbernagl GmbH (Südtirol), Martin Reisen (Südtirol)",
+       "network": "Flixbus",
+       "website": "https://www.flixbus.de/busverbindung/fernbus-meran-merano-muenchen-flughafen"
+      },
+      {
+       "mode": "bus",
+       "ref": "186",
+       "name": "Flixbus 186: München ZOB => Bamberg, Bhf. Ludwigstraße",
+       "from": "München ZOB",
+       "to": "Bamberg, Bhf. Ludwigstraße",
+       "operator": "Flixbus",
+       "network": "Flixbus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "455",
+       "name": "Flixbus 455: Nürnberg, ZOB => Milano, Lampugnano",
+       "from": "Nürnberg, ZOB",
+       "to": "Milano, Lampugnano",
+       "operator": "Flixbus",
+       "network": "Flixbus",
+       "website": "https://www.flixbus.de/busverbindung/fernbus-nuernberg-mailand-milano"
+      },
+      {
+       "mode": "bus",
+       "ref": "512",
+       "name": "Bus 512: Flughafen, Terminalstraße Mitte (S/R) => Niederding => Erding (S)",
+       "from": "Flughafen, Terminalstraße Mitte (S/R)",
+       "to": "Erding (S)",
+       "operator": "Scharf",
+       "network": "Münchner Verkehrs- und Tarifverbund",
+       "website": "https://www.mvv-muenchen.de/"
+      },
+      {
+       "mode": "bus",
+       "ref": "635",
+       "name": "Bus 635: Freising (S/R) => Flughafen, Terminalstraße Mitte (S/R)",
+       "from": "Freising (S/R)",
+       "to": "Flughafen, Terminalstraße Mitte (S/R)",
+       "operator": "Gute Reise Hauck",
+       "network": "Münchner Verkehrs- und Tarifverbund",
+       "website": "https://www.mvv-muenchen.de/"
+      },
+      {
+       "mode": "bus",
+       "ref": "LHX",
+       "name": "Lufthansa Express Bus LHX: München Hbf => München Airport Terminal 1D",
+       "from": "München Hbf",
+       "to": "München Airport Terminal 1D",
+       "operator": "Autobus Oberbayern",
+       "network": "Lufthansa Express Bus",
+       "website": "https://www.airportbus-muenchen.de/"
+      },
+      {
+       "mode": "bus",
+       "ref": "LHX: MUC-INN",
+       "name": "Lufthansa Express Bus: Innsbruck Flughafen => München Flughafen, Terminal 2",
+       "from": "Innsbruck Flughafen",
+       "to": "München Flughafen, Terminal 2",
+       "operator": null,
+       "network": "Lufthansa Express Bus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "LHX: MUC-NUE",
+       "name": "Lufthansa Express Bus: München Flughafen, Terminal 2 => Flughafen Nürnberg",
+       "from": "München Flughafen, Terminal 2",
+       "to": "Flughafen Nürnberg",
+       "operator": null,
+       "network": "Lufthansa Express Bus",
+       "website": null
+      }
+     ],
+     "taxiRanks": [
+      {
+       "name": null,
+       "operator": null,
+       "phone": null,
+       "latitude": 48.3542738,
+       "longitude": 11.7862846,
+       "distanceMeters": 54
+      }
+     ]
+    }
+   ],
+   "centre": {
+    "hotels": [
+     {
+      "osmId": "node/340088703",
+      "name": "Torbräu",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 48.135501,
+      "longitude": 11.5815897,
+      "distanceMeters": 54,
+      "address": "Tal 41, 80331, München",
+      "phone": "+49 89 24 234 300",
+      "website": "https://www.torbraeu.de/"
+     },
+     {
+      "osmId": "node/305529647",
+      "name": "Hotel Isartor",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 48.1334536,
+      "longitude": 11.5812578,
+      "distanceMeters": 191,
+      "address": "Baaderstraße 2, 80469, München",
+      "phone": "+49 89 2163340",
+      "website": "https://www.hotel-isartor.de/"
+     },
+     {
+      "osmId": "way/79817192",
+      "name": "Mandarin Oriental",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 48.1372914,
+      "longitude": 11.5807396,
+      "distanceMeters": 261,
+      "address": "Neuturmstraße 1, 80331, München",
+      "phone": "+49 89 290980",
+      "website": "https://www.mandarinoriental.com/de/munich/altstadt"
+     },
+     {
+      "osmId": "node/651500989",
+      "name": "Hotel Admiral München",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 48.1317301,
+      "longitude": 11.58134,
+      "distanceMeters": 378,
+      "address": "Kohlstraße 9, 80469, München",
+      "phone": "+49 89 216350",
+      "website": "https://hotel-admiral.de/"
+     },
+     {
+      "osmId": "way/79817249",
+      "name": "Platzl Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 48.1379842,
+      "longitude": 11.5790032,
+      "distanceMeters": 390,
+      "address": "Sparkassenstraße 10",
+      "phone": null,
+      "website": "https://www.platzl.de/"
+     },
+     {
+      "osmId": "node/305609481",
+      "name": "Hotel Vier Jahreszeiten Kempinski München",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 48.1391684,
+      "longitude": 11.5819647,
+      "distanceMeters": 452,
+      "address": "Maximilianstraße 17, 80539, München",
+      "phone": "+49 89 21250",
+      "website": "https://www.kempinski.com/de/hotel-vier-jahreszeiten"
+     },
+     {
+      "osmId": "way/99876859",
+      "name": "Deutsche Eiche",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 48.1327415,
+      "longitude": 11.5763595,
+      "distanceMeters": 494,
+      "address": "Reichenbachstraße 13, 80469, München",
+      "phone": "+49 89 2311660",
+      "website": "https://www.deutsche-eiche.de/hotel/"
+     },
+     {
+      "osmId": "way/77649062",
+      "name": "Hotel Adria",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 48.1410657,
+      "longitude": 11.5880639,
+      "distanceMeters": 802,
+      "address": "Liebigstraße 8a, 80538, München",
+      "phone": "+49 89 242117-0",
+      "website": "https://www.adria-muenchen.de/"
+     },
+     {
+      "osmId": "node/259760505",
+      "name": "Novotel München City",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 48.1293774,
+      "longitude": 11.589306,
+      "distanceMeters": 836,
+      "address": "Hochstraße 11, 81669, München",
+      "phone": "+49 89 66107-0",
+      "website": "https://all.accor.com/hotel/3280/index.de.shtml"
+     },
+     {
+      "osmId": "node/296468222",
+      "name": "Hotel Mercure München Altstadt",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 48.1370541,
+      "longitude": 11.5709815,
+      "distanceMeters": 846,
+      "address": "Hotterstraße 4, 80331, München",
+      "phone": "+49 89 23259-0",
+      "website": "https://all.accor.com/hotel/3709/index.de.shtml"
+     },
+     {
+      "osmId": "way/34102840",
+      "name": "Hotel Bayerischer Hof",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 48.1404716,
+      "longitude": 11.5729289,
+      "distanceMeters": 900,
+      "address": "Promenadeplatz 6, 80333, München",
+      "phone": null,
+      "website": "https://www.bayerischerhof.de/"
+     },
+     {
+      "osmId": "node/259760534",
+      "name": "Hilton Munich City",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 48.1298108,
+      "longitude": 11.5927247,
+      "distanceMeters": 990,
+      "address": "Rosenheimer Straße 15, 81667, München",
+      "phone": "+49 89 48040",
+      "website": "https://www.hilton.com/en/hotels/mucchtw-hilton-munich-city/"
+     }
+    ]
+   },
+   "taxiCompanies": [
+    {
+     "name": "Rosenheimer Platz",
+     "phone": "+49 89 216160; +49 89 4801100",
+     "website": null
+    },
+    {
+     "name": "Ohlmüllerstraße",
+     "phone": "+49 89 216149; +49 89 668954",
+     "website": null
+    },
+    {
+     "name": "Reichenbachstraße",
+     "phone": "+49892161331",
+     "website": null
+    },
+    {
+     "name": "Maillinger-/Nymphenburger Straße",
+     "phone": "+49 89 129 55 00",
+     "website": null
+    },
+    {
+     "name": "Barer-/Schellingstraße",
+     "phone": "+49 89 2723874",
+     "website": null
+    },
+    {
+     "name": "Alexandrastraße",
+     "phone": "+49 89 297045",
+     "website": null
+    }
+   ],
+   "retrievedOn": "2026-10-26"
+  },
+  {
+   "code": "warsaw",
+   "airports": [
+    {
+     "iata": "WAW",
+     "hotels": [
+      {
+       "osmId": "way/31873355",
+       "name": "Courtyard Warsaw Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 52.1707145,
+       "longitude": 20.9744184,
+       "distanceMeters": 748,
+       "address": "Żwirki i Wigury 1J, 02-143, Warszawa",
+       "phone": "+48 22 650 01 00",
+       "website": "https://www.warszawacourtyard.pl/"
+      },
+      {
+       "osmId": "way/573926151",
+       "name": "Renaissance Warsaw Airport Hotel",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 5,
+       "latitude": 52.1724032,
+       "longitude": 20.9738175,
+       "distanceMeters": 875,
+       "address": "Żwirki i Wigury 1H, 02-143, Warszawa",
+       "phone": "+48 22 164 70 00",
+       "website": "https://www.renaissancewarszawa.pl/"
+      },
+      {
+       "osmId": "node/8856680872",
+       "name": "Hampton by Hilton Warsaw Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 52.1796056,
+       "longitude": 20.9759606,
+       "distanceMeters": 1660,
+       "address": "Komitetu Obrony Robotników 39F, 02-148, Warszawa",
+       "phone": "+48 22 204 18 00",
+       "website": "https://www.hilton.com/en/hotels/wawaphx-hampton-warsaw-airport"
+      },
+      {
+       "osmId": "way/952449716",
+       "name": "Bloom Hotel",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 2,
+       "latitude": 52.1579055,
+       "longitude": 20.9448426,
+       "distanceMeters": 1748,
+       "address": "Na Skraju 49, 05-090, Rybie",
+       "phone": "+48 600 255 353",
+       "website": "https://bloomhotel.pl/"
+      },
+      {
+       "osmId": "node/8857117795",
+       "name": "Airport Hotel Okęcie",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 52.1783833,
+       "longitude": 20.9825084,
+       "distanceMeters": 1759,
+       "address": "Komitetu Obrony Robotników 24, 02-148, Warszawa",
+       "phone": "+48 22 456 80 00",
+       "website": "https://airporthotel.pl"
+      },
+      {
+       "osmId": "way/927713453",
+       "name": "E-Wita",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 2,
+       "latitude": 52.1519428,
+       "longitude": 20.9520814,
+       "distanceMeters": 1841,
+       "address": null,
+       "phone": "+48 22 716 13 05",
+       "website": "https://hotelewita.pl/"
+      },
+      {
+       "osmId": "node/8850455591",
+       "name": "Witkowski",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 52.1791195,
+       "longitude": 20.9462655,
+       "distanceMeters": 2060,
+       "address": "Aleja Krakowska 131, 02-180, Warszawa",
+       "phone": "+48 22 300 34 00",
+       "website": "https://www.hotelwitkowski.pl/"
+      },
+      {
+       "osmId": "node/8850453825",
+       "name": "Hotel Gordon",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 2,
+       "latitude": 52.181799,
+       "longitude": 20.9489792,
+       "distanceMeters": 2175,
+       "address": "Aleja Krakowska 157A, Warszawa",
+       "phone": "+48 22 868 46 50",
+       "website": "https://hotelgordon.pl/"
+      },
+      {
+       "osmId": "way/552161297",
+       "name": "Hampton by Hilton Warsaw Mokotow",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 52.1759541,
+       "longitude": 20.9944765,
+       "distanceMeters": 2188,
+       "address": "Postępu 7, 02-676, Warszawa",
+       "phone": "+48 22 419 77 77",
+       "website": "https://www.hilton.com/en/hotels/wawwphx-hampton-warsaw-mokotow/"
+      },
+      {
+       "osmId": "node/8845721556",
+       "name": "Lord",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 52.1867074,
+       "longitude": 20.9557095,
+       "distanceMeters": 2462,
+       "address": "Aleja Krakowska 218, 02-219, Warszawa",
+       "phone": "+48 22 574 20 00",
+       "website": "https://hotellord.pl/"
+      },
+      {
+       "osmId": "way/956962039",
+       "name": "B&B Hotel Warszawa-Okęcie",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 2,
+       "latitude": 52.1862938,
+       "longitude": 20.9537154,
+       "distanceMeters": 2465,
+       "address": "Aleja Krakowska 193, 02-180, Warszawa",
+       "phone": "+48225771760",
+       "website": "https://www.hotel-bb.com/en/hotel/warszawa-okecie"
+      },
+      {
+       "osmId": "way/962898882",
+       "name": "Ibis Styles Warsaw Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 52.1554142,
+       "longitude": 21.0004933,
+       "distanceMeters": 2549,
+       "address": "Poleczki 31, 02-822, Warszawa",
+       "phone": "+48 22 373 37 00",
+       "website": null
+      }
+     ],
+     "transitLines": [
+      {
+       "mode": "train",
+       "ref": "R8",
+       "name": "R80: Warszawa Gdańska => Góra Kalwaria",
+       "from": "Warszawa Gdańska",
+       "to": "Góra Kalwaria",
+       "operator": "Koleje Mazowieckie - KM",
+       "network": "Koleje Mazowieckie",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "R80",
+       "name": "R80: Góra Kalwaria => Warszawa Gdańska",
+       "from": "Góra Kalwaria",
+       "to": "Warszawa Gdańska",
+       "operator": "Koleje Mazowieckie - KM",
+       "network": "Koleje Mazowieckie",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "RL",
+       "name": "RL: Warszawa Lotnisko Chopina => Modlin",
+       "from": "Warszawa Lotnisko Chopina",
+       "to": "Modlin",
+       "operator": "Koleje Mazowieckie - KM",
+       "network": "Koleje Mazowieckie",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "S2",
+       "name": "S2: Sulejówek Miłosna => Warszawa Lotnisko Chopina",
+       "from": "Sulejówek Miłosna",
+       "to": "Warszawa Lotnisko Chopina",
+       "operator": "Szybka Kolej Miejska Sp. z o.o.",
+       "network": "ZTM Warszawa",
+       "website": "https://wtp.waw.pl/rozklady-jazdy/?wtp_md=3&wtp_ln=S2&wtp_dr=A"
+      },
+      {
+       "mode": "train",
+       "ref": "S3",
+       "name": "S3: Warszawa Lotnisko Chopina => Legionowo",
+       "from": "Warszawa Lotnisko Chopina",
+       "to": "Legionowo",
+       "operator": "Szybka Kolej Miejska Sp. z o.o.",
+       "network": "ZTM Warszawa",
+       "website": "https://wtp.waw.pl/rozklady-jazdy/?wtp_md=3&wtp_ln=S3&wtp_dr=B&wtp_vr=0"
+      },
+      {
+       "mode": "train",
+       "ref": "S4",
+       "name": "S4: Zegrze Południowe => Piaseczno",
+       "from": "Zegrze Południowe",
+       "to": "Piaseczno",
+       "operator": "Szybka Kolej Miejska Sp. z o.o.",
+       "network": "ZTM Warszawa",
+       "website": "https://wtp.waw.pl/rozklady-jazdy/?wtp_md=3&wtp_ln=S4&wtp_dr=A"
+      },
+      {
+       "mode": "train",
+       "ref": "S40",
+       "name": "S40: Radzymin => Warszawa Gdańska => Piaseczno",
+       "from": "Radzymin",
+       "to": "Piaseczno",
+       "operator": "Szybka Kolej Miejska Sp. z o.o.",
+       "network": "ZTM Warszawa",
+       "website": "https://wtp.waw.pl/rozklady-jazdy/?wtp_md=3&wtp_ln=S40&wtp_dr=A&wtp_vr=0"
+      },
+      {
+       "mode": "bus",
+       "ref": "124",
+       "name": "Bus 124: Paluch => P+R Aleja Krakowska",
+       "from": "Paluch",
+       "to": "P+R Aleja Krakowska",
+       "operator": "Zarząd Transportu Miejskiego w Warszawie",
+       "network": "ZTM Warszawa",
+       "website": "https://www.wtp.waw.pl/rozklady-jazdy/?wtp_md=3&wtp_ln=124&wtp_dr=B&wtp_vr=0"
+      },
+      {
+       "mode": "bus",
+       "ref": "148",
+       "name": "Bus 148: Lotnisko Chopina-Przyloty => Wiatraczna",
+       "from": "Lotnisko Chopina-Przyloty",
+       "to": "Wiatraczna",
+       "operator": "Zarząd Transportu Miejskiego w Warszawie",
+       "network": "ZTM Warszawa",
+       "website": "https://wtp.waw.pl/rozklady-jazdy/?wtp_md=3&wtp_ln=148&wtp_dr=A"
+      },
+      {
+       "mode": "bus",
+       "ref": "175",
+       "name": "Bus 175: Pl. Piłsudskiego => Uniwersytet => Terminal Autokarowy",
+       "from": "Pl. Piłsudskiego",
+       "to": "Terminal Autokarowy",
+       "operator": "Zarząd Transportu Miejskiego w Warszawie",
+       "network": "ZTM Warszawa",
+       "website": "https://wtp.waw.pl/rozklady-jazdy/?&wtp_md=3&wtp_ln=175&wtp_dr=B&wtp_vr=0"
+      },
+      {
+       "mode": "bus",
+       "ref": "188",
+       "name": "Bus 188: PKP Gocławek => Terminal Autokarowy",
+       "from": "PKP Gocławek",
+       "to": "Terminal Autokarowy",
+       "operator": "Zarząd Transportu Miejskiego w Warszawie",
+       "network": "ZTM Warszawa",
+       "website": "https://wtp.waw.pl/rozklady-jazdy/?&wtp_md=3&wtp_ln=188&wtp_dr=B"
+      },
+      {
+       "mode": "bus",
+       "ref": "331",
+       "name": "Bus 331: Lotnisko Chopina-Przyloty => Metro Wilanowska",
+       "from": "Lotnisko Chopina-Przyloty",
+       "to": "Metro Wilanowska",
+       "operator": "Zarząd Transportu Miejskiego w Warszawie",
+       "network": "ZTM Warszawa",
+       "website": "https://wtp.waw.pl/rozklady-jazdy/?wtp_md=3&wtp_ln=331&wtp_dr=A&wtp_vr=0"
+      },
+      {
+       "mode": "bus",
+       "ref": "N32",
+       "name": "Bus N32: Centrum => Terminal Autokarowy",
+       "from": "Centrum",
+       "to": "Terminal Autokarowy",
+       "operator": "Zarząd Transportu Miejskiego w Warszawie",
+       "network": "ZTM Warszawa",
+       "website": "https://wtp.waw.pl/rozklady-jazdy/?&wtp_md=3&wtp_ln=N32&wtp_dr=B"
+      },
+      {
+       "mode": "bus",
+       "ref": "N88",
+       "name": "Bus N88: Centrum => Ogrody Działkowe Na Skraju => Janki, Plac Szwedzki",
+       "from": "Centrum",
+       "to": "Janki, Plac Szwedzki",
+       "operator": "Zarząd Transportu Miejskiego w Warszawie",
+       "network": "ZTM Warszawa",
+       "website": "https://wtp.waw.pl/rozklady-jazdy/?&wtp_md=3&wtp_ln=N88&wtp_dr=B&wtp_vr=1"
+      }
+     ],
+     "taxiRanks": [
+      {
+       "name": "Ele Taxi",
+       "operator": null,
+       "phone": null,
+       "latitude": 52.1709618,
+       "longitude": 20.9732058,
+       "distanceMeters": 718
+      },
+      {
+       "name": "Ele Taxi",
+       "operator": null,
+       "phone": null,
+       "latitude": 52.1723293,
+       "longitude": 20.9726599,
+       "distanceMeters": 829
+      },
+      {
+       "name": null,
+       "operator": null,
+       "phone": null,
+       "latitude": 52.181934,
+       "longitude": 20.9732928,
+       "distanceMeters": 1854
+      },
+      {
+       "name": null,
+       "operator": null,
+       "phone": null,
+       "latitude": 52.1550878,
+       "longitude": 20.9965888,
+       "distanceMeters": 2332
+      }
+     ]
+    }
+   ],
+   "centre": {
+    "hotels": [
+     {
+      "osmId": "way/25911058",
+      "name": "Novotel Warszawa Centrum",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 52.2293624,
+      "longitude": 21.0130963,
+      "distanceMeters": 72,
+      "address": "Marszałkowska 94/98, 00-510, Warszawa",
+      "phone": "+48 22 596 00 00",
+      "website": null
+     },
+     {
+      "osmId": "way/28759009",
+      "name": "Hotel Metropol",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 52.2290136,
+      "longitude": 21.0109941,
+      "distanceMeters": 112,
+      "address": "Marszałkowska 99A, 00-693, Warszawa",
+      "phone": "+48 22 32 53 100",
+      "website": "https://www.hotelmetropol.com.pl/"
+     },
+     {
+      "osmId": "way/28252464",
+      "name": "Hotel Polonia Palace",
+      "nameEn": "Polonia Palace Hotel",
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 52.2290862,
+      "longitude": 21.0104059,
+      "distanceMeters": 140,
+      "address": "Aleje Jerozolimskie 45, 00-692, Warszawa",
+      "phone": "+48 22 318 28 00",
+      "website": "https://www.poloniapalace.com/"
+     },
+     {
+      "osmId": "way/28759008",
+      "name": "Puro Warszawa Centrum",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 52.2312202,
+      "longitude": 21.0150922,
+      "distanceMeters": 260,
+      "address": "Widok 9, 00-023, Warszawa",
+      "phone": "+48 22 89 98 000",
+      "website": "https://purohotel.pl/en/warszawa"
+     },
+     {
+      "osmId": "way/1206364622",
+      "name": "Mercure Warszawa Grand",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 52.227678,
+      "longitude": 21.0188156,
+      "distanceMeters": 504,
+      "address": "Krucza 28, 00-522, Warszawa",
+      "phone": "+48 22 583 21 00",
+      "website": "https://all.accor.com/hotel/3384/index.pl.shtml"
+     },
+     {
+      "osmId": "way/905939486",
+      "name": "Hotel Gromada Warszawa Centrum",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 52.2342395,
+      "longitude": 21.0149022,
+      "distanceMeters": 537,
+      "address": "Plac Powstańców Warszawy 2A, 00-030, Warszawa",
+      "phone": "+48 22 582 99 00",
+      "website": "https://www.gromada.pl/"
+     },
+     {
+      "osmId": "node/12148101034",
+      "name": "Presidential",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 52.2276896,
+      "longitude": 21.0048094,
+      "distanceMeters": 551,
+      "address": null,
+      "phone": "+48 22 630 63 06",
+      "website": "https://www.presidential.pl/"
+     },
+     {
+      "osmId": "way/697649358",
+      "name": "Hotel Warszawa",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 52.2356428,
+      "longitude": 21.0123205,
+      "distanceMeters": 661,
+      "address": "Plac Powstańców Warszawy 9, 00-039, Warszawa",
+      "phone": "+48 22 470 03 00",
+      "website": "https://warszawa.hotel.com.pl/hotel-warszawa"
+     },
+     {
+      "osmId": "way/118254296",
+      "name": "Hampton by Hilton Warsaw City Centre",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 52.2253187,
+      "longitude": 21.00429,
+      "distanceMeters": 726,
+      "address": "Wspólna 72, 00-687, Warszawa",
+      "phone": "+48 223 172 700",
+      "website": "https://www.hilton.com/en/hotels/wawcthx-hampton-warsaw-city-centre/?WT.mc_id=zELWAKN0EMEA1HP2DMH3LocalSearch4DGGenericx6WAWCTHX"
+     },
+     {
+      "osmId": "way/50228686",
+      "name": "Hotel Mazowiecki",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 1,
+      "latitude": 52.2374524,
+      "longitude": 21.0134219,
+      "distanceMeters": 866,
+      "address": "Mazowiecka 10, 00-048, Warszawa",
+      "phone": "+48 22 827 23 65",
+      "website": null
+     },
+     {
+      "osmId": "node/333136526",
+      "name": "Hotel MDM",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 52.2213883,
+      "longitude": 21.0164138,
+      "distanceMeters": 968,
+      "address": "Plac Konstytucji 1, 00-647, Warszawa",
+      "phone": "+48 22 33 91 600",
+      "website": "https://www.hotelmdm.com.pl/"
+     },
+     {
+      "osmId": "node/13014203761",
+      "name": "Level rooms",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 52.227587,
+      "longitude": 21.0124753,
+      "distanceMeters": 236,
+      "address": "Marszałkowska 87, 00-683, Warszawa",
+      "phone": "+48 730 008 150",
+      "website": "https://levelrooms.pl"
+     }
+    ]
+   },
+   "taxiCompanies": [],
+   "retrievedOn": "2026-10-26"
   }
  ]
 }

@@ -35,7 +35,19 @@ export const PHOTOS: Record<string, PhotoCredit> = {
 };
 
 export const HERO_PHOTO = PHOTOS['hero'].file;
+export const HERO_SRCSET = 'images/hero-960.jpg 960w, images/hero.jpg 1920w';
 export const CTA_PHOTO = PHOTOS['cta'].file;
+export const CTA_SRCSET = 'images/cta-480.jpg 480w, images/cta.jpg 800w';
+
+/** Full-size widths of the photos that are not 800 px wide. */
+const FULL_WIDTH: Record<string, number> = { lisbon: 1280 };
+
+/** Responsive candidates: a 480 px variant for phones and small cards, plus the full photo. */
+export function destinationSrcset(code: string | null | undefined): string | null {
+  const file = destinationPhoto(code);
+  if (!file || !code) return null;
+  return `${file.replace(/.jpg$/, '-480.jpg')} 480w, ${file} ${FULL_WIDTH[code] ?? 800}w`;
+}
 
 /** Relative image URL for a catalog destination code, or null when we have no photo for it. */
 export function destinationPhoto(code: string | null | undefined): string | null {

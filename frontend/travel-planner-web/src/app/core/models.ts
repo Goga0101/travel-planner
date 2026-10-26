@@ -435,6 +435,16 @@ export interface NearbyHotelDto {
   mapUrl?: string;
   transitDirectionsUrl?: string;
   uberUrl?: string;
+  nearestStop?: HotelStopDto;
+  /** Lines that stop both at the airport and next to the hotel: no change needed. */
+  directLines: string[];
+}
+
+export interface HotelStopDto {
+  name: string;
+  mode: TransitMode;
+  lines: string[];
+  distanceMeters: number;
 }
 
 export type TransitMode = 'bus' | 'trolleybus' | 'train' | 'subway' | 'tram' | 'light_rail' | 'monorail';

@@ -6,7 +6,8 @@ import { I18nService } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
 import { SourceVerificationDto, TripPlanSummaryDto } from '../../core/models';
 import { BudgetFitBadgeComponent, VerificationBadgeComponent } from '../../shared/badges';
-import { destinationPhoto } from '../../core/destination-photos';
+import { destinationPhoto, destinationSrcset } from '../../core/destination-photos';
+import { SavedTripsService } from '../../core/local-lists';
 import { IconComponent } from '../../shared/icon.component';
 import { LocalDatePipe, MinutesPipe, MoneyPipe, StopsPipe } from '../../shared/pipes';
 
@@ -17,7 +18,7 @@ import { LocalDatePipe, MinutesPipe, MoneyPipe, StopsPipe } from '../../shared/p
   template: `
     @let p = plan();
     <article class="card plan-card" [class.plan-over]="p.budgetFit === 'OverBudget'" [class.has-photo]="!!photo()">
-      @if (photo(); as src) { <img class="plan-thumb" [src]="src" alt="" loading="lazy" decoding="async" width="400" height="300" /> }
+      @if (photo(); as src) { <img class="plan-thumb" [src]="src" [attr.srcset]="srcset()" sizes="(min-width: 760px) 220px, 100vw" alt="" loading="lazy" decoding="async" width="400" height="300" /> }
       <div class="plan-card-main">
       <header class="plan-card-header">
         <div>
@@ -114,7 +115,13 @@ import { LocalDatePipe, MinutesPipe, MoneyPipe, StopsPipe } from '../../shared/p
             </span>
           }
         </div>
+        <div class="card-actions">
+        <button type="button" class="btn btn-sm save-toggle" [class.is-saved]="saved()" [attr.aria-pressed]="saved()" (click)="toggleSaved()"
+                [attr.aria-label]="(saved() ? 'plan.saved' : 'plan.save') | t">
+          <app-icon name="heart" [size]="16" /> {{ (saved() ? 'plan.saved' : 'plan.save') | t }}
+        </button>
         <a class="btn btn-primary" [routerLink]="i18n.path('plans', p.id)">{{ 'card.viewDetails' | t }} <app-icon name="arrowRight" [size]="16" /></a>
+        </div>
       </footer>
       <p class="small muted">{{ 'card.score' | t: { score: p.score } }} @if (scoreText()) { ({{ scoreText() }}) }</p>
       </div>
@@ -125,6 +132,16 @@ export class PlanCardComponent {
   protected readonly i18n = inject(I18nService);
   readonly plan = input.required<TripPlanSummaryDto>();
   protected readonly photo = computed(() => destinationPhoto(this.plan().destination.code));
+  protected readonly srcset = computed(() => destinationSrcset(this.plan().destination.code));
+  private readonly savedTrips = inject(SavedTripsService);
+  protected readonly saved = computed(() => {
+    this.savedTrips.trips();
+    return this.savedTrips.isSaved(this.plan().id);
+  });
+
+  protected toggleSaved(): void {
+    this.savedTrips.toggle(this.plan());
+  }
 
   protected readonly scoreText = computed(() =>
     Object.entries(this.plan().scoreBreakdown)

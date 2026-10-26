@@ -73,8 +73,11 @@ public static class DependencyInjection
         services.Configure<GeoapifyOptions>(configuration.GetSection(GeoapifyOptions.SectionName));
         var geoapify = configuration.GetSection(GeoapifyOptions.SectionName).Get<GeoapifyOptions>() ?? new GeoapifyOptions();
         if (geoapify.IsConfigured)
+        {
             services.AddHttpClient<GeoapifyPlacesClient>(c => c.BaseAddress = BaseUri(geoapify.BaseUrl))
                 .AddStandardResilienceHandler(o => Configure(o, providers.Http));
+            services.AddHostedService<NearbyCacheWarmer>();
+        }
         status.Add(new ProviderStatus("Places", GeoapifyPlacesClient.ProviderName, geoapify.IsConfigured, false,
             geoapify.IsConfigured ? "status.geoapifyOn" : "status.geoapifyOff"));
 
