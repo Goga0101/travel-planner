@@ -1,13 +1,21 @@
+<div class="container page">
 <app-error-banner [error]="error()" />
 
 @if (plan(); as p) {
   @let s = p.summary;
-  <p class="breadcrumb"><a [routerLink]="i18n.path('searches', s.tripSearchId)">{{ 'plan.back' | t }}</a></p>
+  <p class="breadcrumb"><a [routerLink]="i18n.path('searches', s.tripSearchId)"><app-icon name="arrowLeft" [size]="16" /> {{ 'plan.back' | t }}</a></p>
+
+  <section class="plan-cover">
+    @if (photo(); as src) { <img [src]="src" alt="" decoding="async" width="1200" height="500" /> }
+    <div class="plan-cover-body">
+      <p class="eyebrow eyebrow-light">{{ 'plan.eyebrow' | t }}</p>
+      <h1 class="page-title">{{ p.destination.city }}, {{ p.destination.country }}</h1>
+    </div>
+  </section>
 
   <section class="card plan-header">
     <div>
-      <h1>{{ p.destination.city }}<span class="muted">, {{ p.destination.country }}</span></h1>
-      <p class="muted">
+      <p class="plan-dates"><app-icon name="calendar" [size]="18" />
         {{ s.departureDate | ldate: 'EEE d MMM' }} – {{ s.returnDate | ldate: 'EEE d MMM y' }} · {{ 'unit.nights' | t: { count: s.nights } }}
         · {{ 'unit.travelers' | t: { count: s.travelers } }}
       </p>
@@ -27,7 +35,7 @@
       </span>
       <app-budget-fit-badge [fit]="s.budgetFit" />
       <button type="button" class="btn btn-secondary" (click)="refresh()" [disabled]="refreshing()">
-        @if (refreshing()) { <span class="spinner" aria-hidden="true"></span> {{ 'plan.refreshing' | t }} } @else { {{ 'plan.refresh' | t }} }
+        @if (refreshing()) { <span class="spinner" aria-hidden="true"></span> {{ 'plan.refreshing' | t }} } @else { <app-icon name="refresh" [size]="16" /> {{ 'plan.refresh' | t }} }
       </button>
       @if (s.pricesRefreshedAtUtc) {
         <span class="small muted">{{ 'plan.refreshedAt' | t: { time: (s.pricesRefreshedAtUtc | ldate: 'd MMM HH:mm') } }}</span>
@@ -114,7 +122,7 @@
   @if (flight(); as f) {
     <section class="card">
       <div class="section-head">
-        <h2>✈ {{ 'plan.flightTitle' | t }}</h2>
+        <h2><app-icon name="plane" /> {{ 'plan.flightTitle' | t }}</h2>
         <app-verification-badge [status]="f.verification" [expired]="f.isExpired" />
       </div>
       @if (flightInfo(); as fi) {
@@ -163,7 +171,7 @@
   @if (accommodation(); as a) {
     <section class="card">
       <div class="section-head">
-        <h2>🏨 {{ 'plan.accTitle' | t }}</h2>
+        <h2><app-icon name="bed" /> {{ 'plan.accTitle' | t }}</h2>
         <app-verification-badge [status]="a.verification" [expired]="a.isExpired" />
       </div>
       <h3>{{ a.title }}</h3>
@@ -208,7 +216,7 @@
   <!-- Transfers -->
   @if (transfers().length) {
     <section class="card">
-      <h2>🚆 {{ 'plan.transfersTitle' | t }}</h2>
+      <h2><app-icon name="train" /> {{ 'plan.transfersTitle' | t }}</h2>
       @if (mapEmbedUrl(); as url) {
         <iframe class="map" [title]="'plan.mapTitle' | t" [src]="url" loading="lazy"
                 referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
@@ -280,3 +288,4 @@
     <div class="card skeleton"></div>
   </div>
 }
+</div>

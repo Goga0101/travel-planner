@@ -22,6 +22,8 @@ import { I18nService } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
 import { ErrorBannerComponent } from '../../shared/error-banner.component';
 import { ExternalLinkComponent } from '../../shared/external-link.component';
+import { IconComponent } from '../../shared/icon.component';
+import { destinationPhoto } from '../../core/destination-photos';
 import { DistancePipe, LocalDatePipe, LocalNumberPipe, MoneyPipe, StopsPipe, TimeSpanPipe } from '../../shared/pipes';
 
 /** Builds the Google Maps Embed directions URL from numbers only; returns null for invalid input. */
@@ -53,6 +55,7 @@ export function buildEmbedUrl(key: string, fromLat: number, fromLng: number, toL
     BudgetFitBadgeComponent,
     VerificationLegendComponent,
     ErrorBannerComponent,
+    IconComponent,
   ],
   templateUrl: './plan-detail.page.html',
 })
@@ -66,6 +69,7 @@ export class PlanDetailPage {
   protected readonly i18n = inject(I18nService);
 
   protected readonly plan = signal<TripPlanDetailDto | null>(null);
+  protected readonly photo = computed(() => destinationPhoto(this.plan()?.destination.code));
   protected readonly links = signal<OutboundLinkDto[]>([]);
   protected readonly error = signal<ApiError | null>(null);
   protected readonly refreshing = signal(false);

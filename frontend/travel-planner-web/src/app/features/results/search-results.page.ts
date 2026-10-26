@@ -11,6 +11,7 @@ import { TranslatePipe } from '../../core/i18n/translate.pipe';
 import { PlanSort, TripPlanSummaryDto, TripSearchDto } from '../../core/models';
 import { VerificationLegendComponent } from '../../shared/badges';
 import { ErrorBannerComponent } from '../../shared/error-banner.component';
+import { IconComponent } from '../../shared/icon.component';
 import { LocalDatePipe, MoneyPipe } from '../../shared/pipes';
 import { PlanCardComponent } from './plan-card.component';
 
@@ -19,7 +20,7 @@ const POLL_MS = 1500;
 @Component({
   selector: 'app-search-results-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [LocalDatePipe, FormsModule, RouterLink, MoneyPipe, TranslatePipe, PlanCardComponent, ErrorBannerComponent, VerificationLegendComponent],
+  imports: [LocalDatePipe, FormsModule, RouterLink, MoneyPipe, TranslatePipe, PlanCardComponent, ErrorBannerComponent, VerificationLegendComponent, IconComponent],
   templateUrl: './search-results.page.html',
 })
 export class SearchResultsPage {
@@ -132,7 +133,7 @@ export class SearchResultsPage {
     });
   }
 
-  private loadPlans(): void {
+  protected loadPlans(): void {
     this.plansLoading.set(true);
     this.plansError.set(null);
     this.api

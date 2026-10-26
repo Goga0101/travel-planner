@@ -6,15 +6,19 @@ import { I18nService } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
 import { SourceVerificationDto, TripPlanSummaryDto } from '../../core/models';
 import { BudgetFitBadgeComponent, VerificationBadgeComponent } from '../../shared/badges';
+import { destinationPhoto } from '../../core/destination-photos';
+import { IconComponent } from '../../shared/icon.component';
 import { LocalDatePipe, MinutesPipe, MoneyPipe, StopsPipe } from '../../shared/pipes';
 
 @Component({
   selector: 'app-plan-card',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [LocalDatePipe, RouterLink, MoneyPipe, MinutesPipe, StopsPipe, TranslatePipe, CategoryPipe, BudgetFitBadgeComponent, VerificationBadgeComponent],
+  imports: [LocalDatePipe, RouterLink, MoneyPipe, MinutesPipe, StopsPipe, TranslatePipe, CategoryPipe, BudgetFitBadgeComponent, VerificationBadgeComponent, IconComponent],
   template: `
     @let p = plan();
-    <article class="card plan-card" [class.plan-over]="p.budgetFit === 'OverBudget'">
+    <article class="card plan-card" [class.plan-over]="p.budgetFit === 'OverBudget'" [class.has-photo]="!!photo()">
+      @if (photo(); as src) { <img class="plan-thumb" [src]="src" alt="" loading="lazy" decoding="async" width="400" height="300" /> }
+      <div class="plan-card-main">
       <header class="plan-card-header">
         <div>
           <span class="rank" [attr.aria-label]="'card.rank' | t">#{{ p.rank }}</span>
@@ -43,7 +47,7 @@ import { LocalDatePipe, MinutesPipe, MoneyPipe, StopsPipe } from '../../shared/p
 
       <div class="plan-sections">
         <section>
-          <h4>✈ {{ 'card.flight' | t }}</h4>
+          <h4><app-icon name="plane" [size]="16" /> {{ 'card.flight' | t }}</h4>
           @if (p.flight; as f) {
             @if (f.outbound; as o) {
               <p>{{ o.from }} → {{ o.to }} · {{ o.departureLocal | ldate: 'd MMM HH:mm' }} · {{ o.durationMinutes | minutes }} · {{ o.stops | stops }}</p>
@@ -62,7 +66,7 @@ import { LocalDatePipe, MinutesPipe, MoneyPipe, StopsPipe } from '../../shared/p
         </section>
 
         <section>
-          <h4>🏨 {{ 'card.stay' | t }}</h4>
+          <h4><app-icon name="bed" [size]="16" /> {{ 'card.stay' | t }}</h4>
           @if (p.accommodation; as a) {
             <p>{{ a.name }}</p>
             @if (a.verification === 'Unavailable') {
@@ -80,7 +84,7 @@ import { LocalDatePipe, MinutesPipe, MoneyPipe, StopsPipe } from '../../shared/p
         </section>
 
         <section>
-          <h4>🚆 {{ 'card.transfer' | t }}</h4>
+          <h4><app-icon name="train" [size]="16" /> {{ 'card.transfer' | t }}</h4>
           @if (p.transfer; as tr) {
             <p>{{ tr.selectedOption ?? ('card.seeOptions' | t) }}</p>
             <p class="small">
@@ -110,15 +114,17 @@ import { LocalDatePipe, MinutesPipe, MoneyPipe, StopsPipe } from '../../shared/p
             </span>
           }
         </div>
-        <a class="btn btn-primary" [routerLink]="i18n.path('plans', p.id)">{{ 'card.viewDetails' | t }}</a>
+        <a class="btn btn-primary" [routerLink]="i18n.path('plans', p.id)">{{ 'card.viewDetails' | t }} <app-icon name="arrowRight" [size]="16" /></a>
       </footer>
       <p class="small muted">{{ 'card.score' | t: { score: p.score } }} @if (scoreText()) { ({{ scoreText() }}) }</p>
+      </div>
     </article>
   `,
 })
 export class PlanCardComponent {
   protected readonly i18n = inject(I18nService);
   readonly plan = input.required<TripPlanSummaryDto>();
+  protected readonly photo = computed(() => destinationPhoto(this.plan().destination.code));
 
   protected readonly scoreText = computed(() =>
     Object.entries(this.plan().scoreBreakdown)

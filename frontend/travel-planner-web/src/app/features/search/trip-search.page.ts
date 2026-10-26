@@ -1,3 +1,4 @@
+import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, Component, DestroyRef, computed, inject, signal } from '@angular/core';
 import { takeUntilDestroyed, toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
@@ -11,7 +12,9 @@ import { switchMap } from 'rxjs';
 import { TranslationKey } from '../../core/i18n/en';
 import { I18nService, TranslateParams } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
+import { CTA_PHOTO, HERO_PHOTO, destinationPhoto } from '../../core/destination-photos';
 import { ErrorBannerComponent } from '../../shared/error-banner.component';
+import { IconComponent, IconName } from '../../shared/icon.component';
 import { DATE_ERROR_KEYS, manualDestinationsValidator, tripDatesValidator } from './trip-search.validators';
 
 function defaultDates(today: Date): { from: string; to: string } {
@@ -26,7 +29,7 @@ function defaultDates(today: Date): { from: string; to: string } {
 @Component({
   selector: 'app-trip-search-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ReactiveFormsModule, ErrorBannerComponent, TranslatePipe],
+  imports: [ReactiveFormsModule, ErrorBannerComponent, TranslatePipe, IconComponent],
   templateUrl: './trip-search.page.html',
 })
 export class TripSearchPage {
@@ -34,6 +37,7 @@ export class TripSearchPage {
   private readonly router = inject(Router);
   private readonly fb = inject(FormBuilder);
   private readonly destroyRef = inject(DestroyRef);
+  private readonly document = inject(DOCUMENT);
   protected readonly configService = inject(ClientConfigService);
   protected readonly i18n = inject(I18nService);
 
@@ -46,6 +50,27 @@ export class TripSearchPage {
   protected readonly submitted = signal(false);
   protected readonly destinationFilter = signal('');
   protected readonly departureTimes: DepartureTimePreference[] = ['Any', 'Morning', 'Afternoon', 'Evening', 'Night'];
+  protected readonly showAll = signal(false);
+  protected readonly announcement = signal('');
+
+  protected readonly heroPhoto = HERO_PHOTO;
+  protected readonly ctaPhoto = CTA_PHOTO;
+  protected readonly photo = destinationPhoto;
+  protected readonly featuredCode = 'lisbon';
+  protected readonly featuredDays = 5;
+  protected readonly featuredHighlights: TranslationKey[] = ['featured.h1', 'featured.h2', 'featured.h3'];
+  protected readonly benefits: { key: string; icon: IconName; title: TranslationKey; text: TranslationKey }[] = [
+    { key: 'compare', icon: 'scale', title: 'benefit.compare.title', text: 'benefit.compare.text' },
+    { key: 'budget', icon: 'wallet', title: 'benefit.budget.title', text: 'benefit.budget.text' },
+    { key: 'discover', icon: 'compass', title: 'benefit.discover.title', text: 'benefit.discover.text' },
+    { key: 'flexible', icon: 'calendar', title: 'benefit.flexible.title', text: 'benefit.flexible.text' },
+  ];
+  protected readonly steps: { icon: IconName; title: TranslationKey; text: TranslationKey }[] = [
+    { icon: 'sliders', title: 'step.1.title', text: 'step.1.text' },
+    { icon: 'sparkles', title: 'step.2.title', text: 'step.2.text' },
+    { icon: 'scale', title: 'step.3.title', text: 'step.3.text' },
+    { icon: 'external', title: 'step.4.title', text: 'step.4.text' },
+  ];
 
   private readonly dates = defaultDates(new Date());
   private readonly todayIso = () => toIsoDate(new Date());
@@ -90,6 +115,18 @@ export class TripSearchPage {
       .filter((d) => !ids.has(d.id))
       .filter((d) => !term || d.city.toLowerCase().includes(term) || d.country.toLowerCase().includes(term) || d.airportCodes.some((c) => c.toLowerCase() === term));
   });
+  /** Catalog destinations with a photo, most popular first; the featured city is shown separately. */
+  private readonly gallery = computed(() =>
+    [...this.destinations()].filter((d) => d.code !== this.featuredCode && destinationPhoto(d.code)).sort((a, b) => b.popularity - a.popularity),
+  );
+  protected readonly popular = computed(() => this.gallery().slice(0, 4));
+  protected readonly moreCount = computed(() => Math.max(0, this.gallery().length - 4));
+  protected readonly more = computed(() => this.gallery().slice(4, this.showAll() ? undefined : 7));
+  protected readonly featured = computed(() => this.destinations().find((d) => d.code === this.featuredCode));
+  protected readonly originCity = computed(() => {
+    const iata = this.formValue().originAirportIata;
+    return this.airports().find((a) => a.iataCode === iata)?.city ?? iata;
+  });
   protected readonly currencies = computed(() => this.configService.config()?.supportedCurrencies ?? ['EUR']);
   protected readonly maxManual = computed(() => this.configService.config()?.maxManualDestinations ?? 10);
 
@@ -121,6 +158,32 @@ export class TripSearchPage {
 
   protected removeDestination(id: string): void {
     this.form.controls.destinationIds.setValue(this.form.controls.destinationIds.value.filter((x) => x !== id));
+  }
+
+  /** Destination cards preselect that city (manual mode) and bring the search panel into view. */
+  protected pickDestination(d: DestinationSummaryDto): void {
+    this.form.controls.destinationMode.setValue('Manual');
+    this.form.controls.destinationIds.setValue([d.id]);
+    this.announcement.set(this.i18n.t('search.cityPicked', { city: d.city }));
+    this.startPlanning('duration');
+  }
+
+  protected pickFeatured(): void {
+    this.form.controls.durationDays.setValue(this.featuredDays);
+    const d = this.featured();
+    if (d) this.pickDestination(d);
+    else this.startPlanning();
+  }
+
+  protected showAllDestinations(event: Event): void {
+    event.preventDefault();
+    this.showAll.set(true);
+    this.document.getElementById('more')?.scrollIntoView({ block: 'start' });
+  }
+
+  protected startPlanning(focusId = 'origin'): void {
+    this.document.getElementById('trip-search')?.scrollIntoView({ block: 'start' });
+    this.document.getElementById(focusId)?.focus({ preventScroll: true });
   }
 
   protected showError(path: string): boolean {

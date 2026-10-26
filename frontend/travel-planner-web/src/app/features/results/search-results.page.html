@@ -1,11 +1,13 @@
-<p class="breadcrumb"><a [routerLink]="i18n.path()">{{ 'results.back' | t }}</a></p>
+<div class="container page">
+<p class="breadcrumb"><a [routerLink]="i18n.path()"><app-icon name="arrowLeft" [size]="16" /> {{ 'results.back' | t }}</a></p>
 
 <app-error-banner [error]="loadError()" />
 
 @if (search(); as s) {
-  <section class="card search-summary">
+  <section class="page-head search-summary">
     <div>
-      <h1>
+      <p class="eyebrow">{{ 'results.eyebrow' | t }}</p>
+      <h1 class="page-title">
         @if (s.criteria.destinationMode === 'Automatic') { {{ 'results.tripsFrom' | t: { origin: s.criteria.originAirportIata } }} }
         @else { {{ s.criteria.originAirportIata }} → {{ destinationNames() }} }
       </h1>
@@ -66,7 +68,7 @@
         <h2>{{ 'results.bestTitle' | t }}</h2>
       }
 
-      <div class="toolbar">
+      <div class="toolbar card">
         <div class="field inline">
           <label for="sort">{{ 'results.sortBy' | t }}</label>
           <select id="sort" [ngModel]="sort()" (ngModelChange)="changeSort($event)">
@@ -90,7 +92,9 @@
       </div>
 
       <app-verification-legend />
-      <app-error-banner [error]="plansError()" />
+      <app-error-banner [error]="plansError()">
+        <button type="button" class="btn btn-sm alert-action" (click)="loadPlans()">{{ 'common.retry' | t }}</button>
+      </app-error-banner>
 
       @if (plansLoading() && plans().length === 0) {
         <div class="skeleton-list" aria-busy="true">
@@ -102,6 +106,7 @@
             <app-plan-card [plan]="p" />
           } @empty {
             <div class="card empty-state">
+              <span class="icon-badge icon-badge-lg"><app-icon name="compass" [size]="28" /></span>
               @if (plans().length === 0) {
                 <h3>{{ 'results.noTrips' | t }}</h3>
                 <p class="muted">{{ 'results.noTripsText' | t }}</p>
@@ -121,3 +126,4 @@
     @if (transientError()) { <p class="small text-warn">{{ 'results.connectionProblem' | t }}</p> }
   </section>
 }
+</div>

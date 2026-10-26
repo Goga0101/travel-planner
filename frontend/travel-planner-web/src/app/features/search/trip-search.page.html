@@ -1,160 +1,317 @@
-<section class="hero">
-  <h1>{{ 'search.heroTitle' | t }}</h1>
-  <p class="muted">{{ 'search.heroText' | t }}</p>
+<section class="hero" aria-labelledby="hero-title">
+  <img class="hero-img" [src]="heroPhoto" alt="" fetchpriority="high" decoding="async" />
+  <div class="hero-inner container">
+    <p class="eyebrow">{{ 'home.eyebrow' | t }}</p>
+    <h1 id="hero-title" class="display">{{ 'home.title' | t }}</h1>
+    <p class="lead">{{ 'home.lead' | t }}</p>
+  </div>
 </section>
 
-<app-error-banner [error]="catalogError()" />
+<div class="container search-wrap" id="trip-search">
+  <app-error-banner [error]="catalogError()" />
 
-<form class="card search-form" [formGroup]="form" (ngSubmit)="submit()" novalidate>
-  <div class="grid grid-2">
-    <div class="field">
-      <label for="origin">{{ 'search.origin' | t }}</label>
-      <select id="origin" formControlName="originAirportIata" [attr.aria-invalid]="showError('originAirportIata')">
-        @if (airports().length === 0) { <option value="TBS">TBS</option> }
-        @for (a of airports(); track a.id) {
-          <option [value]="a.iataCode">{{ a.city }} – {{ a.name }} ({{ a.iataCode }})</option>
-        }
-      </select>
-      @for (msg of serverErrors('originAirportIata'); track msg) { <p class="field-error">{{ msg }}</p> }
-    </div>
+  <form class="search-panel" [formGroup]="form" (ngSubmit)="submit()" novalidate [attr.aria-label]="'search.panelLabel' | t">
+    <div class="sp-grid">
+      <div class="sp-cell">
+        <app-icon name="pin" class="sp-icon" />
+        <div class="field">
+          <label for="origin">{{ 'search.origin' | t }}</label>
+          <select id="origin" formControlName="originAirportIata" [attr.aria-invalid]="showError('originAirportIata')">
+            @if (airports().length === 0) { <option value="TBS">TBS</option> }
+            @for (a of airports(); track a.id) {
+              <option [value]="a.iataCode">{{ a.city }} ({{ a.iataCode }})</option>
+            }
+          </select>
+          @for (msg of serverErrors('originAirportIata'); track msg) { <p class="field-error">{{ msg }}</p> }
+        </div>
+      </div>
 
-    <div class="field">
-      <span class="label" id="mode-label">{{ 'search.destinations' | t }}</span>
-      <div class="segmented" role="radiogroup" aria-labelledby="mode-label">
-        <button type="button" role="radio" [attr.aria-checked]="!isManual()" [class.active]="!isManual()" (click)="setMode('Automatic')">
-          {{ 'search.modeAuto' | t }}
-        </button>
-        <button type="button" role="radio" [attr.aria-checked]="isManual()" [class.active]="isManual()" (click)="setMode('Manual')">
-          {{ 'search.modeManual' | t }}
+      <div class="sp-cell">
+        <app-icon name="compass" class="sp-icon" />
+        <div class="field">
+          <span class="label" id="mode-label">{{ 'search.destinations' | t }}</span>
+          <div class="segmented" role="radiogroup" aria-labelledby="mode-label">
+            <button type="button" role="radio" [attr.aria-checked]="!isManual()" [class.active]="!isManual()" (click)="setMode('Automatic')">
+              {{ 'search.modeAuto' | t }}
+            </button>
+            <button type="button" role="radio" [attr.aria-checked]="isManual()" [class.active]="isManual()" (click)="setMode('Manual')">
+              {{ 'search.modeManual' | t }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <div class="sp-cell">
+        <app-icon name="calendar" class="sp-icon" />
+        <div class="field">
+          <label for="from">{{ 'search.earliestDeparture' | t }}</label>
+          <input id="from" type="date" formControlName="earliestDeparture" [attr.lang]="i18n.lang()" />
+          @for (msg of serverErrors('earliestDeparture'); track msg) { <p class="field-error">{{ msg }}</p> }
+        </div>
+      </div>
+
+      <div class="sp-cell">
+        <app-icon name="calendar" class="sp-icon" />
+        <div class="field">
+          <label for="to">{{ 'search.latestReturn' | t }}</label>
+          <input id="to" type="date" formControlName="latestReturn" [attr.lang]="i18n.lang()" />
+          @for (msg of serverErrors('latestReturn'); track msg) { <p class="field-error">{{ msg }}</p> }
+        </div>
+      </div>
+
+      <div class="sp-cell">
+        <app-icon name="clock" class="sp-icon" />
+        <div class="field">
+          <label for="duration">{{ 'search.duration' | t }}</label>
+          <input id="duration" type="number" min="2" max="30" formControlName="durationDays" aria-describedby="duration-hint" />
+          <p class="hint" id="duration-hint">
+            {{ 'search.durationHint' | t: { days: ('unit.days' | t: { count: formValue().durationDays }), nights: ('unit.nights' | t: { count: nights() }) } }}
+          </p>
+          @if (showError('durationDays')) { <p class="field-error">{{ 'search.durationError' | t }}</p> }
+          @for (msg of serverErrors('durationDays'); track msg) { <p class="field-error">{{ msg }}</p> }
+        </div>
+      </div>
+
+      <div class="sp-cell">
+        <app-icon name="users" class="sp-icon" />
+        <div class="field">
+          <label for="travelers">{{ 'search.travelers' | t }}</label>
+          <input id="travelers" type="number" min="1" max="9" formControlName="travelers" />
+          @if (showError('travelers')) { <p class="field-error">{{ 'search.travelersError' | t }}</p> }
+          @for (msg of serverErrors('travelers'); track msg) { <p class="field-error">{{ msg }}</p> }
+        </div>
+      </div>
+
+      <div class="sp-cell">
+        <app-icon name="wallet" class="sp-icon" />
+        <div class="field">
+          <label for="budget">{{ 'search.budget' | t }}</label>
+          <div class="budget-row">
+            <input id="budget" type="number" min="1" step="1" formControlName="budgetAmount" inputmode="decimal" />
+            <select id="currency" formControlName="budgetCurrency" [attr.aria-label]="'search.currency' | t">
+              @for (c of currencies(); track c) { <option [value]="c">{{ c }}</option> }
+            </select>
+          </div>
+          @if (showError('budgetAmount')) { <p class="field-error">{{ 'search.budgetError' | t }}</p> }
+          @for (msg of serverErrors('budgetAmount'); track msg) { <p class="field-error">{{ msg }}</p> }
+          @for (msg of serverErrors('budgetCurrency'); track msg) { <p class="field-error">{{ msg }}</p> }
+        </div>
+      </div>
+
+      <div class="sp-cell sp-submit">
+        <button type="submit" class="btn btn-primary btn-lg" [disabled]="submitting()">
+          @if (submitting()) {
+            <span class="spinner" aria-hidden="true"></span> {{ 'search.submitting' | t }}
+          } @else {
+            {{ 'search.submit' | t }} <app-icon name="arrowRight" [size]="18" />
+          }
         </button>
       </div>
+    </div>
+
+    <div class="sp-extra">
       <p class="hint">
         @if (isManual()) { {{ 'search.hintManual' | t: { max: maxManual() } }} } @else { {{ 'search.hintAuto' | t }} }
       </p>
+
+      @if (isManual()) {
+        <div class="field destination-picker">
+          <label for="dest-search">{{ 'search.searchCities' | t }}</label>
+          <div class="chips" aria-live="polite">
+            @for (d of selectedDestinations(); track d.id) {
+              <span class="chip">
+                {{ d.city }}, {{ d.countryCode }}
+                <button type="button" class="chip-remove" (click)="removeDestination(d.id)" [attr.aria-label]="'search.remove' | t: { city: d.city }">
+                  <app-icon name="x" [size]="14" />
+                </button>
+              </span>
+            } @empty {
+              <span class="muted small">{{ 'search.noCitiesSelected' | t }}</span>
+            }
+          </div>
+          <input id="dest-search" type="search" [placeholder]="'search.destPlaceholder' | t" autocomplete="off"
+                 [value]="destinationFilter()" (input)="destinationFilter.set($any($event.target).value)" />
+          <ul class="option-list" role="listbox" [attr.aria-label]="'search.availableDestinations' | t">
+            @for (d of filteredDestinations(); track d.id) {
+              <li>
+                <button type="button" role="option" aria-selected="false" (click)="addDestination(d.id)"
+                        [disabled]="selectedIds().length >= maxManual()">
+                  <strong>{{ d.city }}</strong> <span class="muted">{{ d.country }} · {{ d.airportCodes.join(', ') }}</span>
+                </button>
+              </li>
+            } @empty {
+              <li class="muted small">{{ 'search.noMatchingDestinations' | t }}</li>
+            }
+          </ul>
+          @for (msg of serverErrors('destinationIds'); track msg) { <p class="field-error">{{ msg }}</p> }
+        </div>
+      }
+
+      <details class="preferences" formGroupName="preferences">
+        <summary><app-icon name="sliders" [size]="18" /> {{ 'search.preferences' | t }}</summary>
+        <div class="grid grid-3">
+          <div class="field">
+            <label for="stars">{{ 'search.minStars' | t }}</label>
+            <select id="stars" formControlName="minAccommodationStars">
+              <option [ngValue]="null">{{ 'common.any' | t }}</option>
+              @for (s of [1, 2, 3, 4, 5]; track s) { <option [ngValue]="s">{{ 'search.starsAndUp' | t: { stars: s } }}</option> }
+            </select>
+          </div>
+          <div class="field">
+            <label for="maxStops">{{ 'search.maxStops' | t }}</label>
+            <select id="maxStops" formControlName="maxStops">
+              <option [ngValue]="null">{{ 'common.any' | t }}</option>
+              <option [ngValue]="0">{{ 'search.directOnly' | t }}</option>
+              <option [ngValue]="1">{{ 'search.upToStops' | t: { count: 1 } }}</option>
+              <option [ngValue]="2">{{ 'search.upToStops' | t: { count: 2 } }}</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="maxHours">{{ 'search.maxHours' | t }}</label>
+            <input id="maxHours" type="number" min="1" max="48" formControlName="maxFlightDurationHours" [placeholder]="'common.any' | t" />
+            @if (showError('preferences.maxFlightDurationHours')) { <p class="field-error">{{ 'search.maxHoursError' | t }}</p> }
+          </div>
+          <div class="field">
+            <label for="depTime">{{ 'search.depTime' | t }}</label>
+            <select id="depTime" formControlName="preferredDepartureTime">
+              @for (d of departureTimes; track d) { <option [value]="d">{{ departureTimeKey(d) | t }}</option> }
+            </select>
+          </div>
+          <label class="checkbox"><input type="checkbox" formControlName="includeCheckedBaggage" /> {{ 'search.checkedBag' | t }}</label>
+          <label class="checkbox"><input type="checkbox" formControlName="includeDailyExpenseEstimates" /> {{ 'search.dailyEstimates' | t }}</label>
+        </div>
+      </details>
+
+      @if (groupErrors().length) {
+        <ul class="form-errors" role="alert">
+          @for (msg of groupErrors(); track msg) { <li>{{ msg }}</li> }
+        </ul>
+      }
+
+      <app-error-banner [error]="submitError()" />
+      <p class="visually-hidden" aria-live="polite">{{ announcement() }}</p>
     </div>
+  </form>
+</div>
+
+<section class="container section benefits" id="about" aria-labelledby="about-title">
+  <div class="about-intro">
+    <p class="eyebrow">{{ 'home.aboutEyebrow' | t }}</p>
+    <h2 id="about-title" class="section-title">{{ 'home.aboutTitle' | t }}</h2>
+    <p class="muted">{{ 'home.aboutText' | t }}</p>
+  </div>
+  <ul class="benefit-list">
+    @for (b of benefits; track b.key) {
+      <li class="benefit">
+        <span class="icon-badge"><app-icon [name]="b.icon" [size]="22" /></span>
+        <div>
+          <h3>{{ b.title | t }}</h3>
+          <p class="muted small">{{ b.text | t }}</p>
+        </div>
+      </li>
+    }
+  </ul>
+</section>
+
+<section class="container section" id="destinations" aria-labelledby="popular-title">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">{{ 'home.popularEyebrow' | t }}</p>
+      <h2 id="popular-title" class="section-title">{{ 'home.popularTitle' | t }}</h2>
+    </div>
+    <a class="text-link" href="#more" (click)="showAllDestinations($event)">{{ 'home.viewAll' | t }} <app-icon name="arrowRight" [size]="16" /></a>
+  </div>
+  <div class="dest-grid">
+    @for (d of popular(); track d.id) {
+      <button type="button" class="dest-card" (click)="pickDestination(d)" [attr.aria-label]="'dest.plan' | t: { city: d.city }">
+        <img [src]="photo(d.code)" alt="" loading="lazy" decoding="async" width="600" height="750" />
+        <span class="dest-card-body">
+          <span class="dest-name">{{ d.city }}<span class="dest-country">, {{ d.country }}</span></span>
+          <span class="dest-meta"><app-icon name="plane" [size]="14" /> {{ d.airportCodes.join(' · ') }}</span>
+        </span>
+        <span class="dest-go"><app-icon name="arrowRight" [size]="16" /></span>
+      </button>
+    } @empty {
+      @for (i of [1, 2, 3, 4]; track i) { <div class="dest-card skeleton" aria-hidden="true"></div> }
+    }
+  </div>
+</section>
+
+<section class="container section how-featured" id="how">
+  <div class="how" aria-labelledby="how-title">
+    <p class="eyebrow">{{ 'home.howEyebrow' | t }}</p>
+    <h2 id="how-title" class="section-title">{{ 'home.howTitle' | t }}</h2>
+    <ol class="steps">
+      @for (s of steps; track s.title; let i = $index) {
+        <li class="step">
+          <span class="step-num" aria-hidden="true">{{ i + 1 }}</span>
+          <span class="icon-badge"><app-icon [name]="s.icon" [size]="20" /></span>
+          <div>
+            <h3>{{ s.title | t }}</h3>
+            <p class="muted small">{{ s.text | t }}</p>
+          </div>
+        </li>
+      }
+    </ol>
   </div>
 
-  @if (isManual()) {
-    <div class="field destination-picker">
-      <label for="dest-search">{{ 'search.searchCities' | t }}</label>
-      <div class="chips" aria-live="polite">
-        @for (d of selectedDestinations(); track d.id) {
-          <span class="chip">
-            {{ d.city }}, {{ d.countryCode }}
-            <button type="button" class="chip-remove" (click)="removeDestination(d.id)" [attr.aria-label]="'search.remove' | t: { city: d.city }">×</button>
-          </span>
-        } @empty {
-          <span class="muted small">{{ 'search.noCitiesSelected' | t }}</span>
-        }
-      </div>
-      <input id="dest-search" type="search" [placeholder]="'search.destPlaceholder' | t" autocomplete="off"
-             [value]="destinationFilter()" (input)="destinationFilter.set($any($event.target).value)" />
-      <ul class="option-list" role="listbox" [attr.aria-label]="'search.availableDestinations' | t">
-        @for (d of filteredDestinations(); track d.id) {
-          <li>
-            <button type="button" role="option" aria-selected="false" (click)="addDestination(d.id)"
-                    [disabled]="selectedIds().length >= maxManual()">
-              <strong>{{ d.city }}</strong> <span class="muted">{{ d.country }} · {{ d.airportCodes.join(', ') }}</span>
-            </button>
-          </li>
-        } @empty {
-          <li class="muted small">{{ 'search.noMatchingDestinations' | t }}</li>
-        }
+  <article class="featured" aria-labelledby="featured-title">
+    <img [src]="photo(featuredCode)" alt="" loading="lazy" decoding="async" width="1200" height="800" />
+    <div class="featured-body">
+      <span class="pill">{{ 'featured.badge' | t }}</span>
+      <h2 id="featured-title" class="featured-title">{{ featured()?.city ?? ('featured.city' | t) }}, {{ featured()?.country ?? ('featured.country' | t) }}</h2>
+      <ul class="featured-meta">
+        <li><app-icon name="clock" [size]="16" /> {{ 'featured.duration' | t: { days: ('unit.days' | t: { count: featuredDays }) } }}</li>
+        <li><app-icon name="pin" [size]="16" /> {{ 'featured.from' | t: { origin: originCity() } }}</li>
       </ul>
-      @for (msg of serverErrors('destinationIds'); track msg) { <p class="field-error">{{ msg }}</p> }
+      <p>{{ 'featured.text' | t }}</p>
+      <ul class="featured-highlights">
+        @for (h of featuredHighlights; track h) { <li><app-icon name="check" [size]="16" /> {{ h | t }}</li> }
+      </ul>
+      <button type="button" class="btn btn-light" (click)="pickFeatured()">{{ 'featured.cta' | t }} <app-icon name="arrowRight" [size]="16" /></button>
     </div>
-  }
+  </article>
+</section>
 
-  <div class="grid grid-3">
-    <div class="field">
-      <label for="from">{{ 'search.earliestDeparture' | t }}</label>
-      <input id="from" type="date" formControlName="earliestDeparture" [attr.lang]="i18n.lang()" />
-      @for (msg of serverErrors('earliestDeparture'); track msg) { <p class="field-error">{{ msg }}</p> }
+<section class="container section" id="more" aria-labelledby="more-title">
+  <div class="section-heading">
+    <div>
+      <p class="eyebrow">{{ 'home.moreEyebrow' | t }}</p>
+      <h2 id="more-title" class="section-title">{{ 'home.moreTitle' | t }}</h2>
     </div>
-    <div class="field">
-      <label for="to">{{ 'search.latestReturn' | t }}</label>
-      <input id="to" type="date" formControlName="latestReturn" [attr.lang]="i18n.lang()" />
-      @for (msg of serverErrors('latestReturn'); track msg) { <p class="field-error">{{ msg }}</p> }
-    </div>
-    <div class="field">
-      <label for="duration">{{ 'search.duration' | t }}</label>
-      <input id="duration" type="number" min="2" max="30" formControlName="durationDays" />
-      <p class="hint">
-        {{ 'search.durationHint' | t: { days: ('unit.days' | t: { count: formValue().durationDays }), nights: ('unit.nights' | t: { count: nights() }) } }}
-      </p>
-      @if (showError('durationDays')) { <p class="field-error">{{ 'search.durationError' | t }}</p> }
-      @for (msg of serverErrors('durationDays'); track msg) { <p class="field-error">{{ msg }}</p> }
-    </div>
+    @if (moreCount() > 4) {
+      <button type="button" class="text-link" (click)="showAll.set(!showAll())" [attr.aria-expanded]="showAll()">
+        {{ (showAll() ? 'home.showLess' : 'home.viewAllCount') | t: { count: moreCount() } }} <app-icon name="arrowRight" [size]="16" />
+      </button>
+    }
   </div>
-
-  <div class="grid grid-3">
-    <div class="field">
-      <label for="travelers">{{ 'search.travelers' | t }}</label>
-      <input id="travelers" type="number" min="1" max="9" formControlName="travelers" />
-      @if (showError('travelers')) { <p class="field-error">{{ 'search.travelersError' | t }}</p> }
-      @for (msg of serverErrors('travelers'); track msg) { <p class="field-error">{{ msg }}</p> }
-    </div>
-    <div class="field">
-      <label for="budget">{{ 'search.budget' | t }}</label>
-      <input id="budget" type="number" min="1" step="1" formControlName="budgetAmount" inputmode="decimal" />
-      @if (showError('budgetAmount')) { <p class="field-error">{{ 'search.budgetError' | t }}</p> }
-      @for (msg of serverErrors('budgetAmount'); track msg) { <p class="field-error">{{ msg }}</p> }
-    </div>
-    <div class="field">
-      <label for="currency">{{ 'search.currency' | t }}</label>
-      <select id="currency" formControlName="budgetCurrency">
-        @for (c of currencies(); track c) { <option [value]="c">{{ c }}</option> }
-      </select>
-      @for (msg of serverErrors('budgetCurrency'); track msg) { <p class="field-error">{{ msg }}</p> }
-    </div>
+  <div class="more-grid">
+    @for (d of more(); track d.id) {
+      <button type="button" class="mini-card" (click)="pickDestination(d)" [attr.aria-label]="'dest.plan' | t: { city: d.city }">
+        <img [src]="photo(d.code)" alt="" loading="lazy" decoding="async" width="600" height="400" />
+        <span class="mini-card-body">
+          <span class="mini-name">{{ d.city }}, {{ d.country }}</span>
+          <span class="muted small"><app-icon name="plane" [size]="14" /> {{ d.airportCodes.join(' · ') }}</span>
+        </span>
+      </button>
+    }
+    @if (!showAll()) {
+      <div class="cta-card">
+        <img [src]="ctaPhoto" alt="" loading="lazy" decoding="async" width="600" height="400" />
+        <div class="cta-card-body">
+          <p class="eyebrow eyebrow-light">{{ 'home.ctaCardEyebrow' | t }}</p>
+          <p class="cta-card-title">{{ 'home.ctaCardTitle' | t }}</p>
+          <button type="button" class="btn btn-light btn-sm" (click)="startPlanning()">{{ 'home.ctaCardBtn' | t }} <app-icon name="arrowRight" [size]="16" /></button>
+        </div>
+      </div>
+    }
   </div>
+</section>
 
-  <details class="preferences" formGroupName="preferences">
-    <summary>{{ 'search.preferences' | t }}</summary>
-    <div class="grid grid-3">
-      <div class="field">
-        <label for="stars">{{ 'search.minStars' | t }}</label>
-        <select id="stars" formControlName="minAccommodationStars">
-          <option [ngValue]="null">{{ 'common.any' | t }}</option>
-          @for (s of [1, 2, 3, 4, 5]; track s) { <option [ngValue]="s">{{ 'search.starsAndUp' | t: { stars: s } }}</option> }
-        </select>
-      </div>
-      <div class="field">
-        <label for="maxStops">{{ 'search.maxStops' | t }}</label>
-        <select id="maxStops" formControlName="maxStops">
-          <option [ngValue]="null">{{ 'common.any' | t }}</option>
-          <option [ngValue]="0">{{ 'search.directOnly' | t }}</option>
-          <option [ngValue]="1">{{ 'search.upToStops' | t: { count: 1 } }}</option>
-          <option [ngValue]="2">{{ 'search.upToStops' | t: { count: 2 } }}</option>
-        </select>
-      </div>
-      <div class="field">
-        <label for="maxHours">{{ 'search.maxHours' | t }}</label>
-        <input id="maxHours" type="number" min="1" max="48" formControlName="maxFlightDurationHours" [placeholder]="'common.any' | t" />
-        @if (showError('preferences.maxFlightDurationHours')) { <p class="field-error">{{ 'search.maxHoursError' | t }}</p> }
-      </div>
-      <div class="field">
-        <label for="depTime">{{ 'search.depTime' | t }}</label>
-        <select id="depTime" formControlName="preferredDepartureTime">
-          @for (d of departureTimes; track d) { <option [value]="d">{{ departureTimeKey(d) | t }}</option> }
-        </select>
-      </div>
-      <label class="checkbox"><input type="checkbox" formControlName="includeCheckedBaggage" /> {{ 'search.checkedBag' | t }}</label>
-      <label class="checkbox"><input type="checkbox" formControlName="includeDailyExpenseEstimates" /> {{ 'search.dailyEstimates' | t }}</label>
-    </div>
-  </details>
-
-  @if (groupErrors().length) {
-    <ul class="form-errors" role="alert">
-      @for (msg of groupErrors(); track msg) { <li>{{ msg }}</li> }
-    </ul>
-  }
-
-  <app-error-banner [error]="submitError()" />
-
-  <div class="actions">
-    <button type="submit" class="btn btn-primary btn-lg" [disabled]="submitting()">
-      @if (submitting()) { <span class="spinner" aria-hidden="true"></span> {{ 'search.submitting' | t }} } @else { {{ 'search.submit' | t }} }
-    </button>
+<section class="container section">
+  <div class="final-cta">
+    <h2 class="section-title">{{ 'home.finalTitle' | t }}</h2>
+    <p>{{ 'home.finalText' | t }}</p>
+    <button type="button" class="btn btn-primary btn-lg" (click)="startPlanning()">{{ 'home.finalBtn' | t }} <app-icon name="arrowRight" [size]="18" /></button>
   </div>
-</form>
+</section>

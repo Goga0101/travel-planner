@@ -16,7 +16,7 @@ export const appConfig: ApplicationConfig = {
     provideAppInitializer(() => loadRuntimeConfig()),
     // Order matters: Accept-Language matches relative '/api/' URLs before they are made absolute.
     provideHttpClient(withFetch(), withInterceptors([acceptLanguageInterceptor, apiBaseUrlInterceptor])),
-    provideRouter(routes, withComponentInputBinding(), withInMemoryScrolling({ scrollPositionRestoration: 'top' })),
+    provideRouter(routes, withComponentInputBinding(), withInMemoryScrolling({ scrollPositionRestoration: 'top', anchorScrolling: 'enabled' })),
     { provide: TitleStrategy, useClass: I18nTitleStrategy },
   ],
 };
