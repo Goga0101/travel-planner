@@ -33,4 +33,14 @@ public sealed class TripPlansController(ISender sender) : ControllerBase
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
     public Task<IReadOnlyList<OutboundLinkDto>> GetOutboundLinks(Guid id, CancellationToken cancellationToken) =>
         sender.Send(new GetOutboundLinksQuery(id), cancellationToken);
+
+    /// <summary>
+    /// Hotels near the arrival airport and the city centre, public-transport lines serving the airport and local taxis
+    /// (OpenStreetMap snapshot), with Booking.com, Google Maps and Uber links pre-filled from the plan.
+    /// </summary>
+    [HttpGet("{id:guid}/nearby")]
+    [ProducesResponseType<NearbyPlacesDto>(StatusCodes.Status200OK)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
+    public Task<NearbyPlacesDto> GetNearby(Guid id, CancellationToken cancellationToken) =>
+        sender.Send(new GetNearbyPlacesQuery(id), cancellationToken);
 }

@@ -43,6 +43,27 @@
     </div>
   </section>
 
+  <div class="plan-toolbar no-print">
+    <nav class="plan-subnav" [attr.aria-label]="'plan.sections' | t">
+      <a [routerLink]="[]" fragment="costs">{{ 'plan.navCosts' | t }}</a>
+      @if (flight()) { <a [routerLink]="[]" fragment="flight">{{ 'plan.flightTitle' | t }}</a> }
+      <a [routerLink]="[]" fragment="stay">{{ 'nearby.stayTitle' | t }}</a>
+      <a [routerLink]="[]" fragment="getting-around">{{ 'plan.navTransport' | t }}</a>
+    </nav>
+    <div class="plan-actions">
+      <button type="button" class="btn btn-sm" [class.is-saved]="isSaved()" [attr.aria-pressed]="isSaved()" (click)="toggleSaved()">
+        <app-icon name="heart" [size]="16" /> {{ (isSaved() ? 'plan.saved' : 'plan.save') | t }}
+      </button>
+      <button type="button" class="btn btn-sm" (click)="share()"><app-icon name="share" [size]="16" /> {{ 'plan.share' | t }}</button>
+      @if (flightInfo()) {
+        <button type="button" class="btn btn-sm" (click)="addToCalendar()"><app-icon name="calendarPlus" [size]="16" /> {{ 'plan.calendar' | t }}</button>
+      }
+      <button type="button" class="btn btn-sm" (click)="print()"><app-icon name="printer" [size]="16" /> {{ 'plan.print' | t }}</button>
+    </div>
+    <p class="visually-hidden" aria-live="polite">{{ actionStatus() }}</p>
+    @if (actionStatus()) { <p class="small action-status" aria-hidden="true"><app-icon name="check" [size]="14" /> {{ actionStatus() }}</p> }
+  </div>
+
   <app-error-banner [error]="refreshError()" />
 
   @if (s.hasExpiredItems) {
@@ -59,8 +80,10 @@
     </div>
   }
 
+  <app-weather [latitude]="p.destination.latitude" [longitude]="p.destination.longitude" [start]="s.departureDate" [end]="s.returnDate" />
+
   <!-- Cost breakdown -->
-  <section class="card">
+  <section class="card" id="costs">
     <h2>{{ 'plan.costBreakdown' | t }}</h2>
     <div class="breakdown-categories">
       @for (c of p.costBreakdown; track c.category) {
@@ -120,7 +143,7 @@
 
   <!-- Flight -->
   @if (flight(); as f) {
-    <section class="card">
+    <section class="card" id="flight">
       <div class="section-head">
         <h2><app-icon name="plane" /> {{ 'plan.flightTitle' | t }}</h2>
         <app-verification-badge [status]="f.verification" [expired]="f.isExpired" />
@@ -212,6 +235,9 @@
       }
     </section>
   }
+
+  <!-- Hotels near the airport / centre and getting around (OpenStreetMap) -->
+  <app-nearby [planId]="s.id" [summary]="s" />
 
   <!-- Transfers -->
   @if (transfers().length) {

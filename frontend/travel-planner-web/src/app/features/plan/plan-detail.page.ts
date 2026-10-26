@@ -24,6 +24,10 @@ import { ErrorBannerComponent } from '../../shared/error-banner.component';
 import { ExternalLinkComponent } from '../../shared/external-link.component';
 import { IconComponent } from '../../shared/icon.component';
 import { destinationPhoto } from '../../core/destination-photos';
+import { buildIcs, downloadFile } from '../../core/calendar';
+import { SavedTripsService } from '../../core/local-lists';
+import { NearbyComponent } from './nearby.component';
+import { WeatherComponent } from './weather.component';
 import { DistancePipe, LocalDatePipe, LocalNumberPipe, MoneyPipe, StopsPipe, TimeSpanPipe } from '../../shared/pipes';
 
 /** Builds the Google Maps Embed directions URL from numbers only; returns null for invalid input. */
@@ -56,6 +60,8 @@ export function buildEmbedUrl(key: string, fromLat: number, fromLng: number, toL
     VerificationLegendComponent,
     ErrorBannerComponent,
     IconComponent,
+    NearbyComponent,
+    WeatherComponent,
   ],
   templateUrl: './plan-detail.page.html',
 })
@@ -67,6 +73,7 @@ export class PlanDetailPage {
   private readonly destroyRef = inject(DestroyRef);
   private readonly configService = inject(ClientConfigService);
   protected readonly i18n = inject(I18nService);
+  private readonly savedTrips = inject(SavedTripsService);
 
   protected readonly plan = signal<TripPlanDetailDto | null>(null);
   protected readonly photo = computed(() => destinationPhoto(this.plan()?.destination.code));
@@ -74,6 +81,12 @@ export class PlanDetailPage {
   protected readonly error = signal<ApiError | null>(null);
   protected readonly refreshing = signal(false);
   protected readonly refreshError = signal<ApiError | null>(null);
+  protected readonly actionStatus = signal('');
+  protected readonly isSaved = computed(() => {
+    const p = this.plan();
+    this.savedTrips.trips();
+    return !!p && this.savedTrips.isSaved(p.summary.id);
+  });
 
   protected readonly flight = computed(() => this.item('Flight'));
   protected readonly flightInfo = computed(() => (this.flight() ? flightDetails(this.flight()!) : null));
@@ -132,6 +145,63 @@ export class PlanDetailPage {
         this.refreshing.set(false);
       },
     });
+  }
+
+  protected toggleSaved(): void {
+    const p = this.plan();
+    if (!p) return;
+    const saved = this.savedTrips.toggle(p.summary);
+    this.actionStatus.set(this.i18n.t(saved ? 'plan.savedStatus' : 'plan.removedStatus'));
+  }
+
+  /** Native share sheet where available (mobile), otherwise copies the plan link. */
+  protected async share(): Promise<void> {
+    const p = this.plan();
+    if (!p) return;
+    const url = location.href.split('#')[0];
+    const title = `${p.destination.city} – ${this.i18n.t('app.brand')}`;
+    try {
+      if (navigator.share) {
+        await navigator.share({ title, url });
+        return;
+      }
+      await navigator.clipboard.writeText(url);
+      this.actionStatus.set(this.i18n.t('plan.linkCopied'));
+    } catch (e) {
+      // AbortError = the user closed the share sheet; anything else: show the link so it can be copied by hand.
+      if ((e as DOMException)?.name !== 'AbortError') this.actionStatus.set(url);
+    }
+  }
+
+  protected addToCalendar(): void {
+    const p = this.plan();
+    const f = this.flightInfo();
+    const item = this.flight();
+    if (!p || !f || !item) return;
+    const url = location.href.split('#')[0];
+    const legs = [
+      { key: 'out', it: f.outbound },
+      { key: 'back', it: f.inbound },
+    ];
+    const events = legs.map(({ key, it }) => ({
+      uid: `${p.summary.id}-${key}@travelvista`,
+      title: this.i18n.t('plan.calendarFlight', { from: it.departureAirport, to: it.arrivalAirport }),
+      start: it.departureLocal,
+      end: it.arrivalLocal,
+      location: it.departureAirport,
+      description: [
+        it.segments.map((sg) => `${sg.flightNumber} ${sg.departureAirport} → ${sg.arrivalAirport}`).join(', '),
+        this.i18n.t('plan.calendarNote', { provider: item.provider }),
+        url,
+      ].filter(Boolean).join('\n'),
+      url,
+    }));
+    downloadFile(`trip-${p.destination.code}-${p.summary.departureDate}.ics`, buildIcs(events), 'text/calendar;charset=utf-8');
+    this.actionStatus.set(this.i18n.t('plan.calendarDone'));
+  }
+
+  protected print(): void {
+    window.print();
   }
 
   protected directionKey(item: PlanItemDto): TranslationKey {

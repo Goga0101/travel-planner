@@ -2,7 +2,7 @@ import { DOCUMENT } from '@angular/common';
 import { ChangeDetectionStrategy, Component, DestroyRef, computed, inject, signal } from '@angular/core';
 import { takeUntilDestroyed, toObservable, toSignal } from '@angular/core/rxjs-interop';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { ApiService } from '../../core/api.service';
 import { ClientConfigService } from '../../core/client-config.service';
 import { ApiError, toApiError } from '../../core/errors';
@@ -13,6 +13,8 @@ import { TranslationKey } from '../../core/i18n/en';
 import { I18nService, TranslateParams } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
 import { CTA_PHOTO, HERO_PHOTO, destinationPhoto } from '../../core/destination-photos';
+import { RecentSearchesService } from '../../core/local-lists';
+import { LocalDatePipe, MoneyPipe } from '../../shared/pipes';
 import { ErrorBannerComponent } from '../../shared/error-banner.component';
 import { IconComponent, IconName } from '../../shared/icon.component';
 import { DATE_ERROR_KEYS, manualDestinationsValidator, tripDatesValidator } from './trip-search.validators';
@@ -29,7 +31,7 @@ function defaultDates(today: Date): { from: string; to: string } {
 @Component({
   selector: 'app-trip-search-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ReactiveFormsModule, ErrorBannerComponent, TranslatePipe, IconComponent],
+  imports: [ReactiveFormsModule, RouterLink, ErrorBannerComponent, TranslatePipe, IconComponent, LocalDatePipe, MoneyPipe],
   templateUrl: './trip-search.page.html',
 })
 export class TripSearchPage {
@@ -38,6 +40,7 @@ export class TripSearchPage {
   private readonly fb = inject(FormBuilder);
   private readonly destroyRef = inject(DestroyRef);
   private readonly document = inject(DOCUMENT);
+  protected readonly recent = inject(RecentSearchesService);
   protected readonly configService = inject(ClientConfigService);
   protected readonly i18n = inject(I18nService);
 
@@ -238,7 +241,10 @@ export class TripSearchPage {
 
     this.submitting.set(true);
     this.api.createTripSearch(command).subscribe({
-      next: (res) => void this.router.navigate(this.i18n.path('searches', res.id)),
+      next: (res) => {
+        this.recent.add(res.id, command, v.destinationMode === 'Manual' ? this.selectedDestinations().map((d) => d.city) : []);
+        void this.router.navigate(this.i18n.path('searches', res.id));
+      },
       error: (e) => {
         const error = toApiError(e);
         this.submitError.set(error);

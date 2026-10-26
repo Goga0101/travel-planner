@@ -8,6 +8,7 @@ import {
   CreateTripSearchResponse,
   DestinationDetailDto,
   DestinationSummaryDto,
+  NearbyPlacesDto,
   OutboundLinkDto,
   PagedResult,
   PlanSort,
@@ -63,6 +64,10 @@ export class ApiService {
 
   getOutboundLinks(id: string): Observable<OutboundLinkDto[]> {
     return this.http.get<OutboundLinkDto[]>(`${BASE}/trip-plans/${encodeURIComponent(id)}/outbound-links`);
+  }
+
+  getNearbyPlaces(id: string): Observable<NearbyPlacesDto> {
+    return this.http.get<NearbyPlacesDto>(`${BASE}/trip-plans/${encodeURIComponent(id)}/nearby`);
   }
 
   getClientConfig(): Observable<ClientConfigDto> {

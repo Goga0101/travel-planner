@@ -192,6 +192,28 @@
       <p class="visually-hidden" aria-live="polite">{{ announcement() }}</p>
     </div>
   </form>
+
+  @if (recent.searches().length) {
+    <section class="recent" aria-labelledby="recent-title">
+      <div class="recent-head">
+        <h2 id="recent-title" class="small">{{ 'recent.title' | t }}</h2>
+        <button type="button" class="text-link small" (click)="recent.clear()">{{ 'recent.clear' | t }}</button>
+      </div>
+      <ul class="recent-list">
+        @for (r of recent.searches(); track r.id) {
+          <li>
+            <a class="recent-chip" [routerLink]="i18n.path('searches', r.id)">
+              <app-icon name="search" [size]="16" />
+              <span>
+                <strong>{{ r.origin }} → {{ r.destinations.length ? r.destinations.join(', ') : ('recent.anywhere' | t) }}</strong>
+                <span class="small muted">{{ r.earliestDeparture | ldate: 'd MMM' }} – {{ r.latestReturn | ldate: 'd MMM' }} · {{ 'unit.days' | t: { count: r.durationDays } }} · {{ r.budgetAmount | money: r.budgetCurrency }}</span>
+              </span>
+            </a>
+          </li>
+        }
+      </ul>
+    </section>
+  }
 </div>
 
 <section class="container section benefits" id="about" aria-labelledby="about-title">

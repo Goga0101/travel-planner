@@ -63,6 +63,8 @@ Verified against official documentation in October 2026.
 | Accommodation (no API) | **Booking.com search link** (`Providers:BookingComLinks`) | Always on. When no priced stay is available, the plan links to Booking.com's public search results pre-filled with city, dates and guests. Nothing is scraped, and the cost stays "missing". Affiliate tracking is optional: set `AffiliateId` (`aid`), or a CJ/Awin `DeepLinkTemplate` containing `{url}` and add the network's host to `OutboundLinks:AllowedHosts`. Since mid-2025 Booking.com's affiliate programme runs through CJ (Europe) or Awin. | Nothing. Commission requires joining the affiliate programme. |
 | Transfers | **Google Maps Platform Routes API** `directions/v2:computeRoutes` (TRANSIT + DRIVE) | Implemented. Self-serve (billing account). Transit fares are shown as `Estimate`. Driving results show distance and time only, **never a taxi quote**. | Server API key restricted to the Routes API. |
 | Transfers (always on) | Curated catalog: official airport websites and public-transport operators | Domains checked for reachability on 2026-10-20. Shown as `Verified` information links. No taxi companies, phone numbers or tariffs were invented. Taxi tariffs are supported but left empty until you add one from an official source. | Nothing. Edit `src/TravelPlanner.API/catalog/destinations.json`. |
+| Nearby places (always on) | **OpenStreetMap** via the Overpass API, as a dated snapshot in `catalog/nearby.json` | Hotels near each airport and the city centre (name, stars, address, phone, website), public-transport lines that stop at the airport, taxi ranks and taxi companies. **No prices** (OSM has none): each hotel links to a Booking.com search with the plan's dates, a Google Maps transit route from the airport and an Uber link with pickup and drop-off pre-filled. Overpass is slow and rate-limited, so the API never calls it live; run `node scripts/fetch-nearby.mjs [code ...]` to refresh. The API re-reads the file when it changes. Data © OpenStreetMap contributors (ODbL), credited on the page. | Nothing. |
+| Weather (frontend) | **Open-Meteo** forecast and archive APIs (free, no key) | Forecast when the whole trip is within 16 days, otherwise last year's weather on the same dates, labelled as a reference. Hidden if the request fails. | Nothing. |
 | Exchange rates | **ECB** euro reference rates (daily XML, free, no key) | Implemented and cached for 6 h. Currencies the ECB doesn't publish (e.g. GEL) are never converted. | Nothing. |
 | Route map | Google Maps **Embed API** (optional) | Without a key, the UI links to the official Google Maps directions URL instead. | Browser key restricted by HTTP referrer: `ClientConfig:MapsEmbedApiKey`. |
 
@@ -99,6 +101,7 @@ Or use the `.env` file with Docker Compose (see `.env.example`, which contains p
 | `ConnectionStrings:TravelPlanner` | PostgreSQL. Development defaults to the compose container on port 5433. The `travel_planner_dev` password is a local throw-away default; override it everywhere else. |
 | `Database:MigrateOnStartup` | `true` in Development and Compose. For production, run migrations explicitly (below). |
 | `Catalog:Path` / `SeedOnStartup` | Configurable destination catalog (JSON). Upserted by code/IATA. Removed destinations are deactivated. |
+| `Catalog:NearbyPath` | OpenStreetMap snapshot of hotels, transit lines and taxis per destination (`scripts/fetch-nearby.mjs`). Optional: without it, plan pages show no nearby places. |
 | `Planning:*` | Request limits, concurrency, timeouts, result count and ranking weights (see §6). |
 | `Budget:*` | Optional daily food and local-transport allowance per person, and a contingency percentage. Empty means disabled. |
 | `OutboundLinks:AllowedHosts` | Allow-list for every URL shown to users (exact host or subdomain, HTTPS only). |
@@ -150,6 +153,7 @@ docker compose down -v && docker compose up -d postgres
 | GET | `/api/v1/trip-plans/{id}` | Itemized plan: cost breakdown, sources, timestamps and details |
 | POST | `/api/v1/trip-plans/{id}/refresh-prices` | Re-queries the original providers, re-matches the same flight (itinerary signature) and property, then recalculates the budget. Rate-limited. |
 | GET | `/api/v1/trip-plans/{id}/outbound-links` | Allow-listed booking, information and map links |
+| GET | `/api/v1/trip-plans/{id}/nearby` | Hotels near the arrival airport and the centre, transit lines at the airport and taxis, with Booking.com, Google Maps and Uber links pre-filled from the plan |
 | GET | `/api/v1/client-config` | Data mode, active providers and input limits (no secrets) |
 | GET | `/health/live`, `/health/ready` | Liveness, and readiness including the database |
 

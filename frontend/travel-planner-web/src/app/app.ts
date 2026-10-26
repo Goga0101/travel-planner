@@ -3,6 +3,8 @@ import { toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { filter, map } from 'rxjs';
 import { PHOTOS } from './core/destination-photos';
+import { SavedTripsService } from './core/local-lists';
+import { IconComponent } from './shared/icon.component';
 import { ClientConfigService } from './core/client-config.service';
 import { I18nService, Lang, switchUrlLang } from './core/i18n/i18n.service';
 import { TranslatePipe } from './core/i18n/translate.pipe';
@@ -10,7 +12,7 @@ import { TranslatePipe } from './core/i18n/translate.pipe';
 @Component({
   selector: 'app-root',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterOutlet, RouterLink, TranslatePipe],
+  imports: [RouterOutlet, RouterLink, TranslatePipe, IconComponent],
   host: { '[class.is-home]': 'isHome()' },
   template: `
     <a class="skip-link" href="#main">{{ 'app.skip' | t }}</a>
@@ -39,6 +41,10 @@ import { TranslatePipe } from './core/i18n/translate.pipe';
           <a [routerLink]="i18n.path()" fragment="about">{{ 'nav.about' | t }}</a>
         </nav>
         <div class="topbar-end">
+          <a class="saved-link-header" [routerLink]="i18n.path('saved')" [attr.aria-label]="'saved.headerLabel' | t: { count: saved.count() }">
+            <app-icon name="heart" [size]="20" />
+            @if (saved.count()) { <span class="count-badge" aria-hidden="true">{{ saved.count() }}</span> }
+          </a>
           @if (config.config(); as c) {
             @let mode = (c.dataMode === 'Demo' ? 'app.dataDemo' : 'app.dataLive') | t;
             <span class="mode-label" [class.mode-demo]="c.dataMode === 'Demo'" [title]="'app.dataLabel' | t: { mode }">
@@ -72,6 +78,7 @@ import { TranslatePipe } from './core/i18n/translate.pipe';
             <li><a [routerLink]="i18n.path()" fragment="destinations">{{ 'nav.destinations' | t }}</a></li>
             <li><a [routerLink]="i18n.path()" fragment="how">{{ 'nav.how' | t }}</a></li>
             <li><a [routerLink]="i18n.path()" fragment="about">{{ 'nav.about' | t }}</a></li>
+            <li><a [routerLink]="i18n.path('saved')">{{ 'saved.title' | t }}</a></li>
           </ul>
         </nav>
         <div class="footer-details">
@@ -102,6 +109,7 @@ import { TranslatePipe } from './core/i18n/translate.pipe';
 export class App {
   protected readonly config = inject(ClientConfigService);
   protected readonly i18n = inject(I18nService);
+  protected readonly saved = inject(SavedTripsService);
   private readonly router = inject(Router);
 
   private readonly url = toSignal(

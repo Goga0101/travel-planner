@@ -14,6 +14,8 @@ public sealed class CatalogOptions
     /// <summary>Path to the catalog JSON, relative to the content root unless absolute.</summary>
     public string Path { get; set; } = "catalog/destinations.json";
     public bool SeedOnStartup { get; set; } = true;
+    /// <summary>OpenStreetMap snapshot of hotels, transit lines and taxis near each destination (scripts/fetch-nearby.mjs).</summary>
+    public string NearbyPath { get; set; } = "catalog/nearby.json";
 }
 
 public sealed class CatalogDocument

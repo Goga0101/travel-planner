@@ -1,0 +1,166 @@
+@if (error(); as e) {
+  <section class="card">
+    <app-error-banner [error]="e">
+      <button type="button" class="btn btn-sm alert-action" (click)="load()">{{ 'common.retry' | t }}</button>
+    </app-error-banner>
+  </section>
+} @else if (data(); as d) {
+  <!-- Where to stay -->
+  <section class="card nearby" id="stay" aria-labelledby="stay-title">
+    <div class="section-head">
+      <h2 id="stay-title"><app-icon name="bed" /> {{ 'nearby.stayTitle' | t }}</h2>
+      @if (d.hotelSearchUrl) {
+        <a class="text-link" [href]="d.hotelSearchUrl" target="_blank" rel="noopener noreferrer nofollow">
+          {{ 'nearby.allHotels' | t: { city: city() } }} <app-icon name="external" [size]="16" />
+          <span class="visually-hidden">{{ 'link.newTab' | t }}</span>
+        </a>
+      }
+    </div>
+    <p class="small muted">{{ 'nearby.priceNote' | t: { dates: dates(), guests: ('unit.guests' | t: { count: travelers() }) } }}</p>
+
+    <div class="segmented tabs" role="tablist" [attr.aria-label]="'nearby.stayTitle' | t">
+      <button type="button" role="tab" id="tab-airport" [attr.aria-selected]="area() === 'airport'" [class.active]="area() === 'airport'"
+              aria-controls="hotel-panel" (click)="setArea('airport')">
+        <app-icon name="plane" [size]="16" /> {{ 'nearby.nearAirport' | t: { iata: d.airport?.iataCode ?? '' } }} ({{ d.airportHotels.length }})
+      </button>
+      <button type="button" role="tab" id="tab-centre" [attr.aria-selected]="area() === 'centre'" [class.active]="area() === 'centre'"
+              aria-controls="hotel-panel" (click)="setArea('centre')">
+        <app-icon name="pin" [size]="16" /> {{ 'nearby.cityCentre' | t }} ({{ d.centreHotels.length }})
+      </button>
+    </div>
+
+    <div id="hotel-panel" role="tabpanel" [attr.aria-labelledby]="area() === 'airport' ? 'tab-airport' : 'tab-centre'">
+      <ul class="hotel-grid">
+        @for (h of visibleHotels(); track h.id) {
+          <li class="hotel-card">
+            <div class="hotel-head">
+              <h3>{{ h.name }}</h3>
+              <p class="small muted">
+                @if (h.stars) { <span class="stars" [attr.aria-label]="'nearby.stars' | t: { count: h.stars }">{{ starText(h.stars) }}</span> · }
+                {{ kindKey(h.kind) | t }}
+              </p>
+            </div>
+            <ul class="hotel-facts small">
+              @if (d.airport) {
+                <li><app-icon name="plane" [size]="14" /> {{ 'nearby.fromAirport' | t: { distance: (h.distanceFromAirportMeters | distance), iata: d.airport.iataCode } }}</li>
+              }
+              <li><app-icon name="pin" [size]="14" /> {{ 'nearby.fromCentre' | t: { distance: (h.distanceFromCentreMeters | distance) } }}</li>
+              @if (h.address) { <li class="muted">{{ h.address }}</li> }
+            </ul>
+            <div class="hotel-actions">
+              @if (h.bookingUrl) {
+                <a class="btn btn-primary btn-sm" [href]="h.bookingUrl" target="_blank" rel="noopener noreferrer nofollow">
+                  {{ 'nearby.checkPrice' | t }} <app-icon name="external" [size]="14" /><span class="visually-hidden">{{ 'link.newTab' | t }}</span>
+                </a>
+              }
+              <div class="hotel-links small">
+                @if (h.transitDirectionsUrl) {
+                  <a [href]="h.transitDirectionsUrl" target="_blank" rel="noopener noreferrer nofollow"><app-icon name="train" [size]="14" /> {{ 'nearby.transitRoute' | t }}</a>
+                }
+                @if (h.uberUrl) {
+                  <a [href]="h.uberUrl" target="_blank" rel="noopener noreferrer nofollow"><app-icon name="car" [size]="14" /> {{ 'nearby.uber' | t }}</a>
+                }
+                @if (h.mapUrl) {
+                  <a [href]="h.mapUrl" target="_blank" rel="noopener noreferrer nofollow"><app-icon name="pin" [size]="14" /> {{ 'nearby.map' | t }}</a>
+                }
+                @if (h.phone) {
+                  <a [href]="telHref(h.phone)"><app-icon name="phone" [size]="14" /> {{ h.phone }}</a>
+                }
+                @if (h.website) {
+                  <a [href]="h.website" target="_blank" rel="noopener noreferrer nofollow"><app-icon name="globe" [size]="14" /> {{ 'nearby.website' | t }}</a>
+                }
+              </div>
+            </div>
+          </li>
+        } @empty {
+          <li class="empty-inline muted">{{ 'nearby.noHotels' | t }}</li>
+        }
+      </ul>
+      @if (hotels().length > pageSize) {
+        <button type="button" class="btn btn-ghost btn-sm" (click)="showAll.set(!showAll())" [attr.aria-expanded]="showAll()">
+          {{ (showAll() ? 'nearby.showFewer' : 'nearby.showAll') | t: { count: hotels().length } }}
+        </button>
+      }
+    </div>
+  </section>
+
+  <!-- Getting around -->
+  <section class="card nearby" id="getting-around" aria-labelledby="around-title">
+    <h2 id="around-title"><app-icon name="train" /> {{ 'nearby.aroundTitle' | t: { iata: d.airport?.iataCode ?? '' } }}</h2>
+
+    <div class="quick-actions">
+      @if (d.centreTransitDirectionsUrl) {
+        <a class="quick-action" [href]="d.centreTransitDirectionsUrl" target="_blank" rel="noopener noreferrer nofollow">
+          <span class="icon-badge"><app-icon name="train" /></span>
+          <span><strong>{{ 'nearby.transitToCentre' | t }}</strong><span class="small muted">{{ 'nearby.transitToCentreHint' | t }}</span></span>
+        </a>
+      }
+      @if (d.centreUberUrl) {
+        <a class="quick-action" [href]="d.centreUberUrl" target="_blank" rel="noopener noreferrer nofollow">
+          <span class="icon-badge"><app-icon name="car" /></span>
+          <span><strong>{{ 'nearby.uberToCentre' | t }}</strong><span class="small muted">{{ 'nearby.uberHint' | t }}</span></span>
+        </a>
+      }
+      @if (d.airport?.officialWebsiteUrl) {
+        <a class="quick-action" [href]="d.airport!.officialWebsiteUrl" target="_blank" rel="noopener noreferrer nofollow">
+          <span class="icon-badge"><app-icon name="info" /></span>
+          <span><strong>{{ 'nearby.airportSite' | t }}</strong><span class="small muted">{{ d.airport!.name }}</span></span>
+        </a>
+      }
+    </div>
+
+    <h3>{{ 'nearby.linesTitle' | t }}</h3>
+    @if (d.transitLines.length) {
+      <ul class="line-list">
+        @for (l of visibleLines(); track $index) {
+          <li class="line">
+            <span class="line-badge" [attr.data-mode]="l.mode"><app-icon [name]="modeIcon(l.mode)" [size]="14" /> {{ l.ref ?? (modeKey(l.mode) | t) }}</span>
+            <div class="line-body">
+              <span class="small muted">{{ modeKey(l.mode) | t }}@if (l.operator) { · {{ l.operator }} }</span>
+              @if (l.from || l.to) { <span>{{ l.from ?? '…' }} → {{ l.to ?? '…' }}</span> } @else if (l.name) { <span>{{ l.name }}</span> }
+            </div>
+            @if (l.website) {
+              <a class="small" [href]="l.website" target="_blank" rel="noopener noreferrer nofollow">{{ 'nearby.timetable' | t }} <app-icon name="external" [size]="12" /></a>
+            }
+          </li>
+        }
+      </ul>
+      @if (d.transitLines.length > linesPageSize) {
+        <button type="button" class="btn btn-ghost btn-sm" (click)="showAllLines.set(!showAllLines())" [attr.aria-expanded]="showAllLines()">
+          {{ (showAllLines() ? 'nearby.showFewer' : 'nearby.showAll') | t: { count: d.transitLines.length } }}
+        </button>
+      }
+    } @else {
+      <p class="muted small">{{ 'nearby.noLines' | t }}</p>
+    }
+
+    <h3>{{ 'nearby.taxiTitle' | t }}</h3>
+    @if (d.taxiCompanies.length || d.taxiRanks.length) {
+      <ul class="taxi-list">
+        @for (c of d.taxiCompanies; track c.name) {
+          <li>
+            <strong>{{ c.name }}</strong>
+            @if (c.phone) { <a class="btn btn-secondary btn-sm" [href]="telHref(c.phone)"><app-icon name="phone" [size]="14" /> {{ c.phone }}</a> }
+            @if (c.website) { <a class="small" [href]="c.website" target="_blank" rel="noopener noreferrer nofollow">{{ 'nearby.website' | t }} <app-icon name="external" [size]="12" /></a> }
+          </li>
+        }
+        @for (r of d.taxiRanks; track $index) {
+          <li>
+            <span><app-icon name="pin" [size]="14" /> {{ r.name ?? ('nearby.taxiRank' | t) }} <span class="muted small">· {{ 'nearby.fromAirport' | t: { distance: (r.distanceFromAirportMeters | distance), iata: d.airport?.iataCode ?? '' } }}</span></span>
+            @if (r.phone) { <a [href]="telHref(r.phone)">{{ r.phone }}</a> }
+            @if (r.mapUrl) { <a class="small" [href]="r.mapUrl" target="_blank" rel="noopener noreferrer nofollow">{{ 'nearby.map' | t }}</a> }
+          </li>
+        }
+      </ul>
+    } @else {
+      <p class="muted small">{{ 'nearby.noTaxi' | t }}</p>
+    }
+
+    <p class="small muted source-note">
+      {{ 'nearby.source' | t: { attribution: d.attribution, date: d.retrievedOn ? (d.retrievedOn | ldate: 'd MMM y') : '—' } }}
+      <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">ODbL</a>
+    </p>
+  </section>
+} @else {
+  <div class="card skeleton" aria-busy="true"></div>
+}

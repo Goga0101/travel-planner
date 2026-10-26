@@ -43,6 +43,7 @@ public static class DependencyInjection
         services.AddSingleton<IAccommodationSearchLinkBuilder, BookingComSearchLinkBuilder>();
 
         services.AddSingleton<CatalogFileReader>();
+        services.AddSingleton<INearbyPlacesSource, NearbyPlacesFile>();
         services.AddScoped<CatalogSeeder>();
 
         services.AddSingleton<TripSearchQueue>();

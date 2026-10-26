@@ -408,3 +408,72 @@ export const accommodationDetails = (i: PlanItemDto) => i.details as Accommodati
 export const transferDetails = (i: PlanItemDto) => i.details as TransferItemDetails;
 export const feeDetails = (i: PlanItemDto) => i.details as FeeItemDetails;
 export const estimateDetails = (i: PlanItemDto) => i.details as EstimateItemDetails;
+
+// ---- Nearby places (OpenStreetMap snapshot + pre-filled outbound links) ----
+
+export interface NearbyAirportDto {
+  iataCode: string;
+  name: string;
+  latitude: number;
+  longitude: number;
+  officialWebsiteUrl?: string;
+}
+
+export interface NearbyHotelDto {
+  id: string;
+  name: string;
+  kind: string;
+  stars?: number;
+  latitude: number;
+  longitude: number;
+  distanceFromAirportMeters: number;
+  distanceFromCentreMeters: number;
+  address?: string;
+  phone?: string;
+  website?: string;
+  bookingUrl?: string;
+  mapUrl?: string;
+  transitDirectionsUrl?: string;
+  uberUrl?: string;
+}
+
+export type TransitMode = 'bus' | 'trolleybus' | 'train' | 'subway' | 'tram' | 'light_rail' | 'monorail';
+
+export interface TransitLineDto {
+  mode: TransitMode;
+  ref?: string;
+  name?: string;
+  from?: string;
+  to?: string;
+  operator?: string;
+  network?: string;
+  website?: string;
+}
+
+export interface TaxiRankDto {
+  name?: string;
+  operator?: string;
+  phone?: string;
+  distanceFromAirportMeters: number;
+  mapUrl?: string;
+}
+
+export interface TaxiCompanyDto {
+  name: string;
+  phone?: string;
+  website?: string;
+}
+
+export interface NearbyPlacesDto {
+  attribution: string;
+  retrievedOn?: string;
+  airport?: NearbyAirportDto;
+  airportHotels: NearbyHotelDto[];
+  centreHotels: NearbyHotelDto[];
+  transitLines: TransitLineDto[];
+  taxiRanks: TaxiRankDto[];
+  taxiCompanies: TaxiCompanyDto[];
+  centreTransitDirectionsUrl?: string;
+  centreUberUrl?: string;
+  hotelSearchUrl?: string;
+}
