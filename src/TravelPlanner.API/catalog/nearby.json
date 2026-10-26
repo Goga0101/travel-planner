@@ -514,6 +514,5234 @@
      }
     ]
    },
+   "taxiCompanies": [],
+   "retrievedOn": "2026-10-26"
+  },
+  {
+   "code": "paris",
+   "airports": [
+    {
+     "iata": "CDG",
+     "hotels": [
+      {
+       "osmId": "way/104936609",
+       "name": "Mercure Paris Charles de Gaulle Airport & Convention",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 49.0075966,
+       "longitude": 2.5487134,
+       "distanceMeters": 241,
+       "address": null,
+       "phone": "+33 1 49 19 29 29",
+       "website": null
+      },
+      {
+       "osmId": "way/31884151",
+       "name": "Hilton Paris Charles de Gaulle Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 49.0104437,
+       "longitude": 2.5579175,
+       "distanceMeters": 735,
+       "address": "Rue de Rome 8, 93290, Tremblay-en-France",
+       "phone": "+33 1 49 19 77 77",
+       "website": "https://www.hilton.com/en/hotels/cdghitw-hilton-paris-charles-de-gaulle-airport/?SEO_id=OTHR-EMEA-TW-CDGHITW"
+      },
+      {
+       "osmId": "way/104935510",
+       "name": "Hampton by Hilton Paris Charles de Gaulle Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 49.0072155,
+       "longitude": 2.5197925,
+       "distanceMeters": 2069,
+       "address": "2 Av. Heinz Gloor, 95700, Roissy-en-France",
+       "phone": "+33 1 89 89 02 00",
+       "website": "https://www.hilton.com/en/hotels/cdgwxhx-hampton-paris-charles-de-gaulle-airport/"
+      },
+      {
+       "osmId": "way/104935524",
+       "name": "Golden Tulip Paris Aéroport CDG Villepinte",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 48.9979075,
+       "longitude": 2.517047,
+       "distanceMeters": 2605,
+       "address": "Allée du Verger 11, 95700, Roissy en France",
+       "phone": "0 800 94 00 14",
+       "website": "https://paris-cdg-villepinte.goldentulip.com"
+      },
+      {
+       "osmId": "node/356064537",
+       "name": "Geographotel Paris-Roissy CDG Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 49.0207746,
+       "longitude": 2.5904806,
+       "distanceMeters": 3341,
+       "address": "Rue de Paris 1bis, 77990, Le Mesnil-Amelot",
+       "phone": "+33 1 60 03 65 65",
+       "website": "https://www.geographotel-roissy.com/"
+      },
+      {
+       "osmId": "way/401466028",
+       "name": "Les herbes Folles",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 49.033396,
+       "longitude": 2.5822615,
+       "distanceMeters": 3636,
+       "address": "Rue de l'Église 3, 77990, Mauregard",
+       "phone": null,
+       "website": "https://hotelherbesfolles.fr"
+      },
+      {
+       "osmId": "node/8572221772",
+       "name": "Hyatt Place Paris Charles de Gaulle Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 48.9864769,
+       "longitude": 2.510626,
+       "distanceMeters": 3750,
+       "address": "Rue de la Belle Étoile 241, 95700, Roissy-en-France",
+       "phone": "+33 148161234",
+       "website": "https://www.hyatt.com/hyatt-place/en-US/cdgzp-hyatt-place-paris-charles-de-gaulle-airport"
+      },
+      {
+       "osmId": "node/8572221773",
+       "name": "Hyatt House Paris Charles de Gaulle Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 48.9862066,
+       "longitude": 2.510267,
+       "distanceMeters": 3790,
+       "address": "Rue de la Belle Étoile 241, 95700, Roissy-en-France",
+       "phone": "+33 170031234",
+       "website": "https://www.hyatt.com/hyatt-house/en-US/cdgxp-hyatt-house-paris-charles-de-gaulle-airport"
+      },
+      {
+       "osmId": "way/140912726",
+       "name": "Green Hotels Roissy Parc des Expositions Villepinte",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 48.9770743,
+       "longitude": 2.5111289,
+       "distanceMeters": 4512,
+       "address": "Rue de la Perdrix 62, Tremblay-en-France",
+       "phone": "+331 48 63 80 85",
+       "website": null
+      },
+      {
+       "osmId": "way/146527056",
+       "name": "Ibis Styles Parc des Expositions de Villepinte",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 48.9723443,
+       "longitude": 2.5129794,
+       "distanceMeters": 4873,
+       "address": "Avenue des Nations 54",
+       "phone": "+33148632610",
+       "website": "https://all.accor.com/hotel/5446/index.fr.shtml"
+      },
+      {
+       "osmId": "way/578778300",
+       "name": "Holiday Inn Express Paris - CDG Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 49.0088228,
+       "longitude": 2.5476388,
+       "distanceMeters": 99,
+       "address": "Rue du Voyageur 5, 95700, Roissy-en-France",
+       "phone": "+33 1 80 43 03 43",
+       "website": "https://www.ihg.com/holidayinnexpress/hotels/us/en/roissy-en-france/pardg/hoteldetail"
+      },
+      {
+       "osmId": "way/1080515057",
+       "name": "Residence Inn",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 49.00838,
+       "longitude": 2.5488593,
+       "distanceMeters": 163,
+       "address": "Rue du Voyageur 10, 95700, Roissy-en-France",
+       "phone": "+33174371570",
+       "website": "https://www.marriott.com/parri"
+      }
+     ],
+     "transitLines": [
+      {
+       "mode": "train",
+       "ref": "B",
+       "name": "RER B3 : Robinson → Aéroport CDG 2",
+       "from": "Robinson",
+       "to": "Aéroport CDG 2",
+       "operator": "RATP/SNCF",
+       "network": "RER",
+       "website": null
+      },
+      {
+       "mode": "subway",
+       "ref": "CDGVAL",
+       "name": "CDGVAL : Terminal 1 → Terminal 2 - Gare",
+       "from": "Terminal 1",
+       "to": "Terminal 2 Gare",
+       "operator": "Aéroports de Paris",
+       "network": "CDGVAL",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "39",
+       "name": "Bus 39 : Vert Galant RER B → Roissypole",
+       "from": "Vert Galant RER B",
+       "to": "Roissypole",
+       "operator": "Transdev Nord Seine-Saint-Denis",
+       "network": "Terres d'Envol",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "43",
+       "name": "Bus 43 : Gare de Sevran Livry → Aéroport CDG1 RER B",
+       "from": "Gare de Sevran Livry",
+       "to": "Aéroport CDG1 RER B",
+       "operator": "Transdev Nord Seine-Saint-Denis",
+       "network": "Terres d'Envol",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "100",
+       "name": "Bus 100 Persan : Gare de Persan - Beaumont → Roissypole (Aéroport CDG Terminal 3)",
+       "from": "Gare de Persan - Beaumont",
+       "to": "Roissypole (Aéroport CDG Terminal 3)",
+       "operator": "Keolis Nord Val d’Oise",
+       "network": "Haut Val d'Oise",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "350",
+       "name": "Bus 350 : Roissypole → Garonor - Porte Sud → Porte de la Chapelle",
+       "from": "Roissypole",
+       "to": "Porte de la Chapelle",
+       "operator": "Transdev Express Roissy",
+       "network": "Express Roissy",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "351",
+       "name": "Bus 351 (lun-ven après 9h) : Paris - Nation → Roissypole",
+       "from": "Paris - Nation",
+       "to": "Roissypole",
+       "operator": "Transdev Express Roissy",
+       "network": "Express Roissy",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "630",
+       "name": "Ligne 630 : Creil – Gare SNCF → Senlis → Roissypole",
+       "from": "Creil – Gare SNCF",
+       "to": "Roissypole",
+       "operator": "Keolis Oise",
+       "network": "Réseau Oise",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "691",
+       "name": "Ligne 691 : Crépy-en-Valois ↔ Roissy",
+       "from": "Gare de Crépy-en-Valois",
+       "to": "Roissy",
+       "operator": "Keolis Oise",
+       "network": "Hoplà",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "700",
+       "name": "Bus 700 : Chelles - Rond Point des Sciences → Tremblay-en France - Gare de Roissypôle - Aéroport Charles-de-Gaulle 1 (Terminal 3)",
+       "from": "Chelles - Rond Point des Sciences",
+       "to": "Tremblay-en France - Gare de Roissypôle - Aéroport Charles-de-Gaulle 1 (Terminal 3)",
+       "operator": "Keolis Grand Paris Vallée de la Marne",
+       "network": "Marne et Brie",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "755",
+       "name": "Flixbus 755: Béthune, Gare routière → Paris, Gallieni",
+       "from": "Béthune, Gare routière",
+       "to": "Paris, Gallieni",
+       "operator": "Flixbus",
+       "network": "Flixbus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "757",
+       "name": "Flixbus 757: Bruges, Kiss and Ride => Paris, Bercy Seine",
+       "from": "Bruges, Kiss and Ride",
+       "to": "Paris, Bercy Seine",
+       "operator": "Flixbus",
+       "network": "Flixbus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "1601",
+       "name": "Bus 1601 : Survilliers, Fosses RER D → Epiais → Roissypole",
+       "from": "Survilliers, Fosses RER D",
+       "to": "Roissypole",
+       "operator": "Keolis Roissy Pays de France Ouest",
+       "network": "Roissy Ouest",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "1602",
+       "name": "Bus 1602 : Roissypole → Mairie (Montmorency)",
+       "from": "Roissypole",
+       "to": "Mairie",
+       "operator": "Keolis Roissy Pays de France Ouest",
+       "network": "Roissy Ouest",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "1614",
+       "name": "Bus 1614 : Louvres Gare → Roissypole",
+       "from": "Louvres Gare",
+       "to": "Roissypole",
+       "operator": "Keolis Roissy Pays de France Ouest",
+       "network": "Roissy Ouest",
+       "website": null
+      }
+     ],
+     "taxiRanks": [
+      {
+       "name": null,
+       "operator": null,
+       "phone": null,
+       "latitude": 49.0150131,
+       "longitude": 2.5411087,
+       "distanceMeters": 771
+      },
+      {
+       "name": "Roissypole",
+       "operator": null,
+       "phone": null,
+       "latitude": 49.0094784,
+       "longitude": 2.5615363,
+       "distanceMeters": 995
+      },
+      {
+       "name": null,
+       "operator": null,
+       "phone": null,
+       "latitude": 49.0036275,
+       "longitude": 2.5713925,
+       "distanceMeters": 1842
+      },
+      {
+       "name": null,
+       "operator": null,
+       "phone": null,
+       "latitude": 49.0043786,
+       "longitude": 2.5781085,
+       "distanceMeters": 2281
+      }
+     ]
+    }
+   ],
+   "centre": {
+    "hotels": [
+     {
+      "osmId": "node/251127867",
+      "name": "Hôtel du Loiret",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 48.8569202,
+      "longitude": 2.3552931,
+      "distanceMeters": 229,
+      "address": null,
+      "phone": "+33 1 48 87 77 00",
+      "website": "https://www.hotelduloiret.fr"
+     },
+     {
+      "osmId": "node/676860093",
+      "name": "Hôtel Victoria Châtelet",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 48.8578354,
+      "longitude": 2.3467115,
+      "distanceMeters": 424,
+      "address": "Avenue Victoria 17",
+      "phone": "+33 1 40 26 90 17",
+      "website": null
+     },
+     {
+      "osmId": "node/4935628436",
+      "name": "Hôtel Best Western Ducs de Bourgogne",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 48.8603405,
+      "longitude": 2.344133,
+      "distanceMeters": 722,
+      "address": "Rue du Pont Neuf 19, 75001, Paris",
+      "phone": "+33 1 42 33 95 64",
+      "website": null
+     },
+     {
+      "osmId": "node/3472995842",
+      "name": "Hôtel Caron",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 48.8550826,
+      "longitude": 2.3625198,
+      "distanceMeters": 774,
+      "address": null,
+      "phone": "+33 1 40 29 02 94",
+      "website": "https://www.hotelcaron.com"
+     },
+     {
+      "osmId": "node/1930542200",
+      "name": "Hôtel Studia",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 1,
+      "latitude": 48.8501323,
+      "longitude": 2.3476328,
+      "distanceMeters": 793,
+      "address": null,
+      "phone": "+33 1 43 26 81 00",
+      "website": null
+     },
+     {
+      "osmId": "node/247435032",
+      "name": "Hôtel Saint-Honoré",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 48.8611819,
+      "longitude": 2.3436118,
+      "distanceMeters": 809,
+      "address": null,
+      "phone": "+33 1 42 36 20 38",
+      "website": "https://www.hotelsthonore.com"
+     },
+     {
+      "osmId": "node/703460922",
+      "name": "Hôtel Jeanne d'Arc",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 48.8555439,
+      "longitude": 2.3632131,
+      "distanceMeters": 814,
+      "address": null,
+      "phone": "+33 1 48 87 62 11",
+      "website": "https://www.hoteljeannedarc.com"
+     },
+     {
+      "osmId": "node/5107830337",
+      "name": "Pilgrim",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 48.8491149,
+      "longitude": 2.3526774,
+      "distanceMeters": 833,
+      "address": "Rue de Poissy 11, 75005, Paris",
+      "phone": "+33 1 80 27 33 11",
+      "website": "https://www.hotelpilgrim.paris"
+     },
+     {
+      "osmId": "node/703461067",
+      "name": "Hôtel Turenne",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 48.8550844,
+      "longitude": 2.3634743,
+      "distanceMeters": 842,
+      "address": null,
+      "phone": "+33 1 42 78 43 25",
+      "website": "https://www.turennemarais.com"
+     },
+     {
+      "osmId": "node/3396587250",
+      "name": "Hôtel de la Place du Louvre",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 48.8592411,
+      "longitude": 2.3408997,
+      "distanceMeters": 877,
+      "address": "75001, Paris",
+      "phone": "+33 1 42 33 78 68",
+      "website": "https://www.paris-hotel-place-du-louvre.com/"
+     },
+     {
+      "osmId": "node/3523880930",
+      "name": "Les Tournelles",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 48.8569801,
+      "longitude": 2.3645643,
+      "distanceMeters": 906,
+      "address": null,
+      "phone": "+33 1 42 72 73 47",
+      "website": null
+     },
+     {
+      "osmId": "node/686159843",
+      "name": "Hôtel d'Aubusson",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 48.8547614,
+      "longitude": 2.3395044,
+      "distanceMeters": 951,
+      "address": null,
+      "phone": "+33 1 43 29 43 43",
+      "website": "https://www.hoteldaubusson.com"
+     }
+    ]
+   },
+   "taxiCompanies": [
+    {
+     "name": "Panthéon",
+     "phone": "+33 1 46 33 00 00",
+     "website": null
+    },
+    {
+     "name": "Place Victor Hugo",
+     "phone": "+33 1 45 53 00 11",
+     "website": null
+    },
+    {
+     "name": "Mairie du 11e - Léon Blum",
+     "phone": "+33 1 43790000",
+     "website": null
+    },
+    {
+     "name": "Maréchal Juin",
+     "phone": "+33 1 42270000",
+     "website": null
+    },
+    {
+     "name": "Rambuteau",
+     "phone": "+33 1 42 72 00 00",
+     "website": null
+    },
+    {
+     "name": "Drouot",
+     "phone": "+33 1 42 46 00 00",
+     "website": null
+    }
+   ],
+   "retrievedOn": "2026-10-26"
+  },
+  {
+   "code": "london",
+   "airports": [
+    {
+     "iata": "LHR",
+     "hotels": [
+      {
+       "osmId": "way/976570913",
+       "name": "Hilton Garden Inn London Heathrow Terminals 2 and 3",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 51.4698303,
+       "longitude": -0.4535508,
+       "distanceMeters": 55,
+       "address": "Cessna Road, TW6 1AH, Longford",
+       "phone": "+44 20 3972 9700",
+       "website": "https://www.hilton.com/en/hotels/lhrhegi-hilton-garden-inn-london-heathrow-terminals-2-and-3/"
+      },
+      {
+       "osmId": "way/23352394",
+       "name": "Leonardo Hotel London Heathrow Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 51.4814255,
+       "longitude": -0.4576616,
+       "distanceMeters": 1292,
+       "address": "Bath Road, UB7 0DP, West Drayton",
+       "phone": "+44 20 8990 0000",
+       "website": "https://www.jurysinns.com/hotels/london/leonardo-heathrow-airport"
+      },
+      {
+       "osmId": "way/23352391",
+       "name": "Radisson Red London Heathrow",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 51.4828741,
+       "longitude": -0.4510366,
+       "distanceMeters": 1449,
+       "address": "Bath Road",
+       "phone": null,
+       "website": "https://www.radissonhotels.com/en-us/hotels/radisson-conference-london-heathrow"
+      },
+      {
+       "osmId": "way/114727955",
+       "name": "Hyatt Place London Heathrow Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 51.481891,
+       "longitude": -0.4682355,
+       "distanceMeters": 1637,
+       "address": "Bath Road, UB7 0DG, West Drayton",
+       "phone": "+44 20 8759 7777",
+       "website": "https://www.hyatt.com/en-US/hotel/england-united-kingdom/hyatt-place-london-heathrow-airport/lhrza"
+      },
+      {
+       "osmId": "way/204638586",
+       "name": "Ibis Heathrow Airport Hotel",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 51.4812589,
+       "longitude": -0.4307404,
+       "distanceMeters": 2057,
+       "address": "Bath Road 112, UB3 5AL, Hayes",
+       "phone": "+44 20 8759 4888",
+       "website": "https://all.accor.com/hotel/0794/index.en.shtml"
+      },
+      {
+       "osmId": "way/97987674",
+       "name": "Thistle London Heathrow Terminal 5 Hotel",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 51.4805547,
+       "longitude": -0.483806,
+       "distanceMeters": 2357,
+       "address": "Bath Road 5, UB7 0EQ, West Drayton",
+       "phone": "+44 20 7523 5056",
+       "website": "https://www.thistle.com/heathrow-terminal-5"
+      },
+      {
+       "osmId": "way/187395726",
+       "name": "Hilton Garden Inn London Heathrow Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 51.4683702,
+       "longitude": -0.4189433,
+       "distanceMeters": 2456,
+       "address": "Eastern Perimeter Road, Hatton Cross, TW6 2SQ",
+       "phone": "+44 20 8266 4664",
+       "website": "https://www.hilton.com/en/hotels/lhrepgi-hilton-garden-inn-london-heathrow-airport/"
+      },
+      {
+       "osmId": "way/373792771",
+       "name": "DoubleTree by Hilton Hotel London Heathrow Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 51.4801569,
+       "longitude": -0.4112341,
+       "distanceMeters": 3189,
+       "address": "Bath Road 745, TW5 9QE, Hounslow",
+       "phone": "+44 20 8564 4450",
+       "website": "https://www.hilton.com/en/hotels/lhrcldi-doubletree-london-heathrow-airport/"
+      },
+      {
+       "osmId": "way/311394440",
+       "name": "Hilton London Heathrow Airport Terminal 5",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 51.4778694,
+       "longitude": -0.5174183,
+       "distanceMeters": 4458,
+       "address": "Poyle Road, SL3 0FF, Slough",
+       "phone": "+44 1753 686860",
+       "website": "https://www.hilton.com/en/hotels/lhrathi-hilton-london-heathrow-airport-terminal-5/"
+      },
+      {
+       "osmId": "relation/2570782",
+       "name": "Renaissance London Heathrow Hotel",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 51.4803834,
+       "longitude": -0.4458191,
+       "distanceMeters": 1295,
+       "address": "Bath Road, TW6 2AQ, Hounslow",
+       "phone": "+44 20 8897 6363",
+       "website": "https://www.marriott.com/hotels/travel/lhrbr-renaissance-london-heathrow-hotel/"
+      },
+      {
+       "osmId": "way/737416278",
+       "name": "Ibis Styles London Heathrow Airport Hotel",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 51.4815862,
+       "longitude": -0.4484098,
+       "distanceMeters": 1351,
+       "address": "Bath Road 272, UB3 5AY, Hayes",
+       "phone": "+44 20 3862 7689",
+       "website": null
+      },
+      {
+       "osmId": "node/6063457067",
+       "name": "Staybridge Suites London - Heathrow Bath Road, an IHG Hotel",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 51.4815386,
+       "longitude": -0.4617164,
+       "distanceMeters": 1382,
+       "address": "Bath Road 276A, UB7 0DQ, West Drayton",
+       "phone": "+44 20 3962 5999",
+       "website": "https://www.ihg.com/staybridge/hotels/gb/en/west-drayton/lonbr/hoteldetail"
+      }
+     ],
+     "transitLines": [
+      {
+       "mode": "train",
+       "ref": "Elizabeth",
+       "name": "Elizabeth line: Heathrow Terminal 4 → Paddington",
+       "from": "Heathrow Terminal 4",
+       "to": "London Paddington",
+       "operator": "GTS Rail Operations",
+       "network": "National Rail",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "HX",
+       "name": "Heathrow Express: Paddington → Heathrow Terminal 5",
+       "from": "London Paddington",
+       "to": "Heathrow Terminal 5",
+       "operator": null,
+       "network": null,
+       "website": null
+      },
+      {
+       "mode": "subway",
+       "ref": "Piccadilly",
+       "name": "Piccadilly line: Cockfosters → Heathrow Terminal 5",
+       "from": "Cockfosters",
+       "to": "Heathrow Terminal 5",
+       "operator": "Transport for London",
+       "network": "London Underground",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "5",
+       "name": "5 Cippenham → Heathrow Central",
+       "from": "Cippenham Green",
+       "to": "Heathrow Central Bus Station",
+       "operator": "Thames Valley Buses",
+       "network": "Berkshire",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "7",
+       "name": "7 Britwell → Heathrow Central",
+       "from": "Kennedy Park Shops",
+       "to": "Heathrow Central Bus Station",
+       "operator": "First Berkshire",
+       "network": "Berkshire",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "8",
+       "name": "8 Heathrow Central → Slough",
+       "from": "Heathrow Central Bus Station",
+       "to": "Slough Bus Station",
+       "operator": "First Berkshire",
+       "network": "Berkshire",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "030",
+       "name": "Bus 030: Fareham → Portsmouth → London",
+       "from": "Fareham",
+       "to": "London",
+       "operator": "National Express",
+       "network": "National Express",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "044",
+       "name": "Flixbus 044: Gloucester → London",
+       "from": "Gloucester (Transport Hub)",
+       "to": "London (Green Line Coach Station)",
+       "operator": "Flixbus",
+       "network": "Flixbus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "81",
+       "name": "London Buses route 81 → Slough",
+       "from": "School Road",
+       "to": "Slough Bus Station",
+       "operator": "Metroline",
+       "network": "London Buses",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "102",
+       "name": "102 High Wycombe → Heathrow Central",
+       "from": "High Wycombe Bus Station",
+       "to": "Heathrow Central Bus Station",
+       "operator": "Carousel Buses",
+       "network": "Bucks",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "105",
+       "name": "London Buses route 105 → Heathrow Central",
+       "from": "Rockware Avenue / Greenford Station",
+       "to": "Heathrow Central Bus Station",
+       "operator": "First Bus London",
+       "network": "London Buses",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "111",
+       "name": "London Buses route 111 → Heathrow Central",
+       "from": "Kingston Station",
+       "to": "Heathrow Central Bus Station",
+       "operator": "Transport UK",
+       "network": "London Buses",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "200",
+       "name": "National Express 200 Airport",
+       "from": null,
+       "to": null,
+       "operator": "National Express",
+       "network": "National Express",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "201",
+       "name": "National Express 201: Gatwick Airport → Swansea",
+       "from": "Gatwick Airport",
+       "to": "Swansea",
+       "operator": "National Express",
+       "network": "National Express",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "202",
+       "name": "National Express 202: London Heathrow → Swansea",
+       "from": "London Heathrow",
+       "to": "Swansea",
+       "operator": "National Express",
+       "network": "National Express",
+       "website": null
+      }
+     ],
+     "taxiRanks": [
+      {
+       "name": "Taxi Feeder Park",
+       "operator": null,
+       "phone": null,
+       "latitude": 51.480243,
+       "longitude": -0.437046,
+       "distanceMeters": 1651
+      },
+      {
+       "name": null,
+       "operator": null,
+       "phone": null,
+       "latitude": 51.4672375,
+       "longitude": -0.4229949,
+       "distanceMeters": 2190
+      }
+     ]
+    }
+   ],
+   "centre": {
+    "hotels": [
+     {
+      "osmId": "way/183993059",
+      "name": "The Trafalgar St. James London, Curio Collection by Hilton",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 51.5073375,
+      "longitude": -0.1295145,
+      "distanceMeters": 119,
+      "address": "Spring Gardens 2, SW1A 2TS, London",
+      "phone": "+44 20 7870 2900",
+      "website": "https://www.hilton.com/en/hotels/lontsqq-the-trafalgar-st-james-london/"
+     },
+     {
+      "osmId": "way/45068228",
+      "name": "Great Scotland Yard Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 51.50638,
+      "longitude": -0.1263391,
+      "distanceMeters": 152,
+      "address": "Great Scotland Yard 3-5, SW1A 2HN, London",
+      "phone": "+44 2079254700",
+      "website": "https://www.hyatt.com/unbound-collection/en-US/lhrub-great-scotland-yard"
+     },
+     {
+      "osmId": "way/350073272",
+      "name": "The Piccadilly London West End Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 51.512215,
+      "longitude": -0.1318597,
+      "distanceMeters": 605,
+      "address": "Shaftesbury Avenue 65-73, London",
+      "phone": null,
+      "website": "https://www.thepiccadillywestend.co.uk/"
+     },
+     {
+      "osmId": "way/349878169",
+      "name": "Ham Yard Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 51.5111531,
+      "longitude": -0.1348599,
+      "distanceMeters": 643,
+      "address": "Ham Yard 1, London",
+      "phone": null,
+      "website": "https://www.firmdalehotels.com/hotels/london/ham-yard-hotel/"
+     },
+     {
+      "osmId": "way/80119137",
+      "name": "NoMad London",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 51.5135819,
+      "longitude": -0.1219487,
+      "distanceMeters": 798,
+      "address": "Bow Street 28, WC2E 7AW, London",
+      "phone": "+44 20 3906 1600",
+      "website": "https://www.hilton.com/en/hotels/lonnmnd-nomad-london/"
+     },
+     {
+      "osmId": "way/26706806",
+      "name": "The Ritz London",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 51.5070653,
+      "longitude": -0.141572,
+      "distanceMeters": 954,
+      "address": "Piccadilly 150, W1J 9BR, London",
+      "phone": null,
+      "website": "https://www.theritzlondon.com/"
+     },
+     {
+      "osmId": "way/367258974",
+      "name": "Conrad London St. James",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 51.4993288,
+      "longitude": -0.1325348,
+      "distanceMeters": 955,
+      "address": "Broadway 22-28, SW1H 0BH, London",
+      "phone": "+44 20 3301 8080",
+      "website": "https://www.hilton.com/en/hotels/loncoci-conrad-london-st-james/"
+     },
+     {
+      "osmId": "way/38425102",
+      "name": "May Fair Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 51.5083035,
+      "longitude": -0.1440607,
+      "distanceMeters": 1130,
+      "address": "Stratton Street, W1J 8LT, London",
+      "phone": "+44 20 7629 7777",
+      "website": "https://www.themayfairhotel.co.uk/"
+     },
+     {
+      "osmId": "way/272006375",
+      "name": "Courthouse Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 51.5145884,
+      "longitude": -0.1395646,
+      "distanceMeters": 1141,
+      "address": "Great Marlborough Street 19-21, W1F 7HL, London",
+      "phone": null,
+      "website": "https://www.courthouse-hotel.com/"
+     },
+     {
+      "osmId": "way/38325257",
+      "name": "Citadines Trafalgar Square",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 51.5071852,
+      "longitude": -0.1246392,
+      "distanceMeters": 220,
+      "address": "Northumberland Avenue 18-21, WC2N 5EA, London",
+      "phone": "+44 20 7766 3700",
+      "website": null
+     },
+     {
+      "osmId": "node/346430283",
+      "name": "The Clermont",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 51.5083992,
+      "longitude": -0.124718,
+      "distanceMeters": 241,
+      "address": "WC2N 5HX, London",
+      "phone": null,
+      "website": "https://www.theclermont.co.uk/charing-cross/"
+     },
+     {
+      "osmId": "way/32919259",
+      "name": "Royal Trafalgar Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 51.5091436,
+      "longitude": -0.1301772,
+      "distanceMeters": 254,
+      "address": null,
+      "phone": null,
+      "website": "https://www.thistle.com/hotels/united_kingdom/london/thistle_trafalgar_square/index.html"
+     }
+    ]
+   },
+   "taxiCompanies": [
+    {
+     "name": "Express Car Service",
+     "phone": "+44 20 7272 1717",
+     "website": "https://www.expresscarservice.co.uk/"
+    },
+    {
+     "name": "Ace Cars London Ltd",
+     "phone": "+44 20 8980 6666",
+     "website": null
+    },
+    {
+     "name": "Mini Cab",
+     "phone": "+44 20 7354 8844",
+     "website": null
+    },
+    {
+     "name": "Tower Cars",
+     "phone": "+44 20 7739 9099",
+     "website": null
+    },
+    {
+     "name": "Camden Market Cabs",
+     "phone": "+44 20 7428 9999",
+     "website": null
+    },
+    {
+     "name": "Great London Cars",
+     "phone": "+44 20 8348 0000",
+     "website": null
+    }
+   ],
+   "retrievedOn": "2026-10-26"
+  },
+  {
+   "code": "rome",
+   "airports": [
+    {
+     "iata": "FCO",
+     "hotels": [
+      {
+       "osmId": "node/378978299",
+       "name": "Hilton Roma Airport",
+       "nameEn": "Hilton Rome Airport",
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 41.7914084,
+       "longitude": 12.2555297,
+       "distanceMeters": 1696,
+       "address": "Via Arturo Ferrarin 2, 00054, Fiumicino",
+       "phone": "+39 06 65258",
+       "website": "https://www.hilton.com/en/hotels/romaptw-hilton-rome-airport/"
+      },
+      {
+       "osmId": "node/6944971613",
+       "name": "Hilton Garden Inn Rome Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 41.8000877,
+       "longitude": 12.2733093,
+       "distanceMeters": 2852,
+       "address": "Via Vittorio Bragadin 2, 00054, Fiumicino",
+       "phone": "+39 06 65259000",
+       "website": "https://www.hilton.com/en/hotels/fcoapgi-hilton-garden-inn-rome-airport/?SEO_id=OTHR-EMEA-GI-FCOAPGI"
+      },
+      {
+       "osmId": "node/4037043411",
+       "name": "La Spiaggia",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 1,
+       "latitude": 41.8160448,
+       "longitude": 12.2113516,
+       "distanceMeters": 2877,
+       "address": null,
+       "phone": "+39 06 6589975",
+       "website": null
+      },
+      {
+       "osmId": "way/1323862222",
+       "name": "QC Termeroma",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 5,
+       "latitude": 41.7824466,
+       "longitude": 12.2684988,
+       "distanceMeters": 3156,
+       "address": "Via Portuense 2178a, 00054, Fiumicino",
+       "phone": "+39 0289747209",
+       "website": "https://www.qcterme.com/it/roma/qc-termeroma-hotel"
+      },
+      {
+       "osmId": "relation/7117234",
+       "name": "Tiber",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 41.7717104,
+       "longitude": 12.2237281,
+       "distanceMeters": 3419,
+       "address": null,
+       "phone": "+39 06 65048255",
+       "website": "https://www.hoteltiberfiumicino.it/"
+      },
+      {
+       "osmId": "node/1529033794",
+       "name": "Al Porticciolo",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 41.7700875,
+       "longitude": 12.227292,
+       "distanceMeters": 3495,
+       "address": "Via Fiumara 2, Fiumicino",
+       "phone": null,
+       "website": "https://www.booking.com/hotel/it/al-porticciolo.it.html"
+      },
+      {
+       "osmId": "node/5168720723",
+       "name": "Airport One Hotel",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 41.803036,
+       "longitude": 12.2258228,
+       "distanceMeters": 1126,
+       "address": "Viale Coccia di Morto 215",
+       "phone": "+39 06 6508 3002",
+       "website": null
+      },
+      {
+       "osmId": "node/2489050809",
+       "name": "Courtyard By Marriot",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 41.7729781,
+       "longitude": 12.2391314,
+       "distanceMeters": 3038,
+       "address": "Via Portuense 2470, 00054, Fiumicino",
+       "phone": null,
+       "website": null
+      },
+      {
+       "osmId": "node/4212379489",
+       "name": "Jefe suites And rooms",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 41.7688697,
+       "longitude": 12.2259914,
+       "distanceMeters": 3655,
+       "address": "Viale Traiano 135",
+       "phone": "+39 06 6520619",
+       "website": "https://www.jeferestaurant.it"
+      },
+      {
+       "osmId": "node/2854000620",
+       "name": "Comfort Hotel Rome Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 41.7670864,
+       "longitude": 12.229823,
+       "distanceMeters": 3769,
+       "address": "Via Tempio della Fortuna 54, 00054, Fiumicino",
+       "phone": "+39 06 65029681",
+       "website": null
+      },
+      {
+       "osmId": "node/3193500684",
+       "name": "Oltremare",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 41.7611493,
+       "longitude": 12.2261887,
+       "distanceMeters": 4479,
+       "address": null,
+       "phone": null,
+       "website": null
+      },
+      {
+       "osmId": "node/3193500679",
+       "name": "Hotel del mare",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 41.7607181,
+       "longitude": 12.2265164,
+       "distanceMeters": 4519,
+       "address": null,
+       "phone": null,
+       "website": null
+      }
+     ],
+     "transitLines": [
+      {
+       "mode": "train",
+       "ref": "FL1",
+       "name": "Treno FL1: Fiumicino Aeroporto → Orte",
+       "from": "Fiumicino Aeroporto",
+       "to": "Orte",
+       "operator": "Trenitalia",
+       "network": "Trenitalia",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "LEX",
+       "name": "Leonardo Express (Fiumicino Aeroporto)",
+       "from": "Roma Termini",
+       "to": "Fiumicino Aeroporto",
+       "operator": "Trenitalia",
+       "network": "Trenitalia",
+       "website": "https://www.trenitalia.com/"
+      },
+      {
+       "mode": "bus",
+       "ref": "550",
+       "name": "Flixbus 550: Pescara, Terminal Bus => Roma, Aeroporto Fiumicino",
+       "from": "Pescara, Terminal Bus",
+       "to": "Roma, Aeroporto Fiumicino",
+       "operator": "Flixbus",
+       "network": "Flixbus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "551",
+       "name": "Flixbus 551: Porto d'Ascoli, Distributore Total => Roma, Aeroporto Fiumicino",
+       "from": "Porto d'Ascoli, Distributore Total",
+       "to": "Roma, Aeroporto Fiumicino",
+       "operator": "Flixbus",
+       "network": "Flixbus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "552",
+       "name": "Flixbus 552: Termoli, Terminal Bus => Roma, Aeroporto Fiumicino",
+       "from": "Termoli, Terminal Bus",
+       "to": "Roma, Aeroporto Fiumicino",
+       "operator": "Flixbus",
+       "network": "Flixbus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "554",
+       "name": "Flixbus 554: Ancona, parcheggio Archi => Roma, Aeroporto Fiumicino",
+       "from": "Ancona, parcheggio Archi",
+       "to": "Roma, Aeroporto Fiumicino",
+       "operator": "Flixbus",
+       "network": "Flixbus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "1553",
+       "name": "Flixbus 1553: Roma, Aeroporto Fiumicino => Macerata, Autostazione",
+       "from": "Roma, Aeroporto Fiumicino",
+       "to": "Macerata, Autostazione",
+       "operator": "Flixbus",
+       "network": "Flixbus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "Airport Shuttle",
+       "name": "Airport Shuttle",
+       "from": null,
+       "to": null,
+       "operator": "ADR",
+       "network": null,
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "Sit Shuttle Bus",
+       "name": "Sit Shuttle Bus: Fiumicino City - Rome Termini",
+       "from": "Fiumicino City",
+       "to": "Rome Termini",
+       "operator": "Societa Italiana Transporti",
+       "network": null,
+       "website": null
+      }
+     ],
+     "taxiRanks": [
+      {
+       "name": "Taxi Fiumicino",
+       "operator": null,
+       "phone": null,
+       "latitude": 41.7951706,
+       "longitude": 12.2536587,
+       "distanceMeters": 1350
+      }
+     ]
+    }
+   ],
+   "centre": {
+    "hotels": [
+     {
+      "osmId": "node/2201468649",
+      "name": "Columbia",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 41.9008559,
+      "longitude": 12.4965913,
+      "distanceMeters": 217,
+      "address": "Via del Viminale 15, 00184, Roma",
+      "phone": "+39 06 4883509",
+      "website": "https://hotelcolumbia.com/"
+     },
+     {
+      "osmId": "node/2201468650",
+      "name": "Hotel Lirico",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 41.9001363,
+      "longitude": 12.4953977,
+      "distanceMeters": 308,
+      "address": "Via del Viminale 31, 00184, Roma",
+      "phone": "+39 06 48906230",
+      "website": "https://www.hotelirico.com/"
+     },
+     {
+      "osmId": "node/2584246820",
+      "name": "The Independent Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 41.9039161,
+      "longitude": 12.5005896,
+      "distanceMeters": 368,
+      "address": "Via Volturno 48, 00185, Roma",
+      "phone": "+39 0644 52657",
+      "website": "https://www.independenthotel.it/"
+     },
+     {
+      "osmId": "node/1719138872",
+      "name": "Windrose",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 41.904498,
+      "longitude": 12.5002528,
+      "distanceMeters": 371,
+      "address": "Via Gaeta 39, 00185, Roma",
+      "phone": "+39 06 4821913",
+      "website": null
+     },
+     {
+      "osmId": "node/1926196451",
+      "name": "Hotel Noto",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 41.9048918,
+      "longitude": 12.4999008,
+      "distanceMeters": 372,
+      "address": "Via Calatafimi 12, 00185, Roma",
+      "phone": "+39 06 48900522",
+      "website": null
+     },
+     {
+      "osmId": "node/2994982004",
+      "name": "Hotel Massimo D'Azeglio",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 41.900035,
+      "longitude": 12.4993411,
+      "distanceMeters": 392,
+      "address": "Via Cavour 18, 00184, Roma",
+      "phone": "+39 06 4870270",
+      "website": "https://www.romehoteldazeglio.it/"
+     },
+     {
+      "osmId": "node/443610569",
+      "name": "Royal Santina",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 41.9030837,
+      "longitude": 12.5016103,
+      "distanceMeters": 432,
+      "address": "Via Marsala 22, 00185, Roma",
+      "phone": "+39 06 448751",
+      "website": "https://www.hotelroyalsantina.com/"
+     },
+     {
+      "osmId": "node/1926196460",
+      "name": "Hotel Mary2",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 2,
+      "latitude": 41.9052627,
+      "longitude": 12.5004559,
+      "distanceMeters": 433,
+      "address": "Via Calatafimi, 00185, Roma",
+      "phone": "+39 06 4828313",
+      "website": null
+     },
+     {
+      "osmId": "node/2141444065",
+      "name": "Hotel Floridia",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 41.9056348,
+      "longitude": 12.5001894,
+      "distanceMeters": 445,
+      "address": "Via Montebello 45, 00185, Roma",
+      "phone": "+39 06 4451995",
+      "website": "https://www.floridiahotelroma.it/"
+     },
+     {
+      "osmId": "node/1134598828",
+      "name": "Caravaggio",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 41.8993324,
+      "longitude": 12.4928201,
+      "distanceMeters": 486,
+      "address": "Via Palermo 75, 00184, Roma",
+      "phone": "+39 06 485915",
+      "website": null
+     },
+     {
+      "osmId": "node/2426953234",
+      "name": "Andreotti Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 41.9054275,
+      "longitude": 12.5021644,
+      "distanceMeters": 559,
+      "address": "Via Castelfidardo 55, 00185, Roma",
+      "phone": "+39 06 4441301",
+      "website": "https://www.hotelandreotti.it/"
+     },
+     {
+      "osmId": "node/585485646",
+      "name": "Palladium Palace",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 41.8984389,
+      "longitude": 12.5003513,
+      "distanceMeters": 585,
+      "address": "Via Gioberti 36, 00185, Roma",
+      "phone": "+39 06 4466918",
+      "website": "https://www.hotelpalladiumpalace.com/"
+     }
+    ]
+   },
+   "taxiCompanies": [],
+   "retrievedOn": "2026-10-26"
+  },
+  {
+   "code": "amsterdam",
+   "airports": [
+    {
+     "iata": "AMS",
+     "hotels": [
+      {
+       "osmId": "node/4833291573",
+       "name": "Hilton Amsterdam Airport Schiphol",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 52.3070375,
+       "longitude": 4.7551722,
+       "distanceMeters": 972,
+       "address": "Schiphol Boulevard 701, 1118BN, Schiphol",
+       "phone": "+31 20 710 4000",
+       "website": "https://www.hilton.com/en/hotels/amsaphi-hilton-amsterdam-airport-schiphol/"
+      },
+      {
+       "osmId": "node/2744881026",
+       "name": "Ibis budget Amsterdam Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 2,
+       "latitude": 52.3256567,
+       "longitude": 4.7921469,
+       "distanceMeters": 2338,
+       "address": "Schipholweg 185, 1171PK, Badhoevedorp",
+       "phone": null,
+       "website": "https://www.ibis.com/nl/hotel-5097-ibis-budget-amsterdam-airport-previously-etap-hotel/index.shtml"
+      },
+      {
+       "osmId": "node/2744881027",
+       "name": "Ibis Schiphol Amsterdam Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 52.3250454,
+       "longitude": 4.79388,
+       "distanceMeters": 2375,
+       "address": "Schipholweg 181, 1171PK, Badhoevedorp",
+       "phone": "+31 20 502 5100",
+       "website": "https://www.ibisschipholamsterdamairport.com/"
+      },
+      {
+       "osmId": "node/2745225287",
+       "name": "ibis Styles Amsterdam Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 52.305778,
+       "longitude": 4.8064137,
+       "distanceMeters": 2644,
+       "address": "Piet Guilonardweg 3, 1117EE, Schiphol",
+       "phone": "+31 20 820 2220",
+       "website": "https://www.accorhotels.com/gb/hotel-B480-ibis-styles-amsterdam-airport-new/index.shtml"
+      },
+      {
+       "osmId": "node/2273233098",
+       "name": "Renaissance Amsterdam Schiphol Airport Hotel",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 52.304609,
+       "longitude": 4.8094975,
+       "distanceMeters": 2876,
+       "address": "Mr. Jac. Takkade 35, 1432CB, Aalsmeer",
+       "phone": "+31 297 228 686",
+       "website": "https://www.marriott.com/hotels/hotel-reviews/amsra-renaissance-amsterdam-schiphol-airport-hotel/"
+      },
+      {
+       "osmId": "node/1848546859",
+       "name": "Best Western Amsterdam Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 52.2902684,
+       "longitude": 4.7247648,
+       "distanceMeters": 3718,
+       "address": "Vuursteen 1, 2132LZ, Hoofddorp",
+       "phone": null,
+       "website": "https://www.bastionhotels.nl/nl/onzehotels/airport"
+      },
+      {
+       "osmId": "node/2733895686",
+       "name": "Bastion Hotel Amsterdam Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 52.2900106,
+       "longitude": 4.7239396,
+       "distanceMeters": 3780,
+       "address": "Vuursteen 3, 2132LZ, Hoofddorp",
+       "phone": null,
+       "website": "https://www.bastionhotels.com/nl-nl/hotels/hotel-amsterdam-airport"
+      },
+      {
+       "osmId": "node/13248729814",
+       "name": "Hyatt Place Amsterdam Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 52.2935063,
+       "longitude": 4.7161908,
+       "distanceMeters": 4016,
+       "address": "Rijnlanderweg 800, 2132NN, Hoofddorp",
+       "phone": "+31 20 5421234",
+       "website": "https://www.hyatt.com/hyatt-place/en-US/amsza-hyatt-place-amsterdam-airport"
+      },
+      {
+       "osmId": "node/2734029697",
+       "name": "Hampton by Hilton Amsterdam Airport Schiphol",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 52.2950648,
+       "longitude": 4.7022636,
+       "distanceMeters": 4807,
+       "address": "Neptunusstraat 1, 2132JA, Hoofddorp",
+       "phone": "+31 23 820 0940",
+       "website": "https://www.hilton.com/en/hotels/amsaahx-hampton-amsterdam-airport-schiphol"
+      },
+      {
+       "osmId": "node/12794454687",
+       "name": "Novotel Amsterdam Schiphol Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 52.2917859,
+       "longitude": 4.7022396,
+       "distanceMeters": 4950,
+       "address": "Taurusavenue 12, 2132LS, Hoofddorp",
+       "phone": "+31 20 721 9180",
+       "website": "https://www.novotel.com/nl/hotel-7060-novotel-amsterdam-schiphol-airport"
+      },
+      {
+       "osmId": "node/1168080425",
+       "name": "Yotel Schiphol",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 52.3092516,
+       "longitude": 4.7649676,
+       "distanceMeters": 266,
+       "address": "Vertrekpassage 118, 1118AS, Schiphol",
+       "phone": null,
+       "website": "https://www.yotel.com/"
+      },
+      {
+       "osmId": "node/1168080345",
+       "name": "Mercure Schiphol Terminal",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 52.3110007,
+       "longitude": 4.7615486,
+       "distanceMeters": 462,
+       "address": "1118CP, Schiphol",
+       "phone": "+31 20 604 1339",
+       "website": "https://www.mercure.com/1730"
+      }
+     ],
+     "transitLines": [
+      {
+       "mode": "train",
+       "ref": "700",
+       "name": "700: Schiphol Airport - Groningen",
+       "from": "Schiphol Airport",
+       "to": "Groningen",
+       "operator": "Nederlandse Spoorwegen",
+       "network": "Hoofdrailnet Nederland",
+       "website": "https://wiki.ovinnederland.nl/wiki/Serie_700"
+      },
+      {
+       "mode": "train",
+       "ref": "800",
+       "name": "800: Schiphol Airport - Leeuwarden",
+       "from": "Schiphol Airport",
+       "to": "Leeuwarden",
+       "operator": "Nederlandse Spoorwegen",
+       "network": "Hoofdrailnet Nederland",
+       "website": "https://wiki.ovinnederland.nl/wiki/Serie_1800"
+      },
+      {
+       "mode": "train",
+       "ref": "1400",
+       "name": "1400: Nachtnet (Gouda -) Rotterdam Centraal - Schiphol Airport - Amsterdam Centraal - Utrecht Centraal",
+       "from": "Rotterdam Centraal",
+       "to": "Utrecht Centraal",
+       "operator": "Nederlandse Spoorwegen",
+       "network": "Hoofdrailnet Nederland",
+       "website": "https://wiki.ovinnederland.nl/wiki/Serie_1400"
+      },
+      {
+       "mode": "train",
+       "ref": "1800",
+       "name": "1800: Amersfoort Schothorst - Breda",
+       "from": "Amersfoort Schothorst",
+       "to": "Breda",
+       "operator": "Nederlandse Spoorwegen",
+       "network": "Hoofdrailnet Nederland",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "2400",
+       "name": "2400: Rotterdam Centraal - Lelystad Centrum",
+       "from": "Rotterdam Centraal",
+       "to": "Lelystad Centrum",
+       "operator": "Nederlandse Spoorwegen",
+       "network": "Hoofdrailnet Nederland",
+       "website": "https://wiki.ovinnederland.nl/wiki/Serie_2400"
+      },
+      {
+       "mode": "train",
+       "ref": "3100",
+       "name": "3100: Den Haag Centraal - Nijmegen",
+       "from": "Den Haag Centraal",
+       "to": "Nijmegen",
+       "operator": "Nederlandse Spoorwegen",
+       "network": "Hoofdrailnet Nederland",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "3200",
+       "name": "3200: Arnhem Centraal - Rotterdam Centraal",
+       "from": "Arnhem Centraal",
+       "to": "Rotterdam Centraal",
+       "operator": "Nederlandse Spoorwegen",
+       "network": "Hoofdrailnet Nederland",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "3500",
+       "name": "3500: Dordrecht - Venlo",
+       "from": "Dordrecht",
+       "to": "Venlo",
+       "operator": "Nederlandse Spoorwegen",
+       "network": "Hoofdrailnet Nederland",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "4100",
+       "name": "4100: Den Haag Centraal - Hoorn Kersenboogerd",
+       "from": "Den Haag Centraal",
+       "to": "Hoorn Kersenboogerd",
+       "operator": "Nederlandse Spoorwegen",
+       "network": "Hoofdrailnet Nederland",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "4300",
+       "name": "4300: Den Haag Centraal - Lelystad Centrum",
+       "from": "Den Haag Centraal",
+       "to": "Lelystad Centrum",
+       "operator": "Nederlandse Spoorwegen",
+       "network": "Hoofdrailnet Nederland",
+       "website": "https://wiki.ovinnederland.nl/wiki/Serie_4300"
+      },
+      {
+       "mode": "train",
+       "ref": "5700",
+       "name": "5700: Leiden Centraal - Utrecht Centraal",
+       "from": "Leiden Centraal",
+       "to": "Utrecht Centraal",
+       "operator": "Nederlandse Spoorwegen",
+       "network": "Hoofdrailnet Nederland",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "8100",
+       "name": "8100: Hoofddorp - Amsterdam Centraal",
+       "from": "Hoofddorp",
+       "to": "Amsterdam Centraal",
+       "operator": "Nederlandse Spoorwegen",
+       "network": "Hoofdrailnet Nederland",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "8200",
+       "name": "8200: Hoofddorp - Amsterdam Centraal",
+       "from": "Hoofddorp",
+       "to": "Amsterdam Centraal",
+       "operator": "Nederlandse Spoorwegen",
+       "network": "Hoofdrailnet Nederland",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "8300",
+       "name": "8300: Hoofddorp - Amsterdam Centraal",
+       "from": "Hoofddorp",
+       "to": "Amsterdam Centraal",
+       "operator": "Nederlandse Spoorwegen",
+       "network": "Hoofdrailnet Nederland",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "8400",
+       "name": "8400: Hoofddorp - Amsterdam Centraal",
+       "from": "Hoofddorp",
+       "to": "Amsterdam Centraal",
+       "operator": "Nederlandse Spoorwegen",
+       "network": "Hoofdrailnet Nederland",
+       "website": null
+      }
+     ],
+     "taxiRanks": [
+      {
+       "name": null,
+       "operator": null,
+       "phone": null,
+       "latitude": 52.3088198,
+       "longitude": 4.7619841,
+       "distanceMeters": 468
+      }
+     ]
+    }
+   ],
+   "centre": {
+    "hotels": [
+     {
+      "osmId": "node/1310911723",
+      "name": "Eden Hotel Amsterdam",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 52.3668596,
+      "longitude": 4.8986143,
+      "distanceMeters": 381,
+      "address": "Amstel 144, 1017AE, Amsterdam",
+      "phone": "+31 20 530 7878",
+      "website": "https://www.edenhotelamsterdam.com/en/"
+     },
+     {
+      "osmId": "node/441674929",
+      "name": "Ibis",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 52.3703348,
+      "longitude": 4.9075666,
+      "distanceMeters": 385,
+      "address": "Valkenburgerstraat 68, 1011LZ, Amsterdam",
+      "phone": "+31 20 721 9173",
+      "website": "https://www.ibis.com/nl/hotel-3044-ibis-amsterdam-centre-stopera/index.shtml#overview"
+     },
+     {
+      "osmId": "node/432506872",
+      "name": "Hotel Park Plantage",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 52.3664021,
+      "longitude": 4.9112827,
+      "distanceMeters": 506,
+      "address": "Plantage Middenlaan 26, 1018DE, Amsterdam",
+      "phone": "+31 20 623 5783",
+      "website": "https://www.hotelparkplantage.com"
+     },
+     {
+      "osmId": "node/1310974734",
+      "name": "Amsterdam House Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 52.3677956,
+      "longitude": 4.8964684,
+      "distanceMeters": 519,
+      "address": "'s-Gravelandse Veer 4, 1011KM, Amsterdam",
+      "phone": "+31 20 624 6607",
+      "website": "https://www.amsterdamhouse.com/"
+     },
+     {
+      "osmId": "node/1250800970",
+      "name": "Hotel Nes",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 52.3679198,
+      "longitude": 4.8963321,
+      "distanceMeters": 529,
+      "address": "Kloveniersburgwal 137, 1011KE, Amsterdam",
+      "phone": "+31 20 624 4773",
+      "website": "https://www.hotelnes.nl/"
+     },
+     {
+      "osmId": "node/1310911724",
+      "name": "Hotel Armada",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 2,
+      "latitude": 52.3641021,
+      "longitude": 4.8985067,
+      "distanceMeters": 544,
+      "address": "Keizersgracht 713-715, 1017DX, Amsterdam",
+      "phone": "+31 20 623 5829",
+      "website": "https://www.ozo-hotels.com/hotels/ozo-hotels-armada-amsterdam"
+     },
+     {
+      "osmId": "node/1083682481",
+      "name": "Radisson BLU Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 52.3701707,
+      "longitude": 4.8966042,
+      "distanceMeters": 584,
+      "address": "Rusland 17, 1012CK, Amsterdam",
+      "phone": "+31 20 623 1231",
+      "website": "https://www.radissonblu.com/de/hotel-amsterdam"
+     },
+     {
+      "osmId": "node/251823632",
+      "name": "Hotel de l'Europe",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 52.3676444,
+      "longitude": 4.8944657,
+      "distanceMeters": 654,
+      "address": "Nieuwe Doelenstraat 2-14, 1012CP, Amsterdam",
+      "phone": "+31 20 531 1777",
+      "website": "https://www.deleurope.com"
+     },
+     {
+      "osmId": "node/251187547",
+      "name": "Torenzicht",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 1,
+      "latitude": 52.3725261,
+      "longitude": 4.8982082,
+      "distanceMeters": 678,
+      "address": "Oudezijds Achterburgwal 93, 1012DD, Amsterdam",
+      "phone": "+31 20 623 2900",
+      "website": "https://www.hoteltorenzicht.com/"
+     },
+     {
+      "osmId": "node/318453539",
+      "name": "The Grand",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 52.3711233,
+      "longitude": 4.8954212,
+      "distanceMeters": 708,
+      "address": "Oudezijds Voorburgwal 197, 1012EX, Amsterdam",
+      "phone": "+31 20 555 3111",
+      "website": "https://www.sofitel-legend-thegrand.com"
+     },
+     {
+      "osmId": "node/441682026",
+      "name": "Hotel de Munck",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 2,
+      "latitude": 52.361375,
+      "longitude": 4.9007902,
+      "distanceMeters": 728,
+      "address": "Achtergracht 1-3, 1017WL, Amsterdam",
+      "phone": "+31 20 623 6283",
+      "website": "https://www.hoteldemunck.com/"
+     },
+     {
+      "osmId": "node/1714609972",
+      "name": "Amrath Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 52.3744566,
+      "longitude": 4.9039129,
+      "distanceMeters": 763,
+      "address": "Prins Hendrikkade 108-114, 1011AK, Amsterdam",
+      "phone": "+31 20 552 0000",
+      "website": "https://www.amrathamsterdam.nl"
+     }
+    ]
+   },
+   "taxiCompanies": [],
+   "retrievedOn": "2026-10-26"
+  },
+  {
+   "code": "prague",
+   "airports": [
+    {
+     "iata": "PRG",
+     "hotels": [
+      {
+       "osmId": "node/346200182",
+       "name": "Meritum",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 50.0809274,
+       "longitude": 14.3111057,
+       "distanceMeters": 4263,
+       "address": "Staré náměstí 14/8, 16100, Praha",
+       "phone": "+420 235 007 711",
+       "website": "https://www.hotelmeritum.com/"
+      },
+      {
+       "osmId": "way/27043732",
+       "name": "Courtyard Prague Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 50.1065491,
+       "longitude": 14.2696326,
+       "distanceMeters": 938,
+       "address": "Aviatická 1092/8, 16100, Praha",
+       "phone": "+420 236 077 077",
+       "website": "https://www.marriott.com/hotels/travel/prgpa-courtyard-prague-airport/"
+      },
+      {
+       "osmId": "node/809702717",
+       "name": "Holiday Inn Prague Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 50.108536,
+       "longitude": 14.2769739,
+       "distanceMeters": 1485,
+       "address": null,
+       "phone": "+420 236 161 111",
+       "website": "https://www.hipragueairport.com/"
+      },
+      {
+       "osmId": "node/2816963325",
+       "name": "Sporthotel Hostivice Břve",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 50.0687734,
+       "longitude": 14.2490709,
+       "distanceMeters": 3646,
+       "address": "Hájecká 1866, 25301",
+       "phone": "+420 777 813 241",
+       "website": "https://www.sporthotelhostivice.cz/"
+      },
+      {
+       "osmId": "node/7296572601",
+       "name": "Villa St.Tropez",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 50.0835827,
+       "longitude": 14.3192455,
+       "distanceMeters": 4640,
+       "address": null,
+       "phone": null,
+       "website": "https://www.s-tropez.cz/"
+      },
+      {
+       "osmId": "node/860259139",
+       "name": "Ramada Airport Hotel Praha",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 50.0997519,
+       "longitude": 14.2866722,
+       "distanceMeters": 1906,
+       "address": null,
+       "phone": null,
+       "website": null
+      },
+      {
+       "osmId": "node/599496053",
+       "name": "Domov důchodců",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 50.0805881,
+       "longitude": 14.2590157,
+       "distanceMeters": 2249,
+       "address": null,
+       "phone": null,
+       "website": null
+      },
+      {
+       "osmId": "way/28568596",
+       "name": "Skyhotel Prague",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 50.0814632,
+       "longitude": 14.3087727,
+       "distanceMeters": 4090,
+       "address": null,
+       "phone": null,
+       "website": null
+      },
+      {
+       "osmId": "node/296640045",
+       "name": "Penzion Oto Plus",
+       "nameEn": "Hostel Oto Plus",
+       "kind": "hostel",
+       "stars": null,
+       "latitude": 50.1164328,
+       "longitude": 14.2984634,
+       "distanceMeters": 3247,
+       "address": "K Padesátníku 10, 16400",
+       "phone": "+420737823135",
+       "website": null
+      },
+      {
+       "osmId": "node/449725585",
+       "name": "Pension Větrný mlýn",
+       "nameEn": null,
+       "kind": "guest_house",
+       "stars": null,
+       "latitude": 50.0837659,
+       "longitude": 14.3183869,
+       "distanceMeters": 4576,
+       "address": "Ruzyňská 96/3, 16100",
+       "phone": "+420 235 30 16 86",
+       "website": "https://penzionmlynpraha.cz/"
+      },
+      {
+       "osmId": "node/3166565075",
+       "name": "Hostel Modra",
+       "nameEn": null,
+       "kind": "hostel",
+       "stars": null,
+       "latitude": 50.0978141,
+       "longitude": 14.2914722,
+       "distanceMeters": 2269,
+       "address": "K Letišti 916/8, 16100, Praha",
+       "phone": null,
+       "website": null
+      },
+      {
+       "osmId": "node/296688449",
+       "name": "Sporthostel Scandinavia",
+       "nameEn": null,
+       "kind": "hostel",
+       "stars": null,
+       "latitude": 50.0820369,
+       "longitude": 14.3080952,
+       "distanceMeters": 4016,
+       "address": "Ztracená 737, 16100",
+       "phone": null,
+       "website": null
+      }
+     ],
+     "transitLines": [
+      {
+       "mode": "bus",
+       "ref": "100",
+       "name": "Bus 100: Zličín ⇒ Letiště",
+       "from": "Zličín",
+       "to": "Letiště",
+       "operator": "cz:DPP",
+       "network": "Pražská integrovaná doprava",
+       "website": "https://pid.cz/linka/100"
+      },
+      {
+       "mode": "bus",
+       "ref": "191",
+       "name": "Bus 191: Terminál 1 ⇒ Na Knížecí",
+       "from": "Terminál 1",
+       "to": "Na Knížecí",
+       "operator": "cz:DPP",
+       "network": "Pražská integrovaná doprava",
+       "website": "https://pid.cz/linka/191"
+      },
+      {
+       "mode": "bus",
+       "ref": "322",
+       "name": "Bus 322: Kladno ⇒ Praha,Nádraží Veleslavín",
+       "from": "Kladno",
+       "to": "Praha,Nádraží Veleslavín",
+       "operator": "ČSAD MHD Kladno a.s.",
+       "network": "Pražská integrovaná doprava",
+       "website": "https://pid.cz/linka/322"
+      },
+      {
+       "mode": "bus",
+       "ref": "323",
+       "name": "323: Praha,Nádraží Veleslavín ⇒ Želenice",
+       "from": "Praha,Nádraží Veleslavín",
+       "to": "Želenice",
+       "operator": "ČSAD MHD Kladno a.s.",
+       "network": "Pražská integrovaná doprava",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "342",
+       "name": "Bus 342: Praha, nádraží Veleslavín ⇒ Slaný, žel. st.",
+       "from": "Praha, nádraží Veleslavín",
+       "to": "Slaný, žel. st.",
+       "operator": "ČSAD MHD Kladno a.s.",
+       "network": "Pražská integrovaná doprava",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "356",
+       "name": "Bus 356: Praha,OC Ruzyně ⇒ Praha,Bořislavka",
+       "from": "Praha,OC Ruzyně",
+       "to": "Praha,Bořislavka",
+       "operator": "ČSAD MHD Kladno a.s.",
+       "network": "Pražská integrovaná doprava",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "388",
+       "name": "388: Praha,Nádraží Veleslavín ⇒ Slaný,Arbesova",
+       "from": "Praha,Nádraží Veleslavín",
+       "to": "Slaný,Arbesova",
+       "operator": "ČSAD Slaný s.r.o.",
+       "network": "Pražská integrovaná doprava",
+       "website": "https://pid.cz/linka/388"
+      },
+      {
+       "mode": "bus",
+       "ref": "414",
+       "name": "Bus 414: Praha,nádraží Veleslavín <=> Tuchoměřice,outlet",
+       "from": "Praha,nádraží Veleslavín",
+       "to": "Tuchoměřice,outlet",
+       "operator": "AUTODOPRAVA LAMER s.r.o.",
+       "network": "Pražská integrovaná doprava",
+       "website": "https://pid.cz/linka/414"
+      },
+      {
+       "mode": "bus",
+       "ref": "429",
+       "name": "429: Praha,Nádraží Veleslavín ⇒ Unhošť",
+       "from": "Praha,Nádraží Veleslavín",
+       "to": "Unhošť,nám.",
+       "operator": "ČSAD MHD Kladno a.s.",
+       "network": "Pražská integrovaná doprava",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "907",
+       "name": "Bus 907: Baně ⇒ Letiště (Airport)",
+       "from": "Baně",
+       "to": "Letiště (Airport)",
+       "operator": "cz:DPP",
+       "network": "Pražská integrovaná doprava",
+       "website": "https://pid.cz/linka/907"
+      },
+      {
+       "mode": "bus",
+       "ref": "910",
+       "name": "910: Letiště (Airport) ⇒ Na Beránku",
+       "from": "Terminal 1",
+       "to": "Na Beránku",
+       "operator": "cz:DPP",
+       "network": "Pražská integrovaná doprava",
+       "website": "https://pid.cz/linka/910"
+      },
+      {
+       "mode": "bus",
+       "ref": "AE",
+       "name": "AE: Hlavní nádraží ⇒ Letiště (Airport)",
+       "from": "Hlavní nádraží",
+       "to": "Letiště",
+       "operator": "cz:DPP",
+       "network": "Pražská integrovaná doprava",
+       "website": "https://pid.cz/linka/AE"
+      },
+      {
+       "mode": "trolleybus",
+       "ref": "59",
+       "name": "Trolejbus 59: Terminál 1 ⇒ Nádraží Veleslavín",
+       "from": "Terminál 1",
+       "to": "Nádraží Veleslavín",
+       "operator": "Dopravní podnik hl. m. Prahy",
+       "network": "Pražská integrovaná doprava",
+       "website": null
+      }
+     ],
+     "taxiRanks": [
+      {
+       "name": null,
+       "operator": null,
+       "phone": null,
+       "latitude": 50.1055853,
+       "longitude": 14.2668661,
+       "distanceMeters": 723
+      }
+     ]
+    }
+   ],
+   "centre": {
+    "hotels": [
+     {
+      "osmId": "node/1260632308",
+      "name": "Arkada",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 50.0771085,
+      "longitude": 14.4341099,
+      "distanceMeters": 318,
+      "address": "Balbínova 8, 12000, Praha",
+      "phone": "+420 242 429 111",
+      "website": "https://www.arkadahotel.cz/"
+     },
+     {
+      "osmId": "node/1311741092",
+      "name": "Hotel Beránek",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 50.0747216,
+      "longitude": 14.4328178,
+      "distanceMeters": 366,
+      "address": "Bělehradská 110, 12000, Praha",
+      "phone": "+420 221 595 959",
+      "website": "https://www.hotelberanek.com/"
+     },
+     {
+      "osmId": "node/3244368062",
+      "name": "Hotel Orion",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 50.0718087,
+      "longitude": 14.4385967,
+      "distanceMeters": 414,
+      "address": "Americká 361/9, 12000, Praha",
+      "phone": "+420 222 521 706",
+      "website": "https://www.hotelorionprague.cz/en/"
+     },
+     {
+      "osmId": "node/3244368063",
+      "name": "Hotel Abri",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 50.0719224,
+      "longitude": 14.4394585,
+      "distanceMeters": 415,
+      "address": "Jana Masaryka 326/36, 12000, Praha",
+      "phone": "+420 731 805 522",
+      "website": "https://abrihotel.cz/"
+     },
+     {
+      "osmId": "node/2991228286",
+      "name": "City Bell",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 50.0717329,
+      "longitude": 14.4366537,
+      "distanceMeters": 427,
+      "address": null,
+      "phone": "+420222522422",
+      "website": "https://www.hotelcitybell.cz/"
+     },
+     {
+      "osmId": "node/3000009376",
+      "name": "Clarion Hotel Prague City",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 50.0746618,
+      "longitude": 14.4319154,
+      "distanceMeters": 430,
+      "address": "Tylovo náměstí 3, 12000, Praha",
+      "phone": "+420 221 995 900",
+      "website": "https://www.clarionhotelpraguecity.com/"
+     },
+     {
+      "osmId": "node/2424666238",
+      "name": "Hotel Tyl",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 50.0749802,
+      "longitude": 14.4317703,
+      "distanceMeters": 434,
+      "address": "Tylovo náměstí 5, 12000, Praha",
+      "phone": "+420 221 595 711",
+      "website": "https://hotel-tyl-prague.cz/"
+     },
+     {
+      "osmId": "node/3045877440",
+      "name": "Galileo",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 50.0723794,
+      "longitude": 14.4340567,
+      "distanceMeters": 438,
+      "address": null,
+      "phone": "+420222500222",
+      "website": "https://www.hotelgalileoprague.com/"
+     },
+     {
+      "osmId": "node/1950566237",
+      "name": "Pure White",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 50.0719449,
+      "longitude": 14.4327239,
+      "distanceMeters": 536,
+      "address": "Koubkova 12, 12000, Praha",
+      "phone": "+420220990100",
+      "website": "https://www.purewhitehotel.com/"
+     },
+     {
+      "osmId": "node/3180875042",
+      "name": "Hotel Ametyst",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 50.0707163,
+      "longitude": 14.4362582,
+      "distanceMeters": 543,
+      "address": "Jana Masaryka 523/11, 12000, Praha",
+      "phone": "+420 222 921 921",
+      "website": "https://www.hotelametyst.com/"
+     },
+     {
+      "osmId": "node/3243798661",
+      "name": "Le Palais",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 50.0697865,
+      "longitude": 14.434508,
+      "distanceMeters": 677,
+      "address": "U Zvonařky 1, 12000, Praha",
+      "phone": "+420 234 634 111",
+      "website": "https://www.lepalaishotel.eu/"
+     },
+     {
+      "osmId": "node/3421166130",
+      "name": "Archibald City",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 50.0773805,
+      "longitude": 14.4268651,
+      "distanceMeters": 808,
+      "address": "Žitná 1319/33, 110 00",
+      "phone": "+420 234 652 800",
+      "website": null
+     }
+    ]
+   },
+   "taxiCompanies": [],
+   "retrievedOn": "2026-10-26"
+  },
+  {
+   "code": "vienna",
+   "airports": [
+    {
+     "iata": "VIE",
+     "hotels": [
+      {
+       "osmId": "way/30549242",
+       "name": "NH Vienna Airport Conference Center",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 48.1218006,
+       "longitude": 16.5631991,
+       "distanceMeters": 1367,
+       "address": "Einfahrtstraße 1-3",
+       "phone": "+43 1 701510",
+       "website": "https://www.nh-hotels.com/nh/en/hotels/austria/vienna/nh-vienna-airport.html"
+      },
+      {
+       "osmId": "way/368139338",
+       "name": "Life Hotel (Eurohotel) Vienna Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 48.1166946,
+       "longitude": 16.6252969,
+       "distanceMeters": 4188,
+       "address": "Marcotelstraße 1, 2401, Fischamend",
+       "phone": null,
+       "website": "https://lifehotelvienna.com"
+      },
+      {
+       "osmId": "node/14247410371",
+       "name": "ZZZLeepAndGO",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 48.1198085,
+       "longitude": 16.5616666,
+       "distanceMeters": 1214,
+       "address": "Einfahrtsstraße 2320, 1300, Wien-Schwechat Flughafen",
+       "phone": null,
+       "website": "https://www.zzzleepandgo.com/index.php?page=info-vie&dove=MXP&lan1=en"
+      },
+      {
+       "osmId": "node/14247405280",
+       "name": "Leonardo Smart Hotel Vienna Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 48.1310688,
+       "longitude": 16.5358316,
+       "distanceMeters": 3414,
+       "address": "Niki Lauda Allee 10, 1300, Schwechat",
+       "phone": "+43 1 4180065",
+       "website": "https://www.leonardo-hotels.de/vienna/leonardo-smart-hotel-vienna-airport"
+      },
+      {
+       "osmId": "node/1738899839",
+       "name": "Gasthof Bauer",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 48.0839871,
+       "longitude": 16.5275981,
+       "distanceMeters": 4282,
+       "address": null,
+       "phone": null,
+       "website": "https://www.hotel-bauer.info"
+      },
+      {
+       "osmId": "way/487467574",
+       "name": "Moxy Vienna Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 48.1234206,
+       "longitude": 16.5658662,
+       "distanceMeters": 1486,
+       "address": "Ausfahrtsstraße 4, 1300, Wien-Flughafen",
+       "phone": null,
+       "website": null
+      },
+      {
+       "osmId": "way/369381930",
+       "name": "Hotel Deininger",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 48.120808,
+       "longitude": 16.6044466,
+       "distanceMeters": 2832,
+       "address": "Wiener Straße 28, 2401, Fischamend",
+       "phone": null,
+       "website": null
+      },
+      {
+       "osmId": "node/3151103826",
+       "name": "Pension Caltun",
+       "nameEn": null,
+       "kind": "guest_house",
+       "stars": null,
+       "latitude": 48.1191181,
+       "longitude": 16.6109655,
+       "distanceMeters": 3217,
+       "address": "Schulgasse 1, 2401, Fischamend",
+       "phone": "+43 664 274 49 53",
+       "website": "https://www.pension-fischamend.at/"
+      },
+      {
+       "osmId": "way/400635176",
+       "name": "Gasthof Nell",
+       "nameEn": null,
+       "kind": "guest_house",
+       "stars": null,
+       "latitude": 48.0830264,
+       "longitude": 16.5314783,
+       "distanceMeters": 4154,
+       "address": "47, 2320, Rauchenwarth",
+       "phone": null,
+       "website": null
+      }
+     ],
+     "transitLines": [
+      {
+       "mode": "train",
+       "ref": "REX7",
+       "name": "REX7: Wolfsthal => Wien Floridsdorf",
+       "from": "Wolfsthal",
+       "to": "Wien Floridsdorf",
+       "operator": "ÖBB-Personenverkehr AG",
+       "network": "VOR",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "RJ",
+       "name": "railjet: Salzburg => Wien",
+       "from": "Salzburg Hbf",
+       "to": "Flughafen Wien",
+       "operator": "ÖBB-Personenverkehr AG",
+       "network": "ÖBB railjet",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "RJX",
+       "name": "Railjet Xpress: Bregenz => Wien",
+       "from": "Bregenz",
+       "to": "Flughafen Wien",
+       "operator": "ÖBB-Personenverkehr AG",
+       "network": "ÖBB railjet",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "S7",
+       "name": "S7: Mistelbach => Wolfsthal",
+       "from": "Mistelbach",
+       "to": "Wolfsthal",
+       "operator": "ÖBB-Personenverkehr AG",
+       "network": "VOR",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "221",
+       "name": "Bus 221: Flughafen Wien Busterminal => Guntramsdorf Lokalbahn",
+       "from": "Flughafen Wien Busterminal",
+       "to": "Guntramsdorf Lokalbahn",
+       "operator": "Österreichische Postbus AG;Blaguss",
+       "network": "VOR",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "222",
+       "name": "Bus 222: Flughafen Wien Busterminal => Ebreichsdorf Georg-Drasche-Siedlung",
+       "from": "Flughafen Wien Busterminal",
+       "to": "Ebreichsdorf Georg-Drasche-Siedlung",
+       "operator": "Österreichische Postbus AG;Blaguss;k&k Busreisen",
+       "network": "VOR",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "273",
+       "name": "Bus 273: Flughafen Wien Busterminal => Fischamend Bahnhof => Neusiedl am See Pannonia Shopping Park => Neusiedl am See Schulzentrum",
+       "from": "Flughafen Wien Busterminal",
+       "to": "Neusiedl am See Schulzentrum",
+       "operator": "Österreichische Postbus AG;Blaguss",
+       "network": "VOR",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "901",
+       "name": "Flixbus 901: Bratislava, Flughafen => Wien Erdberg, Busterminal VIB",
+       "from": "Bratislava, Flughafen",
+       "to": "Wien Erdberg, Busterminal VIB",
+       "operator": "Blaguss Slovakia s.r.o",
+       "network": "Flixbus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "901a",
+       "name": "Flixbus 901a: Wien, Hbf. (International Busterminal) => Bratislava, Letisko",
+       "from": "Wien, Hbf. (International Busterminal)",
+       "to": "Bratislava, Letisko",
+       "operator": "Flixbus",
+       "network": "Flixbus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "902",
+       "name": "Flixbus 902: Wien, Hbf. (International Busterminal) => Budapest, Repülőtér",
+       "from": "Wien, Hbf. (International Busterminal)",
+       "to": "Budapest, Repülőtér",
+       "operator": "Blaguss/Volanbusz Zrt. Hungary; Blaguss Agora",
+       "network": "Flixbus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "917",
+       "name": "Flixbus 917: Kraków, dworzec autobusowy MDA => Ljubljana, avtobusna postaja",
+       "from": "Kraków, dworzec autobusowy MDA",
+       "to": "Ljubljana, avtobusna postaja",
+       "operator": "Vincek",
+       "network": "Flixbus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "919",
+       "name": "Flixbus 919: Wrocław, dworzec autobusowy => Wien, Flughafen Schwechat",
+       "from": "Wrocław, dworzec autobusowy",
+       "to": "Wien, Flughafen Schwechat",
+       "operator": "Gumdrop",
+       "network": "Flixbus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "1291",
+       "name": "Flixbus 1291: Wien Erdberg, Busterminal VIB => Kraków, dworzec autobusowy MDA",
+       "from": "Wien Erdberg, Busterminal VIB",
+       "to": "Kraków, dworzec autobusowy MDA",
+       "operator": "Flixbus",
+       "network": "Flixbus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "102806",
+       "name": "Bus 102806: Bratislava, Autobusová stanica -> Wien, Flughafen Schwechat -> Wien Hauptbahnhof",
+       "from": "Bratislava, Autobusová stanica",
+       "to": "Wien Hauptbahnhof",
+       "operator": "Slovak Lines Express, a.s.",
+       "network": null,
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "102807",
+       "name": "Bus 102807: Flughafen Wien Busterminal -> Bratislava, Autobusová stanica",
+       "from": "Flughafen Wien Busterminal",
+       "to": "Bratislava, Autobusová stanica",
+       "operator": "Slovak Lines Express, a.s.",
+       "network": null,
+       "website": null
+      }
+     ],
+     "taxiRanks": [
+      {
+       "name": "Airporttaxi",
+       "operator": null,
+       "phone": null,
+       "latitude": 48.1201525,
+       "longitude": 16.5626443,
+       "distanceMeters": 1214
+      },
+      {
+       "name": null,
+       "operator": null,
+       "phone": null,
+       "latitude": 48.1213758,
+       "longitude": 16.5634214,
+       "distanceMeters": 1317
+      }
+     ]
+    }
+   ],
+   "centre": {
+    "hotels": [
+     {
+      "osmId": "node/956430138",
+      "name": "Hotel Royal",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 48.2078844,
+      "longitude": 16.3723234,
+      "distanceMeters": 115,
+      "address": "Singerstraße 3, 1010, Wien",
+      "phone": null,
+      "website": "https://www.hotelroyal.at/"
+     },
+     {
+      "osmId": "node/5492349597",
+      "name": "Hotel Kärntnerhof",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 48.2101672,
+      "longitude": 16.3761096,
+      "distanceMeters": 278,
+      "address": "Grashofgasse 4, 1010, Wien",
+      "phone": "+43 1 512 19 23",
+      "website": "https://www.karntnerhof.com/"
+     },
+     {
+      "osmId": "node/823349738",
+      "name": "Palais Coburg",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 48.2057813,
+      "longitude": 16.3767445,
+      "distanceMeters": 346,
+      "address": null,
+      "phone": "+43 1 51818-0",
+      "website": "https://www.palais-coburg.com"
+     },
+     {
+      "osmId": "node/1202224004",
+      "name": "Mercure Vienna First",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 48.2114317,
+      "longitude": 16.3739526,
+      "distanceMeters": 360,
+      "address": "Desider-Friedmann-Platz 2, 1010, Wien",
+      "phone": "+43 1 905828",
+      "website": "https://all.accor.com/hotel/9959/index.de.shtml"
+     },
+     {
+      "osmId": "node/567059356",
+      "name": "Palais Hotel Pertschy",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 48.2081655,
+      "longitude": 16.3684861,
+      "distanceMeters": 394,
+      "address": "Habsburgergasse 5, 1010, Wien",
+      "phone": "+43 1 534490",
+      "website": "https://www.pertschy.com/"
+     },
+     {
+      "osmId": "node/3634692303",
+      "name": "Hotel Am Parkring",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 48.205517,
+      "longitude": 16.3779837,
+      "distanceMeters": 430,
+      "address": "Parkring 12, 1010, Wien",
+      "phone": "+43 1 514 80 0",
+      "website": "https://www.hotelamparkring.wien/"
+     },
+     {
+      "osmId": "node/577244083",
+      "name": "Hilton Vienna Park",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 48.2059869,
+      "longitude": 16.3833148,
+      "distanceMeters": 747,
+      "address": "Am Stadtpark 1, 1030, Wien",
+      "phone": "+43 1 71700",
+      "website": "https://www.hilton.com/en/hotels/viehitw-hilton-vienna-park/"
+     },
+     {
+      "osmId": "node/338473234",
+      "name": "Hotel Mercure Wien City",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 48.2151531,
+      "longitude": 16.3760911,
+      "distanceMeters": 792,
+      "address": "Hollandstraße 3, 1020, Wien",
+      "phone": "+43 1 213130",
+      "website": "https://all.accor.com/lien_externe.svlt?goto=fiche_hotel&code_hotel=1568&merchantid=seo-maps-AT-1568&sourceid=aw-cen"
+     },
+     {
+      "osmId": "node/425471393",
+      "name": "Am Opernring",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 48.2025666,
+      "longitude": 16.3669597,
+      "distanceMeters": 806,
+      "address": "Opernring 11, 1010, Wien",
+      "phone": "+43 1 5875518",
+      "website": "https://www.opernring.at/"
+     },
+     {
+      "osmId": "node/10121439707",
+      "name": "Living Hotel an der Oper",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 48.2016098,
+      "longitude": 16.368698,
+      "distanceMeters": 825,
+      "address": "Kärntner Straße 44, 1010",
+      "phone": null,
+      "website": "https://www.living-hotels.com/"
+     },
+     {
+      "osmId": "node/923938961",
+      "name": "HiLight Suites",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 48.2014279,
+      "longitude": 16.3804406,
+      "distanceMeters": 900,
+      "address": "Salesianergasse 2, 1030, Wien",
+      "phone": "+43 1 7107808",
+      "website": "https://www.hilighthotel.com/"
+     },
+     {
+      "osmId": "node/312881155",
+      "name": "Hotel de France",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 48.2145652,
+      "longitude": 16.3630253,
+      "distanceMeters": 1067,
+      "address": null,
+      "phone": "+43 1 313 680",
+      "website": "https://hoteldefrance.at/"
+     }
+    ]
+   },
+   "taxiCompanies": [
+    {
+     "name": "Poschgasse",
+     "phone": "+43 1 9821489",
+     "website": null
+    },
+    {
+     "name": "GERSTH",
+     "phone": "+43 1 479 22 66",
+     "website": null
+    },
+    {
+     "name": "Schwendermarkt / 1504",
+     "phone": "+43 1 9688907",
+     "website": null
+    },
+    {
+     "name": "Neulinggasse - Ungargasse",
+     "phone": "+43 1 7133741",
+     "website": null
+    },
+    {
+     "name": "Dänenstraße/1806",
+     "phone": "+43 1 478 81 05",
+     "website": null
+    },
+    {
+     "name": "Fahrradtaxi",
+     "phone": "+43 670 4034085",
+     "website": "https://www.öv-fahrradtaxi.at/kaisermuehlen/"
+    }
+   ],
+   "retrievedOn": "2026-10-26"
+  },
+  {
+   "code": "budapest",
+   "airports": [
+    {
+     "iata": "BUD",
+     "hotels": [
+      {
+       "osmId": "way/1393881523",
+       "name": "TRIBE Budapest Airport Hotel",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 47.4306802,
+       "longitude": 19.2626334,
+       "distanceMeters": 972,
+       "address": "Airport Terminal 2, 1185, Budapest",
+       "phone": "+36 1 296 0070",
+       "website": "https://all.accor.com/hotel/B925/index.en.shtml"
+      },
+      {
+       "osmId": "way/492211317",
+       "name": "ibis Styles - Budapest Airport Hotel",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 47.4302402,
+       "longitude": 19.2623826,
+       "distanceMeters": 1019,
+       "address": "Airport Terminal 2, 2220, Vecsés",
+       "phone": "+36 1 296 0060",
+       "website": "https://all.accor.com/hotel/B0I7/index.en.shtml"
+      },
+      {
+       "osmId": "way/449169719",
+       "name": "Sarokház Panzió",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 47.4214055,
+       "longitude": 19.2388532,
+       "distanceMeters": 2643,
+       "address": "Üllői út 845, 2220, Vecsés",
+       "phone": "+36 29 355 255",
+       "website": "https://www.sarokhazpanzio.hu/"
+      },
+      {
+       "osmId": "node/703392672",
+       "name": "Hotel Ferihegy",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 47.4231403,
+       "longitude": 19.233591,
+       "distanceMeters": 2788,
+       "address": "Üllői út 809/B, 2220, Vecsés",
+       "phone": "+36 1 765 4004",
+       "website": "https://www.hotelferihegy.hu/"
+      },
+      {
+       "osmId": "node/1593535627",
+       "name": "Airport Hotel Budapest",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 47.4141279,
+       "longitude": 19.24434,
+       "distanceMeters": 3102,
+       "address": "Lőrinci utca 130/A, 2220, Vecsés",
+       "phone": "+36 1 688 2000",
+       "website": "https://www.airporthotel.hu"
+      },
+      {
+       "osmId": "node/13766714415",
+       "name": "NOA Panzió",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 47.4048148,
+       "longitude": 19.2372992,
+       "distanceMeters": 4265,
+       "address": null,
+       "phone": null,
+       "website": "https://noapanzio.hu/"
+      },
+      {
+       "osmId": "node/9120658620",
+       "name": "Vándor fogadó",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 47.4092599,
+       "longitude": 19.278355,
+       "distanceMeters": 3575,
+       "address": null,
+       "phone": null,
+       "website": null
+      },
+      {
+       "osmId": "node/13481527696",
+       "name": "Károly centrál 75 Panzió",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 47.4090234,
+       "longitude": 19.2788521,
+       "distanceMeters": 3613,
+       "address": null,
+       "phone": null,
+       "website": null
+      },
+      {
+       "osmId": "way/236543240",
+       "name": "Airport Hotel Stáció",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 47.401596,
+       "longitude": 19.2455232,
+       "distanceMeters": 4378,
+       "address": "Széchenyi utca 20, 2220, Vecsés",
+       "phone": null,
+       "website": null
+      },
+      {
+       "osmId": "way/1066611590",
+       "name": "Budapest Airport Almáskert Panzió",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 47.4067977,
+       "longitude": 19.2274615,
+       "distanceMeters": 4452,
+       "address": null,
+       "phone": null,
+       "website": null
+      },
+      {
+       "osmId": "way/449169721",
+       "name": "Tenisz Apartment",
+       "nameEn": null,
+       "kind": "guest_house",
+       "stars": null,
+       "latitude": 47.4218077,
+       "longitude": 19.2380287,
+       "distanceMeters": 2650,
+       "address": "Üllői út 841, 2220, Vecsés",
+       "phone": "+36 20 3147553",
+       "website": null
+      },
+      {
+       "osmId": "way/1290476377",
+       "name": "Bocskai Panzió",
+       "nameEn": null,
+       "kind": "guest_house",
+       "stars": null,
+       "latitude": 47.456566,
+       "longitude": 19.2322796,
+       "distanceMeters": 2928,
+       "address": "Bocskai István utca 26, 1174, Budapest",
+       "phone": null,
+       "website": "https://szallo.hu/bocskai-panzio/"
+      }
+     ],
+     "transitLines": [
+      {
+       "mode": "bus",
+       "ref": "100E",
+       "name": "100E Deák Ferenc tér M → Astoria M → Liszt Ferenc Airport 2",
+       "from": "Deák Ferenc tér M",
+       "to": "Liszt Ferenc Airport 2",
+       "operator": "BKK",
+       "network": "local",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "200E",
+       "name": "200E Liszt Ferenc Airport 2 → Kőbánya-Kispest M",
+       "from": "Liszt Ferenc Airport 2",
+       "to": "Kőbánya-Kispest M",
+       "operator": null,
+       "network": null,
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "580",
+       "name": "580 \"C\" v: Monor, autóbusz-állomás => Budapest, Liszt Ferenc Airport 2",
+       "from": "Monor, autóbusz-állomás",
+       "to": "Budapest, Liszt Ferenc Airport 2",
+       "operator": "Volánbusz",
+       "network": "regional",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "902",
+       "name": "Flixbus 902: Wien, Hbf. (International Busterminal) => Budapest, Repülőtér",
+       "from": "Wien, Hbf. (International Busterminal)",
+       "to": "Budapest, Repülőtér",
+       "operator": "Blaguss/Volanbusz Zrt. Hungary; Blaguss Agora",
+       "network": "Flixbus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "966",
+       "name": "Flixbus 966: Wien, Hbf. (International Busterminal) => Županja, Busbahnhof",
+       "from": "Wien, Hbf. (International Busterminal)",
+       "to": "Županja, Busbahnhof",
+       "operator": "Flixbus",
+       "network": "Flixbus",
+       "website": null
+      }
+     ],
+     "taxiRanks": [
+      {
+       "name": null,
+       "operator": null,
+       "phone": null,
+       "latitude": 47.4330609,
+       "longitude": 19.262621,
+       "distanceMeters": 708
+      },
+      {
+       "name": null,
+       "operator": null,
+       "phone": null,
+       "latitude": 47.4322367,
+       "longitude": 19.2609194,
+       "distanceMeters": 799
+      }
+     ]
+    }
+   ],
+   "centre": {
+    "hotels": [
+     {
+      "osmId": "way/293068529",
+      "name": "Hotel Clark",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 47.4986057,
+      "longitude": 19.0400191,
+      "distanceMeters": 80,
+      "address": "Clark Ádám tér 1, 1013, Budapest",
+      "phone": "+36 1 610 4890",
+      "website": "https://hotelclarkbudapest.hu/"
+     },
+     {
+      "osmId": "node/891426581",
+      "name": "Hotel Carlton",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 47.4994363,
+      "longitude": 19.039288,
+      "distanceMeters": 184,
+      "address": "Apor Péter utca 3, 1011, Budapest",
+      "phone": "+36 1 224 0999",
+      "website": "https://www.carltonhotel.hu/index_hu.htm"
+     },
+     {
+      "osmId": "node/7889717311",
+      "name": "Boutique Hotel Victoria Budapest ****",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 47.5015472,
+      "longitude": 19.039772,
+      "distanceMeters": 407,
+      "address": "Bem rakpart 11, 1011, Budapest",
+      "phone": "+36 1 457 8080",
+      "website": "https://www.victoria.hu/"
+     },
+     {
+      "osmId": "relation/10215926",
+      "name": "Monastery Boutique Hotel Budapest",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 47.5018477,
+      "longitude": 19.0384412,
+      "distanceMeters": 458,
+      "address": "Fő utca 30, 1011, Budapest",
+      "phone": "+36 1 770 8210",
+      "website": "https://monasterybudapest.accenthotels.com"
+     },
+     {
+      "osmId": "way/24052086",
+      "name": "Mamaison Hotel Chain Bridge Budapest",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 47.4996765,
+      "longitude": 19.0488625,
+      "distanceMeters": 680,
+      "address": "Mérleg utca 6, 1051, Budapest",
+      "phone": "+36 1 484 3700",
+      "website": "https://www.mamaisonhotelchainbridge.com/"
+     },
+     {
+      "osmId": "way/555788052",
+      "name": "Orion Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 47.4923906,
+      "longitude": 19.0442083,
+      "distanceMeters": 683,
+      "address": "Döbrentei utca 13, 1013, Budapest",
+      "phone": "+36 1 356 8583",
+      "website": "https://www.hotelorion.hu"
+     },
+     {
+      "osmId": "way/1285215308",
+      "name": "Dorothea Hotel, Budapest, Autograph Collection",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 47.4967006,
+      "longitude": 19.049246,
+      "distanceMeters": 693,
+      "address": "Dorottya utca 2, 1051, Budapest",
+      "phone": "+36 1 884 5100",
+      "website": "https://www.marriott.com/en-us/hotels/budkc-dorothea-hotel-budapest-autograph-collection/overview/"
+     },
+     {
+      "osmId": "relation/5647453",
+      "name": "Hilton Budapest",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 47.5027587,
+      "longitude": 19.0337097,
+      "distanceMeters": 728,
+      "address": "Hess András tér 1-3, 1014, Budapest",
+      "phone": "+36 1 889 6600",
+      "website": "https://www.hilton.com/en/hotels/budhitw-hilton-budapest/"
+     },
+     {
+      "osmId": "way/191243451",
+      "name": "Marriott",
+      "nameEn": "Marriott Hotel",
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 47.4948615,
+      "longitude": 19.0494709,
+      "distanceMeters": 774,
+      "address": "Apáczai Csere János utca 4, 1051, Budapest",
+      "phone": "+36 1 486 5000",
+      "website": "https://www.marriott.com/hotels/travel/budhu-budapest-marriott-hotel/"
+     },
+     {
+      "osmId": "way/1317453263",
+      "name": "Áurea Ana Palace Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 47.5038184,
+      "longitude": 19.0465108,
+      "distanceMeters": 811,
+      "address": "Akadémia utca 15-17, 1054, Budapest",
+      "phone": "+36 20 254 0279",
+      "website": "https://www.aureaanapalacehotel.com"
+     },
+     {
+      "osmId": "node/10102580723",
+      "name": "Ibis Budapest Castle Hill",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 47.4986436,
+      "longitude": 19.0273096,
+      "distanceMeters": 972,
+      "address": "Krisztina körút 41-43, 1013, Budapest",
+      "phone": "+36 1 488 8298",
+      "website": "https://all.accor.com/hotel/B427/index.en.shtml"
+     },
+     {
+      "osmId": "node/11573191300",
+      "name": "Mercure Budapest Castle Hill",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 47.4987031,
+      "longitude": 19.0272273,
+      "distanceMeters": 979,
+      "address": "Krisztina körút 41-43, 1013, Budapest",
+      "phone": "+36 1 488 8100",
+      "website": "https://www.accorhotels.com/id/hotel-1688-mercure-budapest-buda/index.shtml"
+     }
+    ]
+   },
+   "taxiCompanies": [],
+   "retrievedOn": "2026-10-26"
+  },
+  {
+   "code": "berlin",
+   "airports": [
+    {
+     "iata": "BER",
+     "hotels": [
+      {
+       "osmId": "node/1742757439",
+       "name": "Meininger Berlin Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 52.3967135,
+       "longitude": 13.5404826,
+       "distanceMeters": 4184,
+       "address": "Alexander-Meißner-Straße 1, 12526, Berlin",
+       "phone": null,
+       "website": "https://www.meininger-hotels.com/en/hotels/berlin/airport/"
+      },
+      {
+       "osmId": "relation/2119133",
+       "name": "Steigenberger Airport Hotel Berlin",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 52.36394,
+       "longitude": 13.5117472,
+       "distanceMeters": 650,
+       "address": "Willy-Brandt-Platz 3, 12529, Schönefeld",
+       "phone": "+49 30 2464970",
+       "website": "https://hrewards.com/de/steigenberger-airport-hotel-berlin"
+      },
+      {
+       "osmId": "relation/2119185",
+       "name": "IntercityHotel Berlin Airport BER Terminal 1+2",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 52.3642055,
+       "longitude": 13.5128669,
+       "distanceMeters": 706,
+       "address": "Willy-Brandt-Platz 5, 12529, Schönefeld",
+       "phone": "+49 30 5365310",
+       "website": "https://hrewards.com/de/intercityhotel-berlin-airport-ber"
+      },
+      {
+       "osmId": "node/428229961",
+       "name": "Albergo Hotel Berlin",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 52.3882187,
+       "longitude": 13.5069077,
+       "distanceMeters": 2405,
+       "address": "Waßmannsdorfer Chaussee 2, 12529, Schönefeld",
+       "phone": null,
+       "website": "https://www.albergo.de/"
+      },
+      {
+       "osmId": "node/262394173",
+       "name": "Holiday Inn Berlin Airport – Conference Centre",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 52.3889786,
+       "longitude": 13.4985679,
+       "distanceMeters": 2498,
+       "address": "Hans-Grade-Allee 5, 12529, Schönefeld",
+       "phone": "+49 30 634010",
+       "website": "https://www.holidayinn-berlin.de/"
+      },
+      {
+       "osmId": "way/314465934",
+       "name": "B&B Hotel Berlin-Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 52.3745077,
+       "longitude": 13.5416929,
+       "distanceMeters": 2747,
+       "address": "Am Flughafen 21, 12529, Schönefeld",
+       "phone": "+49 6146 8153542",
+       "website": "https://www.hotel-bb.com/de/hotel/berlin-airport"
+      },
+      {
+       "osmId": "node/6710315453",
+       "name": "Campanile",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 52.3927539,
+       "longitude": 13.5012006,
+       "distanceMeters": 2901,
+       "address": "Hans-Grade-Allee 18, 12529, Schönefeld",
+       "phone": null,
+       "website": "https://berlin-brandenburg-airport.campanile.com/de-de/"
+      },
+      {
+       "osmId": "way/1042973533",
+       "name": "Moxy Berlin Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 52.3754764,
+       "longitude": 13.5436518,
+       "distanceMeters": 2908,
+       "address": "Kienberger Allee 2, 12529, Schönefeld",
+       "phone": "+49 30 31198987",
+       "website": "https://www.marriott.de/hotels/travel/beroa-moxy-berlin-airport/"
+      },
+      {
+       "osmId": "way/37042105",
+       "name": "IntercityHotel Berlin Airport Area North",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 52.3922163,
+       "longitude": 13.5183063,
+       "distanceMeters": 3015,
+       "address": "Am Seegraben 2, 12529, Schönefeld",
+       "phone": "+49 30 75657510",
+       "website": "https://hrewards.com/es/intercityhotel-berlin-airport-area-north"
+      },
+      {
+       "osmId": "way/772452798",
+       "name": "Hotel Garni El-Condor",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 52.3969725,
+       "longitude": 13.5311698,
+       "distanceMeters": 3861,
+       "address": "Seeweg 2, 12529, Schönefeld",
+       "phone": "+49 30 634880",
+       "website": "https://www.hotel-berlin-schoenefeld.net/"
+      },
+      {
+       "osmId": "node/473021729",
+       "name": "ibis budget Berlin Airport Schoenefeld",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 52.3678915,
+       "longitude": 13.56463,
+       "distanceMeters": 4166,
+       "address": "Lilienthalstraße 18, 12529, Schönefeld",
+       "phone": null,
+       "website": "https://www.accorhotels.com/de/hotel-2647-ibis-budget-berlin-airport-schoenefeld-ex-etap-hotel/index.shtml"
+      },
+      {
+       "osmId": "way/23972060",
+       "name": "Loginn Hotel Berlin Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 52.3985474,
+       "longitude": 13.5412002,
+       "distanceMeters": 4377,
+       "address": "Schützenstraße 33, 12526, Berlin",
+       "phone": "+493023322320",
+       "website": "https://achat-hotels.com/berlin"
+      }
+     ],
+     "transitLines": [
+      {
+       "mode": "train",
+       "ref": "FEX",
+       "name": "FEX: Flughafen BER => Berlin Hauptbahnhof",
+       "from": "Flughafen BER",
+       "to": "Berlin Hauptbahnhof (tief)",
+       "operator": "DB Regio AG",
+       "network": "Verkehrsverbund Berlin-Brandenburg",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "IC 17",
+       "name": "IC 17: Rostock => Berlin => Chemnitz",
+       "from": "Rostock Hauptbahnhof",
+       "to": "Chemnitz Hauptbahnhof",
+       "operator": "DB Fernverkehr",
+       "network": "DB InterCity",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "RB22",
+       "name": "RB22: Griebnitzsee => Königs Wusterhausen",
+       "from": "Griebnitzsee",
+       "to": "Königs Wusterhausen",
+       "operator": "DB Regio AG",
+       "network": "Verkehrsverbund Berlin-Brandenburg",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "RB24",
+       "name": "RB24: Blankenfelde => Eberswalde Hauptbahnhof",
+       "from": "Blankenfelde",
+       "to": "Eberswalde Hauptbahnhof",
+       "operator": "DB Regio AG",
+       "network": "Verkehrsverbund Berlin-Brandenburg",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "RB32",
+       "name": "RB32: Berlin-Lichtenberg => Ludwigsfelde",
+       "from": "Berlin-Lichtenberg",
+       "to": "Ludwigsfelde",
+       "operator": "DB Regio AG",
+       "network": "Verkehrsverbund Berlin-Brandenburg",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "RE20",
+       "name": "RE20: Berlin Hauptbahnhof => Cottbus Hauptbahnhof",
+       "from": "Berlin Hauptbahnhof",
+       "to": "Cottbus Hauptbahnhof",
+       "operator": "DB Regio Nordost",
+       "network": "Verkehrsverbund Berlin-Brandenburg",
+       "website": null
+      },
+      {
+       "mode": "light_rail",
+       "ref": "S9",
+       "name": "S9: S Flughafen BER => S Spandau",
+       "from": "S Flughafen BER",
+       "to": "S Spandau",
+       "operator": "S-Bahn Berlin GmbH",
+       "network": "Verkehrsverbund Berlin-Brandenburg",
+       "website": null
+      },
+      {
+       "mode": "light_rail",
+       "ref": "S85",
+       "name": "S85: Flughafen BER => S Frohnau",
+       "from": "Flughafen BER",
+       "to": "S Frohnau",
+       "operator": "S-Bahn Berlin GmbH",
+       "network": "Verkehrsverbund Berlin-Brandenburg",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "170",
+       "name": "Flixbus 170: Dresden, Hbf. Bayrische Straße => Göhren, Rügen",
+       "from": "Dresden, Hbf. Bayrische Straße",
+       "to": "Göhren, Rügen",
+       "operator": "Reisebüro & Omnibusbetrieb Karsten Brust",
+       "network": "Flixbus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "263",
+       "name": "Buslinie 263: S Grünau => S Flughafen BER",
+       "from": "S Grünau",
+       "to": "S Flughafen BER",
+       "operator": "Regionale Verkehrsgesellschaft Dahme-Spreewald mbH",
+       "network": "Verkehrsverbund Berlin-Brandenburg",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "735",
+       "name": "Buslinie 735: S Königs Wusterhausen => A10 Center => S Flughafen BER",
+       "from": "S Königs Wusterhausen",
+       "to": "S Flughafen BER",
+       "operator": "Regionale Verkehrsgesellschaft Dahme-Spreewald mbH",
+       "network": "Verkehrsverbund Berlin-Brandenburg",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "736",
+       "name": "Buslinie 736: S Königs Wusterhausen => S Wildau => S Flughafen BER",
+       "from": "S Königs Wusterhausen",
+       "to": "S Flughafen BER",
+       "operator": "Regionale Verkehrsgesellschaft Dahme-Spreewald mbH",
+       "network": "Verkehrsverbund Berlin-Brandenburg",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "741",
+       "name": "Buslinie 741: Flughafen BER => S Schönefeld BHf",
+       "from": "Flughafen BER",
+       "to": "S Schönefeld Bhf",
+       "operator": "Regionale Verkehrsgesellschaft Dahme-Spreewald mbH",
+       "network": "Verkehrsverbund Berlin-Brandenburg",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "BER2",
+       "name": "Expressbus BER2: S Potsdam Hauptbahnhof => Flughafen BER - Terminal 1-2",
+       "from": "S Potsdam Hauptbahnhof",
+       "to": "Flughafen BER - Terminal 1-2",
+       "operator": "Günter Anger Güterverkehrs GmbH & Co. Omnibusvermietung KG",
+       "network": "Verkehrsverbund Berlin-Brandenburg",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "N7",
+       "name": "Bus N7: Flughafen BER => S+U Rathaus Spandau",
+       "from": "Flughafen BER",
+       "to": "S+U Rathaus Spandau",
+       "operator": "Berliner Verkehrsbetriebe",
+       "network": "Verkehrsverbund Berlin-Brandenburg",
+       "website": null
+      }
+     ],
+     "taxiRanks": []
+    }
+   ],
+   "centre": {
+    "hotels": [
+     {
+      "osmId": "node/1598987141",
+      "name": "Hotel de Rome",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 52.5157914,
+      "longitude": 13.3940671,
+      "distanceMeters": 875,
+      "address": "Behrenstraße 37, 10117, Berlin",
+      "phone": "+49 30 460 6090",
+      "website": null
+     },
+     {
+      "osmId": "node/60105926",
+      "name": "Living Hotel Großer Kurfürst",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 52.5122494,
+      "longitude": 13.4087883,
+      "distanceMeters": 899,
+      "address": "Neue Roßstraße 11-12, 10179, Berlin",
+      "phone": "+49 30 246000",
+      "website": "https://www.living-hotels.com/hotel-grosser-kurfuerst-berlin/"
+     },
+     {
+      "osmId": "node/1169468049",
+      "name": "H4 Hotel Berlin-Alexanderplatz",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 52.5255613,
+      "longitude": 13.4146506,
+      "distanceMeters": 899,
+      "address": "Karl-Liebknecht-Straße 32, 10178, Berlin",
+      "phone": "+49 30 30104110",
+      "website": "https://www.h-hotels.com/de/h4/hotels/h4-hotel-berlin-alexanderplatz"
+     },
+     {
+      "osmId": "node/60105928",
+      "name": "Living Hotel Berlin-Mitte",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 52.5120824,
+      "longitude": 13.4082495,
+      "distanceMeters": 907,
+      "address": "Neue Roßstraße 13, 10179, Berlin",
+      "phone": "+49 30 24600900",
+      "website": "https://www.living-hotels.com/hotel-berlin-mitte"
+     },
+     {
+      "osmId": "way/464524861",
+      "name": "Hampton by Hilton Berlin City Centre Alexanderplatz",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 52.524794,
+      "longitude": 13.4188035,
+      "distanceMeters": 1075,
+      "address": "Otto-Braun-Straße 69, 10178, Berlin",
+      "phone": "+49 30 21308555",
+      "website": "https://www.hilton.com/en/hotels/berhxhx-hampton-berlin-city-centre-alexanderplatz"
+     },
+     {
+      "osmId": "node/66917193",
+      "name": "NH Collection",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 52.5195761,
+      "longitude": 13.3888965,
+      "distanceMeters": 1091,
+      "address": "Friedrichstraße 96, 10117, Berlin",
+      "phone": null,
+      "website": "https://www.nh-collection.com/hotel/nh-collection-berlin-mitte-friedrichstrasse"
+     },
+     {
+      "osmId": "way/24531220",
+      "name": "Hotel MANI by AMANO",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 52.5292897,
+      "longitude": 13.39965,
+      "distanceMeters": 1095,
+      "address": "Torstraße 136, 10119, Berlin",
+      "phone": "+49 30 530 280 80",
+      "website": "https://www.amanogroup.com/de/hotels/berlin-mitte-hotel-mani-by-amano"
+     },
+     {
+      "osmId": "node/963196967",
+      "name": "martas Hotel Berlin-Mitte",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 52.5263017,
+      "longitude": 13.3924959,
+      "distanceMeters": 1098,
+      "address": "Auguststraße 82, 10117, Berlin",
+      "phone": "+49 30 308860",
+      "website": "https://martas.org/hotels/martas-berlin-mitte"
+     },
+     {
+      "osmId": "node/66917107",
+      "name": "Meliá Berlin",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 52.5213429,
+      "longitude": 13.388468,
+      "distanceMeters": 1128,
+      "address": "Friedrichstraße 103, 10117, Berlin",
+      "phone": "+49 30 20607900",
+      "website": "https://www.melia.com/de/hotels/deutschland/berlin/melia-berlin"
+     },
+     {
+      "osmId": "node/66917101",
+      "name": "Hotel Neuer Fritz Berlin",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 52.5226997,
+      "longitude": 13.3882776,
+      "distanceMeters": 1171,
+      "address": "Friedrichstraße 105-106, 10117, Berlin",
+      "phone": "+4930284900",
+      "website": "https://neuerfritz.com/"
+     },
+     {
+      "osmId": "node/86001788",
+      "name": "The Westin Grand Berlin",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 52.5158768,
+      "longitude": 13.3886042,
+      "distanceMeters": 1200,
+      "address": "Friedrichstraße 158-164, 10117, Berlin",
+      "phone": "+49 30 202 73420",
+      "website": "https://www.westin-berlin.com/"
+     },
+     {
+      "osmId": "node/60240143",
+      "name": "Radisson Collection Hotel Berlin",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 52.5195175,
+      "longitude": 13.4028297,
+      "distanceMeters": 156,
+      "address": "Karl-Liebknecht-Straße 3, 10178, Berlin",
+      "phone": null,
+      "website": "https://www.radissonhotels.com/en-us/hotels/radisson-collection-berlin"
+     }
+    ]
+   },
+   "taxiCompanies": [
+    {
+     "name": "Dammweg",
+     "phone": "+49 30 6848118",
+     "website": null
+    },
+    {
+     "name": "Bhf. Lichtenberg",
+     "phone": "+49 30 5224740",
+     "website": null
+    },
+    {
+     "name": "Freiaplatz",
+     "phone": "+49 30 55009006",
+     "website": null
+    },
+    {
+     "name": "Bornholmer / Schönhauser",
+     "phone": "+49 30 4469248",
+     "website": null
+    },
+    {
+     "name": "Campus Virchow Krankenhaus (Seestraße)",
+     "phone": "+49 30 45073348",
+     "website": null
+    },
+    {
+     "name": "Schlüterstraße / Kurfürstendamm",
+     "phone": "+49 30 8811546",
+     "website": null
+    }
+   ],
+   "retrievedOn": "2026-10-26"
+  },
+  {
+   "code": "lisbon",
+   "airports": [
+    {
+     "iata": "LIS",
+     "hotels": [
+      {
+       "osmId": "node/2509303877",
+       "name": "NH Campo Grande",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 38.748715,
+       "longitude": -9.14953,
+       "distanceMeters": 3130,
+       "address": null,
+       "phone": "+351 21 791 7600",
+       "website": "https://www.nh-hoteles.pt/"
+      },
+      {
+       "osmId": "node/1286006388",
+       "name": "VIP Executive Art's Hotel",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 38.7731005,
+       "longitude": -9.0978748,
+       "distanceMeters": 3151,
+       "address": "Avenida Dom João II 47, 1998-028, Lisboa",
+       "phone": "+351 210 020 400",
+       "website": "https://www.viphotels.com/"
+      },
+      {
+       "osmId": "node/5497323608",
+       "name": "Afrin Lisboa",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 2,
+       "latitude": 38.7425111,
+       "longitude": -9.1348381,
+       "distanceMeters": 3524,
+       "address": "Avenida João XXI 6, 2º, 1000-301, Areeiro",
+       "phone": "+351 21 848 5636",
+       "website": "https://hotelscheck-in.com/hotelafrinlisboa/en/"
+      },
+      {
+       "osmId": "node/11880893533",
+       "name": "Gaspar House",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 38.7424149,
+       "longitude": -9.1339645,
+       "distanceMeters": 3534,
+       "address": "Praça Francisco Sá Carneiro 5, 1000-159, Areeiro",
+       "phone": "+351 915 676 837",
+       "website": "https://www.gasparhouse.pt/"
+      },
+      {
+       "osmId": "node/4236327730",
+       "name": "Hotel Dom Afonso Henriques",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 2,
+       "latitude": 38.737152,
+       "longitude": -9.1283248,
+       "distanceMeters": 4151,
+       "address": "Rua Cristovão Falcão 8, 1900-172, Lisboa",
+       "phone": "+351 218 117 010",
+       "website": "https://www.hoteldah.com/"
+      },
+      {
+       "osmId": "node/8168500740",
+       "name": "The ICONS",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 38.7414083,
+       "longitude": -9.1584866,
+       "distanceMeters": 4211,
+       "address": "Rua Filipe da Mata 66, 1600-072, Lisboa",
+       "phone": "+351 21 145 2337",
+       "website": null
+      },
+      {
+       "osmId": "node/5540941787",
+       "name": "Hotel Itália",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 38.737505,
+       "longitude": -9.1501919,
+       "distanceMeters": 4309,
+       "address": "Avenida Visconde de Valmor 67, 1050-239, Lisboa",
+       "phone": "+351 217 611 490",
+       "website": "https://www.hotelitalia.pt"
+      },
+      {
+       "osmId": "node/1640337456",
+       "name": "Hotel Turim Alameda",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 38.7354312,
+       "longitude": -9.1375837,
+       "distanceMeters": 4321,
+       "address": "Avenida Rovisco Pais 34, 1000-268, Lisboa",
+       "phone": "+351 218 411 550",
+       "website": "https://www.turim-hotels.com/hoteis/turim-alameda-hotel-135"
+      },
+      {
+       "osmId": "node/4300602693",
+       "name": "SANA Executive Hotel",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 38.7369399,
+       "longitude": -9.150453,
+       "distanceMeters": 4376,
+       "address": "Avenida Conde Valbom 56, 1050-069, Lisboa",
+       "phone": "+351 217 951 157",
+       "website": "https://executive.sanahotels.com/"
+      },
+      {
+       "osmId": "node/1682454471",
+       "name": "Hotel Imperador",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 2,
+       "latitude": 38.7355574,
+       "longitude": -9.1476233,
+       "distanceMeters": 4452,
+       "address": "Avenida 5 de Outubro 55, 1050-048, Lisboa",
+       "phone": "+351 213 524 884",
+       "website": "https://www.imperador.com.pt"
+      },
+      {
+       "osmId": "node/5541024463",
+       "name": "Pensão Residêncial Pátria",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 1,
+       "latitude": 38.7353017,
+       "longitude": -9.1464664,
+       "distanceMeters": 4454,
+       "address": "Avenida Duque de Ávila 42, 1050-126, Lisboa",
+       "phone": "+351 213 193 410",
+       "website": null
+      },
+      {
+       "osmId": "node/2958247830",
+       "name": "Olissippo Marquês de Sá",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 38.7365086,
+       "longitude": -9.1517327,
+       "distanceMeters": 4458,
+       "address": "Avenida Miguel Bombarda 130, 1050-167, lisboa",
+       "phone": "+351 217 911 014",
+       "website": "https://www.olissippohotels.com/pt/Hoteis/Marques-de-Sa/O-Hotel.aspx"
+      }
+     ],
+     "transitLines": [
+      {
+       "mode": "subway",
+       "ref": "Vermelha",
+       "name": "Linha Vermelha: São Sebastião → Aeroporto",
+       "from": "São Sebastião",
+       "to": "Aeroporto",
+       "operator": "Metropolitano de Lisboa",
+       "network": "Metropolitano de Lisboa",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": null,
+       "name": "Shuttle Aeroporto de Lisboa",
+       "from": "Terminal 1",
+       "to": "Terminal 1",
+       "operator": "CarrisTur",
+       "network": null,
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "2",
+       "name": "2: Lisboa (Campo Grande) → Alenquer (via AE Povos e Aeroporto)",
+       "from": "Lisboa",
+       "to": "Alenquer",
+       "operator": "Boa Viagem",
+       "network": "Boa Viagem",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "29B",
+       "name": "Bus 29B: Centro Comercial dos Olivais → Centro Comercial dos Olivais",
+       "from": "Centro Comercial dos Olivais",
+       "to": "Centro Comercial dos Olivais",
+       "operator": "Carris",
+       "network": "Carris",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "40B",
+       "name": "Bus 40B: Alto do Chapeleiro → Lumiar",
+       "from": "Alto do Chapeleiro",
+       "to": "Lumiar",
+       "operator": "Carris",
+       "network": "Carris",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "41B",
+       "name": "Bus 41B: Quinta das Lavadeiras → Galinheiras",
+       "from": "Quinta das Lavadeiras",
+       "to": "Galinheiras",
+       "operator": "Carris",
+       "network": "Carris",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "45B",
+       "name": "Bus 45B: Paço do Lumiar → Alta de Lisboa (Centro de Saúde)",
+       "from": "Paço do Lumiar",
+       "to": "Alta de Lisboa (Centro de Saúde)",
+       "operator": "Carris",
+       "network": "Carris",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "206",
+       "name": "Bus 206: Cais do Sodré → Odivelas",
+       "from": "Cais do Sodré",
+       "to": "Odivelas",
+       "operator": "Carris",
+       "network": "Carris",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "207",
+       "name": "Bus 207: Cais do Sodré → Fetais",
+       "from": "Cais do Sodré",
+       "to": "Fetais",
+       "operator": "Carris",
+       "network": "Carris",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "208",
+       "name": "Bus 208: Cais do Sodré → Estação do Oriente",
+       "from": "Cais do Sodré",
+       "to": "Estação do Oriente",
+       "operator": "Carris",
+       "network": "Carris",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "210",
+       "name": "Bus 210: Cais do Sodré → Prior Velho",
+       "from": "Cais do Sodré",
+       "to": "Prior Velho",
+       "operator": "Carris",
+       "network": "Carris",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "703",
+       "name": "Bus 703: Charneca → Bairro de Santa Cruz",
+       "from": "Charneca",
+       "to": "Bairro de Santa Cruz",
+       "operator": "Carris",
+       "network": "Carris",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "705",
+       "name": "Bus 705: Estação do Oriente (Interface) → Estação de Roma-Areeiro",
+       "from": "Estação do Oriente (Interface)",
+       "to": "Estação de Roma-Areeiro",
+       "operator": "Carris",
+       "network": "Carris",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "708",
+       "name": "Bus 708: Sacavém (Urbanização Real Forte) → Martim Moniz",
+       "from": "Sacavém (Urbanização Real Forte)",
+       "to": "Martim Moniz",
+       "operator": "Carris",
+       "network": "Carris",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "717",
+       "name": "Bus 717: Praça do Chile → Fetais",
+       "from": "Praça do Chile",
+       "to": "Fetais",
+       "operator": "Carris",
+       "network": "Carris",
+       "website": null
+      }
+     ],
+     "taxiRanks": [
+      {
+       "name": null,
+       "operator": null,
+       "phone": null,
+       "latitude": 38.7703462,
+       "longitude": -9.1282936,
+       "distanceMeters": 668
+      },
+      {
+       "name": null,
+       "operator": null,
+       "phone": null,
+       "latitude": 38.7796538,
+       "longitude": -9.1205329,
+       "distanceMeters": 1331
+      },
+      {
+       "name": null,
+       "operator": null,
+       "phone": null,
+       "latitude": 38.7872286,
+       "longitude": -9.1428509,
+       "distanceMeters": 1631
+      },
+      {
+       "name": null,
+       "operator": null,
+       "phone": null,
+       "latitude": 38.7900902,
+       "longitude": -9.1237369,
+       "distanceMeters": 1986
+      },
+      {
+       "name": null,
+       "operator": null,
+       "phone": null,
+       "latitude": 38.7619984,
+       "longitude": -9.1151578,
+       "distanceMeters": 2137
+      }
+     ]
+    }
+   ],
+   "centre": {
+    "hotels": [
+     {
+      "osmId": "node/2631619373",
+      "name": "Stay Hotel Lisboa",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 2,
+      "latitude": 38.7263295,
+      "longitude": -9.1409422,
+      "distanceMeters": 470,
+      "address": "Rua Gomes Freire 130, 1150-180, Lisboa",
+      "phone": "+351 213 193 070",
+      "website": "https://www.princesahotel.pt/"
+     },
+     {
+      "osmId": "node/4138904396",
+      "name": "Fontecruz Lisboa",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 38.7191427,
+      "longitude": -9.1440108,
+      "distanceMeters": 539,
+      "address": "Avenida da Liberdade 138-142, 1250-147, Lisboa",
+      "phone": "+351 21 041 0000",
+      "website": "https://www.fontecruzhoteles.com/hotel-fontecruz-lisboa/"
+     },
+     {
+      "osmId": "node/4187310189",
+      "name": "Hotel Lisboa",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 38.7222411,
+      "longitude": -9.1463048,
+      "distanceMeters": 608,
+      "address": "Rua Barata Salgueiro 5, 1169-066, Lisboa",
+      "phone": "+351 213 500 000;+351 213 500 005",
+      "website": "https://www.hotellisboa.com.pt/"
+     },
+     {
+      "osmId": "node/2472105828",
+      "name": "Turim Restauradores Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 38.7160062,
+      "longitude": -9.143164,
+      "distanceMeters": 776,
+      "address": "Rua da Glória 3, 1250-114, Lisboa",
+      "phone": "+351 213 400 270",
+      "website": "https://www.turim-hotels.com/hoteis/-110"
+     },
+     {
+      "osmId": "node/3360262569",
+      "name": "Gat Rossio Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 38.7153832,
+      "longitude": -9.1404952,
+      "distanceMeters": 776,
+      "address": "Rua do Jardim do Regedor 27-35, 1150-193, Lisboa",
+      "phone": "+351 213 478 300",
+      "website": "https://hotelgatrossio.com/"
+     },
+     {
+      "osmId": "node/4488098573",
+      "name": "Neya Lisboa Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 38.7293791,
+      "longitude": -9.1405705,
+      "distanceMeters": 795,
+      "address": "Rua de Dona Estefânia 71-77, 1150-132, Lisboa",
+      "phone": "+351 213 101 800",
+      "website": "https://www.neyahotels.com/"
+     },
+     {
+      "osmId": "node/4380615793",
+      "name": "H10 Duque de Loulé",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 38.7263694,
+      "longitude": -9.1470521,
+      "distanceMeters": 811,
+      "address": "Avenida Duque de Loulé 81-83, 1050-088, Lisboa",
+      "phone": "+351 213 182 000",
+      "website": "https://www.h10hotels.com/pt/hoteis-lisboa/h10-duque-de-loule"
+     },
+     {
+      "osmId": "node/4535393093",
+      "name": "Hotel Altis Avenida",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 38.7149445,
+      "longitude": -9.1407529,
+      "distanceMeters": 828,
+      "address": "Rua 1º de Dezembro 120, 1200-360, Lisboa",
+      "phone": "+351 210 440 000",
+      "website": "https://www.altishotels.com/EN/HotelAltisAvenida/"
+     },
+     {
+      "osmId": "node/1682540584",
+      "name": "Alicante",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 2,
+      "latitude": 38.7287391,
+      "longitude": -9.144544,
+      "distanceMeters": 848,
+      "address": "Av Duque De Loule 20, 1050-090, Lisboa",
+      "phone": "+351 213 530 514",
+      "website": null
+     },
+     {
+      "osmId": "node/4696453471",
+      "name": "Hotel Botânico",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 38.7173192,
+      "longitude": -9.1469086,
+      "distanceMeters": 862,
+      "address": "Rua da Mãe d'Água 16-20, 1250-156, Lisboa",
+      "phone": null,
+      "website": "https://hotelbotanico.pt"
+     },
+     {
+      "osmId": "node/3653360026",
+      "name": "CZAR Lisbon Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 38.7293464,
+      "longitude": -9.1348252,
+      "distanceMeters": 874,
+      "address": "Avenida Almirante Reis 103, 1150-020, Lisboa",
+      "phone": "+351 211115200",
+      "website": "https://www.czarlisbonhotel.com/"
+     },
+     {
+      "osmId": "node/298176965",
+      "name": "Hotel Jorge V",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 38.7213092,
+      "longitude": -9.1494002,
+      "distanceMeters": 883,
+      "address": "Rua Mouzinho da Silveira 3, 1250-165, Lisboa",
+      "phone": "+351 213 562 525",
+      "website": "https://www.hoteljorgev.com/"
+     }
+    ]
+   },
+   "taxiCompanies": [],
+   "retrievedOn": "2026-10-26"
+  },
+  {
+   "code": "athens",
+   "airports": [
+    {
+     "iata": "ATH",
+     "hotels": [
+      {
+       "osmId": "way/174886450",
+       "name": "Sofitel Athens Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 5,
+       "latitude": 37.936931,
+       "longitude": 23.9457222,
+       "distanceMeters": 122,
+       "address": "19019, Σπάτα",
+       "phone": "+30 210 3544000",
+       "website": "https://sofitel.accor.com/en/hotels/3167.html"
+      },
+      {
+       "osmId": "node/9680688734",
+       "name": "Tina's Apartments",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 37.965371,
+       "longitude": 23.9767056,
+       "distanceMeters": 4284,
+       "address": "Χίου 7, 190 04",
+       "phone": "+30698 421 1880",
+       "website": "https://www.tinasapartments.com/"
+      },
+      {
+       "osmId": "node/13536936868",
+       "name": "AIRPORT SUITES MICHELLE",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": null,
+       "latitude": 37.967949,
+       "longitude": 23.9124947,
+       "distanceMeters": 4492,
+       "address": "Δημάρχου Χρήστου Μπέκα 32, 19004, ΣΠΑΤΑ",
+       "phone": "+306976678118",
+       "website": "https://www.airportsuitesmichelle.com"
+      },
+      {
+       "osmId": "node/12967285501",
+       "name": "AIR-IN Rooms with magnificent views",
+       "nameEn": null,
+       "kind": "guest_house",
+       "stars": null,
+       "latitude": 37.9604398,
+       "longitude": 23.9798081,
+       "distanceMeters": 4090,
+       "address": "19016",
+       "phone": null,
+       "website": null
+      }
+     ],
+     "transitLines": [
+      {
+       "mode": "train",
+       "ref": "A1",
+       "name": "Train A1: Piraeus → Airport",
+       "from": "Πειραιά",
+       "to": "Αεροδρόμιο",
+       "operator": "Hellenic Train",
+       "network": "Προαστιακός Αθήνας",
+       "website": null
+      },
+      {
+       "mode": "train",
+       "ref": "A2",
+       "name": "Train A2: Ano Liosia → Airport",
+       "from": "Άνω Λιόσια",
+       "to": "Αεροδρόμιο",
+       "operator": "Hellenic Train",
+       "network": "Προαστιακός Αθήνας",
+       "website": null
+      },
+      {
+       "mode": "subway",
+       "ref": "Μ3",
+       "name": "Metro Μ3: Dimotiko Theatro → Airport",
+       "from": "Δημοτικό Θέατρο",
+       "to": "Αεροδρόμιο",
+       "operator": "Σταθερές Συγκοινωνίες",
+       "network": "Μετρό Αθήνας",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": null,
+       "name": "Χ95 ΑΕΡΟΛ. ΑΘΗΝΩΝ (EXPRESS) - ΣΥΝΤΑΓΜΑ",
+       "from": "-440100",
+       "to": "-60025",
+       "operator": null,
+       "network": null,
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": null,
+       "name": "Χ95 ΣΥΝΤΑΓΜΑ - ΑΕΡΟΛ. ΑΘΗΝΩΝ (EXPRESS)",
+       "from": "-60025",
+       "to": "-440100",
+       "operator": null,
+       "network": "ΟΑΣΑ",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": null,
+       "name": "Lavrio - Airport",
+       "from": "Λαύριο",
+       "to": "Διεθνής Αερολιμένας Αθηνών «Ελευθέριος Βενιζέλος»",
+       "operator": "http://ktelattikis.gr",
+       "network": null,
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "X93",
+       "name": "Χ93: ΑΕΡΟΛΙΜΕΝΑΣ ΑΘΗΝΩΝ → ΣΤ.ΥΠΕΡ.ΛΕΩΦ.ΚΗΦΙΣΟΥ",
+       "from": "ΑΕΡΟΛΙΜΕΝΑΣ ΑΘΗΝΩΝ",
+       "to": "ΣΤ.ΥΠΕΡ.ΛΕΩΦ.ΚΗΦΙΣΟΥ",
+       "operator": null,
+       "network": null,
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "X97",
+       "name": "X97: ΑΕΡΟΛΙΜΕΝΑΣ ΑΘΗΝΩΝ → ΣΤ.ΕΛΛΗΝΙΚΟ [EXPRESS]",
+       "from": "ΑΕΡΟΛΙΜΕΝΑΣ ΑΘΗΝΩΝ",
+       "to": "ΣΤ.ΕΛΛΗΝΙΚΟ",
+       "operator": null,
+       "network": null,
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "Χ96",
+       "name": "X96 PIRAEUS - ATHENS' AIRPORT (EXPRESS",
+       "from": "Πειραιάς",
+       "to": "Αερολιμένας Αθηνών",
+       "operator": null,
+       "network": null,
+       "website": null
+      }
+     ],
+     "taxiRanks": [
+      {
+       "name": null,
+       "operator": null,
+       "phone": null,
+       "latitude": 37.9361406,
+       "longitude": 23.9463887,
+       "distanceMeters": 168
+      }
+     ]
+    }
+   ],
+   "centre": {
+    "hotels": [
+     {
+      "osmId": "node/2878494114",
+      "name": "Sparta Team Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 1,
+      "latitude": 37.9817126,
+      "longitude": 23.7245319,
+      "distanceMeters": 349,
+      "address": "Μενάνδρου 21, 10552, Αθήνα",
+      "phone": "+30 210 5244561",
+      "website": "https://www.spartahotel.gr/"
+     },
+     {
+      "osmId": "node/1231406510",
+      "name": "Arion Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 37.9794861,
+      "longitude": 23.7257344,
+      "distanceMeters": 504,
+      "address": "Αγίου Δημητρίου 18, Αθήνα",
+      "phone": "+30 210 3216777",
+      "website": "https://www.arionhotel.gr/"
+     },
+     {
+      "osmId": "node/2433638377",
+      "name": "Hotel Rio Athens",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 37.9853861,
+      "longitude": 23.7198667,
+      "distanceMeters": 692,
+      "address": null,
+      "phone": "+30 210 5227075",
+      "website": "https://hotel-rio.gr/"
+     },
+     {
+      "osmId": "node/1814574432",
+      "name": "O&B Athens Boutique Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 37.977568,
+      "longitude": 23.7219308,
+      "distanceMeters": 848,
+      "address": "Λεωκορίου 7, 10554, Αθήνα",
+      "phone": "+30 210 3312950",
+      "website": "https://oandbhotel.com"
+     },
+     {
+      "osmId": "node/5483686665",
+      "name": "Plaka",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 37.9757767,
+      "longitude": 23.7282964,
+      "distanceMeters": 895,
+      "address": null,
+      "phone": "+30 21 032 22096;+30 21 032 22706",
+      "website": "https://www.plakahotel.gr/"
+     },
+     {
+      "osmId": "node/2778806819",
+      "name": "Central Athens Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 37.9746372,
+      "longitude": 23.7311391,
+      "distanceMeters": 1068,
+      "address": "Απόλλωνος 21, 10557, Αθήνα",
+      "phone": "+30 2103234350",
+      "website": "https://www.centralhotel.gr/"
+     },
+     {
+      "osmId": "node/4374179296",
+      "name": "Omiros",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 37.9746548,
+      "longitude": 23.7317181,
+      "distanceMeters": 1082,
+      "address": "Απόλλωνος 18, 10557, Αθήνα",
+      "phone": "+3021032354867",
+      "website": null
+     },
+     {
+      "osmId": "node/4682144745",
+      "name": "Enattica Syntagma Living",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 37.9744265,
+      "longitude": 23.7332048,
+      "distanceMeters": 1156,
+      "address": "Ξενοφώντος 14, 10557, Αθήνα",
+      "phone": "+30 215 5101820",
+      "website": "https://syntagmaliving.enattica.com"
+     },
+     {
+      "osmId": "node/4261370792",
+      "name": "Επίδαυρος",
+      "nameEn": "Epidavros",
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 37.9839119,
+      "longitude": 23.7247226,
+      "distanceMeters": 244,
+      "address": "Κουμουνδούρου 14, 10437",
+      "phone": null,
+      "website": "https://www.epidavroshotel.eu/"
+     },
+     {
+      "osmId": "node/3005439487",
+      "name": "Polis Grand Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 37.9855075,
+      "longitude": 23.7295063,
+      "distanceMeters": 259,
+      "address": "Βερανζέρου 10, 10432, Αθήνα",
+      "phone": null,
+      "website": null
+     },
+     {
+      "osmId": "node/2791293463",
+      "name": "Marina Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 37.9835077,
+      "longitude": 23.7241026,
+      "distanceMeters": 300,
+      "address": "Βούλγαρη 13, 10437, Αθήνα",
+      "phone": null,
+      "website": "https://www.marina.com.gr/"
+     },
+     {
+      "osmId": "node/2878494125",
+      "name": "SOHO Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": null,
+      "latitude": 37.9819766,
+      "longitude": 23.724622,
+      "distanceMeters": 324,
+      "address": "Μενάνδρου 25, 10552, Αθήνα",
+      "phone": null,
+      "website": "https://sohohotel.gr/"
+     }
+    ]
+   },
+   "taxiCompanies": [
+    {
+     "name": "Show On",
+     "phone": "+30 211 750 5253",
+     "website": "https://showon.gr"
+    }
+   ],
+   "retrievedOn": "2026-10-26"
+  },
+  {
+   "code": "milan",
+   "airports": [
+    {
+     "iata": "MXP",
+     "hotels": [
+      {
+       "osmId": "way/193834733",
+       "name": "Holiday Inn Express Milan - Malpensa Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 45.6397528,
+       "longitude": 8.7122762,
+       "distanceMeters": 1597,
+       "address": "Via Giovanni Oldrini, 21019, Somma Lombardo",
+       "phone": "+39 0331 18330",
+       "website": "https://www.ihg.com/holidayinnexpress/hotels/gb/en/somma-lombardo/milap/hoteldetail"
+      },
+      {
+       "osmId": "way/139188966",
+       "name": "Idea Hotel Milano Malpensa Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 45.636997,
+       "longitude": 8.7092074,
+       "distanceMeters": 1632,
+       "address": "Via della Chiesa 27, 21019, Somma Lombardo",
+       "phone": "+39 0331 233300",
+       "website": "https://www.ideahotel.it/"
+      },
+      {
+       "osmId": "way/227036900",
+       "name": "Hotel Cervo",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 45.6401704,
+       "longitude": 8.7093316,
+       "distanceMeters": 1806,
+       "address": "Via Francesco De Pinedo 1, 21019, Somma Lombardo",
+       "phone": "+39 0331 230821",
+       "website": null
+      },
+      {
+       "osmId": "node/3897857199",
+       "name": "First Hotel",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 45.6381132,
+       "longitude": 8.7057351,
+       "distanceMeters": 1929,
+       "address": null,
+       "phone": "+39 0331 717045",
+       "website": "https://www.firsthotel.it/"
+      },
+      {
+       "osmId": "way/227038517",
+       "name": "Crown Plaza Malpensa",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 45.6420955,
+       "longitude": 8.7084736,
+       "distanceMeters": 1991,
+       "address": "Via Arturo Ferrarin 7, 21019, Somma Lombardo",
+       "phone": "+39 0331 21161",
+       "website": "https://www.crowneplazamalpensa.com/"
+      },
+      {
+       "osmId": "node/3404944777",
+       "name": "Moxy Milan Malpensa",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 45.6496677,
+       "longitude": 8.7232443,
+       "distanceMeters": 2154,
+       "address": "21019, Somma Lombardo",
+       "phone": "+39 02 94757100",
+       "website": "https://www.marriott.com/hotels/travel/milox-moxy-milan-malpensa-airport/"
+      },
+      {
+       "osmId": "node/9554153319",
+       "name": "Hotel Villa Malpensa",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 45.6255225,
+       "longitude": 8.6974921,
+       "distanceMeters": 2446,
+       "address": "Via Don Andrea Sacconago 1, 21010, Vizzola Ticino",
+       "phone": "+39 0331 230944",
+       "website": "https://hotelvillamalpensa.it/"
+      },
+      {
+       "osmId": "way/245431960",
+       "name": "Novotel Milano Malpensa Airport",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 45.6417397,
+       "longitude": 8.7590829,
+       "distanceMeters": 2709,
+       "address": "Via al Campo 99, 21010, Cardano al Campo",
+       "phone": "+39 0331 266611",
+       "website": null
+      },
+      {
+       "osmId": "way/311773292",
+       "name": "Ibis Milano Malpensa Aeroporto",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 3,
+       "latitude": 45.643201,
+       "longitude": 8.7605127,
+       "distanceMeters": 2883,
+       "address": "Via al Campo 100, 21010, Cardano al Campo",
+       "phone": "+39 0331 1834711",
+       "website": null
+      },
+      {
+       "osmId": "way/317097384",
+       "name": "Ascot Lodging",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 2,
+       "latitude": 45.6448008,
+       "longitude": 8.7609033,
+       "distanceMeters": 3000,
+       "address": "Via dell'Ongaro 48, 21010, Cardano al Campo",
+       "phone": "+39 0331 262926",
+       "website": "https://www.ascotlodging.it/"
+      },
+      {
+       "osmId": "way/315012448",
+       "name": "Cardano Hotel",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 45.6426876,
+       "longitude": 8.7671834,
+       "distanceMeters": 3323,
+       "address": "Via al Campo 10, 21010, Cardano al Campo",
+       "phone": "+39 0331 261011",
+       "website": "https://cardanohotel.com/"
+      },
+      {
+       "osmId": "way/234091998",
+       "name": "Osteria della Pista",
+       "nameEn": null,
+       "kind": "hotel",
+       "stars": 4,
+       "latitude": 45.6743257,
+       "longitude": 8.7399423,
+       "distanceMeters": 4948,
+       "address": "Via Verbano 1, 21011, Casorate Sempione",
+       "phone": "+39 0331 295054",
+       "website": "https://www.osteriadellapista.com/"
+      }
+     ],
+     "transitLines": [
+      {
+       "mode": "train",
+       "ref": "RE51",
+       "name": "Train RE51: Gallarate => Milano Centrale",
+       "from": "Gallarate",
+       "to": "Milano Centrale",
+       "operator": "Trenord",
+       "network": "SFR",
+       "website": "https://www.malpensaexpress.it/"
+      },
+      {
+       "mode": "train",
+       "ref": "RE54",
+       "name": "Train RE54: Malpensa Aeroporto T2 => Milano Cadorna",
+       "from": "Malpensa Aeroporto Terminal 2",
+       "to": "Milano Cadorna",
+       "operator": "Trenord",
+       "network": "SFR",
+       "website": "https://www.malpensaexpress.it/"
+      },
+      {
+       "mode": "train",
+       "ref": "S50",
+       "name": "Treno S50: Biasca => Malpensa Aeroporto T2",
+       "from": "Biasca",
+       "to": "Malpensa Aeroporto Terminal 2",
+       "operator": "Treni Regionali Ticino Lombardia",
+       "network": "Rete celere del Canton Ticino",
+       "website": "https://www.tilo.ch/collegamenti/S50.html"
+      },
+      {
+       "mode": "bus",
+       "ref": "474",
+       "name": "Flixbus 474: Genoa, Fanti d'Italia/Principe => Lugano, Via Ciani",
+       "from": "Genova, Fanti d'Italia / Principe",
+       "to": "Lugano, Via Ciani",
+       "operator": "Flixbus",
+       "network": "Flixbus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "495",
+       "name": "Flixbus 495: Savona, Piazza, Aldo Moro => Zürich HB, Carpark Sihlquai",
+       "from": "Savona, Piazza, Aldo Moro",
+       "to": "Zürich HB, Carpark Sihlquai",
+       "operator": "Flixbus",
+       "network": "Flixbus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "497",
+       "name": "Flixbus 497: Milano, Lampugnano => Strasbourg, Gare routière",
+       "from": "Milano, Lampugnano",
+       "to": "Strasbourg, Gare routière",
+       "operator": "Flixbus",
+       "network": "Flixbus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "544",
+       "name": "Flixbus 544: Bologna, Autostazione => Torino, Vittorio Emanuele",
+       "from": "Bologna, Autostazione",
+       "to": "Torino, Vittorio Emanuele",
+       "operator": "Flixbus",
+       "network": "Flixbus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "A",
+       "name": "Linea A: Terminal 1 -> Terminal 2",
+       "from": "Terminal 1",
+       "to": "Terminal 2",
+       "operator": "SEA",
+       "network": "Malpensa Airport Shuttle",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "B",
+       "name": "Linea B: Terminal 1 - Cargo City",
+       "from": "Terminal 1",
+       "to": "Cargo City",
+       "operator": "Trotta S.r.l.",
+       "network": "Malpensa Airport Shuttle",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "K332",
+       "name": "Flixbus K332 (Malpensa Shuttle): Milano, Aeroporto Malpensa Terminal 1 => Milano, Stazione Centrale",
+       "from": "Milano, Aeroporto Malpensa Terminal 1",
+       "to": "Milano, Stazione Centrale",
+       "operator": "Malpensa Shuttle, Air Pullman spa",
+       "network": "Flixbus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "K358",
+       "name": "Flixbus K358 (Orio Shuttle): Bergamo, Orio al serio Aeroporto => Milano, Aeroporto Malpensa Terminal 1",
+       "from": "Bergamo, Orio al serio Aeroporto",
+       "to": "Milano, Aeroporto Malpensa Terminal 1",
+       "operator": "Orio Shuttle",
+       "network": "Flixbus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "N474",
+       "name": "Flixbus N474: Torino, Vittorio Emanuele => Frankfurt (Main) Hauptbahnhof",
+       "from": "Torino, Vittorio Emanuele",
+       "to": "Frankfurt (Main) Hauptbahnhof",
+       "operator": "Flixbus",
+       "network": "Flixbus",
+       "website": null
+      },
+      {
+       "mode": "bus",
+       "ref": "N492",
+       "name": "Flixbus N492: Milano, Aeroporto di Malpensa Terminal 2 => München Flughafen",
+       "from": "Milano, Aeroporto di Malpensa Terminal 2",
+       "to": "München Flughafen",
+       "operator": "Flixbus",
+       "network": "Flixbus",
+       "website": null
+      }
+     ],
+     "taxiRanks": [
+      {
+       "name": "Taxi Malpensa Terminal 1",
+       "operator": null,
+       "phone": null,
+       "latitude": 45.6267706,
+       "longitude": 8.7103938,
+       "distanceMeters": 1441
+      },
+      {
+       "name": null,
+       "operator": null,
+       "phone": null,
+       "latitude": 45.6277135,
+       "longitude": 8.7007389,
+       "distanceMeters": 2152
+      }
+     ]
+    }
+   ],
+   "centre": {
+    "hotels": [
+     {
+      "osmId": "node/4381970255",
+      "name": "TownHouse Duomo Milano",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 45.4649448,
+      "longitude": 9.1893721,
+      "distanceMeters": 96,
+      "address": "Via Silvio Pellico 2, 20121, Milano",
+      "phone": "+39 02 45397600",
+      "website": "https://duomo.townhousehotels.com/"
+     },
+     {
+      "osmId": "node/4381970248",
+      "name": "Room Mate Giulia Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 45.4651195,
+      "longitude": 9.1893543,
+      "distanceMeters": 114,
+      "address": "Via Silvio Pellico 4, 20121, Milano",
+      "phone": null,
+      "website": "https://room-matehotels.com/en/giulia/"
+     },
+     {
+      "osmId": "node/8996608161",
+      "name": "ODSweet Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 45.4634714,
+      "longitude": 9.1884012,
+      "distanceMeters": 149,
+      "address": "Via Giuseppe Mazzini 2, 20123, Milano",
+      "phone": "+39 02 26600449",
+      "website": "https://www.odsweethotel.com/"
+     },
+     {
+      "osmId": "node/2400614072",
+      "name": "Straf Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 45.465228,
+      "longitude": 9.1912446,
+      "distanceMeters": 150,
+      "address": "Via San Raffaele 3, 20121, Milano",
+      "phone": "+39 02 805081",
+      "website": "https://www.straf.it/"
+     },
+     {
+      "osmId": "node/2399642753",
+      "name": "Unahotels Maison Milano",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 45.4633181,
+      "longitude": 9.1883932,
+      "distanceMeters": 159,
+      "address": "Via Giuseppe Mazzini 4, 20123, Milano",
+      "phone": "+39 02 69826982",
+      "website": "https://www.gruppouna.it/esperienze/maison-milano"
+     },
+     {
+      "osmId": "node/1512688449",
+      "name": "Hotel Rio",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 45.4631056,
+      "longitude": 9.1883935,
+      "distanceMeters": 175,
+      "address": "Via Giuseppe Mazzini 8, 20123, Milano",
+      "phone": "+39 02 874114",
+      "website": "https://hotelriomilano.it/"
+     },
+     {
+      "osmId": "node/4381970256",
+      "name": "Galleria Vik Milano",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 45.4657526,
+      "longitude": 9.1893633,
+      "distanceMeters": 180,
+      "address": "Via Silvio Pellico 8a, 20121, Milano",
+      "phone": "+39 02 89058297",
+      "website": "https://galleriavikmilano.com/it/"
+     },
+     {
+      "osmId": "node/2399642744",
+      "name": "Hotel La Madonnina",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 3,
+      "latitude": 45.4630365,
+      "longitude": 9.1883675,
+      "distanceMeters": 182,
+      "address": "Via Giuseppe Mazzini 10, 20121, Milano",
+      "phone": "+39 02 89096917",
+      "website": "https://www.hotellamadonninamilano.it/"
+     },
+     {
+      "osmId": "node/2400614074",
+      "name": "The Gray",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 5,
+      "latitude": 45.4655497,
+      "longitude": 9.1913912,
+      "distanceMeters": 185,
+      "address": "Via San Raffaele 6, 20121, Milano",
+      "phone": "+39 02 7208951",
+      "website": "https://www.sinahotels.com/en/h/sina-the-gray-milan/"
+     },
+     {
+      "osmId": "node/9352993967",
+      "name": "The Street Milano Duomo",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 45.4656854,
+      "longitude": 9.1917188,
+      "distanceMeters": 213,
+      "address": "Via Santa Radegonda 14, 20121, Milano",
+      "phone": "+39 02 36765691",
+      "website": "https://www.thestreetmilano.com/"
+     },
+     {
+      "osmId": "node/9546798956",
+      "name": "Victor Boutique Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 1,
+      "latitude": 45.4638788,
+      "longitude": 9.1870608,
+      "distanceMeters": 232,
+      "address": "Via Victor Hugo 4, 20123, Milano",
+      "phone": "+39 380 1574090",
+      "website": "https://www.victorboutiquehotel.com/"
+     },
+     {
+      "osmId": "node/9545129796",
+      "name": "Matilde Boutique Hotel",
+      "nameEn": null,
+      "kind": "hotel",
+      "stars": 4,
+      "latitude": 45.4632726,
+      "longitude": 9.1873133,
+      "distanceMeters": 234,
+      "address": "Via Spadari 1, 20123, Milano",
+      "phone": "+39 02 89094446",
+      "website": "https://www.matildeboutiquehotel.it/"
+     }
+    ]
+   },
+   "taxiCompanies": [
+    {
+     "name": "Posteggio Taxi Via Solari",
+     "phone": "+39 02 5810047",
+     "website": null
+    },
+    {
+     "name": "Cinque Giornate",
+     "phone": "+39 02 5513422",
+     "website": null
+    },
+    {
+     "name": "Bellini-Frattini",
+     "phone": "+39 02 4234835",
+     "website": null
+    },
+    {
+     "name": "Conca del Naviglio",
+     "phone": "+39 02 89402221",
+     "website": null
+    },
+    {
+     "name": "Posteggio Taxi Piazzale Lagosta",
+     "phone": "+39 02 603984",
+     "website": null
+    },
+    {
+     "name": "Posteggio taxi Porta Genova",
+     "phone": "+39 02 8357609",
+     "website": null
+    }
+   ],
    "retrievedOn": "2026-10-26"
   }
  ]

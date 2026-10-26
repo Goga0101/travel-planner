@@ -130,8 +130,27 @@
           {{ (showAllLines() ? 'nearby.showFewer' : 'nearby.showAll') | t: { count: d.transitLines.length } }}
         </button>
       }
-    } @else {
+    } @else if (!d.transitStops.length) {
       <p class="muted small">{{ 'nearby.noLines' | t }}</p>
+    }
+
+    @if (d.transitStops.length) {
+      <h3>{{ 'nearby.stopsTitle' | t }}</h3>
+      <ul class="stop-list">
+        @for (st of d.transitStops; track st.name + st.mode) {
+          <li class="stop">
+            <div class="stop-head">
+              <span class="stop-name"><app-icon [name]="modeIcon(st.mode)" [size]="16" /> {{ st.name }}</span>
+              <span class="small muted">{{ modeKey(st.mode) | t }} · {{ 'nearby.fromAirport' | t: { distance: (st.distanceFromAirportMeters | distance), iata: d.airport?.iataCode ?? '' } }}
+                @if (st.mapUrl) { · <a [href]="st.mapUrl" target="_blank" rel="noopener noreferrer nofollow">{{ 'nearby.map' | t }}</a> }
+              </span>
+            </div>
+            <div class="stop-lines" [attr.aria-label]="'nearby.linesAtStop' | t">
+              @for (ln of st.lines; track ln) { <span class="line-badge line-badge-sm" [attr.data-mode]="st.mode">{{ ln }}</span> }
+            </div>
+          </li>
+        }
+      </ul>
     }
 
     <h3>{{ 'nearby.taxiTitle' | t }}</h3>

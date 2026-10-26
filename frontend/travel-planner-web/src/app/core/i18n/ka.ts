@@ -376,6 +376,8 @@ export const ka: Dictionary = {
   'nearby.uberHint': 'სავარაუდო ფასი და გამოძახება Uber-ში',
   'nearby.airportSite': 'აეროპორტის ვებსაიტი',
   'nearby.linesTitle': 'ხაზები, რომლებიც აეროპორტში ჩერდება',
+  'nearby.stopsTitle': 'გაჩერებები აეროპორტთან და მათი ხაზები',
+  'nearby.linesAtStop': 'ხაზები',
   'nearby.timetable': 'განრიგი',
   'nearby.noLines': 'ამ აეროპორტში საზოგადოებრივი ტრანსპორტის ხაზები აღრიცხული არ არის. გამოიყენეთ ზემოთ მოცემული Google Maps-ის მარშრუტი.',
   'nearby.taxiTitle': 'ადგილობრივი ტაქსი',

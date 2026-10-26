@@ -34,6 +34,9 @@ public sealed record NearbyHotelDto(
 
 public sealed record TransitLineDto(string Mode, string? Ref, string? Name, string? From, string? To, string? Operator, string? Network, string? Website);
 
+/// <summary>A stop near the airport and the line numbers serving it (live data); MapUrl opens the stop on a map.</summary>
+public sealed record TransitStopDto(string Name, string Mode, IReadOnlyList<string> Lines, int DistanceFromAirportMeters, string? MapUrl);
+
 public sealed record TaxiRankDto(string? Name, string? Operator, string? Phone, int DistanceFromAirportMeters, string? MapUrl);
 
 public sealed record TaxiCompanyDto(string Name, string? Phone, string? Website);
@@ -45,6 +48,7 @@ public sealed record NearbyPlacesDto(
     IReadOnlyList<NearbyHotelDto> AirportHotels,
     IReadOnlyList<NearbyHotelDto> CentreHotels,
     IReadOnlyList<TransitLineDto> TransitLines,
+    IReadOnlyList<TransitStopDto> TransitStops,
     IReadOnlyList<TaxiRankDto> TaxiRanks,
     IReadOnlyList<TaxiCompanyDto> TaxiCompanies,
     string? CentreTransitDirectionsUrl,
@@ -68,7 +72,8 @@ public sealed class GetNearbyPlacesHandler(
                    ?? throw new NotFoundException("resource.tripPlan", request.Id);
         var destination = plan.Destination!;
         var airport = ArrivalAirport(plan);
-        var snapshot = source.Find(destination.Code);
+        var snapshot = await source.FindAsync(new NearbyQuery(destination.Code, destination.Latitude, destination.Longitude,
+            destination.Airports.Select(a => new NearbyAirportPoint(a.IataCode, a.Latitude, a.Longitude)).ToList()), cancellationToken);
         var nearAirport = snapshot?.Airports.FirstOrDefault(a => string.Equals(a.Iata, airport?.IataCode, StringComparison.OrdinalIgnoreCase));
         var rooms = Math.Max(1, (plan.Travelers + 1) / 2);
         var lang = T.CurrentLanguage;
@@ -89,15 +94,18 @@ public sealed class GetNearbyPlacesHandler(
         }
 
         var centreName = destination.CityIn(lang);
+        int FromAirport(double lat, double lon) => airport is null ? 0 : NearbyLinks.DistanceMeters(airport.Latitude, airport.Longitude, lat, lon);
+
         return new NearbyPlacesDto(
-            source.Attribution,
+            snapshot?.Attribution ?? "© OpenStreetMap contributors",
             snapshot?.RetrievedOn,
             airport is null ? null : new NearbyAirportDto(airport.IataCode, airport.NameIn(lang), airport.Latitude, airport.Longitude, linkPolicy.Sanitize(airport.OfficialWebsiteUrl)),
             nearAirport?.Hotels.Select(Hotel).OrderBy(h => h.DistanceFromAirportMeters).ToList() ?? [],
             snapshot?.Centre.Hotels.Select(Hotel).OrderBy(h => h.DistanceFromCentreMeters).ToList() ?? [],
             nearAirport?.TransitLines.Select(l => new TransitLineDto(l.Mode, l.Ref, l.Name, l.From, l.To, l.Operator, l.Network, NearbyLinks.CuratedHttps(l.Website))).ToList() ?? [],
-            nearAirport?.TaxiRanks.Select(r => new TaxiRankDto(r.Name, r.Operator, r.Phone,
-                airport is null ? 0 : NearbyLinks.DistanceMeters(airport.Latitude, airport.Longitude, r.Latitude, r.Longitude),
+            nearAirport?.TransitStops.Select(st => new TransitStopDto(st.Name, st.Mode, st.Lines, FromAirport(st.Latitude, st.Longitude),
+                linkPolicy.Sanitize(NearbyLinks.MapPoint(st.Latitude, st.Longitude)))).ToList() ?? [],
+            nearAirport?.TaxiRanks.Select(r => new TaxiRankDto(r.Name, r.Operator, r.Phone, FromAirport(r.Latitude, r.Longitude),
                 linkPolicy.Sanitize(NearbyLinks.MapPoint(r.Latitude, r.Longitude)))).ToList() ?? [],
             snapshot?.TaxiCompanies.Select(c => new TaxiCompanyDto(c.Name, c.Phone, NearbyLinks.CuratedHttps(c.Website))).ToList() ?? [],
             airport is null ? null : linkPolicy.Sanitize(NearbyLinks.TransitDirections(airport.Latitude, airport.Longitude, destination.Latitude, destination.Longitude)),

@@ -8,13 +8,15 @@ using TravelPlanner.Application.Providers;
 namespace TravelPlanner.Infrastructure.Catalog;
 
 /// <summary>
-/// Reads catalog/nearby.json, the OpenStreetMap snapshot written by scripts/fetch-nearby.mjs.
+/// Reads catalog/nearby.json, the OpenStreetMap snapshot written by scripts/fetch-nearby.mjs. Used as the fallback for
+/// live Geoapify data and as the source of public-transport line descriptions (from → to), which Geoapify does not return.
 /// A missing or invalid file is not fatal: the plan page then simply shows no nearby places.
 /// The file is re-read when it changes on disk, so a refreshed snapshot needs no restart.
 /// </summary>
 public sealed class NearbyPlacesFile(IOptions<CatalogOptions> options, IHostEnvironment environment, ILogger<NearbyPlacesFile> logger)
-    : INearbyPlacesSource
 {
+    public const string DefaultAttribution = "© OpenStreetMap contributors";
+
     private readonly string _path = Path.IsPathRooted(options.Value.NearbyPath)
         ? options.Value.NearbyPath
         : Path.Combine(environment.ContentRootPath, options.Value.NearbyPath);
@@ -22,16 +24,16 @@ public sealed class NearbyPlacesFile(IOptions<CatalogOptions> options, IHostEnvi
     private Document _document = new();
     private DateTime? _loadedWriteTimeUtc;
 
-    public string Attribution => Current().Attribution ?? "© OpenStreetMap contributors";
-
     public NearbySnapshot? Find(string destinationCode)
     {
-        var d = Current().Destinations.FirstOrDefault(x => string.Equals(x.Code, destinationCode, StringComparison.OrdinalIgnoreCase));
+        var document = Current();
+        var d = document.Destinations.FirstOrDefault(x => string.Equals(x.Code, destinationCode, StringComparison.OrdinalIgnoreCase));
         if (d is null) return null;
         return new NearbySnapshot(
             d.Code,
             d.RetrievedOn,
-            d.Airports.Select(a => new NearbyAirport(a.Iata, a.Hotels.Where(Valid).Select(ToHotel).ToList(), a.TransitLines, a.TaxiRanks)).ToList(),
+            document.Attribution ?? DefaultAttribution,
+            d.Airports.Select(a => new NearbyAirport(a.Iata, a.Hotels.Where(Valid).Select(ToHotel).ToList(), a.TransitLines, [], a.TaxiRanks)).ToList(),
             new NearbyArea(d.Centre?.Hotels.Where(Valid).Select(ToHotel).ToList() ?? []),
             d.TaxiCompanies);
     }

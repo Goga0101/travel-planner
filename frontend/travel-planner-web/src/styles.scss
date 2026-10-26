@@ -655,6 +655,14 @@ a.ext-link.btn:hover { background: var(--primary-dark); border-color: var(--prim
 .line-badge[data-mode='train'] { background: #24597e; }
 .line-badge[data-mode='subway'], .line-badge[data-mode='light_rail'], .line-badge[data-mode='monorail'] { background: var(--primary-dark); }
 .line-badge[data-mode='tram'] { background: #6f4290; }
+.line-badge-sm { min-width: 2.25rem; padding: 0.15rem 0.45rem; font-size: 0.78rem; }
+.stop-list { list-style: none; padding: 0; margin: 0.5rem 0 0; display: grid; gap: 0.5rem; grid-template-columns: 1fr; }
+@media (min-width: 900px) { .stop-list { grid-template-columns: repeat(2, 1fr); } }
+.stop { display: grid; gap: 0.45rem; padding: 0.7rem 0.8rem; border-radius: 12px; border: 1px solid var(--border); background: var(--bg); min-width: 0; }
+.stop-head { display: grid; gap: 0.1rem; }
+.stop-name { display: inline-flex; gap: 0.4rem; align-items: center; font-weight: 600; overflow-wrap: anywhere; }
+.stop-name .icon { color: var(--primary); }
+.stop-lines { display: flex; flex-wrap: wrap; gap: 0.3rem; }
 .line-body { display: grid; gap: 0.1rem; min-width: 0; overflow-wrap: anywhere; }
 .taxi-list li {
   display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.9rem; padding: 0.6rem 0.75rem; border-radius: 12px;

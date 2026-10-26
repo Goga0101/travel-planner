@@ -377,6 +377,8 @@ export const en = {
   'nearby.uberHint': 'Fare estimate and booking in Uber',
   'nearby.airportSite': 'Airport website',
   'nearby.linesTitle': 'Lines that stop at the airport',
+  'nearby.stopsTitle': 'Stops at the airport and their lines',
+  'nearby.linesAtStop': 'Lines',
   'nearby.timetable': 'Timetable',
   'nearby.noLines': 'No public-transport lines recorded at this airport. Use the Google Maps route above.',
   'nearby.taxiTitle': 'Local taxis',

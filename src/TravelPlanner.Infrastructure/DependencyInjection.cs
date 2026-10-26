@@ -14,6 +14,7 @@ using TravelPlanner.Infrastructure.Providers;
 using TravelPlanner.Infrastructure.Providers.Amadeus;
 using TravelPlanner.Infrastructure.Providers.BookingCom;
 using TravelPlanner.Infrastructure.Providers.Demo;
+using TravelPlanner.Infrastructure.Providers.Geoapify;
 using TravelPlanner.Infrastructure.Providers.Google;
 using TravelPlanner.Infrastructure.Providers.Travelpayouts;
 
@@ -43,7 +44,8 @@ public static class DependencyInjection
         services.AddSingleton<IAccommodationSearchLinkBuilder, BookingComSearchLinkBuilder>();
 
         services.AddSingleton<CatalogFileReader>();
-        services.AddSingleton<INearbyPlacesSource, NearbyPlacesFile>();
+        services.AddSingleton<NearbyPlacesFile>();
+        services.AddTransient<INearbyPlacesSource, NearbyPlacesService>();
         services.AddScoped<CatalogSeeder>();
 
         services.AddSingleton<TripSearchQueue>();
@@ -66,6 +68,15 @@ public static class DependencyInjection
             RegisterDemoProviders(services, status);
         else
             RegisterLiveProviders(services, configuration, providers, status);
+
+        // Nearby places are real OpenStreetMap data in every mode (no prices), so they are registered for Demo and Live alike.
+        services.Configure<GeoapifyOptions>(configuration.GetSection(GeoapifyOptions.SectionName));
+        var geoapify = configuration.GetSection(GeoapifyOptions.SectionName).Get<GeoapifyOptions>() ?? new GeoapifyOptions();
+        if (geoapify.IsConfigured)
+            services.AddHttpClient<GeoapifyPlacesClient>(c => c.BaseAddress = BaseUri(geoapify.BaseUrl))
+                .AddStandardResilienceHandler(o => Configure(o, providers.Http));
+        status.Add(new ProviderStatus("Places", GeoapifyPlacesClient.ProviderName, geoapify.IsConfigured, false,
+            geoapify.IsConfigured ? "status.geoapifyOn" : "status.geoapifyOff"));
 
         return services;
     }

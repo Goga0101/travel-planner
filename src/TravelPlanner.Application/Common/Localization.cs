@@ -99,6 +99,7 @@ public static class T
         ["area.Flights"] = "Flights",
         ["area.Accommodation"] = "Accommodation",
         ["area.Transfers"] = "Transfers",
+        ["area.Places"] = "Nearby places",
         ["provider.notConfigured"] = "{0}: provider '{1}' is not configured.",
         ["provider.rateLimited"] = "{0}: provider '{1}' rate-limited {2} request(s); some results may be missing.",
         ["provider.timeout"] = "{0}: provider '{1}' timed out on {2} request(s); some results may be missing.",
@@ -183,6 +184,8 @@ public static class T
         ["status.bookingOff"] = "Not configured (requires Booking.com Managed Affiliate Partner approval).",
         ["status.googleOn"] = "Transit and driving route estimates.",
         ["status.googleOff"] = "Not configured. Official airport and transit links are still shown.",
+        ["status.geoapifyOn"] = "Live hotels, public-transport stops and taxi ranks near airports and city centres (OpenStreetMap data, no prices).",
+        ["status.geoapifyOff"] = "Not configured. Nearby places come from the OpenStreetMap snapshot (catalog/nearby.json).",
         ["status.demoProvider"] = "Demo data (not real)",
 
         // Refresh prices
@@ -284,6 +287,7 @@ public static class T
         ["area.Flights"] = "ფრენები",
         ["area.Accommodation"] = "განთავსება",
         ["area.Transfers"] = "ტრანსფერები",
+        ["area.Places"] = "ახლომდებარე ადგილები",
         ["provider.notConfigured"] = "{0}: პროვაიდერი „{1}“ არ არის კონფიგურირებული.",
         ["provider.rateLimited"] = "{0}: პროვაიდერმა „{1}“ შეზღუდა {2} მოთხოვნა; ზოგიერთი შედეგი შეიძლება აკლდეს.",
         ["provider.timeout"] = "{0}: პროვაიდერმა „{1}“ დროულად ვერ უპასუხა {2} მოთხოვნას; ზოგიერთი შედეგი შეიძლება აკლდეს.",
@@ -365,6 +369,8 @@ public static class T
         ["status.bookingOff"] = "არ არის კონფიგურირებული (საჭიროა Booking.com-ის პარტნიორობის დამტკიცება).",
         ["status.googleOn"] = "საზოგადოებრივი ტრანსპორტისა და გზის მარშრუტების შეფასება.",
         ["status.googleOff"] = "არ არის კონფიგურირებული. აეროპორტისა და ტრანსპორტის ოფიციალური ბმულები მაინც ჩანს.",
+        ["status.geoapifyOn"] = "სასტუმროები, საზოგადოებრივი ტრანსპორტის გაჩერებები და ტაქსის გაჩერებები აეროპორტებთან და ცენტრში რეალურ დროში (OpenStreetMap-ის მონაცემები, ფასების გარეშე).",
+        ["status.geoapifyOff"] = "არ არის კონფიგურირებული. ახლომდებარე ადგილები OpenStreetMap-ის შენახული მონაცემებიდან მოდის (catalog/nearby.json).",
         ["status.demoProvider"] = "დემო მონაცემები (არარეალური)",
 
         ["refresh.flightProviderMissing"] = "ფრენის ფასი ვერ განახლდა: პროვაიდერი „{0}“ ამ სერვერზე არ არის კონფიგურირებული.",

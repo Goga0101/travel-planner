@@ -450,6 +450,14 @@ export interface TransitLineDto {
   website?: string;
 }
 
+export interface TransitStopDto {
+  name: string;
+  mode: TransitMode;
+  lines: string[];
+  distanceFromAirportMeters: number;
+  mapUrl?: string;
+}
+
 export interface TaxiRankDto {
   name?: string;
   operator?: string;
@@ -471,6 +479,7 @@ export interface NearbyPlacesDto {
   airportHotels: NearbyHotelDto[];
   centreHotels: NearbyHotelDto[];
   transitLines: TransitLineDto[];
+  transitStops: TransitStopDto[];
   taxiRanks: TaxiRankDto[];
   taxiCompanies: TaxiCompanyDto[];
   centreTransitDirectionsUrl?: string;
