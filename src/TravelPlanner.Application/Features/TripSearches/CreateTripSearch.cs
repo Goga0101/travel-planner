@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using TravelPlanner.Application.Common;
 using TravelPlanner.Application.Dtos;
+using TravelPlanner.Application.Providers;
 using TravelPlanner.Domain.Entities;
 using TravelPlanner.Domain.Enums;
 using TravelPlanner.Domain.ValueObjects;
@@ -19,7 +20,9 @@ public sealed record CreateTripSearchCommand(
     string BudgetCurrency,
     DestinationMode DestinationMode,
     IReadOnlyList<Guid>? DestinationIds,
-    TripPreferencesDto? Preferences) : IRequest<CreateTripSearchResponse>;
+    TripPreferencesDto? Preferences,
+    IReadOnlyList<string>? Continents = null,
+    IReadOnlyList<string>? DestinationCityCodes = null) : IRequest<CreateTripSearchResponse>;
 
 public sealed class CreateTripSearchValidator : AbstractValidator<CreateTripSearchCommand>
 {
@@ -27,7 +30,10 @@ public sealed class CreateTripSearchValidator : AbstractValidator<CreateTripSear
     public const int MaxDaysAhead = 365;
     public const int MaxManualDestinations = 10;
 
-    public CreateTripSearchValidator(IApplicationDbContext db, TimeProvider timeProvider)
+    private static int ManualCount(CreateTripSearchCommand x) =>
+        (x.DestinationIds?.Distinct().Count() ?? 0) + (x.DestinationCityCodes?.Distinct(StringComparer.OrdinalIgnoreCase).Count() ?? 0);
+
+    public CreateTripSearchValidator(IApplicationDbContext db, IWorldPlaces world, TimeProvider timeProvider)
     {
         DateOnly Today() => DateOnly.FromDateTime(timeProvider.GetUtcNow().UtcDateTime);
 
@@ -72,26 +78,33 @@ public sealed class CreateTripSearchValidator : AbstractValidator<CreateTripSear
 
         RuleFor(x => x.DestinationMode).IsInEnum().WithMessage(_ => T.Get("val.mode"));
 
+        // Manual mode: catalog destinations (ids) and/or any cities of the world list (IATA city or airport codes).
         When(x => x.DestinationMode == DestinationMode.Manual, () =>
         {
             RuleFor(x => x.DestinationIds)
-                .NotEmpty().WithMessage(_ => T.Get("val.manualRequired"))
-                .Must(ids => ids is null || ids.Count <= MaxManualDestinations).WithMessage(_ => T.Get("val.manualMax", MaxManualDestinations))
+                .Must((x, _) => ManualCount(x) > 0).WithMessage(_ => T.Get("val.manualRequired"))
+                .Must((x, _) => ManualCount(x) <= MaxManualDestinations).WithMessage(_ => T.Get("val.manualMax", MaxManualDestinations))
                 .MustAsync(async (ids, ct) =>
                 {
                     var distinct = ids!.Distinct().ToList();
                     var found = await db.Destinations.CountAsync(d => distinct.Contains(d.Id) && d.IsActive, ct);
                     return found == distinct.Count;
                 })
-                .When(x => x.DestinationIds is { Count: > 0 and <= MaxManualDestinations }, ApplyConditionTo.CurrentValidator)
+                .When(x => x.DestinationIds is { Count: > 0 } && ManualCount(x) <= MaxManualDestinations, ApplyConditionTo.CurrentValidator)
                 .WithMessage(_ => T.Get("val.manualUnknown"));
+            RuleForEach(x => x.DestinationCityCodes)
+                .Must(code => code is { Length: 3 } && world.FindCity(code) is not null)
+                .WithMessage(_ => T.Get("val.cityUnknown"));
         });
 
         When(x => x.DestinationMode == DestinationMode.Automatic, () =>
         {
-            RuleFor(x => x.DestinationIds).Must(ids => ids is null || ids.Count == 0)
+            RuleFor(x => x.DestinationIds).Must((x, ids) => (ids is null || ids.Count == 0) && (x.DestinationCityCodes is null || x.DestinationCityCodes.Count == 0))
                 .WithMessage(_ => T.Get("val.automaticNoSelection"));
         });
+
+        RuleForEach(x => x.Continents).Must(c => Continents.Normalize(c) is not null)
+            .WithMessage(_ => T.Get("val.continent", string.Join(", ", Continents.All)));
 
         When(x => x.Preferences is not null, () =>
         {
@@ -108,6 +121,7 @@ public sealed class CreateTripSearchValidator : AbstractValidator<CreateTripSear
 
 public sealed class CreateTripSearchHandler(
     IApplicationDbContext db,
+    CityDestinationResolver cities,
     ITripSearchQueue queue,
     IDataModeAccessor dataMode,
     TimeProvider timeProvider) : IRequestHandler<CreateTripSearchCommand, CreateTripSearchResponse>
@@ -122,7 +136,8 @@ public sealed class CreateTripSearchHandler(
             MaxFlightDurationHours = p?.MaxFlightDurationHours,
             MaxStops = p?.MaxStops,
             PreferredDepartureTime = p?.PreferredDepartureTime ?? DepartureTimePreference.Any,
-            IncludeDailyExpenseEstimates = p?.IncludeDailyExpenseEstimates ?? false
+            IncludeDailyExpenseEstimates = p?.IncludeDailyExpenseEstimates ?? false,
+            AllowSelfTransfer = p?.AllowSelfTransfer ?? true
         };
 
         var search = new TripSearch(request.OriginAirportIata, request.EarliestDeparture, request.LatestReturn, request.DurationDays,
@@ -132,7 +147,19 @@ public sealed class CreateTripSearchHandler(
         search.ReportProgress(0, T.Get("progress.queued"), timeProvider.GetUtcNow());
 
         if (request.DestinationMode == DestinationMode.Manual)
-            foreach (var id in request.DestinationIds!.Distinct()) search.SelectDestination(id);
+        {
+            foreach (var id in (request.DestinationIds ?? []).Distinct()) search.SelectDestination(id);
+            foreach (var code in (request.DestinationCityCodes ?? []).Distinct(StringComparer.OrdinalIgnoreCase))
+            {
+                var destination = await cities.ResolveAsync(code, cancellationToken)
+                                  ?? throw new PlanningException(T.Get("val.cityUnknown"));
+                search.SelectDestination(destination.Id);
+            }
+        }
+        else
+        {
+            search.RestrictToContinents((request.Continents ?? []).Select(c => Continents.Normalize(c)!));
+        }
 
         db.TripSearches.Add(search);
         await db.SaveChangesAsync(cancellationToken);

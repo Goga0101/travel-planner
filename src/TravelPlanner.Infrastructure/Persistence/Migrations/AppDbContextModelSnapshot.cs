@@ -33,6 +33,19 @@ namespace TravelPlanner.Infrastructure.Persistence.Migrations
                         .HasMaxLength(128)
                         .HasColumnType("character varying(128)");
 
+                    b.Property<string>("CityCode")
+                        .HasMaxLength(3)
+                        .HasColumnType("character(3)")
+                        .IsFixedLength();
+
+                    b.Property<string>("Continent")
+                        .HasMaxLength(32)
+                        .HasColumnType("character varying(32)");
+
+                    b.Property<string>("Country")
+                        .HasMaxLength(128)
+                        .HasColumnType("character varying(128)");
+
                     b.Property<string>("CountryCode")
                         .IsRequired()
                         .HasMaxLength(2)
@@ -71,6 +84,8 @@ namespace TravelPlanner.Infrastructure.Persistence.Migrations
                         .HasColumnType("jsonb");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("CityCode");
 
                     b.HasIndex("DestinationId");
 
@@ -116,6 +131,9 @@ namespace TravelPlanner.Infrastructure.Persistence.Migrations
                         .HasColumnType("character varying(2000)");
 
                     b.Property<bool>("IsActive")
+                        .HasColumnType("boolean");
+
+                    b.Property<bool>("IsCatalog")
                         .HasColumnType("boolean");
 
                     b.Property<double>("Latitude")
@@ -415,6 +433,10 @@ namespace TravelPlanner.Infrastructure.Persistence.Migrations
                     b.Property<DateTimeOffset?>("CompletedAtUtc")
                         .HasColumnType("timestamp with time zone");
 
+                    b.PrimitiveCollection<List<string>>("Continents")
+                        .IsRequired()
+                        .HasColumnType("text[]");
+
                     b.Property<DateTimeOffset>("CreatedAtUtc")
                         .HasColumnType("timestamp with time zone");
 
@@ -437,6 +459,12 @@ namespace TravelPlanner.Infrastructure.Persistence.Migrations
                     b.Property<string>("ErrorMessage")
                         .HasMaxLength(1000)
                         .HasColumnType("character varying(1000)");
+
+                    b.Property<string>("FoundFlightsJson")
+                        .IsRequired()
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("jsonb")
+                        .HasDefaultValueSql("'[]'::jsonb");
 
                     b.Property<string>("Language")
                         .IsRequired()
@@ -565,6 +593,8 @@ namespace TravelPlanner.Infrastructure.Persistence.Migrations
                     b.OwnsOne("TravelPlanner.Domain.Entities.TripPreferences", "Preferences", b1 =>
                         {
                             b1.Property<Guid>("TripSearchId");
+
+                            b1.Property<bool>("AllowSelfTransfer");
 
                             b1.Property<bool>("IncludeCheckedBaggage");
 

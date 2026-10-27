@@ -1,10 +1,15 @@
 using System.Text.Json;
+using TravelPlanner.Application.Providers;
 using TravelPlanner.Domain.Enums;
 
 namespace TravelPlanner.Application.Dtos;
 
 public sealed record AirportDto(Guid Id, string IataCode, string Name, string City, string CountryCode, double Latitude, double Longitude,
-    bool IsDepartureOption, string? OfficialWebsiteUrl);
+    bool IsDepartureOption, string? OfficialWebsiteUrl, string? CityCode = null, string? Country = null, string? Continent = null);
+
+/// <summary>A city anywhere in the world that can be picked as a destination; DestinationId is set for catalog cities.</summary>
+public sealed record PlaceDto(string CityCode, string City, string Country, string CountryCode, string Continent,
+    IReadOnlyList<string> AirportCodes, Guid? DestinationId);
 
 public sealed record DestinationSummaryDto(Guid Id, string Code, string City, string Country, string CountryCode, string Region,
     IReadOnlyList<string> AirportCodes, int Popularity);
@@ -22,7 +27,8 @@ public sealed record TripPreferencesDto(
     int? MaxFlightDurationHours,
     int? MaxStops,
     DepartureTimePreference PreferredDepartureTime,
-    bool IncludeDailyExpenseEstimates);
+    bool IncludeDailyExpenseEstimates,
+    bool AllowSelfTransfer = true);
 
 public sealed record DestinationRefDto(Guid Id, string Code, string City, string Country, string CountryCode);
 
@@ -37,7 +43,8 @@ public sealed record TripSearchCriteriaDto(
     string BudgetCurrency,
     DestinationMode DestinationMode,
     IReadOnlyList<DestinationRefDto> Destinations,
-    TripPreferencesDto Preferences);
+    TripPreferencesDto Preferences,
+    IReadOnlyList<string> Continents);
 
 public sealed record TripSearchDto(
     Guid Id,
@@ -56,10 +63,33 @@ public sealed record TripSearchDto(
 
 public sealed record CreateTripSearchResponse(Guid Id, TripSearchStatus Status, DataMode DataMode);
 
-public sealed record FlightLegSummaryDto(string From, string To, DateTime DepartureLocal, DateTime? ArrivalLocal, int? DurationMinutes, int Stops, IReadOnlyList<string> Carriers);
+/// <summary>A connection airport with its city in the request language (the code itself when unknown).</summary>
+public sealed record ViaStopDto(string Iata, string City, string? CountryCode);
+
+public sealed record FlightLegSummaryDto(string From, string To, DateTime DepartureLocal, DateTime? ArrivalLocal, int? DurationMinutes, int Stops,
+    IReadOnlyList<string> Carriers, string? FromCity, string? ToCity, IReadOnlyList<ViaStopDto> Via);
+
+/// <summary>One flight found by a search (all destinations and dates, not only the ones in plans).</summary>
+public sealed record FoundFlightDto(
+    DestinationRefDto Destination,
+    DateOnly DepartureDate,
+    DateOnly ReturnDate,
+    decimal Price,
+    string Currency,
+    decimal OriginalPrice,
+    string OriginalCurrency,
+    bool WithinBudget,
+    string Provider,
+    VerificationStatus Verification,
+    FlightLegSummaryDto Outbound,
+    FlightLegSummaryDto Inbound,
+    string? BookingUrl,
+    DateTimeOffset RetrievedAtUtc,
+    bool SelfTransfer,
+    IReadOnlyList<FlightTicket> Tickets);
 
 public sealed record FlightSummaryDto(string Provider, decimal? Price, string? Currency, VerificationStatus Verification,
-    FlightLegSummaryDto? Outbound, FlightLegSummaryDto? Inbound, int? IncludedCheckedBags, bool HasBookingLink);
+    FlightLegSummaryDto? Outbound, FlightLegSummaryDto? Inbound, int? IncludedCheckedBags, bool HasBookingLink, bool SelfTransfer);
 
 public sealed record AccommodationSummaryDto(string Name, string Provider, decimal? Price, string? Currency, decimal? Stars,
     decimal? ReviewScore, string? Address, VerificationStatus Verification, bool HasBookingLink, string? CancellationPolicy);

@@ -31,7 +31,7 @@ public static class PlanItemDraftFactory
             ExpiresAtUtc = offer.ExpiresAtUtc,
             Verification = offer.Verification,
             DetailsJson = AppJson.Serialize(new FlightItemDetails(o, i, passengers, offer.IncludedCheckedBags, offer.BaggageNote,
-                offer.PriceExtrapolatedFromSinglePassenger, offer.ValidatingCarrier, offer.SourceNote))
+                offer.PriceExtrapolatedFromSinglePassenger, offer.ValidatingCarrier, offer.SourceNote, offer.Tickets.Count > 0 ? offer.Tickets : null))
         };
     }
 

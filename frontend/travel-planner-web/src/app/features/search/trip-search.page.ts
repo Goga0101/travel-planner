@@ -7,8 +7,17 @@ import { ApiService } from '../../core/api.service';
 import { ClientConfigService } from '../../core/client-config.service';
 import { ApiError, toApiError } from '../../core/errors';
 import { toIsoDate } from '../../core/format';
-import { AirportDto, CreateTripSearchCommand, DepartureTimePreference, DestinationMode, DestinationSummaryDto } from '../../core/models';
-import { switchMap } from 'rxjs';
+import {
+  AirportDto,
+  CONTINENTS,
+  Continent,
+  CreateTripSearchCommand,
+  DepartureTimePreference,
+  DestinationMode,
+  DestinationSummaryDto,
+  PlaceDto,
+} from '../../core/models';
+import { Subject, catchError, debounceTime, distinctUntilChanged, of, switchMap } from 'rxjs';
 import { TranslationKey } from '../../core/i18n/en';
 import { I18nService, TranslateParams } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
@@ -18,6 +27,27 @@ import { LocalDatePipe, MoneyPipe } from '../../shared/pipes';
 import { ErrorBannerComponent } from '../../shared/error-banner.component';
 import { IconComponent, IconName } from '../../shared/icon.component';
 import { DATE_ERROR_KEYS, manualDestinationsValidator, tripDatesValidator } from './trip-search.validators';
+
+const ORIGIN_KEY = 'tp.origin';
+
+/** The departure airport the visitor picked last (per browser); storage may be unavailable. */
+function rememberedOrigin(): AirportDto | null {
+  try {
+    const raw = localStorage.getItem(ORIGIN_KEY);
+    const value = raw ? (JSON.parse(raw) as AirportDto) : null;
+    return value && /^[A-Z]{3}$/.test(value.iataCode) ? value : null;
+  } catch {
+    return null;
+  }
+}
+
+function rememberOrigin(airport: AirportDto): void {
+  try {
+    localStorage.setItem(ORIGIN_KEY, JSON.stringify(airport));
+  } catch {
+    /* storage unavailable */
+  }
+}
 
 function defaultDates(today: Date): { from: string; to: string } {
   const year = today.getFullYear();
@@ -46,6 +76,19 @@ export class TripSearchPage {
 
   protected readonly airports = signal<AirportDto[]>([]);
   protected readonly destinations = signal<DestinationSummaryDto[]>([]);
+  /** Selected departure airport and the departure combobox state. */
+  protected readonly origin = signal<AirportDto | null>(rememberedOrigin());
+  protected readonly originSuggested = signal(false);
+  protected readonly originQuery = signal('');
+  protected readonly originOptions = signal<AirportDto[]>([]);
+  protected readonly originOpen = signal(false);
+  protected readonly originActive = signal(-1);
+  private readonly originTerms = new Subject<string>();
+  /** World cities (outside the catalog) matching the destination filter, and the ones picked. */
+  protected readonly worldMatches = signal<PlaceDto[]>([]);
+  protected readonly pickedPlaces = signal<PlaceDto[]>([]);
+  private readonly placeTerms = new Subject<string>();
+  protected readonly continents = CONTINENTS;
   protected readonly catalogError = signal<ApiError | null>(null);
   protected readonly submitError = signal<ApiError | null>(null);
   protected readonly serverFieldErrors = signal<Record<string, string[]>>({});
@@ -85,7 +128,7 @@ export class TripSearchPage {
 
   protected readonly form = this.fb.nonNullable.group(
     {
-      originAirportIata: ['TBS', [Validators.required, Validators.pattern(/^[A-Za-z]{3}$/)]],
+      originAirportIata: [rememberedOrigin()?.iataCode ?? 'TBS', [Validators.required, Validators.pattern(/^[A-Za-z]{3}$/)]],
       earliestDeparture: [this.dates.from, Validators.required],
       latestReturn: [this.dates.to, Validators.required],
       durationDays: [5, [Validators.required, Validators.min(2), Validators.max(30)]],
@@ -94,6 +137,8 @@ export class TripSearchPage {
       budgetCurrency: ['EUR', Validators.required],
       destinationMode: ['Automatic' as DestinationMode],
       destinationIds: [[] as string[]],
+      destinationCityCodes: [[] as string[]],
+      continents: [[] as Continent[]],
       preferences: this.fb.nonNullable.group({
         includeCheckedBaggage: [false],
         minAccommodationStars: [null as number | null, [Validators.min(1), Validators.max(5)]],
@@ -101,6 +146,7 @@ export class TripSearchPage {
         maxStops: [null as number | null, [Validators.min(0), Validators.max(3)]],
         preferredDepartureTime: ['Any' as DepartureTimePreference],
         includeDailyExpenseEstimates: [false],
+        allowSelfTransfer: [true],
       }),
     },
     { validators: [tripDatesValidator(this.todayIso, this.maxWindow), manualDestinationsValidator(this.maxDestinations)] },
@@ -110,6 +156,13 @@ export class TripSearchPage {
   protected readonly isManual = computed(() => this.formValue().destinationMode === 'Manual');
   protected readonly nights = computed(() => Math.max(0, (this.formValue().durationDays ?? 0) - 1));
   protected readonly selectedIds = computed(() => this.formValue().destinationIds ?? []);
+  protected readonly selectedContinents = computed(() => this.formValue().continents ?? []);
+  protected readonly selectedCount = computed(() => this.selectedIds().length + (this.formValue().destinationCityCodes ?? []).length);
+  /** World matches that are not catalog cities already listed or picked. */
+  protected readonly worldOptions = computed(() => {
+    const picked = new Set(this.formValue().destinationCityCodes ?? []);
+    return this.worldMatches().filter((p) => !p.destinationId && !picked.has(p.cityCode));
+  });
   protected readonly selectedDestinations = computed(() => {
     const ids = new Set(this.selectedIds());
     return this.destinations().filter((d) => ids.has(d.id));
@@ -131,8 +184,9 @@ export class TripSearchPage {
   protected readonly featured = computed(() => this.destinations().find((d) => d.code === this.featuredCode));
   protected readonly originCity = computed(() => {
     const iata = this.formValue().originAirportIata;
-    return this.airports().find((a) => a.iataCode === iata)?.city ?? iata;
+    return this.origin()?.city ?? this.airports().find((a) => a.iataCode === iata)?.city ?? iata;
   });
+  protected readonly originLabel = (a: AirportDto) => `${a.city} (${a.iataCode})`;
   protected readonly currencies = computed(() => this.configService.config()?.supportedCurrencies ?? ['EUR']);
   protected readonly maxManual = computed(() => this.configService.config()?.maxManualDestinations ?? 10);
 
@@ -147,6 +201,46 @@ export class TripSearchPage {
       next: (page) => this.destinations.set(page.items),
       error: (e) => this.catalogError.set(toApiError(e)),
     });
+    // Departure airport: the remembered one, else the one nearest to the visitor (by IP), else Tbilisi.
+    if (!this.origin()) {
+      this.api
+        .getNearestAirport()
+        .pipe(
+          catchError(() => of(null)),
+          switchMap((a) => (a ? of({ airport: a, suggested: true }) : this.api.searchAirports('TBS').pipe(
+            catchError(() => of([])),
+            switchMap((list) => of({ airport: list[0] ?? null, suggested: false })),
+          ))),
+          takeUntilDestroyed(this.destroyRef),
+        )
+        .subscribe(({ airport, suggested }) => {
+          if (airport && !this.origin()) {
+            this.setOrigin(airport, false);
+            this.originSuggested.set(suggested);
+          }
+        });
+    }
+    this.originQuery.set(this.origin() ? this.originLabel(this.origin()!) : '');
+    this.originTerms
+      .pipe(
+        debounceTime(200),
+        distinctUntilChanged(),
+        switchMap((term) => (term.trim().length < 2 ? of([]) : this.api.searchAirports(term.trim()).pipe(catchError(() => of([]))))),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe((list) => {
+        this.originOptions.set(list);
+        this.originActive.set(list.length ? 0 : -1);
+      });
+    this.placeTerms
+      .pipe(
+        debounceTime(250),
+        distinctUntilChanged(),
+        switchMap((term) => (term.trim().length < 2 ? of([]) : this.api.searchPlaces(term.trim()).pipe(catchError(() => of([]))))),
+        takeUntilDestroyed(this.destroyRef),
+      )
+      .subscribe((list) => this.worldMatches.set(list));
+
     // Server-side field errors become stale as soon as the user edits the form.
     this.form.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe(() => this.serverFieldErrors.set({}));
   }
@@ -155,11 +249,84 @@ export class TripSearchPage {
     this.form.controls.destinationMode.setValue(mode);
   }
 
+  protected onOriginInput(value: string): void {
+    this.originQuery.set(value);
+    this.originOpen.set(true);
+    this.originTerms.next(value);
+  }
+
+  protected onOriginKey(event: KeyboardEvent): void {
+    const options = this.originOptions();
+    if (event.key === 'ArrowDown' || event.key === 'ArrowUp') {
+      event.preventDefault();
+      if (!options.length) return;
+      this.originOpen.set(true);
+      const step = event.key === 'ArrowDown' ? 1 : -1;
+      this.originActive.set((this.originActive() + step + options.length) % options.length);
+    } else if (event.key === 'Enter' && this.originOpen() && options[this.originActive()]) {
+      event.preventDefault();
+      this.setOrigin(options[this.originActive()]);
+    } else if (event.key === 'Escape') {
+      this.closeOrigin();
+    }
+  }
+
+  /** Restores the selected airport's label when the field loses focus without a choice. */
+  protected closeOrigin(): void {
+    this.originOpen.set(false);
+    const selected = this.origin();
+    if (selected) this.originQuery.set(this.originLabel(selected));
+  }
+
+  protected setOrigin(airport: AirportDto, remember = true): void {
+    this.origin.set(airport);
+    this.originSuggested.set(false);
+    this.form.controls.originAirportIata.setValue(airport.iataCode);
+    this.form.controls.originAirportIata.markAsTouched();
+    this.originQuery.set(this.originLabel(airport));
+    this.originOpen.set(false);
+    this.originOptions.set([]);
+    if (remember) rememberOrigin(airport);
+  }
+
+  protected continentKey(c: Continent): TranslationKey {
+    return `continent.${c}`;
+  }
+
+  protected toggleContinent(c: Continent): void {
+    const current = this.form.controls.continents.value;
+    this.form.controls.continents.setValue(current.includes(c) ? current.filter((x) => x !== c) : [...current, c]);
+  }
+
+  protected onDestinationFilter(value: string): void {
+    this.destinationFilter.set(value);
+    this.placeTerms.next(value);
+  }
+
+  protected addPlace(place: PlaceDto): void {
+    if (place.destinationId) {
+      this.addDestination(place.destinationId);
+      return;
+    }
+    const codes = this.form.controls.destinationCityCodes.value;
+    if (codes.includes(place.cityCode) || this.selectedCount() >= this.maxManual()) return;
+    this.pickedPlaces.set([...this.pickedPlaces().filter((p) => p.cityCode !== place.cityCode), place]);
+    this.form.controls.destinationCityCodes.setValue([...codes, place.cityCode]);
+    this.destinationFilter.set('');
+    this.worldMatches.set([]);
+  }
+
+  protected removePlace(cityCode: string): void {
+    this.form.controls.destinationCityCodes.setValue(this.form.controls.destinationCityCodes.value.filter((c) => c !== cityCode));
+    this.pickedPlaces.set(this.pickedPlaces().filter((p) => p.cityCode !== cityCode));
+  }
+
   protected addDestination(id: string): void {
     const ids = this.form.controls.destinationIds.value;
-    if (ids.includes(id) || ids.length >= this.maxManual()) return;
+    if (ids.includes(id) || this.selectedCount() >= this.maxManual()) return;
     this.form.controls.destinationIds.setValue([...ids, id]);
     this.destinationFilter.set('');
+    this.worldMatches.set([]);
   }
 
   protected removeDestination(id: string): void {
@@ -170,6 +337,8 @@ export class TripSearchPage {
   protected pickDestination(d: DestinationSummaryDto): void {
     this.form.controls.destinationMode.setValue('Manual');
     this.form.controls.destinationIds.setValue([d.id]);
+    this.form.controls.destinationCityCodes.setValue([]);
+    this.pickedPlaces.set([]);
     this.announcement.set(this.i18n.t('search.cityPicked', { city: d.city }));
     this.startPlanning('duration');
   }
@@ -232,6 +401,8 @@ export class TripSearchPage {
       budgetCurrency: v.budgetCurrency,
       destinationMode: v.destinationMode,
       destinationIds: v.destinationMode === 'Manual' ? v.destinationIds : null,
+      destinationCityCodes: v.destinationMode === 'Manual' ? v.destinationCityCodes : null,
+      continents: v.destinationMode === 'Automatic' ? v.continents : null,
       preferences: {
         includeCheckedBaggage: v.preferences.includeCheckedBaggage,
         minAccommodationStars: numberOrNull(v.preferences.minAccommodationStars),
@@ -239,13 +410,18 @@ export class TripSearchPage {
         maxStops: numberOrNull(v.preferences.maxStops),
         preferredDepartureTime: v.preferences.preferredDepartureTime,
         includeDailyExpenseEstimates: v.preferences.includeDailyExpenseEstimates,
+        allowSelfTransfer: v.preferences.allowSelfTransfer,
       },
     };
 
     this.submitting.set(true);
     this.api.createTripSearch(command).subscribe({
       next: (res) => {
-        this.recent.add(res.id, command, v.destinationMode === 'Manual' ? this.selectedDestinations().map((d) => d.city) : []);
+        this.recent.add(
+          res.id,
+          command,
+          v.destinationMode === 'Manual' ? [...this.selectedDestinations().map((d) => d.city), ...this.pickedPlaces().map((p) => p.city)] : [],
+        );
         void this.router.navigate(this.i18n.path('searches', res.id));
       },
       error: (e) => {

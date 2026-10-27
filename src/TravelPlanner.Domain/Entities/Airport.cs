@@ -20,6 +20,11 @@ public class Airport : Entity
     public string Name { get; set; } = null!;
     public string City { get; set; } = null!;
     public string CountryCode { get; set; } = null!;
+    /// <summary>IATA metropolitan-area code shared by a city's airports (e.g. "LON" for LHR/LGW); null for catalog-only airports.</summary>
+    public string? CityCode { get; set; }
+    public string? Country { get; set; }
+    /// <summary>One of <see cref="Continents.All"/>.</summary>
+    public string? Continent { get; set; }
     public double Latitude { get; set; }
     public double Longitude { get; set; }
     /// <summary>Offered in the departure selector.</summary>

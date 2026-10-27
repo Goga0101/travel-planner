@@ -41,7 +41,30 @@ public sealed record PlanningResult(
     IReadOnlyList<PlanCandidate> Plans,
     bool AnyWithinBudget,
     IReadOnlyList<string> Warnings,
-    PlanningStats Stats);
+    PlanningStats Stats)
+{
+    /// <summary>Every flight offer found (cheapest first), for the flights list of the search.</summary>
+    public IReadOnlyList<FoundFlight> Flights { get; init; } = [];
+}
+
+/// <summary>A flight offer found by a search. Price is in the budget currency; the original price is kept alongside.</summary>
+public sealed record FoundFlight(
+    Guid DestinationId,
+    DateOnly DepartureDate,
+    DateOnly ReturnDate,
+    decimal Price,
+    string Currency,
+    decimal OriginalPrice,
+    string OriginalCurrency,
+    bool WithinBudget,
+    string Provider,
+    VerificationStatus Verification,
+    string? Carrier,
+    FlightItinerary Outbound,
+    FlightItinerary Inbound,
+    string? BookingUrl,
+    DateTimeOffset RetrievedAtUtc,
+    IReadOnlyList<FlightTicket>? Tickets = null);
 
 /// <summary>Thread-safe collection of user-facing warnings; provider failures are aggregated, not repeated.</summary>
 internal sealed class WarningCollector

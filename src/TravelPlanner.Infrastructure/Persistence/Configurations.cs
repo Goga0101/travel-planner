@@ -47,6 +47,10 @@ internal sealed class AirportConfiguration : IEntityTypeConfiguration<Airport>
         b.Property(x => x.City).HasMaxLength(128).IsRequired();
         b.Property(x => x.CountryCode).HasMaxLength(2).IsFixedLength().IsRequired();
         b.Property(x => x.OfficialWebsiteUrl).HasMaxLength(500);
+        b.Property(x => x.CityCode).HasMaxLength(3).IsFixedLength();
+        b.Property(x => x.Country).HasMaxLength(128);
+        b.Property(x => x.Continent).HasMaxLength(32);
+        b.HasIndex(x => x.CityCode);
         b.Property(x => x.Translations).AsJsonb().IsRequired();
         b.HasIndex(x => x.IsDepartureOption);
     }
@@ -86,6 +90,8 @@ internal sealed class TripSearchConfiguration : IEntityTypeConfiguration<TripSea
         b.Property(x => x.ProgressMessage).HasMaxLength(300).IsRequired();
         b.Property(x => x.ErrorMessage).HasMaxLength(1000);
         b.Property(x => x.Warnings);
+        b.Property(x => x.Continents);
+        b.Property(x => x.FoundFlightsJson).HasColumnType("jsonb").IsRequired().HasDefaultValueSql("'[]'::jsonb");
         b.Ignore(x => x.Nights);
         b.Ignore(x => x.IsFinished);
 

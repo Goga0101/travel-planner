@@ -26,8 +26,8 @@ describe('dictionaries', () => {
 
 describe('translate', () => {
   it('interpolates parameters', () => {
-    expect(translate(en, 'search.hintManual', { max: 10 })).toBe('Pick up to 10 cities.');
-    expect(translate(ka, 'search.hintManual', { max: 10 })).toBe('აირჩიეთ არაუმეტეს 10 ქალაქი.');
+    expect(translate(en, 'search.hintManual', { max: 10 })).toBe('Pick up to 10 cities, from the list or anywhere in the world.');
+    expect(translate(ka, 'search.hintManual', { max: 10 })).toBe('აირჩიეთ არაუმეტეს 10 ქალაქი, სიიდან ან მსოფლიოს ნებისმიერი წერტილიდან.');
   });
 
   it('chooses English plural forms by count; Georgian has one form', () => {

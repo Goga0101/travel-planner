@@ -1,3 +1,5 @@
+using System.Net;
+using System.Net.Sockets;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using TravelPlanner.API.Infrastructure;
@@ -50,6 +52,51 @@ public sealed class AirportsController(ISender sender) : ControllerBase
     public Task<IReadOnlyList<AirportDto>> List([FromQuery] bool departureOnly = true, [FromQuery] string? search = null,
         CancellationToken cancellationToken = default) =>
         sender.Send(new GetAirportsQuery(departureOnly, search), cancellationToken);
+
+    /// <summary>
+    /// The departure airport nearest to the caller, located by IP address (Travelpayouts "whereami"). 204 when unknown.
+    /// Behind the Cloudflare tunnel the visitor's address comes from CF-Connecting-IP; local and private addresses are not
+    /// sent, so the service then sees this server's own public address (the developer's location).
+    /// </summary>
+    [HttpGet("nearest")]
+    [ProducesResponseType<AirportDto>(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    public async Task<IActionResult> Nearest(CancellationToken cancellationToken)
+    {
+        var airport = await sender.Send(new GetNearestAirportQuery(VisitorAddress()), cancellationToken);
+        return airport is null ? NoContent() : Ok(airport);
+    }
+
+    private string? VisitorAddress()
+    {
+        var header = Request.Headers["CF-Connecting-IP"].FirstOrDefault()
+                     ?? Request.Headers["X-Forwarded-For"].FirstOrDefault()?.Split(',')[0].Trim();
+        var address = IPAddress.TryParse(header, out var parsed) ? parsed : HttpContext.Connection.RemoteIpAddress;
+        return address is null || IsLocal(address) ? null : address.ToString();
+    }
+
+    private static bool IsLocal(IPAddress address)
+    {
+        if (address.IsIPv4MappedToIPv6) address = address.MapToIPv4();
+        if (IPAddress.IsLoopback(address)) return true;
+        if (address.AddressFamily == AddressFamily.InterNetworkV6)
+            return address.IsIPv6LinkLocal || address.IsIPv6SiteLocal || address.IsIPv6UniqueLocal;
+        var b = address.GetAddressBytes();
+        return b[0] == 10 || (b[0] == 172 && b[1] is >= 16 and <= 31) || (b[0] == 192 && b[1] == 168) || (b[0] == 169 && b[1] == 254) ||
+               (b[0] == 100 && b[1] is >= 64 and <= 127);
+    }
+}
+
+[ApiController]
+[Route(ApiConstants.RoutePrefix + "/places")]
+[Produces("application/json")]
+public sealed class PlacesController(ISender sender) : ControllerBase
+{
+    /// <summary>Cities anywhere in the world with a flightable airport, for picking destinations outside the catalog.</summary>
+    [HttpGet]
+    [ProducesResponseType<IReadOnlyList<PlaceDto>>(StatusCodes.Status200OK)]
+    public Task<IReadOnlyList<PlaceDto>> Search([FromQuery] string search, [FromQuery] int max = 15, CancellationToken cancellationToken = default) =>
+        sender.Send(new SearchPlacesQuery(search, max), cancellationToken);
 }
 
 public sealed record ProviderStatusDto(string Category, string Name, bool Active, bool IsDemo, string Note);

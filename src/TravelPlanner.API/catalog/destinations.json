@@ -187,6 +187,184 @@
       "airports": [ { "iata": "LCA", "name": "Larnaca International Airport", "latitude": 34.8751, "longitude": 33.6249, "officialWebsiteUrl": "https://www.hermesairports.com", "isDepartureOption": false,
         "nameTranslations": { "ka": "ლარნაკის საერთაშორისო აეროპორტი" } } ],
       "transportLinks": []
+    },
+    {
+      "code": "sydney", "city": "Sydney", "country": "Australia", "countryCode": "AU", "region": "Oceania", "latitude": -33.8688, "longitude": 151.2093, "popularity": 70, "tripAdvisorGeoKey": "g255060",
+      "description": "Harbour, Opera House and Bondi Beach.",
+      "translations": { "ka": { "city": "სიდნეი", "country": "ავსტრალია", "description": "ნავსადგური, ოპერის თეატრი და ბონდაის პლაჟი." } },
+      "airports": [ { "iata": "SYD", "name": "Sydney (Kingsford Smith) Airport", "latitude": -33.93292, "longitude": 151.1799, "isDepartureOption": false } ],
+      "transportLinks": []
+    },
+    {
+      "code": "melbourne", "city": "Melbourne", "country": "Australia", "countryCode": "AU", "region": "Oceania", "latitude": -37.8136, "longitude": 144.9631, "popularity": 62, "tripAdvisorGeoKey": "g255100",
+      "description": "Laneway cafés, street art and sport.",
+      "translations": { "ka": { "city": "მელბურნი", "country": "ავსტრალია", "description": "ვიწრო ქუჩების კაფეები, ქუჩის ხელოვნება და სპორტი." } },
+      "airports": [ { "iata": "MEL", "name": "Tullamarine Airport", "latitude": -37.66961, "longitude": 144.84978, "isDepartureOption": false },
+        { "iata": "AVV", "name": "Avalon Airport", "latitude": -38.02637, "longitude": 144.47308, "isDepartureOption": false } ],
+      "transportLinks": []
+    },
+    {
+      "code": "brisbane", "city": "Brisbane", "country": "Australia", "countryCode": "AU", "region": "Oceania", "latitude": -27.4698, "longitude": 153.0251, "popularity": 50, "tripAdvisorGeoKey": "g255068",
+      "description": "Riverside city near the Gold Coast beaches.",
+      "translations": { "ka": { "city": "ბრისბენი", "country": "ავსტრალია", "description": "მდინარისპირა ქალაქი ოქროს სანაპიროს პლაჟებთან ახლოს." } },
+      "airports": [ { "iata": "BNE", "name": "Brisbane Airport", "latitude": -27.40303, "longitude": 153.10905, "isDepartureOption": false } ],
+      "transportLinks": []
+    },
+    {
+      "code": "perth", "city": "Perth", "country": "Australia", "countryCode": "AU", "region": "Oceania", "latitude": -31.9523, "longitude": 115.8613, "popularity": 45, "tripAdvisorGeoKey": "g255103",
+      "description": "Sunny west coast, beaches and Rottnest Island.",
+      "translations": { "ka": { "city": "პერთი", "country": "ავსტრალია", "description": "მზიანი დასავლეთ სანაპირო, პლაჟები და როტნესტის კუნძული." } },
+      "airports": [ { "iata": "PER", "name": "Perth Airport", "latitude": -31.9336, "longitude": 115.96024, "isDepartureOption": false } ],
+      "transportLinks": []
+    },
+    {
+      "code": "auckland", "city": "Auckland", "country": "New Zealand", "countryCode": "NZ", "region": "Oceania", "latitude": -36.8485, "longitude": 174.7633, "popularity": 52, "tripAdvisorGeoKey": "g255106",
+      "description": "City of sails, volcanoes and nearby islands.",
+      "translations": { "ka": { "city": "ოკლენდი", "country": "ახალი ზელანდია", "description": "იალქნების ქალაქი, ვულკანები და ახლომდებარე კუნძულები." } },
+      "airports": [ { "iata": "AKL", "name": "Auckland Airport", "latitude": -37.00479, "longitude": 174.78352, "isDepartureOption": false } ],
+      "transportLinks": []
+    },
+    {
+      "code": "tokyo", "city": "Tokyo", "country": "Japan", "countryCode": "JP", "region": "Asia", "latitude": 35.6762, "longitude": 139.6503, "popularity": 72, "tripAdvisorGeoKey": "g298184",
+      "description": "Neon districts, temples and food.",
+      "translations": { "ka": { "city": "ტოკიო", "country": "იაპონია", "description": "ნეონის უბნები, ტაძრები და სამზარეულო." } },
+      "airports": [ { "iata": "HND", "name": "Haneda Airport", "latitude": 35.54907, "longitude": 139.78453, "isDepartureOption": false },
+        { "iata": "NRT", "name": "Narita International Airport", "latitude": 35.77321, "longitude": 140.38744, "isDepartureOption": false } ],
+      "transportLinks": []
+    },
+    {
+      "code": "bangkok", "city": "Bangkok", "country": "Thailand", "countryCode": "TH", "region": "Asia", "latitude": 13.7563, "longitude": 100.5018, "popularity": 70, "tripAdvisorGeoKey": "g293916",
+      "description": "Temples, street food and night markets.",
+      "translations": { "ka": { "city": "ბანგკოკი", "country": "ტაილანდი", "description": "ტაძრები, ქუჩის საჭმელი და ღამის ბაზრები." } },
+      "airports": [ { "iata": "BKK", "name": "Suvarnabhumi Airport", "latitude": 13.69306, "longitude": 100.75205, "isDepartureOption": false },
+        { "iata": "DMK", "name": "Don Mueang International Airport", "latitude": 13.9125, "longitude": 100.60667, "isDepartureOption": false } ],
+      "transportLinks": []
+    },
+    {
+      "code": "singapore", "city": "Singapore", "country": "Singapore", "countryCode": "SG", "region": "Asia", "latitude": 1.2903, "longitude": 103.852, "popularity": 64, "tripAdvisorGeoKey": "g294265",
+      "description": "Gardens by the Bay, hawker food and skyline.",
+      "translations": { "ka": { "city": "სინგაპური", "country": "სინგაპური", "description": "ყურის ბაღები, ქუჩის სამზარეულო და ცათამბჯენები." } },
+      "airports": [ { "iata": "SIN", "name": "Changi International Airport", "latitude": 1.36117, "longitude": 103.9902, "isDepartureOption": false } ],
+      "transportLinks": []
+    },
+    {
+      "code": "bali", "city": "Bali", "country": "Indonesia", "countryCode": "ID", "region": "Asia", "latitude": -8.65, "longitude": 115.2167, "popularity": 66, "tripAdvisorGeoKey": "g294226",
+      "description": "Beaches, rice terraces and temples.",
+      "translations": { "ka": { "city": "ბალი", "country": "ინდონეზია", "description": "პლაჟები, ბრინჯის ტერასები და ტაძრები." } },
+      "airports": [ { "iata": "DPS", "name": "Ngurah Rai International Airport", "latitude": -8.74446, "longitude": 115.16331, "isDepartureOption": false } ],
+      "transportLinks": []
+    },
+    {
+      "code": "seoul", "city": "Seoul", "country": "South Korea", "countryCode": "KR", "region": "Asia", "latitude": 37.5665, "longitude": 126.978, "popularity": 58, "tripAdvisorGeoKey": "g294197",
+      "description": "Palaces, K-culture and markets.",
+      "translations": { "ka": { "city": "სეული", "country": "სამხრეთ კორეა", "description": "სასახლეები, კორეული კულტურა და ბაზრები." } },
+      "airports": [ { "iata": "ICN", "name": "Incheon International Airport", "latitude": 37.44852, "longitude": 126.45123, "isDepartureOption": false },
+        { "iata": "GMP", "name": "Gimpo International Airport", "latitude": 37.55929, "longitude": 126.80351, "isDepartureOption": false } ],
+      "transportLinks": []
+    },
+    {
+      "code": "dubai", "city": "Dubai", "country": "United Arab Emirates", "countryCode": "AE", "region": "Asia", "latitude": 25.2048, "longitude": 55.2708, "popularity": 74, "tripAdvisorGeoKey": "g295424",
+      "description": "Skyscrapers, desert and beaches.",
+      "translations": { "ka": { "city": "დუბაი", "country": "არაბთა გაერთიანებული საამიროები", "description": "ცათამბჯენები, უდაბნო და პლაჟები." } },
+      "airports": [ { "iata": "DXB", "name": "Dubai Airport", "latitude": 25.24867, "longitude": 55.35292, "isDepartureOption": false },
+        { "iata": "DWC", "name": "Dubai World Central - Al Maktoum International Airport", "latitude": 24.91806, "longitude": 55.17528, "isDepartureOption": false } ],
+      "transportLinks": []
+    },
+    {
+      "code": "hongkong", "city": "Hong Kong", "country": "Hong Kong", "countryCode": "HK", "region": "Asia", "latitude": 22.3193, "longitude": 114.1694, "popularity": 54, "tripAdvisorGeoKey": "g294217",
+      "description": "Harbour views, dim sum and hiking trails.",
+      "translations": { "ka": { "city": "ჰონგკონგი", "country": "ჰონგკონგი", "description": "ყურის ხედები, დიმ-სამი და სალაშქრო ბილიკები." } },
+      "airports": [ { "iata": "HKG", "name": "Hong Kong International Airport", "latitude": 22.31525, "longitude": 113.93649, "isDepartureOption": false } ],
+      "transportLinks": []
+    },
+    {
+      "code": "kualalumpur", "city": "Kuala Lumpur", "country": "Malaysia", "countryCode": "MY", "region": "Asia", "latitude": 3.139, "longitude": 101.6869, "popularity": 52, "tripAdvisorGeoKey": "g298570",
+      "description": "Petronas Towers, food and nearby islands.",
+      "translations": { "ka": { "city": "კუალა-ლუმპური", "country": "მალაიზია", "description": "პეტრონასის კოშკები, სამზარეულო და ახლომდებარე კუნძულები." } },
+      "airports": [ { "iata": "KUL", "name": "Kuala Lumpur International Airport", "latitude": 2.75567, "longitude": 101.70539, "isDepartureOption": false } ],
+      "transportLinks": []
+    },
+    {
+      "code": "delhi", "city": "Delhi", "country": "India", "countryCode": "IN", "region": "Asia", "latitude": 28.6139, "longitude": 77.209, "popularity": 48, "tripAdvisorGeoKey": "g304551",
+      "description": "Mughal monuments, bazaars and the way to Agra.",
+      "translations": { "ka": { "city": "დელი", "country": "ინდოეთი", "description": "მუღალთა ძეგლები, ბაზრები და გზა აგრისკენ." } },
+      "airports": [ { "iata": "DEL", "name": "Indira Gandhi International Airport", "latitude": 28.55656, "longitude": 77.10079, "isDepartureOption": false } ],
+      "transportLinks": []
+    },
+    {
+      "code": "newyork", "city": "New York", "country": "United States", "countryCode": "US", "region": "NorthAmerica", "latitude": 40.7128, "longitude": -74.006, "popularity": 73, "tripAdvisorGeoKey": "g60763",
+      "description": "Manhattan, museums and Broadway.",
+      "translations": { "ka": { "city": "ნიუ-იორკი", "country": "აშშ", "description": "მანჰეტენი, მუზეუმები და ბროდვეი." } },
+      "airports": [ { "iata": "JFK", "name": "John F. Kennedy International Airport", "latitude": 40.64233, "longitude": -73.78817, "isDepartureOption": false },
+        { "iata": "EWR", "name": "Newark Liberty International Airport", "latitude": 40.68907, "longitude": -74.17876, "isDepartureOption": false },
+        { "iata": "LGA", "name": "LaGuardia Airport", "latitude": 40.77425, "longitude": -73.87162, "isDepartureOption": false } ],
+      "transportLinks": []
+    },
+    {
+      "code": "losangeles", "city": "Los Angeles", "country": "United States", "countryCode": "US", "region": "NorthAmerica", "latitude": 34.0522, "longitude": -118.2437, "popularity": 60, "tripAdvisorGeoKey": "g32655",
+      "description": "Hollywood, beaches and road trips.",
+      "translations": { "ka": { "city": "ლოს-ანჯელესი", "country": "აშშ", "description": "ჰოლივუდი, პლაჟები და საავტომობილო მოგზაურობები." } },
+      "airports": [ { "iata": "LAX", "name": "Los Angeles International Airport", "latitude": 33.9434, "longitude": -118.40828, "isDepartureOption": false } ],
+      "transportLinks": []
+    },
+    {
+      "code": "miami", "city": "Miami", "country": "United States", "countryCode": "US", "region": "NorthAmerica", "latitude": 25.7617, "longitude": -80.1918, "popularity": 55, "tripAdvisorGeoKey": "g34438",
+      "description": "Art deco, beaches and Latin flavour.",
+      "translations": { "ka": { "city": "მაიამი", "country": "აშშ", "description": "არ-დეკო, პლაჟები და ლათინური ატმოსფერო." } },
+      "airports": [ { "iata": "MIA", "name": "Miami International Airport", "latitude": 25.796, "longitude": -80.27824, "isDepartureOption": false } ],
+      "transportLinks": []
+    },
+    {
+      "code": "toronto", "city": "Toronto", "country": "Canada", "countryCode": "CA", "region": "NorthAmerica", "latitude": 43.6532, "longitude": -79.3832, "popularity": 50, "tripAdvisorGeoKey": "g155019",
+      "description": "Lakeside city close to Niagara Falls.",
+      "translations": { "ka": { "city": "ტორონტო", "country": "კანადა", "description": "ტბისპირა ქალაქი ნიაგარის ჩანჩქერთან ახლოს." } },
+      "airports": [ { "iata": "YYZ", "name": "Pearson International Airport", "latitude": 43.68158, "longitude": -79.61146, "isDepartureOption": false } ],
+      "transportLinks": []
+    },
+    {
+      "code": "cancun", "city": "Cancún", "country": "Mexico", "countryCode": "MX", "region": "NorthAmerica", "latitude": 21.1619, "longitude": -86.8515, "popularity": 56, "tripAdvisorGeoKey": "g150807",
+      "description": "Caribbean beaches and Mayan ruins.",
+      "translations": { "ka": { "city": "კანკუნი", "country": "მექსიკა", "description": "კარიბის პლაჟები და მაიას ნანგრევები." } },
+      "airports": [ { "iata": "CUN", "name": "Cancun International Airport", "latitude": 21.04046, "longitude": -86.87443, "isDepartureOption": false } ],
+      "transportLinks": []
+    },
+    {
+      "code": "riodejaneiro", "city": "Rio de Janeiro", "country": "Brazil", "countryCode": "BR", "region": "SouthAmerica", "latitude": -22.9068, "longitude": -43.1729, "popularity": 55, "tripAdvisorGeoKey": "g303506",
+      "description": "Copacabana, Sugarloaf and samba.",
+      "translations": { "ka": { "city": "რიო-დე-ჟანეირო", "country": "ბრაზილია", "description": "კოპაკაბანა, შაქრის თავი და სამბა." } },
+      "airports": [ { "iata": "GIG", "name": "Galeao Antonio Carlos Jobim International Airport", "latitude": -22.81465, "longitude": -43.24651, "isDepartureOption": false },
+        { "iata": "SDU", "name": "Santos Dumont Airport", "latitude": -22.91154, "longitude": -43.16709, "isDepartureOption": false } ],
+      "transportLinks": []
+    },
+    {
+      "code": "buenosaires", "city": "Buenos Aires", "country": "Argentina", "countryCode": "AR", "region": "SouthAmerica", "latitude": -34.6037, "longitude": -58.3816, "popularity": 50, "tripAdvisorGeoKey": "g312741",
+      "description": "Tango, steakhouses and grand avenues.",
+      "translations": { "ka": { "city": "ბუენოს-აირესი", "country": "არგენტინა", "description": "ტანგო, სტეიკები და ფართო გამზირები." } },
+      "airports": [ { "iata": "EZE", "name": "Ministro Pistarini Airport", "latitude": -34.81273, "longitude": -58.53983, "isDepartureOption": false },
+        { "iata": "AEP", "name": "Jorge Newbery Airport", "latitude": -34.55622, "longitude": -58.41667, "isDepartureOption": false } ],
+      "transportLinks": []
+    },
+    {
+      "code": "cairo", "city": "Cairo", "country": "Egypt", "countryCode": "EG", "region": "Africa", "latitude": 30.0444, "longitude": 31.2357, "popularity": 55, "tripAdvisorGeoKey": "g294201",
+      "description": "The pyramids of Giza and the Nile.",
+      "translations": { "ka": { "city": "კაირო", "country": "ეგვიპტე", "description": "გიზის პირამიდები და ნილოსი." } },
+      "airports": [ { "iata": "CAI", "name": "Cairo International Airport", "latitude": 30.12011, "longitude": 31.40647, "isDepartureOption": false },
+        { "iata": "SPX", "name": "Giza Sphinx", "latitude": 30.10972, "longitude": 30.89444, "isDepartureOption": false } ],
+      "transportLinks": []
+    },
+    {
+      "code": "marrakech", "city": "Marrakech", "country": "Morocco", "countryCode": "MA", "region": "Africa", "latitude": 31.6295, "longitude": -7.9811, "popularity": 54, "tripAdvisorGeoKey": "g293734",
+      "description": "Souks, riads and the Atlas mountains.",
+      "translations": { "ka": { "city": "მარაქეში", "country": "მაროკო", "description": "სუკები, რიადები და ატლასის მთები." } },
+      "airports": [ { "iata": "RAK", "name": "Menara Airport", "latitude": 31.60188, "longitude": -8.0269, "isDepartureOption": false } ],
+      "transportLinks": []
+    },
+    {
+      "code": "capetown", "city": "Cape Town", "country": "South Africa", "countryCode": "ZA", "region": "Africa", "latitude": -33.9249, "longitude": 18.4241, "popularity": 52, "tripAdvisorGeoKey": "g1722390",
+      "description": "Table Mountain, beaches and wine country.",
+      "translations": { "ka": { "city": "კეიპტაუნი", "country": "სამხრეთ აფრიკა", "description": "მაგიდის მთა, პლაჟები და ღვინის მხარე." } },
+      "airports": [ { "iata": "CPT", "name": "Cape Town International Airport", "latitude": -33.96891, "longitude": 18.59649, "isDepartureOption": false } ],
+      "transportLinks": []
     }
   ]
 }

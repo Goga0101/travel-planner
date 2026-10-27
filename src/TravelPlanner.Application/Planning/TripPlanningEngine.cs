@@ -52,7 +52,8 @@ public sealed class TripPlanningEngine(
             throw new PlanningException(T.Get("error.noDates"));
 
         var destinations = request.Destinations
-            .Where(d => d.Airports.Count > 0 && d.Airports.All(a => a.IataCode != request.Origin.IataCode))
+            .Where(d => d.Airports.Count > 0 && d.Airports.All(a => a.IataCode != request.Origin.IataCode &&
+                                                                   (request.Origin.CityCode == null || a.CityCode != request.Origin.CityCode)))
             .ToList();
         if (destinations.Count == 0)
             throw new PlanningException(T.Get("error.noDestinations"));
@@ -64,28 +65,56 @@ public sealed class TripPlanningEngine(
             warnings.Add(T.Get("warn.destinationLimit", maxDestinations, destinations.Count));
             destinations = destinations.Take(maxDestinations).ToList();
         }
-        var datesPerDestination = Math.Clamp(_options.MaxFlightSearches / (destinations.Count * flights.Count), 1, combos.Count);
-        var searchedDates = DateCombinationGenerator.Sample(combos, datesPerDestination);
-        if (searchedDates.Count < combos.Count)
-            warnings.Add(T.Get("warn.dateLimit", searchedDates.Count, combos.Count));
+        // Window-capable providers price every departure day of the window in one job per destination; the others are
+        // called per sampled date combination with what is left of the request budget.
+        var windowProviders = flights.OfType<IFlightWindowSearchProvider>().ToList();
+        var dateProviders = flights.Where(p => p is not IFlightWindowSearchProvider).ToList();
+        var selfTransferProviders = prefs.AllowSelfTransfer && prefs.MaxStops != 0 ? flights.OfType<ISelfTransferFlightProvider>().ToList() : [];
+        var searchedDates = combos;
+        if (dateProviders.Count > 0)
+        {
+            var dateBudget = Math.Max(1, _options.MaxFlightSearches - destinations.Count * windowProviders.Count);
+            var datesPerDestination = Math.Clamp(dateBudget / (destinations.Count * dateProviders.Count), 1, combos.Count);
+            searchedDates = DateCombinationGenerator.Sample(combos, datesPerDestination);
+            if (searchedDates.Count < combos.Count)
+                warnings.Add(T.Get("warn.dateLimit", searchedDates.Count, combos.Count));
+        }
 
-        await Report(5, T.Get("progress.flightsStart", destinations.Count, searchedDates.Count));
+        await Report(5, T.Get("progress.flightsStart", destinations.Count, windowProviders.Count > 0 ? WindowDepartureDays(request) : searchedDates.Count));
 
-        var flightJobs = (from d in destinations from c in searchedDates from p in flights select (Destination: d, Dates: c, Provider: p)).ToList();
+        var flightJobs = (from d in destinations from p in windowProviders select (Destination: d, Dates: (TravelDates?)null, Provider: (IFlightSearchProvider)p, SelfTransfer: false))
+            .Concat(from d in destinations from p in selfTransferProviders select (Destination: d, Dates: (TravelDates?)null, Provider: (IFlightSearchProvider)p, SelfTransfer: true))
+            .Concat(from d in destinations from c in searchedDates from p in dateProviders select (Destination: d, Dates: (TravelDates?)c, Provider: p, SelfTransfer: false))
+            .ToList();
         var flightResults = new ConcurrentDictionary<(Guid DestinationId, TravelDates Dates), ConcurrentBag<FlightOffer>>();
         var flightDone = 0;
 
         await Parallel.ForEachAsync(flightJobs, ParallelismFor(cancellationToken), async (job, ct) =>
         {
             var airport = PrimaryAirport(job.Destination);
-            var flightRequest = new FlightSearchRequest(request.Origin.IataCode, airport.IataCode, job.Dates.Departure, job.Dates.Return,
-                request.Travelers, currency, prefs.MaxStops, prefs.IncludeCheckedBaggage, _options.MaxFlightOffersPerSearch);
-            var result = await CallAsync(token => job.Provider.SearchRoundTripAsync(flightRequest, token), job.Provider.Name, ct);
+            ProviderResult<IReadOnlyList<FlightOffer>> result;
+            if (job.Dates is { } dates)
+            {
+                var flightRequest = new FlightSearchRequest(request.Origin.IataCode, airport.IataCode, dates.Departure, dates.Return,
+                    request.Travelers, currency, prefs.MaxStops, prefs.IncludeCheckedBaggage, _options.MaxFlightOffersPerSearch);
+                result = await CallAsync(token => job.Provider.SearchRoundTripAsync(flightRequest, token), job.Provider.Name, ct);
+            }
+            else
+            {
+                var windowRequest = new FlightWindowRequest(request.Origin.IataCode, airport.IataCode, request.EarliestDeparture, request.LatestReturn,
+                    request.DurationDays, request.Travelers, currency, prefs.MaxStops, prefs.IncludeCheckedBaggage, _options.MaxFlightOffersPerWindow);
+                result = job.SelfTransfer
+                    ? await CallAsync(token => ((ISelfTransferFlightProvider)job.Provider).SearchSelfTransferAsync(windowRequest, token), job.Provider.Name, ct)
+                    : await CallAsync(token => ((IFlightWindowSearchProvider)job.Provider).SearchWindowAsync(windowRequest, token), job.Provider.Name, ct);
+            }
 
             if (result.Succeeded)
             {
-                var bag = flightResults.GetOrAdd((job.Destination.Id, job.Dates), _ => []);
-                foreach (var offer in FlightFilter.Apply(result.Data!, prefs, now)) bag.Add(offer);
+                foreach (var offer in FlightFilter.Apply(result.Data!, prefs, now))
+                {
+                    var offerDates = job.Dates ?? new TravelDates(DateOnly.FromDateTime(offer.Outbound.DepartureLocal), DateOnly.FromDateTime(offer.Inbound.DepartureLocal));
+                    flightResults.GetOrAdd((job.Destination.Id, offerDates), _ => []).Add(offer);
+                }
             }
             else
             {
@@ -105,6 +134,7 @@ public sealed class TripPlanningEngine(
         }
 
         await conversion.EnsureAsync(allFlights.Select(f => f.Currency), cancellationToken);
+        var found = FoundFlights(flightResults, conversion, currency, request.Budget);
 
         // 3. Shortlist: cheapest affordable date combinations per destination
         var shortlist = new List<(Destination Destination, TravelDates Dates, List<FlightOffer> Flights)>();
@@ -152,7 +182,7 @@ public sealed class TripPlanningEngine(
                 .Select(x => BuildCandidate(x.Destination, x.Dates, x.Flight, null, T.Get("reason.flightsExceedBudget"), request, now))
                 .ToList();
             foreach (var c in fallback) c.Budget = CalculateBudget(c, request, conversion, now);
-            return new PlanningResult(fallback, false, warnings.ToList(), stats);
+            return new PlanningResult(fallback, false, warnings.ToList(), stats) { Flights = found };
         }
 
         // 4. Accommodation: one search per unique (destination, dates, guests) and provider
@@ -276,8 +306,26 @@ public sealed class TripPlanningEngine(
             resultPlans.Count, flightJobs.Count, accJobs.Count, transportCalls);
 
         return new PlanningResult(resultPlans, affordable.Count > 0, warnings.ToList(),
-            stats with { AccommodationSearches = accJobs.Count, TransportSearches = transportCalls });
+            stats with { AccommodationSearches = accJobs.Count, TransportSearches = transportCalls }) { Flights = found };
     }
+
+    private static int WindowDepartureDays(PlanningRequest request) =>
+        Math.Max(1, request.LatestReturn.DayNumber - request.EarliestDeparture.DayNumber - request.DurationDays + 2);
+
+    /// <summary>Every distinct offer found, cheapest first, in the budget currency (offers without an exchange rate are left out).</summary>
+    private List<FoundFlight> FoundFlights(ConcurrentDictionary<(Guid DestinationId, TravelDates Dates), ConcurrentBag<FlightOffer>> results,
+        CurrencyConversionContext conversion, string currency, decimal budget) =>
+        results
+            .SelectMany(kv => kv.Value.Select(offer => (kv.Key.DestinationId, kv.Key.Dates, Offer: offer)))
+            .Select(x => (x.DestinationId, x.Dates, x.Offer, Price: conversion.TryConvert(x.Offer.TotalPrice, x.Offer.Currency, out var p) ? p : (decimal?)null))
+            .Where(x => x.Price.HasValue)
+            .DistinctBy(x => (x.DestinationId, x.Offer.Provider, x.Offer.Signature))
+            .OrderBy(x => x.Price)
+            .Take(_options.MaxFoundFlights)
+            .Select(x => new FoundFlight(x.DestinationId, x.Dates.Departure, x.Dates.Return, Math.Round(x.Price!.Value, 2), currency,
+                x.Offer.TotalPrice, x.Offer.Currency, x.Price <= budget, x.Offer.Provider, x.Offer.Verification, x.Offer.ValidatingCarrier,
+                x.Offer.Outbound, x.Offer.Inbound, x.Offer.BookingUrl, x.Offer.RetrievedAtUtc, x.Offer.Tickets))
+            .ToList();
 
     private PlanCandidate BuildCandidate(Destination destination, TravelDates dates, FlightOffer flight, AccommodationOffer? accommodation,
         string? unavailableReason, PlanningRequest request, DateTimeOffset now)

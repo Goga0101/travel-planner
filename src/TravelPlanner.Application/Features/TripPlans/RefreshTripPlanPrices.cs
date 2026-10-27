@@ -62,6 +62,18 @@ public sealed class RefreshTripPlanPricesHandler(
                     dates.Departure, dates.Return, plan.Travelers, plan.Currency, search.Preferences.MaxStops,
                     search.Preferences.IncludeCheckedBaggage, 20), ct);
 
+                // A combination of one-way tickets is re-priced as combinations on the same dates (plus the round trips above).
+                if (details.Tickets is { Count: > 1 } && provider is ISelfTransferFlightProvider selfTransfer)
+                {
+                    var combos = await selfTransfer.SearchSelfTransferAsync(new FlightWindowRequest(details.Outbound.DepartureAirport,
+                        details.Outbound.ArrivalAirport, dates.Departure, dates.Return, dates.DurationDays, plan.Travelers, plan.Currency,
+                        search.Preferences.MaxStops, search.Preferences.IncludeCheckedBaggage, 20), ct);
+                    if (combos.Succeeded)
+                        result = result.Succeeded
+                            ? ProviderResult<IReadOnlyList<FlightOffer>>.Success(provider.Name, [.. result.Data!, .. combos.Data!])
+                            : combos;
+                }
+
                 if (!result.Succeeded)
                 {
                     warnings.Add(T.Get("refresh.flightFailed", result.Error));
@@ -142,7 +154,8 @@ public sealed class RefreshTripPlanPricesHandler(
         await db.SaveChangesAsync(cancellationToken);
 
         using var _ = T.Use(requestLanguage);
-        return plan.ToDetail(now, linkPolicy);
+        var airports = await AirportLookup.LoadAsync(db, AirportLookup.CodesOf([plan]), cancellationToken);
+        return plan.ToDetail(now, linkPolicy, airports);
     }
 
     private static T? Deserialize<T>(string json) where T : class

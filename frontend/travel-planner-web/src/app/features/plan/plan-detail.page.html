@@ -150,9 +150,10 @@
         <app-verification-badge [status]="f.verification" [expired]="f.isExpired" />
       </div>
       @if (flightInfo(); as fi) {
-        @for (leg of [{ label: 'plan.outbound', it: fi.outbound }, { label: 'plan.return', it: fi.inbound }]; track leg.label) {
+        @for (leg of [{ label: 'plan.outbound', it: fi.outbound, summary: summary()?.flight?.outbound }, { label: 'plan.return', it: fi.inbound, summary: summary()?.flight?.inbound }]; track leg.label) {
           <div class="leg">
             <h3>{{ $any(leg.label) | t }}: {{ leg.it.departureAirport }} → {{ leg.it.arrivalAirport }}</h3>
+            @if (leg.summary; as s) { @if (s.via.length) { <p class="small"><app-flight-route [leg]="s" /></p> } }
             <p class="small muted">
               {{ 'plan.departs' | t: { time: (leg.it.departureLocal | ldate: 'EEE d MMM HH:mm') } }}
               @if (leg.it.arrivalLocal) { · {{ 'plan.arrives' | t: { time: (leg.it.arrivalLocal | ldate: 'EEE d MMM HH:mm') } }} }
@@ -169,10 +170,14 @@
                   </li>
                 }
               </ol>
-            } @else {
+            } @else if (!leg.it.via?.length) {
               <p class="small muted">{{ 'plan.noSegments' | t }}</p>
             }
           </div>
+        }
+        @if (fi.tickets && fi.tickets.length > 1) {
+          <h3>{{ 'flight.tickets' | t }}</h3>
+          <app-flight-tickets [tickets]="fi.tickets" [selfTransfer]="!!summary()?.flight?.selfTransfer" />
         }
         <p class="small">
           {{ 'plan.baggage' | t }}

@@ -9,10 +9,12 @@ import {
   DestinationDetailDto,
   AttractionDto,
   DestinationSummaryDto,
+  FoundFlightDto,
   HotelPricesDto,
   NearbyPlacesDto,
   OutboundLinkDto,
   PagedResult,
+  PlaceDto,
   PlanSort,
   TripPlanDetailDto,
   TripPlanSummaryDto,
@@ -54,6 +56,28 @@ export class ApiService {
 
   getDepartureAirports(): Observable<AirportDto[]> {
     return this.http.get<AirportDto[]>(`${BASE}/airports`, { params: { departureOnly: true } });
+  }
+
+  /** Departure airports worldwide matching a city, airport name or IATA code (best matches first). */
+  searchAirports(term: string): Observable<AirportDto[]> {
+    return this.http.get<AirportDto[]>(`${BASE}/airports`, { params: { departureOnly: true, search: term } });
+  }
+
+  /** The departure airport nearest to the visitor (by IP address); null when unknown (HTTP 204). */
+  getNearestAirport(): Observable<AirportDto | null> {
+    return this.http
+      .get<AirportDto>(`${BASE}/airports/nearest`, { observe: 'response' })
+      .pipe(map((r) => (r.status === 204 ? null : r.body)));
+  }
+
+  /** Cities anywhere in the world (with an airport), for destinations outside the catalog. */
+  searchPlaces(term: string): Observable<PlaceDto[]> {
+    return this.http.get<PlaceDto[]>(`${BASE}/places`, { params: { search: term } });
+  }
+
+  /** Every flight a finished search found (all destinations and dates), cheapest first. */
+  getFoundFlights(searchId: string): Observable<FoundFlightDto[]> {
+    return this.http.get<FoundFlightDto[]>(`${BASE}/trip-searches/${encodeURIComponent(searchId)}/flights`);
   }
 
   getTripPlan(id: string): Observable<TripPlanDetailDto> {

@@ -10,7 +10,9 @@ export type BudgetFitStatus = 'WithinBudget' | 'WithinBudgetIncomplete' | 'OverB
 export type DepartureTimePreference = 'Any' | 'Morning' | 'Afternoon' | 'Evening' | 'Night';
 export type TransportLinkKind = 'AirportInformation' | 'PublicTransport' | 'TaxiOperator' | 'RideHailingPlatform';
 export type TransferMode = 'PublicTransport' | 'Taxi' | 'Drive' | 'RideHailing' | 'Information';
-export type PlanSort = 'Rank' | 'TotalCost' | 'RemainingBudget' | 'DepartureDate';
+export type PlanSort = 'Rank' | 'TotalCost' | 'TotalCostDesc' | 'RemainingBudget' | 'DepartureDate';
+export type Continent = 'Europe' | 'Asia' | 'Africa' | 'NorthAmerica' | 'SouthAmerica' | 'Oceania';
+export const CONTINENTS: Continent[] = ['Europe', 'Asia', 'Africa', 'NorthAmerica', 'SouthAmerica', 'Oceania'];
 
 /** .NET TimeSpan as serialized by System.Text.Json: "hh:mm:ss[.fffffff]" or "d.hh:mm:ss[.fffffff]". */
 export type TimeSpanString = string;
@@ -42,6 +44,20 @@ export interface AirportDto {
   longitude: number;
   isDepartureOption: boolean;
   officialWebsiteUrl?: string;
+  cityCode?: string;
+  country?: string;
+  continent?: Continent;
+}
+
+/** A city anywhere in the world; destinationId is set when it is a catalog destination. */
+export interface PlaceDto {
+  cityCode: string;
+  city: string;
+  country: string;
+  countryCode: string;
+  continent: Continent;
+  airportCodes: string[];
+  destinationId?: string;
 }
 
 export interface DestinationSummaryDto {
@@ -90,6 +106,7 @@ export interface TripPreferencesDto {
   maxStops?: number | null;
   preferredDepartureTime: DepartureTimePreference;
   includeDailyExpenseEstimates: boolean;
+  allowSelfTransfer?: boolean;
 }
 
 export interface CreateTripSearchCommand {
@@ -102,6 +119,10 @@ export interface CreateTripSearchCommand {
   budgetCurrency: string;
   destinationMode: DestinationMode;
   destinationIds?: string[] | null;
+  /** Manual mode: cities outside the catalog (IATA city codes). */
+  destinationCityCodes?: string[] | null;
+  /** Automatic mode: only these continents (empty = all). */
+  continents?: Continent[] | null;
   preferences?: TripPreferencesDto | null;
 }
 
@@ -131,6 +152,7 @@ export interface TripSearchCriteriaDto {
   destinationMode: DestinationMode;
   destinations: DestinationRefDto[];
   preferences: TripPreferencesDto;
+  continents: Continent[];
 }
 
 export interface TripSearchDto {
@@ -157,6 +179,50 @@ export interface FlightLegSummaryDto {
   durationMinutes?: number;
   stops: number;
   carriers: string[];
+  fromCity?: string;
+  toCity?: string;
+  /** Connection airports in order, with their city in the request language. */
+  via: ViaStopDto[];
+}
+
+export interface ViaStopDto {
+  iata: string;
+  city: string;
+  countryCode?: string;
+}
+
+/** One separately booked ticket of a combined offer (price for all passengers). */
+export interface FlightTicket {
+  isReturn: boolean;
+  from: string;
+  to: string;
+  departureLocal: string;
+  arrivalLocal?: string;
+  stops: number;
+  carrier?: string;
+  price: number;
+  currency: string;
+  bookingUrl?: string;
+}
+
+/** A flight found by a search, across all destinations and dates. */
+export interface FoundFlightDto {
+  destination: DestinationRefDto;
+  departureDate: string;
+  returnDate: string;
+  price: number;
+  currency: string;
+  originalPrice: number;
+  originalCurrency: string;
+  withinBudget: boolean;
+  provider: string;
+  verification: VerificationStatus;
+  outbound: FlightLegSummaryDto;
+  inbound: FlightLegSummaryDto;
+  bookingUrl?: string;
+  retrievedAtUtc: string;
+  selfTransfer: boolean;
+  tickets: FlightTicket[];
 }
 
 export interface FlightSummaryDto {
@@ -168,6 +234,8 @@ export interface FlightSummaryDto {
   inbound?: FlightLegSummaryDto;
   includedCheckedBags?: number;
   hasBookingLink: boolean;
+  /** Changes planes on separate tickets in at least one direction. */
+  selfTransfer: boolean;
 }
 
 export interface AccommodationSummaryDto {
@@ -249,6 +317,7 @@ export interface FlightItinerary {
   duration?: TimeSpanString;
   stops: number;
   segments: FlightSegment[];
+  via?: string[];
 }
 
 export interface FlightItemDetails {
@@ -260,6 +329,7 @@ export interface FlightItemDetails {
   priceExtrapolatedFromSinglePassenger: boolean;
   validatingCarrier?: string;
   sourceNote?: string;
+  tickets?: FlightTicket[];
 }
 
 export interface MandatoryFee {

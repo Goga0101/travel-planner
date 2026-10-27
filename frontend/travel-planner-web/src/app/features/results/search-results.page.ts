@@ -14,13 +14,14 @@ import { ErrorBannerComponent } from '../../shared/error-banner.component';
 import { IconComponent } from '../../shared/icon.component';
 import { LocalDatePipe, MoneyPipe } from '../../shared/pipes';
 import { PlanCardComponent } from './plan-card.component';
+import { FoundFlightsComponent } from './found-flights.component';
 
 const POLL_MS = 1500;
 
 @Component({
   selector: 'app-search-results-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [LocalDatePipe, FormsModule, RouterLink, MoneyPipe, TranslatePipe, PlanCardComponent, ErrorBannerComponent, VerificationLegendComponent, IconComponent],
+  imports: [LocalDatePipe, FormsModule, RouterLink, MoneyPipe, TranslatePipe, PlanCardComponent, ErrorBannerComponent, VerificationLegendComponent, IconComponent, FoundFlightsComponent],
   templateUrl: './search-results.page.html',
 })
 export class SearchResultsPage {
@@ -47,6 +48,7 @@ export class SearchResultsPage {
   protected readonly sortOptions: { value: PlanSort; label: TranslationKey }[] = [
     { value: 'Rank', label: 'sort.Rank' },
     { value: 'TotalCost', label: 'sort.TotalCost' },
+    { value: 'TotalCostDesc', label: 'sort.TotalCostDesc' },
     { value: 'RemainingBudget', label: 'sort.RemainingBudget' },
     { value: 'DepartureDate', label: 'sort.DepartureDate' },
   ];
@@ -67,6 +69,9 @@ export class SearchResultsPage {
   });
 
   protected readonly destinationNames = computed(() => (this.search()?.criteria.destinations ?? []).map((d) => d.city).join(', '));
+  protected readonly continentNames = computed(() =>
+    (this.search()?.criteria.continents ?? []).map((c) => this.i18n.t(`continent.${c}` as TranslationKey)).join(', '),
+  );
 
   protected readonly isNoMatch =computed(() => this.search()?.status === 'CompletedNoMatch');
   protected readonly hasCompleted = computed(() => {

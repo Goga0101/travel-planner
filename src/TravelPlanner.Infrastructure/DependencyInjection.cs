@@ -45,6 +45,14 @@ public static class DependencyInjection
         services.AddSingleton<IAccommodationSearchLinkBuilder, BookingComSearchLinkBuilder>();
 
         services.AddSingleton<CatalogFileReader>();
+        services.AddSingleton<WorldAirportsFileReader>();
+        services.AddSingleton<IWorldPlaces, WorldPlaces>();
+        // Departure preselection by IP. Short timeout: the search form falls back to its default when this is slow.
+        services.AddHttpClient<IVisitorLocator, TravelpayoutsVisitorLocator>(c =>
+        {
+            c.BaseAddress = new Uri("https://www.travelpayouts.com/");
+            c.Timeout = TimeSpan.FromSeconds(5);
+        });
         services.AddSingleton<NearbyPlacesFile>();
         services.AddTransient<INearbyPlacesSource, NearbyPlacesService>();
         services.AddScoped<CatalogSeeder>();
@@ -139,7 +147,7 @@ public static class DependencyInjection
         {
             services.AddHttpClient<TravelpayoutsFlightProvider>(c => c.BaseAddress = BaseUri(travelpayouts.BaseUrl))
                 .AddStandardResilienceHandler(o => Configure(o, providers.Http));
-            services.AddTransient<IFlightSearchProvider>(sp => new CachingFlightSearchProvider(
+            services.AddTransient<IFlightSearchProvider>(sp => new CachingFlightWindowSearchProvider(
                 sp.GetRequiredService<TravelpayoutsFlightProvider>(), sp.GetRequiredService<IMemoryCache>(), TimeSpan.FromMinutes(providers.FlightCacheMinutes)));
         }
         status.Add(new ProviderStatus("Flights", TravelpayoutsFlightOfferMapper.ProviderName, travelpayouts.IsConfigured, false,

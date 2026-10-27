@@ -54,8 +54,10 @@ export function manualDestinationsValidator(max: () => number): ValidatorFn {
   return (group: AbstractControl): ValidationErrors | null => {
     if (group.get('destinationMode')?.value !== 'Manual') return null;
     const ids = (group.get('destinationIds')?.value as string[] | null) ?? [];
-    if (ids.length === 0) return { destinationsRequired: true };
-    if (ids.length > max()) return { tooManyDestinations: { max: max() } };
+    const cities = (group.get('destinationCityCodes')?.value as string[] | null) ?? [];
+    const count = ids.length + cities.length;
+    if (count === 0) return { destinationsRequired: true };
+    if (count > max()) return { tooManyDestinations: { max: max() } };
     return null;
   };
 }

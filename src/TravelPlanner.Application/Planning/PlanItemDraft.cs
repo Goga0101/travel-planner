@@ -58,7 +58,8 @@ public sealed record FlightItemDetails(
     string? BaggageNote,
     bool PriceExtrapolatedFromSinglePassenger,
     string? ValidatingCarrier,
-    string? SourceNote);
+    string? SourceNote,
+    IReadOnlyList<FlightTicket>? Tickets = null);
 
 public sealed record AccommodationItemDetails(
     string Name,

@@ -100,7 +100,7 @@ export class RecentSearchesService {
 
   readonly searches = this.state.asReadonly();
 
-  add(id: string, c: Omit<TripSearchCriteriaDto, 'nights' | 'destinationMode' | 'destinations' | 'preferences'>, destinations: string[]): void {
+  add(id: string, c: Omit<TripSearchCriteriaDto, 'nights' | 'destinationMode' | 'destinations' | 'preferences' | 'continents'>, destinations: string[]): void {
     const entry: RecentSearch = {
       id,
       origin: c.originAirportIata,

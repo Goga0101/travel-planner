@@ -10,7 +10,7 @@ namespace TravelPlanner.Application.Features.TripSearches;
 
 public sealed record GetTripSearchQuery(Guid Id) : IRequest<TripSearchDto>;
 
-public enum PlanSort { Rank, TotalCost, RemainingBudget, DepartureDate }
+public enum PlanSort { Rank, TotalCost, RemainingBudget, DepartureDate, TotalCostDesc }
 
 public sealed record GetTripSearchPlansQuery(Guid Id, int Page = 1, int PageSize = 10, PlanSort Sort = PlanSort.Rank)
     : IRequest<PagedResult<TripPlanSummaryDto>>;
@@ -63,6 +63,7 @@ public sealed class GetTripSearchPlansHandler(IApplicationDbContext db, TimeProv
         query = request.Sort switch
         {
             PlanSort.TotalCost => query.OrderBy(p => p.TotalEstimatedCost).ThenBy(p => p.Rank),
+            PlanSort.TotalCostDesc => query.OrderByDescending(p => p.TotalEstimatedCost).ThenBy(p => p.Rank),
             PlanSort.RemainingBudget => query.OrderByDescending(p => p.RemainingBudget).ThenBy(p => p.Rank),
             PlanSort.DepartureDate => query.OrderBy(p => p.DepartureDate).ThenBy(p => p.Rank),
             _ => query.OrderBy(p => p.Rank)
@@ -76,7 +77,8 @@ public sealed class GetTripSearchPlansHandler(IApplicationDbContext db, TimeProv
             .ToListAsync(cancellationToken);
 
         var now = timeProvider.GetUtcNow();
-        return new PagedResult<TripPlanSummaryDto>(plans.Select(p => p.ToSummary(now)).ToList(), request.Page, request.PageSize, total);
+        var airports = await AirportLookup.LoadAsync(db, AirportLookup.CodesOf(plans), cancellationToken);
+        return new PagedResult<TripPlanSummaryDto>(plans.Select(p => p.ToSummary(now, airports)).ToList(), request.Page, request.PageSize, total);
     }
 }
 

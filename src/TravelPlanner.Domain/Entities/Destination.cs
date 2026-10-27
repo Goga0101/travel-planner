@@ -29,6 +29,8 @@ public class Destination : Entity
     /// <summary>Higher = considered earlier in automatic mode when request limits apply.</summary>
     public int Popularity { get; set; }
     public bool IsActive { get; set; } = true;
+    /// <summary>False for cities created on demand from the world airport list (not curated, never deactivated by the seeder).</summary>
+    public bool IsCatalog { get; set; } = true;
     /// <summary>Booking.com Demand API city id. Verify via the /common/locations endpoints before production use.</summary>
     public long? BookingComCityId { get; set; }
 

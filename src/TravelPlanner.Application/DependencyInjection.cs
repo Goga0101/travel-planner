@@ -22,6 +22,7 @@ public static class DependencyInjection
         services.AddSingleton<IOutboundLinkPolicy, OutboundLinkPolicy>();
         services.AddScoped<TripPlanningEngine>();
         services.AddScoped<TripSearchProcessor>();
+        services.AddScoped<Features.TripSearches.CityDestinationResolver>();
         services.TryAddSingleton(TimeProvider.System);
         return services;
     }

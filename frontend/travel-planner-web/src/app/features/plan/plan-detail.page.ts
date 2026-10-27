@@ -29,6 +29,7 @@ import { SavedTripsService } from '../../core/local-lists';
 import { AttractionsComponent } from './attractions.component';
 import { NearbyComponent } from './nearby.component';
 import { WeatherComponent } from './weather.component';
+import { FlightRouteComponent, FlightTicketsComponent } from '../../shared/flight-route.component';
 import { DistancePipe, LocalDatePipe, LocalNumberPipe, MoneyPipe, StopsPipe, TimeSpanPipe } from '../../shared/pipes';
 
 /** Builds the Google Maps Embed directions URL from numbers only; returns null for invalid input. */
@@ -64,6 +65,8 @@ export function buildEmbedUrl(key: string, fromLat: number, fromLng: number, toL
     NearbyComponent,
     AttractionsComponent,
     WeatherComponent,
+    FlightRouteComponent,
+    FlightTicketsComponent,
   ],
   templateUrl: './plan-detail.page.html',
 })
@@ -90,6 +93,7 @@ export class PlanDetailPage {
     return !!p && this.savedTrips.isSaved(p.summary.id);
   });
 
+  protected readonly summary = computed(() => this.plan()?.summary ?? null);
   protected readonly flight = computed(() => this.item('Flight'));
   protected readonly flightInfo = computed(() => (this.flight() ? flightDetails(this.flight()!) : null));
   protected readonly accommodation = computed(() => this.item('Accommodation'));

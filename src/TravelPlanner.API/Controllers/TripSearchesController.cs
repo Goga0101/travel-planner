@@ -40,6 +40,13 @@ public sealed class TripSearchesController(ISender sender) : ControllerBase
         [FromQuery] PlanSort sort = PlanSort.Rank, CancellationToken cancellationToken = default) =>
         sender.Send(new GetTripSearchPlansQuery(id, page, pageSize, sort), cancellationToken);
 
+    /// <summary>Every flight the search found across all destinations and dates, cheapest first (empty while running).</summary>
+    [HttpGet("{id:guid}/flights")]
+    [ProducesResponseType<IReadOnlyList<FoundFlightDto>>(StatusCodes.Status200OK)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
+    public Task<IReadOnlyList<FoundFlightDto>> GetFlights(Guid id, CancellationToken cancellationToken) =>
+        sender.Send(new GetFoundFlightsQuery(id), cancellationToken);
+
     /// <summary>Cancels a queued or running search.</summary>
     [HttpPost("{id:guid}/cancel")]
     [ProducesResponseType<TripSearchDto>(StatusCodes.Status202Accepted)]

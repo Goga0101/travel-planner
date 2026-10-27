@@ -16,6 +16,8 @@ public sealed class CatalogOptions
     public bool SeedOnStartup { get; set; } = true;
     /// <summary>OpenStreetMap snapshot of hotels, transit lines and taxis near each destination (scripts/fetch-nearby.mjs).</summary>
     public string NearbyPath { get; set; } = "catalog/nearby.json";
+    /// <summary>Every flightable airport worldwide (scripts/fetch-world-airports.mjs). Optional: without it only catalog airports exist.</summary>
+    public string WorldAirportsPath { get; set; } = "catalog/world-airports.json";
 }
 
 public sealed class CatalogDocument
@@ -103,5 +105,32 @@ public sealed class CatalogFileReader(IOptions<CatalogOptions> options, IHostEnv
         var json = File.ReadAllText(path);
         return JsonSerializer.Deserialize<CatalogDocument>(json, AppJson.Options)
                ?? throw new InvalidOperationException("Destination catalog is empty.");
+    }
+}
+
+public sealed class WorldAirportsDocument
+{
+    public string? GeneratedOn { get; set; }
+    public List<WorldAirport> Airports { get; set; } = [];
+}
+
+public sealed record WorldAirport(string Iata, string Name, string CityCode, string City, string CountryCode, string Country, string Continent,
+    double Latitude, double Longitude, double CityLatitude, double CityLongitude);
+
+/// <summary>Loads and caches the world airport snapshot; an empty list when the file is missing.</summary>
+public sealed class WorldAirportsFileReader(IOptions<CatalogOptions> options, IHostEnvironment environment)
+{
+    private readonly Lazy<IReadOnlyList<WorldAirport>> _airports = new(() => Load(options.Value, environment));
+
+    public IReadOnlyList<WorldAirport> Airports => _airports.Value;
+
+    private static IReadOnlyList<WorldAirport> Load(CatalogOptions options, IHostEnvironment environment)
+    {
+        var path = System.IO.Path.IsPathRooted(options.WorldAirportsPath)
+            ? options.WorldAirportsPath
+            : System.IO.Path.Combine(environment.ContentRootPath, options.WorldAirportsPath);
+        if (!File.Exists(path)) return [];
+        var document = JsonSerializer.Deserialize<WorldAirportsDocument>(File.ReadAllText(path), AppJson.Options);
+        return document?.Airports ?? [];
     }
 }

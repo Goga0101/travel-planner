@@ -10,4 +10,6 @@ public class TripPreferences
     public int? MaxStops { get; set; }
     public DepartureTimePreference PreferredDepartureTime { get; set; } = DepartureTimePreference.Any;
     public bool IncludeDailyExpenseEstimates { get; set; }
+    /// <summary>Also combine separate one-way tickets through a connecting city (often cheaper, but unprotected connections).</summary>
+    public bool AllowSelfTransfer { get; set; } = true;
 }

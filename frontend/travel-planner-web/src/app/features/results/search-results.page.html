@@ -8,7 +8,10 @@
     <div>
       <p class="eyebrow">{{ 'results.eyebrow' | t }}</p>
       <h1 class="page-title">
-        @if (s.criteria.destinationMode === 'Automatic') { {{ 'results.tripsFrom' | t: { origin: s.criteria.originAirportIata } }} }
+        @if (s.criteria.destinationMode === 'Automatic') {
+          {{ 'results.tripsFrom' | t: { origin: s.criteria.originAirportIata } }}
+          @if (s.criteria.continents.length) { · {{ continentNames() }} }
+        }
         @else { {{ s.criteria.originAirportIata }} → {{ destinationNames() }} }
       </h1>
       <p class="muted">
@@ -118,6 +121,8 @@
           }
         </div>
       }
+
+      <app-found-flights [searchId]="s.id" [lang]="i18n.lang()" />
     </section>
   }
 } @else if (!loadError()) {

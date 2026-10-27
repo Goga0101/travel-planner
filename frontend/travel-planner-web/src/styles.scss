@@ -245,6 +245,43 @@ input[type='checkbox'] { width: 1.1rem; height: 1.1rem; accent-color: var(--prim
   display: inline-flex; min-width: 1.75rem; min-height: 1.75rem; align-items: center; justify-content: center;
 }
 .chip-remove:hover { background: color-mix(in srgb, var(--primary) 15%, transparent); }
+.chip-toggle {
+  border: 1px solid var(--border-strong); background: var(--surface); color: var(--text); padding: 0.35rem 0.85rem; cursor: pointer; font: inherit;
+  font-size: 0.9rem; min-height: 2.1rem;
+}
+.chip-toggle.active { background: var(--primary-soft); border-color: var(--primary); color: var(--primary-dark); font-weight: 600; }
+.option-list li.option-group { padding: 0.5rem 0.75rem 0.2rem; font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
+
+// ---------- Departure combobox ----------
+.combobox { position: relative; }
+.combobox input { width: 100%; }
+.combobox-list {
+  position: absolute; z-index: 20; top: calc(100% + 4px); left: 0; right: 0; min-width: min(22rem, 90vw); max-height: 280px; overflow-y: auto;
+  list-style: none; margin: 0; padding: 0.25rem; background: var(--surface); border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm); box-shadow: var(--shadow);
+}
+.combobox-list li { padding: 0.5rem 0.7rem; border-radius: 8px; cursor: pointer; line-height: 1.35; }
+.combobox-list li.active, .combobox-list li:hover { background: var(--primary-soft); }
+
+// ---------- Flight routes, separate tickets and the flights list ----------
+.route { display: inline; }
+.route-via { color: var(--muted); }
+.badge-self {
+  display: inline-block; font-size: 0.75rem; font-weight: 600; padding: 0.1rem 0.5rem; border-radius: 999px;
+  background: var(--warn-soft); color: var(--warn); vertical-align: middle;
+}
+.tickets { list-style: none; margin: 0.5rem 0 0; padding: 0; display: grid; gap: 0.35rem; }
+.tickets li { display: flex; flex-wrap: wrap; gap: 0.25rem 0.75rem; align-items: baseline; justify-content: space-between; }
+.flights-table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+.flights-table th, .flights-table td { text-align: left; padding: 0.6rem 0.5rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+.flights-table th { font-weight: 600; color: var(--muted); font-size: 0.82rem; }
+.flights-table td.price { white-space: nowrap; font-weight: 700; }
+.flights-table tr.over td.price { color: var(--danger); }
+@media (max-width: 720px) {
+  .flights-table thead { display: none; }
+  .flights-table tr { display: block; padding: 0.6rem 0; border-bottom: 1px solid var(--border); }
+  .flights-table td { display: block; border: 0; padding: 0.15rem 0; }
+}
 
 // ---------- Buttons ----------
 .btn {

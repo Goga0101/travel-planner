@@ -3,6 +3,7 @@ using MediatR;
 using Microsoft.EntityFrameworkCore;
 using TravelPlanner.Application.Common;
 using TravelPlanner.Application.Dtos;
+using TravelPlanner.Domain.Entities;
 
 namespace TravelPlanner.Application.Features.Destinations;
 
@@ -37,7 +38,7 @@ public sealed class GetDestinationsHandler(IApplicationDbContext db)
     {
         // The catalog is small (tens of cities), so filtering and sorting happen in memory: this lets users search
         // by English or translated names (e.g. "ვენა") and sort by the name shown in their language.
-        var query = db.Destinations.AsNoTracking().Where(d => d.IsActive);
+        var query = db.Destinations.AsNoTracking().Where(d => d.IsActive && d.IsCatalog);
         if (!string.IsNullOrWhiteSpace(request.CountryCode))
         {
             var cc = request.CountryCode.ToUpperInvariant();
@@ -46,7 +47,7 @@ public sealed class GetDestinationsHandler(IApplicationDbContext db)
         var all = await query.Include(d => d.Airports).ToListAsync(cancellationToken);
 
         var language = T.CurrentLanguage;
-        IEnumerable<Domain.Entities.Destination> filtered = all;
+        IEnumerable<Destination> filtered = all;
         if (!string.IsNullOrWhiteSpace(request.Search))
         {
             var term = request.Search.Trim();
@@ -83,16 +84,36 @@ public sealed class GetAirportsHandler(IApplicationDbContext db) : IRequestHandl
         if (!string.IsNullOrWhiteSpace(request.Search))
         {
             var term = request.Search.Trim();
+            var lower = term.ToLowerInvariant();
+            var upper = term.ToUpperInvariant();
             var language = T.CurrentLanguage;
-            var candidates = await query.Take(500).ToListAsync(cancellationToken);
-            return candidates
-                .Where(a => a.IataCode.Equals(term, StringComparison.OrdinalIgnoreCase) ||
-                            a.City.Contains(term, StringComparison.OrdinalIgnoreCase) ||
-                            a.Name.Contains(term, StringComparison.OrdinalIgnoreCase) ||
-                            a.NameIn(language).Contains(term, StringComparison.OrdinalIgnoreCase))
-                .OrderBy(a => a.City).ThenBy(a => a.IataCode).Take(200).Select(a => a.ToDto()).ToList();
+
+            // Latin names and codes are matched in the database; translated names (e.g. "თბილისი") only exist on curated airports.
+            var matches = await query
+                .Where(a => a.IataCode == upper || a.CityCode == upper || a.City.ToLower().Contains(lower) || a.Name.ToLower().Contains(lower) ||
+                            (a.Country != null && a.Country.ToLower().StartsWith(lower)))
+                .Take(300).ToListAsync(cancellationToken);
+            IEnumerable<Airport> translated = [];
+            if (term.Any(c => c > 0x7F))
+                translated = (await query.ToListAsync(cancellationToken))
+                    .Where(a => a.Translations.Count > 0 &&
+                                (a.CityIn(language).Contains(term, StringComparison.OrdinalIgnoreCase) ||
+                                 a.NameIn(language).Contains(term, StringComparison.OrdinalIgnoreCase)));
+
+            int Rank(Airport a) =>
+                a.IataCode == upper ? 0 :
+                a.CityCode == upper ? 1 :
+                a.CityIn(language).Equals(term, StringComparison.OrdinalIgnoreCase) ? 2 :
+                a.CityIn(language).StartsWith(term, StringComparison.OrdinalIgnoreCase) ? 3 :
+                a.CityIn(language).Contains(term, StringComparison.OrdinalIgnoreCase) ? 4 :
+                a.NameIn(language).Contains(term, StringComparison.OrdinalIgnoreCase) ? 5 : 6;
+
+            return matches.Concat(translated).DistinctBy(a => a.IataCode)
+                .OrderBy(Rank).ThenByDescending(a => a.DestinationId != null || a.Translations.Count > 0).ThenBy(a => a.CityIn(language)).ThenBy(a => a.IataCode)
+                .Take(20).Select(a => a.ToDto()).ToList();
         }
-        var airports = await query.OrderBy(a => a.City).ThenBy(a => a.IataCode).Take(200).ToListAsync(cancellationToken);
-        return airports.Select(a => a.ToDto()).ToList();
+        // Without a search term: the curated airports only (those with translated names); the selector searches the rest.
+        var airports = (await query.ToListAsync(cancellationToken)).Where(a => a.Translations.Count > 0);
+        return airports.OrderBy(a => a.CityIn(T.CurrentLanguage)).ThenBy(a => a.IataCode).Take(200).Select(a => a.ToDto()).ToList();
     }
 }

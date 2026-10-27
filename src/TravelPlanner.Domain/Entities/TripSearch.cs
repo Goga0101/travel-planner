@@ -49,6 +49,10 @@ public class TripSearch : Entity
     public string ProgressMessage { get; private set; } = null!;
     public string? ErrorMessage { get; private set; }
     public List<string> Warnings { get; private set; } = [];
+    /// <summary>Automatic mode: only destinations on these continents (empty = all).</summary>
+    public List<string> Continents { get; private set; } = [];
+    /// <summary>Every flight offer the search found (JSON list), shown in the flights list.</summary>
+    public string FoundFlightsJson { get; private set; } = "[]";
 
     public DateTimeOffset CreatedAtUtc { get; private set; }
     public DateTimeOffset UpdatedAtUtc { get; private set; }
@@ -67,6 +71,11 @@ public class TripSearch : Entity
         if (SelectedDestinations.All(d => d.DestinationId != destinationId))
             SelectedDestinations.Add(new TripSearchDestination { TripSearchId = Id, DestinationId = destinationId });
     }
+
+    public void RestrictToContinents(IEnumerable<string> continents) =>
+        Continents = continents.Distinct(StringComparer.OrdinalIgnoreCase).ToList();
+
+    public void SetFoundFlights(string json) => FoundFlightsJson = json;
 
     public void MarkRunning(DateTimeOffset nowUtc)
     {

@@ -16,12 +16,25 @@
         <app-icon name="pin" class="sp-icon" />
         <div class="field">
           <label for="origin">{{ 'search.origin' | t }}</label>
-          <select id="origin" formControlName="originAirportIata" [attr.aria-invalid]="showError('originAirportIata')">
-            @if (airports().length === 0) { <option value="TBS">TBS</option> }
-            @for (a of airports(); track a.id) {
-              <option [value]="a.iataCode">{{ a.city }} ({{ a.iataCode }})</option>
+          <div class="combobox">
+            <input id="origin" type="text" role="combobox" autocomplete="off" aria-autocomplete="list" aria-controls="origin-options"
+                   [attr.aria-expanded]="originOpen() && originOptions().length > 0" [attr.aria-invalid]="showError('originAirportIata')"
+                   [attr.aria-activedescendant]="originActive() >= 0 ? 'origin-opt-' + originActive() : null"
+                   [placeholder]="'search.originPlaceholder' | t" [value]="originQuery()"
+                   (input)="onOriginInput($any($event.target).value)" (keydown)="onOriginKey($event)" (focus)="$any($event.target).select()"
+                   (blur)="closeOrigin()" />
+            @if (originOpen() && originOptions().length) {
+              <ul id="origin-options" class="combobox-list" role="listbox" [attr.aria-label]="'search.origin' | t">
+                @for (a of originOptions(); track a.iataCode; let i = $index) {
+                  <li [id]="'origin-opt-' + i" role="option" [attr.aria-selected]="i === originActive()" [class.active]="i === originActive()"
+                      (mousedown)="$event.preventDefault(); setOrigin(a)">
+                    <strong>{{ a.city }}</strong> ({{ a.iataCode }}) <span class="muted small">{{ a.name }} · {{ a.country ?? a.countryCode }}</span>
+                  </li>
+                }
+              </ul>
             }
-          </select>
+          </div>
+          @if (originSuggested()) { <p class="hint">{{ 'search.originNearest' | t }}</p> }
           @for (msg of serverErrors('originAirportIata'); track msg) { <p class="field-error">{{ msg }}</p> }
         </div>
       </div>
@@ -114,6 +127,23 @@
         @if (isManual()) { {{ 'search.hintManual' | t: { max: maxManual() } }} } @else { {{ 'search.hintAuto' | t }} }
       </p>
 
+      @if (!isManual()) {
+        <div class="field">
+          <span class="label" id="continents-label">{{ 'search.continents' | t }}</span>
+          <div class="chips" role="group" aria-labelledby="continents-label">
+            @for (c of continents; track c) {
+              <button type="button" class="chip chip-toggle" [class.active]="selectedContinents().includes(c)"
+                      [attr.aria-pressed]="selectedContinents().includes(c)" (click)="toggleContinent(c)">
+                {{ continentKey(c) | t }}
+              </button>
+            }
+          </div>
+          <p class="hint">
+            @if (selectedContinents().length) { {{ 'search.continentsPicked' | t }} } @else { {{ 'search.continentsAll' | t }} }
+          </p>
+        </div>
+      }
+
       @if (isManual()) {
         <div class="field destination-picker">
           <label for="dest-search">{{ 'search.searchCities' | t }}</label>
@@ -125,24 +155,44 @@
                   <app-icon name="x" [size]="14" />
                 </button>
               </span>
-            } @empty {
+            }
+            @for (p of pickedPlaces(); track p.cityCode) {
+              <span class="chip">
+                {{ p.city }}, {{ p.countryCode }}
+                <button type="button" class="chip-remove" (click)="removePlace(p.cityCode)" [attr.aria-label]="'search.remove' | t: { city: p.city }">
+                  <app-icon name="x" [size]="14" />
+                </button>
+              </span>
+            }
+            @if (selectedCount() === 0) {
               <span class="muted small">{{ 'search.noCitiesSelected' | t }}</span>
             }
           </div>
           <input id="dest-search" type="search" [placeholder]="'search.destPlaceholder' | t" autocomplete="off"
-                 [value]="destinationFilter()" (input)="destinationFilter.set($any($event.target).value)" />
+                 [value]="destinationFilter()" (input)="onDestinationFilter($any($event.target).value)" />
           <ul class="option-list" role="listbox" [attr.aria-label]="'search.availableDestinations' | t">
             @for (d of filteredDestinations(); track d.id) {
               <li>
                 <button type="button" role="option" aria-selected="false" (click)="addDestination(d.id)"
-                        [disabled]="selectedIds().length >= maxManual()">
+                        [disabled]="selectedCount() >= maxManual()">
                   <strong>{{ d.city }}</strong> <span class="muted">{{ d.country }} · {{ d.airportCodes.join(', ') }}</span>
                 </button>
               </li>
             } @empty {
-              <li class="muted small">{{ 'search.noMatchingDestinations' | t }}</li>
+              @if (worldOptions().length === 0) { <li class="muted small">{{ 'search.noMatchingDestinations' | t }}</li> }
+            }
+            @if (worldOptions().length) {
+              <li class="option-group muted small">{{ 'search.worldCities' | t }}</li>
+              @for (p of worldOptions(); track p.cityCode) {
+                <li>
+                  <button type="button" role="option" aria-selected="false" (click)="addPlace(p)" [disabled]="selectedCount() >= maxManual()">
+                    <strong>{{ p.city }}</strong> <span class="muted">{{ p.country }} · {{ p.airportCodes.join(', ') }}</span>
+                  </button>
+                </li>
+              }
             }
           </ul>
+          @for (msg of serverErrors('destinationCityCodes'); track msg) { <p class="field-error">{{ msg }}</p> }
           @for (msg of serverErrors('destinationIds'); track msg) { <p class="field-error">{{ msg }}</p> }
         </div>
       }
@@ -179,6 +229,10 @@
           </div>
           <label class="checkbox"><input type="checkbox" formControlName="includeCheckedBaggage" /> {{ 'search.checkedBag' | t }}</label>
           <label class="checkbox"><input type="checkbox" formControlName="includeDailyExpenseEstimates" /> {{ 'search.dailyEstimates' | t }}</label>
+          <div>
+            <label class="checkbox"><input type="checkbox" formControlName="allowSelfTransfer" /> {{ 'search.selfTransfer' | t }}</label>
+            <p class="hint">{{ 'search.selfTransferHint' | t }}</p>
+          </div>
         </div>
       </details>
 

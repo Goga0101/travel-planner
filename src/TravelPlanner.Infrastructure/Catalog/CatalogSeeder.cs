@@ -6,8 +6,12 @@ using TravelPlanner.Infrastructure.Persistence;
 
 namespace TravelPlanner.Infrastructure.Catalog;
 
-/// <summary>Idempotently upserts the catalog file into the database (by destination code and airport IATA code).</summary>
-public sealed class CatalogSeeder(AppDbContext db, CatalogFileReader reader, IOutboundLinkPolicy linkPolicy, ILogger<CatalogSeeder> logger)
+/// <summary>
+/// Idempotently upserts the world airport snapshot and then the curated catalog file into the database (by destination
+/// code and airport IATA code). Catalog values win for airports that are in both.
+/// </summary>
+public sealed class CatalogSeeder(AppDbContext db, CatalogFileReader reader, WorldAirportsFileReader worldAirports, IOutboundLinkPolicy linkPolicy,
+    ILogger<CatalogSeeder> logger)
 {
     public async Task SeedAsync(CancellationToken cancellationToken)
     {
@@ -15,6 +19,32 @@ public sealed class CatalogSeeder(AppDbContext db, CatalogFileReader reader, IOu
         var destinations = await db.Destinations.Include(d => d.TransportLinks).ToListAsync(cancellationToken);
         var airports = await db.Airports.ToListAsync(cancellationToken);
         var codesInFile = new HashSet<string>(StringComparer.OrdinalIgnoreCase);
+        var world = worldAirports.Airports.ToDictionary(a => a.Iata.ToUpperInvariant());
+
+        // World airports: names, city and continent only. DestinationId is left alone (catalog or on-demand cities own it).
+        foreach (var w in world.Values)
+        {
+            var airport = airports.FirstOrDefault(x => x.IataCode == w.Iata);
+            if (airport is null)
+            {
+                airport = new Airport(w.Iata, w.Name, w.City, w.CountryCode, w.Latitude, w.Longitude);
+                db.Airports.Add(airport);
+                airports.Add(airport);
+            }
+            airport.Name = w.Name;
+            airport.City = w.City;
+            airport.CountryCode = w.CountryCode.ToUpperInvariant();
+            airport.Latitude = w.Latitude;
+            airport.Longitude = w.Longitude;
+            airport.IsDepartureOption = true;
+        }
+        foreach (var airport in airports)
+        {
+            if (!world.TryGetValue(airport.IataCode, out var w)) continue;
+            airport.CityCode = w.CityCode.ToUpperInvariant();
+            airport.Country = w.Country;
+            airport.Continent = w.Continent;
+        }
 
         foreach (var source in catalog.Destinations)
         {
@@ -69,14 +99,15 @@ public sealed class CatalogSeeder(AppDbContext db, CatalogFileReader reader, IOu
         foreach (var a in catalog.DepartureAirports)
             Upsert(airports, a, a.City ?? a.Name, a.CountryCode ?? "", null, a.CityTranslations);
 
-        foreach (var stale in destinations.Where(d => !codesInFile.Contains(d.Code) && d.IsActive))
+        foreach (var stale in destinations.Where(d => d.IsCatalog && !codesInFile.Contains(d.Code) && d.IsActive))
         {
             stale.IsActive = false;
             logger.LogInformation("Destination {Code} is no longer in the catalog and was deactivated", stale.Code);
         }
 
         await db.SaveChangesAsync(cancellationToken);
-        logger.LogInformation("Catalog seeded: {Destinations} destinations, {Airports} airports", catalog.Destinations.Count, catalog.AllAirports.Count());
+        logger.LogInformation("Catalog seeded: {Destinations} destinations, {Airports} catalog airports, {World} world airports",
+            catalog.Destinations.Count, catalog.AllAirports.Count(), world.Count);
 
         void Upsert(List<Airport> existing, CatalogAirport source, string city, string countryCode, Guid? destinationId,
             IReadOnlyDictionary<string, string> cityTranslations)
@@ -94,7 +125,7 @@ public sealed class CatalogSeeder(AppDbContext db, CatalogFileReader reader, IOu
             airport.CountryCode = countryCode.ToUpperInvariant();
             airport.Latitude = source.Latitude;
             airport.Longitude = source.Longitude;
-            airport.IsDepartureOption = source.IsDepartureOption;
+            airport.IsDepartureOption = source.IsDepartureOption || world.ContainsKey(iata);
             airport.OfficialWebsiteUrl = source.OfficialWebsiteUrl;
             airport.DestinationId = destinationId;
             airport.Translations = source.NameTranslations.Keys.Union(cityTranslations.Keys)

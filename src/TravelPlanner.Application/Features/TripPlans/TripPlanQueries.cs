@@ -35,7 +35,8 @@ public sealed class GetTripPlanHandler(IApplicationDbContext db, IOutboundLinkPo
     {
         var plan = await TripPlanLoader.LoadAsync(db, request.Id, tracking: false, cancellationToken)
                    ?? throw new NotFoundException("resource.tripPlan", request.Id);
-        return plan.ToDetail(timeProvider.GetUtcNow(), linkPolicy);
+        var airports = await AirportLookup.LoadAsync(db, AirportLookup.CodesOf([plan]), cancellationToken);
+        return plan.ToDetail(timeProvider.GetUtcNow(), linkPolicy, airports);
     }
 }
 
@@ -57,6 +58,17 @@ public sealed class GetOutboundLinksHandler(IApplicationDbContext db, IOutboundL
             if (linkPolicy.Sanitize(item.BookingUrl) is { } booking)
                 links.Add(new OutboundLinkDto(item.Id, item.Type, item.Direction, T.Get("link.book", item.Title), item.ProviderName, booking, item.Verification, "Booking"));
 
+            // Combined one-way tickets: every ticket is booked on its own.
+            if (item.Type == PlanItemType.Flight && TryDeserialize<FlightItemDetails>(item.DetailsJson) is { Tickets.Count: > 1 } flight)
+            {
+                foreach (var ticket in flight.Tickets!)
+                {
+                    if (linkPolicy.Sanitize(ticket.BookingUrl) is { } url && links.All(l => l.Url != url))
+                        links.Add(new OutboundLinkDto(item.Id, item.Type, item.Direction, T.Get("link.bookTicket", ticket.From, ticket.To), item.ProviderName,
+                            url, item.Verification, "Booking"));
+                }
+            }
+
             if (item.Type != PlanItemType.Transfer) continue;
             TransferItemDetails? details;
             try { details = JsonSerializer.Deserialize<TransferItemDetails>(item.DetailsJson, AppJson.Options); }
@@ -73,5 +85,11 @@ public sealed class GetOutboundLinksHandler(IApplicationDbContext db, IOutboundL
             }
         }
         return links;
+    }
+
+    private static TDetails? TryDeserialize<TDetails>(string json) where TDetails : class
+    {
+        try { return JsonSerializer.Deserialize<TDetails>(json, AppJson.Options); }
+        catch (JsonException) { return null; }
     }
 }

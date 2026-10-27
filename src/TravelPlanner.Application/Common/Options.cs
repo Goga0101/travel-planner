@@ -14,6 +14,10 @@ public sealed class PlanningOptions
     /// <summary>Best date combinations per destination that proceed to accommodation search.</summary>
     public int MaxCombosPerDestinationForAccommodation { get; set; } = 2;
     public int MaxFlightOffersPerSearch { get; set; } = 10;
+    /// <summary>Offers kept per destination from a whole-window search (all departure days together).</summary>
+    public int MaxFlightOffersPerWindow { get; set; } = 60;
+    /// <summary>Offers kept for the flights list of a search (all destinations).</summary>
+    public int MaxFoundFlights { get; set; } = 300;
     public int MaxFlightsPerCandidate { get; set; } = 1;
     public int MaxAccommodationsPerCandidate { get; set; } = 3;
     public int MaxAccommodationResults { get; set; } = 20;

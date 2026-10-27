@@ -49,7 +49,11 @@ public sealed class TripSearchProcessor(
             }
             else
             {
-                destinations = await query
+                // Automatic mode picks from the curated catalog, optionally limited to the chosen continents.
+                var continents = search.Continents;
+                var automatic = query.Where(d => d.IsCatalog);
+                if (continents.Count > 0) automatic = automatic.Where(d => continents.Contains(d.Region));
+                destinations = await automatic
                     .Where(d => origin.DestinationId == null || d.Id != origin.DestinationId)
                     .OrderByDescending(d => d.Popularity).ThenBy(d => d.City)
                     .Take(options.Value.MaxAutoDestinations)
@@ -63,6 +67,7 @@ public sealed class TripSearchProcessor(
                 p => progressReporter.ReportAsync(search.Id, p.Percent, p.Message, cancellationToken), cancellationToken);
 
             foreach (var warning in result.Warnings) search.AddWarning(warning);
+            search.SetFoundFlights(AppJson.Serialize(result.Flights.Select(f => f with { BookingUrl = linkPolicy.Sanitize(f.BookingUrl) }).ToList()));
             var now = timeProvider.GetUtcNow();
             var rank = 1;
             foreach (var candidate in result.Plans)

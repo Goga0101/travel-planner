@@ -14,7 +14,7 @@ public static class DtoMapper
 
     public static AirportDto ToDto(this Airport a) =>
         new(a.Id, a.IataCode, a.NameIn(Lang), a.CityIn(Lang), a.CountryCode, a.Latitude, a.Longitude,
-            a.IsDepartureOption, a.OfficialWebsiteUrl);
+            a.IsDepartureOption, a.OfficialWebsiteUrl, a.CityCode, a.Country, a.Continent);
 
     public static DestinationRefDto ToRef(this Destination d) => new(d.Id, d.Code, d.CityIn(Lang), d.CountryIn(Lang), d.CountryCode);
 
@@ -35,10 +35,12 @@ public static class DtoMapper
             new TripSearchCriteriaDto(s.OriginAirportIata, s.EarliestDeparture, s.LatestReturn, s.DurationDays, s.Nights, s.Travelers,
                 s.BudgetAmount, s.BudgetCurrency, s.DestinationMode, selected.Select(d => d.ToRef()).ToList(),
                 new TripPreferencesDto(s.Preferences.IncludeCheckedBaggage, s.Preferences.MinAccommodationStars, s.Preferences.MaxFlightDurationHours,
-                    s.Preferences.MaxStops, s.Preferences.PreferredDepartureTime, s.Preferences.IncludeDailyExpenseEstimates)),
+                    s.Preferences.MaxStops, s.Preferences.PreferredDepartureTime, s.Preferences.IncludeDailyExpenseEstimates,
+                    s.Preferences.AllowSelfTransfer),
+                s.Continents),
             planCount, s.CreatedAtUtc, s.StartedAtUtc, s.CompletedAtUtc);
 
-    public static TripPlanSummaryDto ToSummary(this TripPlan p, DateTimeOffset nowUtc)
+    public static TripPlanSummaryDto ToSummary(this TripPlan p, DateTimeOffset nowUtc, AirportLookup? airports = null)
     {
         var items = p.Items.OrderBy(i => i.SortOrder).ToList();
         var flightItem = items.FirstOrDefault(i => i.Type == PlanItemType.Flight);
@@ -52,7 +54,7 @@ public static class DtoMapper
             items.Any(i => i.IsExpired(nowUtc)),
             items.Where(i => i.ExpiresAtUtc.HasValue).Select(i => i.ExpiresAtUtc).Min(),
             p.PricesRefreshedAtUtc,
-            flightItem is null ? null : FlightSummary(flightItem, p.Currency),
+            flightItem is null ? null : FlightSummary(flightItem, p.Currency, airports ?? AirportLookup.Empty),
             accItem is null ? null : AccommodationSummary(accItem, p.Currency),
             transferItem is null ? null : TransferSummary(transferItem, p.Currency),
             items.Where(i => i.Type is PlanItemType.Flight or PlanItemType.Accommodation or PlanItemType.Transfer)
@@ -60,7 +62,7 @@ public static class DtoMapper
                 .ToList());
     }
 
-    public static TripPlanDetailDto ToDetail(this TripPlan p, DateTimeOffset nowUtc, IOutboundLinkPolicy linkPolicy)
+    public static TripPlanDetailDto ToDetail(this TripPlan p, DateTimeOffset nowUtc, IOutboundLinkPolicy linkPolicy, AirportLookup? airports = null)
     {
         var items = p.Items.OrderBy(i => i.SortOrder).ToList();
         var breakdown = items.Where(i => i.IncludedInTotal && i.ConvertedPrice.HasValue)
@@ -69,7 +71,7 @@ public static class DtoMapper
             .ToList();
 
         return new TripPlanDetailDto(
-            p.ToSummary(nowUtc),
+            p.ToSummary(nowUtc, airports),
             p.Destination!.ToDetail(linkPolicy),
             breakdown,
             items.Select(i => new PlanItemDto(i.Id, i.Type, i.Direction, i.Category, i.Title, i.Summary, ProviderLabel(i.ProviderName), i.Price, i.Currency,
@@ -78,24 +80,29 @@ public static class DtoMapper
                 AppJson.ParseElement(i.DetailsJson))).ToList());
     }
 
-    private static FlightSummaryDto FlightSummary(TripPlanItem item, string planCurrency)
+    private static FlightSummaryDto FlightSummary(TripPlanItem item, string planCurrency, AirportLookup airports)
     {
         var details = Deserialize<FlightItemDetails>(item.DetailsJson);
         return new FlightSummaryDto(ProviderLabel(item.ProviderName), item.ConvertedPrice ?? item.Price, CurrencyOf(item, planCurrency),
-            item.Verification, details is null ? null : Leg(details.Outbound, details.ValidatingCarrier),
-            details is null ? null : Leg(details.Inbound, details.ValidatingCarrier),
-            details?.IncludedCheckedBags, item.BookingUrl is not null);
+            item.Verification, details is null ? null : Leg(details.Outbound, details.ValidatingCarrier, airports),
+            details is null ? null : Leg(details.Inbound, details.ValidatingCarrier, airports),
+            details?.IncludedCheckedBags, item.BookingUrl is not null, details?.Tickets is { Count: > 0 } t && FlightTicket.IsSelfTransfer(t));
     }
 
     /// <summary>Carriers come from the segments; providers without segment data (Travelpayouts connections) fall back to the validating carrier.</summary>
-    private static FlightLegSummaryDto Leg(FlightItinerary it, string? validatingCarrier)
+    public static FlightLegSummaryDto Leg(FlightItinerary it, string? validatingCarrier, AirportLookup airports)
     {
         IReadOnlyList<string> carriers = it.Segments.Count > 0
             ? it.Segments.Select(s => s.CarrierCode).Distinct().ToList()
             : string.IsNullOrWhiteSpace(validatingCarrier) ? [] : [validatingCarrier];
         return new(it.DepartureAirport, it.ArrivalAirport, it.DepartureLocal, it.ArrivalLocal, it.Duration is { } d ? (int)d.TotalMinutes : null,
-            it.Stops, carriers);
+            it.Stops, carriers, airports.CityOf(it.DepartureAirport), airports.CityOf(it.ArrivalAirport), it.ViaAirports.Select(airports.Stop).ToList());
     }
+
+    public static FoundFlightDto ToDto(this FoundFlight f, Destination destination, AirportLookup airports) =>
+        new(destination.ToRef(), f.DepartureDate, f.ReturnDate, f.Price, f.Currency, f.OriginalPrice, f.OriginalCurrency, f.WithinBudget,
+            ProviderLabel(f.Provider), f.Verification, Leg(f.Outbound, f.Carrier, airports), Leg(f.Inbound, f.Carrier, airports), f.BookingUrl,
+            f.RetrievedAtUtc, f.Tickets is { Count: > 0 } t && FlightTicket.IsSelfTransfer(t), f.Tickets ?? []);
 
     private static AccommodationSummaryDto AccommodationSummary(TripPlanItem item, string planCurrency)
     {

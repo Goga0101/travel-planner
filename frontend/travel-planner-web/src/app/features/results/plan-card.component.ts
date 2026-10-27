@@ -12,11 +12,12 @@ import { destinationPhoto, destinationSrcset } from '../../core/destination-phot
 import { SavedTripsService } from '../../core/local-lists';
 import { IconComponent } from '../../shared/icon.component';
 import { LocalDatePipe, MinutesPipe, MoneyPipe, StopsPipe } from '../../shared/pipes';
+import { FlightRouteComponent } from '../../shared/flight-route.component';
 
 @Component({
   selector: 'app-plan-card',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [LocalDatePipe, RouterLink, MoneyPipe, MinutesPipe, StopsPipe, TranslatePipe, CategoryPipe, BudgetFitBadgeComponent, VerificationBadgeComponent, IconComponent],
+  imports: [LocalDatePipe, RouterLink, MoneyPipe, MinutesPipe, StopsPipe, TranslatePipe, CategoryPipe, BudgetFitBadgeComponent, VerificationBadgeComponent, IconComponent, FlightRouteComponent],
   template: `
     @let p = plan();
     <article class="card plan-card" [class.plan-over]="p.budgetFit === 'OverBudget'" [class.has-photo]="!!photo()">
@@ -57,11 +58,12 @@ import { LocalDatePipe, MinutesPipe, MoneyPipe, StopsPipe } from '../../shared/p
         <section>
           <h4><app-icon name="plane" [size]="16" /> {{ 'card.flight' | t }}</h4>
           @if (p.flight; as f) {
+            @if (f.selfTransfer) { <p><span class="badge-self">{{ 'flight.selfTransferBadge' | t }}</span></p> }
             @if (f.outbound; as o) {
-              <p>{{ o.from }} → {{ o.to }} · {{ o.departureLocal | ldate: 'd MMM HH:mm' }} · {{ o.durationMinutes | minutes }} · {{ o.stops | stops }}</p>
+              <p><app-flight-route [leg]="o" /> · {{ o.departureLocal | ldate: 'd MMM HH:mm' }} · {{ o.durationMinutes | minutes }} · {{ o.stops | stops }}</p>
             }
             @if (f.inbound; as i) {
-              <p>{{ i.from }} → {{ i.to }} · {{ i.departureLocal | ldate: 'd MMM HH:mm' }} · {{ i.durationMinutes | minutes }} · {{ i.stops | stops }}</p>
+              <p><app-flight-route [leg]="i" /> · {{ i.departureLocal | ldate: 'd MMM HH:mm' }} · {{ i.durationMinutes | minutes }} · {{ i.stops | stops }}</p>
             }
             <p class="small">{{ f.price | money: f.currency }} · {{ f.provider }}
               @if (f.includedCheckedBags !== undefined) {

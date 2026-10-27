@@ -1,4 +1,5 @@
-import { validateTripDates } from './trip-search.validators';
+import { FormControl, FormGroup } from '@angular/forms';
+import { manualDestinationsValidator, validateTripDates } from './trip-search.validators';
 
 const TODAY = '2026-10-20';
 
@@ -26,5 +27,24 @@ describe('validateTripDates', () => {
 
   it('rejects windows longer than the configured maximum', () => {
     expect(validateTripDates({ earliestDeparture: '2026-11-01', latestReturn: '2027-01-15', durationDays: 5 }, TODAY, 60)?.['windowTooLong']).toEqual({ max: 60 });
+  });
+});
+
+describe('manualDestinationsValidator', () => {
+  const group = (ids: string[], cities: string[]) =>
+    new FormGroup({
+      destinationMode: new FormControl('Manual'),
+      destinationIds: new FormControl(ids),
+      destinationCityCodes: new FormControl(cities),
+    });
+  const validate = manualDestinationsValidator(() => 3);
+
+  it('accepts cities from the world list without catalog destinations', () => {
+    expect(validate(group([], ['SYD']))).toBeNull();
+  });
+
+  it('counts catalog destinations and world cities together', () => {
+    expect(validate(group(['a', 'b'], ['SYD', 'AKL']))).toEqual({ tooManyDestinations: { max: 3 } });
+    expect(validate(group([], []))).toEqual({ destinationsRequired: true });
   });
 });
