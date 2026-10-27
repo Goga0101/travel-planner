@@ -17,6 +17,7 @@
         </a>
       }
     </div>
+    <app-hotel-finder [planId]="planId()" (chosen)="stayChosen.emit()" />
     <p class="small muted">{{ 'nearby.priceNote' | t: { dates: dates(), guests: ('unit.guests' | t: { count: travelers() }) } }}</p>
 
     <div class="segmented tabs" role="tablist" [attr.aria-label]="'nearby.stayTitle' | t">

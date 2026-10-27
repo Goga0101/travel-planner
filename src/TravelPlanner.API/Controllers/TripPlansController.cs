@@ -84,6 +84,17 @@ public sealed class TripPlansController(ISender sender) : ControllerBase
         sender.Send(new GetStayRouteQuery(id, lat, lon, name), cancellationToken);
 
     /// <summary>
+    /// Hotels around the destination whose name contains the text (full or partial), so a hotel found elsewhere can be
+    /// chosen as the stay. Each result has a Booking.com search link for the trip dates.
+    /// </summary>
+    [HttpGet("{id:guid}/hotel-search")]
+    [ProducesResponseType<IReadOnlyList<HotelSearchResultDto>>(StatusCodes.Status200OK)]
+    [ProducesResponseType<ValidationProblemDetails>(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
+    public Task<IReadOnlyList<HotelSearchResultDto>> SearchHotels(Guid id, [FromQuery] string q, CancellationToken cancellationToken) =>
+        sender.Send(new SearchHotelsQuery(id, q ?? ""), cancellationToken);
+
+    /// <summary>
     /// Public-transport journeys between two stops of a planned day, leaving on the given date and local time (HH:mm),
     /// with the ticket for each ride and map/taxi links.
     /// </summary>

@@ -19,6 +19,7 @@ import {
   PlaceDto,
   PlanSort,
   RouteDirectionDto,
+  HotelSearchResultDto,
   StayRouteDto,
   TripPace,
   TripPlanDetailDto,
@@ -102,6 +103,11 @@ export class ApiService {
   }
 
   /** Indicative hotel prices for the plan's dates; null when none are available (HTTP 204). */
+  /** Hotels around the destination whose name contains the text (the visitor's own find). */
+  searchHotels(planId: string, text: string): Observable<HotelSearchResultDto[]> {
+    return this.http.get<HotelSearchResultDto[]>(`${BASE}/trip-plans/${encodeURIComponent(planId)}/hotel-search`, { params: new HttpParams().set('q', text) });
+  }
+
   getHotelPrices(id: string): Observable<HotelPricesDto | null> {
     return this.http
       .get<HotelPricesDto>(`${BASE}/trip-plans/${encodeURIComponent(id)}/hotel-prices`, { observe: 'response' })

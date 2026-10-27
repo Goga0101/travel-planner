@@ -48,6 +48,20 @@ public sealed class GeoapifyPlacesClient(HttpClient http, IOptions<GeoapifyOptio
             ? features.EnumerateArray().Select(f => f.Clone()).ToList()
             : [];
     }
+
+    /// <summary>Geocoder autocomplete (places by name, partial words allowed) within a circle, nearest first.</summary>
+    public async Task<IReadOnlyList<JsonElement>> AutocompleteAsync(string text, double lat, double lon, int radiusMeters, int limit, CancellationToken ct)
+    {
+        var c = CultureInfo.InvariantCulture;
+        var url = $"v1/geocode/autocomplete?text={Uri.EscapeDataString(text)}&type=amenity&filter=circle:{lon.ToString(c)},{lat.ToString(c)},{radiusMeters}" +
+                  $"&bias=proximity:{lon.ToString(c)},{lat.ToString(c)}&limit={limit}&apiKey={Uri.EscapeDataString(options.Value.ApiKey!)}";
+        using var response = await http.GetAsync(url, ct);
+        response.EnsureSuccessStatusCode();
+        var body = await response.Content.ReadFromJsonAsync<JsonElement>(ct);
+        return body.TryGetProperty("features", out var features) && features.ValueKind == JsonValueKind.Array
+            ? features.EnumerateArray().Select(f => f.Clone()).ToList()
+            : [];
+    }
 }
 
 /// <summary>Maps Geoapify GeoJSON features (OpenStreetMap tags in datasource.raw) to the application's nearby-place models.</summary>

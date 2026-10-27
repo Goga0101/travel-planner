@@ -832,3 +832,16 @@ export interface AttractionDto {
   mapUrl?: string;
   directionsUrl?: string;
 }
+
+/** A hotel found by name around the destination (the visitor's own find), with a Booking.com link for the trip dates. */
+export interface HotelSearchResultDto {
+  id: string;
+  name: string;
+  address?: string;
+  kind: string;
+  latitude: number;
+  longitude: number;
+  distanceFromCentreMeters: number;
+  bookingUrl?: string;
+  mapUrl?: string;
+}

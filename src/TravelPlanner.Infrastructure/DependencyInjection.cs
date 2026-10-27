@@ -15,6 +15,7 @@ using TravelPlanner.Infrastructure.Providers.Amadeus;
 using TravelPlanner.Infrastructure.Providers.BookingCom;
 using TravelPlanner.Infrastructure.Providers.Demo;
 using TravelPlanner.Infrastructure.Providers.Geoapify;
+using TravelPlanner.Infrastructure.Providers.HotelSearch;
 using TravelPlanner.Infrastructure.Providers.Google;
 using TravelPlanner.Infrastructure.Providers.Travelpayouts;
 using TravelPlanner.Infrastructure.Providers.Ticketmaster;
@@ -97,6 +98,15 @@ public static class DependencyInjection
             services.AddSingleton<IAttractionSource, NoAttractionSource>();
             services.AddSingleton<IActivityPlaceSource, NoActivityPlaceSource>();
         }
+        // Hotel lookup by name (Geoapify when configured, plus Photon, which asks for an identifying User-Agent).
+        services.AddHttpClient(HotelSearchService.PhotonClient, c =>
+            {
+                c.BaseAddress = new Uri("https://photon.komoot.io/");
+                c.DefaultRequestHeaders.UserAgent.ParseAdd("TravelPlanner/1.0 (https://github.com/Goga0101/travel-planner)");
+                c.Timeout = TimeSpan.FromSeconds(10);
+            })
+            .AddStandardResilienceHandler(o => Configure(o, providers.Http));
+        services.AddTransient<IHotelSearch, HotelSearchService>();
         // Wikimedia asks API clients to identify themselves with a descriptive User-Agent.
         services.AddHttpClient(AttractionSource.WikimediaClient, c =>
             {

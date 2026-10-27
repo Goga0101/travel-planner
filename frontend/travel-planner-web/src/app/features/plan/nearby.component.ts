@@ -11,6 +11,7 @@ import { ErrorBannerComponent } from '../../shared/error-banner.component';
 import { SelectedStayService } from '../../core/selected-stay.service';
 import { IconComponent, IconName } from '../../shared/icon.component';
 import { DistancePipe, LocalDatePipe, MoneyPipe } from '../../shared/pipes';
+import { HotelFinderComponent } from './hotel-finder.component';
 
 type Area = 'prices' | 'airport' | 'centre';
 
@@ -32,7 +33,7 @@ const MODE_KEYS: Record<TransitMode, TranslationKey> = {
 @Component({
   selector: 'app-nearby',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TranslatePipe, IconComponent, DistancePipe, LocalDatePipe, MoneyPipe, ErrorBannerComponent],
+  imports: [TranslatePipe, IconComponent, DistancePipe, LocalDatePipe, MoneyPipe, ErrorBannerComponent, HotelFinderComponent],
   templateUrl: './nearby.component.html',
 })
 export class NearbyComponent {
