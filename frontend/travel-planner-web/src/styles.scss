@@ -904,7 +904,11 @@ a.ext-link.btn:hover { background: var(--primary-dark); border-color: var(--prim
 .rating { color: #b07a0c; font-weight: 600; }
 .rates summary { cursor: pointer; color: var(--primary-dark); font-weight: 600; }
 .rates ul { list-style: none; padding: 0; margin: 0.4rem 0 0; display: grid; gap: 0.2rem; }
-.rates li { display: flex; justify-content: space-between; gap: 1rem; padding: 0.2rem 0; border-bottom: 1px dashed var(--border); }
+.rates li { display: flex; justify-content: space-between; align-items: center; gap: 1rem; padding: 0.25rem 0; border-bottom: 1px dashed var(--border); }
+.rate-book { display: inline-flex; align-items: center; gap: 0.6rem; }
+.rate-book a { display: inline-flex; align-items: center; gap: 0.2rem; font-weight: 600; font-size: 0.78rem; text-decoration: none; padding: 0.12rem 0.5rem; border-radius: var(--radius-xs); background: var(--primary-soft); color: var(--primary-deep); }
+.rate-book a:hover { background: var(--primary); color: #fff; }
+.rates-note { margin: 0.4rem 0 0; font-size: 0.74rem; }
 
 // ---------- Sights ----------
 .chip-filter { display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 0.75rem 0 1rem; }

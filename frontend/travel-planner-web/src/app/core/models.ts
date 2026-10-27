@@ -650,10 +650,13 @@ export interface NearbyPlacesDto {
 
 // ---- Indicative hotel prices (price-comparison feed; never part of a plan total) ----
 
+/** url books with that agency: Booking.com directly, the others through the hotel's TripAdvisor page (viaTripAdvisor). */
 export interface AgencyRateDto {
   code: string;
   name: string;
   nightly: number;
+  url?: string;
+  viaTripAdvisor: boolean;
 }
 
 export interface HotelPriceDto {
@@ -669,6 +672,8 @@ export interface HotelPriceDto {
   bookingUrl?: string;
   mapUrl?: string;
   transitDirectionsUrl?: string;
+  /** The hotel's TripAdvisor page, listing every agency's offer. */
+  compareUrl?: string;
 }
 
 export interface HotelPricesDto {

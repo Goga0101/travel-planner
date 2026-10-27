@@ -70,17 +70,36 @@
                   <span class="small">{{ 'prices.stayTotal' | t: { amount: (ph.stayTotal | money: hp.currency), nights: ('unit.nights' | t: { count: hp.nights }) } }}</span>
                 </div>
                 @if (ph.rates.length > 1) {
-                  <details class="rates small">
+                  <details class="rates small" open>
                     <summary>{{ 'prices.compare' | t: { count: ph.rates.length } }}</summary>
                     <ul>
-                      @for (r of ph.rates; track r.code) { <li><span>{{ r.name }}</span> <strong>{{ r.nightly | money: hp.currency }}</strong></li> }
+                      @for (r of ph.rates; track r.code) {
+                        <li>
+                          <span>{{ r.name }}</span>
+                          <span class="rate-book">
+                            <strong>{{ r.nightly | money: hp.currency }}</strong>
+                            @if (r.url) {
+                              <a [href]="r.url" target="_blank" rel="noopener noreferrer nofollow"
+                                 [title]="r.viaTripAdvisor ? ('prices.viaTripAdvisorHint' | t: { agency: r.name }) : ''">
+                                {{ 'prices.book' | t }} <app-icon name="external" [size]="12" /><span class="visually-hidden">{{ 'link.newTab' | t }}</span>
+                              </a>
+                            }
+                          </span>
+                        </li>
+                      }
                     </ul>
+                    @if (hasViaTripAdvisor(ph)) { <p class="muted rates-note">{{ 'prices.viaTripAdvisorNote' | t }}</p> }
                   </details>
                 }
                 <div class="hotel-actions">
                   @if (ph.bookingUrl) {
                     <a class="btn btn-primary btn-sm" [href]="ph.bookingUrl" target="_blank" rel="noopener noreferrer nofollow">
                       {{ 'prices.checkBooking' | t }} <app-icon name="external" [size]="14" /><span class="visually-hidden">{{ 'link.newTab' | t }}</span>
+                    </a>
+                  }
+                  @if (ph.compareUrl) {
+                    <a class="btn btn-secondary btn-sm" [href]="ph.compareUrl" target="_blank" rel="noopener noreferrer nofollow">
+                      {{ 'prices.allOffers' | t }} <app-icon name="external" [size]="14" /><span class="visually-hidden">{{ 'link.newTab' | t }}</span>
                     </a>
                   }
                   <div class="hotel-links small">

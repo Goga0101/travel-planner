@@ -24,7 +24,8 @@ public sealed record HotelPriceOffer(
     double? Longitude,
     decimal? TypicalNightlyMin,
     decimal? TypicalNightlyMax,
-    IReadOnlyList<HotelRate> Rates);
+    IReadOnlyList<HotelRate> Rates,
+    string? PageUrl = null);
 
 /// <summary>Price per night for the requested rooms and guests, as listed by one agency.</summary>
 public sealed record HotelRate(string Code, string Name, decimal Nightly);

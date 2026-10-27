@@ -131,10 +131,18 @@ public static class XoteloMapper
                 lat = Dbl(geo, "latitude");
                 lon = Dbl(geo, "longitude");
             }
-            hotels.Add(new HotelPriceOffer(key, name, rating, reviews, lat, lon, min, max, []));
+            // The TripAdvisor hotel page lists every agency's offer with its own booking button.
+            hotels.Add(new HotelPriceOffer(key, name, rating, reviews, lat, lon, min, max, [], TripAdvisorPage(Str(h, "url"))));
         }
         return hotels;
     }
+
+    /// <summary>Only https pages on tripadvisor.* are kept.</summary>
+    public static string? TripAdvisorPage(string? url) =>
+        Uri.TryCreate(url, UriKind.Absolute, out var uri) && uri.Scheme == Uri.UriSchemeHttps &&
+        (uri.Host == "tripadvisor.com" || uri.Host.EndsWith(".tripadvisor.com", StringComparison.OrdinalIgnoreCase))
+            ? uri.AbsoluteUri
+            : null;
 
     /// <summary>Agency rates; only positive prices in the requested currency are kept.</summary>
     public static List<HotelRate> ParseRates(JsonElement body, string currency)

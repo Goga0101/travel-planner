@@ -6,7 +6,7 @@ import { formatLocalDate } from '../../core/format';
 import { TranslationKey } from '../../core/i18n/en';
 import { I18nService } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
-import { HotelPricesDto, NearbyPlacesDto, TransitMode, TripPlanSummaryDto } from '../../core/models';
+import { HotelPriceDto, HotelPricesDto, NearbyPlacesDto, TransitMode, TripPlanSummaryDto } from '../../core/models';
 import { ErrorBannerComponent } from '../../shared/error-banner.component';
 import { IconComponent, IconName } from '../../shared/icon.component';
 import { DistancePipe, LocalDatePipe, MoneyPipe } from '../../shared/pipes';
@@ -36,6 +36,10 @@ const MODE_KEYS: Record<TransitMode, TranslationKey> = {
 })
 export class NearbyComponent {
   readonly planId = input.required<string>();
+
+  protected hasViaTripAdvisor(h: HotelPriceDto): boolean {
+    return h.rates.some((r) => r.viaTripAdvisor);
+  }
   readonly summary = input.required<TripPlanSummaryDto>();
 
   private readonly api = inject(ApiService);

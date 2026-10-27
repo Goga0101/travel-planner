@@ -6,7 +6,8 @@ namespace TravelPlanner.Application.Features.TripPlans;
 
 public sealed record GetHotelPricesQuery(Guid Id) : IRequest<HotelPricesDto?>;
 
-public sealed record AgencyRateDto(string Code, string Name, decimal Nightly);
+/// <summary>Url books with that agency: Booking.com directly (hotel and dates pre-filled), the others through the hotel's TripAdvisor page.</summary>
+public sealed record AgencyRateDto(string Code, string Name, decimal Nightly, string? Url, bool ViaTripAdvisor);
 
 public sealed record HotelPriceDto(
     string Name,
@@ -20,7 +21,8 @@ public sealed record HotelPriceDto(
     IReadOnlyList<AgencyRateDto> Rates,
     string? BookingUrl,
     string? MapUrl,
-    string? TransitDirectionsUrl);
+    string? TransitDirectionsUrl,
+    string? CompareUrl);
 
 /// <summary>
 /// Indicative prices per night for the plan's dates, guests and rooms. They are not added to the plan total;
@@ -69,6 +71,7 @@ public sealed class GetHotelPricesHandler(
                 var lowest = h.Rates.MinBy(r => r.Nightly)!;
                 var booking = h.Rates.FirstOrDefault(r => r.Code == "BookingCom");
                 var hasGeo = h.Latitude is not null && h.Longitude is not null;
+                var bookingUrl = linkPolicy.Sanitize(bookingLinks.Build(h.Name, destination.City, plan.DepartureDate, plan.ReturnDate, plan.Travelers, rooms)?.Url);
                 return new HotelPriceDto(
                     h.Name,
                     h.Rating,
@@ -78,12 +81,15 @@ public sealed class GetHotelPricesHandler(
                     lowest.Nightly,
                     lowest.Name,
                     lowest.Nightly * nights,
-                    h.Rates.Select(r => new AgencyRateDto(r.Code, r.Name, r.Nightly)).ToList(),
-                    linkPolicy.Sanitize(bookingLinks.Build(h.Name, destination.City, plan.DepartureDate, plan.ReturnDate, plan.Travelers, rooms)?.Url),
+                    h.Rates.Select(r => r.Code == "BookingCom" && bookingUrl is not null
+                        ? new AgencyRateDto(r.Code, r.Name, r.Nightly, bookingUrl, false)
+                        : new AgencyRateDto(r.Code, r.Name, r.Nightly, NearbyLinks.CuratedHttps(h.PageUrl), NearbyLinks.CuratedHttps(h.PageUrl) is not null)).ToList(),
+                    bookingUrl,
                     linkPolicy.Sanitize(NearbyLinks.MapSearch($"{h.Name}, {destination.City}")),
                     hasGeo && airport is not null
                         ? linkPolicy.Sanitize(NearbyLinks.TransitDirections(airport.Latitude, airport.Longitude, h.Latitude!.Value, h.Longitude!.Value))
-                        : null);
+                        : null,
+                    NearbyLinks.CuratedHttps(h.PageUrl));
             })
             .OrderBy(h => h.LowestNightly)
             .ToList();
