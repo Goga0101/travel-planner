@@ -65,8 +65,21 @@ public sealed class TripPlansController(ISender sender) : ControllerBase
     [ProducesResponseType<ValidationProblemDetails>(StatusCodes.Status400BadRequest)]
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
     public Task<DayPlanDto> GetDayPlan(Guid id, [FromQuery] string? interests, [FromQuery] TripPace pace = TripPace.Normal,
-        [FromQuery] string? music = null, CancellationToken cancellationToken = default) =>
+        [FromQuery] string? music = null, [FromQuery] double? fromLat = null, [FromQuery] double? fromLon = null,
+        CancellationToken cancellationToken = default) =>
         sender.Send(new GetDayPlanQuery(id,
             (interests ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries), pace,
-            (music ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)), cancellationToken);
+            (music ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries), fromLat, fromLon), cancellationToken);
+
+    /// <summary>
+    /// Public-transport journeys from the arrival airport to the stay (lat/lon of the chosen hotel; the city centre when
+    /// omitted) around the landing time, and back before take-off, with taxi/ride-hailing links and the city's ticket guide.
+    /// </summary>
+    [HttpGet("{id:guid}/route")]
+    [ProducesResponseType<StayRouteDto>(StatusCodes.Status200OK)]
+    [ProducesResponseType<ValidationProblemDetails>(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
+    public Task<StayRouteDto> GetRoute(Guid id, [FromQuery] double? lat, [FromQuery] double? lon, [FromQuery] string? name,
+        CancellationToken cancellationToken) =>
+        sender.Send(new GetStayRouteQuery(id, lat, lon, name), cancellationToken);
 }

@@ -18,6 +18,7 @@ using TravelPlanner.Infrastructure.Providers.Geoapify;
 using TravelPlanner.Infrastructure.Providers.Google;
 using TravelPlanner.Infrastructure.Providers.Travelpayouts;
 using TravelPlanner.Infrastructure.Providers.Ticketmaster;
+using TravelPlanner.Infrastructure.Providers.Transitous;
 using TravelPlanner.Infrastructure.Providers.Xotelo;
 
 namespace TravelPlanner.Infrastructure;
@@ -48,6 +49,7 @@ public static class DependencyInjection
         services.AddSingleton<CatalogFileReader>();
         services.AddSingleton<WorldAirportsFileReader>();
         services.AddSingleton<IWorldPlaces, WorldPlaces>();
+        services.AddSingleton<ITransitGuideSource, TransitGuideFile>();
         // Departure preselection by IP. Short timeout: the search form falls back to its default when this is slow.
         services.AddHttpClient<IVisitorLocator, TravelpayoutsVisitorLocator>(c =>
         {
@@ -104,6 +106,18 @@ public static class DependencyInjection
             .AddStandardResilienceHandler(o => Configure(o, providers.Http));
         status.Add(new ProviderStatus("Places", GeoapifyPlacesClient.ProviderName, geoapify.IsConfigured, false,
             geoapify.IsConfigured ? "status.geoapifyOn" : "status.geoapifyOff"));
+
+        // Public-transport journeys from the airport to the stay (Transitous, free, fair use; identify with a User-Agent).
+        services.Configure<TransitousOptions>(configuration.GetSection(TransitousOptions.SectionName));
+        var transitous = configuration.GetSection(TransitousOptions.SectionName).Get<TransitousOptions>() ?? new TransitousOptions();
+        services.AddHttpClient<ITransitRouter, TransitousRouter>(c =>
+            {
+                c.BaseAddress = BaseUri(transitous.BaseUrl);
+                c.DefaultRequestHeaders.UserAgent.ParseAdd("TravelPlanner/1.0 (https://github.com/Goga0101/travel-planner)");
+            })
+            .AddStandardResilienceHandler(o => Configure(o, providers.Http));
+        status.Add(new ProviderStatus("Routes", TransitousRouter.ProviderName, transitous.Enabled, false,
+            transitous.Enabled ? "status.transitousOn" : "status.transitousOff"));
 
         // Events for the day planner (real data in every mode; optional free key).
         services.Configure<TicketmasterOptions>(configuration.GetSection(TicketmasterOptions.SectionName));

@@ -8,6 +8,8 @@ import { I18nService } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
 import { HotelPriceDto, HotelPricesDto, NearbyPlacesDto, TransitMode, TripPlanSummaryDto } from '../../core/models';
 import { ErrorBannerComponent } from '../../shared/error-banner.component';
+import { SelectedStayService } from '../../core/selected-stay.service';
+import { StayRouteComponent } from './stay-route.component';
 import { IconComponent, IconName } from '../../shared/icon.component';
 import { DistancePipe, LocalDatePipe, MoneyPipe } from '../../shared/pipes';
 
@@ -31,11 +33,20 @@ const MODE_KEYS: Record<TransitMode, TranslationKey> = {
 @Component({
   selector: 'app-nearby',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TranslatePipe, IconComponent, DistancePipe, LocalDatePipe, MoneyPipe, ErrorBannerComponent],
+  imports: [TranslatePipe, IconComponent, DistancePipe, LocalDatePipe, MoneyPipe, ErrorBannerComponent, StayRouteComponent],
   templateUrl: './nearby.component.html',
 })
 export class NearbyComponent {
   readonly planId = input.required<string>();
+
+  protected readonly stays = inject(SelectedStayService);
+
+  /** Marks the hotel the visitor plans to book; the route and the day plan then start there. */
+  protected selectStay(name: string, latitude: number, longitude: number): void {
+    const wasSelected = this.stays.isSelected(this.planId(), latitude, longitude);
+    this.stays.toggle(this.planId(), { name, latitude, longitude });
+    if (!wasSelected) document.getElementById('route')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 
   protected hasViaTripAdvisor(h: HotelPriceDto): boolean {
     return h.rates.some((r) => r.viaTripAdvisor);

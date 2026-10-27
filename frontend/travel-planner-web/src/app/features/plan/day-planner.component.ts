@@ -7,6 +7,7 @@ import { I18nService } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
 import { ActivityPlaceDto, DayItemDto, DayPlanDto, INTERESTS, Interest, TripPace } from '../../core/models';
 import { ErrorBannerComponent } from '../../shared/error-banner.component';
+import { SelectedStayService } from '../../core/selected-stay.service';
 import { ExternalLinkComponent } from '../../shared/external-link.component';
 import { IconComponent, IconName } from '../../shared/icon.component';
 import { DistancePipe, LocalDatePipe, MoneyPipe } from '../../shared/pipes';
@@ -280,8 +281,15 @@ export class DayPlannerComponent {
   /** Which suggestion is shown per slot (0 = the planner's pick, then the alternatives). */
   private readonly choices = signal<Record<string, number>>({});
 
+  private readonly stays = inject(SelectedStayService);
+  /** Days start from the chosen hotel when there is one. */
+  protected readonly stay = computed(() => {
+    this.stays.all();
+    return this.stays.get(this.planId());
+  });
+
   protected readonly request = computed(() => ({
-    id: this.planId(), interests: this.interests(), pace: this.pace(), music: this.music(), lang: this.i18n.lang(),
+    id: this.planId(), interests: this.interests(), pace: this.pace(), music: this.music(), lang: this.i18n.lang(), stay: this.stay(),
   }));
 
   constructor() {
@@ -290,7 +298,7 @@ export class DayPlannerComponent {
       this.loading.set(true);
       this.error.set(null);
       const sub = this.api
-        .getDayPlan(r.id, r.interests, r.pace, r.music)
+        .getDayPlan(r.id, r.interests, r.pace, r.music, r.stay)
         .pipe(takeUntilDestroyed(this.destroyRef))
         .subscribe({
           next: (p) => {

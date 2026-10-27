@@ -53,7 +53,7 @@ public sealed class WorldPlaces : IWorldPlaces
             {
                 var first = g.First();
                 return new WorldCity(g.Key, first.City, first.CountryCode, first.Country, first.Continent, first.CityLatitude, first.CityLongitude,
-                    g.Select(a => a.Iata).Order().ToList());
+                    g.Select(a => a.Iata).Order().ToList(), g.Select(a => a.TimeZone).FirstOrDefault(z => z is not null));
             });
         var cityOfAirport = airports.ToDictionary(a => a.Iata.ToUpperInvariant(), a => a.CityCode.ToUpperInvariant());
         return new Index(cities, cityOfAirport);

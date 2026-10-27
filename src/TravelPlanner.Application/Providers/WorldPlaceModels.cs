@@ -9,7 +9,8 @@ public sealed record WorldCity(
     string Continent,
     double Latitude,
     double Longitude,
-    IReadOnlyList<string> AirportCodes);
+    IReadOnlyList<string> AirportCodes,
+    string? TimeZone = null);
 
 /// <summary>Cities and airports worldwide, beyond the curated destination catalog.</summary>
 public interface IWorldPlaces

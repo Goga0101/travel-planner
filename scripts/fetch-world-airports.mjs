@@ -79,6 +79,7 @@ const result = flightable
       longitude: Math.round(a.coordinates.lon * 1e5) / 1e5,
       cityLatitude: Math.round((city?.coordinates?.lat ?? a.coordinates.lat) * 1e5) / 1e5,
       cityLongitude: Math.round((city?.coordinates?.lon ?? a.coordinates.lon) * 1e5) / 1e5,
+      timeZone: a.time_zone || city?.time_zone || null,
     };
   })
   .filter(Boolean)

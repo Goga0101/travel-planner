@@ -674,6 +674,88 @@ export interface HotelPriceDto {
   transitDirectionsUrl?: string;
   /** The hotel's TripAdvisor page, listing every agency's offer. */
   compareUrl?: string;
+  latitude?: number;
+  longitude?: number;
+}
+
+// ---- Airport ↔ stay routes and ticket guide ----
+
+export interface TransitLegDto {
+  mode: string;
+  line?: string;
+  headsign?: string;
+  from: string;
+  to: string;
+  departureTime: string;
+  arrivalTime: string;
+  durationMinutes: number;
+  agency?: string;
+  stops?: number;
+  color?: string;
+}
+
+export interface TransitItineraryDto {
+  durationMinutes: number;
+  transfers: number;
+  departureTime: string;
+  arrivalTime: string;
+  legs: TransitLegDto[];
+}
+
+export interface RouteDirectionDto {
+  fromName: string;
+  toName: string;
+  timetableDate: string;
+  onTravelDate: boolean;
+  wishedTime: string;
+  itineraries: TransitItineraryDto[];
+  googleTransitUrl?: string;
+  googleDriveUrl?: string;
+  uberUrl?: string;
+}
+
+export interface GuideOptionDto {
+  mode: string;
+  name: string;
+  from?: string;
+  to?: string;
+  ticket?: string;
+  price?: number;
+  currency?: string;
+  whereToBuy?: string;
+  payment?: string;
+  duration?: string;
+  frequency?: string;
+  url?: string;
+}
+
+export interface GuideFareDto {
+  name?: string;
+  price?: number;
+  currency?: string;
+}
+
+export interface TransitGuideDto {
+  airport: string;
+  options: GuideOptionDto[];
+  cityTicket?: GuideFareDto;
+  dayPass?: GuideFareDto;
+  contactless?: boolean;
+  apps: { name: string; url?: string }[];
+  tips: string[];
+  sources: string[];
+  checkedOn?: string;
+}
+
+export interface StayRouteDto {
+  airportCode?: string;
+  airportName?: string;
+  stayName: string;
+  stayIsCentre: boolean;
+  toStay?: RouteDirectionDto;
+  toAirport?: RouteDirectionDto;
+  guide?: TransitGuideDto;
+  routerName?: string;
 }
 
 export interface HotelPricesDto {

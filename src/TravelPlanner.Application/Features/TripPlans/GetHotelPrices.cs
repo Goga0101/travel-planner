@@ -22,7 +22,9 @@ public sealed record HotelPriceDto(
     string? BookingUrl,
     string? MapUrl,
     string? TransitDirectionsUrl,
-    string? CompareUrl);
+    string? CompareUrl,
+    double? Latitude = null,
+    double? Longitude = null);
 
 /// <summary>
 /// Indicative prices per night for the plan's dates, guests and rooms. They are not added to the plan total;
@@ -89,7 +91,9 @@ public sealed class GetHotelPricesHandler(
                     hasGeo && airport is not null
                         ? linkPolicy.Sanitize(NearbyLinks.TransitDirections(airport.Latitude, airport.Longitude, h.Latitude!.Value, h.Longitude!.Value))
                         : null,
-                    NearbyLinks.CuratedHttps(h.PageUrl));
+                    NearbyLinks.CuratedHttps(h.PageUrl),
+                    h.Latitude,
+                    h.Longitude);
             })
             .OrderBy(h => h.LowestNightly)
             .ToList();

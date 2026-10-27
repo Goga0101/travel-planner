@@ -65,12 +65,12 @@
 
   <div class="plan-toolbar no-print">
     <nav class="plan-subnav" [attr.aria-label]="'plan.sections' | t">
-      <a [routerLink]="[]" fragment="days">{{ 'plan.navDays' | t }}</a>
-      <a [routerLink]="[]" fragment="costs">{{ 'plan.navCosts' | t }}</a>
       @if (flight()) { <a [routerLink]="[]" fragment="flight">{{ 'plan.flightTitle' | t }}</a> }
       <a [routerLink]="[]" fragment="stay">{{ 'nearby.stayTitle' | t }}</a>
+      <a [routerLink]="[]" fragment="route">{{ 'plan.navRoute' | t }}</a>
+      <a [routerLink]="[]" fragment="days">{{ 'plan.navDays' | t }}</a>
       <a [routerLink]="[]" fragment="sights">{{ 'plan.navSights' | t }}</a>
-      <a [routerLink]="[]" fragment="getting-around">{{ 'plan.navTransport' | t }}</a>
+      <a [routerLink]="[]" fragment="costs">{{ 'plan.navCosts' | t }}</a>
     </nav>
     <div class="plan-actions">
       <button type="button" class="btn btn-sm" [class.is-saved]="isSaved()" [attr.aria-pressed]="isSaved()" (click)="toggleSaved()">
@@ -102,7 +102,116 @@
     </div>
   }
 
+  <!-- Flight -->
+  @if (flight(); as f) {
+    <section class="card" id="flight">
+      <div class="section-head">
+        <h2><app-icon name="plane" /> {{ 'plan.flightTitle' | t }}</h2>
+        <app-verification-badge [status]="f.verification" [expired]="f.isExpired" />
+      </div>
+      @if (flightInfo(); as fi) {
+        @for (leg of [{ label: 'plan.outbound', it: fi.outbound, summary: summary()?.flight?.outbound }, { label: 'plan.return', it: fi.inbound, summary: summary()?.flight?.inbound }]; track leg.label) {
+          <div class="leg">
+            <h3>{{ $any(leg.label) | t }}: {{ leg.it.departureAirport }} → {{ leg.it.arrivalAirport }}</h3>
+            @if (leg.summary; as ls) { <div class="leg-timeline"><app-flight-timeline [leg]="ls" [selfTransfer]="!!summary()?.flight?.selfTransfer" /></div> }
+            <p class="small muted">
+              {{ 'plan.departs' | t: { time: (leg.it.departureLocal | ldate: 'EEE d MMM HH:mm') } }}
+              @if (leg.it.arrivalLocal) { · {{ 'plan.arrives' | t: { time: (leg.it.arrivalLocal | ldate: 'EEE d MMM HH:mm') } }} }
+              @if (leg.it.duration) { · {{ leg.it.duration | timespan }} }
+              · {{ leg.it.stops | stops }}
+            </p>
+            @if (leg.it.segments.length) {
+              <ol class="segments">
+                @for (seg of leg.it.segments; track $index) {
+                  <li>
+                    <strong>{{ seg.flightNumber }}</strong> {{ seg.departureAirport }} {{ seg.departureLocal | ldate: 'HH:mm' }}
+                    → {{ seg.arrivalAirport }} @if (seg.arrivalLocal) { {{ seg.arrivalLocal | ldate: 'HH:mm' }} }
+                    @if (seg.duration) { <span class="muted">({{ seg.duration | timespan }})</span> }
+                  </li>
+                }
+              </ol>
+            } @else if (!leg.it.via?.length) {
+              <p class="small muted">{{ 'plan.noSegments' | t }}</p>
+            }
+          </div>
+        }
+        @if (fi.tickets && fi.tickets.length > 1) {
+          <h3>{{ 'flight.tickets' | t }}</h3>
+          <app-flight-tickets [tickets]="fi.tickets" [selfTransfer]="!!summary()?.flight?.selfTransfer" />
+        }
+        <p class="small">
+          {{ 'plan.baggage' | t }}
+          @if (fi.includedCheckedBags !== undefined) {
+            {{ 'plan.bagsIncluded' | t: { count: fi.includedCheckedBags } }}
+          } @else {
+            {{ fi.baggageNote ?? ('plan.bagsNotReported' | t) }}
+          }
+        </p>
+        @if (fi.priceExtrapolatedFromSinglePassenger) {
+          <p class="small text-warn">{{ 'plan.perPassenger' | t: { passengers: ('unit.passengers' | t: { count: fi.passengers }) } }}</p>
+        }
+        @if (fi.sourceNote) { <p class="small muted">{{ fi.sourceNote }}</p> }
+      }
+      <app-external-link [href]="f.bookingUrl" [button]="true" [label]="'plan.checkBook' | t: { provider: f.provider }" [fallback]="'plan.noBookingLink' | t" />
+    </section>
+  }
+
   <app-weather [latitude]="p.destination.latitude" [longitude]="p.destination.longitude" [start]="s.departureDate" [end]="s.returnDate" />
+
+  <!-- Accommodation -->
+  @if (accommodation(); as a) {
+    <section class="card">
+      <div class="section-head">
+        <h2><app-icon name="bed" /> {{ 'plan.accTitle' | t }}</h2>
+        <app-verification-badge [status]="a.verification" [expired]="a.isExpired" />
+      </div>
+      <h3>{{ a.title }}</h3>
+      @if (accommodationInfo(); as ai) {
+        <dl class="facts">
+          @if (ai.address) { <div><dt>{{ 'plan.address' | t }}</dt><dd>{{ ai.address }}</dd></div> }
+          @if (ai.stars) { <div><dt>{{ 'plan.category' | t }}</dt><dd>{{ ai.stars }}★ @if (ai.category) { · {{ ai.category }} }</dd></div> }
+          @if (ai.reviewScore) { <div><dt>{{ 'plan.guestRating' | t }}</dt><dd>{{ ai.reviewScore }}/10</dd></div> }
+          <div>
+            <dt>{{ 'plan.stay' | t }}</dt>
+            <dd>
+              {{ ai.checkIn | ldate: 'd MMM' }} – {{ ai.checkOut | ldate: 'd MMM' }} · {{ 'unit.nights' | t: { count: ai.nights } }} ·
+              {{ 'unit.guests' | t: { count: ai.guests } }}, {{ 'unit.rooms' | t: { count: ai.rooms } }}
+            </dd>
+          </div>
+          <div><dt>{{ 'plan.cancellation' | t }}</dt><dd>{{ ai.cancellationPolicy ?? ('plan.cancellationMissing' | t) }}</dd></div>
+          @if (ai.mealPlan) { <div><dt>{{ 'plan.meals' | t }}</dt><dd>{{ ai.mealPlan }}</dd></div> }
+        </dl>
+        @if (ai.fees.length) {
+          <h4>{{ 'plan.fees' | t }}</h4>
+          <ul class="fees">
+            @for (fee of ai.fees; track fee.name) {
+              <li>
+                {{ fee.name }}: {{ fee.amount | money: fee.currency }}
+                <span class="tag">{{ (fee.includedInPrice ? 'plan.feeIncluded' : 'plan.feeAdded') | t }}</span>
+                @if (fee.payableAtProperty) { <span class="tag">{{ 'plan.payAtProperty' | t }}</span> }
+              </li>
+            }
+          </ul>
+        }
+      } @else {
+        <p class="muted">{{ a.summary }}</p>
+      }
+      @if (a.verification === 'Unavailable') {
+        <app-external-link [href]="a.bookingUrl" [button]="true" [label]="'plan.searchStays' | t: { provider: a.provider }" [fallback]="'plan.noAccLink' | t" />
+      } @else {
+        <app-external-link [href]="a.bookingUrl" [button]="true" [label]="'plan.checkBook' | t: { provider: a.provider }" [fallback]="'plan.noBookingLink' | t" />
+      }
+    </section>
+  }
+
+  <!-- Hotels near the airport / centre and getting around (OpenStreetMap) -->
+  <app-nearby [planId]="s.id" [summary]="s" />
+
+  <!-- Day-by-day activities and events -->
+  <app-day-planner [planId]="s.id" />
+
+  <!-- Sights and how to reach them -->
+  <app-attractions [destinationId]="p.destination.id" [city]="p.destination.city" />
 
   <!-- Cost breakdown -->
   <section class="card" id="costs">
@@ -162,115 +271,6 @@
     </div>
     <app-verification-legend />
   </section>
-
-  <!-- Flight -->
-  @if (flight(); as f) {
-    <section class="card" id="flight">
-      <div class="section-head">
-        <h2><app-icon name="plane" /> {{ 'plan.flightTitle' | t }}</h2>
-        <app-verification-badge [status]="f.verification" [expired]="f.isExpired" />
-      </div>
-      @if (flightInfo(); as fi) {
-        @for (leg of [{ label: 'plan.outbound', it: fi.outbound, summary: summary()?.flight?.outbound }, { label: 'plan.return', it: fi.inbound, summary: summary()?.flight?.inbound }]; track leg.label) {
-          <div class="leg">
-            <h3>{{ $any(leg.label) | t }}: {{ leg.it.departureAirport }} → {{ leg.it.arrivalAirport }}</h3>
-            @if (leg.summary; as ls) { <div class="leg-timeline"><app-flight-timeline [leg]="ls" [selfTransfer]="!!summary()?.flight?.selfTransfer" /></div> }
-            <p class="small muted">
-              {{ 'plan.departs' | t: { time: (leg.it.departureLocal | ldate: 'EEE d MMM HH:mm') } }}
-              @if (leg.it.arrivalLocal) { · {{ 'plan.arrives' | t: { time: (leg.it.arrivalLocal | ldate: 'EEE d MMM HH:mm') } }} }
-              @if (leg.it.duration) { · {{ leg.it.duration | timespan }} }
-              · {{ leg.it.stops | stops }}
-            </p>
-            @if (leg.it.segments.length) {
-              <ol class="segments">
-                @for (seg of leg.it.segments; track $index) {
-                  <li>
-                    <strong>{{ seg.flightNumber }}</strong> {{ seg.departureAirport }} {{ seg.departureLocal | ldate: 'HH:mm' }}
-                    → {{ seg.arrivalAirport }} @if (seg.arrivalLocal) { {{ seg.arrivalLocal | ldate: 'HH:mm' }} }
-                    @if (seg.duration) { <span class="muted">({{ seg.duration | timespan }})</span> }
-                  </li>
-                }
-              </ol>
-            } @else if (!leg.it.via?.length) {
-              <p class="small muted">{{ 'plan.noSegments' | t }}</p>
-            }
-          </div>
-        }
-        @if (fi.tickets && fi.tickets.length > 1) {
-          <h3>{{ 'flight.tickets' | t }}</h3>
-          <app-flight-tickets [tickets]="fi.tickets" [selfTransfer]="!!summary()?.flight?.selfTransfer" />
-        }
-        <p class="small">
-          {{ 'plan.baggage' | t }}
-          @if (fi.includedCheckedBags !== undefined) {
-            {{ 'plan.bagsIncluded' | t: { count: fi.includedCheckedBags } }}
-          } @else {
-            {{ fi.baggageNote ?? ('plan.bagsNotReported' | t) }}
-          }
-        </p>
-        @if (fi.priceExtrapolatedFromSinglePassenger) {
-          <p class="small text-warn">{{ 'plan.perPassenger' | t: { passengers: ('unit.passengers' | t: { count: fi.passengers }) } }}</p>
-        }
-        @if (fi.sourceNote) { <p class="small muted">{{ fi.sourceNote }}</p> }
-      }
-      <app-external-link [href]="f.bookingUrl" [button]="true" [label]="'plan.checkBook' | t: { provider: f.provider }" [fallback]="'plan.noBookingLink' | t" />
-    </section>
-  }
-
-  <!-- Accommodation -->
-  @if (accommodation(); as a) {
-    <section class="card">
-      <div class="section-head">
-        <h2><app-icon name="bed" /> {{ 'plan.accTitle' | t }}</h2>
-        <app-verification-badge [status]="a.verification" [expired]="a.isExpired" />
-      </div>
-      <h3>{{ a.title }}</h3>
-      @if (accommodationInfo(); as ai) {
-        <dl class="facts">
-          @if (ai.address) { <div><dt>{{ 'plan.address' | t }}</dt><dd>{{ ai.address }}</dd></div> }
-          @if (ai.stars) { <div><dt>{{ 'plan.category' | t }}</dt><dd>{{ ai.stars }}★ @if (ai.category) { · {{ ai.category }} }</dd></div> }
-          @if (ai.reviewScore) { <div><dt>{{ 'plan.guestRating' | t }}</dt><dd>{{ ai.reviewScore }}/10</dd></div> }
-          <div>
-            <dt>{{ 'plan.stay' | t }}</dt>
-            <dd>
-              {{ ai.checkIn | ldate: 'd MMM' }} – {{ ai.checkOut | ldate: 'd MMM' }} · {{ 'unit.nights' | t: { count: ai.nights } }} ·
-              {{ 'unit.guests' | t: { count: ai.guests } }}, {{ 'unit.rooms' | t: { count: ai.rooms } }}
-            </dd>
-          </div>
-          <div><dt>{{ 'plan.cancellation' | t }}</dt><dd>{{ ai.cancellationPolicy ?? ('plan.cancellationMissing' | t) }}</dd></div>
-          @if (ai.mealPlan) { <div><dt>{{ 'plan.meals' | t }}</dt><dd>{{ ai.mealPlan }}</dd></div> }
-        </dl>
-        @if (ai.fees.length) {
-          <h4>{{ 'plan.fees' | t }}</h4>
-          <ul class="fees">
-            @for (fee of ai.fees; track fee.name) {
-              <li>
-                {{ fee.name }}: {{ fee.amount | money: fee.currency }}
-                <span class="tag">{{ (fee.includedInPrice ? 'plan.feeIncluded' : 'plan.feeAdded') | t }}</span>
-                @if (fee.payableAtProperty) { <span class="tag">{{ 'plan.payAtProperty' | t }}</span> }
-              </li>
-            }
-          </ul>
-        }
-      } @else {
-        <p class="muted">{{ a.summary }}</p>
-      }
-      @if (a.verification === 'Unavailable') {
-        <app-external-link [href]="a.bookingUrl" [button]="true" [label]="'plan.searchStays' | t: { provider: a.provider }" [fallback]="'plan.noAccLink' | t" />
-      } @else {
-        <app-external-link [href]="a.bookingUrl" [button]="true" [label]="'plan.checkBook' | t: { provider: a.provider }" [fallback]="'plan.noBookingLink' | t" />
-      }
-    </section>
-  }
-
-  <!-- Day-by-day activities and events -->
-  <app-day-planner [planId]="s.id" />
-
-  <!-- Hotels near the airport / centre and getting around (OpenStreetMap) -->
-  <app-nearby [planId]="s.id" [summary]="s" />
-
-  <!-- Sights and how to reach them -->
-  <app-attractions [destinationId]="p.destination.id" [city]="p.destination.city" />
 
   <!-- Transfers -->
   @if (transfers().length) {

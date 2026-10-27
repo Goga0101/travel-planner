@@ -18,6 +18,8 @@ public sealed class CatalogOptions
     public string NearbyPath { get; set; } = "catalog/nearby.json";
     /// <summary>Every flightable airport worldwide (scripts/fetch-world-airports.mjs). Optional: without it only catalog airports exist.</summary>
     public string WorldAirportsPath { get; set; } = "catalog/world-airports.json";
+    /// <summary>Airport-to-city options and tickets per destination, researched from official sources. Optional.</summary>
+    public string TransitGuidesPath { get; set; } = "catalog/transit-guides.json";
 }
 
 public sealed class CatalogDocument
@@ -115,7 +117,7 @@ public sealed class WorldAirportsDocument
 }
 
 public sealed record WorldAirport(string Iata, string Name, string CityCode, string City, string CountryCode, string Country, string Continent,
-    double Latitude, double Longitude, double CityLatitude, double CityLongitude);
+    double Latitude, double Longitude, double CityLatitude, double CityLongitude, string? TimeZone = null);
 
 /// <summary>Loads and caches the world airport snapshot; an empty list when the file is missing.</summary>
 public sealed class WorldAirportsFileReader(IOptions<CatalogOptions> options, IHostEnvironment environment)

@@ -11,7 +11,9 @@ namespace TravelPlanner.Application.Features.TripPlans;
 
 /// <summary>A day-by-day itinerary for a plan, built for the chosen interests and pace.</summary>
 /// <param name="Music">Music genres to keep among the music events (provider genre names); empty = all.</param>
-public sealed record GetDayPlanQuery(Guid PlanId, IReadOnlyList<string> Interests, TripPace Pace, IReadOnlyList<string>? Music = null)
+/// <param name="FromLatitude">Where each day starts (the chosen hotel); the city centre when omitted.</param>
+public sealed record GetDayPlanQuery(Guid PlanId, IReadOnlyList<string> Interests, TripPace Pace, IReadOnlyList<string>? Music = null,
+    double? FromLatitude = null, double? FromLongitude = null)
     : IRequest<DayPlanDto>;
 
 /// <summary>A music genre found among the city's events, with how many events have it.</summary>
@@ -78,6 +80,8 @@ public sealed class GetDayPlanValidator : AbstractValidator<GetDayPlanQuery>
         RuleFor(x => x.Interests.Count).LessThanOrEqualTo(Interests.All.Count);
         RuleFor(x => x.Pace).IsInEnum();
         RuleFor(x => x.Music).Must(m => m is null || m.Count <= 20);
+        RuleFor(x => x.FromLatitude).InclusiveBetween(-90, 90).When(x => x.FromLatitude.HasValue);
+        RuleFor(x => x.FromLongitude).InclusiveBetween(-180, 180).When(x => x.FromLongitude.HasValue);
         RuleForEach(x => x.Music).MaximumLength(60);
     }
 }
@@ -125,7 +129,8 @@ public sealed class GetDayPlanHandler(
             : allEvents.Where(e => !IsMusic(e) || music.Contains(e.Genre ?? "Other", StringComparer.OrdinalIgnoreCase)).ToList();
 
         var days = DayPlanner.Build(
-            new DayPlanRequest(plan.DepartureDate, plan.ReturnDate, arrival, departure, interests, request.Pace, destination.Latitude, destination.Longitude),
+            new DayPlanRequest(plan.DepartureDate, plan.ReturnDate, arrival, departure, interests, request.Pace,
+                request.FromLatitude ?? destination.Latitude, request.FromLongitude ?? destination.Longitude),
             placesTask.Result, cityEvents);
 
         return new DayPlanDto(

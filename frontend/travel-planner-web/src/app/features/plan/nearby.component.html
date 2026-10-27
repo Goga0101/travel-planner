@@ -92,6 +92,12 @@
                   </details>
                 }
                 <div class="hotel-actions">
+                  @if (ph.latitude != null && ph.longitude != null) {
+                  <button type="button" class="btn btn-sm stay-select" [class.is-selected]="stays.isSelected(planId(), ph.latitude, ph.longitude)"
+                          [attr.aria-pressed]="stays.isSelected(planId(), ph.latitude, ph.longitude)" (click)="selectStay(ph.name, ph.latitude, ph.longitude)">
+                    <app-icon name="check" [size]="14" /> {{ (stays.isSelected(planId(), ph.latitude, ph.longitude) ? 'stay.selected' : 'stay.select') | t }}
+                  </button>
+                  }
                   @if (ph.bookingUrl) {
                     <a class="btn btn-primary btn-sm" [href]="ph.bookingUrl" target="_blank" rel="noopener noreferrer nofollow">
                       {{ 'prices.checkBooking' | t }} <app-icon name="external" [size]="14" /><span class="visually-hidden">{{ 'link.newTab' | t }}</span>
@@ -151,6 +157,10 @@
               </p>
             }
             <div class="hotel-actions">
+              <button type="button" class="btn btn-sm stay-select" [class.is-selected]="stays.isSelected(planId(), h.latitude, h.longitude)"
+                      [attr.aria-pressed]="stays.isSelected(planId(), h.latitude, h.longitude)" (click)="selectStay(h.name, h.latitude, h.longitude)">
+                <app-icon name="check" [size]="14" /> {{ (stays.isSelected(planId(), h.latitude, h.longitude) ? 'stay.selected' : 'stay.select') | t }}
+              </button>
               @if (h.bookingUrl) {
                 <a class="btn btn-primary btn-sm" [href]="h.bookingUrl" target="_blank" rel="noopener noreferrer nofollow">
                   {{ 'nearby.checkPrice' | t }} <app-icon name="external" [size]="14" /><span class="visually-hidden">{{ 'link.newTab' | t }}</span>
@@ -187,6 +197,9 @@
       }
     </div>
   </section>
+
+  <!-- Airport ↔ hotel routes and the ticket guide -->
+  <app-stay-route [planId]="planId()" />
 
   <!-- Getting around -->
   <section class="card nearby" id="getting-around" aria-labelledby="around-title">

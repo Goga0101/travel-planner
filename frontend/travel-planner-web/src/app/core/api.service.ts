@@ -18,6 +18,7 @@ import {
   Interest,
   PlaceDto,
   PlanSort,
+  StayRouteDto,
   TripPace,
   TripPlanDetailDto,
   TripPlanSummaryDto,
@@ -107,10 +108,18 @@ export class ApiService {
   }
 
   /** Day-by-day itinerary for the chosen interests and pace, with the city's events during the trip. */
-  getDayPlan(planId: string, interests: Interest[], pace: TripPace, music: string[] = []): Observable<DayPlanDto> {
+  getDayPlan(planId: string, interests: Interest[], pace: TripPace, music: string[] = [], from?: { latitude: number; longitude: number } | null): Observable<DayPlanDto> {
     let params = new HttpParams().set('interests', interests.join(',')).set('pace', pace);
     if (music.length) params = params.set('music', music.join(','));
+    if (from) params = params.set('fromLat', from.latitude).set('fromLon', from.longitude);
     return this.http.get<DayPlanDto>(`${BASE}/trip-plans/${encodeURIComponent(planId)}/day-plan`, { params });
+  }
+
+  /** Airport ↔ stay journeys (the chosen hotel, or the city centre when none) and the city's ticket guide. */
+  getStayRoute(planId: string, stay: { name: string; latitude: number; longitude: number } | null): Observable<StayRouteDto> {
+    let params = new HttpParams();
+    if (stay) params = params.set('lat', stay.latitude).set('lon', stay.longitude).set('name', stay.name);
+    return this.http.get<StayRouteDto>(`${BASE}/trip-plans/${encodeURIComponent(planId)}/route`, { params });
   }
 
   getAttractions(destinationId: string): Observable<AttractionDto[]> {

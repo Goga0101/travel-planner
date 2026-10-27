@@ -1,0 +1,3634 @@
+{
+  "barcelona": {
+    "airport": "BCN",
+    "options": [
+      {
+        "mode": "metro",
+        "name": "Metro L9 Sud",
+        "from": "Aeroport T1 and Aeroport T2 metro stations",
+        "to": "Zona Universitària (change to L1 at Torrassa or L5 at Collblanc for the centre)",
+        "ticket": {
+          "en": "Airport ticket (Bitllet Aeroport)",
+          "ka": "აეროპორტის ბილეთი (Bitllet Aeroport)"
+        },
+        "price": 5.9,
+        "currency": "EUR",
+        "whereToBuy": {
+          "en": "Ticket machines at the airport metro stations, or online from TMB.",
+          "ka": "აეროპორტის მეტროს სადგურების ბილეთის აპარატებში ან ონლაინ TMB-ის საიტზე."
+        },
+        "payment": null,
+        "duration": null,
+        "frequency": null,
+        "url": "https://tmb.cat/en/barcelona-fares-metro-bus/aeroport-ticket"
+      },
+      {
+        "mode": "express_bus",
+        "name": "Aerobús A1 / A2",
+        "from": "A1: Terminal 1 (Level 0 arrivals); A2: Terminal 2 (T2B and T2C)",
+        "to": "Plaça de Catalunya",
+        "ticket": {
+          "en": "Aerobús single ticket",
+          "ka": "Aerobús-ის ერთჯერადი ბილეთი"
+        },
+        "price": null,
+        "currency": "EUR",
+        "whereToBuy": {
+          "en": "Aerobús sales points in the T1 (Level 0) and T2B arrivals halls, or online.",
+          "ka": "Aerobús-ის გაყიდვის პუნქტებში T1-ის (დონე 0) და T2B-ის ჩამოსვლის დარბაზებში ან ონლაინ."
+        },
+        "payment": null,
+        "duration": null,
+        "frequency": null,
+        "url": "https://aerobusbarcelona.es/"
+      },
+      {
+        "mode": "train",
+        "name": "Rodalies R2 Nord",
+        "from": "Aeroport railway station (Terminal 2)",
+        "to": "Barcelona Sants, Passeig de Gràcia",
+        "ticket": null,
+        "price": null,
+        "currency": "EUR",
+        "whereToBuy": null,
+        "payment": null,
+        "duration": null,
+        "frequency": {
+          "en": "every 30 min",
+          "ka": "ყოველ 30 წთ-ში"
+        },
+        "url": "https://rodalies.gencat.cat/en/sobre-rodalies/linies-i-estacions/servei_rodalia_barcelona/r2n/index.html"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "Single ticket (metro, bus, Montjuïc funicular)",
+        "ka": "ერთჯერადი ბილეთი (მეტრო, ავტობუსი, Montjuïc-ის ფუნიკულიორი)"
+      },
+      "price": 2.9,
+      "currency": "EUR"
+    },
+    "dayPass": {
+      "name": {
+        "en": "T-dia (24 hours, 1 zone)",
+        "ka": "T-dia (24 საათი, 1 ზონა)"
+      },
+      "price": 12,
+      "currency": "EUR"
+    },
+    "contactless": null,
+    "apps": [
+      {
+        "name": "TMB App",
+        "url": "https://www.tmb.cat/en/home"
+      }
+    ],
+    "tips": [
+      {
+        "en": "T-casual and other multi-trip cards are not valid at the airport metro stations; buy the Airport ticket.",
+        "ka": "T-casual და სხვა მრავალჯერადი ბარათები აეროპორტის მეტროს სადგურებზე არ მოქმედებს — იყიდეთ Airport ticket."
+      },
+      {
+        "en": "The Hola Barcelona Travel Card includes the metro trips to and from the airport.",
+        "ka": "Hola Barcelona Travel Card მოიცავს მეტროთი მგზავრობას აეროპორტიდან და აეროპორტში."
+      }
+    ],
+    "sources": [
+      "https://static-web.tmb.cat/en/barcelona-fares-metro-bus",
+      "https://tmb.cat/en/barcelona-fares-metro-bus/aeroport-ticket",
+      "https://www.aena.es/en/josep-tarradellas-barcelona-el-prat/getting-there/bus.html",
+      "https://aerobusbarcelona.es/tarifas",
+      "https://rodalies.gencat.cat/en/sobre-rodalies/linies-i-estacions/servei_rodalia_barcelona/r2n/index.html"
+    ],
+    "checkedOn": "2026-10-27"
+  },
+  "paris": {
+    "airport": "CDG",
+    "options": [
+      {
+        "mode": "train",
+        "name": "RER B",
+        "from": "Aéroport Charles de Gaulle 1 and Aéroport Charles de Gaulle 2 TGV stations",
+        "to": "Gare du Nord, Châtelet-Les Halles",
+        "ticket": {
+          "en": "Paris Région <> Aéroports ticket",
+          "ka": "Paris Région <> Aéroports ბილეთი"
+        },
+        "price": 14,
+        "currency": "EUR",
+        "whereToBuy": {
+          "en": "Ticket machines at the airport RER stations, or load it onto a Navigo Easy pass or phone via the Île-de-France Mobilités app.",
+          "ka": "აეროპორტის RER-ის სადგურების ბილეთის აპარატებში, ან ჩატვირთეთ Navigo Easy ბარათზე ან ტელეფონზე Île-de-France Mobilités-ის აპით."
+        },
+        "payment": null,
+        "duration": null,
+        "frequency": null,
+        "url": "https://www.iledefrance-mobilites.fr/en/titres-et-tarifs/detail/ticket-paris-region-aeroports"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "Ticket Métro-Train-RER",
+        "ka": "Ticket Métro-Train-RER (მეტრო-მატარებელი-RER)"
+      },
+      "price": 2.55,
+      "currency": "EUR"
+    },
+    "dayPass": {
+      "name": {
+        "en": "Navigo Jour (all zones, airports excluded)",
+        "ka": "Navigo Jour (ყველა ზონა, აეროპორტების გარდა)"
+      },
+      "price": 12.3,
+      "currency": "EUR"
+    },
+    "contactless": null,
+    "apps": [
+      {
+        "name": "Île-de-France Mobilités",
+        "url": "https://www.iledefrance-mobilites.fr"
+      }
+    ],
+    "tips": [
+      {
+        "en": "The Navigo Jour day pass does not cover trips to or from the airports.",
+        "ka": "Navigo Jour დღიური აბონემენტი აეროპორტიდან და აეროპორტში მგზავრობას არ მოიცავს."
+      },
+      {
+        "en": "RoissyBus stopped running on 1 March 2026; use RER B instead.",
+        "ka": "RoissyBus 2026 წლის 1 მარტიდან აღარ მოძრაობს — ისარგებლეთ RER B-ით."
+      },
+      {
+        "en": "The Paris Région <> Aéroports ticket is valid on metro, RER and trains only, not on buses.",
+        "ka": "Paris Région <> Aéroports ბილეთი მოქმედებს მხოლოდ მეტროში, RER-სა და მატარებლებში, ავტობუსებში — არა."
+      }
+    ],
+    "sources": [
+      "https://www.iledefrance-mobilites.fr/en/tarifs-titre-de-transport-en-commun-2026",
+      "https://www.iledefrance-mobilites.fr/en/titres-et-tarifs/detail/ticket-paris-region-aeroports",
+      "https://www.iledefrance-mobilites.fr/en/aide-et-contacts/service-apres-vente-sur-lachat-de-titres-sur-telephone/la-ligne-roissybus-arrete-que-faire-titres-roissybus",
+      "https://presse.iledefrance-mobilites.fr/tarifs-navigo-2026-une-evolution-tarifaire-limitee-pour-accompagner-loffre-supplementaire/"
+    ],
+    "checkedOn": "2026-10-27"
+  },
+  "london": {
+    "airport": "LHR",
+    "options": [
+      {
+        "mode": "metro",
+        "name": "Piccadilly line (London Underground)",
+        "from": "Heathrow Terminals 2 & 3, Terminal 4 and Terminal 5 Tube stations",
+        "to": "Central London (Zone 1), e.g. Piccadilly Circus, King's Cross St. Pancras",
+        "ticket": {
+          "en": "Pay as you go (contactless or Oyster), always charged at peak rate",
+          "ka": "Pay as you go (უკონტაქტო ბარათი ან Oyster), ყოველთვის პიკის ტარიფით"
+        },
+        "price": 5.9,
+        "currency": "GBP",
+        "whereToBuy": {
+          "en": "Tap a contactless bank card or Oyster card at the station gates; ticket machines are also available.",
+          "ka": "დაადეთ უკონტაქტო საბანკო ბარათი ან Oyster სადგურის ტურნიკეტს; ასევე არის ბილეთის აპარატები."
+        },
+        "payment": {
+          "en": "Contactless bank cards, phones/watches and Oyster.",
+          "ka": "უკონტაქტო საბანკო ბარათები, ტელეფონი/საათი და Oyster."
+        },
+        "duration": null,
+        "frequency": null,
+        "url": "https://tfl.gov.uk/travel-information/getting-around-london/heathrow-airport"
+      },
+      {
+        "mode": "train",
+        "name": "Elizabeth line",
+        "from": "Heathrow Terminals 2 & 3, Terminal 4 and Terminal 5 stations",
+        "to": "Paddington, Tottenham Court Road, Liverpool Street",
+        "ticket": {
+          "en": "Pay as you go (contactless or Oyster), anytime fare",
+          "ka": "Pay as you go (უკონტაქტო ბარათი ან Oyster), ნებისმიერი დროის ტარიფი"
+        },
+        "price": 15.5,
+        "currency": "GBP",
+        "whereToBuy": {
+          "en": "Tap a contactless bank card or Oyster card at the station gates.",
+          "ka": "დაადეთ უკონტაქტო საბანკო ბარათი ან Oyster სადგურის ტურნიკეტს."
+        },
+        "payment": {
+          "en": "Contactless bank cards, phones/watches and Oyster.",
+          "ka": "უკონტაქტო საბანკო ბარათები, ტელეფონი/საათი და Oyster."
+        },
+        "duration": null,
+        "frequency": null,
+        "url": "https://tfl.gov.uk/fares/new-fares"
+      },
+      {
+        "mode": "train",
+        "name": "Heathrow Express",
+        "from": "Heathrow Terminals 2 & 3 and Terminal 5 stations",
+        "to": "London Paddington",
+        "ticket": {
+          "en": "Heathrow Express Standard single",
+          "ka": "Heathrow Express-ის Standard ერთჯერადი ბილეთი"
+        },
+        "price": 26,
+        "currency": "GBP",
+        "whereToBuy": {
+          "en": "Online or at the station on the day; Advance singles from £10 are sold online 30+ days ahead.",
+          "ka": "ონლაინ ან სადგურზე იმავე დღეს; Advance ბილეთები £10-დან ონლაინ იყიდება 30+ დღით ადრე."
+        },
+        "payment": null,
+        "duration": null,
+        "frequency": null,
+        "url": "https://www.heathrowexpress.com/ticket-fares"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "Zone 1 pay as you go single (peak)",
+        "ka": "Zone 1 Pay as you go ერთჯერადი მგზავრობა (პიკი)"
+      },
+      "price": 3.1,
+      "currency": "GBP"
+    },
+    "dayPass": {
+      "name": {
+        "en": "Daily cap Zones 1–6 (contactless/Oyster)",
+        "ka": "დღიური ლიმიტი Zones 1–6 (უკონტაქტო ბარათი/Oyster)"
+      },
+      "price": 16.3,
+      "currency": "GBP"
+    },
+    "contactless": true,
+    "apps": [
+      {
+        "name": "TfL Go",
+        "url": "https://tfl.gov.uk"
+      }
+    ],
+    "tips": [
+      {
+        "en": "Use the same contactless card or device for every trip so daily capping applies.",
+        "ka": "ყველა მგზავრობისთვის ერთი და იგივე უკონტაქტო ბარათი ან მოწყობილობა გამოიყენეთ, რომ დღიური ლიმიტი იმოქმედოს."
+      },
+      {
+        "en": "Heathrow Express is not included in pay-as-you-go caps or Travelcards.",
+        "ka": "Heathrow Express არ შედის Pay as you go-ს ლიმიტებსა და Travelcard-ებში."
+      },
+      {
+        "en": "The Piccadilly line is the cheapest option; Heathrow Tube fares are always charged at the peak rate.",
+        "ka": "Piccadilly line ყველაზე იაფი ვარიანტია; Heathrow-ის მეტროს ტარიფი ყოველთვის პიკის ფასით ჩამოიჭრება."
+      }
+    ],
+    "sources": [
+      "https://tfl.gov.uk/fares/new-fares",
+      "https://content.tfl.gov.uk/adult-fares.pdf",
+      "https://www.london.gov.uk/mayor-announces-plans-2026-tfl-fares-package-including-further-freeze-seventh-time-bus-and-tram",
+      "https://www.heathrowexpress.com/ticket-fares"
+    ],
+    "checkedOn": "2026-10-27"
+  },
+  "rome": {
+    "airport": "FCO",
+    "options": [
+      {
+        "mode": "train",
+        "name": "Leonardo Express",
+        "from": "Fiumicino Aeroporto railway station",
+        "to": "Roma Termini (non-stop)",
+        "ticket": {
+          "en": "Leonardo Express single ticket",
+          "ka": "Leonardo Express-ის ერთჯერადი ბილეთი"
+        },
+        "price": 14,
+        "currency": "EUR",
+        "whereToBuy": {
+          "en": "Self-service kiosks and ticket offices at the station, or pay directly at the turnstiles with a contactless card.",
+          "ka": "სადგურის თვითმომსახურების აპარატებში და სალაროებში, ან პირდაპირ ტურნიკეტთან უკონტაქტო ბარათით."
+        },
+        "payment": {
+          "en": "Contactless credit/debit cards, smartphones and smartwatches at the turnstiles (Tap&Tap).",
+          "ka": "უკონტაქტო საკრედიტო/სადებეტო ბარათები, სმარტფონი და სმარტსაათი ტურნიკეტთან (Tap&Tap)."
+        },
+        "duration": {
+          "en": "about 32 min",
+          "ka": "დაახლ. 32 წთ"
+        },
+        "frequency": {
+          "en": "every 15 min",
+          "ka": "ყოველ 15 წთ-ში"
+        },
+        "url": "https://www.trenitalia.com/en/connections/leonardo-express.html"
+      },
+      {
+        "mode": "train",
+        "name": "FL1 regional train",
+        "from": "Fiumicino Aeroporto railway station",
+        "to": "Roma Trastevere, Roma Ostiense, Roma Tiburtina",
+        "ticket": null,
+        "price": null,
+        "currency": "EUR",
+        "whereToBuy": {
+          "en": "Self-service kiosks and ticket offices at the airport station.",
+          "ka": "აეროპორტის სადგურის თვითმომსახურების აპარატებში და სალაროებში."
+        },
+        "payment": null,
+        "duration": null,
+        "frequency": {
+          "en": "every 15 min on weekdays, every 30 min at weekends",
+          "ka": "სამუშაო დღეებში ყოველ 15 წთ-ში, შაბათ-კვირას ყოველ 30 წთ-ში"
+        },
+        "url": "https://www.adr.it/web/aeroporti-di-roma-en/pax-fco-train"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "BIT (100-minute ticket)",
+        "ka": "BIT (100-წუთიანი ბილეთი)"
+      },
+      "price": 1.5,
+      "currency": "EUR"
+    },
+    "dayPass": {
+      "name": {
+        "en": "Roma 24H",
+        "ka": "Roma 24H"
+      },
+      "price": 8.5,
+      "currency": "EUR"
+    },
+    "contactless": true,
+    "apps": [
+      {
+        "name": "ATAC Roma",
+        "url": "https://www.atac.roma.it"
+      }
+    ],
+    "tips": [
+      {
+        "en": "A BIT is valid for only one metro ride within its 100 minutes; you cannot exit and re-enter the gates.",
+        "ka": "BIT 100 წუთის განმავლობაში მეტროში მხოლოდ ერთ მგზავრობას მოიცავს — ტურნიკეტიდან გასვლა და ხელახლა შესვლა არ შეიძლება."
+      },
+      {
+        "en": "With ATAC tap&go, tapping the same contactless card all day is capped at the Roma 24H price.",
+        "ka": "ATAC tap&go-ით ერთი და იმავე უკონტაქტო ბარათის გამოყენებისას დღის ჯამი Roma 24H-ის ფასს არ აჭარბებს."
+      }
+    ],
+    "sources": [
+      "https://www.trenitalia.com/en/connections/leonardo-express.html",
+      "https://www.trenitalia.com/en/information/tap-and-tap.html",
+      "https://www.adr.it/web/aeroporti-di-roma-en/pax-fco-train",
+      "https://www.atac.roma.it/en/tickets-and-passes",
+      "https://www.atac.roma.it/en/frequently-asked-questions/how-much-is-the-ticket-pass-with-tap-go"
+    ],
+    "checkedOn": "2026-10-27"
+  },
+  "amsterdam": {
+    "airport": "AMS",
+    "options": [
+      {
+        "mode": "train",
+        "name": "NS train (Sprinter/Intercity)",
+        "from": "Schiphol Airport station (below Schiphol Plaza)",
+        "to": "Amsterdam Centraal",
+        "ticket": {
+          "en": "NS single ticket, or check in with a bank card",
+          "ka": "NS-ის ერთჯერადი ბილეთი ან საბანკო ბარათით რეგისტრაცია (check-in)"
+        },
+        "price": null,
+        "currency": "EUR",
+        "whereToBuy": {
+          "en": "NS ticket machines at Schiphol Plaza and in the arrivals baggage halls, or online.",
+          "ka": "NS-ის ბილეთის აპარატებში Schiphol Plaza-ზე და ბარგის მიღების დარბაზებში, ან ონლაინ."
+        },
+        "payment": {
+          "en": "Check in at the poles and check out at the gates with a contactless debit card, or use a ticket.",
+          "ka": "შესვლისას დაარეგისტრირეთ (check-in) და გასვლისას გამოდით (check-out) უკონტაქტო სადებეტო ბარათით, ან გამოიყენეთ ბილეთი."
+        },
+        "duration": {
+          "en": "about 17 min",
+          "ka": "დაახლ. 17 წთ"
+        },
+        "frequency": {
+          "en": "8 trains per hour",
+          "ka": "საათში 8 მატარებელი"
+        },
+        "url": "https://www.ns.nl/en/travel/destinations/schiphol"
+      },
+      {
+        "mode": "express_bus",
+        "name": "Amsterdam Airport Express (bus 397)",
+        "from": "Schiphol Plaza, bus stop B17",
+        "to": "Museumplein, Leidseplein, Elandsgracht",
+        "ticket": {
+          "en": "Amsterdam Airport Express single ticket",
+          "ka": "Amsterdam Airport Express-ის ერთჯერადი ბილეთი"
+        },
+        "price": 6.5,
+        "currency": "EUR",
+        "whereToBuy": {
+          "en": "From the driver, online or in the Amsterdam Airport Express app, or at the ticket office at Schiphol.",
+          "ka": "მძღოლთან, ონლაინ ან Amsterdam Airport Express-ის აპში, ან Schiphol-ის სალაროში."
+        },
+        "payment": {
+          "en": "Debit/credit card only on board (no cash), or check in and out with a contactless card (OVpay).",
+          "ka": "ავტობუსში მხოლოდ სადებეტო/საკრედიტო ბარათით (ნაღდი არა), ან check-in/check-out უკონტაქტო ბარათით (OVpay)."
+        },
+        "duration": null,
+        "frequency": {
+          "en": "about every 10 min; night bus N97 hourly",
+          "ka": "დაახლ. ყოველ 10 წთ-ში; ღამის N97 — საათში ერთხელ"
+        },
+        "url": "https://www.connexxion.nl/en/our-routes/special-routes/amsterdam-airport-express"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "GVB 1-hour ticket",
+        "ka": "GVB 1-საათიანი ბილეთი"
+      },
+      "price": 3.4,
+      "currency": "EUR"
+    },
+    "dayPass": {
+      "name": {
+        "en": "GVB Day ticket (24 hours)",
+        "ka": "GVB დღიური ბილეთი (24 საათი)"
+      },
+      "price": 10,
+      "currency": "EUR"
+    },
+    "contactless": true,
+    "apps": [
+      {
+        "name": "NS app",
+        "url": "https://www.ns.nl/en"
+      },
+      {
+        "name": "GVB app",
+        "url": "https://www.gvb.nl/en"
+      }
+    ],
+    "tips": [
+      {
+        "en": "Always check out with the same card you checked in with, or you will be charged the maximum fare.",
+        "ka": "ყოველთვის გამოდით (check-out) იმავე ბარათით, რომლითაც შეხვედით, თორემ მაქსიმალური ტარიფი ჩამოგეჭრებათ."
+      },
+      {
+        "en": "The Amsterdam Travel Ticket (€20 for 1 day) includes travel to and from Schiphol.",
+        "ka": "Amsterdam Travel Ticket (1 დღე — €20) Schiphol-იდან და Schiphol-ში მგზავრობასაც მოიცავს."
+      },
+      {
+        "en": "Cash is not accepted on bus 397.",
+        "ka": "397 ავტობუსში ნაღდი ფული არ მიიღება."
+      }
+    ],
+    "sources": [
+      "https://www.ns.nl/en/travel/destinations/schiphol",
+      "https://www.ns.nl/en/service-and-contact/payment/consumer-rates",
+      "https://www.connexxion.nl/en/our-routes/special-routes/amsterdam-airport-express",
+      "https://www.gvb.nl/en/prices",
+      "https://gvb.nl/en/travel-products/tourists/amsterdam-travel-ticket"
+    ],
+    "checkedOn": "2026-10-27"
+  },
+  "prague": {
+    "airport": "PRG",
+    "options": [
+      {
+        "mode": "bus",
+        "name": "Trolleybus 59",
+        "from": "Terminal 1 and Terminal 2 stops",
+        "to": "Nádraží Veleslavín (Metro A)",
+        "ticket": {
+          "en": "PID 90-minute ticket",
+          "ka": "PID 90-წუთიანი ბილეთი"
+        },
+        "price": 50,
+        "currency": "CZK",
+        "whereToBuy": {
+          "en": "Ticket machines in the terminals and at the stops, DPP counters in the arrivals halls, the PID Lítačka app, or the contactless terminal on board.",
+          "ka": "ტერმინალებისა და გაჩერებების ბილეთის აპარატებში, DPP-ის სალაროებში ჩამოსვლის დარბაზებში, PID Lítačka აპში ან ტრანსპორტში უკონტაქტო ტერმინალზე."
+        },
+        "payment": {
+          "en": "Most machines and all on-board terminals accept contactless cards; the app price is 46 CZK.",
+          "ka": "აპარატების უმეტესობა და ყველა ბორტ-ტერმინალი უკონტაქტო ბარათს იღებს; აპში ფასი 46 CZK-ია."
+        },
+        "duration": {
+          "en": "about 15 min to Veleslavín",
+          "ka": "დაახლ. 15 წთ Veleslavín-მდე"
+        },
+        "frequency": null,
+        "url": "https://pid.cz/en/travel-information/airport-and-stations/"
+      },
+      {
+        "mode": "bus",
+        "name": "Bus 100",
+        "from": "Terminal 1 and Terminal 2 stops",
+        "to": "Zličín (Metro B)",
+        "ticket": {
+          "en": "PID 90-minute ticket",
+          "ka": "PID 90-წუთიანი ბილეთი"
+        },
+        "price": 50,
+        "currency": "CZK",
+        "whereToBuy": {
+          "en": "Ticket machines, DPP counters in the arrivals halls, the PID Lítačka app, or the contactless terminal on board.",
+          "ka": "ბილეთის აპარატებში, DPP-ის სალაროებში ჩამოსვლის დარბაზებში, PID Lítačka აპში ან ტრანსპორტში უკონტაქტო ტერმინალზე."
+        },
+        "payment": {
+          "en": "Contactless cards at machines and on-board terminals; app price 46 CZK.",
+          "ka": "უკონტაქტო ბარათი აპარატებსა და ბორტ-ტერმინალებზე; აპში ფასი 46 CZK."
+        },
+        "duration": {
+          "en": "about 18 min to Zličín",
+          "ka": "დაახლ. 18 წთ Zličín-მდე"
+        },
+        "frequency": null,
+        "url": "https://pid.cz/en/travel-information/airport-and-stations/"
+      },
+      {
+        "mode": "express_bus",
+        "name": "Airport Express (AE)",
+        "from": "Terminal 1",
+        "to": "Praha hlavní nádraží (Main Railway Station, Metro C)",
+        "ticket": {
+          "en": "AE ticket",
+          "ka": "AE-ის ბილეთი"
+        },
+        "price": 200,
+        "currency": "CZK",
+        "whereToBuy": null,
+        "payment": null,
+        "duration": {
+          "en": "about 45 min",
+          "ka": "დაახლ. 45 წთ"
+        },
+        "frequency": null,
+        "url": "https://pid.cz/en/travel-information/airport-and-stations/"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "PID 90-minute ticket",
+        "ka": "PID 90-წუთიანი ბილეთი"
+      },
+      "price": 50,
+      "currency": "CZK"
+    },
+    "dayPass": {
+      "name": {
+        "en": "PID 24-hour ticket",
+        "ka": "PID 24-საათიანი ბილეთი"
+      },
+      "price": 150,
+      "currency": "CZK"
+    },
+    "contactless": true,
+    "apps": [
+      {
+        "name": "PID Lítačka",
+        "url": "https://pid.cz/en/"
+      }
+    ],
+    "tips": [
+      {
+        "en": "Validate paper tickets when boarding; app, SMS and contactless tickets become valid after 60 seconds.",
+        "ka": "ქაღალდის ბილეთი ჩასხდომისას დაამოწმეთ; აპის, SMS-ისა და უკონტაქტო ბილეთები 60 წამში ხდება მოქმედი."
+      },
+      {
+        "en": "24- and 72-hour tickets are not valid on the AE Airport Express.",
+        "ka": "24- და 72-საათიანი ბილეთები AE Airport Express-ზე არ მოქმედებს."
+      },
+      {
+        "en": "Tickets are cheaper in the PID Lítačka app (46 CZK instead of 50 CZK).",
+        "ka": "PID Lítačka აპში ბილეთი უფრო იაფია (50-ის ნაცვლად 46 CZK)."
+      }
+    ],
+    "sources": [
+      "https://pid.cz/en/travel-information/airport-and-stations/",
+      "https://www.prg.aero/en/public-transport-buses",
+      "https://pid.cz/en/tickets-and-fare/"
+    ],
+    "checkedOn": "2026-10-27"
+  },
+  "vienna": {
+    "airport": "VIE",
+    "options": [
+      {
+        "mode": "express_bus",
+        "name": "City Airport Train (CAT), running as a bus until 31 Oct 2027",
+        "from": "Vienna Airport",
+        "to": "Wien Mitte",
+        "ticket": {
+          "en": "CAT single ticket",
+          "ka": "CAT-ის ერთჯერადი ბილეთი"
+        },
+        "price": 14.9,
+        "currency": "EUR",
+        "whereToBuy": null,
+        "payment": null,
+        "duration": null,
+        "frequency": {
+          "en": "every 12 min (7 a.m.–7 p.m.), otherwise every 15 min",
+          "ka": "ყოველ 12 წთ-ში (07:00–19:00), სხვა დროს ყოველ 15 წთ-ში"
+        },
+        "url": "https://www.cityairporttrain.com/en/catmosphere/mainlineclosure/"
+      },
+      {
+        "mode": "train",
+        "name": "S-Bahn S7",
+        "from": "Flughafen Wien station",
+        "to": "Wien St. Marx (then trams 18/71) during the core-line closure",
+        "ticket": null,
+        "price": null,
+        "currency": "EUR",
+        "whereToBuy": null,
+        "payment": null,
+        "duration": null,
+        "frequency": null,
+        "url": "https://www.oebb.at/de/fahrplan/baustelleninformation/bauarbeiten-stammstrecke"
+      },
+      {
+        "mode": "train",
+        "name": "ÖBB Railjet / Intercity",
+        "from": "Flughafen Wien station",
+        "to": "Wien Hauptbahnhof",
+        "ticket": null,
+        "price": null,
+        "currency": "EUR",
+        "whereToBuy": null,
+        "payment": null,
+        "duration": {
+          "en": "about 14 min",
+          "ka": "დაახლ. 14 წთ"
+        },
+        "frequency": null,
+        "url": "https://www.oebb.at/en/regionale-angebote/ueberregionale-angebote/anreise-zum-flughafen/anreise-wien"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "Single trip (digital, Vienna core zone)",
+        "ka": "ერთჯერადი მგზავრობა (ციფრული, Vienna core zone)"
+      },
+      "price": 3,
+      "currency": "EUR"
+    },
+    "dayPass": {
+      "name": {
+        "en": "24 Hours Vienna (digital)",
+        "ka": "24 Hours Vienna (ციფრული)"
+      },
+      "price": 9.7,
+      "currency": "EUR"
+    },
+    "contactless": null,
+    "apps": [
+      {
+        "name": "WienMobil",
+        "url": "https://www.wienerlinien.at/web/wl-en/tickets"
+      }
+    ],
+    "tips": [
+      {
+        "en": "Vienna core-zone tickets and the 24-hour ticket do not cover the trip to or from the airport.",
+        "ka": "Vienna core zone-ის ბილეთები და 24-საათიანი ბილეთი აეროპორტამდე/აეროპორტიდან მგზავრობას არ მოიცავს."
+      },
+      {
+        "en": "From 7 Sep 2026 to 31 Oct 2027 the rail line through Wien Mitte is closed, so CAT runs as a bus and S7 ends at St. Marx.",
+        "ka": "2026 წლის 7 სექტემბრიდან 2027 წლის 31 ოქტომბრამდე Wien Mitte-ზე გამავალი რკინიგზა დაკეტილია — CAT ავტობუსით მოძრაობს, S7 კი St. Marx-ზე მთავრდება."
+      },
+      {
+        "en": "Validate paper tickets before you start the journey.",
+        "ka": "ქაღალდის ბილეთი მგზავრობის დაწყებამდე დაამოწმეთ."
+      }
+    ],
+    "sources": [
+      "https://www.cityairporttrain.com/en/tickets-offers/information-about-cat-tickets",
+      "https://www.cityairporttrain.com/en/catmosphere/mainlineclosure/",
+      "https://www.oebb.at/de/fahrplan/baustelleninformation/bauarbeiten-stammstrecke",
+      "https://www.wien.gv.at/spezial/daten/presseinformationqualipaket0925.pdf",
+      "https://www.wienerlinien.at/24-stunden-wien",
+      "https://www.wienerlinien.at/web/wl-en/single-journey"
+    ],
+    "checkedOn": "2026-10-27"
+  },
+  "budapest": {
+    "airport": "BUD",
+    "options": [
+      {
+        "mode": "express_bus",
+        "name": "100E Airport Express",
+        "from": "Terminal 2",
+        "to": "Deák Ferenc tér (via Kálvin tér)",
+        "ticket": {
+          "en": "Airport shuttle bus single ticket",
+          "ka": "აეროპორტის შატლ-ავტობუსის ერთჯერადი ბილეთი"
+        },
+        "price": 2500,
+        "currency": "HUF",
+        "whereToBuy": {
+          "en": "Pay by bank card on the Pay&GO device on board, or buy in the BudapestGO app.",
+          "ka": "გადაიხადეთ საბანკო ბარათით ავტობუსში Pay&GO მოწყობილობაზე ან იყიდეთ BudapestGO აპში."
+        },
+        "payment": {
+          "en": "Contactless bank card on board (Pay&GO) or in-app payment.",
+          "ka": "უკონტაქტო საბანკო ბარათი ავტობუსში (Pay&GO) ან გადახდა აპში."
+        },
+        "duration": {
+          "en": "about 40 min",
+          "ka": "დაახლ. 40 წთ"
+        },
+        "frequency": {
+          "en": "every 6–10 min by day, every 20–40 min at night (24/7)",
+          "ka": "დღისით ყოველ 6–10 წთ-ში, ღამით ყოველ 20–40 წთ-ში (24/7)"
+        },
+        "url": "https://bkk.hu/en/travel-information/airport-express/"
+      },
+      {
+        "mode": "bus",
+        "name": "Bus 200E",
+        "from": "Terminal 2",
+        "to": "Kőbánya-Kispest (Metro M3)",
+        "ticket": {
+          "en": "Regular BKK single ticket or travelcard (the 100E ticket is not valid)",
+          "ka": "BKK-ის ჩვეულებრივი ერთჯერადი ბილეთი ან აბონემენტი (100E-ის ბილეთი არ მოქმედებს)"
+        },
+        "price": 500,
+        "currency": "HUF",
+        "whereToBuy": {
+          "en": "BudapestGO app.",
+          "ka": "BudapestGO აპში."
+        },
+        "payment": null,
+        "duration": null,
+        "frequency": null,
+        "url": "https://bkk.hu/en/visiting-budapest/247-connection-between-the-airport-and-the-city-centre/"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "Single ticket",
+        "ka": "ერთჯერადი ბილეთი"
+      },
+      "price": 500,
+      "currency": "HUF"
+    },
+    "dayPass": {
+      "name": {
+        "en": "24-hour Budapest-travelcard",
+        "ka": "24-საათიანი Budapest-travelcard"
+      },
+      "price": 2750,
+      "currency": "HUF"
+    },
+    "contactless": null,
+    "apps": [
+      {
+        "name": "BudapestGO",
+        "url": "https://bkk.hu/en/"
+      }
+    ],
+    "tips": [
+      {
+        "en": "The 100E ticket covers one trip only and is not valid for transfers to other lines.",
+        "ka": "100E-ის ბილეთი მხოლოდ ერთ მგზავრობას მოიცავს და სხვა ხაზზე გადაჯდომისთვის არ მოქმედებს."
+      },
+      {
+        "en": "Travelcard holders can buy a 1,000 HUF 100E add-on ticket in the BudapestGO app instead.",
+        "ka": "აბონემენტის მფლობელებს BudapestGO აპში შეუძლიათ 100E-ის 1 000 HUF-იანი დამატებითი ბილეთის ყიდვა."
+      },
+      {
+        "en": "A single ticket bought on the spot costs more (700 HUF) than a pre-bought one (500 HUF).",
+        "ka": "ადგილზე ნაყიდი ერთჯერადი ბილეთი (700 HUF) წინასწარ ნაყიდზე (500 HUF) ძვირია."
+      }
+    ],
+    "sources": [
+      "https://bkk.hu/en/tickets-and-passes/prices/airport-shuttle-bus-single-ticket/",
+      "https://bkk.hu/en/travel-information/airport-express/",
+      "https://bkk.hu/en/tickets-and-passes/prices/",
+      "https://bkk.hu/en/tickets-and-passes/prices/24-hour-budapest-travelcard/",
+      "https://www.bud.hu/en/parking-transport/transportation/public-transportation/public-transportation-by-bus/100e-airport-express-your-direct-link-between-liszt-ferenc-international-airport-and-budapest-city-centre.html"
+    ],
+    "checkedOn": "2026-10-27"
+  },
+  "berlin": {
+    "airport": "BER",
+    "options": [
+      {
+        "mode": "train",
+        "name": "FEX (Airport Express)",
+        "from": "Flughafen BER Terminal 1-2 station",
+        "to": "Südkreuz, Potsdamer Platz, Berlin Hauptbahnhof",
+        "ticket": {
+          "en": "VBB single ticket Berlin ABC",
+          "ka": "VBB-ის ერთჯერადი ბილეთი Berlin ABC"
+        },
+        "price": 5,
+        "currency": "EUR",
+        "whereToBuy": {
+          "en": "Ticket machines in the terminal and station, the ticket shop on Terminal 1 Level E0, or the VBB, BVG or S-Bahn app.",
+          "ka": "ტერმინალისა და სადგურის ბილეთის აპარატებში, Terminal 1-ის E0 დონის სალაროში, ან VBB, BVG ან S-Bahn-ის აპში."
+        },
+        "payment": null,
+        "duration": {
+          "en": "about 23 min to Hauptbahnhof",
+          "ka": "დაახლ. 23 წთ Hauptbahnhof-მდე"
+        },
+        "frequency": {
+          "en": "every 15 min, about 4 a.m.–1 a.m.",
+          "ka": "ყოველ 15 წთ-ში, დაახლ. 04:00–01:00"
+        },
+        "url": "https://ber.berlin-airport.de/en/orientation/getting-here/public-transport.html"
+      },
+      {
+        "mode": "train",
+        "name": "S-Bahn S9",
+        "from": "Flughafen BER Terminal 1-2 station",
+        "to": "Alexanderplatz, Friedrichstraße, Berlin Hauptbahnhof",
+        "ticket": {
+          "en": "VBB single ticket Berlin ABC",
+          "ka": "VBB-ის ერთჯერადი ბილეთი Berlin ABC"
+        },
+        "price": 5,
+        "currency": "EUR",
+        "whereToBuy": {
+          "en": "Ticket machines in the terminal and station, or the VBB, BVG or S-Bahn app.",
+          "ka": "ტერმინალისა და სადგურის ბილეთის აპარატებში, ან VBB, BVG ან S-Bahn-ის აპში."
+        },
+        "payment": null,
+        "duration": null,
+        "frequency": {
+          "en": "every 20 min",
+          "ka": "ყოველ 20 წთ-ში"
+        },
+        "url": "https://ber.berlin-airport.de/en/orientation/getting-here/public-transport.html"
+      },
+      {
+        "mode": "express_bus",
+        "name": "Bus X7",
+        "from": "BER Terminal 1-2",
+        "to": "U Rudow (U7 underground)",
+        "ticket": {
+          "en": "VBB single ticket Berlin ABC",
+          "ka": "VBB-ის ერთჯერადი ბილეთი Berlin ABC"
+        },
+        "price": 5,
+        "currency": "EUR",
+        "whereToBuy": {
+          "en": "Ticket machines in the terminal, or the VBB or BVG app.",
+          "ka": "ტერმინალის ბილეთის აპარატებში, ან VBB ან BVG-ის აპში."
+        },
+        "payment": null,
+        "duration": null,
+        "frequency": {
+          "en": "every 5–10 min",
+          "ka": "ყოველ 5–10 წთ-ში"
+        },
+        "url": "https://ber.berlin-airport.de/en/orientation/getting-here/public-transport.html"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "Single ticket Berlin AB",
+        "ka": "ერთჯერადი ბილეთი Berlin AB"
+      },
+      "price": 4,
+      "currency": "EUR"
+    },
+    "dayPass": {
+      "name": {
+        "en": "24-hour ticket Berlin ABC (includes the airport)",
+        "ka": "24-საათიანი ბილეთი Berlin ABC (აეროპორტის ჩათვლით)"
+      },
+      "price": 12.9,
+      "currency": "EUR"
+    },
+    "contactless": null,
+    "apps": [
+      {
+        "name": "BVG app",
+        "url": "https://www.bvg.de/en"
+      }
+    ],
+    "tips": [
+      {
+        "en": "BER is in fare zone C, so you need an ABC ticket; an AB ticket is not enough.",
+        "ka": "BER ტარიფის C ზონაშია, ამიტომ ABC ბილეთი გჭირდებათ — AB არ კმარა."
+      },
+      {
+        "en": "Validate paper tickets from machines before starting your journey.",
+        "ka": "აპარატიდან ნაყიდი ქაღალდის ბილეთი მგზავრობის დაწყებამდე დაამოწმეთ."
+      },
+      {
+        "en": "There is no airport surcharge: FEX, S-Bahn and buses all use the regular ABC fare.",
+        "ka": "აეროპორტის დამატებითი საფასური არ არის — FEX, S-Bahn და ავტობუსები ჩვეულებრივი ABC ტარიფით მოძრაობს."
+      }
+    ],
+    "sources": [
+      "https://ber.berlin-airport.de/en/orientation/getting-here/public-transport.html",
+      "https://www.vbb.de/news/neue-fahrpreise-im-vbb-ab-1-januar-2026/",
+      "https://www.bvg.de/en/subscriptions-and-tickets/all-tickets/single-tickets/single-ticket"
+    ],
+    "checkedOn": "2026-10-27"
+  },
+  "lisbon": {
+    "airport": "LIS",
+    "options": [
+      {
+        "mode": "metro",
+        "name": "Metro Red line (Linha Vermelha)",
+        "from": "Aeroporto metro station (Terminal 1)",
+        "to": "Saldanha / São Sebastião (change for other lines to the centre)",
+        "ticket": {
+          "en": "Carris/Metro ticket on a navegante occasional card",
+          "ka": "Carris/Metro ბილეთი navegante occasional ბარათზე"
+        },
+        "price": 1.9,
+        "currency": "EUR",
+        "whereToBuy": {
+          "en": "Ticket vending machines or the ticket office at Aeroporto station, or tap a contactless bank card at the gate.",
+          "ka": "Aeroporto-ს სადგურის ბილეთის აპარატებში ან სალაროში, ან დაადეთ უკონტაქტო საბანკო ბარათი ტურნიკეტს."
+        },
+        "payment": {
+          "en": "Cash or cards at machines; a contactless bank card at the gates costs €1.92 per metro trip.",
+          "ka": "ნაღდი ან ბარათი აპარატებში; ტურნიკეტთან უკონტაქტო ბარათით მეტროს ერთი მგზავრობა €1.92 ღირს."
+        },
+        "duration": {
+          "en": "about 20 min to Saldanha",
+          "ka": "დაახლ. 20 წთ Saldanha-მდე"
+        },
+        "frequency": {
+          "en": "every 6–10 min on weekdays",
+          "ka": "სამუშაო დღეებში ყოველ 6–10 წთ-ში"
+        },
+        "url": "https://www.metrolisboa.pt/en/buy/"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "Carris/Metro ticket (60 min)",
+        "ka": "Carris/Metro ბილეთი (60 წთ)"
+      },
+      "price": 1.9,
+      "currency": "EUR"
+    },
+    "dayPass": {
+      "name": {
+        "en": "24h Carris/Metro ticket",
+        "ka": "24-საათიანი Carris/Metro ბილეთი"
+      },
+      "price": 7.25,
+      "currency": "EUR"
+    },
+    "contactless": true,
+    "tips": [
+      {
+        "en": "The reusable navegante occasional card costs €0.50 and can be topped up for a year.",
+        "ka": "მრავალჯერადი navegante occasional ბარათი €0.50 ღირს და ერთი წლის განმავლობაში შეივსება."
+      },
+      {
+        "en": "One contactless bank card covers only one person; group use is not allowed.",
+        "ka": "ერთი უკონტაქტო საბანკო ბარათი მხოლოდ ერთ მგზავრს ემსახურება — ჯგუფურად გამოყენება არ შეიძლება."
+      },
+      {
+        "en": "Buying a bus ticket from the driver costs more (€2.30).",
+        "ka": "ავტობუსში მძღოლთან ნაყიდი ბილეთი უფრო ძვირია (€2.30)."
+      }
+    ],
+    "sources": [
+      "https://www.metrolisboa.pt/en/buy/",
+      "https://www.metrolisboa.pt/en/travel/timetables-and-frequency/",
+      "https://www.carris.pt/en/discover/prices-table-2026/",
+      "https://www.lisbonairport.pt/en/lis/access-parking/getting-to-and-from-the-airport/public-transportation"
+    ],
+    "checkedOn": "2026-10-27",
+    "apps": []
+  },
+  "athens": {
+    "airport": "ATH",
+    "options": [
+      {
+        "mode": "metro",
+        "name": "Metro Line 3",
+        "from": "Airport metro station",
+        "to": "Syntagma",
+        "ticket": {
+          "en": "Metro airport ticket (one way)",
+          "ka": "მეტროს აეროპორტის ბილეთი (ცალმხრივი)"
+        },
+        "price": 9,
+        "currency": "EUR",
+        "whereToBuy": {
+          "en": "Ticket machines at the airport station, or tap a contactless bank card on the validator.",
+          "ka": "აეროპორტის სადგურის ბილეთის აპარატებში, ან დაადეთ უკონტაქტო საბანკო ბარათი ვალიდატორს."
+        },
+        "payment": {
+          "en": "Visa/Mastercard contactless, Apple Pay or Google Pay at the validators.",
+          "ka": "Visa/Mastercard უკონტაქტო ბარათი, Apple Pay ან Google Pay ვალიდატორთან."
+        },
+        "duration": null,
+        "frequency": null,
+        "url": "https://www.oasa.gr/en/visit-athens/metro-line-3-to-airport/"
+      },
+      {
+        "mode": "express_bus",
+        "name": "X95 Airport Express",
+        "from": "Athens Airport arrivals",
+        "to": "Syntagma",
+        "ticket": {
+          "en": "Airport Express bus ticket",
+          "ka": "Airport Express ავტობუსის ბილეთი"
+        },
+        "price": 5.5,
+        "currency": "EUR",
+        "whereToBuy": {
+          "en": "Tap a contactless card on the blue validator when boarding, or buy a ticket beforehand.",
+          "ka": "ჩასხდომისას დაადეთ უკონტაქტო ბარათი ლურჯ ვალიდატორს, ან ბილეთი წინასწარ იყიდეთ."
+        },
+        "payment": {
+          "en": "Contactless bank card or mobile wallet on board.",
+          "ka": "უკონტაქტო საბანკო ბარათი ან მობილური საფულე ავტობუსში."
+        },
+        "duration": {
+          "en": "about 60 min, depending on traffic",
+          "ka": "დაახლ. 60 წთ, საცობზეა დამოკიდებული"
+        },
+        "frequency": {
+          "en": "runs 24 hours",
+          "ka": "მოძრაობს 24 საათი"
+        },
+        "url": "https://www.oasa.gr/en/visit-athens/airport-express-bus-lines/"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "90-minute ticket",
+        "ka": "90-წუთიანი ბილეთი"
+      },
+      "price": 1.2,
+      "currency": "EUR"
+    },
+    "dayPass": {
+      "name": {
+        "en": "24-hour ticket",
+        "ka": "24-საათიანი ბილეთი"
+      },
+      "price": 4.1,
+      "currency": "EUR"
+    },
+    "contactless": true,
+    "tips": [
+      {
+        "en": "The metro airport ticket is valid for 90 minutes on all OASA transport except the Airport Express buses and X80.",
+        "ka": "მეტროს აეროპორტის ბილეთი 90 წუთი მოქმედებს OASA-ს ყველა ტრანსპორტზე, გარდა Airport Express ავტობუსებისა და X80-ისა."
+      },
+      {
+        "en": "Tap in and out with the same card or device so the daily €4.10 cap applies.",
+        "ka": "შესვლისა და გასვლისას ერთი და იგივე ბარათი ან მოწყობილობა გამოიყენეთ, რომ დღიური €4.10-იანი ლიმიტი იმოქმედოს."
+      },
+      {
+        "en": "The 3-day tourist ticket (€20) is an option for longer stays.",
+        "ka": "ხანგრძლივი ვიზიტისთვის არსებობს 3-დღიანი ტურისტული ბილეთი (€20)."
+      }
+    ],
+    "sources": [
+      "https://www.oasa.gr/en/tickets/prices-of-products/",
+      "https://www.oasa.gr/en/tickets/products/contactless-payments-with-bank-cards/",
+      "https://www.oasa.gr/en/visit-athens/metro-line-3-to-airport/",
+      "https://www.oasa.gr/en/visit-athens/airport-express-bus-lines/"
+    ],
+    "checkedOn": "2026-10-27",
+    "apps": []
+  },
+  "milan": {
+    "airport": "MXP",
+    "options": [
+      {
+        "mode": "train",
+        "name": "Malpensa Express",
+        "from": "Malpensa Terminal 1 / Terminal 2 railway station",
+        "to": "Milano Cadorna / Milano Centrale (via Porta Garibaldi)",
+        "ticket": {
+          "en": "Malpensa Express airport single ticket (Milan–Malpensa).",
+          "ka": "Malpensa Express-ის აეროპორტის ერთჯერადი ბილეთი (Milano–Malpensa)."
+        },
+        "price": 15,
+        "currency": "EUR",
+        "whereToBuy": {
+          "en": "Staffed or self-service ticket offices at Terminal 1 and Terminal 2, the Trenord app or online.",
+          "ka": "Terminal 1-სა და Terminal 2-ში მოლარიან ან ავტომატურ სალაროებში, Trenord-ის აპში ან ონლაინ."
+        },
+        "payment": {
+          "en": "Cash or card at ticket offices; with Pay&Go you can tap a contactless bank card or phone at the station turnstiles.",
+          "ka": "სალაროში ნაღდი ან ბარათით; Pay&Go-ით შეგიძლიათ უკონტაქტო საბანკო ბარათი ან ტელეფონი სადგურის ტურნიკეტზე მიადოთ."
+        },
+        "duration": {
+          "en": "About 37 minutes to Cadorna and 51 minutes to Centrale.",
+          "ka": "Cadorna-მდე დაახლოებით 37 წუთი, Centrale-მდე კი 51 წუთი."
+        },
+        "frequency": {
+          "en": "Every 30 minutes on each route (Cadorna and Centrale).",
+          "ka": "თითოეულ მარშრუტზე (Cadorna და Centrale) ყოველ 30 წუთში."
+        },
+        "url": "https://www.trenord.it/linee-e-orari/il-nostro-servizio/malpensa-express/"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "ATM ordinary ticket Mi1–Mi3 (90 minutes)",
+        "ka": "ATM-ის ჩვეულებრივი ბილეთი Mi1–Mi3 (90 წუთი)"
+      },
+      "price": 2.2,
+      "currency": "EUR"
+    },
+    "dayPass": {
+      "name": {
+        "en": "ATM daily ticket (24 hours)",
+        "ka": "ATM-ის დღიური ბილეთი (24 საათი)"
+      },
+      "price": 7.6,
+      "currency": "EUR"
+    },
+    "contactless": true,
+    "apps": [
+      {
+        "name": "Trenord",
+        "url": "https://www.trenord.it/biglietti/dove-acquistare/app-trenord/"
+      },
+      {
+        "name": "ATM Milano",
+        "url": "https://www.atm.it/it/ViaggiaConNoi/pagamenti_servizi_digitali/Pagine/biglietto_Contactless.aspx"
+      }
+    ],
+    "tips": [
+      {
+        "en": "With Pay&Go, tap the same card at the turnstile both at Malpensa and at your arrival station.",
+        "ka": "Pay&Go-ის გამოყენებისას ერთი და იგივე ბარათი მიადეთ ტურნიკეტს როგორც Malpensa-ში, ისე დანიშნულების სადგურზე."
+      },
+      {
+        "en": "On the Milan metro, tap a contactless card on entry and exit at the orange turnstiles; ATM caps the day at the daily ticket price.",
+        "ka": "მილანის მეტროში უკონტაქტო ბარათი ნარინჯისფერ ტურნიკეტებს შესვლისას და გასვლისას მიადეთ; ATM დღის ჯამს დღიური ბილეთის ფასით ზღუდავს."
+      }
+    ],
+    "sources": [
+      "https://www.trenord.it/linee-e-orari/il-nostro-servizio/malpensa-express/",
+      "https://www.trenord.it/biglietti/titoli-di-viaggio/malpensa-express/",
+      "https://www.trenord.it/biglietti/dove-acquistare/paygo/",
+      "https://www.atm.it/it/ViaggiaConNoi/Documents/TARIFFE%20ATM.pdf",
+      "https://www.atm.it/it/ViaggiaConNoi/pagamenti_servizi_digitali/Pagine/biglietto_Contactless.aspx"
+    ],
+    "checkedOn": "2026-10-27"
+  },
+  "madrid": {
+    "airport": "MAD",
+    "options": [
+      {
+        "mode": "metro",
+        "name": "Metro Line 8",
+        "from": "Aeropuerto T1-T2-T3 / Aeropuerto T4",
+        "to": "Nuevos Ministerios",
+        "ticket": {
+          "en": "Single Metro Zone A ticket (€1.50–2.00 by distance) plus the €3 airport supplement; paying by bank card the Zone A single is €1.50.",
+          "ka": "Metro Zone A-ს ერთჯერადი ბილეთი (მანძილის მიხედვით €1.50–2.00) და აეროპორტის €3-იანი დანამატი; საბანკო ბარათით გადახდისას Zone A-ს ბილეთი €1.50 ღირს."
+        },
+        "price": null,
+        "currency": "EUR",
+        "whereToBuy": {
+          "en": "Vending machines at the airport Metro stations (a Multi card costs €2.50), or tap a bank card at the turnstiles.",
+          "ka": "აეროპორტის მეტროს სადგურების ავტომატებში (Multi ბარათი €2.50 ღირს), ან საბანკო ბარათი პირდაპირ ტურნიკეტზე მიადეთ."
+        },
+        "payment": {
+          "en": "Since 1 June 2026 contactless credit/debit cards and phones work directly at Metro turnstiles for single trips.",
+          "ka": "2026 წლის 1 ივნისიდან ერთჯერადი მგზავრობისთვის უკონტაქტო საკრედიტო/სადებეტო ბარათები და ტელეფონები პირდაპირ მეტროს ტურნიკეტებზე მუშაობს."
+        },
+        "duration": null,
+        "frequency": null,
+        "url": "https://www.metromadrid.es/en/viaja-en-metro/titulos-y-tarifas/aeropuerto"
+      },
+      {
+        "mode": "express_bus",
+        "name": "EMT Exprés Aeropuerto (203)",
+        "from": "Terminals T1, T2 and T4",
+        "to": "Plaza de Cibeles / Atocha",
+        "ticket": {
+          "en": "Exprés Aeropuerto single fare.",
+          "ka": "Exprés Aeropuerto-ს ერთიანი ტარიფი."
+        },
+        "price": 5,
+        "currency": "EUR",
+        "whereToBuy": {
+          "en": "On board from the driver.",
+          "ka": "ავტობუსში, მძღოლთან."
+        },
+        "payment": {
+          "en": "Cash (change up to €20), bank card or mobile phone.",
+          "ka": "ნაღდი (ხურდა მაქსიმუმ €20-მდე), საბანკო ბარათი ან მობილური ტელეფონი."
+        },
+        "duration": {
+          "en": "About 30 minutes from Atocha to T1, 35 to T2 and 40 to T4.",
+          "ka": "Atocha-დან T1-მდე დაახლოებით 30 წუთი, T2-მდე 35, T4-მდე კი 40 წუთი."
+        },
+        "frequency": {
+          "en": "Every 15–20 minutes by day and every 35 minutes at night.",
+          "ka": "დღისით ყოველ 15–20 წუთში, ღამით კი ყოველ 35 წუთში."
+        },
+        "url": "https://www.emtmadrid.es/Aeropuerto"
+      },
+      {
+        "mode": "train",
+        "name": "Renfe Cercanías C1",
+        "from": "Aeropuerto T4 station",
+        "to": "Chamartín / Atocha / Príncipe Pío",
+        "ticket": {
+          "en": "Renfe Cercanías single ticket priced by zones.",
+          "ka": "Renfe Cercanías-ის ერთჯერადი ბილეთი, ფასი ზონების მიხედვითაა."
+        },
+        "price": null,
+        "currency": "EUR",
+        "whereToBuy": null,
+        "payment": null,
+        "duration": null,
+        "frequency": null,
+        "url": "https://www.crtm.es/billetes-transporte-publico-aeropuerto-madrid"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "Single ticket (Metro Zone A by bank card / EMT bus)",
+        "ka": "ერთჯერადი ბილეთი (Metro Zone A საბანკო ბარათით / EMT ავტობუსი)"
+      },
+      "price": 1.5,
+      "currency": "EUR"
+    },
+    "dayPass": {
+      "name": {
+        "en": "Tourist Travel Pass, 1 day, Zone A",
+        "ka": "ტურისტული სამგზავრო ბილეთი, 1 დღე, Zone A"
+      },
+      "price": 8.4,
+      "currency": "EUR"
+    },
+    "contactless": true,
+    "tips": [
+      {
+        "en": "The airport supplement is valid only on the day of purchase.",
+        "ka": "აეროპორტის დანამატი მხოლოდ შეძენის დღეს მოქმედებს."
+      },
+      {
+        "en": "Use the same bank card or phone at entry and exit, otherwise the airport supplement may be charged incorrectly.",
+        "ka": "შესვლისას და გასვლისას ერთი და იგივე საბანკო ბარათი ან ტელეფონი გამოიყენეთ, თორემ აეროპორტის დანამატი შეიძლება არასწორად ჩამოგეჭრათ."
+      },
+      {
+        "en": "Tourist Travel Passes skip the Metro supplement but are not valid on the Exprés Aeropuerto bus.",
+        "ka": "ტურისტულ ბილეთზე მეტროს დანამატი არ მოითხოვება, მაგრამ Exprés Aeropuerto ავტობუსზე ის არ მოქმედებს."
+      }
+    ],
+    "sources": [
+      "https://www.metromadrid.es/en/viaja-en-metro/titulos-y-tarifas/aeropuerto",
+      "https://www.metromadrid.es/en/travel-in-the-metro/passenger-regulations/rules-for-the-use-of-emv-compliant-contactless-bank-cards",
+      "https://www.emtmadrid.es/Aeropuerto",
+      "https://www.crtm.es/billetes-transporte-publico-aeropuerto-madrid"
+    ],
+    "checkedOn": "2026-10-27",
+    "apps": []
+  },
+  "munich": {
+    "airport": "MUC",
+    "options": [
+      {
+        "mode": "train",
+        "name": "S-Bahn S1 / S8",
+        "from": "Munich Airport (Flughafen München) station",
+        "to": "Hauptbahnhof / Marienplatz",
+        "ticket": {
+          "en": "Airport-City-Day-Ticket (zones M–5, unlimited travel until 6 am next day); a single ticket for zones M–5 also works.",
+          "ka": "Airport-City-Day-Ticket (ზონები M–5, შეუზღუდავი მგზავრობა მომდევნო დღის 6 საათამდე); M–5 ზონების ერთჯერადი ბილეთიც გამოდგება."
+        },
+        "price": 17.5,
+        "currency": "EUR",
+        "whereToBuy": {
+          "en": "Ticket machines at the airport, the MVV app (mobile ticket) or online.",
+          "ka": "აეროპორტის ბილეთების ავტომატებში, MVV-ის აპში (მობილური ბილეთი) ან ონლაინ."
+        },
+        "payment": {
+          "en": "Cash, debit/credit card, Apple Pay, Google Pay or PayPal.",
+          "ka": "ნაღდი, სადებეტო/საკრედიტო ბარათი, Apple Pay, Google Pay ან PayPal."
+        },
+        "duration": {
+          "en": "About 40 minutes to Hauptbahnhof.",
+          "ka": "Hauptbahnhof-მდე დაახლოებით 40 წუთი."
+        },
+        "frequency": {
+          "en": "S1 and S8 alternate every 10 minutes.",
+          "ka": "S1 და S8 მონაცვლეობით ყოველ 10 წუთში დადის."
+        },
+        "url": "https://www.mvv-muenchen.de/en/tickets-subscriptions-prices/airport-city-day-ticket/"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "MVV single ticket, Zone M",
+        "ka": "MVV-ის ერთჯერადი ბილეთი, Zone M"
+      },
+      "price": 4.2,
+      "currency": "EUR"
+    },
+    "dayPass": {
+      "name": {
+        "en": "MVV single-day ticket, Zone M",
+        "ka": "MVV-ის ერთდღიანი ბილეთი, Zone M"
+      },
+      "price": 10.1,
+      "currency": "EUR"
+    },
+    "contactless": null,
+    "apps": [
+      {
+        "name": "MVV App",
+        "url": "https://www.mvv-muenchen.de/en/"
+      }
+    ],
+    "tips": [
+      {
+        "en": "Paper tickets must be stamped before the journey unless they were already stamped at purchase.",
+        "ka": "ქაღალდის ბილეთი მგზავრობამდე უნდა დაკომპოსტროთ, თუ ყიდვისას უკვე არ არის დაკომპოსტრებული."
+      },
+      {
+        "en": "The airport is in zone 5, so a Zone M ticket alone is not enough.",
+        "ka": "აეროპორტი მე-5 ზონაშია, ამიტომ მხოლოდ Zone M-ის ბილეთი საკმარისი არ არის."
+      }
+    ],
+    "sources": [
+      "https://www.mvv-muenchen.de/en/tickets-subscriptions-prices/airport-city-day-ticket/",
+      "https://www.mvv-muenchen.de/en/tickets-subscriptions-prices/all-about-tickets/ticket-and-price-guide/",
+      "https://www.mvv-muenchen.de/en/tickets-subscriptions-prices/single-ticket/",
+      "https://www.s-bahn-muenchen.de/en/travel/airport"
+    ],
+    "checkedOn": "2026-10-27"
+  },
+  "warsaw": {
+    "airport": "WAW",
+    "options": [
+      {
+        "mode": "train",
+        "name": "SKM S2 / S3, KM RL",
+        "from": "Warszawa Lotnisko Chopina station (under the terminal)",
+        "to": "Warszawa Śródmieście / Centralna",
+        "ticket": {
+          "en": "At least a 75-minute public transport ticket (zone 1).",
+          "ka": "მინიმუმ 75-წუთიანი საზოგადოებრივი ტრანსპორტის ბილეთი (ზონა 1)."
+        },
+        "price": 4.4,
+        "currency": "PLN",
+        "whereToBuy": {
+          "en": "Ticket machines at the railway station entrance and bus stops, machines on SKM trains, or a mobile app.",
+          "ka": "რკინიგზის სადგურის შესასვლელთან და გაჩერებებზე არსებულ ავტომატებში, SKM-ის მატარებლების ავტომატებში ან მობილურ აპში."
+        },
+        "payment": {
+          "en": "Ticket machines on board accept cards only.",
+          "ka": "ვაგონებში არსებული ავტომატები მხოლოდ ბარათს იღებს."
+        },
+        "duration": {
+          "en": "About 30 minutes to the Centrum stop.",
+          "ka": "Centrum-ის გაჩერებამდე დაახლოებით 30 წუთი."
+        },
+        "frequency": null,
+        "url": "https://www.lotnisko-chopina.pl/en/public-transport.html"
+      },
+      {
+        "mode": "bus",
+        "name": "Bus 175",
+        "from": "Lotnisko Chopina bus stop",
+        "to": "Pl. Piłsudskiego (city centre)",
+        "ticket": {
+          "en": "At least a 75-minute public transport ticket (zone 1).",
+          "ka": "მინიმუმ 75-წუთიანი საზოგადოებრივი ტრანსპორტის ბილეთი (ზონა 1)."
+        },
+        "price": 4.4,
+        "currency": "PLN",
+        "whereToBuy": {
+          "en": "Ticket machines at the bus stop or inside the bus.",
+          "ka": "გაჩერების ავტომატში ან ავტობუსის შიგნით."
+        },
+        "payment": {
+          "en": "Card payment in vehicle ticket machines.",
+          "ka": "ტრანსპორტში არსებულ ავტომატებში ბარათით გადახდა."
+        },
+        "duration": {
+          "en": "About 30 minutes to the centre.",
+          "ka": "ცენტრამდე დაახლოებით 30 წუთი."
+        },
+        "frequency": {
+          "en": "Operates daily.",
+          "ka": "დადის ყოველდღე."
+        },
+        "url": "https://www.lotnisko-chopina.pl/en/public-transport.html"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "75-minute ticket, zone 1",
+        "ka": "75-წუთიანი ბილეთი, ზონა 1"
+      },
+      "price": 4.4,
+      "currency": "PLN"
+    },
+    "dayPass": {
+      "name": {
+        "en": "24-hour ticket, zone 1",
+        "ka": "24-საათიანი ბილეთი, ზონა 1"
+      },
+      "price": 15,
+      "currency": "PLN"
+    },
+    "contactless": null,
+    "tips": [
+      {
+        "en": "Tickets bought in a vehicle machine are already validated; validate other paper tickets right after boarding.",
+        "ka": "ტრანსპორტის ავტომატში ნაყიდი ბილეთი უკვე ვალიდირებულია; სხვა ქაღალდის ბილეთი ჩასხდომისთანავე დაავალიდირეთ."
+      },
+      {
+        "en": "The airport recommends at least a 75-minute ticket for the trip to the centre.",
+        "ka": "აეროპორტი ცენტრამდე მგზავრობისთვის მინიმუმ 75-წუთიან ბილეთს გირჩევთ."
+      }
+    ],
+    "sources": [
+      "https://www.lotnisko-chopina.pl/en/public-transport.html",
+      "https://www.wtp.waw.pl/en/ticket-tariff/",
+      "https://www.wtp.waw.pl/en/public-transport-step-by-step/airports-transport/",
+      "https://skm.warszawa.pl/en/faq-2/"
+    ],
+    "checkedOn": "2026-10-27",
+    "apps": []
+  },
+  "krakow": {
+    "airport": "KRK",
+    "options": [
+      {
+        "mode": "train",
+        "name": "Koleje Małopolskie (Kraków Lotnisko – Kraków Główny)",
+        "from": "Kraków Lotnisko station (covered walkway from the terminal)",
+        "to": "Kraków Główny",
+        "ticket": {
+          "en": "Koleje Małopolskie single ticket Kraków Lotnisko – Kraków Główny.",
+          "ka": "Koleje Małopolskie-ის ერთჯერადი ბილეთი Kraków Lotnisko – Kraków Główny."
+        },
+        "price": 20,
+        "currency": "PLN",
+        "whereToBuy": {
+          "en": "Ticket machine on the train or the ticket point on the Kraków Lotnisko platform (08:10–19:45).",
+          "ka": "მატარებელში არსებულ ავტომატში ან Kraków Lotnisko-ს ბაქანზე მდებარე სალაროში (08:10–19:45)."
+        },
+        "payment": {
+          "en": "Cash or card.",
+          "ka": "ნაღდი ან ბარათი."
+        },
+        "duration": {
+          "en": "About 17 minutes.",
+          "ka": "დაახლოებით 17 წუთი."
+        },
+        "frequency": null,
+        "url": "https://krakowairport.pl/pl/dojazd-pociag"
+      },
+      {
+        "mode": "bus",
+        "name": "Bus 209 (night bus 902)",
+        "from": "Bus stop next to the passenger terminal",
+        "to": null,
+        "ticket": {
+          "en": "KMK time ticket valid in zones I+II+III (15, 30, 60 or 90 minutes).",
+          "ka": "KMK-ის დროითი ბილეთი, მოქმედებს I+II+III ზონებში (15, 30, 60 ან 90 წუთი)."
+        },
+        "price": null,
+        "currency": "PLN",
+        "whereToBuy": {
+          "en": "Ticket machine at the bus stop or ticket machines inside the bus.",
+          "ka": "გაჩერების ავტომატში ან ავტობუსში არსებულ ავტომატებში."
+        },
+        "payment": {
+          "en": "Cash or card at the stop machine; card only on board.",
+          "ka": "გაჩერების ავტომატში ნაღდი ან ბარათი; ავტობუსში მხოლოდ ბარათი."
+        },
+        "duration": null,
+        "frequency": null,
+        "url": "https://krakowairport.pl/pl/pasazer/transport/dojazd/z-do-krakow-airport/autobus-miejski"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "KMK single-trip / 30-minute ticket, zones I+II+III",
+        "ka": "KMK-ის ერთჯერადი / 30-წუთიანი ბილეთი, ზონები I+II+III"
+      },
+      "price": 6,
+      "currency": "PLN"
+    },
+    "dayPass": {
+      "name": {
+        "en": "KMK 24-hour ticket, zone I",
+        "ka": "KMK-ის 24-საათიანი ბილეთი, ზონა I"
+      },
+      "price": 20,
+      "currency": "PLN"
+    },
+    "contactless": null,
+    "tips": [
+      {
+        "en": "Validate a paper KMK ticket in the validator as soon as you board.",
+        "ka": "KMK-ის ქაღალდის ბილეთი ჩასხდომისთანავე ვალიდატორში დაავალიდირეთ."
+      },
+      {
+        "en": "The 70-minute KMK+KMŁ combined ticket does not cover the Kraków Airport train stop.",
+        "ka": "70-წუთიანი KMK+KMŁ კომბინირებული ბილეთი Kraków Airport-ის მატარებლის გაჩერებაზე არ მოქმედებს."
+      }
+    ],
+    "sources": [
+      "https://krakowairport.pl/pl/dojazd-pociag",
+      "https://krakowairport.pl/pl/pasazer/transport/dojazd/z-do-krakow-airport/autobus-miejski",
+      "https://kolejemalopolskie.com.pl/pl/rozklad-jazdy-kml/krakow-lotnisko/krakow-glowny",
+      "https://mpk.krakow.pl/en/kmk-tickets"
+    ],
+    "checkedOn": "2026-10-27",
+    "apps": []
+  },
+  "istanbul": {
+    "airport": "IST",
+    "options": [
+      {
+        "mode": "metro",
+        "name": "M11 Gayrettepe – İstanbul Havalimanı – Halkalı",
+        "from": "Istanbul Airport metro station",
+        "to": "Gayrettepe / Kağıthane / Halkalı",
+        "ticket": null,
+        "price": null,
+        "currency": "TRY",
+        "whereToBuy": null,
+        "payment": null,
+        "duration": null,
+        "frequency": null,
+        "url": "https://www.istairport.com/en/airport/airport-transportation/urban-transportation/public-transportation"
+      },
+      {
+        "mode": "express_bus",
+        "name": "Havaist",
+        "from": "Transportation floor -2",
+        "to": "11 routes to the city",
+        "ticket": null,
+        "price": null,
+        "currency": "TRY",
+        "whereToBuy": null,
+        "payment": null,
+        "duration": null,
+        "frequency": null,
+        "url": "https://www.istairport.com/en/airport/airport-transportation/urban-transportation/public-transportation"
+      },
+      {
+        "mode": "bus",
+        "name": "İETT airport buses",
+        "from": "Transportation floor -2",
+        "to": "5 routes to the city",
+        "ticket": null,
+        "price": null,
+        "currency": "TRY",
+        "whereToBuy": null,
+        "payment": null,
+        "duration": null,
+        "frequency": null,
+        "url": "https://www.istairport.com/en/airport/airport-transportation/urban-transportation/public-transportation"
+      }
+    ],
+    "contactless": null,
+    "tips": [
+      {
+        "en": "Since 20 June 2026 the M11 line also runs from the airport to Halkalı, a major rail hub.",
+        "ka": "2026 წლის 20 ივნისიდან M11 ხაზი აეროპორტიდან Halkalı-მდეც დადის, რომელიც მსხვილი სარკინიგზო კვანძია."
+      },
+      {
+        "en": "Havaist and İETT buses board on transportation floor -2.",
+        "ka": "Havaist-ისა და İETT-ის ავტობუსებში ჩასხდომა ტრანსპორტის -2 სართულზეა."
+      }
+    ],
+    "sources": [
+      "https://www.istairport.com/en/airport/airport-transportation/urban-transportation/public-transportation"
+    ],
+    "checkedOn": "2026-10-27",
+    "apps": []
+  },
+  "copenhagen": {
+    "airport": "CPH",
+    "options": [
+      {
+        "mode": "metro",
+        "name": "Metro M2",
+        "from": "Københavns Lufthavn metro station (Terminal 3)",
+        "to": "Kongens Nytorv / Nørreport",
+        "ticket": {
+          "en": "3-zone single ticket (valid 1 hour 30 minutes).",
+          "ka": "3-ზონიანი ერთჯერადი ბილეთი (მოქმედებს 1 საათი და 30 წუთი)."
+        },
+        "price": 30,
+        "currency": "DKK",
+        "whereToBuy": {
+          "en": "Ticket machines at the metro station or the Rejsebillet app.",
+          "ka": "მეტროს სადგურის ავტომატებში ან Rejsebillet-ის აპში."
+        },
+        "payment": null,
+        "duration": {
+          "en": "About 14 minutes to the city centre.",
+          "ka": "ქალაქის ცენტრამდე დაახლოებით 14 წუთი."
+        },
+        "frequency": {
+          "en": "Every 4–6 minutes by day and evening, every 15–20 minutes at night; runs 24/7.",
+          "ka": "დღისით და საღამოს ყოველ 4–6 წუთში, ღამით ყოველ 15–20 წუთში; მუშაობს 24/7."
+        },
+        "url": "https://m.dk/en/travel-with-the-metro/tickets/"
+      },
+      {
+        "mode": "train",
+        "name": "Regional train (DSB / Øresundståg)",
+        "from": "Københavns Lufthavn station (Terminal 3)",
+        "to": "København H (Central Station)",
+        "ticket": {
+          "en": "3-zone single ticket, same as the metro.",
+          "ka": "3-ზონიანი ერთჯერადი ბილეთი, ისევე როგორც მეტროში."
+        },
+        "price": 30,
+        "currency": "DKK",
+        "whereToBuy": {
+          "en": "Ticket machines at the station or the Rejsebillet app.",
+          "ka": "სადგურის ავტომატებში ან Rejsebillet-ის აპში."
+        },
+        "payment": null,
+        "duration": null,
+        "frequency": null,
+        "url": "https://m.dk/en/travel-with-the-metro/tickets/"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "2-zone single ticket (1 hour 15 minutes)",
+        "ka": "2-ზონიანი ერთჯერადი ბილეთი (1 საათი და 15 წუთი)"
+      },
+      "price": 24,
+      "currency": "DKK"
+    },
+    "dayPass": {
+      "name": {
+        "en": "City Pass, 24 hours, zones 1–4 (includes the airport)",
+        "ka": "City Pass, 24 საათი, ზონები 1–4 (აეროპორტის ჩათვლით)"
+      },
+      "price": 100,
+      "currency": "DKK"
+    },
+    "contactless": null,
+    "apps": [
+      {
+        "name": "Rejsebillet",
+        "url": "https://m.dk/en/travel-with-the-metro/tickets/"
+      }
+    ],
+    "tips": [
+      {
+        "en": "There are no ticket barriers, so buy your ticket before boarding.",
+        "ka": "ტურნიკეტები არ არის, ამიტომ ბილეთი ჩასხდომამდე იყიდეთ."
+      },
+      {
+        "en": "The City Pass covers the airport, so it is often cheaper than separate tickets for a short stay.",
+        "ka": "City Pass აეროპორტსაც მოიცავს, ამიტომ მოკლე ვიზიტისას ხშირად ცალკეულ ბილეთებზე იაფია."
+      }
+    ],
+    "sources": [
+      "https://m.dk/en/travel-with-the-metro/tickets/",
+      "https://www.cph.dk/en/parking-transport/bus-train-metro-taxi/metro"
+    ],
+    "checkedOn": "2026-10-27"
+  },
+  "venice": {
+    "airport": "VCE",
+    "options": [
+      {
+        "mode": "express_bus",
+        "name": "ACTV Aerobus line 5",
+        "from": "Marco Polo Airport bus stops",
+        "to": "Piazzale Roma",
+        "ticket": {
+          "en": "Aerobus 75-minute ticket (return €18).",
+          "ka": "Aerobus-ის 75-წუთიანი ბილეთი (ორმხრივი €18)."
+        },
+        "price": 10,
+        "currency": "EUR",
+        "whereToBuy": {
+          "en": "Ticket machines in the baggage claim area, the public transport ticket office in the arrivals hall, or online.",
+          "ka": "ბარგის მიღების ზონის ავტომატებში, ჩამოსვლის დარბაზში მდებარე საზოგადოებრივი ტრანსპორტის სალაროში ან ონლაინ."
+        },
+        "payment": null,
+        "duration": null,
+        "frequency": null,
+        "url": "https://actv.avmspa.it/en/content/venice-urban-services-0"
+      },
+      {
+        "mode": "express_bus",
+        "name": "ATVO Venice Airport Bus Express",
+        "from": "Exit D, second lane, stop no. 3",
+        "to": "Piazzale Roma",
+        "ticket": {
+          "en": "ATVO single ticket (return €20).",
+          "ka": "ATVO-ს ერთჯერადი ბილეთი (ორმხრივი €20)."
+        },
+        "price": 12,
+        "currency": "EUR",
+        "whereToBuy": {
+          "en": "ATVO machines in baggage claim, ATVO ticket offices in the arrivals hall (main one 08:00–23:45), machines in the departure lanes, or online.",
+          "ka": "ბარგის მიღების ზონაში ATVO-ს ავტომატებში, ჩამოსვლის დარბაზის ATVO-ს სალაროებში (მთავარი 08:00–23:45), გასვლის ზოლის ავტომატებში ან ონლაინ."
+        },
+        "payment": null,
+        "duration": {
+          "en": "About 20 minutes.",
+          "ka": "დაახლოებით 20 წუთი."
+        },
+        "frequency": null,
+        "url": "https://www.atvo.it/en/services-provided/airport-services/venice-airport-bus-express"
+      },
+      {
+        "mode": "ferry",
+        "name": "Alilaguna water bus",
+        "from": "Airport water-bus dock",
+        "to": "Venice (historic centre)",
+        "ticket": {
+          "en": "Alilaguna single ticket Airport – Venice (return €32).",
+          "ka": "Alilaguna-ს ერთჯერადი ბილეთი აეროპორტი – ვენეცია (ორმხრივი €32)."
+        },
+        "price": 18,
+        "currency": "EUR",
+        "whereToBuy": {
+          "en": "Alilaguna ticket offices at the dock or online.",
+          "ka": "ნავმისადგომზე Alilaguna-ს სალაროებში ან ონლაინ."
+        },
+        "payment": null,
+        "duration": null,
+        "frequency": null,
+        "url": "https://www.alilaguna.it/en/biglietti/tariffe"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "ACTV 75-minute ticket (vaporetto, no airport)",
+        "ka": "ACTV-ის 75-წუთიანი ბილეთი (ვაპორეტო, აეროპორტის გარეშე)"
+      },
+      "price": 9.5,
+      "currency": "EUR"
+    },
+    "dayPass": {
+      "name": {
+        "en": "Venezia Daily Pass (24 hours)",
+        "ka": "Venezia Daily Pass (24 საათი)"
+      },
+      "price": 25,
+      "currency": "EUR"
+    },
+    "contactless": null,
+    "tips": [
+      {
+        "en": "Validate ACTV tickets at the start of each journey and whenever you change vehicle.",
+        "ka": "ACTV-ის ბილეთი ყოველი მგზავრობის დასაწყისში და ტრანსპორტის შეცვლისას დაავალიდირეთ."
+      },
+      {
+        "en": "ACTV day and multi-day passes need a €7 one-way supplement for the airport bus.",
+        "ka": "ACTV-ის დღიურ და მრავალდღიან ბილეთებს აეროპორტის ავტობუსისთვის ცალმხრივი €7-იანი დანამატი სჭირდება."
+      }
+    ],
+    "sources": [
+      "https://actv.avmspa.it/en/content/venice-urban-services-0",
+      "https://www.atvo.it/en/services-provided/airport-services/venice-airport-bus-express",
+      "https://www.atvo.it/assets/bus_routes/035_01.02.26-.pdf",
+      "https://www.alilaguna.it/en/biglietti/tariffe",
+      "https://www.veniceairport.it/en/transport/bus.html"
+    ],
+    "checkedOn": "2026-10-27",
+    "apps": []
+  },
+  "larnaca": {
+    "airport": "LCA",
+    "options": [
+      {
+        "mode": "bus",
+        "name": "Cyprus Public Transport route 425 (Hotels / Airport service)",
+        "from": "Larnaka Airport bus stop",
+        "to": "Larnaca city / hotels",
+        "ticket": {
+          "en": "Urban one-way ticket (€2.00 with a Motion card).",
+          "ka": "ქალაქის ცალმხრივი ბილეთი (Motion ბარათით €2.00)."
+        },
+        "price": 2.7,
+        "currency": "EUR",
+        "whereToBuy": {
+          "en": "From the driver (one-way and night tickets only) or at the CPT sales point at Larnaca Airport.",
+          "ka": "მძღოლთან (მხოლოდ ცალმხრივი და ღამის ბილეთები) ან Larnaca Airport-ში CPT-ის გაყიდვების პუნქტში."
+        },
+        "payment": {
+          "en": "Cash on board; a Motion card can be topped up online or in the Pame app.",
+          "ka": "ავტობუსში ნაღდი; Motion ბარათის შევსება ონლაინ ან Pame-ის აპში შეიძლება."
+        },
+        "duration": null,
+        "frequency": null,
+        "url": "https://www.publictransport.com.cy/cms/page/cash-tickets"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "Urban one-way paper ticket (cash)",
+        "ka": "ქალაქის ცალმხრივი ქაღალდის ბილეთი (ნაღდი)"
+      },
+      "price": 2.7,
+      "currency": "EUR"
+    },
+    "dayPass": {
+      "name": {
+        "en": "Daily ticket for all cities",
+        "ka": "დღიური ბილეთი ყველა ქალაქისთვის"
+      },
+      "price": 20,
+      "currency": "EUR"
+    },
+    "contactless": null,
+    "apps": [
+      {
+        "name": "Pame",
+        "url": "https://www.publictransport.com.cy/cms/page/mobile-app-information"
+      }
+    ],
+    "tips": [
+      {
+        "en": "Night trips (21:00–04:00) cost €4.70 in cash.",
+        "ka": "ღამის მგზავრობა (21:00–04:00) ნაღდით €4.70 ღირს."
+      },
+      {
+        "en": "Larnaca timetables changed on 19 October 2026, so check the current schedule in the Pame app.",
+        "ka": "ლარნაკის განრიგი 2026 წლის 19 ოქტომბერს შეიცვალა, ამიტომ მიმდინარე განრიგი Pame-ის აპში გადაამოწმეთ."
+      }
+    ],
+    "sources": [
+      "https://www.publictransport.com.cy/cms/page/cash-tickets",
+      "https://www.publictransport.com.cy/cms/page/maps",
+      "https://www.publictransport.com.cy/cms/page/sales-offices",
+      "https://www.hermesairports.com/prepare-your-journey/fly-in/public-transportation"
+    ],
+    "checkedOn": "2026-10-27"
+  },
+  "dubai": {
+    "airport": "DXB",
+    "options": [
+      {
+        "mode": "metro",
+        "name": "Dubai Metro Red Line",
+        "from": "Airport Terminal 1 / Terminal 3 stations",
+        "to": "City centre (Red Line)",
+        "ticket": {
+          "en": "nol card or nol Red Ticket; fare by zones (Red Ticket AED 4 / 6 / 8.50, Silver card AED 3 / 5 / 7.5).",
+          "ka": "nol ბარათი ან nol Red Ticket; ფასი ზონების მიხედვით (Red Ticket AED 4 / 6 / 8.50, Silver ბარათი AED 3 / 5 / 7.5)."
+        },
+        "price": null,
+        "currency": "AED",
+        "whereToBuy": {
+          "en": "Ticket offices and vending machines at the Terminal 1 and Terminal 3 metro stations.",
+          "ka": "Terminal 1-ისა და Terminal 3-ის მეტროს სადგურების სალაროებსა და ავტომატებში."
+        },
+        "payment": null,
+        "duration": null,
+        "frequency": {
+          "en": "Runs Mon–Thu and Sat 5:00–24:00, Fri 5:00–01:00, Sun 8:00–24:00.",
+          "ka": "მუშაობს ორშ–ხუთ და შაბ 5:00–24:00, პარ 5:00–01:00, კვ 8:00–24:00."
+        },
+        "url": "https://dubaiairports.ae/transport/metro"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "nol Red Ticket, single trip within 1 zone",
+        "ka": "nol Red Ticket, ერთჯერადი მგზავრობა 1 ზონაში"
+      },
+      "price": 4,
+      "currency": "AED"
+    },
+    "contactless": null,
+    "tips": [
+      {
+        "en": "A nol Silver card costs AED 25, including AED 19 of travel credit, and is sold only at metro station machines.",
+        "ka": "nol Silver ბარათი AED 25 ღირს, მათ შორის AED 19 სამგზავრო ბალანსია, და მხოლოდ მეტროს სადგურების ავტომატებში იყიდება."
+      },
+      {
+        "en": "On Sundays the metro starts only at 8:00.",
+        "ka": "კვირაობით მეტრო მხოლოდ 8:00-დან იწყებს მუშაობას."
+      }
+    ],
+    "sources": [
+      "https://www.rta.ae/wps/portal/rta/ae/public-transport/Nol-Fares",
+      "https://dubaiairports.ae/transport/metro"
+    ],
+    "checkedOn": "2026-10-27",
+    "apps": []
+  },
+  "cairo": {
+    "airport": "CAI",
+    "options": [
+      {
+        "mode": "bus",
+        "name": "City buses",
+        "from": "Bus station in the parking area in front of Terminal 1",
+        "to": "All Cairo directions",
+        "ticket": null,
+        "price": null,
+        "currency": "EGP",
+        "whereToBuy": null,
+        "payment": null,
+        "duration": null,
+        "frequency": null,
+        "url": "https://www.cairo-airport.com/en-us/Services/Passenger-Guide/Move-From-To-Airport"
+      }
+    ],
+    "contactless": null,
+    "tips": [
+      {
+        "en": "City buses leave only from the bus station in front of Terminal 1.",
+        "ka": "საქალაქო ავტობუსები მხოლოდ Terminal 1-ის წინ მდებარე ავტოსადგურიდან გადის."
+      },
+      {
+        "en": "Old black-and-white taxis usually have no meter, so agree the fare first; white taxis are metered.",
+        "ka": "ძველ შავ-თეთრ ტაქსებს, როგორც წესი, მრიცხველი არ აქვს, ამიტომ ფასი წინასწარ შეათანხმეთ; თეთრ ტაქსებს მრიცხველი აქვს."
+      }
+    ],
+    "sources": [
+      "https://www.cairo-airport.com/en-us/Services/Passenger-Guide/Move-From-To-Airport"
+    ],
+    "checkedOn": "2026-10-27",
+    "apps": []
+  },
+  "sydney": {
+    "airport": "SYD",
+    "options": [
+      {
+        "mode": "train",
+        "name": "T8 Airport & South Line (Airport Link)",
+        "from": "Sydney Airport (Domestic and International stations)",
+        "to": "Central / Sydney CBD",
+        "ticket": {
+          "en": "Opal card, contactless bank card or single trip ticket; an airport station access fee of AUD 18.61 (Opal/contactless) or AUD 19.00 (single ticket) is added to the train fare.",
+          "ka": "Opal ბარათი, უკონტაქტო საბანკო ბარათი ან ერთჯერადი ბილეთი; მატარებლის ტარიფს ემატება აეროპორტის სადგურის მოსაკრებელი 18.61 AUD (Opal/უკონტაქტო) ან 19.00 AUD (ერთჯერადი ბილეთი)."
+        },
+        "price": null,
+        "currency": "AUD",
+        "whereToBuy": {
+          "en": "Adult Opal cards are sold at the airport train stations (minimum top-up AUD 35); no purchase needed if you tap a contactless card.",
+          "ka": "ზრდასრულის Opal ბარათები იყიდება აეროპორტის მატარებლის სადგურებზე (მინიმალური შევსება 35 AUD); უკონტაქტო ბარათით შეხებისას ყიდვა საჭირო არ არის."
+        },
+        "payment": {
+          "en": "Tap on and off with Opal or a contactless credit/debit card or digital wallet.",
+          "ka": "შეეხეთ შესვლისას და გასვლისას Opal-ით ან უკონტაქტო საკრედიტო/სადებეტო ბარათით ან ციფრული საფულით."
+        },
+        "duration": null,
+        "frequency": {
+          "en": "Frequent services every day from about 5am to midnight.",
+          "ka": "ხშირი მატარებლები ყოველდღე, დაახლოებით 05:00-დან შუაღამემდე."
+        },
+        "url": "https://transportnsw.info/travel-info/airport-travel/getting-to-from-sydney-airport"
+      },
+      {
+        "mode": "bus",
+        "name": "Bus 420",
+        "from": "Sydney Airport (both terminals)",
+        "to": "Mascot Station / Burwood",
+        "ticket": {
+          "en": "Opal card or contactless bank card; no station access fee.",
+          "ka": "Opal ბარათი ან უკონტაქტო საბანკო ბარათი; სადგურის მოსაკრებელი არ ემატება."
+        },
+        "price": null,
+        "currency": "AUD",
+        "whereToBuy": {
+          "en": "Use an Opal card bought at the airport station or tap a contactless card.",
+          "ka": "გამოიყენეთ აეროპორტის სადგურზე ნაყიდი Opal ბარათი ან შეეხეთ უკონტაქტო ბარათით."
+        },
+        "payment": {
+          "en": "Tap on and off with Opal or a contactless card.",
+          "ka": "შეეხეთ შესვლისას და გასვლისას Opal-ით ან უკონტაქტო ბარათით."
+        },
+        "duration": null,
+        "frequency": {
+          "en": "Runs early morning to around midnight, seven days a week.",
+          "ka": "მოძრაობს დილით ადრიდან დაახლოებით შუაღამემდე, კვირაში შვიდი დღე."
+        },
+        "url": "https://transportnsw.info/travel-info/airport-travel/getting-to-from-sydney-airport"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "Opal card or contactless bank card (distance-based fares)",
+        "ka": "Opal ბარათი ან უკონტაქტო საბანკო ბარათი (მანძილზე დამოკიდებული ტარიფი)"
+      },
+      "price": null,
+      "currency": "AUD"
+    },
+    "contactless": true,
+    "tips": [
+      {
+        "en": "The airport station access fee is not counted towards Opal daily or weekly caps.",
+        "ka": "აეროპორტის სადგურის მოსაკრებელი არ ითვლება Opal-ის დღიურ ან კვირის ლიმიტში."
+      },
+      {
+        "en": "Tap on and off with the same card or device to be charged the correct fare.",
+        "ka": "სწორი ტარიფისთვის შესვლისას და გასვლისას ერთი და იგივე ბარათით ან მოწყობილობით შეეხეთ."
+      },
+      {
+        "en": "Bus 420 to Mascot avoids the airport station access fee but is slower.",
+        "ka": "ავტობუსი 420 Mascot-მდე აეროპორტის სადგურის მოსაკრებელს გარიდებთ, თუმცა უფრო ნელია."
+      }
+    ],
+    "sources": [
+      "https://transportnsw.info/travel-info/airport-travel/getting-to-from-sydney-airport"
+    ],
+    "checkedOn": "2026-10-27",
+    "apps": []
+  },
+  "melbourne": {
+    "airport": "MEL",
+    "options": [
+      {
+        "mode": "express_bus",
+        "name": "SkyBus Melbourne City Express",
+        "from": "Melbourne Airport (T1, T2, T4)",
+        "to": "Southern Cross Station, Melbourne City",
+        "ticket": {
+          "en": "SkyBus ticket (myki is not valid).",
+          "ka": "SkyBus-ის ბილეთი (myki არ მოქმედებს)."
+        },
+        "price": 25.9,
+        "currency": "AUD",
+        "whereToBuy": {
+          "en": "Self-serve e-kiosks kerbside at T1, T2 and T4, online or in the SkyBus app.",
+          "ka": "თვითმომსახურების კიოსკები T1, T2 და T4 ტერმინალების გასასვლელთან, ონლაინ ან SkyBus-ის აპლიკაციაში."
+        },
+        "payment": {
+          "en": "E-kiosks accept card payment only.",
+          "ka": "კიოსკები მხოლოდ ბარათით გადახდას იღებს."
+        },
+        "duration": null,
+        "frequency": {
+          "en": "Frequent turn-up-and-go departures, seven days a week.",
+          "ka": "ხშირი რეისები წინასწარი დაჯავშნის გარეშე, კვირაში შვიდი დღე."
+        },
+        "url": "https://www.skybus.com.au/melbourne-city-express/fares/"
+      },
+      {
+        "mode": "bus",
+        "name": "Route 901",
+        "from": "Melbourne Airport (bus terminal outside T4)",
+        "to": "Broadmeadows Station (train to the city)",
+        "ticket": {
+          "en": "myki card.",
+          "ka": "myki ბარათი."
+        },
+        "price": null,
+        "currency": "AUD",
+        "whereToBuy": null,
+        "payment": {
+          "en": "Touch on with a myki card.",
+          "ka": "შეეხეთ myki ბარათით."
+        },
+        "duration": {
+          "en": "About 20 minutes to Broadmeadows Station, then a train to the city.",
+          "ka": "დაახლოებით 20 წუთი Broadmeadows-ის სადგურამდე, შემდეგ მატარებლით ქალაქამდე."
+        },
+        "frequency": {
+          "en": "Every 15 minutes until 9pm on weekdays, every 30 minutes on weekends and evenings.",
+          "ka": "სამუშაო დღეებში ყოველ 15 წუთში 21:00-მდე, შაბათ-კვირას და საღამოობით ყოველ 30 წუთში."
+        },
+        "url": "https://ptv.vic.gov.au/getting-around/airport-buses"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "myki 2-hour fare",
+        "ka": "myki 2-საათიანი ტარიფი"
+      },
+      "price": null,
+      "currency": "AUD"
+    },
+    "contactless": null,
+    "apps": [
+      {
+        "name": "SkyBus App",
+        "url": "https://www.skybus.com.au/"
+      }
+    ],
+    "tips": [
+      {
+        "en": "SkyBus is a private service and needs its own ticket, not myki.",
+        "ka": "SkyBus კერძო სერვისია და საკუთარ ბილეთს მოითხოვს, myki არ მოქმედებს."
+      },
+      {
+        "en": "The 901 bus with myki is cheaper but slower than SkyBus.",
+        "ka": "ავტობუსი 901 myki-ით SkyBus-ზე იაფია, თუმცა უფრო ნელი."
+      }
+    ],
+    "sources": [
+      "https://www.skybus.com.au/melbourne-city-express/",
+      "https://www.skybus.com.au/melbourne-city-express/fares/",
+      "https://ptv.vic.gov.au/getting-around/airport-buses"
+    ],
+    "checkedOn": "2026-10-27"
+  },
+  "brisbane": {
+    "airport": "BNE",
+    "options": [
+      {
+        "mode": "train",
+        "name": "Airtrain",
+        "from": "Brisbane Airport (Domestic and International stations)",
+        "to": "Brisbane City stations (Central, Roma Street)",
+        "ticket": {
+          "en": "Airtrain station ticket or e-ticket, go card or contactless bank card; fares start from AUD 23.30 to the city.",
+          "ka": "Airtrain-ის სადგურის ბილეთი ან ელექტრონული ბილეთი, go card ან უკონტაქტო საბანკო ბარათი; ქალაქამდე ტარიფი 23.30 AUD-დან იწყება."
+        },
+        "price": 23.3,
+        "currency": "AUD",
+        "whereToBuy": {
+          "en": "Station tickets at the airport station, e-tickets online, or simply tap a go card or contactless card at the gate.",
+          "ka": "სადგურის ბილეთი აეროპორტის სადგურზე, ელექტრონული ბილეთი ონლაინ, ან უბრალოდ შეეხეთ go card-ით ან უკონტაქტო ბარათით ტურნიკეტთან."
+        },
+        "payment": {
+          "en": "Visa or Mastercard contactless (card, phone or watch) or go card, charged at the adult go card fare.",
+          "ka": "Visa ან Mastercard უკონტაქტო გადახდა (ბარათი, ტელეფონი ან საათი) ან go card, ზრდასრულის go card-ის ტარიფით."
+        },
+        "duration": {
+          "en": "About 20 minutes to the city.",
+          "ka": "დაახლოებით 20 წუთი ქალაქამდე."
+        },
+        "frequency": {
+          "en": "Every 15 minutes at peak times.",
+          "ka": "პიკის საათებში ყოველ 15 წუთში."
+        },
+        "url": "https://translink.com.au/travel-with-us/airport-services"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "Translink flat fare with go card or contactless (Airtrain excluded)",
+        "ka": "Translink-ის ერთიანი ტარიფი go card-ით ან უკონტაქტოთ (Airtrain-ის გარდა)"
+      },
+      "price": 0.5,
+      "currency": "AUD"
+    },
+    "contactless": true,
+    "tips": [
+      {
+        "en": "Tap on and off with the same card or device, or you will be charged a default fare.",
+        "ka": "შეეხეთ შესვლისას და გასვლისას ერთი და იგივე ბარათით ან მოწყობილობით, წინააღმდეგ შემთხვევაში ნაგულისხმევ ტარიფს ჩამოგეჭრებათ."
+      },
+      {
+        "en": "Children 14 and under travel free with an adult on an Airtrain ticket, but not on go card.",
+        "ka": "14 წლამდე ბავშვები ზრდასრულთან ერთად Airtrain-ის ბილეთით უფასოდ მგზავრობენ, მაგრამ go card-ით არა."
+      },
+      {
+        "en": "Translink services in the city cost a flat 50 cents per journey, but Airtrain has its own fares.",
+        "ka": "ქალაქში Translink-ის მგზავრობა ერთიანი 50 ცენტი ღირს, თუმცა Airtrain-ს საკუთარი ტარიფი აქვს."
+      }
+    ],
+    "sources": [
+      "https://translink.com.au/travel-with-us/airport-services",
+      "https://www.airtrain.com.au/tickets/smart-ticketing/",
+      "https://translink.com.au/tickets-and-fares/fares-and-zones/south-east-queensland"
+    ],
+    "checkedOn": "2026-10-27",
+    "apps": []
+  },
+  "perth": {
+    "airport": "PER",
+    "options": [
+      {
+        "mode": "train",
+        "name": "Transperth Airport Line",
+        "from": "Perth Airport (Airport Central station for T1/T2; Redcliffe station for T3/T4)",
+        "to": "Perth station (CBD)",
+        "ticket": {
+          "en": "Cash ticket, SmartRider or contactless bank card; Go Anywhere cash fare AUD 3.50.",
+          "ka": "ნაღდი ფულის ბილეთი, SmartRider ან უკონტაქტო საბანკო ბარათი; Go Anywhere ტარიფი ნაღდით 3.50 AUD."
+        },
+        "price": 3.5,
+        "currency": "AUD",
+        "whereToBuy": {
+          "en": "Ticket machines at the station, or buy a SmartRider at the Transperth InfoCentre at Airport Central station.",
+          "ka": "სადგურის ბილეთების აპარატები, ან SmartRider იყიდეთ Transperth-ის InfoCentre-ში Airport Central სადგურზე."
+        },
+        "payment": {
+          "en": "Cash ticket, SmartRider, or Visa/Mastercard contactless including digital wallets (charged the standard cash fare).",
+          "ka": "ნაღდი ფულის ბილეთი, SmartRider ან Visa/Mastercard უკონტაქტო გადახდა ციფრული საფულეების ჩათვლით (სტანდარტული ნაღდი ტარიფით)."
+        },
+        "duration": {
+          "en": "Redcliffe station is about 15 minutes from the CBD by train.",
+          "ka": "Redcliffe-ის სადგურიდან ცენტრამდე მატარებლით დაახლოებით 15 წუთია."
+        },
+        "frequency": null,
+        "url": "https://www.transperth.wa.gov.au/using-transperth/visiting-perth"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "Go Anywhere fare (whole network, 3 hours), cash",
+        "ka": "Go Anywhere ტარიფი (მთელი ქსელი, 3 საათი), ნაღდით"
+      },
+      "price": 3.5,
+      "currency": "AUD"
+    },
+    "dayPass": {
+      "name": {
+        "en": "DayRider (also the daily cap for SmartRider and contactless)",
+        "ka": "DayRider (ასევე დღიური ლიმიტი SmartRider-ისა და უკონტაქტოსთვის)"
+      },
+      "price": 7,
+      "currency": "AUD"
+    },
+    "contactless": true,
+    "apps": [
+      {
+        "name": "Transperth",
+        "url": "https://www.transperth.wa.gov.au/"
+      }
+    ],
+    "tips": [
+      {
+        "en": "From T3/T4 take the free bus 292 shuttle to Redcliffe station, about three minutes away.",
+        "ka": "T3/T4 ტერმინალებიდან Redcliffe-ის სადგურამდე უფასო ავტობუსი 292 დაახლოებით სამ წუთში მიგიყვანთ."
+      },
+      {
+        "en": "Tag on and off with the same card; a Standard SmartRider costs AUD 20 including AUD 10 of travel credit.",
+        "ka": "შეეხეთ შესვლისას და გასვლისას ერთი და იგივე ბარათით; სტანდარტული SmartRider 20 AUD ღირს, მათ შორის 10 AUD მგზავრობის ბალანსი."
+      },
+      {
+        "en": "Train trips that start and end inside the Free Transit Zone in the city are free when you tag on and off.",
+        "ka": "ქალაქის Free Transit Zone-ის შიგნით დაწყებული და დასრულებული მგზავრობა მატარებლით უფასოა, თუ ბარათს შეეხებით."
+      }
+    ],
+    "sources": [
+      "https://www.transperth.wa.gov.au/using-transperth/visiting-perth",
+      "https://www.transperth.wa.gov.au/tickets-fares/fares"
+    ],
+    "checkedOn": "2026-10-27"
+  },
+  "auckland": {
+    "airport": "AKL",
+    "options": [
+      {
+        "mode": "bus",
+        "name": "AirportLink bus + train from Puhinui",
+        "from": "Auckland Airport (stop A international, stop B domestic)",
+        "to": "Puhinui Station, then train to the city centre",
+        "ticket": {
+          "en": "AT HOP card or contactless bank card; one fare covers the bus and train transfer.",
+          "ka": "AT HOP ბარათი ან უკონტაქტო საბანკო ბარათი; ერთი ტარიფი ფარავს ავტობუსს და მატარებელზე გადაჯდომას."
+        },
+        "price": null,
+        "currency": "NZD",
+        "whereToBuy": {
+          "en": "AT HOP cards (NZD 5, minimum NZD 1 top-up) from vending machines at the airport, or just tap a contactless card.",
+          "ka": "AT HOP ბარათები (5 NZD, მინიმალური შევსება 1 NZD) აეროპორტის აპარატებში, ან უბრალოდ შეეხეთ უკონტაქტო ბარათით."
+        },
+        "payment": {
+          "en": "Contactless Visa, Mastercard, American Express or UnionPay, Apple Pay, Google Pay, Samsung Pay, or AT HOP.",
+          "ka": "უკონტაქტო Visa, Mastercard, American Express ან UnionPay, Apple Pay, Google Pay, Samsung Pay ან AT HOP."
+        },
+        "duration": {
+          "en": "18–20 minutes from the international terminal to Puhinui, then the train to the city.",
+          "ka": "საერთაშორისო ტერმინალიდან Puhinui-მდე 18–20 წუთი, შემდეგ მატარებლით ქალაქამდე."
+        },
+        "frequency": {
+          "en": "Every 10 minutes, 4:30am to 12:40am, seven days a week.",
+          "ka": "ყოველ 10 წუთში, 04:30-დან 00:40-მდე, კვირაში შვიდი დღე."
+        },
+        "url": "https://at.govt.nz/bus-train-ferry/bus-services/airport-services"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "AT HOP card or contactless (adult fares are the same)",
+        "ka": "AT HOP ბარათი ან უკონტაქტო (ზრდასრულის ტარიფი ერთნაირია)"
+      },
+      "price": null,
+      "currency": "NZD"
+    },
+    "contactless": true,
+    "apps": [
+      {
+        "name": "AT Mobile",
+        "url": "https://at.govt.nz/"
+      }
+    ],
+    "tips": [
+      {
+        "en": "There is no train station at the airport; the AirportLink bus connects to trains at Puhinui.",
+        "ka": "აეროპორტში მატარებლის სადგური არ არის; AirportLink ავტობუსი Puhinui-ზე მატარებლებს უკავშირდება."
+      },
+      {
+        "en": "The SkyBus Auckland service has been permanently discontinued.",
+        "ka": "SkyBus-ის ოკლენდის სერვისი სამუდამოდ შეწყდა."
+      },
+      {
+        "en": "Check the AT Mobile app or Journey Planner for the exact fare and any rail replacement buses.",
+        "ka": "ზუსტი ტარიფისა და მატარებლის შემცვლელი ავტობუსების შესახებ ნახეთ AT Mobile აპლიკაცია ან Journey Planner."
+      }
+    ],
+    "sources": [
+      "https://at.govt.nz/bus-train-ferry/bus-services/airport-services",
+      "https://www.skybus.com.au/nz/"
+    ],
+    "checkedOn": "2026-10-27"
+  },
+  "tokyo": {
+    "airport": "HND/NRT",
+    "options": [
+      {
+        "mode": "train",
+        "name": "Keikyu Airport Line",
+        "from": "Haneda Airport (HND), Terminals 1, 2 and 3",
+        "to": "Shinagawa",
+        "ticket": {
+          "en": "IC card (Suica/PASMO), ticket, or contactless credit card tap-to-ride.",
+          "ka": "IC ბარათი (Suica/PASMO), ბილეთი ან უკონტაქტო საკრედიტო ბარათით შეხება."
+        },
+        "price": null,
+        "currency": "JPY",
+        "whereToBuy": {
+          "en": "Ticket machines at the Keikyu gates; T3 has a Keikyu Tourist Information Center in the arrivals lobby.",
+          "ka": "ბილეთების აპარატები Keikyu-ს ტურნიკეტებთან; T3-ში ჩამოსვლის დარბაზში Keikyu-ს ტურისტული საინფორმაციო ცენტრია."
+        },
+        "payment": {
+          "en": "Visa, Mastercard, JCB, American Express, Diners Club, Discover and UnionPay contactless, IC cards, or cash at machines.",
+          "ka": "Visa, Mastercard, JCB, American Express, Diners Club, Discover და UnionPay უკონტაქტო, IC ბარათები ან ნაღდი ფული აპარატებში."
+        },
+        "duration": {
+          "en": "About 15 minutes to Shinagawa.",
+          "ka": "დაახლოებით 15 წუთი Shinagawa-მდე."
+        },
+        "frequency": null,
+        "url": "https://tokyo-haneda.com/en/access/train/index.html"
+      },
+      {
+        "mode": "metro",
+        "name": "Tokyo Monorail",
+        "from": "Haneda Airport (HND), Terminals 1, 2 and 3",
+        "to": "Monorail Hamamatsucho",
+        "ticket": {
+          "en": "Ticket or IC card (Suica/PASMO); IC fare JPY 519.",
+          "ka": "ბილეთი ან IC ბარათი (Suica/PASMO); IC ტარიფი 519 JPY."
+        },
+        "price": 520,
+        "currency": "JPY",
+        "whereToBuy": {
+          "en": "Ticket machines at the monorail stations; Monorail Suica cards are also available.",
+          "ka": "ბილეთების აპარატები მონორელსის სადგურებზე; ასევე ხელმისაწვდომია Monorail Suica ბარათები."
+        },
+        "payment": {
+          "en": "Cash at ticket machines or a prepaid IC card at the gate.",
+          "ka": "ნაღდი ფული ბილეთების აპარატში ან წინასწარ შევსებული IC ბარათი ტურნიკეტთან."
+        },
+        "duration": {
+          "en": "About 20 minutes to Hamamatsucho.",
+          "ka": "დაახლოებით 20 წუთი Hamamatsucho-მდე."
+        },
+        "frequency": null,
+        "url": "https://www.tokyo-monorail.co.jp/english/guidance/train_info.html"
+      },
+      {
+        "mode": "train",
+        "name": "Keisei Skyliner",
+        "from": "Narita Airport (NRT), Terminal 1 and Terminal 2·3 stations",
+        "to": "Nippori / Keisei-Ueno",
+        "ticket": {
+          "en": "Base fare plus reserved-seat Skyliner ticket (JPY 1,280 + JPY 1,300 with a paper ticket; JPY 2,567 with IC card for the base fare).",
+          "ka": "საბაზო ტარიფი პლუს Skyliner-ის დაჯავშნილი ადგილის ბილეთი (1,280 + 1,300 JPY ქაღალდის ბილეთით; IC ბარათით საბაზო ტარიფისთვის 2,567 JPY)."
+        },
+        "price": 2580,
+        "currency": "JPY",
+        "whereToBuy": {
+          "en": "Skyliner ticket counters and machines at Narita Terminal 1 and 2·3 stations, Keisei counters on the 1st floor of T1/T2, or online e-tickets.",
+          "ka": "Skyliner-ის სალაროები და აპარატები Narita-ს Terminal 1 და 2·3 სადგურებზე, Keisei-ს სალაროები T1/T2-ის პირველ სართულზე, ან ონლაინ ელექტრონული ბილეთები."
+        },
+        "payment": {
+          "en": "Major credit cards are accepted at Skyliner ticket machines and counters.",
+          "ka": "Skyliner-ის აპარატებსა და სალაროებში ძირითადი საკრედიტო ბარათები მიიღება."
+        },
+        "duration": {
+          "en": "About 40 minutes to downtown Tokyo (41 minutes to Ueno).",
+          "ka": "დაახლოებით 40 წუთი ტოკიოს ცენტრამდე (Ueno-მდე 41 წუთი)."
+        },
+        "frequency": {
+          "en": "Three trains per hour.",
+          "ka": "საათში სამი მატარებელი."
+        },
+        "url": "https://www.keisei.co.jp/keisei/tetudou/skyliner/us/skyliner/purchase.php"
+      },
+      {
+        "mode": "train",
+        "name": "Narita Express (N'EX)",
+        "from": "Narita Airport (NRT), Terminal 1 and Terminal 2·3 stations",
+        "to": "Tokyo Station",
+        "ticket": {
+          "en": "Fare ticket plus reserved limited-express ticket (ordinary car).",
+          "ka": "მგზავრობის ბილეთი პლუს დაჯავშნილი ექსპრეს-მატარებლის ბილეთი (ჩვეულებრივი ვაგონი)."
+        },
+        "price": 3140,
+        "currency": "JPY",
+        "whereToBuy": {
+          "en": "JR East ticket offices and reserved-seat ticket machines at the Narita Airport stations, or online.",
+          "ka": "JR East-ის სალაროები და დაჯავშნილი ადგილების აპარატები Narita-ს აეროპორტის სადგურებზე, ან ონლაინ."
+        },
+        "payment": null,
+        "duration": null,
+        "frequency": null,
+        "url": "https://www.jreast.co.jp/en/multi/nex/tickets/"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "IC card (Suica / PASMO)",
+        "ka": "IC ბარათი (Suica / PASMO)"
+      },
+      "price": null,
+      "currency": "JPY"
+    },
+    "dayPass": {
+      "name": {
+        "en": "Tokyo Subway Ticket (24/48/72 hours, Tokyo Metro and Toei, for short-term visitors)",
+        "ka": "Tokyo Subway Ticket (24/48/72 საათი, Tokyo Metro და Toei, მოკლევადიანი ვიზიტორებისთვის)"
+      },
+      "price": null,
+      "currency": "JPY"
+    },
+    "contactless": null,
+    "tips": [
+      {
+        "en": "From Haneda, Keikyu suits Shinagawa and Yokohama, while the Monorail goes to Hamamatsucho for the JR Yamanote Line.",
+        "ka": "Haneda-დან Keikyu მოსახერხებელია Shinagawa-სა და Yokohama-სთვის, ხოლო მონორელსი Hamamatsucho-მდე მიდის JR Yamanote ხაზზე გადასაჯდომად."
+      },
+      {
+        "en": "All Skyliner seats are reserved; boarding without a Skyliner ticket costs JPY 300 extra.",
+        "ka": "Skyliner-ში ყველა ადგილი დაჯავშნილია; Skyliner-ის ბილეთის გარეშე ჩაჯდომა 300 JPY-ით მეტი ჯდება."
+      },
+      {
+        "en": "JR East sells an N'EX TOKYO Round Trip Ticket for foreign visitors at JPY 5,200.",
+        "ka": "JR East უცხოელი ვიზიტორებისთვის ყიდის N'EX TOKYO Round Trip Ticket-ს 5,200 JPY-ად."
+      }
+    ],
+    "sources": [
+      "https://tokyo-haneda.com/en/access/train/index.html",
+      "https://www.tokyo-monorail.co.jp/english/guidance/train_info.html",
+      "https://www.keisei.co.jp/keisei/tetudou/skyliner/us/skyliner/purchase.php",
+      "https://www.keisei.co.jp/keisei/tetudou/skyliner/us/skyliner/index.php",
+      "https://www.jreast.co.jp/en/multi/nex/tickets/",
+      "https://www.jreast.co.jp/en/multi/pass/nex.html",
+      "https://www.keikyu.co.jp/ride/ticket/taptoride.html"
+    ],
+    "checkedOn": "2026-10-27",
+    "apps": []
+  },
+  "bangkok": {
+    "airport": "BKK",
+    "options": [
+      {
+        "mode": "train",
+        "name": "Airport Rail Link (City Line)",
+        "from": "Suvarnabhumi Airport (level B1 of the main terminal)",
+        "to": "Phaya Thai (connection to BTS)",
+        "ticket": null,
+        "price": null,
+        "currency": "THB",
+        "whereToBuy": null,
+        "payment": null,
+        "duration": null,
+        "frequency": {
+          "en": "Operates from 05:30 to midnight.",
+          "ka": "მოძრაობს 05:30-დან შუაღამემდე."
+        },
+        "url": "https://suvarnabhumi.airportthai.co.th/service/airport-guide/detail/Transportation_BKK"
+      },
+      {
+        "mode": "bus",
+        "name": "Bus S1",
+        "from": "Suvarnabhumi Airport (level 1, gate 7)",
+        "to": "Khao San Road (Sanam Luang)",
+        "ticket": null,
+        "price": null,
+        "currency": "THB",
+        "whereToBuy": null,
+        "payment": null,
+        "duration": null,
+        "frequency": {
+          "en": "Operates from 06:00 to 20:00.",
+          "ka": "მოძრაობს 06:00-დან 20:00-მდე."
+        },
+        "url": "https://suvarnabhumi.airportthai.co.th/service/airport-guide/detail/Transportation_BKK"
+      }
+    ],
+    "contactless": null,
+    "tips": [
+      {
+        "en": "The Airport Rail Link station is in the basement (level B1) of the main terminal.",
+        "ka": "Airport Rail Link-ის სადგური მთავარი ტერმინალის სარდაფშია (B1 დონე)."
+      },
+      {
+        "en": "At Phaya Thai you can change to the BTS Skytrain.",
+        "ka": "Phaya Thai-ზე შეგიძლიათ გადაჯდეთ BTS Skytrain-ზე."
+      },
+      {
+        "en": "For late arrivals use the official public taxi stand, as the rail link stops at midnight.",
+        "ka": "გვიან ჩამოსვლისას ისარგებლეთ ოფიციალური საზოგადოებრივი ტაქსის სადგომით, რადგან რკინიგზა შუაღამისას წყვეტს მუშაობას."
+      }
+    ],
+    "sources": [
+      "https://suvarnabhumi.airportthai.co.th/service/airport-guide/detail/Transportation_BKK"
+    ],
+    "checkedOn": "2026-10-27",
+    "apps": []
+  },
+  "singapore": {
+    "airport": "SIN",
+    "options": [
+      {
+        "mode": "metro",
+        "name": "MRT (Changi Airport CG2 → Tanah Merah, East West Line; or Expo, Downtown Line)",
+        "from": "Changi Airport MRT station (CG2)",
+        "to": "City centre via Tanah Merah (EW4) or Expo (DT35)",
+        "ticket": {
+          "en": "Contactless bank card, mobile wallet, EZ-Link/NETS FlashPay card or Singapore Tourist Pass; distance-based fare.",
+          "ka": "უკონტაქტო საბანკო ბარათი, მობილური საფულე, EZ-Link/NETS FlashPay ბარათი ან Singapore Tourist Pass; ტარიფი მანძილზეა დამოკიდებული."
+        },
+        "price": null,
+        "currency": "SGD",
+        "whereToBuy": {
+          "en": "EZ-Link cards at the TransitLink Ticket Office at Changi Airport MRT station, Changi Recommends stores or the Passenger Service Centre.",
+          "ka": "EZ-Link ბარათები TransitLink-ის სალაროში Changi Airport MRT სადგურზე, Changi Recommends მაღაზიებში ან მგზავრთა მომსახურების ცენტრში."
+        },
+        "payment": {
+          "en": "Tap a contactless Visa, Mastercard or NETS card or mobile wallet at the gate; foreign cards incur an admin fee.",
+          "ka": "შეეხეთ უკონტაქტო Visa, Mastercard ან NETS ბარათით ან მობილური საფულით ტურნიკეტთან; უცხოურ ბარათებზე ადმინისტრაციული მოსაკრებელი ემატება."
+        },
+        "duration": null,
+        "frequency": {
+          "en": "First train from Changi Airport 5:31am (5:59am Sundays and holidays); last connection to the city about 11:18pm.",
+          "ka": "პირველი მატარებელი Changi Airport-დან 05:31 (კვირას და დღესასწაულებზე 05:59); ქალაქისკენ ბოლო გადაჯდომა დაახლოებით 23:18."
+        },
+        "url": "https://www.changiairport.com/en/at-changi/transport-and-directions/leaving-the-airport.html"
+      },
+      {
+        "mode": "bus",
+        "name": "Public buses 24, 27, 34, 36, 53, 110, 858",
+        "from": "Changi Airport (T1–T3 basement bus bays; T4 stops)",
+        "to": "Various parts of Singapore",
+        "ticket": {
+          "en": "Contactless bank card, mobile wallet, EZ-Link card, or exact cash.",
+          "ka": "უკონტაქტო საბანკო ბარათი, მობილური საფულე, EZ-Link ბარათი ან ზუსტი თანხა ნაღდად."
+        },
+        "price": null,
+        "currency": "SGD",
+        "whereToBuy": {
+          "en": "EZ-Link cards at the TransitLink Ticket Office at Changi Airport MRT station or the Passenger Service Centre.",
+          "ka": "EZ-Link ბარათები TransitLink-ის სალაროში Changi Airport MRT სადგურზე ან მგზავრთა მომსახურების ცენტრში."
+        },
+        "payment": {
+          "en": "Tap a card on board; cash requires the exact fare as no change is given.",
+          "ka": "შეეხეთ ბარათით ავტობუსში; ნაღდით გადახდისას ზუსტი თანხაა საჭირო, ხურდა არ ბრუნდება."
+        },
+        "duration": null,
+        "frequency": null,
+        "url": "https://www.changiairport.com/en/at-changi/transport-and-directions/leaving-the-airport.html"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "Adult card fare, distance-based (minimum fare shown)",
+        "ka": "ზრდასრულის ბარათის ტარიფი, მანძილზე დამოკიდებული (მითითებულია მინიმალური)"
+      },
+      "price": 1.28,
+      "currency": "SGD"
+    },
+    "dayPass": {
+      "name": {
+        "en": "Singapore Tourist Pass, 1-Day",
+        "ka": "Singapore Tourist Pass, 1 დღე"
+      },
+      "price": 17,
+      "currency": "SGD"
+    },
+    "contactless": true,
+    "apps": [
+      {
+        "name": "SimplyGo",
+        "url": "https://simplygo.com.sg/"
+      }
+    ],
+    "tips": [
+      {
+        "en": "Change at Tanah Merah for the East West Line or at Expo for the Downtown Line.",
+        "ka": "East West ხაზზე გადაჯექით Tanah Merah-ზე, ხოლო Downtown ხაზზე — Expo-ზე."
+      },
+      {
+        "en": "Foreign Visa or Mastercard cards carry a small daily admin fee, so an EZ-Link card can be cheaper for longer stays.",
+        "ka": "უცხოურ Visa ან Mastercard ბარათებზე მცირე დღიური ადმინისტრაციული მოსაკრებელი ემატება, ამიტომ ხანგრძლივი ვიზიტისთვის EZ-Link ბარათი შეიძლება იაფი იყოს."
+      },
+      {
+        "en": "Trains and buses do not run overnight; taxis operate 24 hours.",
+        "ka": "მატარებლები და ავტობუსები ღამით არ მოძრაობს; ტაქსები 24 საათი მუშაობს."
+      }
+    ],
+    "sources": [
+      "https://www.changiairport.com/en/at-changi/transport-and-directions/leaving-the-airport.html",
+      "https://simplygo.com.sg/travel-fares/adult-fares/",
+      "https://simplygo.com.sg/travel-guide",
+      "https://thesingaporetouristpass.com.sg/faq/singapore-tourist-pass/"
+    ],
+    "checkedOn": "2026-10-27"
+  },
+  "bali": {
+    "airport": "DPS",
+    "options": [],
+    "contactless": null,
+    "tips": [
+      {
+        "en": "Bali has no rail link to the airport, and we could not confirm a currently operating official public bus from Ngurah Rai Airport.",
+        "ka": "ბალიზე აეროპორტამდე რკინიგზა არ არის და ვერ დავადასტურეთ Ngurah Rai-ს აეროპორტიდან ამჟამად მოქმედი ოფიციალური საზოგადოებრივი ავტობუსი."
+      },
+      {
+        "en": "The Trans Metro Dewata bus corridors to the airport were halted in January 2025, so check their status locally before relying on them.",
+        "ka": "Trans Metro Dewata-ს ავტობუსის მარშრუტები აეროპორტამდე 2025 წლის იანვარში შეჩერდა, ამიტომ მათზე დაყრდნობამდე სტატუსი ადგილზე გადაამოწმეთ."
+      },
+      {
+        "en": "Most travellers use the airport's official taxi counters or ride-hailing apps to reach their hotel.",
+        "ka": "მოგზაურების უმეტესობა სასტუმრომდე მისასვლელად აეროპორტის ოფიციალური ტაქსის დახლებით ან ტაქსის გამოძახების აპლიკაციებით სარგებლობს."
+      }
+    ],
+    "sources": [
+      "https://bmc.baliprov.go.id/news/title/pj-gubernur-mahendra-jaya-minta-dukungan-pusat-untuk-atasi-kemacetan-di-bali"
+    ],
+    "checkedOn": "2026-10-27",
+    "apps": []
+  },
+  "seoul": {
+    "airport": "ICN",
+    "options": [
+      {
+        "mode": "train",
+        "name": "AREX Express Train",
+        "from": "Incheon Airport Terminal 1 / Terminal 2 stations",
+        "to": "Seoul Station",
+        "ticket": {
+          "en": "Reserved-seat Express Train ticket (regular fare KRW 18,500–19,100, currently sold at KRW 13,000).",
+          "ka": "Express Train-ის დაჯავშნილი ადგილის ბილეთი (სტანდარტული ტარიფი 18,500–19,100 KRW, ამჟამად იყიდება 13,000 KRW-ად)."
+        },
+        "price": 13000,
+        "currency": "KRW",
+        "whereToBuy": {
+          "en": "Ticket machines at the airport station or online at airportrailroad.com.",
+          "ka": "ბილეთების აპარატები აეროპორტის სადგურზე ან ონლაინ airportrailroad.com-ზე."
+        },
+        "payment": null,
+        "duration": {
+          "en": "43 minutes from Terminal 1 and 51 minutes from Terminal 2.",
+          "ka": "Terminal 1-დან 43 წუთი, Terminal 2-დან 51 წუთი."
+        },
+        "frequency": null,
+        "url": "https://www.airportrailroad.com/train/express/introduce"
+      },
+      {
+        "mode": "train",
+        "name": "AREX All-stop Train",
+        "from": "Incheon Airport Terminal 1 / Terminal 2 stations",
+        "to": "Seoul Station (via Gimpo Airport, Hongik University)",
+        "ticket": {
+          "en": "Transit card (T-money etc.) or single-journey card; KRW 4,750 from T1 and KRW 5,350 from T2 with a transit card.",
+          "ka": "სატრანსპორტო ბარათი (T-money და სხვ.) ან ერთჯერადი ბარათი; სატრანსპორტო ბარათით T1-დან 4,750 KRW, T2-დან 5,350 KRW."
+        },
+        "price": 4750,
+        "currency": "KRW",
+        "whereToBuy": {
+          "en": "Single-journey card machines at the station; single-use cards cost slightly more than a transit card.",
+          "ka": "ერთჯერადი ბარათების აპარატები სადგურზე; ერთჯერადი ბარათი სატრანსპორტო ბარათზე ოდნავ ძვირია."
+        },
+        "payment": {
+          "en": "Tap a prepaid or postpaid Korean transit card at the gate.",
+          "ka": "შეეხეთ წინასწარ ან შემდგომ გადახდის კორეულ სატრანსპორტო ბარათს ტურნიკეტთან."
+        },
+        "duration": null,
+        "frequency": null,
+        "url": "https://www.airportrailroad.com/train/normal/fare"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "Base fare with a transit card (up to 10 km)",
+        "ka": "საბაზო ტარიფი სატრანსპორტო ბარათით (10 კმ-მდე)"
+      },
+      "price": 1550,
+      "currency": "KRW"
+    },
+    "contactless": null,
+    "tips": [
+      {
+        "en": "The Express Train is non-stop with reserved seats, while the All-stop Train is cheaper and connects with Seoul subway lines.",
+        "ka": "Express Train უწყვეტია დაჯავშნილი ადგილებით, ხოლო All-stop Train უფრო იაფია და სეულის მეტროს ხაზებს უკავშირდება."
+      },
+      {
+        "en": "Get a T-money or similar transit card for the All-stop Train and the Seoul subway.",
+        "ka": "All-stop Train-ისა და სეულის მეტროსთვის შეიძინეთ T-money ან მსგავსი სატრანსპორტო ბარათი."
+      }
+    ],
+    "sources": [
+      "https://www.airportrailroad.com/train/express/introduce",
+      "https://www.airportrailroad.com/train/express/guide",
+      "https://www.airportrailroad.com/train/normal/fare"
+    ],
+    "checkedOn": "2026-10-27",
+    "apps": []
+  },
+  "hongkong": {
+    "airport": "HKG",
+    "options": [
+      {
+        "mode": "train",
+        "name": "MTR Airport Express",
+        "from": "Hong Kong International Airport (Airport station)",
+        "to": "Hong Kong station (Central), via Tsing Yi and Kowloon",
+        "ticket": {
+          "en": "Octopus, contactless bank card or QR code (HKD 120 to Hong Kong), or a single journey ticket (HKD 130).",
+          "ka": "Octopus, უკონტაქტო საბანკო ბარათი ან QR კოდი (Hong Kong-მდე 120 HKD), ან ერთჯერადი ბილეთი (130 HKD)."
+        },
+        "price": 120,
+        "currency": "HKD",
+        "whereToBuy": {
+          "en": "Airport Express Customer Service Centres or ticket machines at the airport, or online; Tourist Octopus at the Airport station Customer Service Centre.",
+          "ka": "Airport Express-ის მომსახურების ცენტრები ან ბილეთების აპარატები აეროპორტში, ან ონლაინ; Tourist Octopus — Airport სადგურის მომსახურების ცენტრში."
+        },
+        "payment": {
+          "en": "Octopus, Visa/Mastercard/UnionPay contactless (no UnionPay debit), AlipayHK/Alipay/WeChat/UnionPay QR codes, or paper tickets.",
+          "ka": "Octopus, Visa/Mastercard/UnionPay უკონტაქტო (UnionPay სადებეტოს გარდა), AlipayHK/Alipay/WeChat/UnionPay QR კოდები ან ქაღალდის ბილეთები."
+        },
+        "duration": null,
+        "frequency": null,
+        "url": "https://www.mtr.com.hk/en/customer/tickets/tf_index.html"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "Octopus card",
+        "ka": "Octopus ბარათი"
+      },
+      "price": null,
+      "currency": "HKD"
+    },
+    "contactless": true,
+    "tips": [
+      {
+        "en": "Paying by Octopus, contactless card or QR code is HKD 10 cheaper than a paper ticket to Hong Kong station.",
+        "ka": "Octopus-ით, უკონტაქტო ბარათით ან QR კოდით გადახდა Hong Kong სადგურამდე ქაღალდის ბილეთზე 10 HKD-ით იაფია."
+      },
+      {
+        "en": "A same-day return on the same Octopus, card or QR code makes the return trip free.",
+        "ka": "იმავე დღეს იმავე Octopus-ით, ბარათით ან QR კოდით დაბრუნებისას უკან მგზავრობა უფასოა."
+      },
+      {
+        "en": "Groups of 2–4 can buy cheaper Airport Express group tickets.",
+        "ka": "2–4 კაციან ჯგუფებს შეუძლიათ Airport Express-ის უფრო იაფი ჯგუფური ბილეთების ყიდვა."
+      }
+    ],
+    "sources": [
+      "https://www.mtr.com.hk/en/customer/tickets/tf_index.html",
+      "https://www.mtr.com.hk/en/customer/tickets/promotions_4persons.html"
+    ],
+    "checkedOn": "2026-10-27",
+    "apps": []
+  },
+  "kualalumpur": {
+    "airport": "KUL",
+    "options": [
+      {
+        "mode": "train",
+        "name": "KLIA Ekspres",
+        "from": "KLIA Terminal 1 / Terminal 2",
+        "to": "KL Sentral",
+        "ticket": {
+          "en": "KLIA Ekspres standard single ticket (or tap a contactless card / Touch 'n Go at the gate).",
+          "ka": "KLIA Ekspres-ის სტანდარტული ერთჯერადი ბილეთი (ან უკონტაქტო ბარათის / Touch 'n Go-ს მიდება ტურნიკეტთან)."
+        },
+        "price": 55,
+        "currency": "MYR",
+        "whereToBuy": {
+          "en": "KLIA Ekspres counters and self-service kiosks at KLIA T1 and T2, or online and in the KLIA Ekspres app (10% off).",
+          "ka": "KLIA Ekspres-ის სალაროები და თვითმომსახურების აპარატები KLIA T1-სა და T2-ში, ან ონლაინ და KLIA Ekspres-ის აპლიკაციაში (10%-იანი ფასდაკლებით)."
+        },
+        "payment": {
+          "en": "Cards, online banking or e-wallets online; credit card or Touch 'n Go can be tapped at the gate on entry and exit.",
+          "ka": "ონლაინ — ბარათი, ონლაინ ბანკინგი ან ელ-საფულე; საკრედიტო ბარათი ან Touch 'n Go შეიძლება მიიდოთ ტურნიკეტთან შესვლისა და გასვლისას."
+        },
+        "duration": {
+          "en": "28 minutes from T1 and 33 minutes from T2, non-stop.",
+          "ka": "T1-დან 28 წუთი, T2-დან 33 წუთი, გაჩერებების გარეშე."
+        },
+        "frequency": {
+          "en": "Every 20 minutes (15 minutes planned from Q1 2027).",
+          "ka": "ყოველ 20 წუთში (2027 წლის I კვარტლიდან დაგეგმილია 15 წუთი)."
+        },
+        "url": "https://www.kliaekspres.com/products-fares/klia-ekspres/"
+      },
+      {
+        "mode": "train",
+        "name": "KLIA Transit",
+        "from": "KLIA Terminal 1 / Terminal 2",
+        "to": "KL Sentral (via Salak Tinggi, Putrajaya & Cyberjaya, Bandar Tasik Selatan)",
+        "ticket": {
+          "en": "KLIA Transit standard single ticket.",
+          "ka": "KLIA Transit-ის სტანდარტული ერთჯერადი ბილეთი."
+        },
+        "price": 55,
+        "currency": "MYR",
+        "whereToBuy": {
+          "en": "Ticket counters and kiosks at KLIA T1 and T2, or online and in the KLIA Ekspres app.",
+          "ka": "სალაროები და აპარატები KLIA T1-სა და T2-ში, ან ონლაინ და KLIA Ekspres-ის აპლიკაციაში."
+        },
+        "payment": {
+          "en": "Cards, online banking (FPX) or e-wallets; credit card or Touch 'n Go tap at the gate.",
+          "ka": "ბარათი, ონლაინ ბანკინგი (FPX) ან ელ-საფულე; საკრედიტო ბარათის ან Touch 'n Go-ს მიდება ტურნიკეტთან."
+        },
+        "duration": {
+          "en": "35 minutes from T1 and 39 minutes from T2, with 3 intermediate stops.",
+          "ka": "T1-დან 35 წუთი, T2-დან 39 წუთი, 3 შუალედური გაჩერებით."
+        },
+        "frequency": {
+          "en": "Every 15 minutes at weekday peaks, every 30 minutes off-peak and at weekends.",
+          "ka": "სამუშაო დღეების პიკის საათებში ყოველ 15 წუთში, სხვა დროს და შაბათ-კვირას ყოველ 30 წუთში."
+        },
+        "url": "https://www.kliaekspres.com/products-fares/klia-transit/"
+      }
+    ],
+    "dayPass": {
+      "name": {
+        "en": "Rapid KL MyCity 1-Day Pass (non-Malaysian, loaded on a Touch 'n Go card)",
+        "ka": "Rapid KL MyCity ერთდღიანი აბონემენტი (არამალაიზიელებისთვის, Touch 'n Go ბარათზე)"
+      },
+      "price": 10,
+      "currency": "MYR"
+    },
+    "contactless": null,
+    "apps": [
+      {
+        "name": "KLIA Ekspres",
+        "url": "https://www.kliaekspres.com/"
+      }
+    ],
+    "tips": [
+      {
+        "en": "Buying online or in the app gives 10% off the standard KLIA Ekspres and KLIA Transit fare.",
+        "ka": "ონლაინ ან აპლიკაციით ყიდვისას KLIA Ekspres-ისა და KLIA Transit-ის სტანდარტულ ფასზე 10%-იანი ფასდაკლება მოქმედებს."
+      },
+      {
+        "en": "Bank cards can be tapped at KLIA Ekspres gates, but Rapid KL metro gates still accept only Touch 'n Go cards and tokens.",
+        "ka": "KLIA Ekspres-ის ტურნიკეტებთან საბანკო ბარათის მიდება შეიძლება, მაგრამ Rapid KL-ის მეტროს ტურნიკეტები ჯერ მხოლოდ Touch 'n Go ბარათს და ჟეტონებს იღებს."
+      },
+      {
+        "en": "After 11 pm trains stop at all stations, and service runs until about 1 am.",
+        "ka": "23:00-ის შემდეგ მატარებლები ყველა სადგურზე ჩერდება და მოძრაობა დაახლოებით 01:00-მდე გრძელდება."
+      }
+    ],
+    "sources": [
+      "https://www.kliaekspres.com/products-fares/klia-ekspres/",
+      "https://www.kliaekspres.com/products-fares/klia-transit/",
+      "https://www.kliaekspres.com/plan-your-trip/plan/faq-on-airport-transfer-by-train-to-kuala-lumpur-city/",
+      "https://shop.myrapid.com.my/product/mycity-pass-1-day-non-malaysian/"
+    ],
+    "checkedOn": "2026-10-27"
+  },
+  "delhi": {
+    "airport": "DEL",
+    "options": [
+      {
+        "mode": "metro",
+        "name": "Delhi Metro Airport Express Line (Orange Line)",
+        "from": "IGI Airport Terminal 3 (Terminal 2 is a short walk away)",
+        "to": "New Delhi Railway Station",
+        "ticket": {
+          "en": "Delhi Metro single-journey ticket or smart card.",
+          "ka": "Delhi Metro-ს ერთჯერადი ბილეთი ან სმარტ-ბარათი."
+        },
+        "price": null,
+        "currency": "INR",
+        "whereToBuy": {
+          "en": "Ticket machines in the Terminal 3 and Terminal 2 arrivals areas.",
+          "ka": "ბილეთების აპარატები Terminal 3-ისა და Terminal 2-ის ჩამოსვლის დარბაზებში."
+        },
+        "payment": null,
+        "duration": {
+          "en": "About 25 minutes to New Delhi Railway Station.",
+          "ka": "New Delhi Railway Station-მდე დაახლოებით 25 წუთი."
+        },
+        "frequency": {
+          "en": "First train 4:45 am, last train 11:30 pm from New Delhi.",
+          "ka": "პირველი მატარებელი 04:45-ზე, ბოლო — 23:30-ზე New Delhi-დან."
+        },
+        "url": "https://www.newdelhiairport.in/to-and-from-airport/metro/"
+      },
+      {
+        "mode": "metro",
+        "name": "Delhi Metro Magenta Line",
+        "from": "Terminal 1-IGI Airport station (5–7 minute walk from Terminal 1)",
+        "to": "Hauz Khas / Botanical Garden (interchanges into the city network)",
+        "ticket": {
+          "en": "Delhi Metro single-journey ticket or smart card.",
+          "ka": "Delhi Metro-ს ერთჯერადი ბილეთი ან სმარტ-ბარათი."
+        },
+        "price": null,
+        "currency": "INR",
+        "whereToBuy": {
+          "en": "Ticket machines at Terminal 1-IGI Airport metro station.",
+          "ka": "ბილეთების აპარატები Terminal 1-IGI Airport მეტროს სადგურზე."
+        },
+        "payment": null,
+        "duration": null,
+        "frequency": {
+          "en": "Every 5 minutes, roughly 5:30 am to 11:30 pm.",
+          "ka": "ყოველ 5 წუთში, დაახლოებით 05:30-დან 23:30-მდე."
+        },
+        "url": "https://www.newdelhiairport.in/to-and-from-airport/metro/"
+      }
+    ],
+    "contactless": null,
+    "tips": [
+      {
+        "en": "Terminal 3 and Terminal 2 use the Airport Express Line, while Terminal 1 is served by the Magenta Line.",
+        "ka": "Terminal 3-დან და Terminal 2-დან Airport Express Line მიდის, Terminal 1-ს კი Magenta Line ემსახურება."
+      },
+      {
+        "en": "DMRC raised fares in August 2025, so check the current fare in the DMRC journey planner before travelling.",
+        "ka": "DMRC-მ ტარიფები 2025 წლის აგვისტოში გაზარდა, ამიტომ მგზავრობამდე მიმდინარე ფასი DMRC-ის მარშრუტის დამგეგმავში გადაამოწმეთ."
+      },
+      {
+        "en": "The metro does not run overnight: the last Airport Express train leaves New Delhi at 11:30 pm.",
+        "ka": "მეტრო ღამით არ მუშაობს: ბოლო Airport Express მატარებელი New Delhi-დან 23:30-ზე გადის."
+      }
+    ],
+    "sources": [
+      "https://www.newdelhiairport.in/to-and-from-airport/metro/",
+      "https://www.delhimetrorail.com/fare-for-airport-express-line"
+    ],
+    "checkedOn": "2026-10-27",
+    "apps": []
+  },
+  "newyork": {
+    "airport": "JFK",
+    "options": [
+      {
+        "mode": "metro",
+        "name": "AirTrain JFK + subway (Howard Beach or Sutphin Blvd-Archer Av)",
+        "from": "JFK terminals",
+        "to": "Manhattan",
+        "ticket": {
+          "en": "OMNY tap (contactless bank card, phone or OMNY card) for both AirTrain and subway.",
+          "ka": "OMNY-ით გადახდა (უკონტაქტო საბანკო ბარათი, ტელეფონი ან OMNY ბარათი) AirTrain-ზეც და მეტროშიც."
+        },
+        "price": 11.75,
+        "currency": "USD",
+        "whereToBuy": {
+          "en": "No ticket needed: tap at the AirTrain turnstiles; OMNY cards are sold at machines in the Jamaica and Howard Beach stations.",
+          "ka": "ბილეთი საჭირო არ არის: ბარათი AirTrain-ის ტურნიკეტთან მიიდეთ; OMNY ბარათები Jamaica-სა და Howard Beach-ის სადგურების აპარატებში იყიდება."
+        },
+        "payment": {
+          "en": "Contactless credit/debit card, Apple Pay, Google Pay or OMNY card; unlimited passes are not valid on AirTrain.",
+          "ka": "უკონტაქტო საკრედიტო/სადებეტო ბარათი, Apple Pay, Google Pay ან OMNY ბარათი; ულიმიტო აბონემენტები AirTrain-ზე არ მოქმედებს."
+        },
+        "duration": null,
+        "frequency": {
+          "en": "AirTrain runs every 5–15 minutes.",
+          "ka": "AirTrain ყოველ 5–15 წუთში მოძრაობს."
+        },
+        "url": "https://www.mta.info/guides/airports/jfk"
+      },
+      {
+        "mode": "train",
+        "name": "AirTrain JFK + LIRR (Jamaica)",
+        "from": "JFK terminals",
+        "to": "Penn Station / Grand Central / Atlantic Terminal",
+        "ticket": {
+          "en": "AirTrain fare by OMNY tap plus an LIRR CityTicket.",
+          "ka": "AirTrain-ის საფასური OMNY-ით და LIRR-ის CityTicket."
+        },
+        "price": 14,
+        "currency": "USD",
+        "whereToBuy": {
+          "en": "LIRR tickets from machines at Jamaica station or in the TrainTime app.",
+          "ka": "LIRR-ის ბილეთები Jamaica-ს სადგურის აპარატებში ან TrainTime აპლიკაციაში."
+        },
+        "payment": {
+          "en": "AirTrain by contactless tap; LIRR tickets by card at machines or in the app.",
+          "ka": "AirTrain — უკონტაქტო ბარათით; LIRR-ის ბილეთი — ბარათით აპარატში ან აპლიკაციაში."
+        },
+        "duration": null,
+        "frequency": null,
+        "url": "https://www.mta.info/guides/airports/jfk"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "Subway / local bus base fare (OMNY)",
+        "ka": "მეტროს / ადგილობრივი ავტობუსის საბაზო ტარიფი (OMNY)"
+      },
+      "price": 3,
+      "currency": "USD"
+    },
+    "contactless": true,
+    "tips": [
+      {
+        "en": "Total price: $8.75 AirTrain plus $3.00 subway; via LIRR it is $14 off-peak or $16 peak ($5.25 / $7.25 CityTicket).",
+        "ka": "ჯამური ფასი: AirTrain $8.75 და მეტრო $3.00; LIRR-ით — $14 არაპიკურ საათებში ან $16 პიკში (CityTicket $5.25 / $7.25)."
+      },
+      {
+        "en": "Tap the same card or phone every time: OMNY caps subway and local bus rides at $35 per 7 days.",
+        "ka": "ყოველთვის ერთი და იგივე ბარათი ან ტელეფონი მიიდეთ: OMNY მეტროსა და ადგილობრივ ავტობუსზე 7 დღეში მაქსიმუმ $35-ს ჩამოგაჭრით."
+      },
+      {
+        "en": "From Newark (EWR), AirTrain Newark connects to NJ Transit trains to New York Penn Station.",
+        "ka": "Newark-იდან (EWR) AirTrain Newark NJ Transit-ის მატარებლებს უკავშირდება, რომლებიც New York Penn Station-მდე მიდის."
+      }
+    ],
+    "sources": [
+      "https://www.jfkairport.com/to-from-airport/air-train",
+      "https://www.mta.info/guides/airports/jfk",
+      "https://www.mta.info/fares-tolls/subway-bus",
+      "https://www.mta.info/fares-tolls/lirr-metro-north",
+      "https://omny.info/fares"
+    ],
+    "checkedOn": "2026-10-27",
+    "apps": []
+  },
+  "losangeles": {
+    "airport": "LAX",
+    "options": [
+      {
+        "mode": "express_bus",
+        "name": "LAX FlyAway (Union Station)",
+        "from": "LAX terminals",
+        "to": "Union Station (Patsaouras Transit Plaza, Bus Stop 1)",
+        "ticket": {
+          "en": "FlyAway one-way ticket or contactless tap on board.",
+          "ka": "FlyAway-ს ცალმხრივი ბილეთი ან უკონტაქტო გადახდა ავტობუსში."
+        },
+        "price": 12.75,
+        "currency": "USD",
+        "whereToBuy": {
+          "en": "Pay on board by contactless tap, or buy a web/mobile ticket online.",
+          "ka": "გადაიხადეთ ავტობუსში უკონტაქტო ბარათით, ან იყიდეთ ვებ/მობილური ბილეთი ონლაინ."
+        },
+        "payment": {
+          "en": "Contactless Visa or Mastercard, Apple Pay or Google Pay on board; no cash.",
+          "ka": "ავტობუსში — უკონტაქტო Visa ან Mastercard, Apple Pay ან Google Pay; ნაღდი ფული არ მიიღება."
+        },
+        "duration": null,
+        "frequency": null,
+        "url": "https://www.flylax.com/flyaway-bus/fares-tickets"
+      },
+      {
+        "mode": "metro",
+        "name": "Free shuttle + LA Metro K Line / C Line (LAX/Metro Transit Center)",
+        "from": "LAX terminals (free shuttle to the LAX/Metro Transit Center, Bus Bays 1–2)",
+        "to": "Downtown LA via Metro rail connections",
+        "ticket": {
+          "en": "TAP card or contactless bank card tapped at the validator.",
+          "ka": "TAP ბარათი ან უკონტაქტო საბანკო ბარათი ვალიდატორთან."
+        },
+        "price": 1.75,
+        "currency": "USD",
+        "whereToBuy": {
+          "en": "No ticket needed with a bank card; TAP cards are sold at station vending machines.",
+          "ka": "საბანკო ბარათით ბილეთი არ გჭირდებათ; TAP ბარათები სადგურის აპარატებში იყიდება."
+        },
+        "payment": {
+          "en": "TAP card, contactless credit/debit card, Apple Wallet, or cash on buses only.",
+          "ka": "TAP ბარათი, უკონტაქტო საკრედიტო/სადებეტო ბარათი, Apple Wallet, ნაღდი ფული კი მხოლოდ ავტობუსებში."
+        },
+        "duration": null,
+        "frequency": {
+          "en": "The free shuttle runs every 10 minutes.",
+          "ka": "უფასო შატლი ყოველ 10 წუთში მოძრაობს."
+        },
+        "url": "https://www.metro.net/destinations/lax/"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "LA Metro regular fare (free transfers within 2 hours)",
+        "ka": "LA Metro-ს სტანდარტული ტარიფი (უფასო გადაჯდომა 2 საათის განმავლობაში)"
+      },
+      "price": 1.75,
+      "currency": "USD"
+    },
+    "dayPass": {
+      "name": {
+        "en": "LA Metro 1-day fare cap (same TAP card or bank card)",
+        "ka": "LA Metro-ს დღიური ლიმიტი (იგივე TAP ან საბანკო ბარათით)"
+      },
+      "price": 5,
+      "currency": "USD"
+    },
+    "contactless": true,
+    "tips": [
+      {
+        "en": "FlyAway does not take cash or non-contactless cards on board.",
+        "ka": "FlyAway-ში ნაღდი ფული და არაუკონტაქტო ბარათები არ მიიღება."
+      },
+      {
+        "en": "Use the same card or phone for every Metro ride to reach the $5 daily and $18 weekly caps.",
+        "ka": "Metro-ს ყველა მგზავრობისთვის ერთი და იგივე ბარათი ან ტელეფონი გამოიყენეთ, რომ $5-იანი დღიური და $18-იანი კვირის ლიმიტი ამოქმედდეს."
+      }
+    ],
+    "sources": [
+      "https://www.flylax.com/flyaway-bus/fares-tickets",
+      "https://www.metro.net/destinations/lax/",
+      "https://metro.net/about/simplefares",
+      "https://thesource.metro.net/paying-to-ride-metro-just-got-easier-tap-your-credit-or-debit-card-and-go/"
+    ],
+    "checkedOn": "2026-10-27",
+    "apps": []
+  },
+  "miami": {
+    "airport": "MIA",
+    "options": [
+      {
+        "mode": "metro",
+        "name": "MIA Mover + Metrorail Orange Line",
+        "from": "MIA terminal (MIA Mover, 3rd level between Dolphin and Flamingo garages) to Miami Intermodal Center",
+        "to": "Brickell / Government Center (downtown)",
+        "ticket": {
+          "en": "EASY Card / EASY Ticket or contactless bank card at the fare gate.",
+          "ka": "EASY Card / EASY Ticket ან უკონტაქტო საბანკო ბარათი ტურნიკეტთან."
+        },
+        "price": 2.25,
+        "currency": "USD",
+        "whereToBuy": {
+          "en": "EASY Card vending machines at the Miami Intermodal Center.",
+          "ka": "EASY Card-ის აპარატები Miami Intermodal Center-ში."
+        },
+        "payment": {
+          "en": "Contactless Visa, Mastercard, Amex, Apple Pay or Google Pay at the gates; cash only at vending machines.",
+          "ka": "ტურნიკეტთან — უკონტაქტო Visa, Mastercard, Amex, Apple Pay ან Google Pay; ნაღდი ფული მხოლოდ აპარატებში."
+        },
+        "duration": null,
+        "frequency": {
+          "en": "Orange Line every 15 minutes; at weekends an airport shuttle train runs to Earlington Heights, where you change.",
+          "ka": "Orange Line ყოველ 15 წუთში; შაბათ-კვირას აეროპორტის შატლ-მატარებელი Earlington Heights-მდე მიდის, სადაც გადაჯდომაა საჭირო."
+        },
+        "url": "https://www.miamidade.gov/global/transportation/metrorail.page"
+      },
+      {
+        "mode": "bus",
+        "name": "Metrobus Route 150 Miami Beach Airport Express",
+        "from": "MIA Metrorail station (Miami Intermodal Center)",
+        "to": "Miami Beach (41st Street to South Pointe Drive)",
+        "ticket": {
+          "en": "EASY Card or contactless bank card.",
+          "ka": "EASY Card ან უკონტაქტო საბანკო ბარათი."
+        },
+        "price": 2.25,
+        "currency": "USD",
+        "whereToBuy": {
+          "en": "EASY Card vending machines at the Miami Intermodal Center.",
+          "ka": "EASY Card-ის აპარატები Miami Intermodal Center-ში."
+        },
+        "payment": {
+          "en": "EASY Card or contactless bank card / mobile wallet.",
+          "ka": "EASY Card ან უკონტაქტო საბანკო ბარათი / მობილური საფულე."
+        },
+        "duration": null,
+        "frequency": {
+          "en": "Every 30 minutes, 6 am to 11:40 pm, daily.",
+          "ka": "ყოველ 30 წუთში, 06:00-დან 23:40-მდე, ყოველდღე."
+        },
+        "url": "https://www.miami-airport.com/public-transportation.asp"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "Metrorail / Metrobus full fare",
+        "ka": "Metrorail / Metrobus სრული ტარიფი"
+      },
+      "price": 2.25,
+      "currency": "USD"
+    },
+    "dayPass": {
+      "name": {
+        "en": "1-Day Pass (also the daily fare cap with the same card)",
+        "ka": "ერთდღიანი აბონემენტი (იგივე ბარათით ეს დღიური ლიმიტიცაა)"
+      },
+      "price": 5.65,
+      "currency": "USD"
+    },
+    "contactless": true,
+    "apps": [
+      {
+        "name": "GO Miami-Dade Transit",
+        "url": "https://www.miamidade.gov/global/transportation/metrorail.page"
+      }
+    ],
+    "tips": [
+      {
+        "en": "The MIA Mover between the terminal and the Miami Intermodal Center is free.",
+        "ka": "MIA Mover ტერმინალსა და Miami Intermodal Center-ს შორის უფასოა."
+      },
+      {
+        "en": "Metrorail gates do not take cash, so tap a bank card or load an EASY Card first.",
+        "ka": "Metrorail-ის ტურნიკეტები ნაღდ ფულს არ იღებს, ამიტომ მიიდეთ საბანკო ბარათი ან წინასწარ შეავსეთ EASY Card."
+      },
+      {
+        "en": "Route 150 goes straight to Miami Beach without changing trains.",
+        "ka": "Route 150 პირდაპირ Miami Beach-მდე მიდის, მატარებლის გამოცვლის გარეშე."
+      }
+    ],
+    "sources": [
+      "https://www.miami-airport.com/public-transportation.asp",
+      "https://www.miamidade.gov/global/transportation/metrorail.page",
+      "https://www.miamidade.gov/global/transportation/contactless-payment-faqs.page",
+      "https://www.miamidade.gov/global/service.page?Mduid_service=ser1617316231654558"
+    ],
+    "checkedOn": "2026-10-27"
+  },
+  "toronto": {
+    "airport": "YYZ",
+    "options": [
+      {
+        "mode": "train",
+        "name": "UP Express",
+        "from": "Pearson Airport Terminal 1",
+        "to": "Union Station",
+        "ticket": {
+          "en": "UP Express ticket, PRESTO card, or contactless credit/debit card tap (adult fare).",
+          "ka": "UP Express-ის ბილეთი, PRESTO ბარათი ან უკონტაქტო საკრედიტო/სადებეტო ბარათი (ზრდასრულის ტარიფი)."
+        },
+        "price": 12.35,
+        "currency": "CAD",
+        "whereToBuy": {
+          "en": "Ticket machines at Pearson station, online, or simply tap PRESTO or a bank card on the reader.",
+          "ka": "ბილეთების აპარატები Pearson-ის სადგურზე, ონლაინ, ან უბრალოდ მიიდეთ PRESTO ან საბანკო ბარათი წამკითხველთან."
+        },
+        "payment": {
+          "en": "PRESTO, contactless credit/debit card or mobile wallet; tap on and tap off with the same card.",
+          "ka": "PRESTO, უკონტაქტო საკრედიტო/სადებეტო ბარათი ან მობილური საფულე; შესვლისა და გასვლისას ერთი და იგივე ბარათი მიიდეთ."
+        },
+        "duration": {
+          "en": "About 25 minutes to Union Station.",
+          "ka": "Union Station-მდე დაახლოებით 25 წუთი."
+        },
+        "frequency": {
+          "en": "Every 15 minutes.",
+          "ka": "ყოველ 15 წუთში."
+        },
+        "url": "https://www.upexpress.com/en/fares"
+      },
+      {
+        "mode": "bus",
+        "name": "TTC 900 Airport Express",
+        "from": "Toronto Pearson Airport",
+        "to": "Kipling Station (Line 2 Bloor-Danforth subway)",
+        "ticket": {
+          "en": "Regular TTC fare by PRESTO or contactless bank card.",
+          "ka": "TTC-ის სტანდარტული ტარიფი PRESTO-თი ან უკონტაქტო საბანკო ბარათით."
+        },
+        "price": 3.3,
+        "currency": "CAD",
+        "whereToBuy": {
+          "en": "Tap PRESTO or a credit/debit card on the bus reader.",
+          "ka": "მიიდეთ PRESTO ან საკრედიტო/სადებეტო ბარათი ავტობუსის წამკითხველთან."
+        },
+        "payment": {
+          "en": "PRESTO card, PRESTO in mobile wallet, or contactless credit/debit card.",
+          "ka": "PRESTO ბარათი, PRESTO მობილურ საფულეში ან უკონტაქტო საკრედიტო/სადებეტო ბარათი."
+        },
+        "duration": null,
+        "frequency": {
+          "en": "All-day service.",
+          "ka": "მოძრაობს მთელი დღის განმავლობაში."
+        },
+        "url": "https://www.ttc.ca/Fares-and-passes"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "TTC adult fare (PRESTO or bank card tap)",
+        "ka": "TTC-ის ზრდასრულის ტარიფი (PRESTO ან საბანკო ბარათით)"
+      },
+      "price": 3.3,
+      "currency": "CAD"
+    },
+    "dayPass": {
+      "name": {
+        "en": "TTC PRESTO Day Pass",
+        "ka": "TTC PRESTO დღიური აბონემენტი"
+      },
+      "price": 13.5,
+      "currency": "CAD"
+    },
+    "contactless": true,
+    "tips": [
+      {
+        "en": "UP Express is cheaper with PRESTO ($9.25 adult one-way) than with a regular ticket ($12.35).",
+        "ka": "UP Express PRESTO-თი უფრო იაფია ($9.25 ცალმხრივი) ვიდრე ჩვეულებრივი ბილეთით ($12.35)."
+      },
+      {
+        "en": "If you forget to tap off on UP Express, you are charged the maximum fare.",
+        "ka": "თუ UP Express-ზე გასვლისას ბარათის მიდება დაგავიწყდათ, მაქსიმალურ ტარიფს ჩამოგაჭრიან."
+      },
+      {
+        "en": "The TTC 900 bus costs the same as any city trip but takes you to the subway at Kipling, not downtown.",
+        "ka": "TTC-ის 900 ავტობუსი ქალაქის ჩვეულებრივი მგზავრობის ფასი ღირს, მაგრამ ცენტრამდე კი არა, Kipling-ის მეტრომდე მიდის."
+      }
+    ],
+    "sources": [
+      "https://www.upexpress.com/en/fares",
+      "https://www.upexpress.com/en/ways-to-pay/presto-fares",
+      "https://www.upexpress.com/en/up-express-stations/pearson-station",
+      "https://www.ttc.ca/Fares-and-passes"
+    ],
+    "checkedOn": "2026-10-27",
+    "apps": []
+  },
+  "cancun": {
+    "airport": "CUN",
+    "options": [
+      {
+        "mode": "express_bus",
+        "name": "ADO bus to Cancún downtown bus terminal",
+        "from": "Cancún Airport Terminals 2, 3 and 4",
+        "to": "Cancún downtown ADO bus terminal",
+        "ticket": {
+          "en": "ADO bus ticket.",
+          "ka": "ADO-ს ავტობუსის ბილეთი."
+        },
+        "price": null,
+        "currency": "MXN",
+        "whereToBuy": {
+          "en": "Online at ado.com.mx (recommended in advance).",
+          "ka": "ონლაინ ado.com.mx-ზე (რეკომენდებულია წინასწარ)."
+        },
+        "payment": null,
+        "duration": null,
+        "frequency": null,
+        "url": "https://www.ado.com.mx/viajes/terminal-aeropuerto-cancun-t3-a-terminal-cancun/"
+      },
+      {
+        "mode": "express_bus",
+        "name": "ADO bus to Hotel Zone (Punta Cancún)",
+        "from": "Cancún Airport Terminals 2, 3 and 4",
+        "to": "Punta Cancún, Hotel Zone",
+        "ticket": {
+          "en": "ADO bus ticket.",
+          "ka": "ADO-ს ავტობუსის ბილეთი."
+        },
+        "price": null,
+        "currency": "MXN",
+        "whereToBuy": {
+          "en": "Online at ado.com.mx (recommended in advance).",
+          "ka": "ონლაინ ado.com.mx-ზე (რეკომენდებულია წინასწარ)."
+        },
+        "payment": null,
+        "duration": {
+          "en": "About 45 minutes, depending on traffic.",
+          "ka": "დაახლოებით 45 წუთი, მოძრაობის მიხედვით."
+        },
+        "frequency": {
+          "en": "Up to nine departures a day, morning to early evening.",
+          "ka": "დღეში 9-მდე რეისი, დილიდან საღამოს დასაწყისამდე."
+        },
+        "url": "https://international.ado.com.mx/ado-bus/cancun-airport-to-cancun-hotel-zone-punta-cancun"
+      }
+    ],
+    "contactless": null,
+    "tips": [
+      {
+        "en": "There is no rail link from Cancún airport; ADO buses are the main public option.",
+        "ka": "Cancún-ის აეროპორტიდან რკინიგზა არ გადის; ძირითადი საზოგადოებრივი ტრანსპორტი ADO-ს ავტობუსებია."
+      },
+      {
+        "en": "ADO fares vary by date and terminal, so check the live price on ado.com.mx.",
+        "ka": "ADO-ს ფასი თარიღისა და ტერმინალის მიხედვით იცვლება, ამიტომ მიმდინარე ფასი ado.com.mx-ზე გადაამოწმეთ."
+      },
+      {
+        "en": "If you land at a terminal without ADO, use the free inter-terminal shuttle.",
+        "ka": "თუ ისეთ ტერმინალში ჩაფრინდით, საიდანაც ADO არ გადის, ტერმინალებს შორის უფასო შატლით ისარგებლეთ."
+      }
+    ],
+    "sources": [
+      "https://international.ado.com.mx/ado-bus/cancun-airport-to-cancun-hotel-zone-punta-cancun",
+      "https://www.ado.com.mx/viajes/terminal-aeropuerto-cancun-t3-a-terminal-cancun/"
+    ],
+    "checkedOn": "2026-10-27",
+    "apps": []
+  },
+  "riodejaneiro": {
+    "airport": "GIG",
+    "options": [
+      {
+        "mode": "bus",
+        "name": "BRT TransCarioca (Galeão) + MetrôRio Line 2",
+        "from": "BRT stations Galeão – Tom Jobim 1 and 2",
+        "to": "Vicente de Carvalho (change to MetrôRio Line 2 towards the centre)",
+        "ticket": {
+          "en": "Jaé card or Jaé QR code for the BRT; separate metro fare.",
+          "ka": "BRT-სთვის Jaé ბარათი ან Jaé QR კოდი; მეტროს ცალკე ტარიფი."
+        },
+        "price": 5,
+        "currency": "BRL",
+        "whereToBuy": null,
+        "payment": {
+          "en": "Jaé card or QR code; cash is no longer accepted on municipal transport.",
+          "ka": "Jaé ბარათი ან QR კოდი; მუნიციპალურ ტრანსპორტში ნაღდი ფული აღარ მიიღება."
+        },
+        "duration": null,
+        "frequency": {
+          "en": "Runs daily; timetables are on the Mobi-Rio website.",
+          "ka": "მოძრაობს ყოველდღე; განრიგი Mobi-Rio-ს საიტზეა."
+        },
+        "url": "https://www.riogaleao.com/passageiros/como-chegar-e-sair/brt/"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "Municipal bus / BRT fare (Bilhete Único Carioca)",
+        "ka": "მუნიციპალური ავტობუსის / BRT-ის ტარიფი (Bilhete Único Carioca)"
+      },
+      "price": 5,
+      "currency": "BRL"
+    },
+    "contactless": null,
+    "tips": [
+      {
+        "en": "With the Bilhete Único Carioca you can make up to three municipal trips within three hours, one of them on BRT, for one fare.",
+        "ka": "Bilhete Único Carioca-თი სამი საათის განმავლობაში სამამდე მუნიციპალური მგზავრობა, მათ შორის ერთი BRT-ით, ერთ ტარიფად შეგიძლიათ."
+      },
+      {
+        "en": "The metro is paid separately (R$ 7.90 per ride).",
+        "ka": "მეტრო ცალკე იხდება (R$ 7.90 ერთ მგზავრობაზე)."
+      },
+      {
+        "en": "Rio airport has no direct rail link, so BRT plus metro is the main public option.",
+        "ka": "Rio-ს აეროპორტს პირდაპირი სარკინიგზო კავშირი არ აქვს, ამიტომ ძირითადი ვარიანტი BRT და მეტროა."
+      }
+    ],
+    "sources": [
+      "https://www.riogaleao.com/passageiros/como-chegar-e-sair/brt/",
+      "https://transportes.prefeitura.rio/wp-content/uploads/sites/31/2026/01/Decreto-Rio-No-57473-de-29-de-dezembro-de-2025_260112_123237.pdf",
+      "https://prefeitura.rio/cidade/integracao-do-bilhete-unico-carioca-buc-passa-a-ser-feito-exclusivamente-pelo-cartao-jae-preto-ou-qr-code/"
+    ],
+    "checkedOn": "2026-10-27",
+    "apps": []
+  },
+  "buenosaires": {
+    "airport": "EZE",
+    "options": [
+      {
+        "mode": "bus",
+        "name": "Colectivo Line 8",
+        "from": "Ezeiza Airport (Historic Building hall, opposite parking B)",
+        "to": "Congreso / Plaza de Mayo (city centre)",
+        "ticket": {
+          "en": "SUBE card.",
+          "ka": "SUBE ბარათი."
+        },
+        "price": null,
+        "currency": "ARS",
+        "whereToBuy": null,
+        "payment": {
+          "en": "SUBE card.",
+          "ka": "SUBE ბარათი."
+        },
+        "duration": null,
+        "frequency": null,
+        "url": "https://www.argentina.gob.ar/sites/default/files/008_0.pdf"
+      }
+    ],
+    "contactless": true,
+    "apps": [
+      {
+        "name": "Cuándo Subo",
+        "url": "https://www.argentina.gob.ar/cuandosubo"
+      }
+    ],
+    "tips": [
+      {
+        "en": "Line 8 is slow and often crowded with little room for luggage; the only official public option from Ezeiza is the colectivo.",
+        "ka": "Line 8 ნელია და ხშირად გადატვირთული, ბარგისთვის ცოტა ადგილით; Ezeiza-დან ოფიციალური საზოგადოებრივი ტრანსპორტი მხოლოდ ეს ავტობუსია."
+      },
+      {
+        "en": "In the Subte you can tap a contactless Visa or Mastercard, phone or QR at multi-pay gates for the same fare as SUBE.",
+        "ka": "Subte-ში მრავალგადახდიან ტურნიკეტებთან შეგიძლიათ მიიდოთ უკონტაქტო Visa ან Mastercard, ტელეფონი ან QR, SUBE-ს იგივე ფასად."
+      },
+      {
+        "en": "Fares change often in Argentina, so check the current SUBE fare before travelling.",
+        "ka": "არგენტინაში ტარიფები ხშირად იცვლება, ამიტომ მგზავრობამდე SUBE-ს მიმდინარე ფასი გადაამოწმეთ."
+      }
+    ],
+    "sources": [
+      "https://www.aeropuertosargentina.com/ezeiza/Transporte",
+      "https://www.argentina.gob.ar/sube/terminos-y-condiciones-sitio-oficial-sube/apertura-de-sube-nuevos-medios-de-pago",
+      "https://buenosaires.gob.ar/noticias/se-habilito-el-pago-del-subte-con-celulares-tarjetas-de-debito-y-credito",
+      "https://turismo.buenosaires.gob.ar/en/article/getting-buenos-aires"
+    ],
+    "checkedOn": "2026-10-27"
+  },
+  "marrakech": {
+    "airport": "RAK",
+    "options": [
+      {
+        "mode": "bus",
+        "name": "Airport shuttle bus (navette)",
+        "from": "Marrakech-Menara Airport",
+        "to": "Marrakech city",
+        "ticket": null,
+        "price": null,
+        "currency": "MAD",
+        "whereToBuy": null,
+        "payment": null,
+        "duration": null,
+        "frequency": {
+          "en": "Every 20 minutes.",
+          "ka": "ყოველ 20 წუთში."
+        },
+        "url": "https://www.onda.ma/Nos-A%C3%A9roports/A%C3%A9roport-Marrakech-M%C3%A9nara/Services/Taxi-et-Bus"
+      }
+    ],
+    "contactless": null,
+    "tips": [
+      {
+        "en": "The airport bus is the only public transport option; there is no train or tram to the city.",
+        "ka": "აეროპორტის ავტობუსი ერთადერთი საზოგადოებრივი ტრანსპორტია; ქალაქამდე მატარებელი ან ტრამვაი არ მიდის."
+      },
+      {
+        "en": "Official taxi fares are displayed at the airport taxi rank.",
+        "ka": "ტაქსის ოფიციალური ტარიფები აეროპორტის ტაქსის სადგომზეა გამოკრული."
+      }
+    ],
+    "sources": [
+      "https://www.onda.ma/Nos-A%C3%A9roports/A%C3%A9roport-Marrakech-M%C3%A9nara/Services/Taxi-et-Bus"
+    ],
+    "checkedOn": "2026-10-27",
+    "apps": []
+  },
+  "capetown": {
+    "airport": "CPT",
+    "options": [
+      {
+        "mode": "bus",
+        "name": "MyCiTi A01 Airport – Civic Centre",
+        "from": "MyCiTi Airport station, outside the main terminal",
+        "to": "Civic Centre (city centre)",
+        "ticket": {
+          "en": "myconnect card.",
+          "ka": "myconnect ბარათი."
+        },
+        "price": null,
+        "currency": "ZAR",
+        "whereToBuy": null,
+        "payment": null,
+        "duration": null,
+        "frequency": {
+          "en": "Every 20 minutes when running (service currently suspended).",
+          "ka": "მოძრაობისას ყოველ 20 წუთში (სერვისი ამჟამად შეჩერებულია)."
+        },
+        "url": "https://www.myciti.org.za/en/routes-stops/airport-services/"
+      }
+    ],
+    "cityTicket": {
+      "name": {
+        "en": "MyCiTi Mover fare 0–5 km, saver time (R19.50 at peak)",
+        "ka": "MyCiTi Mover-ის ტარიფი 0–5 კმ, არაპიკური დრო (პიკში R19.50)"
+      },
+      "price": 15,
+      "currency": "ZAR"
+    },
+    "dayPass": {
+      "name": {
+        "en": "MyCiTi One Day Pass",
+        "ka": "MyCiTi ერთდღიანი აბონემენტი"
+      },
+      "price": 130,
+      "currency": "ZAR"
+    },
+    "contactless": null,
+    "tips": [
+      {
+        "en": "MyCiTi says the airport service is temporarily suspended, so check its status before you fly.",
+        "ka": "MyCiTi-ის ცნობით აეროპორტის სერვისი დროებით შეჩერებულია, ამიტომ ფრენამდე მისი სტატუსი გადაამოწმეთ."
+      },
+      {
+        "en": "MyCiTi fares are paid with a myconnect card, which costs R40.",
+        "ka": "MyCiTi-ში იხდით myconnect ბარათით, რომელიც R40 ღირს."
+      }
+    ],
+    "sources": [
+      "https://www.myciti.org.za/en/routes-stops/airport-services/",
+      "https://www.myciti.org.za/en/contact/media-releases/fare-adjustments-2026/"
+    ],
+    "checkedOn": "2026-10-27",
+    "apps": []
+  }
+}
