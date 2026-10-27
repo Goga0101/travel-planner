@@ -5,342 +5,393 @@
   @let s = p.summary;
   <p class="breadcrumb"><a [routerLink]="i18n.path('searches', s.tripSearchId)"><app-icon name="arrowLeft" [size]="16" /> {{ 'plan.back' | t }}</a></p>
 
-  <section class="plan-cover">
-    @if (photo(); as src) { <img [src]="src" alt="" decoding="async" width="1200" height="500" /> }
-    <div class="plan-cover-body">
-      <p class="eyebrow eyebrow-light">{{ 'plan.eyebrow' | t }}</p>
-      <h1 class="page-title">{{ p.destination.city }}, {{ p.destination.country }}</h1>
-    </div>
-  </section>
-
-  <section class="plan-intro">
-    <div class="summary-chips">
-      <span class="meta-chip"><app-icon name="calendar" [size]="14" /> {{ s.departureDate | ldate: 'EEE d MMM' }} – {{ s.returnDate | ldate: 'EEE d MMM y' }}</span>
-      <span class="meta-chip"><app-icon name="bed" [size]="14" /> {{ 'unit.nights' | t: { count: s.nights } }}</span>
-      <span class="meta-chip"><app-icon name="users" [size]="14" /> {{ 'unit.travelers' | t: { count: s.travelers } }}</span>
-      @if (s.flight?.selfTransfer) { <span class="badge-self">{{ 'flight.selfTransferBadge' | t }}</span> }
-      @if (s.isDemo) { <span class="demo-tag">{{ 'plan.demo' | t }}</span> }
-    </div>
-    @if (p.destination.description) { <p class="muted">{{ p.destination.description }}</p> }
-  </section>
-
-  <section class="kpi-grid" [attr.aria-label]="'plan.total' | t">
-    <div class="kpi">
-      <span class="side-label">{{ 'plan.total' | t }}</span>
-      <span class="price price-lg">{{ s.totalEstimatedCost | money: s.currency }}</span>
-      <app-budget-fit-badge [fit]="s.budgetFit" />
-    </div>
-    <div class="kpi" [class.kpi-over]="s.remainingBudget < 0">
-      <span class="side-label">{{ 'plan.kpiRemaining' | t }}</span>
-      <span class="price price-lg kpi-delta">
-        {{ s.remainingBudget >= 0 ? '+' : '−' }}{{ (s.remainingBudget >= 0 ? s.remainingBudget : -s.remainingBudget) | money: s.currency }}
-      </span>
-      <span class="small muted">{{ 'plan.budgetLine' | t: { amount: (s.budgetAmount | money: s.currency) } }}</span>
-    </div>
-    <div class="kpi kpi-wide">
-      <div class="kpi-bar-head">
-        <span class="side-label">{{ 'plan.kpiBudgetUsed' | t }}</span>
-        <strong class="tabular">{{ budgetUsedPercent() }}%</strong>
-      </div>
-      <div class="budget-bar" role="img" [attr.aria-label]="'plan.kpiBudgetUsed' | t">
-        @for (b of budgetBar(); track b.category; let i = $index) {
-          <span class="budget-seg" [attr.data-i]="i" [style.width.%]="b.percent" [title]="(b.category | category) + ': ' + (b.amount | money: s.currency)"></span>
-        }
-      </div>
-      <ul class="budget-legend">
-        @for (b of budgetBar(); track b.category; let i = $index) {
-          <li><span class="budget-dot" [attr.data-i]="i"></span>{{ b.category | category }} {{ b.amount | money: s.currency }}</li>
-        }
-      </ul>
-    </div>
-    <div class="kpi kpi-actions">
-      <button type="button" class="btn btn-secondary" (click)="refresh()" [disabled]="refreshing()">
-        @if (refreshing()) { <span class="spinner" aria-hidden="true"></span> {{ 'plan.refreshing' | t }} } @else { <app-icon name="refresh" [size]="16" /> {{ 'plan.refresh' | t }} }
-      </button>
-      @if (s.pricesRefreshedAtUtc) {
-        <span class="small muted">{{ 'plan.refreshedAt' | t: { time: (s.pricesRefreshedAtUtc | ldate: 'd MMM HH:mm') } }}</span>
-      }
-    </div>
-  </section>
-
-  <div class="plan-toolbar no-print">
-    <nav class="plan-subnav" [attr.aria-label]="'plan.sections' | t">
-      @if (flight()) { <a [routerLink]="[]" fragment="flight">{{ 'plan.flightTitle' | t }}</a> }
-      <a [routerLink]="[]" fragment="stay">{{ 'nearby.stayTitle' | t }}</a>
-      <a [routerLink]="[]" fragment="route">{{ 'plan.navRoute' | t }}</a>
-      <a [routerLink]="[]" fragment="days">{{ 'plan.navDays' | t }}</a>
-      <a [routerLink]="[]" fragment="sights">{{ 'plan.navSights' | t }}</a>
-      <a [routerLink]="[]" fragment="costs">{{ 'plan.navCosts' | t }}</a>
-    </nav>
-    <div class="plan-actions">
-      <button type="button" class="btn btn-sm" [class.is-saved]="isSaved()" [attr.aria-pressed]="isSaved()" (click)="toggleSaved()">
-        <app-icon name="heart" [size]="16" /> {{ (isSaved() ? 'plan.saved' : 'plan.save') | t }}
-      </button>
-      <button type="button" class="btn btn-sm" (click)="share()"><app-icon name="share" [size]="16" /> {{ 'plan.share' | t }}</button>
-      @if (flightInfo()) {
-        <button type="button" class="btn btn-sm" (click)="addToCalendar()"><app-icon name="calendarPlus" [size]="16" /> {{ 'plan.calendar' | t }}</button>
-      }
-      <button type="button" class="btn btn-sm" (click)="print()"><app-icon name="printer" [size]="16" /> {{ 'plan.print' | t }}</button>
-    </div>
-    <p class="visually-hidden" aria-live="polite">{{ actionStatus() }}</p>
-    @if (actionStatus()) { <p class="small action-status" aria-hidden="true"><app-icon name="check" [size]="14" /> {{ actionStatus() }}</p> }
-  </div>
-
-  <app-error-banner [error]="refreshError()" />
-
-  @if (s.hasExpiredItems) {
-    <div class="alert alert-warn" role="status">{{ 'plan.expiredWarning' | t }}</div>
-  }
-  @if (s.missingCostCategories.length) {
-    <div class="alert alert-warn">{{ 'plan.missingCosts' | t: { list: (s.missingCostCategories | category) } }}</div>
-  }
-  @if (s.warnings.length) {
-    <div class="alert alert-info">
-      <ul>
-        @for (w of s.warnings; track w) { <li>{{ w }}</li> }
-      </ul>
-    </div>
-  }
-
-  <!-- Flight -->
-  @if (flight(); as f) {
-    <section class="card" id="flight">
-      <div class="section-head">
-        <h2><app-icon name="plane" /> {{ 'plan.flightTitle' | t }}</h2>
-        <app-verification-badge [status]="f.verification" [expired]="f.isExpired" />
-      </div>
-      @if (flightInfo(); as fi) {
-        @for (leg of [{ label: 'plan.outbound', it: fi.outbound, summary: summary()?.flight?.outbound }, { label: 'plan.return', it: fi.inbound, summary: summary()?.flight?.inbound }]; track leg.label) {
-          <div class="leg">
-            <h3>{{ $any(leg.label) | t }}: {{ leg.it.departureAirport }} → {{ leg.it.arrivalAirport }}</h3>
-            @if (leg.summary; as ls) { <div class="leg-timeline"><app-flight-timeline [leg]="ls" [selfTransfer]="!!summary()?.flight?.selfTransfer" /></div> }
-            <p class="small muted">
-              {{ 'plan.departs' | t: { time: (leg.it.departureLocal | ldate: 'EEE d MMM HH:mm') } }}
-              @if (leg.it.arrivalLocal) { · {{ 'plan.arrives' | t: { time: (leg.it.arrivalLocal | ldate: 'EEE d MMM HH:mm') } }} }
-              @if (leg.it.duration) { · {{ leg.it.duration | timespan }} }
-              · {{ leg.it.stops | stops }}
-            </p>
-            @if (leg.it.segments.length) {
-              <ol class="segments">
-                @for (seg of leg.it.segments; track $index) {
-                  <li>
-                    <strong>{{ seg.flightNumber }}</strong> {{ seg.departureAirport }} {{ seg.departureLocal | ldate: 'HH:mm' }}
-                    → {{ seg.arrivalAirport }} @if (seg.arrivalLocal) { {{ seg.arrivalLocal | ldate: 'HH:mm' }} }
-                    @if (seg.duration) { <span class="muted">({{ seg.duration | timespan }})</span> }
-                  </li>
-                }
-              </ol>
-            } @else if (!leg.it.via?.length) {
-              <p class="small muted">{{ 'plan.noSegments' | t }}</p>
-            }
-          </div>
-        }
-        @if (fi.tickets && fi.tickets.length > 1) {
-          <h3>{{ 'flight.tickets' | t }}</h3>
-          <app-flight-tickets [tickets]="fi.tickets" [selfTransfer]="!!summary()?.flight?.selfTransfer" />
-        }
-        <p class="small">
-          {{ 'plan.baggage' | t }}
-          @if (fi.includedCheckedBags !== undefined) {
-            {{ 'plan.bagsIncluded' | t: { count: fi.includedCheckedBags } }}
-          } @else {
-            {{ fi.baggageNote ?? ('plan.bagsNotReported' | t) }}
-          }
-        </p>
-        @if (fi.priceExtrapolatedFromSinglePassenger) {
-          <p class="small text-warn">{{ 'plan.perPassenger' | t: { passengers: ('unit.passengers' | t: { count: fi.passengers }) } }}</p>
-        }
-        @if (fi.sourceNote) { <p class="small muted">{{ fi.sourceNote }}</p> }
-      }
-      <app-external-link [href]="f.bookingUrl" [button]="true" [label]="'plan.checkBook' | t: { provider: f.provider }" [fallback]="'plan.noBookingLink' | t" />
-    </section>
-  }
-
-  <app-weather [latitude]="p.destination.latitude" [longitude]="p.destination.longitude" [start]="s.departureDate" [end]="s.returnDate" />
-
-  <!-- Accommodation -->
-  @if (accommodation(); as a) {
-    <section class="card">
-      <div class="section-head">
-        <h2><app-icon name="bed" /> {{ 'plan.accTitle' | t }}</h2>
-        <app-verification-badge [status]="a.verification" [expired]="a.isExpired" />
-      </div>
-      <h3>{{ a.title }}</h3>
-      @if (accommodationInfo(); as ai) {
-        <dl class="facts">
-          @if (ai.address) { <div><dt>{{ 'plan.address' | t }}</dt><dd>{{ ai.address }}</dd></div> }
-          @if (ai.stars) { <div><dt>{{ 'plan.category' | t }}</dt><dd>{{ ai.stars }}★ @if (ai.category) { · {{ ai.category }} }</dd></div> }
-          @if (ai.reviewScore) { <div><dt>{{ 'plan.guestRating' | t }}</dt><dd>{{ ai.reviewScore }}/10</dd></div> }
-          <div>
-            <dt>{{ 'plan.stay' | t }}</dt>
-            <dd>
-              {{ ai.checkIn | ldate: 'd MMM' }} – {{ ai.checkOut | ldate: 'd MMM' }} · {{ 'unit.nights' | t: { count: ai.nights } }} ·
-              {{ 'unit.guests' | t: { count: ai.guests } }}, {{ 'unit.rooms' | t: { count: ai.rooms } }}
-            </dd>
-          </div>
-          <div><dt>{{ 'plan.cancellation' | t }}</dt><dd>{{ ai.cancellationPolicy ?? ('plan.cancellationMissing' | t) }}</dd></div>
-          @if (ai.mealPlan) { <div><dt>{{ 'plan.meals' | t }}</dt><dd>{{ ai.mealPlan }}</dd></div> }
-        </dl>
-        @if (ai.fees.length) {
-          <h4>{{ 'plan.fees' | t }}</h4>
-          <ul class="fees">
-            @for (fee of ai.fees; track fee.name) {
-              <li>
-                {{ fee.name }}: {{ fee.amount | money: fee.currency }}
-                <span class="tag">{{ (fee.includedInPrice ? 'plan.feeIncluded' : 'plan.feeAdded') | t }}</span>
-                @if (fee.payableAtProperty) { <span class="tag">{{ 'plan.payAtProperty' | t }}</span> }
-              </li>
-            }
-          </ul>
-        }
-      } @else {
-        <p class="muted">{{ a.summary }}</p>
-      }
-      @if (a.verification === 'Unavailable') {
-        <app-external-link [href]="a.bookingUrl" [button]="true" [label]="'plan.searchStays' | t: { provider: a.provider }" [fallback]="'plan.noAccLink' | t" />
-      } @else {
-        <app-external-link [href]="a.bookingUrl" [button]="true" [label]="'plan.checkBook' | t: { provider: a.provider }" [fallback]="'plan.noBookingLink' | t" />
-      }
-    </section>
-  }
-
-  <!-- Hotels near the airport / centre and getting around (OpenStreetMap) -->
-  <app-nearby [planId]="s.id" [summary]="s" />
-
-  <!-- Day-by-day activities and events -->
-  <app-day-planner [planId]="s.id" />
-
-  <!-- Sights and how to reach them -->
-  <app-attractions [destinationId]="p.destination.id" [city]="p.destination.city" />
-
-  <!-- Cost breakdown -->
-  <section class="card" id="costs">
-    <h2>{{ 'plan.costBreakdown' | t }}</h2>
-    <div class="breakdown-categories">
-      @for (c of p.costBreakdown; track c.category) {
-        <div class="breakdown-cat"><span class="muted small">{{ c.category | category }}</span><strong>{{ c.amount | money: s.currency }}</strong></div>
-      }
-    </div>
-    <div class="table-wrap">
-      <table class="items-table">
-        <thead>
-          <tr>
-            <th scope="col">{{ 'plan.colItem' | t }}</th>
-            <th scope="col">{{ 'plan.colProvider' | t }}</th>
-            <th scope="col" class="num">{{ 'plan.colProviderPrice' | t }}</th>
-            <th scope="col" class="num">{{ 'plan.colInCurrency' | t: { currency: s.currency } }}</th>
-            <th scope="col">{{ 'plan.colSource' | t }}</th>
-            <th scope="col">{{ 'plan.colRetrieved' | t }}</th>
-          </tr>
-        </thead>
-        <tbody>
-          @for (i of p.items; track i.id) {
-            <tr [class.informational]="!i.includedInTotal">
-              <td>
-                <strong>{{ i.title }}</strong>
-                <div class="small muted">{{ i.category | category }}@if (i.summary) { · {{ i.summary }} }</div>
-                @if (!i.includedInTotal) { <span class="tag">{{ 'plan.informational' | t }}</span> }
-              </td>
-              <td>{{ i.provider }}</td>
-              <td class="num">{{ i.price | money: i.currency }}</td>
-              <td class="num">
-                {{ i.convertedPrice | money: s.currency }}
-                @if (i.exchangeRate) {
-                  <div class="small muted">{{ 'plan.rate' | t: { rate: (i.exchangeRate | lnumber: '1.4-6') } }} · {{ i.exchangeRateSource }}
-                    @if (i.exchangeRateAsOfUtc) { · {{ i.exchangeRateAsOfUtc | ldate: 'd MMM y' }} }</div>
-                }
-              </td>
-              <td><app-verification-badge [status]="i.verification" [expired]="i.isExpired" /></td>
-              <td class="small">
-                {{ i.retrievedAtUtc | ldate: 'd MMM HH:mm' }}
-                @if (i.expiresAtUtc) {
-                  <div [class.text-danger]="i.isExpired">{{ 'plan.expires' | t: { time: (i.expiresAtUtc | ldate: 'd MMM HH:mm') } }}</div>
-                }
-              </td>
-            </tr>
-          }
-        </tbody>
-        <tfoot>
-          <tr>
-            <th scope="row" colspan="3">{{ 'plan.total' | t }}</th>
-            <td class="num"><strong>{{ s.totalEstimatedCost | money: s.currency }}</strong></td>
-            <td colspan="2"></td>
-          </tr>
-        </tfoot>
-      </table>
-    </div>
-    <app-verification-legend />
-  </section>
-
-  <!-- Transfers -->
-  @if (transfers().length) {
-    <section class="card">
-      <h2><app-icon name="train" /> {{ 'plan.transfersTitle' | t }}</h2>
-      @if (mapEmbedUrl(); as url) {
-        <iframe class="map" [title]="'plan.mapTitle' | t" [src]="url" loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
-      } @else if (mapsDirectionsUrl()) {
-        <p><app-external-link [href]="mapsDirectionsUrl()" [label]="'plan.openMaps' | t" /></p>
-      }
-      @for (tr of transfers(); track tr.item.id) {
-        <div class="transfer-direction">
-          <div class="section-head">
-            <h3>{{ directionKey(tr.item) | t }} ({{ tr.details.airportIata }})</h3>
-            <app-verification-badge [status]="tr.item.verification" />
-          </div>
-          <p class="small">
-            {{ 'plan.budgeted' | t: { amount: (tr.item.convertedPrice ?? tr.item.price | money: (tr.item.convertedPrice !== undefined ? s.currency : tr.item.currency)) } }}
-            @if (tr.details.selectedOptionTitle) { ({{ tr.details.selectedOptionTitle }}) }
-          </p>
-          <ul class="transfer-options">
-            @for (o of tr.details.options; track $index) {
-              <li class="transfer-option">
-                <div class="section-head">
-                  <strong>{{ o.title }}</strong>
-                  <span class="small muted">{{ transferModeKey(o.mode) | t }}</span>
-                </div>
-                <p class="small">
-                  @if (o.duration) { ~{{ o.duration | timespan }} }
-                  @if (o.distanceMeters) { · {{ o.distanceMeters | distance }} }
-                  @if (o.estimatedCost !== undefined) {
-                    · {{ 'plan.estCost' | t: { amount: (o.estimatedCost | money: o.costCurrency) } }}
-                    {{ (o.costIsPerPerson ? 'plan.perPerson' : 'plan.perVehicle') | t }}
-                    <app-verification-badge [status]="o.costVerification" />
-                  } @else if (o.mode !== 'Information') {
-                    · {{ 'plan.costUnavailable' | t }}
-                  }
-                  @if (o.infoVerification === 'Verified') { <app-verification-badge [status]="o.infoVerification" /> }
-                </p>
-                @if (o.lines.length) { <p class="small">{{ 'plan.lines' | t: { list: o.lines.join(', ') } }}</p> }
-                @if (o.notes) { <p class="small muted">{{ o.notes }}</p> }
-                @if (o.phone) { <p class="small">{{ 'plan.phone' | t }} <a [href]="'tel:' + o.phone">{{ o.phone }}</a></p> }
-                @if (o.url) { <app-external-link [href]="o.url" [label]="'plan.officialWebsite' | t" /> }
-              </li>
-            }
-          </ul>
+  <div class="plan-layout">
+    <aside class="plan-sidebar no-print" [attr.aria-label]="'plan.sections' | t">
+      <div class="sidebar-trip">
+        @if (photo(); as src) { <img [src]="src" alt="" decoding="async" width="320" height="140" /> }
+        <div>
+          <strong>{{ p.destination.city }}</strong>
+          <span class="small muted">{{ s.departureDate | ldate: 'd MMM' }} – {{ s.returnDate | ldate: 'd MMM' }} · {{ s.totalEstimatedCost | money: s.currency }}</span>
         </div>
-      }
-      <p class="small muted">{{ transfers()[0].details.disclaimer }}</p>
-    </section>
-  }
-
-  <!-- Outbound links -->
-  <section class="card">
-    <h2>{{ 'plan.officialLinks' | t }}</h2>
-    <p class="small muted">{{ 'plan.linksNote' | t }}</p>
-    @for (g of linkGroups(); track g.kind) {
-      @let kindKey = linkKindKey(g.kind);
-      <h3>{{ kindKey ? (kindKey | t) : g.kind }}</h3>
-      <ul class="link-list">
-        @for (l of g.items; track l.url) {
-          <li><app-external-link [href]="l.url" [label]="l.label" /> <span class="small muted">· {{ l.provider }}</span>
-            <app-verification-badge [status]="l.verification" /></li>
+      </div>
+      <nav class="tab-nav" role="tablist" [attr.aria-label]="'plan.sections' | t">
+        @for (t of tabs(); track t.id; let i = $index) {
+          <button type="button" role="tab" class="tab-link" [class.active]="activeTab() === t.id" [attr.aria-selected]="activeTab() === t.id"
+                  [attr.aria-controls]="'panel-' + t.id" [id]="'tab-' + t.id" (click)="setTab(t.id)">
+            <span class="tab-icon"><app-icon [name]="t.icon" [size]="18" /></span>
+            <span class="tab-text">
+              <span class="tab-label">{{ t.label | t }}</span>
+              <span class="tab-hint">{{ t.hint }}</span>
+            </span>
+            <span class="tab-step" aria-hidden="true">{{ i + 1 }}</span>
+          </button>
         }
-      </ul>
-    } @empty {
-      <p class="muted">{{ 'plan.noLinks' | t }} @if (s.isDemo) { {{ 'plan.noLinksDemo' | t }} }</p>
-    }
-  </section>
+      </nav>
+      <div class="plan-actions">
+        <button type="button" class="btn btn-sm" [class.is-saved]="isSaved()" [attr.aria-pressed]="isSaved()" (click)="toggleSaved()">
+          <app-icon name="heart" [size]="16" /> {{ (isSaved() ? 'plan.saved' : 'plan.save') | t }}
+        </button>
+        <button type="button" class="btn btn-sm" (click)="share()"><app-icon name="share" [size]="16" /> {{ 'plan.share' | t }}</button>
+        @if (flightInfo()) {
+          <button type="button" class="btn btn-sm" (click)="addToCalendar()"><app-icon name="calendarPlus" [size]="16" /> {{ 'plan.calendar' | t }}</button>
+        }
+        <button type="button" class="btn btn-sm" (click)="print()"><app-icon name="printer" [size]="16" /> {{ 'plan.print' | t }}</button>
+      </div>
+      <p class="visually-hidden" aria-live="polite">{{ actionStatus() }}</p>
+      @if (actionStatus()) { <p class="small action-status" aria-hidden="true"><app-icon name="check" [size]="14" /> {{ actionStatus() }}</p> }
+    </aside>
+
+    <div class="plan-main" role="tabpanel" [id]="'panel-' + activeTab()" [attr.aria-labelledby]="'tab-' + activeTab()">
+      @switch (activeTab()) {
+        @case ('overview') {
+          <section class="plan-cover">
+            @if (photo(); as src) { <img [src]="src" alt="" decoding="async" width="1200" height="500" /> }
+            <div class="plan-cover-body">
+              <p class="eyebrow eyebrow-light">{{ 'plan.eyebrow' | t }}</p>
+              <h1 class="page-title">{{ p.destination.city }}, {{ p.destination.country }}</h1>
+            </div>
+          </section>
+
+          <section class="plan-intro">
+            <div class="summary-chips">
+              <span class="meta-chip"><app-icon name="calendar" [size]="14" /> {{ s.departureDate | ldate: 'EEE d MMM' }} – {{ s.returnDate | ldate: 'EEE d MMM y' }}</span>
+              <span class="meta-chip"><app-icon name="bed" [size]="14" /> {{ 'unit.nights' | t: { count: s.nights } }}</span>
+              <span class="meta-chip"><app-icon name="users" [size]="14" /> {{ 'unit.travelers' | t: { count: s.travelers } }}</span>
+              @if (s.flight?.selfTransfer) { <span class="badge-self">{{ 'flight.selfTransferBadge' | t }}</span> }
+              @if (s.isDemo) { <span class="demo-tag">{{ 'plan.demo' | t }}</span> }
+            </div>
+            @if (p.destination.description) { <p class="muted">{{ p.destination.description }}</p> }
+          </section>
+
+          <section class="kpi-grid" [attr.aria-label]="'plan.total' | t">
+            <div class="kpi">
+              <span class="side-label">{{ 'plan.total' | t }}</span>
+              <span class="price price-lg">{{ s.totalEstimatedCost | money: s.currency }}</span>
+              <app-budget-fit-badge [fit]="s.budgetFit" />
+            </div>
+            <div class="kpi" [class.kpi-over]="s.remainingBudget < 0">
+              <span class="side-label">{{ 'plan.kpiRemaining' | t }}</span>
+              <span class="price price-lg kpi-delta">
+                {{ s.remainingBudget >= 0 ? '+' : '−' }}{{ (s.remainingBudget >= 0 ? s.remainingBudget : -s.remainingBudget) | money: s.currency }}
+              </span>
+              <span class="small muted">{{ 'plan.budgetLine' | t: { amount: (s.budgetAmount | money: s.currency) } }}</span>
+            </div>
+            <div class="kpi kpi-wide">
+              <div class="kpi-bar-head">
+                <span class="side-label">{{ 'plan.kpiBudgetUsed' | t }}</span>
+                <strong class="tabular">{{ budgetUsedPercent() }}%</strong>
+              </div>
+              <div class="budget-bar" role="img" [attr.aria-label]="'plan.kpiBudgetUsed' | t">
+                @for (b of budgetBar(); track b.category; let i = $index) {
+                  <span class="budget-seg" [attr.data-i]="i" [style.width.%]="b.percent" [title]="(b.category | category) + ': ' + (b.amount | money: s.currency)"></span>
+                }
+              </div>
+              <ul class="budget-legend">
+                @for (b of budgetBar(); track b.category; let i = $index) {
+                  <li><span class="budget-dot" [attr.data-i]="i"></span>{{ b.category | category }} {{ b.amount | money: s.currency }}</li>
+                }
+              </ul>
+            </div>
+            <div class="kpi kpi-actions">
+              <button type="button" class="btn btn-secondary" (click)="refresh()" [disabled]="refreshing()">
+                @if (refreshing()) { <span class="spinner" aria-hidden="true"></span> {{ 'plan.refreshing' | t }} } @else { <app-icon name="refresh" [size]="16" /> {{ 'plan.refresh' | t }} }
+              </button>
+              @if (s.pricesRefreshedAtUtc) {
+                <span class="small muted">{{ 'plan.refreshedAt' | t: { time: (s.pricesRefreshedAtUtc | ldate: 'd MMM HH:mm') } }}</span>
+              }
+            </div>
+          </section>
+
+          <app-error-banner [error]="refreshError()" />
+
+          @if (s.hasExpiredItems) {
+            <div class="alert alert-warn" role="status">{{ 'plan.expiredWarning' | t }}</div>
+          }
+          @if (s.missingCostCategories.length) {
+            <div class="alert alert-warn">{{ 'plan.missingCosts' | t: { list: (s.missingCostCategories | category) } }}</div>
+          }
+          @if (s.warnings.length) {
+            <div class="alert alert-info">
+              <ul>
+                @for (w of s.warnings; track w) { <li>{{ w }}</li> }
+              </ul>
+            </div>
+          }
+
+
+          <section class="overview-grid" [attr.aria-label]="'tab.whatsInside' | t">
+            @for (t of tabs().slice(1); track t.id) {
+              <button type="button" class="overview-card" (click)="setTab(t.id)">
+                <span class="overview-icon" [attr.data-tab]="t.id"><app-icon [name]="t.icon" [size]="22" /></span>
+                <span class="overview-text">
+                  <strong>{{ t.label | t }}</strong>
+                  <span class="small">{{ t.hint }}</span>
+                  <span class="small muted">{{ t.description | t }}</span>
+                </span>
+                <app-icon name="arrowRight" [size]="16" class="overview-go" />
+              </button>
+            }
+          </section>
+
+          <app-weather [latitude]="p.destination.latitude" [longitude]="p.destination.longitude" [start]="s.departureDate" [end]="s.returnDate" />
+
+        }
+        @case ('flight') {
+          <!-- Flight -->
+          @if (flight(); as f) {
+            <section class="card" id="flight">
+              <div class="section-head">
+                <h2><app-icon name="plane" /> {{ 'plan.flightTitle' | t }}</h2>
+                <app-verification-badge [status]="f.verification" [expired]="f.isExpired" />
+              </div>
+              @if (flightInfo(); as fi) {
+                @for (leg of [{ label: 'plan.outbound', it: fi.outbound, summary: summary()?.flight?.outbound }, { label: 'plan.return', it: fi.inbound, summary: summary()?.flight?.inbound }]; track leg.label) {
+                  <div class="leg">
+                    <h3>{{ $any(leg.label) | t }}: {{ leg.it.departureAirport }} → {{ leg.it.arrivalAirport }}</h3>
+                    @if (leg.summary; as ls) { <div class="leg-timeline"><app-flight-timeline [leg]="ls" [selfTransfer]="!!summary()?.flight?.selfTransfer" /></div> }
+                    <p class="small muted">
+                      {{ 'plan.departs' | t: { time: (leg.it.departureLocal | ldate: 'EEE d MMM HH:mm') } }}
+                      @if (leg.it.arrivalLocal) { · {{ 'plan.arrives' | t: { time: (leg.it.arrivalLocal | ldate: 'EEE d MMM HH:mm') } }} }
+                      @if (leg.it.duration) { · {{ leg.it.duration | timespan }} }
+                      · {{ leg.it.stops | stops }}
+                    </p>
+                    @if (leg.it.segments.length) {
+                      <ol class="segments">
+                        @for (seg of leg.it.segments; track $index) {
+                          <li>
+                            <strong>{{ seg.flightNumber }}</strong> {{ seg.departureAirport }} {{ seg.departureLocal | ldate: 'HH:mm' }}
+                            → {{ seg.arrivalAirport }} @if (seg.arrivalLocal) { {{ seg.arrivalLocal | ldate: 'HH:mm' }} }
+                            @if (seg.duration) { <span class="muted">({{ seg.duration | timespan }})</span> }
+                          </li>
+                        }
+                      </ol>
+                    } @else if (!leg.it.via?.length) {
+                      <p class="small muted">{{ 'plan.noSegments' | t }}</p>
+                    }
+                  </div>
+                }
+                @if (fi.tickets && fi.tickets.length > 1) {
+                  <h3>{{ 'flight.tickets' | t }}</h3>
+                  <app-flight-tickets [tickets]="fi.tickets" [selfTransfer]="!!summary()?.flight?.selfTransfer" />
+                }
+                <p class="small">
+                  {{ 'plan.baggage' | t }}
+                  @if (fi.includedCheckedBags !== undefined) {
+                    {{ 'plan.bagsIncluded' | t: { count: fi.includedCheckedBags } }}
+                  } @else {
+                    {{ fi.baggageNote ?? ('plan.bagsNotReported' | t) }}
+                  }
+                </p>
+                @if (fi.priceExtrapolatedFromSinglePassenger) {
+                  <p class="small text-warn">{{ 'plan.perPassenger' | t: { passengers: ('unit.passengers' | t: { count: fi.passengers }) } }}</p>
+                }
+                @if (fi.sourceNote) { <p class="small muted">{{ fi.sourceNote }}</p> }
+              }
+              <app-external-link [href]="f.bookingUrl" [button]="true" [label]="'plan.checkBook' | t: { provider: f.provider }" [fallback]="'plan.noBookingLink' | t" />
+            </section>
+          }
+
+        }
+        @case ('stay') {
+          <!-- Accommodation -->
+          @if (accommodation(); as a) {
+            <section class="card">
+              <div class="section-head">
+                <h2><app-icon name="bed" /> {{ 'plan.accTitle' | t }}</h2>
+                <app-verification-badge [status]="a.verification" [expired]="a.isExpired" />
+              </div>
+              <h3>{{ a.title }}</h3>
+              @if (accommodationInfo(); as ai) {
+                <dl class="facts">
+                  @if (ai.address) { <div><dt>{{ 'plan.address' | t }}</dt><dd>{{ ai.address }}</dd></div> }
+                  @if (ai.stars) { <div><dt>{{ 'plan.category' | t }}</dt><dd>{{ ai.stars }}★ @if (ai.category) { · {{ ai.category }} }</dd></div> }
+                  @if (ai.reviewScore) { <div><dt>{{ 'plan.guestRating' | t }}</dt><dd>{{ ai.reviewScore }}/10</dd></div> }
+                  <div>
+                    <dt>{{ 'plan.stay' | t }}</dt>
+                    <dd>
+                      {{ ai.checkIn | ldate: 'd MMM' }} – {{ ai.checkOut | ldate: 'd MMM' }} · {{ 'unit.nights' | t: { count: ai.nights } }} ·
+                      {{ 'unit.guests' | t: { count: ai.guests } }}, {{ 'unit.rooms' | t: { count: ai.rooms } }}
+                    </dd>
+                  </div>
+                  <div><dt>{{ 'plan.cancellation' | t }}</dt><dd>{{ ai.cancellationPolicy ?? ('plan.cancellationMissing' | t) }}</dd></div>
+                  @if (ai.mealPlan) { <div><dt>{{ 'plan.meals' | t }}</dt><dd>{{ ai.mealPlan }}</dd></div> }
+                </dl>
+                @if (ai.fees.length) {
+                  <h4>{{ 'plan.fees' | t }}</h4>
+                  <ul class="fees">
+                    @for (fee of ai.fees; track fee.name) {
+                      <li>
+                        {{ fee.name }}: {{ fee.amount | money: fee.currency }}
+                        <span class="tag">{{ (fee.includedInPrice ? 'plan.feeIncluded' : 'plan.feeAdded') | t }}</span>
+                        @if (fee.payableAtProperty) { <span class="tag">{{ 'plan.payAtProperty' | t }}</span> }
+                      </li>
+                    }
+                  </ul>
+                }
+              } @else {
+                <p class="muted">{{ a.summary }}</p>
+              }
+              @if (a.verification === 'Unavailable') {
+                <app-external-link [href]="a.bookingUrl" [button]="true" [label]="'plan.searchStays' | t: { provider: a.provider }" [fallback]="'plan.noAccLink' | t" />
+              } @else {
+                <app-external-link [href]="a.bookingUrl" [button]="true" [label]="'plan.checkBook' | t: { provider: a.provider }" [fallback]="'plan.noBookingLink' | t" />
+              }
+            </section>
+          }
+
+
+          <app-nearby [planId]="s.id" [summary]="s" part="stay" (stayChosen)="setTab('route')" />
+        }
+        @case ('route') {
+          <app-stay-route [planId]="s.id" />
+          <app-nearby [planId]="s.id" [summary]="s" part="around" />
+        }
+        @case ('days') {
+          <app-day-planner [planId]="s.id" />
+        }
+        @case ('sights') {
+          <app-attractions [destinationId]="p.destination.id" [city]="p.destination.city" />
+        }
+        @case ('costs') {
+          <!-- Cost breakdown -->
+          <section class="card" id="costs">
+            <h2>{{ 'plan.costBreakdown' | t }}</h2>
+            <div class="breakdown-categories">
+              @for (c of p.costBreakdown; track c.category) {
+                <div class="breakdown-cat"><span class="muted small">{{ c.category | category }}</span><strong>{{ c.amount | money: s.currency }}</strong></div>
+              }
+            </div>
+            <div class="table-wrap">
+              <table class="items-table">
+                <thead>
+                  <tr>
+                    <th scope="col">{{ 'plan.colItem' | t }}</th>
+                    <th scope="col">{{ 'plan.colProvider' | t }}</th>
+                    <th scope="col" class="num">{{ 'plan.colProviderPrice' | t }}</th>
+                    <th scope="col" class="num">{{ 'plan.colInCurrency' | t: { currency: s.currency } }}</th>
+                    <th scope="col">{{ 'plan.colSource' | t }}</th>
+                    <th scope="col">{{ 'plan.colRetrieved' | t }}</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  @for (i of p.items; track i.id) {
+                    <tr [class.informational]="!i.includedInTotal">
+                      <td>
+                        <strong>{{ i.title }}</strong>
+                        <div class="small muted">{{ i.category | category }}@if (i.summary) { · {{ i.summary }} }</div>
+                        @if (!i.includedInTotal) { <span class="tag">{{ 'plan.informational' | t }}</span> }
+                      </td>
+                      <td>{{ i.provider }}</td>
+                      <td class="num">{{ i.price | money: i.currency }}</td>
+                      <td class="num">
+                        {{ i.convertedPrice | money: s.currency }}
+                        @if (i.exchangeRate) {
+                          <div class="small muted">{{ 'plan.rate' | t: { rate: (i.exchangeRate | lnumber: '1.4-6') } }} · {{ i.exchangeRateSource }}
+                            @if (i.exchangeRateAsOfUtc) { · {{ i.exchangeRateAsOfUtc | ldate: 'd MMM y' }} }</div>
+                        }
+                      </td>
+                      <td><app-verification-badge [status]="i.verification" [expired]="i.isExpired" /></td>
+                      <td class="small">
+                        {{ i.retrievedAtUtc | ldate: 'd MMM HH:mm' }}
+                        @if (i.expiresAtUtc) {
+                          <div [class.text-danger]="i.isExpired">{{ 'plan.expires' | t: { time: (i.expiresAtUtc | ldate: 'd MMM HH:mm') } }}</div>
+                        }
+                      </td>
+                    </tr>
+                  }
+                </tbody>
+                <tfoot>
+                  <tr>
+                    <th scope="row" colspan="3">{{ 'plan.total' | t }}</th>
+                    <td class="num"><strong>{{ s.totalEstimatedCost | money: s.currency }}</strong></td>
+                    <td colspan="2"></td>
+                  </tr>
+                </tfoot>
+              </table>
+            </div>
+            <app-verification-legend />
+          </section>
+
+          <!-- Transfers -->
+          @if (transfers().length) {
+            <section class="card">
+              <h2><app-icon name="train" /> {{ 'plan.transfersTitle' | t }}</h2>
+              @if (mapEmbedUrl(); as url) {
+                <iframe class="map" [title]="'plan.mapTitle' | t" [src]="url" loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade" allowfullscreen></iframe>
+              } @else if (mapsDirectionsUrl()) {
+                <p><app-external-link [href]="mapsDirectionsUrl()" [label]="'plan.openMaps' | t" /></p>
+              }
+              @for (tr of transfers(); track tr.item.id) {
+                <div class="transfer-direction">
+                  <div class="section-head">
+                    <h3>{{ directionKey(tr.item) | t }} ({{ tr.details.airportIata }})</h3>
+                    <app-verification-badge [status]="tr.item.verification" />
+                  </div>
+                  <p class="small">
+                    {{ 'plan.budgeted' | t: { amount: (tr.item.convertedPrice ?? tr.item.price | money: (tr.item.convertedPrice !== undefined ? s.currency : tr.item.currency)) } }}
+                    @if (tr.details.selectedOptionTitle) { ({{ tr.details.selectedOptionTitle }}) }
+                  </p>
+                  <ul class="transfer-options">
+                    @for (o of tr.details.options; track $index) {
+                      <li class="transfer-option">
+                        <div class="section-head">
+                          <strong>{{ o.title }}</strong>
+                          <span class="small muted">{{ transferModeKey(o.mode) | t }}</span>
+                        </div>
+                        <p class="small">
+                          @if (o.duration) { ~{{ o.duration | timespan }} }
+                          @if (o.distanceMeters) { · {{ o.distanceMeters | distance }} }
+                          @if (o.estimatedCost !== undefined) {
+                            · {{ 'plan.estCost' | t: { amount: (o.estimatedCost | money: o.costCurrency) } }}
+                            {{ (o.costIsPerPerson ? 'plan.perPerson' : 'plan.perVehicle') | t }}
+                            <app-verification-badge [status]="o.costVerification" />
+                          } @else if (o.mode !== 'Information') {
+                            · {{ 'plan.costUnavailable' | t }}
+                          }
+                          @if (o.infoVerification === 'Verified') { <app-verification-badge [status]="o.infoVerification" /> }
+                        </p>
+                        @if (o.lines.length) { <p class="small">{{ 'plan.lines' | t: { list: o.lines.join(', ') } }}</p> }
+                        @if (o.notes) { <p class="small muted">{{ o.notes }}</p> }
+                        @if (o.phone) { <p class="small">{{ 'plan.phone' | t }} <a [href]="'tel:' + o.phone">{{ o.phone }}</a></p> }
+                        @if (o.url) { <app-external-link [href]="o.url" [label]="'plan.officialWebsite' | t" /> }
+                      </li>
+                    }
+                  </ul>
+                </div>
+              }
+              <p class="small muted">{{ transfers()[0].details.disclaimer }}</p>
+            </section>
+          }
+
+          <!-- Outbound links -->
+          <section class="card">
+            <h2>{{ 'plan.officialLinks' | t }}</h2>
+            <p class="small muted">{{ 'plan.linksNote' | t }}</p>
+            @for (g of linkGroups(); track g.kind) {
+              @let kindKey = linkKindKey(g.kind);
+              <h3>{{ kindKey ? (kindKey | t) : g.kind }}</h3>
+              <ul class="link-list">
+                @for (l of g.items; track l.url) {
+                  <li><app-external-link [href]="l.url" [label]="l.label" /> <span class="small muted">· {{ l.provider }}</span>
+                    <app-verification-badge [status]="l.verification" /></li>
+                }
+              </ul>
+            } @empty {
+              <p class="muted">{{ 'plan.noLinks' | t }} @if (s.isDemo) { {{ 'plan.noLinksDemo' | t }} }</p>
+            }
+          </section>
+        }
+      }
+
+      @if (nextTab(); as next) {
+        <button type="button" class="next-tab no-print" (click)="setTab(next.id)">
+          <span class="small muted">{{ 'tab.next' | t }}</span>
+          <strong>{{ next.label | t }} <app-icon name="arrowRight" [size]="16" /></strong>
+        </button>
+      }
+    </div>
+  </div>
 } @else if (!error()) {
   <div class="skeleton-list" aria-busy="true">
     <div class="card skeleton"></div>

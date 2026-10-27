@@ -20,7 +20,19 @@
         "payment": null,
         "duration": null,
         "frequency": null,
-        "url": "https://tmb.cat/en/barcelona-fares-metro-bus/aeroport-ticket"
+        "url": "https://tmb.cat/en/barcelona-fares-metro-bus/aeroport-ticket",
+        "operators": [
+          "TMB"
+        ],
+        "lines": [
+          "L9 Sud"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://tmb.cat/en/barcelona-fares-metro-bus/aeroport-ticket",
+        "buyNote": {
+          "en": "Buy online on the TMB airport-ticket page or at the station machines.",
+          "ka": "იყიდეთ ონლაინ TMB-ის აეროპორტის ბილეთის გვერდზე ან სადგურის აპარატებში."
+        }
       },
       {
         "mode": "express_bus",
@@ -40,7 +52,20 @@
         "payment": null,
         "duration": null,
         "frequency": null,
-        "url": "https://aerobusbarcelona.es/"
+        "url": "https://aerobusbarcelona.es/",
+        "operators": [
+          "Aerobús"
+        ],
+        "lines": [
+          "A1",
+          "A2"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://aerobusbarcelona.es/",
+        "buyNote": {
+          "en": "Buy online on the Aerobús website or at the sales points in arrivals.",
+          "ka": "იყიდეთ ონლაინ Aerobús-ის საიტზე ან ჩამოსვლის დარბაზის გაყიდვის პუნქტებში."
+        }
       },
       {
         "mode": "train",
@@ -57,7 +82,20 @@
           "en": "every 30 min",
           "ka": "ყოველ 30 წთ-ში"
         },
-        "url": "https://rodalies.gencat.cat/en/sobre-rodalies/linies-i-estacions/servei_rodalia_barcelona/r2n/index.html"
+        "url": "https://rodalies.gencat.cat/en/sobre-rodalies/linies-i-estacions/servei_rodalia_barcelona/r2n/index.html",
+        "operators": [
+          "Renfe",
+          "Rodalies"
+        ],
+        "lines": [
+          "R2N"
+        ],
+        "buyOnline": null,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "Online sale not confirmed; buy at the station machines.",
+          "ka": "ონლაინ გაყიდვა დადასტურებული არ არის — იყიდეთ სადგურის აპარატებში."
+        }
       }
     ],
     "cityTicket": {
@@ -67,6 +105,12 @@
       },
       "price": 2.9,
       "currency": "EUR"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": null,
+    "cityBuyNote": {
+      "en": "Pay by bank card on TMB buses; top up T-mobilitat cards in the TMB App.",
+      "ka": "TMB-ის ავტობუსებში გადაიხადეთ საბანკო ბარათით; T-mobilitat ბარათი შეავსეთ TMB App-ში."
     },
     "dayPass": {
       "name": {
@@ -123,7 +167,20 @@
         "payment": null,
         "duration": null,
         "frequency": null,
-        "url": "https://www.iledefrance-mobilites.fr/en/titres-et-tarifs/detail/ticket-paris-region-aeroports"
+        "url": "https://www.iledefrance-mobilites.fr/en/titres-et-tarifs/detail/ticket-paris-region-aeroports",
+        "operators": [
+          "RATP",
+          "SNCF"
+        ],
+        "lines": [
+          "B"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://www.iledefrance-mobilites.fr/en/titres-et-tarifs/detail/ticket-paris-region-aeroports",
+        "buyNote": {
+          "en": "Buy in the Île-de-France Mobilités app (Navigo Easy or phone) or at the station machines.",
+          "ka": "იყიდეთ Île-de-France Mobilités-ის აპში (Navigo Easy ან ტელეფონი) ან სადგურის აპარატებში."
+        }
       }
     ],
     "cityTicket": {
@@ -133,6 +190,12 @@
       },
       "price": 2.55,
       "currency": "EUR"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": null,
+    "cityBuyNote": {
+      "en": "Buy tickets in the Île-de-France Mobilités app on a Navigo Easy pass or phone.",
+      "ka": "იყიდეთ ბილეთები Île-de-France Mobilités-ის აპში Navigo Easy ბარათზე ან ტელეფონზე."
     },
     "dayPass": {
       "name": {
@@ -195,7 +258,20 @@
         },
         "duration": null,
         "frequency": null,
-        "url": "https://tfl.gov.uk/travel-information/getting-around-london/heathrow-airport"
+        "url": "https://tfl.gov.uk/travel-information/getting-around-london/heathrow-airport",
+        "operators": [
+          "TfL",
+          "London Underground"
+        ],
+        "lines": [
+          "Piccadilly"
+        ],
+        "buyOnline": true,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "No ticket needed: tap a contactless bank card or Oyster at the gates.",
+          "ka": "ბილეთი არ გჭირდებათ — დაადეთ უკონტაქტო საბანკო ბარათი ან Oyster ტურნიკეტს."
+        }
       },
       {
         "mode": "train",
@@ -218,7 +294,20 @@
         },
         "duration": null,
         "frequency": null,
-        "url": "https://tfl.gov.uk/fares/new-fares"
+        "url": "https://tfl.gov.uk/fares/new-fares",
+        "operators": [
+          "TfL",
+          "Elizabeth line"
+        ],
+        "lines": [
+          "Elizabeth"
+        ],
+        "buyOnline": true,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "No ticket needed: tap a contactless bank card or Oyster at the gates.",
+          "ka": "ბილეთი არ გჭირდებათ — დაადეთ უკონტაქტო საბანკო ბარათი ან Oyster ტურნიკეტს."
+        }
       },
       {
         "mode": "train",
@@ -238,7 +327,17 @@
         "payment": null,
         "duration": null,
         "frequency": null,
-        "url": "https://www.heathrowexpress.com/ticket-fares"
+        "url": "https://www.heathrowexpress.com/ticket-fares",
+        "operators": [
+          "Heathrow Express"
+        ],
+        "lines": [],
+        "buyOnline": true,
+        "buyUrl": "https://www.heathrowexpress.com/ticket-fares",
+        "buyNote": {
+          "en": "Buy online or in the Heathrow Express app, or tap a contactless card or Oyster at the barriers (£26).",
+          "ka": "იყიდეთ ონლაინ ან Heathrow Express-ის აპში, ან დაადეთ უკონტაქტო ბარათი ან Oyster ტურნიკეტს (£26)."
+        }
       }
     ],
     "cityTicket": {
@@ -248,6 +347,12 @@
       },
       "price": 3.1,
       "currency": "GBP"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": null,
+    "cityBuyNote": {
+      "en": "Tap a contactless bank card or Oyster; daily caps apply automatically.",
+      "ka": "დაადეთ უკონტაქტო საბანკო ბარათი ან Oyster — დღიური ლიმიტი ავტომატურად მოქმედებს."
     },
     "dayPass": {
       "name": {
@@ -316,7 +421,17 @@
           "en": "every 15 min",
           "ka": "ყოველ 15 წთ-ში"
         },
-        "url": "https://www.trenitalia.com/en/connections/leonardo-express.html"
+        "url": "https://www.trenitalia.com/en/connections/leonardo-express.html",
+        "operators": [
+          "Trenitalia"
+        ],
+        "lines": [],
+        "buyOnline": true,
+        "buyUrl": "https://www.trenitalia.com/en/connections/leonardo-express.html",
+        "buyNote": {
+          "en": "Buy on the Trenitalia website or app, or tap a contactless card at the turnstiles.",
+          "ka": "იყიდეთ Trenitalia-ს საიტზე ან აპში, ან დაადეთ უკონტაქტო ბარათი ტურნიკეტს."
+        }
       },
       {
         "mode": "train",
@@ -336,7 +451,19 @@
           "en": "every 15 min on weekdays, every 30 min at weekends",
           "ka": "სამუშაო დღეებში ყოველ 15 წთ-ში, შაბათ-კვირას ყოველ 30 წთ-ში"
         },
-        "url": "https://www.adr.it/web/aeroporti-di-roma-en/pax-fco-train"
+        "url": "https://www.adr.it/web/aeroporti-di-roma-en/pax-fco-train",
+        "operators": [
+          "Trenitalia"
+        ],
+        "lines": [
+          "FL1"
+        ],
+        "buyOnline": null,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "Online sale not confirmed; buy at the station kiosks or ticket office.",
+          "ka": "ონლაინ გაყიდვა დადასტურებული არ არის — იყიდეთ სადგურის აპარატებში ან სალაროში."
+        }
       }
     ],
     "cityTicket": {
@@ -346,6 +473,12 @@
       },
       "price": 1.5,
       "currency": "EUR"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": "https://www.atac.roma.it/biglietti-e-abbonamenti/tap-go",
+    "cityBuyNote": {
+      "en": "Tap a contactless card at metro gates (tap&go) or buy in ATAC partner apps.",
+      "ka": "დაადეთ უკონტაქტო ბარათი მეტროს ტურნიკეტს (tap&go) ან იყიდეთ ATAC-ის პარტნიორ აპებში."
     },
     "dayPass": {
       "name": {
@@ -411,7 +544,17 @@
           "en": "8 trains per hour",
           "ka": "საათში 8 მატარებელი"
         },
-        "url": "https://www.ns.nl/en/travel/destinations/schiphol"
+        "url": "https://www.ns.nl/en/travel/destinations/schiphol",
+        "operators": [
+          "NS"
+        ],
+        "lines": [],
+        "buyOnline": true,
+        "buyUrl": "https://www.ns.nl/en/tickets/one-way-ticket",
+        "buyNote": {
+          "en": "Buy online from NS, or check in and out with a contactless debit card.",
+          "ka": "იყიდეთ ონლაინ NS-თან, ან check-in/check-out უკონტაქტო სადებეტო ბარათით."
+        }
       },
       {
         "mode": "express_bus",
@@ -437,7 +580,20 @@
           "en": "about every 10 min; night bus N97 hourly",
           "ka": "დაახლ. ყოველ 10 წთ-ში; ღამის N97 — საათში ერთხელ"
         },
-        "url": "https://www.connexxion.nl/en/our-routes/special-routes/amsterdam-airport-express"
+        "url": "https://www.connexxion.nl/en/our-routes/special-routes/amsterdam-airport-express",
+        "operators": [
+          "Connexxion"
+        ],
+        "lines": [
+          "397",
+          "N97"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://www.connexxion.nl/en/shop/e-tickets/amsterdam-airport-express-single-ticket",
+        "buyNote": {
+          "en": "Buy an e-ticket in the Connexxion webshop or app, or tap a contactless card (OVpay) on board.",
+          "ka": "იყიდეთ ელ-ბილეთი Connexxion-ის ვებ-მაღაზიაში ან აპში, ან დაადეთ უკონტაქტო ბარათი (OVpay) ავტობუსში."
+        }
       }
     ],
     "cityTicket": {
@@ -447,6 +603,12 @@
       },
       "price": 3.4,
       "currency": "EUR"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": "https://www.gvb.nl/en/travel-products/hour-and-day-tickets/gvb-1-hour-ticket",
+    "cityBuyNote": {
+      "en": "Buy online or in the GVB app, or check in and out with a contactless bank card.",
+      "ka": "იყიდეთ ონლაინ ან GVB-ის აპში, ან check-in/check-out უკონტაქტო საბანკო ბარათით."
     },
     "dayPass": {
       "name": {
@@ -517,7 +679,19 @@
           "ka": "დაახლ. 15 წთ Veleslavín-მდე"
         },
         "frequency": null,
-        "url": "https://pid.cz/en/travel-information/airport-and-stations/"
+        "url": "https://pid.cz/en/travel-information/airport-and-stations/",
+        "operators": [
+          "DPP"
+        ],
+        "lines": [
+          "59"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://pid.cz/en/tickets-and-fare/how-to-buy-ticket/",
+        "buyNote": {
+          "en": "Buy in the PID Lítačka app or tap a contactless card on the vehicle terminal.",
+          "ka": "იყიდეთ PID Lítačka აპში ან დაადეთ უკონტაქტო ბარათი ტრანსპორტის ტერმინალს."
+        }
       },
       {
         "mode": "bus",
@@ -543,7 +717,19 @@
           "ka": "დაახლ. 18 წთ Zličín-მდე"
         },
         "frequency": null,
-        "url": "https://pid.cz/en/travel-information/airport-and-stations/"
+        "url": "https://pid.cz/en/travel-information/airport-and-stations/",
+        "operators": [
+          "DPP"
+        ],
+        "lines": [
+          "100"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://pid.cz/en/tickets-and-fare/how-to-buy-ticket/",
+        "buyNote": {
+          "en": "Buy in the PID Lítačka app or tap a contactless card on the vehicle terminal.",
+          "ka": "იყიდეთ PID Lítačka აპში ან დაადეთ უკონტაქტო ბარათი ტრანსპორტის ტერმინალს."
+        }
       },
       {
         "mode": "express_bus",
@@ -563,7 +749,19 @@
           "ka": "დაახლ. 45 წთ"
         },
         "frequency": null,
-        "url": "https://pid.cz/en/travel-information/airport-and-stations/"
+        "url": "https://pid.cz/en/travel-information/airport-and-stations/",
+        "operators": [
+          "DPP"
+        ],
+        "lines": [
+          "AE"
+        ],
+        "buyOnline": null,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "Online sale of the AE ticket not confirmed.",
+          "ka": "AE-ის ბილეთის ონლაინ გაყიდვა დადასტურებული არ არის."
+        }
       }
     ],
     "cityTicket": {
@@ -573,6 +771,12 @@
       },
       "price": 50,
       "currency": "CZK"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": "https://pid.cz/en/tickets-and-fare/how-to-buy-ticket/",
+    "cityBuyNote": {
+      "en": "Buy in the PID Lítačka app or on contactless terminals in trams, buses and the metro.",
+      "ka": "იყიდეთ PID Lítačka აპში ან ტრამვაის, ავტობუსისა და მეტროს უკონტაქტო ტერმინალებზე."
     },
     "dayPass": {
       "name": {
@@ -631,7 +835,18 @@
           "en": "every 12 min (7 a.m.–7 p.m.), otherwise every 15 min",
           "ka": "ყოველ 12 წთ-ში (07:00–19:00), სხვა დროს ყოველ 15 წთ-ში"
         },
-        "url": "https://www.cityairporttrain.com/en/catmosphere/mainlineclosure/"
+        "url": "https://www.cityairporttrain.com/en/catmosphere/mainlineclosure/",
+        "operators": [
+          "City Airport Train",
+          "Blaguss"
+        ],
+        "lines": [],
+        "buyOnline": true,
+        "buyUrl": "https://www.cityairporttrain.com/en/tickets-offers/",
+        "buyNote": {
+          "en": "Book online on the CAT website; online tickets are valid for 6 months.",
+          "ka": "დაჯავშნეთ ონლაინ CAT-ის საიტზე — ონლაინ ბილეთი 6 თვე მოქმედებს."
+        }
       },
       {
         "mode": "train",
@@ -645,7 +860,19 @@
         "payment": null,
         "duration": null,
         "frequency": null,
-        "url": "https://www.oebb.at/de/fahrplan/baustelleninformation/bauarbeiten-stammstrecke"
+        "url": "https://www.oebb.at/de/fahrplan/baustelleninformation/bauarbeiten-stammstrecke",
+        "operators": [
+          "ÖBB"
+        ],
+        "lines": [
+          "S7"
+        ],
+        "buyOnline": null,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "Online sale not confirmed on an official page.",
+          "ka": "ონლაინ გაყიდვა ოფიციალურ გვერდზე დადასტურებული არ არის."
+        }
       },
       {
         "mode": "train",
@@ -662,7 +889,17 @@
           "ka": "დაახლ. 14 წთ"
         },
         "frequency": null,
-        "url": "https://www.oebb.at/en/regionale-angebote/ueberregionale-angebote/anreise-zum-flughafen/anreise-wien"
+        "url": "https://www.oebb.at/en/regionale-angebote/ueberregionale-angebote/anreise-zum-flughafen/anreise-wien",
+        "operators": [
+          "ÖBB"
+        ],
+        "lines": [],
+        "buyOnline": null,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "Online sale not confirmed on an official page.",
+          "ka": "ონლაინ გაყიდვა ოფიციალურ გვერდზე დადასტურებული არ არის."
+        }
       }
     ],
     "cityTicket": {
@@ -672,6 +909,12 @@
       },
       "price": 3,
       "currency": "EUR"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": "https://www.wienerlinien.at/web/wl-en/single-journey",
+    "cityBuyNote": {
+      "en": "Buy digital tickets in the WienMobil app (credit card).",
+      "ka": "იყიდეთ ციფრული ბილეთები WienMobil აპში (საკრედიტო ბარათით)."
     },
     "dayPass": {
       "name": {
@@ -742,7 +985,19 @@
           "en": "every 6–10 min by day, every 20–40 min at night (24/7)",
           "ka": "დღისით ყოველ 6–10 წთ-ში, ღამით ყოველ 20–40 წთ-ში (24/7)"
         },
-        "url": "https://bkk.hu/en/travel-information/airport-express/"
+        "url": "https://bkk.hu/en/travel-information/airport-express/",
+        "operators": [
+          "BKK"
+        ],
+        "lines": [
+          "100E"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://bkk.hu/en/tickets-and-passes/prices/airport-shuttle-bus-single-ticket/",
+        "buyNote": {
+          "en": "Buy in the BudapestGO app or tap a bank card on the Pay&GO device on board.",
+          "ka": "იყიდეთ BudapestGO აპში ან დაადეთ საბანკო ბარათი ავტობუსის Pay&GO მოწყობილობას."
+        }
       },
       {
         "mode": "bus",
@@ -762,7 +1017,19 @@
         "payment": null,
         "duration": null,
         "frequency": null,
-        "url": "https://bkk.hu/en/visiting-budapest/247-connection-between-the-airport-and-the-city-centre/"
+        "url": "https://bkk.hu/en/visiting-budapest/247-connection-between-the-airport-and-the-city-centre/",
+        "operators": [
+          "BKK"
+        ],
+        "lines": [
+          "200E"
+        ],
+        "buyOnline": true,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "Buy in the BudapestGO app.",
+          "ka": "იყიდეთ BudapestGO აპში."
+        }
       }
     ],
     "cityTicket": {
@@ -772,6 +1039,12 @@
       },
       "price": 500,
       "currency": "HUF"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": null,
+    "cityBuyNote": {
+      "en": "Buy in the BudapestGO app.",
+      "ka": "იყიდეთ BudapestGO აპში."
     },
     "dayPass": {
       "name": {
@@ -838,7 +1111,19 @@
           "en": "every 15 min, about 4 a.m.–1 a.m.",
           "ka": "ყოველ 15 წთ-ში, დაახლ. 04:00–01:00"
         },
-        "url": "https://ber.berlin-airport.de/en/orientation/getting-here/public-transport.html"
+        "url": "https://ber.berlin-airport.de/en/orientation/getting-here/public-transport.html",
+        "operators": [
+          "DB Regio"
+        ],
+        "lines": [
+          "FEX"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://www.vbb.de/en/driving-information/ber-airport/all-you-need-to-know/",
+        "buyNote": {
+          "en": "Buy a mobile ticket in the VBB Bus & Bahn app or at the terminal machines.",
+          "ka": "იყიდეთ მობილური ბილეთი VBB Bus & Bahn აპში ან ტერმინალის აპარატებში."
+        }
       },
       {
         "mode": "train",
@@ -861,7 +1146,19 @@
           "en": "every 20 min",
           "ka": "ყოველ 20 წთ-ში"
         },
-        "url": "https://ber.berlin-airport.de/en/orientation/getting-here/public-transport.html"
+        "url": "https://ber.berlin-airport.de/en/orientation/getting-here/public-transport.html",
+        "operators": [
+          "S-Bahn Berlin"
+        ],
+        "lines": [
+          "S9"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://www.vbb.de/en/driving-information/ber-airport/all-you-need-to-know/",
+        "buyNote": {
+          "en": "Buy a mobile ticket in the VBB Bus & Bahn app or at the terminal machines.",
+          "ka": "იყიდეთ მობილური ბილეთი VBB Bus & Bahn აპში ან ტერმინალის აპარატებში."
+        }
       },
       {
         "mode": "express_bus",
@@ -884,7 +1181,19 @@
           "en": "every 5–10 min",
           "ka": "ყოველ 5–10 წთ-ში"
         },
-        "url": "https://ber.berlin-airport.de/en/orientation/getting-here/public-transport.html"
+        "url": "https://ber.berlin-airport.de/en/orientation/getting-here/public-transport.html",
+        "operators": [
+          "BVG"
+        ],
+        "lines": [
+          "X7"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://www.vbb.de/en/driving-information/ber-airport/all-you-need-to-know/",
+        "buyNote": {
+          "en": "Buy a mobile ticket in the VBB Bus & Bahn app or at the terminal machines.",
+          "ka": "იყიდეთ მობილური ბილეთი VBB Bus & Bahn აპში ან ტერმინალის აპარატებში."
+        }
       }
     ],
     "cityTicket": {
@@ -894,6 +1203,12 @@
       },
       "price": 4,
       "currency": "EUR"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": "https://www.vbb.de/en/driving-information/ber-airport/all-you-need-to-know/",
+    "cityBuyNote": {
+      "en": "Buy mobile tickets in the VBB Bus & Bahn app.",
+      "ka": "იყიდეთ მობილური ბილეთები VBB Bus & Bahn აპში."
     },
     "dayPass": {
       "name": {
@@ -961,7 +1276,19 @@
           "en": "every 6–10 min on weekdays",
           "ka": "სამუშაო დღეებში ყოველ 6–10 წთ-ში"
         },
-        "url": "https://www.metrolisboa.pt/en/buy/"
+        "url": "https://www.metrolisboa.pt/en/buy/",
+        "operators": [
+          "Metro de Lisboa"
+        ],
+        "lines": [
+          "Vermelha"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://www.metrolisboa.pt/en/buy/",
+        "buyNote": {
+          "en": "Tap a contactless bank card at the gate (€1.92) or buy a card at the station machines.",
+          "ka": "დაადეთ უკონტაქტო საბანკო ბარათი ტურნიკეტს (€1.92) ან იყიდეთ ბარათი სადგურის აპარატში."
+        }
       }
     ],
     "cityTicket": {
@@ -971,6 +1298,12 @@
       },
       "price": 1.9,
       "currency": "EUR"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": "https://www.metrolisboa.pt/en/buy/",
+    "cityBuyNote": {
+      "en": "Tap a contactless bank card at the metro gates.",
+      "ka": "დაადეთ უკონტაქტო საბანკო ბარათი მეტროს ტურნიკეტს."
     },
     "dayPass": {
       "name": {
@@ -1028,7 +1361,20 @@
         },
         "duration": null,
         "frequency": null,
-        "url": "https://www.oasa.gr/en/visit-athens/metro-line-3-to-airport/"
+        "url": "https://www.oasa.gr/en/visit-athens/metro-line-3-to-airport/",
+        "operators": [
+          "STASY",
+          "OASA"
+        ],
+        "lines": [
+          "M3"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://www.oasa.gr/en/tickets/products/contactless-payments-with-bank-cards/",
+        "buyNote": {
+          "en": "Tap a contactless bank card or phone on the validator, or buy at the station machines.",
+          "ka": "დაადეთ უკონტაქტო საბანკო ბარათი ან ტელეფონი ვალიდატორს, ან იყიდეთ სადგურის აპარატებში."
+        }
       },
       {
         "mode": "express_bus",
@@ -1057,7 +1403,19 @@
           "en": "runs 24 hours",
           "ka": "მოძრაობს 24 საათი"
         },
-        "url": "https://www.oasa.gr/en/visit-athens/airport-express-bus-lines/"
+        "url": "https://www.oasa.gr/en/visit-athens/airport-express-bus-lines/",
+        "operators": [
+          "OASA"
+        ],
+        "lines": [
+          "X95"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://www.oasa.gr/en/tickets/products/contactless-payments-with-bank-cards/",
+        "buyNote": {
+          "en": "Tap a contactless bank card or phone on the blue validator when boarding.",
+          "ka": "ჩასხდომისას დაადეთ უკონტაქტო საბანკო ბარათი ან ტელეფონი ლურჯ ვალიდატორს."
+        }
       }
     ],
     "cityTicket": {
@@ -1067,6 +1425,12 @@
       },
       "price": 1.2,
       "currency": "EUR"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": "https://www.oasa.gr/en/tickets/products/contactless-payments-with-bank-cards/",
+    "cityBuyNote": {
+      "en": "Tap a contactless bank card or phone on the validators.",
+      "ka": "დაადეთ უკონტაქტო საბანკო ბარათი ან ტელეფონი ვალიდატორს."
     },
     "dayPass": {
       "name": {
@@ -1130,7 +1494,20 @@
           "en": "Every 30 minutes on each route (Cadorna and Centrale).",
           "ka": "თითოეულ მარშრუტზე (Cadorna და Centrale) ყოველ 30 წუთში."
         },
-        "url": "https://www.trenord.it/linee-e-orari/il-nostro-servizio/malpensa-express/"
+        "url": "https://www.trenord.it/linee-e-orari/il-nostro-servizio/malpensa-express/",
+        "operators": [
+          "Trenord"
+        ],
+        "lines": [
+          "RE51",
+          "RE54"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://www.trenord.it/biglietti/dove-acquistare/acquista-online/",
+        "buyNote": {
+          "en": "Buy on trenord.it or in the Trenord app, or tap a contactless card at the Pay&Go turnstiles.",
+          "ka": "იყიდეთ trenord.it-ზე ან Trenord-ის აპში, ან უკონტაქტო ბარათი Pay&Go ტურნიკეტზე მიადეთ."
+        }
       }
     ],
     "cityTicket": {
@@ -1140,6 +1517,12 @@
       },
       "price": 2.2,
       "currency": "EUR"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": "https://www.atm.it/it/ViaggiaConNoi/pagamenti_servizi_digitali/Pagine/biglietto_Contactless.aspx",
+    "cityBuyNote": {
+      "en": "Tap a contactless card at metro turnstiles and on surface vehicles, or buy in the ATM Milano app.",
+      "ka": "უკონტაქტო ბარათი მიადეთ მეტროს ტურნიკეტებს და მიწისზედა ტრანსპორტში, ან იყიდეთ ATM Milano-ს აპში."
     },
     "dayPass": {
       "name": {
@@ -1203,7 +1586,19 @@
         },
         "duration": null,
         "frequency": null,
-        "url": "https://www.metromadrid.es/en/viaja-en-metro/titulos-y-tarifas/aeropuerto"
+        "url": "https://www.metromadrid.es/en/viaja-en-metro/titulos-y-tarifas/aeropuerto",
+        "operators": [
+          "Metro de Madrid"
+        ],
+        "lines": [
+          "8"
+        ],
+        "buyOnline": true,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "No online checkout found; tap a contactless bank card or phone at the turnstiles and the supplement is charged automatically.",
+          "ka": "ონლაინ ყიდვა ვერ ვიპოვეთ; უკონტაქტო საბანკო ბარათი ან ტელეფონი ტურნიკეტზე მიადეთ და დანამატი ავტომატურად ჩამოიჭრება."
+        }
       },
       {
         "mode": "express_bus",
@@ -1232,7 +1627,19 @@
           "en": "Every 15–20 minutes by day and every 35 minutes at night.",
           "ka": "დღისით ყოველ 15–20 წუთში, ღამით კი ყოველ 35 წუთში."
         },
-        "url": "https://www.emtmadrid.es/Aeropuerto"
+        "url": "https://www.emtmadrid.es/Aeropuerto",
+        "operators": [
+          "EMT"
+        ],
+        "lines": [
+          "203"
+        ],
+        "buyOnline": true,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "No online sale: pay the driver in cash or with a bank card or phone.",
+          "ka": "ონლაინ არ იყიდება: მძღოლს გადაუხადეთ ნაღდით, საბანკო ბარათით ან ტელეფონით."
+        }
       },
       {
         "mode": "train",
@@ -1249,7 +1656,19 @@
         "payment": null,
         "duration": null,
         "frequency": null,
-        "url": "https://www.crtm.es/billetes-transporte-publico-aeropuerto-madrid"
+        "url": "https://www.crtm.es/billetes-transporte-publico-aeropuerto-madrid",
+        "operators": [
+          "Renfe"
+        ],
+        "lines": [
+          "C1"
+        ],
+        "buyOnline": null,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "Online purchase options not confirmed on an official page.",
+          "ka": "ონლაინ ყიდვის შესაძლებლობა ოფიციალურ გვერდზე დადასტურებული არ არის."
+        }
       }
     ],
     "cityTicket": {
@@ -1259,6 +1678,12 @@
       },
       "price": 1.5,
       "currency": "EUR"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": null,
+    "cityBuyNote": {
+      "en": "Tap a contactless bank card at Metro turnstiles or pay by card on EMT buses.",
+      "ka": "უკონტაქტო საბანკო ბარათი მეტროს ტურნიკეტზე მიადეთ ან EMT-ის ავტობუსში ბარათით გადაიხადეთ."
     },
     "dayPass": {
       "name": {
@@ -1322,7 +1747,21 @@
           "en": "S1 and S8 alternate every 10 minutes.",
           "ka": "S1 და S8 მონაცვლეობით ყოველ 10 წუთში დადის."
         },
-        "url": "https://www.mvv-muenchen.de/en/tickets-subscriptions-prices/airport-city-day-ticket/"
+        "url": "https://www.mvv-muenchen.de/en/tickets-subscriptions-prices/airport-city-day-ticket/",
+        "operators": [
+          "S-Bahn München",
+          "MVV"
+        ],
+        "lines": [
+          "S1",
+          "S8"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://ticketshop.mvv-muenchen.de/index.php/product/384/show",
+        "buyNote": {
+          "en": "Buy in the MVV online ticket shop or as a mobile ticket in the MVV app.",
+          "ka": "იყიდეთ MVV-ის ონლაინ მაღაზიაში ან მობილურ ბილეთად MVV-ის აპში."
+        }
       }
     ],
     "cityTicket": {
@@ -1332,6 +1771,12 @@
       },
       "price": 4.2,
       "currency": "EUR"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": "https://ticketshop.mvv-muenchen.de/",
+    "cityBuyNote": {
+      "en": "Buy in the MVV online ticket shop or the MVV app.",
+      "ka": "იყიდეთ MVV-ის ონლაინ მაღაზიაში ან MVV-ის აპში."
     },
     "dayPass": {
       "name": {
@@ -1393,7 +1838,22 @@
           "ka": "Centrum-ის გაჩერებამდე დაახლოებით 30 წუთი."
         },
         "frequency": null,
-        "url": "https://www.lotnisko-chopina.pl/en/public-transport.html"
+        "url": "https://www.lotnisko-chopina.pl/en/public-transport.html",
+        "operators": [
+          "SKM",
+          "Koleje Mazowieckie"
+        ],
+        "lines": [
+          "S2",
+          "S3",
+          "RL"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://www.wtp.waw.pl/en/where-to-buy-a-ticket/ticket-by-mobile/",
+        "buyNote": {
+          "en": "Buy in an authorised mobile app (e.g. jakdojade.pl, mPay, SkyCash) and activate it by scanning the QR code.",
+          "ka": "იყიდეთ ავტორიზებულ მობილურ აპში (მაგ. jakdojade.pl, mPay, SkyCash) და გაააქტიურეთ QR კოდის დასკანერებით."
+        }
       },
       {
         "mode": "bus",
@@ -1422,7 +1882,19 @@
           "en": "Operates daily.",
           "ka": "დადის ყოველდღე."
         },
-        "url": "https://www.lotnisko-chopina.pl/en/public-transport.html"
+        "url": "https://www.lotnisko-chopina.pl/en/public-transport.html",
+        "operators": [
+          "ZTM Warszawa"
+        ],
+        "lines": [
+          "175"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://www.wtp.waw.pl/en/where-to-buy-a-ticket/ticket-by-mobile/",
+        "buyNote": {
+          "en": "Buy in an authorised mobile app and activate it by scanning the QR code in the bus.",
+          "ka": "იყიდეთ ავტორიზებულ მობილურ აპში და გაააქტიურეთ ავტობუსში QR კოდის დასკანერებით."
+        }
       }
     ],
     "cityTicket": {
@@ -1432,6 +1904,12 @@
       },
       "price": 4.4,
       "currency": "PLN"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": "https://www.wtp.waw.pl/en/where-to-buy-a-ticket/ticket-by-mobile/",
+    "cityBuyNote": {
+      "en": "Buy in an authorised mobile app and activate it via the QR code.",
+      "ka": "იყიდეთ ავტორიზებულ მობილურ აპში და გაააქტიურეთ QR კოდით."
     },
     "dayPass": {
       "name": {
@@ -1488,7 +1966,17 @@
           "ka": "დაახლოებით 17 წუთი."
         },
         "frequency": null,
-        "url": "https://krakowairport.pl/pl/dojazd-pociag"
+        "url": "https://krakowairport.pl/pl/dojazd-pociag",
+        "operators": [
+          "Koleje Małopolskie"
+        ],
+        "lines": [],
+        "buyOnline": true,
+        "buyUrl": "https://kolejemalopolskie.com.pl/pl/rozklad-jazdy-kml/krakow-lotnisko/krakow-glowny",
+        "buyNote": {
+          "en": "Buy online on kolejemalopolskie.com.pl, or from the machine on the train.",
+          "ka": "იყიდეთ ონლაინ kolejemalopolskie.com.pl-ზე ან მატარებლის ავტომატში."
+        }
       },
       {
         "mode": "bus",
@@ -1511,7 +1999,20 @@
         },
         "duration": null,
         "frequency": null,
-        "url": "https://krakowairport.pl/pl/pasazer/transport/dojazd/z-do-krakow-airport/autobus-miejski"
+        "url": "https://krakowairport.pl/pl/pasazer/transport/dojazd/z-do-krakow-airport/autobus-miejski",
+        "operators": [
+          "MPK Kraków"
+        ],
+        "lines": [
+          "209",
+          "902"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://ztp.krakow.pl/en/kmk-public-transport/buy-a-kmk-ticket",
+        "buyNote": {
+          "en": "Buy in an authorised app (e.g. jakdojade, mPay, SkyCash) right after boarding, entering the vehicle number.",
+          "ka": "იყიდეთ ავტორიზებულ აპში (მაგ. jakdojade, mPay, SkyCash) ჩასხდომისთანავე, მანქანის ნომრის მითითებით."
+        }
       }
     ],
     "cityTicket": {
@@ -1521,6 +2022,12 @@
       },
       "price": 6,
       "currency": "PLN"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": "https://ztp.krakow.pl/en/kmk-public-transport/buy-a-kmk-ticket",
+    "cityBuyNote": {
+      "en": "Buy in an authorised mobile app right after boarding.",
+      "ka": "იყიდეთ ავტორიზებულ მობილურ აპში ჩასხდომისთანავე."
     },
     "dayPass": {
       "name": {
@@ -1565,7 +2072,17 @@
         "payment": null,
         "duration": null,
         "frequency": null,
-        "url": "https://www.istairport.com/en/airport/airport-transportation/urban-transportation/public-transportation"
+        "url": "https://www.istairport.com/en/airport/airport-transportation/urban-transportation/public-transportation",
+        "operators": [],
+        "lines": [
+          "M11"
+        ],
+        "buyOnline": null,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "Online purchase options not confirmed on an official page.",
+          "ka": "ონლაინ ყიდვის შესაძლებლობა ოფიციალურ გვერდზე დადასტურებული არ არის."
+        }
       },
       {
         "mode": "express_bus",
@@ -1579,7 +2096,17 @@
         "payment": null,
         "duration": null,
         "frequency": null,
-        "url": "https://www.istairport.com/en/airport/airport-transportation/urban-transportation/public-transportation"
+        "url": "https://www.istairport.com/en/airport/airport-transportation/urban-transportation/public-transportation",
+        "operators": [
+          "Havaist"
+        ],
+        "lines": [],
+        "buyOnline": null,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "Online purchase options not confirmed on an official page.",
+          "ka": "ონლაინ ყიდვის შესაძლებლობა ოფიციალურ გვერდზე დადასტურებული არ არის."
+        }
       },
       {
         "mode": "bus",
@@ -1593,9 +2120,25 @@
         "payment": null,
         "duration": null,
         "frequency": null,
-        "url": "https://www.istairport.com/en/airport/airport-transportation/urban-transportation/public-transportation"
+        "url": "https://www.istairport.com/en/airport/airport-transportation/urban-transportation/public-transportation",
+        "operators": [
+          "İETT"
+        ],
+        "lines": [],
+        "buyOnline": null,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "Online purchase options not confirmed on an official page.",
+          "ka": "ონლაინ ყიდვის შესაძლებლობა ოფიციალურ გვერდზე დადასტურებული არ არის."
+        }
       }
     ],
+    "cityBuyOnline": null,
+    "cityBuyUrl": null,
+    "cityBuyNote": {
+      "en": "Online purchase options not confirmed on an official page.",
+      "ka": "ონლაინ ყიდვის შესაძლებლობა ოფიციალურ გვერდზე დადასტურებული არ არის."
+    },
     "contactless": null,
     "tips": [
       {
@@ -1640,7 +2183,19 @@
           "en": "Every 4–6 minutes by day and evening, every 15–20 minutes at night; runs 24/7.",
           "ka": "დღისით და საღამოს ყოველ 4–6 წუთში, ღამით ყოველ 15–20 წუთში; მუშაობს 24/7."
         },
-        "url": "https://m.dk/en/travel-with-the-metro/tickets/"
+        "url": "https://m.dk/en/travel-with-the-metro/tickets/",
+        "operators": [
+          "Metro"
+        ],
+        "lines": [
+          "M2"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://m.dk/en/travel-with-the-metro/tickets/",
+        "buyNote": {
+          "en": "Buy in the Rejsebillet app or at the station ticket machines.",
+          "ka": "იყიდეთ Rejsebillet-ის აპში ან სადგურის ავტომატებში."
+        }
       },
       {
         "mode": "train",
@@ -1660,7 +2215,17 @@
         "payment": null,
         "duration": null,
         "frequency": null,
-        "url": "https://m.dk/en/travel-with-the-metro/tickets/"
+        "url": "https://m.dk/en/travel-with-the-metro/tickets/",
+        "operators": [
+          "DSB"
+        ],
+        "lines": [],
+        "buyOnline": true,
+        "buyUrl": "https://m.dk/en/travel-with-the-metro/tickets/",
+        "buyNote": {
+          "en": "Buy in the Rejsebillet app or at the station ticket machines.",
+          "ka": "იყიდეთ Rejsebillet-ის აპში ან სადგურის ავტომატებში."
+        }
       }
     ],
     "cityTicket": {
@@ -1670,6 +2235,12 @@
       },
       "price": 24,
       "currency": "DKK"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": "https://m.dk/en/travel-with-the-metro/tickets/",
+    "cityBuyNote": {
+      "en": "Buy single tickets and City Passes in the Rejsebillet app.",
+      "ka": "ერთჯერადი ბილეთები და City Pass იყიდეთ Rejsebillet-ის აპში."
     },
     "dayPass": {
       "name": {
@@ -1723,7 +2294,19 @@
         "payment": null,
         "duration": null,
         "frequency": null,
-        "url": "https://actv.avmspa.it/en/content/venice-urban-services-0"
+        "url": "https://actv.avmspa.it/en/content/venice-urban-services-0",
+        "operators": [
+          "ACTV"
+        ],
+        "lines": [
+          "5"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://www.veneziaunica.it/en/buy-tickets/airport-transfers-marco-polo-and-canova/actv-transfer-marco-polo-airport-one-way-ticket-75",
+        "buyNote": {
+          "en": "Buy online on veneziaunica.it, or at the airport machines and ticket office.",
+          "ka": "იყიდეთ ონლაინ veneziaunica.it-ზე ან აეროპორტის ავტომატებსა და სალაროში."
+        }
       },
       {
         "mode": "express_bus",
@@ -1746,7 +2329,17 @@
           "ka": "დაახლოებით 20 წუთი."
         },
         "frequency": null,
-        "url": "https://www.atvo.it/en/services-provided/airport-services/venice-airport-bus-express"
+        "url": "https://www.atvo.it/en/services-provided/airport-services/venice-airport-bus-express",
+        "operators": [
+          "ATVO"
+        ],
+        "lines": [],
+        "buyOnline": true,
+        "buyUrl": "https://www.atvo.it/en/services-provided/airport-services/venice-airport-bus-express",
+        "buyNote": {
+          "en": "Buy online on atvo.it and go straight to the stop, or at the airport machines and offices.",
+          "ka": "იყიდეთ ონლაინ atvo.it-ზე და პირდაპირ გაჩერებაზე გადით, ან აეროპორტის ავტომატებსა და სალაროებში."
+        }
       },
       {
         "mode": "ferry",
@@ -1766,7 +2359,17 @@
         "payment": null,
         "duration": null,
         "frequency": null,
-        "url": "https://www.alilaguna.it/en/biglietti/tariffe"
+        "url": "https://www.alilaguna.it/en/biglietti/tariffe",
+        "operators": [
+          "Alilaguna"
+        ],
+        "lines": [],
+        "buyOnline": true,
+        "buyUrl": "https://shop.alilaguna.it/en",
+        "buyNote": {
+          "en": "Buy online in the Alilaguna shop or at the ticket office at the dock.",
+          "ka": "იყიდეთ ონლაინ Alilaguna-ს მაღაზიაში ან ნავმისადგომის სალაროში."
+        }
       }
     ],
     "cityTicket": {
@@ -1776,6 +2379,12 @@
       },
       "price": 9.5,
       "currency": "EUR"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": "https://www.veneziaunica.it/en/buy-tickets/public-trasport-in-venice/actv-ticket-75",
+    "cityBuyNote": {
+      "en": "Buy ACTV tickets online on veneziaunica.it.",
+      "ka": "ACTV-ის ბილეთები იყიდეთ ონლაინ veneziaunica.it-ზე."
     },
     "dayPass": {
       "name": {
@@ -1830,7 +2439,19 @@
         },
         "duration": null,
         "frequency": null,
-        "url": "https://www.publictransport.com.cy/cms/page/cash-tickets"
+        "url": "https://www.publictransport.com.cy/cms/page/cash-tickets",
+        "operators": [
+          "Cyprus Public Transport"
+        ],
+        "lines": [
+          "425"
+        ],
+        "buyOnline": false,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "No online sale of single tickets: buy from the driver or at the airport sales point.",
+          "ka": "ერთჯერადი ბილეთი ონლაინ არ იყიდება: იყიდეთ მძღოლთან ან აეროპორტის გაყიდვების პუნქტში."
+        }
       }
     ],
     "cityTicket": {
@@ -1840,6 +2461,12 @@
       },
       "price": 2.7,
       "currency": "EUR"
+    },
+    "cityBuyOnline": false,
+    "cityBuyUrl": "https://www.publictransport.com.cy/topup/page/topup-travel-card",
+    "cityBuyNote": {
+      "en": "Tickets are not sold online, but a Motion card can be topped up online or in the Pame app.",
+      "ka": "ბილეთები ონლაინ არ იყიდება, მაგრამ Motion ბარათის შევსება ონლაინ ან Pame-ის აპში შეიძლება."
     },
     "dayPass": {
       "name": {
@@ -1898,7 +2525,19 @@
           "en": "Runs Mon–Thu and Sat 5:00–24:00, Fri 5:00–01:00, Sun 8:00–24:00.",
           "ka": "მუშაობს ორშ–ხუთ და შაბ 5:00–24:00, პარ 5:00–01:00, კვ 8:00–24:00."
         },
-        "url": "https://dubaiairports.ae/transport/metro"
+        "url": "https://dubaiairports.ae/transport/metro",
+        "operators": [
+          "RTA"
+        ],
+        "lines": [
+          "Red Line"
+        ],
+        "buyOnline": null,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "Online purchase not confirmed on an official page; buy at the station machines or ticket office.",
+          "ka": "ონლაინ ყიდვა ოფიციალურ გვერდზე დადასტურებული არ არის; იყიდეთ სადგურის ავტომატებში ან სალაროში."
+        }
       }
     ],
     "cityTicket": {
@@ -1908,6 +2547,12 @@
       },
       "price": 4,
       "currency": "AED"
+    },
+    "cityBuyOnline": null,
+    "cityBuyUrl": null,
+    "cityBuyNote": {
+      "en": "Online purchase options not confirmed on an official page.",
+      "ka": "ონლაინ ყიდვის შესაძლებლობა ოფიციალურ გვერდზე დადასტურებული არ არის."
     },
     "contactless": null,
     "tips": [
@@ -1942,9 +2587,23 @@
         "payment": null,
         "duration": null,
         "frequency": null,
-        "url": "https://www.cairo-airport.com/en-us/Services/Passenger-Guide/Move-From-To-Airport"
+        "url": "https://www.cairo-airport.com/en-us/Services/Passenger-Guide/Move-From-To-Airport",
+        "operators": [],
+        "lines": [],
+        "buyOnline": null,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "Online purchase options not confirmed on an official page.",
+          "ka": "ონლაინ ყიდვის შესაძლებლობა ოფიციალურ გვერდზე დადასტურებული არ არის."
+        }
       }
     ],
+    "cityBuyOnline": null,
+    "cityBuyUrl": null,
+    "cityBuyNote": {
+      "en": "Online purchase options not confirmed on an official page.",
+      "ka": "ონლაინ ყიდვის შესაძლებლობა ოფიციალურ გვერდზე დადასტურებული არ არის."
+    },
     "contactless": null,
     "tips": [
       {
@@ -1989,7 +2648,19 @@
           "en": "Frequent services every day from about 5am to midnight.",
           "ka": "ხშირი მატარებლები ყოველდღე, დაახლოებით 05:00-დან შუაღამემდე."
         },
-        "url": "https://transportnsw.info/travel-info/airport-travel/getting-to-from-sydney-airport"
+        "url": "https://transportnsw.info/travel-info/airport-travel/getting-to-from-sydney-airport",
+        "operators": [
+          "Sydney Trains"
+        ],
+        "lines": [
+          "T8"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://transportnsw.info/tickets-fares/opal/top-up-your-opal-card",
+        "buyNote": {
+          "en": "Tap a contactless card or Opal (top up online or in the Opal Travel app); no separate online ticket.",
+          "ka": "შეეხეთ უკონტაქტო ბარათით ან Opal-ით (შევსება ონლაინ ან Opal Travel აპლიკაციაში); ცალკე ონლაინ ბილეთი არ არსებობს."
+        }
       },
       {
         "mode": "bus",
@@ -2015,7 +2686,17 @@
           "en": "Runs early morning to around midnight, seven days a week.",
           "ka": "მოძრაობს დილით ადრიდან დაახლოებით შუაღამემდე, კვირაში შვიდი დღე."
         },
-        "url": "https://transportnsw.info/travel-info/airport-travel/getting-to-from-sydney-airport"
+        "url": "https://transportnsw.info/travel-info/airport-travel/getting-to-from-sydney-airport",
+        "operators": [],
+        "lines": [
+          "420"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://transportnsw.info/tickets-fares/opal/top-up-your-opal-card",
+        "buyNote": {
+          "en": "Tap a contactless card or Opal on board; no separate online ticket.",
+          "ka": "შეეხეთ უკონტაქტო ბარათით ან Opal-ით ავტობუსში; ცალკე ონლაინ ბილეთი არ არსებობს."
+        }
       }
     ],
     "cityTicket": {
@@ -2025,6 +2706,12 @@
       },
       "price": null,
       "currency": "AUD"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": "https://transportnsw.info/tickets-fares/opal/top-up-your-opal-card",
+    "cityBuyNote": {
+      "en": "Tap a contactless card, or top up Opal online or in the Opal Travel app.",
+      "ka": "შეეხეთ უკონტაქტო ბარათით, ან შეავსეთ Opal ონლაინ ან Opal Travel აპლიკაციაში."
     },
     "contactless": true,
     "tips": [
@@ -2074,7 +2761,17 @@
           "en": "Frequent turn-up-and-go departures, seven days a week.",
           "ka": "ხშირი რეისები წინასწარი დაჯავშნის გარეშე, კვირაში შვიდი დღე."
         },
-        "url": "https://www.skybus.com.au/melbourne-city-express/fares/"
+        "url": "https://www.skybus.com.au/melbourne-city-express/fares/",
+        "operators": [
+          "SkyBus"
+        ],
+        "lines": [],
+        "buyOnline": true,
+        "buyUrl": "https://www.skybus.com.au/melbourne-city-express/",
+        "buyNote": {
+          "en": "Buy online on skybus.com.au or in the SkyBus app before boarding.",
+          "ka": "იყიდეთ ონლაინ skybus.com.au-ზე ან SkyBus-ის აპლიკაციაში ჩაჯდომამდე."
+        }
       },
       {
         "mode": "bus",
@@ -2100,7 +2797,17 @@
           "en": "Every 15 minutes until 9pm on weekdays, every 30 minutes on weekends and evenings.",
           "ka": "სამუშაო დღეებში ყოველ 15 წუთში 21:00-მდე, შაბათ-კვირას და საღამოობით ყოველ 30 წუთში."
         },
-        "url": "https://ptv.vic.gov.au/getting-around/airport-buses"
+        "url": "https://ptv.vic.gov.au/getting-around/airport-buses",
+        "operators": [],
+        "lines": [
+          "901"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://transport.vic.gov.au/tickets-and-payments/myki/myki-types/mobile-myki",
+        "buyNote": {
+          "en": "Use a physical myki or a Mobile myki in Google Wallet (Android only).",
+          "ka": "გამოიყენეთ ფიზიკური myki ან Mobile myki Google Wallet-ში (მხოლოდ Android)."
+        }
       }
     ],
     "cityTicket": {
@@ -2110,6 +2817,12 @@
       },
       "price": null,
       "currency": "AUD"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": "https://transport.vic.gov.au/tickets-and-payments/myki/myki-types/mobile-myki",
+    "cityBuyNote": {
+      "en": "Android users can add a Mobile myki to Google Wallet and top up on the go.",
+      "ka": "Android-ის მომხმარებლებს შეუძლიათ Mobile myki Google Wallet-ში დაამატონ და გზაში შეავსონ."
     },
     "contactless": null,
     "apps": [
@@ -2165,7 +2878,17 @@
           "en": "Every 15 minutes at peak times.",
           "ka": "პიკის საათებში ყოველ 15 წუთში."
         },
-        "url": "https://translink.com.au/travel-with-us/airport-services"
+        "url": "https://translink.com.au/travel-with-us/airport-services",
+        "operators": [
+          "Airtrain"
+        ],
+        "lines": [],
+        "buyOnline": true,
+        "buyUrl": "https://www.airtrain.com.au/",
+        "buyNote": {
+          "en": "Book an e-ticket on airtrain.com.au or tap a contactless card or go card at the gate.",
+          "ka": "დაჯავშნეთ ელექტრონული ბილეთი airtrain.com.au-ზე ან შეეხეთ უკონტაქტო ბარათით ან go card-ით ტურნიკეტთან."
+        }
       }
     ],
     "cityTicket": {
@@ -2175,6 +2898,12 @@
       },
       "price": 0.5,
       "currency": "AUD"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": "https://translink.com.au/tickets-and-fares/go-card/buy-and-top-up",
+    "cityBuyNote": {
+      "en": "Tap a contactless card, or top up a registered go card online with an Australian Visa or Mastercard.",
+      "ka": "შეეხეთ უკონტაქტო ბარათით, ან შეავსეთ რეგისტრირებული go card ონლაინ ავსტრალიური Visa ან Mastercard ბარათით."
     },
     "contactless": true,
     "tips": [
@@ -2226,7 +2955,17 @@
           "ka": "Redcliffe-ის სადგურიდან ცენტრამდე მატარებლით დაახლოებით 15 წუთია."
         },
         "frequency": null,
-        "url": "https://www.transperth.wa.gov.au/using-transperth/visiting-perth"
+        "url": "https://www.transperth.wa.gov.au/using-transperth/visiting-perth",
+        "operators": [
+          "Transperth"
+        ],
+        "lines": [],
+        "buyOnline": true,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "Tap a contactless bank card or phone wallet at the gate; no separate online ticket.",
+          "ka": "შეეხეთ უკონტაქტო საბანკო ბარათით ან ტელეფონის საფულით ტურნიკეტთან; ცალკე ონლაინ ბილეთი საჭირო არ არის."
+        }
       }
     ],
     "cityTicket": {
@@ -2236,6 +2975,12 @@
       },
       "price": 3.5,
       "currency": "AUD"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": null,
+    "cityBuyNote": {
+      "en": "Tap a contactless card; SmartRider Autoload can be set up in My Account.",
+      "ka": "შეეხეთ უკონტაქტო ბარათით; SmartRider-ის Autoload შეიძლება My Account-ში დააყენოთ."
     },
     "dayPass": {
       "name": {
@@ -2302,7 +3047,17 @@
           "en": "Every 10 minutes, 4:30am to 12:40am, seven days a week.",
           "ka": "ყოველ 10 წუთში, 04:30-დან 00:40-მდე, კვირაში შვიდი დღე."
         },
-        "url": "https://at.govt.nz/bus-train-ferry/bus-services/airport-services"
+        "url": "https://at.govt.nz/bus-train-ferry/bus-services/airport-services",
+        "operators": [
+          "Auckland Transport"
+        ],
+        "lines": [],
+        "buyOnline": true,
+        "buyUrl": "https://at.govt.nz/bus-train-ferry/at-hop-card/top-up-at-hop-card",
+        "buyNote": {
+          "en": "Tap a contactless card or AT HOP (top up online via MyAT); no separate online ticket.",
+          "ka": "შეეხეთ უკონტაქტო ბარათით ან AT HOP-ით (შევსება ონლაინ MyAT-ით); ცალკე ონლაინ ბილეთი არ არსებობს."
+        }
       }
     ],
     "cityTicket": {
@@ -2312,6 +3067,12 @@
       },
       "price": null,
       "currency": "NZD"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": "https://at.govt.nz/bus-train-ferry/at-hop-card/top-up-at-hop-card",
+    "cityBuyNote": {
+      "en": "Tap a contactless card, or top up a registered AT HOP online via MyAT.",
+      "ka": "შეეხეთ უკონტაქტო ბარათით, ან შეავსეთ რეგისტრირებული AT HOP ონლაინ MyAT-ით."
     },
     "contactless": true,
     "apps": [
@@ -2367,7 +3128,17 @@
           "ka": "დაახლოებით 15 წუთი Shinagawa-მდე."
         },
         "frequency": null,
-        "url": "https://tokyo-haneda.com/en/access/train/index.html"
+        "url": "https://tokyo-haneda.com/en/access/train/index.html",
+        "operators": [
+          "Keikyu"
+        ],
+        "lines": [],
+        "buyOnline": true,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "Tap a contactless credit card or an IC card such as Suica/PASMO; no separate online ticket.",
+          "ka": "შეეხეთ უკონტაქტო საკრედიტო ბარათით ან IC ბარათით, მაგ. Suica/PASMO; ცალკე ონლაინ ბილეთი არ არსებობს."
+        }
       },
       {
         "mode": "metro",
@@ -2393,7 +3164,17 @@
           "ka": "დაახლოებით 20 წუთი Hamamatsucho-მდე."
         },
         "frequency": null,
-        "url": "https://www.tokyo-monorail.co.jp/english/guidance/train_info.html"
+        "url": "https://www.tokyo-monorail.co.jp/english/guidance/train_info.html",
+        "operators": [
+          "Tokyo Monorail"
+        ],
+        "lines": [],
+        "buyOnline": true,
+        "buyUrl": "https://www.jreast.co.jp/multi/wsmlp/",
+        "buyNote": {
+          "en": "Tap a Suica card or a mobile Suica such as Welcome Suica Mobile; no separate online ticket.",
+          "ka": "შეეხეთ Suica ბარათით ან მობილური Suica-თი, მაგ. Welcome Suica Mobile; ცალკე ონლაინ ბილეთი არ არსებობს."
+        }
       },
       {
         "mode": "train",
@@ -2422,7 +3203,17 @@
           "en": "Three trains per hour.",
           "ka": "საათში სამი მატარებელი."
         },
-        "url": "https://www.keisei.co.jp/keisei/tetudou/skyliner/us/skyliner/purchase.php"
+        "url": "https://www.keisei.co.jp/keisei/tetudou/skyliner/us/skyliner/purchase.php",
+        "operators": [
+          "Keisei"
+        ],
+        "lines": [],
+        "buyOnline": true,
+        "buyUrl": "https://www.keisei.co.jp/keisei/tetudou/skyliner/us/skyliner/purchase.php",
+        "buyNote": {
+          "en": "Book the Skyliner online as an e-ticket on keisei.co.jp.",
+          "ka": "დაჯავშნეთ Skyliner-ის ელექტრონული ბილეთი ონლაინ keisei.co.jp-ზე."
+        }
       },
       {
         "mode": "train",
@@ -2442,7 +3233,17 @@
         "payment": null,
         "duration": null,
         "frequency": null,
-        "url": "https://www.jreast.co.jp/en/multi/nex/tickets/"
+        "url": "https://www.jreast.co.jp/en/multi/nex/tickets/",
+        "operators": [
+          "JR East"
+        ],
+        "lines": [],
+        "buyOnline": true,
+        "buyUrl": "https://www.jreast.co.jp/en/multi/nex/tickets/",
+        "buyNote": {
+          "en": "Reserve online via JR-EAST Train Reservation; the base fare ticket or an IC card is still needed.",
+          "ka": "დაჯავშნეთ ონლაინ JR-EAST Train Reservation-ით; საბაზო ტარიფის ბილეთი ან IC ბარათი მაინც საჭიროა."
+        }
       }
     ],
     "cityTicket": {
@@ -2452,6 +3253,12 @@
       },
       "price": null,
       "currency": "JPY"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": "https://www.jreast.co.jp/multi/wsmlp/",
+    "cityBuyNote": {
+      "en": "Visitors can get Welcome Suica Mobile on an iPhone and use it as an IC card.",
+      "ka": "ვიზიტორებს შეუძლიათ iPhone-ზე Welcome Suica Mobile დააყენონ და IC ბარათად გამოიყენონ."
     },
     "dayPass": {
       "name": {
@@ -2506,7 +3313,17 @@
           "en": "Operates from 05:30 to midnight.",
           "ka": "მოძრაობს 05:30-დან შუაღამემდე."
         },
-        "url": "https://suvarnabhumi.airportthai.co.th/service/airport-guide/detail/Transportation_BKK"
+        "url": "https://suvarnabhumi.airportthai.co.th/service/airport-guide/detail/Transportation_BKK",
+        "operators": [
+          "Airport Rail Link"
+        ],
+        "lines": [],
+        "buyOnline": null,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "No official online ticketing information could be confirmed.",
+          "ka": "ოფიციალური ონლაინ ბილეთების შესახებ ინფორმაცია ვერ დადასტურდა."
+        }
       },
       {
         "mode": "bus",
@@ -2523,9 +3340,25 @@
           "en": "Operates from 06:00 to 20:00.",
           "ka": "მოძრაობს 06:00-დან 20:00-მდე."
         },
-        "url": "https://suvarnabhumi.airportthai.co.th/service/airport-guide/detail/Transportation_BKK"
+        "url": "https://suvarnabhumi.airportthai.co.th/service/airport-guide/detail/Transportation_BKK",
+        "operators": [],
+        "lines": [
+          "S1"
+        ],
+        "buyOnline": null,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "No official online ticketing information could be confirmed.",
+          "ka": "ოფიციალური ონლაინ ბილეთების შესახებ ინფორმაცია ვერ დადასტურდა."
+        }
       }
     ],
+    "cityBuyOnline": null,
+    "cityBuyUrl": null,
+    "cityBuyNote": {
+      "en": "No official online ticketing information could be confirmed.",
+      "ka": "ოფიციალური ონლაინ ბილეთების შესახებ ინფორმაცია ვერ დადასტურდა."
+    },
     "contactless": null,
     "tips": [
       {
@@ -2574,7 +3407,19 @@
           "en": "First train from Changi Airport 5:31am (5:59am Sundays and holidays); last connection to the city about 11:18pm.",
           "ka": "პირველი მატარებელი Changi Airport-დან 05:31 (კვირას და დღესასწაულებზე 05:59); ქალაქისკენ ბოლო გადაჯდომა დაახლოებით 23:18."
         },
-        "url": "https://www.changiairport.com/en/at-changi/transport-and-directions/leaving-the-airport.html"
+        "url": "https://www.changiairport.com/en/at-changi/transport-and-directions/leaving-the-airport.html",
+        "operators": [],
+        "lines": [
+          "CG",
+          "EW",
+          "DT"
+        ],
+        "buyOnline": true,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "Tap a contactless bank card or phone wallet at the gate; no separate online ticket.",
+          "ka": "შეეხეთ უკონტაქტო საბანკო ბარათით ან ტელეფონის საფულით ტურნიკეტთან; ცალკე ონლაინ ბილეთი საჭირო არ არის."
+        }
       },
       {
         "mode": "bus",
@@ -2597,7 +3442,23 @@
         },
         "duration": null,
         "frequency": null,
-        "url": "https://www.changiairport.com/en/at-changi/transport-and-directions/leaving-the-airport.html"
+        "url": "https://www.changiairport.com/en/at-changi/transport-and-directions/leaving-the-airport.html",
+        "operators": [],
+        "lines": [
+          "24",
+          "27",
+          "34",
+          "36",
+          "53",
+          "110",
+          "858"
+        ],
+        "buyOnline": true,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "Tap a contactless bank card or phone wallet on board; no separate online ticket.",
+          "ka": "შეეხეთ უკონტაქტო საბანკო ბარათით ან ტელეფონის საფულით ავტობუსში; ცალკე ონლაინ ბილეთი არ არსებობს."
+        }
       }
     ],
     "cityTicket": {
@@ -2607,6 +3468,12 @@
       },
       "price": 1.28,
       "currency": "SGD"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": null,
+    "cityBuyNote": {
+      "en": "Tap a contactless bank card or phone wallet; no ticket purchase needed.",
+      "ka": "შეეხეთ უკონტაქტო საბანკო ბარათით ან ტელეფონის საფულით; ბილეთის ყიდვა საჭირო არ არის."
     },
     "dayPass": {
       "name": {
@@ -2648,6 +3515,12 @@
   "bali": {
     "airport": "DPS",
     "options": [],
+    "cityBuyOnline": null,
+    "cityBuyUrl": null,
+    "cityBuyNote": {
+      "en": "No official public transport ticketing from the airport could be confirmed.",
+      "ka": "აეროპორტიდან ოფიციალური საზოგადოებრივი ტრანსპორტის ბილეთები ვერ დადასტურდა."
+    },
     "contactless": null,
     "tips": [
       {
@@ -2693,7 +3566,19 @@
           "ka": "Terminal 1-დან 43 წუთი, Terminal 2-დან 51 წუთი."
         },
         "frequency": null,
-        "url": "https://www.airportrailroad.com/train/express/introduce"
+        "url": "https://www.airportrailroad.com/train/express/introduce",
+        "operators": [
+          "AREX"
+        ],
+        "lines": [
+          "AREX"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://www.airportrailroad.com/train/express/guide",
+        "buyNote": {
+          "en": "Book the Express Train online on airportrailroad.com.",
+          "ka": "დაჯავშნეთ Express Train ონლაინ airportrailroad.com-ზე."
+        }
       },
       {
         "mode": "train",
@@ -2716,7 +3601,19 @@
         },
         "duration": null,
         "frequency": null,
-        "url": "https://www.airportrailroad.com/train/normal/fare"
+        "url": "https://www.airportrailroad.com/train/normal/fare",
+        "operators": [
+          "AREX"
+        ],
+        "lines": [
+          "AREX"
+        ],
+        "buyOnline": false,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "Use a Korean transit card or buy a single-journey card at the station machine.",
+          "ka": "გამოიყენეთ კორეული სატრანსპორტო ბარათი ან იყიდეთ ერთჯერადი ბარათი სადგურის აპარატში."
+        }
       }
     ],
     "cityTicket": {
@@ -2726,6 +3623,12 @@
       },
       "price": 1550,
       "currency": "KRW"
+    },
+    "cityBuyOnline": null,
+    "cityBuyUrl": null,
+    "cityBuyNote": {
+      "en": "No official online purchase for city transit cards could be confirmed.",
+      "ka": "ქალაქის სატრანსპორტო ბარათების ოფიციალური ონლაინ შეძენა ვერ დადასტურდა."
     },
     "contactless": null,
     "tips": [
@@ -2770,7 +3673,19 @@
         },
         "duration": null,
         "frequency": null,
-        "url": "https://www.mtr.com.hk/en/customer/tickets/tf_index.html"
+        "url": "https://www.mtr.com.hk/en/customer/tickets/tf_index.html",
+        "operators": [
+          "MTR"
+        ],
+        "lines": [
+          "AEL"
+        ],
+        "buyOnline": true,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "Tap a contactless card, Octopus or QR code at the gate; single tickets are also sold online.",
+          "ka": "შეეხეთ უკონტაქტო ბარათით, Octopus-ით ან QR კოდით ტურნიკეტთან; ერთჯერადი ბილეთები ონლაინაც იყიდება."
+        }
       }
     ],
     "cityTicket": {
@@ -2780,6 +3695,12 @@
       },
       "price": null,
       "currency": "HKD"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": "https://www.octopus.com.hk/en/consumer/tourist/apple-pay/index.html",
+    "cityBuyNote": {
+      "en": "Visitors can add Octopus to an iPhone or Apple Watch and top up with a non-HK card.",
+      "ka": "ვიზიტორებს შეუძლიათ Octopus iPhone-ზე ან Apple Watch-ზე დაამატონ და არაჰონკონგური ბარათით შეავსონ."
     },
     "contactless": true,
     "tips": [
@@ -2833,7 +3754,17 @@
           "en": "Every 20 minutes (15 minutes planned from Q1 2027).",
           "ka": "ყოველ 20 წუთში (2027 წლის I კვარტლიდან დაგეგმილია 15 წუთი)."
         },
-        "url": "https://www.kliaekspres.com/products-fares/klia-ekspres/"
+        "url": "https://www.kliaekspres.com/products-fares/klia-ekspres/",
+        "operators": [
+          "KLIA Ekspres"
+        ],
+        "lines": [],
+        "buyOnline": true,
+        "buyUrl": "https://www.kliaekspres.com/",
+        "buyNote": {
+          "en": "Buy on the KLIA Ekspres website or app (10% off), or tap a contactless card at the gate.",
+          "ka": "იყიდეთ KLIA Ekspres-ის საიტზე ან აპლიკაციაში (10% ფასდაკლებით), ან მიიდეთ უკონტაქტო ბარათი ტურნიკეტთან."
+        }
       },
       {
         "mode": "train",
@@ -2862,9 +3793,25 @@
           "en": "Every 15 minutes at weekday peaks, every 30 minutes off-peak and at weekends.",
           "ka": "სამუშაო დღეების პიკის საათებში ყოველ 15 წუთში, სხვა დროს და შაბათ-კვირას ყოველ 30 წუთში."
         },
-        "url": "https://www.kliaekspres.com/products-fares/klia-transit/"
+        "url": "https://www.kliaekspres.com/products-fares/klia-transit/",
+        "operators": [
+          "KLIA Transit"
+        ],
+        "lines": [],
+        "buyOnline": true,
+        "buyUrl": "https://www.kliaekspres.com/",
+        "buyNote": {
+          "en": "Buy on the KLIA Ekspres website or app, or tap a credit card / Touch 'n Go at the gate.",
+          "ka": "იყიდეთ KLIA Ekspres-ის საიტზე ან აპლიკაციაში, ან მიიდეთ საკრედიტო ბარათი / Touch 'n Go ტურნიკეტთან."
+        }
       }
     ],
+    "cityBuyOnline": false,
+    "cityBuyUrl": "https://shop.myrapid.com.my/product-category/rapidkl-pass/mycity-pass/",
+    "cityBuyNote": {
+      "en": "Single tokens are sold only at station machines and counters; MyCity passes are sold in the MyRapid online shop.",
+      "ka": "ერთჯერადი ჟეტონები მხოლოდ სადგურის აპარატებსა და სალაროებში იყიდება; MyCity აბონემენტები MyRapid-ის ონლაინ მაღაზიაში იყიდება."
+    },
     "dayPass": {
       "name": {
         "en": "Rapid KL MyCity 1-Day Pass (non-Malaysian, loaded on a Touch 'n Go card)",
@@ -2929,7 +3876,19 @@
           "en": "First train 4:45 am, last train 11:30 pm from New Delhi.",
           "ka": "პირველი მატარებელი 04:45-ზე, ბოლო — 23:30-ზე New Delhi-დან."
         },
-        "url": "https://www.newdelhiairport.in/to-and-from-airport/metro/"
+        "url": "https://www.newdelhiairport.in/to-and-from-airport/metro/",
+        "operators": [
+          "Delhi Metro"
+        ],
+        "lines": [
+          "Airport Express Line"
+        ],
+        "buyOnline": null,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "Buy at the ticket machines in the arrivals area; online purchase for this line is not confirmed.",
+          "ka": "იყიდეთ ჩამოსვლის დარბაზის აპარატებში; ამ ხაზზე ონლაინ ყიდვა დადასტურებული არ არის."
+        }
       },
       {
         "mode": "metro",
@@ -2952,9 +3911,27 @@
           "en": "Every 5 minutes, roughly 5:30 am to 11:30 pm.",
           "ka": "ყოველ 5 წუთში, დაახლოებით 05:30-დან 23:30-მდე."
         },
-        "url": "https://www.newdelhiairport.in/to-and-from-airport/metro/"
+        "url": "https://www.newdelhiairport.in/to-and-from-airport/metro/",
+        "operators": [
+          "Delhi Metro"
+        ],
+        "lines": [
+          "Magenta Line"
+        ],
+        "buyOnline": null,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "Buy at the ticket machines in the Terminal 1 metro station.",
+          "ka": "იყიდეთ Terminal 1-ის მეტროს სადგურის აპარატებში."
+        }
       }
     ],
+    "cityBuyOnline": true,
+    "cityBuyUrl": "https://www.delhimetrorail.com/app-based-qr-ticketing",
+    "cityBuyNote": {
+      "en": "DMRC offers app-based QR tickets; you can also buy at station machines.",
+      "ka": "DMRC აპლიკაციით QR ბილეთებს გთავაზობთ; ბილეთი სადგურის აპარატებშიც შეგიძლიათ იყიდოთ."
+    },
     "contactless": null,
     "tips": [
       {
@@ -3004,7 +3981,23 @@
           "en": "AirTrain runs every 5–15 minutes.",
           "ka": "AirTrain ყოველ 5–15 წუთში მოძრაობს."
         },
-        "url": "https://www.mta.info/guides/airports/jfk"
+        "url": "https://www.mta.info/guides/airports/jfk",
+        "operators": [
+          "AirTrain JFK",
+          "MTA"
+        ],
+        "lines": [
+          "A",
+          "E",
+          "J",
+          "Z"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://omny.info/fares",
+        "buyNote": {
+          "en": "No ticket to buy: tap OMNY with a contactless card or phone.",
+          "ka": "ბილეთის ყიდვა საჭირო არ არის: OMNY-ზე მიიდეთ უკონტაქტო ბარათი ან ტელეფონი."
+        }
       },
       {
         "mode": "train",
@@ -3027,7 +4020,18 @@
         },
         "duration": null,
         "frequency": null,
-        "url": "https://www.mta.info/guides/airports/jfk"
+        "url": "https://www.mta.info/guides/airports/jfk",
+        "operators": [
+          "AirTrain JFK",
+          "LIRR"
+        ],
+        "lines": [],
+        "buyOnline": true,
+        "buyUrl": "https://www.mta.info/traintime",
+        "buyNote": {
+          "en": "Buy the LIRR ticket in the MTA TrainTime app and tap a card for AirTrain.",
+          "ka": "LIRR-ის ბილეთი იყიდეთ MTA TrainTime აპლიკაციაში, AirTrain-ზე კი ბარათი მიიდეთ."
+        }
       }
     ],
     "cityTicket": {
@@ -3037,6 +4041,12 @@
       },
       "price": 3,
       "currency": "USD"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": "https://omny.info/fares",
+    "cityBuyNote": {
+      "en": "Tap OMNY with a contactless card or phone; MetroCards are no longer sold.",
+      "ka": "OMNY-ზე მიიდეთ უკონტაქტო ბარათი ან ტელეფონი; MetroCard-ები აღარ იყიდება."
     },
     "contactless": true,
     "tips": [
@@ -3087,7 +4097,17 @@
         },
         "duration": null,
         "frequency": null,
-        "url": "https://www.flylax.com/flyaway-bus/fares-tickets"
+        "url": "https://www.flylax.com/flyaway-bus/fares-tickets",
+        "operators": [
+          "LAX FlyAway"
+        ],
+        "lines": [],
+        "buyOnline": true,
+        "buyUrl": "https://www.flylax.com/flyaway-bus/fares-tickets",
+        "buyNote": {
+          "en": "Buy a web or mobile ticket online, or tap a contactless card on board.",
+          "ka": "იყიდეთ ვებ ან მობილური ბილეთი ონლაინ, ან ავტობუსში მიიდეთ უკონტაქტო ბარათი."
+        }
       },
       {
         "mode": "metro",
@@ -3113,7 +4133,20 @@
           "en": "The free shuttle runs every 10 minutes.",
           "ka": "უფასო შატლი ყოველ 10 წუთში მოძრაობს."
         },
-        "url": "https://www.metro.net/destinations/lax/"
+        "url": "https://www.metro.net/destinations/lax/",
+        "operators": [
+          "LA Metro"
+        ],
+        "lines": [
+          "K",
+          "C"
+        ],
+        "buyOnline": true,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "Tap a contactless bank card or phone at the validator.",
+          "ka": "ვალიდატორთან მიიდეთ უკონტაქტო საბანკო ბარათი ან ტელეფონი."
+        }
       }
     ],
     "cityTicket": {
@@ -3123,6 +4156,12 @@
       },
       "price": 1.75,
       "currency": "USD"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": "https://www.taptogo.net/",
+    "cityBuyNote": {
+      "en": "Tap a contactless bank card or phone, or load a TAP card online.",
+      "ka": "მიიდეთ უკონტაქტო საბანკო ბარათი ან ტელეფონი, ან TAP ბარათი ონლაინ შეავსეთ."
     },
     "dayPass": {
       "name": {
@@ -3179,7 +4218,20 @@
           "en": "Orange Line every 15 minutes; at weekends an airport shuttle train runs to Earlington Heights, where you change.",
           "ka": "Orange Line ყოველ 15 წუთში; შაბათ-კვირას აეროპორტის შატლ-მატარებელი Earlington Heights-მდე მიდის, სადაც გადაჯდომაა საჭირო."
         },
-        "url": "https://www.miamidade.gov/global/transportation/metrorail.page"
+        "url": "https://www.miamidade.gov/global/transportation/metrorail.page",
+        "operators": [
+          "MIA Mover",
+          "Miami-Dade Transit"
+        ],
+        "lines": [
+          "Orange"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://www.miamidade.gov/global/transportation/contactless-payment-faqs.page",
+        "buyNote": {
+          "en": "Tap a contactless card or phone wallet at the Metrorail gate.",
+          "ka": "Metrorail-ის ტურნიკეტთან მიიდეთ უკონტაქტო ბარათი ან ტელეფონის საფულე."
+        }
       },
       {
         "mode": "bus",
@@ -3205,7 +4257,19 @@
           "en": "Every 30 minutes, 6 am to 11:40 pm, daily.",
           "ka": "ყოველ 30 წუთში, 06:00-დან 23:40-მდე, ყოველდღე."
         },
-        "url": "https://www.miami-airport.com/public-transportation.asp"
+        "url": "https://www.miami-airport.com/public-transportation.asp",
+        "operators": [
+          "Miami-Dade Transit"
+        ],
+        "lines": [
+          "150"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://www.miamidade.gov/global/transportation/contactless-payment-faqs.page",
+        "buyNote": {
+          "en": "Tap a contactless card or phone wallet when boarding.",
+          "ka": "ავტობუსში ასვლისას მიიდეთ უკონტაქტო ბარათი ან ტელეფონის საფულე."
+        }
       }
     ],
     "cityTicket": {
@@ -3215,6 +4279,12 @@
       },
       "price": 2.25,
       "currency": "USD"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": "https://www.miamidade.gov/global/transportation/contactless-payment-faqs.page",
+    "cityBuyNote": {
+      "en": "Tap a contactless card or phone wallet; passes are also sold in the Token Transit app.",
+      "ka": "მიიდეთ უკონტაქტო ბარათი ან ტელეფონის საფულე; აბონემენტები Token Transit აპლიკაციაშიც იყიდება."
     },
     "dayPass": {
       "name": {
@@ -3283,7 +4353,17 @@
           "en": "Every 15 minutes.",
           "ka": "ყოველ 15 წუთში."
         },
-        "url": "https://www.upexpress.com/en/fares"
+        "url": "https://www.upexpress.com/en/fares",
+        "operators": [
+          "UP Express"
+        ],
+        "lines": [],
+        "buyOnline": true,
+        "buyUrl": "https://www.upexpress.com/en/ways-to-pay",
+        "buyNote": {
+          "en": "Buy an e-ticket on the UP Express website or app, or tap PRESTO or a bank card.",
+          "ka": "იყიდეთ ელ-ბილეთი UP Express-ის საიტზე ან აპლიკაციაში, ან მიიდეთ PRESTO ან საბანკო ბარათი."
+        }
       },
       {
         "mode": "bus",
@@ -3309,7 +4389,19 @@
           "en": "All-day service.",
           "ka": "მოძრაობს მთელი დღის განმავლობაში."
         },
-        "url": "https://www.ttc.ca/Fares-and-passes"
+        "url": "https://www.ttc.ca/Fares-and-passes",
+        "operators": [
+          "TTC"
+        ],
+        "lines": [
+          "900"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://prestocard.ca/en/learn/presto-app",
+        "buyNote": {
+          "en": "Tap a contactless bank card, or load a PRESTO card in the PRESTO app.",
+          "ka": "მიიდეთ უკონტაქტო საბანკო ბარათი, ან შეავსეთ PRESTO ბარათი PRESTO აპლიკაციაში."
+        }
       }
     ],
     "cityTicket": {
@@ -3319,6 +4411,12 @@
       },
       "price": 3.3,
       "currency": "CAD"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": "https://prestocard.ca/en/learn/presto-app",
+    "cityBuyNote": {
+      "en": "Tap a contactless bank card, or load PRESTO online or in the PRESTO app.",
+      "ka": "მიიდეთ უკონტაქტო საბანკო ბარათი, ან PRESTO ონლაინ ან PRESTO აპლიკაციაში შეავსეთ."
     },
     "dayPass": {
       "name": {
@@ -3373,7 +4471,17 @@
         "payment": null,
         "duration": null,
         "frequency": null,
-        "url": "https://www.ado.com.mx/viajes/terminal-aeropuerto-cancun-t3-a-terminal-cancun/"
+        "url": "https://www.ado.com.mx/viajes/terminal-aeropuerto-cancun-t3-a-terminal-cancun/",
+        "operators": [
+          "ADO"
+        ],
+        "lines": [],
+        "buyOnline": true,
+        "buyUrl": "https://www.ado.com.mx/viajes/terminal-aeropuerto-cancun-t3-a-terminal-cancun/",
+        "buyNote": {
+          "en": "Book the ADO ticket online at ado.com.mx.",
+          "ka": "ADO-ს ბილეთი ონლაინ დაჯავშნეთ ado.com.mx-ზე."
+        }
       },
       {
         "mode": "express_bus",
@@ -3399,9 +4507,25 @@
           "en": "Up to nine departures a day, morning to early evening.",
           "ka": "დღეში 9-მდე რეისი, დილიდან საღამოს დასაწყისამდე."
         },
-        "url": "https://international.ado.com.mx/ado-bus/cancun-airport-to-cancun-hotel-zone-punta-cancun"
+        "url": "https://international.ado.com.mx/ado-bus/cancun-airport-to-cancun-hotel-zone-punta-cancun",
+        "operators": [
+          "ADO"
+        ],
+        "lines": [],
+        "buyOnline": true,
+        "buyUrl": "https://international.ado.com.mx/ado-bus/cancun-airport-to-cancun-hotel-zone-punta-cancun",
+        "buyNote": {
+          "en": "Book the ADO ticket online at ado.com.mx.",
+          "ka": "ADO-ს ბილეთი ონლაინ დაჯავშნეთ ado.com.mx-ზე."
+        }
       }
     ],
+    "cityBuyOnline": null,
+    "cityBuyUrl": null,
+    "cityBuyNote": {
+      "en": "No official online sale for city buses was found.",
+      "ka": "ქალაქის ავტობუსების ოფიციალური ონლაინ გაყიდვა ვერ მოიძებნა."
+    },
     "contactless": null,
     "tips": [
       {
@@ -3448,7 +4572,21 @@
           "en": "Runs daily; timetables are on the Mobi-Rio website.",
           "ka": "მოძრაობს ყოველდღე; განრიგი Mobi-Rio-ს საიტზეა."
         },
-        "url": "https://www.riogaleao.com/passageiros/como-chegar-e-sair/brt/"
+        "url": "https://www.riogaleao.com/passageiros/como-chegar-e-sair/brt/",
+        "operators": [
+          "MOBI-Rio",
+          "MetrôRio"
+        ],
+        "lines": [
+          "TransCarioca",
+          "2"
+        ],
+        "buyOnline": true,
+        "buyUrl": "https://jae.com.br/faq/app-jae-2/",
+        "buyNote": {
+          "en": "Pay the BRT with a QR code from the Jaé app; the metro uses a separate Riocard ticket.",
+          "ka": "BRT-ში გადაიხადეთ Jaé აპლიკაციის QR კოდით; მეტროში ცალკე Riocard-ის ბილეთი გამოიყენება."
+        }
       }
     ],
     "cityTicket": {
@@ -3458,6 +4596,12 @@
       },
       "price": 5,
       "currency": "BRL"
+    },
+    "cityBuyOnline": true,
+    "cityBuyUrl": "https://jae.com.br/faq/app-jae-2/",
+    "cityBuyNote": {
+      "en": "Top up the Jaé card or pay by QR in the Jaé app (PIX or credit card).",
+      "ka": "შეავსეთ Jaé ბარათი ან გადაიხადეთ QR-ით Jaé აპლიკაციაში (PIX ან საკრედიტო ბარათი)."
     },
     "contactless": null,
     "tips": [
@@ -3503,9 +4647,27 @@
         },
         "duration": null,
         "frequency": null,
-        "url": "https://www.argentina.gob.ar/sites/default/files/008_0.pdf"
+        "url": "https://www.argentina.gob.ar/sites/default/files/008_0.pdf",
+        "operators": [
+          "Transportes Río Grande"
+        ],
+        "lines": [
+          "8"
+        ],
+        "buyOnline": null,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "Pay with a SUBE card; bank-card tap on this line is not confirmed.",
+          "ka": "გადაიხადეთ SUBE ბარათით; ამ ხაზზე საბანკო ბარათით გადახდა დადასტურებული არ არის."
+        }
       }
     ],
+    "cityBuyOnline": true,
+    "cityBuyUrl": null,
+    "cityBuyNote": {
+      "en": "In the Subte, tap a contactless Visa/Mastercard, phone or QR; buses need a SUBE card.",
+      "ka": "Subte-ში მიიდეთ უკონტაქტო Visa/Mastercard, ტელეფონი ან QR; ავტობუსებისთვის SUBE ბარათია საჭირო."
+    },
     "contactless": true,
     "apps": [
       {
@@ -3553,9 +4715,23 @@
           "en": "Every 20 minutes.",
           "ka": "ყოველ 20 წუთში."
         },
-        "url": "https://www.onda.ma/Nos-A%C3%A9roports/A%C3%A9roport-Marrakech-M%C3%A9nara/Services/Taxi-et-Bus"
+        "url": "https://www.onda.ma/Nos-A%C3%A9roports/A%C3%A9roport-Marrakech-M%C3%A9nara/Services/Taxi-et-Bus",
+        "operators": [],
+        "lines": [],
+        "buyOnline": null,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "No official online sale was found for the airport bus.",
+          "ka": "აეროპორტის ავტობუსის ოფიციალური ონლაინ გაყიდვა ვერ მოიძებნა."
+        }
       }
     ],
+    "cityBuyOnline": null,
+    "cityBuyUrl": null,
+    "cityBuyNote": {
+      "en": "No official online sale for city buses was found.",
+      "ka": "ქალაქის ავტობუსების ოფიციალური ონლაინ გაყიდვა ვერ მოიძებნა."
+    },
     "contactless": null,
     "tips": [
       {
@@ -3594,7 +4770,19 @@
           "en": "Every 20 minutes when running (service currently suspended).",
           "ka": "მოძრაობისას ყოველ 20 წუთში (სერვისი ამჟამად შეჩერებულია)."
         },
-        "url": "https://www.myciti.org.za/en/routes-stops/airport-services/"
+        "url": "https://www.myciti.org.za/en/routes-stops/airport-services/",
+        "operators": [
+          "MyCiTi"
+        ],
+        "lines": [
+          "A01"
+        ],
+        "buyOnline": null,
+        "buyUrl": null,
+        "buyNote": {
+          "en": "Pay with a myconnect card; the airport service is currently suspended.",
+          "ka": "გადაიხადეთ myconnect ბარათით; აეროპორტის სერვისი ამჟამად შეჩერებულია."
+        }
       }
     ],
     "cityTicket": {
@@ -3604,6 +4792,12 @@
       },
       "price": 15,
       "currency": "ZAR"
+    },
+    "cityBuyOnline": null,
+    "cityBuyUrl": null,
+    "cityBuyNote": {
+      "en": "Online top-up of the myconnect card is not confirmed.",
+      "ka": "myconnect ბარათის ონლაინ შევსება დადასტურებული არ არის."
     },
     "dayPass": {
       "name": {

@@ -1,7 +1,7 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, computed, inject, input, signal } from '@angular/core';
 import { takeUntilDestroyed, toObservable } from '@angular/core/rxjs-interop';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { RouterLink } from '@angular/router';
+import { Router, RouterLink } from '@angular/router';
 import { combineLatest, switchMap } from 'rxjs';
 import { ApiService } from '../../core/api.service';
 import { ClientConfigService } from '../../core/client-config.service';
@@ -22,7 +22,9 @@ import { I18nService } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
 import { ErrorBannerComponent } from '../../shared/error-banner.component';
 import { ExternalLinkComponent } from '../../shared/external-link.component';
-import { IconComponent } from '../../shared/icon.component';
+import { IconComponent, IconName } from '../../shared/icon.component';
+import { SelectedStayService } from '../../core/selected-stay.service';
+import { StayRouteComponent } from './stay-route.component';
 import { destinationPhoto } from '../../core/destination-photos';
 import { buildIcs, downloadFile } from '../../core/calendar';
 import { SavedTripsService } from '../../core/local-lists';
@@ -43,6 +45,9 @@ export function buildEmbedUrl(key: string, fromLat: number, fromLng: number, toL
     `?key=${encodeURIComponent(key)}&origin=${p(fromLat, fromLng)}&destination=${p(toLat, toLng)}&mode=transit`
   );
 }
+
+const TAB_IDS = ['overview', 'flight', 'stay', 'route', 'days', 'sights', 'costs'] as const;
+type PlanTab = (typeof TAB_IDS)[number];
 
 @Component({
   selector: 'app-plan-detail-page',
@@ -69,11 +74,57 @@ export function buildEmbedUrl(key: string, fromLat: number, fromLng: number, toL
     FlightTicketsComponent,
     FlightTimelineComponent,
     DayPlannerComponent,
+    StayRouteComponent,
   ],
   templateUrl: './plan-detail.page.html',
 })
 export class PlanDetailPage {
   readonly id = input.required<string>();
+  /** ?tab= query parameter (component input binding); the overview when absent. */
+  readonly tab = input<string | undefined>();
+
+  private readonly router = inject(Router);
+  private readonly stays = inject(SelectedStayService);
+
+  protected readonly activeTab = computed<PlanTab>(() => (TAB_IDS as readonly string[]).includes(this.tab() ?? '') ? (this.tab() as PlanTab) : 'overview');
+
+  /** Sidebar entries with live hints (flight times, chosen hotel, totals). */
+  protected readonly tabs = computed(() => {
+    const p = this.plan();
+    this.stays.all();
+    const lang = this.i18n.lang();
+    void lang;
+    const s = p?.summary;
+    const stay = p ? this.stays.get(p.summary.id) : null;
+    const out = s?.flight?.outbound;
+    const t = (key: TranslationKey, params?: Record<string, string | number>) => this.i18n.t(key, params);
+    const money = (v: number) => new Intl.NumberFormat(lang === 'ka' ? 'ka-GE' : 'en-GB', { style: 'currency', currency: s?.currency ?? 'EUR', maximumFractionDigits: 0 }).format(v);
+    const rows: { id: PlanTab; icon: IconName; label: TranslationKey; hint: string; description: TranslationKey }[] = [
+      { id: 'overview', icon: 'layout', label: 'tab.overview', hint: t('tab.overviewHint'), description: 'tab.overviewHint' },
+      { id: 'flight', icon: 'plane', label: 'tab.flight', description: 'tab.flightDesc',
+        hint: out ? `${out.from} → ${out.to} · ${out.departureLocal.slice(11, 16)}` : t('tab.flightHint') },
+      { id: 'stay', icon: 'bed', label: 'tab.stay', description: 'tab.stayDesc',
+        hint: stay ? t('tab.stayChosen', { name: stay.name }) : t('tab.stayHint') },
+      { id: 'route', icon: 'metro', label: 'tab.route', description: 'tab.routeDesc',
+        hint: t('tab.routeHint', { from: out?.to ?? '✈', to: stay?.name ?? t('tab.centre') }) },
+      { id: 'days', icon: 'calendar', label: 'tab.days', description: 'tab.daysDesc', hint: t('tab.daysHint', { count: (s?.nights ?? 0) + 1 }) },
+      { id: 'sights', icon: 'landmark', label: 'tab.sights', description: 'tab.sightsDesc', hint: t('tab.sightsHint') },
+      { id: 'costs', icon: 'wallet', label: 'tab.costs', description: 'tab.costsDesc',
+        hint: s ? t('tab.costsHint', { total: money(s.totalEstimatedCost), left: money(Math.max(0, s.remainingBudget)) }) : '' },
+    ];
+    return rows.filter((r) => r.id !== 'flight' || !!this.flight());
+  });
+
+  protected readonly nextTab = computed(() => {
+    const list = this.tabs();
+    const i = list.findIndex((t) => t.id === this.activeTab());
+    return i >= 0 && i < list.length - 1 ? list[i + 1] : null;
+  });
+
+  protected setTab(id: PlanTab): void {
+    void this.router.navigate([], { queryParams: { tab: id === 'overview' ? null : id }, queryParamsHandling: 'merge' });
+    if (typeof window !== 'undefined') window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 
   private readonly api = inject(ApiService);
   private readonly sanitizer = inject(DomSanitizer);

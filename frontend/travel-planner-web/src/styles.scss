@@ -939,6 +939,100 @@ a.ext-link.btn:hover { background: var(--primary-dark); border-color: var(--prim
 .sight-stops li > .icon { color: var(--primary); }
 .sight-links { margin-top: auto; padding-top: 0.25rem; }
 
+// ---------- Plan: sidebar + tabs ----------
+.plan-layout { display: grid; gap: 1.25rem; grid-template-columns: 1fr; align-items: start; }
+@media (min-width: 1000px) { .plan-layout { grid-template-columns: 270px minmax(0, 1fr); gap: 1.75rem; } }
+.plan-main { min-width: 0; }
+.plan-sidebar { display: grid; gap: 0.75rem; }
+@media (min-width: 1000px) {
+  .plan-sidebar { position: sticky; top: calc(var(--header-h) + 1rem); max-height: calc(100vh - var(--header-h) - 2rem); overflow-y: auto; scrollbar-width: thin; }
+}
+.sidebar-trip { display: grid; gap: 0.5rem; padding: 0.6rem; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow); }
+.sidebar-trip img { width: 100%; height: 96px; object-fit: cover; border-radius: var(--radius-sm); }
+.sidebar-trip > div { display: grid; gap: 0.1rem; padding: 0 0.3rem 0.2rem; }
+.sidebar-trip strong { font-size: 1.05rem; }
+.tab-nav { display: grid; gap: 0.25rem; padding: 0.4rem; border-radius: var(--radius); background: var(--surface); border: 1px solid var(--border); box-shadow: var(--shadow); }
+.tab-link {
+  position: relative; display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 0.7rem; align-items: center; width: 100%;
+  padding: 0.6rem 0.65rem; border: 0; border-radius: var(--radius-sm); background: transparent; color: var(--text); font: inherit; text-align: left; cursor: pointer;
+  transition: background-color 0.15s ease;
+}
+.tab-link:hover { background: var(--bg-warm); }
+.tab-link.active { background: var(--primary-soft); }
+.tab-link.active::before { content: ''; position: absolute; left: -0.4rem; top: 0.55rem; bottom: 0.55rem; width: 3px; border-radius: 3px; background: var(--primary-deep); }
+.tab-icon { display: inline-flex; align-items: center; justify-content: center; width: 2.2rem; height: 2.2rem; border-radius: 10px; background: var(--bg-warm); color: var(--muted); }
+.tab-link.active .tab-icon { background: var(--primary-deep); color: #fff; }
+.tab-text { display: grid; gap: 0.05rem; min-width: 0; }
+.tab-label { font-weight: 600; font-size: 0.92rem; }
+.tab-hint { font-size: 0.74rem; color: var(--muted); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.tab-step { font-size: 0.68rem; font-weight: 700; color: var(--muted); font-variant-numeric: tabular-nums; opacity: 0.7; }
+.plan-sidebar .plan-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+.plan-sidebar .plan-actions .btn { width: 100%; font-size: 0.82rem; padding-inline: 0.5rem; }
+@media (max-width: 999px) {
+  .sidebar-trip { display: none; }
+  .plan-sidebar { position: sticky; top: var(--header-h); z-index: 5; margin: 0 -1rem; padding: 0.4rem 1rem; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); }
+  .tab-nav { display: flex; gap: 0.3rem; overflow-x: auto; scrollbar-width: none; padding: 0.3rem; }
+  .tab-link { grid-template-columns: auto auto; width: auto; flex: 0 0 auto; padding: 0.45rem 0.7rem; }
+  .tab-hint, .tab-step { display: none; }
+  .tab-icon { width: 1.8rem; height: 1.8rem; }
+  .tab-link.active::before { display: none; }
+  .plan-sidebar .plan-actions { display: none; }
+}
+.overview-grid { display: grid; gap: 0.75rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr)); margin-bottom: var(--gap); }
+.overview-card {
+  display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 0.85rem; align-items: center; padding: 1rem 1.05rem; text-align: left;
+  border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); box-shadow: var(--shadow); font: inherit; color: var(--text); cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.overview-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-hover); border-color: var(--border-strong); }
+.overview-card:hover .overview-go { transform: translateX(3px); color: var(--primary-deep); }
+.overview-icon { display: inline-flex; align-items: center; justify-content: center; width: 3rem; height: 3rem; border-radius: 14px; color: #fff; background: var(--primary-deep); }
+.overview-icon[data-tab='flight'] { background: linear-gradient(135deg, #0ea5e9, #2563eb); }
+.overview-icon[data-tab='stay'] { background: linear-gradient(135deg, #f59e0b, #ea580c); }
+.overview-icon[data-tab='route'] { background: linear-gradient(135deg, #14b8a6, #0f766e); }
+.overview-icon[data-tab='days'] { background: linear-gradient(135deg, #a855f7, #6d28d9); }
+.overview-icon[data-tab='sights'] { background: linear-gradient(135deg, #f43f5e, #be123c); }
+.overview-icon[data-tab='costs'] { background: linear-gradient(135deg, #64748b, #0f172a); }
+.overview-text { display: grid; gap: 0.15rem; min-width: 0; }
+.overview-text strong { font-size: 1rem; }
+.overview-text .small:not(.muted) { color: var(--primary-deep); font-weight: 600; }
+.overview-go { color: var(--muted); transition: transform 0.2s ease; }
+.next-tab {
+  display: flex; flex-direction: column; align-items: flex-end; gap: 0.1rem; width: 100%; margin-top: 0.5rem; padding: 0.9rem 1.1rem;
+  border: 1px dashed var(--border-strong); border-radius: var(--radius); background: transparent; font: inherit; color: var(--text); cursor: pointer;
+}
+.next-tab:hover { border-color: var(--primary); background: var(--primary-soft); }
+.next-tab strong { display: inline-flex; align-items: center; gap: 0.35rem; }
+
+// ---------- Plan: route tickets ----------
+.step-icon.is-link, .line-chip.is-link { cursor: pointer; text-decoration: none; transition: transform 0.15s ease, box-shadow 0.15s ease; }
+.step-icon.is-link { background: var(--primary-deep); color: #fff; box-shadow: 0 0 0 3px var(--primary-ring); }
+.step-icon.is-link[data-mode='BUS'], .step-icon.is-link[data-mode='COACH'] { background: #a34a24; box-shadow: 0 0 0 3px rgba(163, 74, 36, 0.2); }
+.step-icon.is-link[data-mode='TRAM'] { background: #6f4290; box-shadow: 0 0 0 3px rgba(111, 66, 144, 0.2); }
+.step-icon.is-link:hover, .line-chip.is-link:hover { transform: scale(1.08); }
+.step-icon:not(.is-link)[data-mode='SUBWAY'], .step-icon:not(.is-link)[data-mode='METRO'] { color: var(--primary-deep); }
+.line-chip.is-link { color: #fff; }
+.leg-ticket {
+  display: flex; flex-wrap: wrap; align-items: flex-start; gap: 0.4rem 0.6rem; margin-top: 0.45rem; padding: 0.5rem 0.65rem; border-radius: var(--radius-xs);
+  background: var(--bg-warm); border: 1px solid var(--border); font-size: 0.82rem;
+}
+.leg-ticket > span { flex: 1 1 14rem; }
+.leg-ticket > .icon { color: var(--muted); margin-top: 0.1rem; }
+.leg-ticket.online { background: var(--success-soft); border-color: var(--success-border); }
+.leg-ticket.online > .icon { color: var(--success); }
+.leg-ticket.offline { background: var(--warn-soft); border-color: var(--warn-border); }
+.leg-buy, .leg-info {
+  display: inline-flex; align-items: center; gap: 0.25rem; padding: 0.2rem 0.6rem; border-radius: var(--radius-xs); font-weight: 700; text-decoration: none; white-space: nowrap;
+}
+.leg-buy { background: var(--primary-deep); color: #fff; }
+.leg-buy:hover { background: var(--primary-dark); color: #fff; }
+.leg-info { background: var(--surface); border: 1px solid var(--border-strong); color: var(--text-2); }
+.buy-badge { justify-self: start; font-size: 0.72rem; font-weight: 700; padding: 0.1rem 0.55rem; border-radius: 999px; border: 1px solid var(--border); }
+.buy-badge.online { background: var(--success-soft); color: var(--success); border-color: var(--success-border); }
+.buy-badge.offline { background: var(--warn-soft); color: var(--warn); border-color: var(--warn-border); }
+.guide-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 1rem; margin-top: 0.2rem; }
+.city-buy { display: flex; flex-wrap: wrap; gap: 0.3rem 0.5rem; align-items: center; }
+
 // ---------- Plan: day planner ----------
 .planner-controls { display: grid; gap: 0.9rem; margin: 0.75rem 0 1.25rem; padding: 0.9rem 1rem; border-radius: var(--radius-md); background: var(--surface-tint); border: 1px solid var(--border); }
 .music-filter { display: grid; gap: 0.9rem; margin: 0 0 1.25rem; padding: 0.9rem 1rem; border-radius: var(--radius-md); background: #faf5ff; border: 1px solid #e9d5ff; }

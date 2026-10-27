@@ -49,7 +49,12 @@ public sealed record TransitGuideOption(
     LocalizedText? Payment,
     LocalizedText? Duration,
     LocalizedText? Frequency,
-    string? Url);
+    string? Url,
+    IReadOnlyList<string>? Operators = null,
+    IReadOnlyList<string>? Lines = null,
+    bool? BuyOnline = null,
+    string? BuyUrl = null,
+    LocalizedText? BuyNote = null);
 
 public sealed record TransitGuideFare(LocalizedText? Name, decimal? Price, string? Currency);
 
@@ -65,7 +70,10 @@ public sealed record TransitGuide(
     IReadOnlyList<TransitGuideApp> Apps,
     IReadOnlyList<LocalizedText> Tips,
     IReadOnlyList<string> Sources,
-    string? CheckedOn);
+    string? CheckedOn,
+    bool? CityBuyOnline = null,
+    string? CityBuyUrl = null,
+    LocalizedText? CityBuyNote = null);
 
 public interface ITransitGuideSource
 {

@@ -6,6 +6,7 @@
   </section>
 } @else if (data(); as d) {
   <!-- Where to stay -->
+  @if (part() !== 'around') {
   <section class="card nearby" id="stay" aria-labelledby="stay-title">
     <div class="section-head">
       <h2 id="stay-title"><app-icon name="bed" /> {{ 'nearby.stayTitle' | t }}</h2>
@@ -198,10 +199,10 @@
     </div>
   </section>
 
-  <!-- Airport ↔ hotel routes and the ticket guide -->
-  <app-stay-route [planId]="planId()" />
+  }
 
   <!-- Getting around -->
+  @if (part() !== 'stay') {
   <section class="card nearby" id="getting-around" aria-labelledby="around-title">
     <h2 id="around-title"><app-icon name="train" /> {{ 'nearby.aroundTitle' | t: { iata: d.airport?.iataCode ?? '' } }}</h2>
 
@@ -297,6 +298,7 @@
       <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener noreferrer">ODbL</a>
     </p>
   </section>
+  }
 } @else {
   <div class="card skeleton" aria-busy="true"></div>
 }

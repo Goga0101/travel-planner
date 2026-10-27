@@ -15,9 +15,12 @@ namespace TravelPlanner.Application.Features.TripPlans;
 /// </summary>
 public sealed record GetStayRouteQuery(Guid PlanId, double? Latitude, double? Longitude, string? Name) : IRequest<StayRouteDto>;
 
+/// <summary>How to pay for one ride: the matching guide option (or the city's normal ticket), and whether it can be bought online.</summary>
+public sealed record LegTicketDto(string? Name, decimal? Price, string? Currency, bool? BuyOnline, string? BuyUrl, string? Note, string? InfoUrl, bool CityTicket);
+
 public sealed record TransitLegDto(
     string Mode, string? Line, string? Headsign, string From, string To, string DepartureTime, string ArrivalTime, int DurationMinutes,
-    string? Agency, int? Stops, string? Color);
+    string? Agency, int? Stops, string? Color, LegTicketDto? Ticket = null);
 
 public sealed record TransitItineraryDto(int DurationMinutes, int Transfers, string DepartureTime, string ArrivalTime, IReadOnlyList<TransitLegDto> Legs);
 
@@ -27,13 +30,14 @@ public sealed record RouteDirectionDto(
 
 public sealed record GuideOptionDto(
     string Mode, string Name, string? From, string? To, string? Ticket, decimal? Price, string? Currency, string? WhereToBuy, string? Payment,
-    string? Duration, string? Frequency, string? Url);
+    string? Duration, string? Frequency, string? Url, bool? BuyOnline = null, string? BuyUrl = null, string? BuyNote = null);
 
 public sealed record GuideFareDto(string? Name, decimal? Price, string? Currency);
 
 public sealed record TransitGuideDto(
     string Airport, IReadOnlyList<GuideOptionDto> Options, GuideFareDto? CityTicket, GuideFareDto? DayPass, bool? Contactless,
-    IReadOnlyList<TransitGuideApp> Apps, IReadOnlyList<string> Tips, IReadOnlyList<string> Sources, string? CheckedOn);
+    IReadOnlyList<TransitGuideApp> Apps, IReadOnlyList<string> Tips, IReadOnlyList<string> Sources, string? CheckedOn,
+    bool? CityBuyOnline = null, string? CityBuyUrl = null, string? CityBuyNote = null);
 
 /// <summary>ToStay/ToAirport are null when the airport is unknown; RouterName is null when no journey planner is available.</summary>
 public sealed record StayRouteDto(
@@ -96,9 +100,64 @@ public sealed class GetStayRouteHandler(
             (toStay, toAirport) = (results[0], results[1]);
         }
 
+        var guide = guides.Get(destination.Code);
+        if (guide is not null)
+        {
+            toStay = WithTickets(toStay, guide, language);
+            toAirport = WithTickets(toAirport, guide, language);
+        }
         return new StayRouteDto(airport?.IataCode, airport?.NameIn(language), stayName, stayIsCentre, toStay, toAirport,
-            Guide(guides.Get(destination.Code), language), router.IsConfigured ? router.Name : null);
+            Guide(guide, language), router.IsConfigured ? router.Name : null);
     }
+
+    private static RouteDirectionDto? WithTickets(RouteDirectionDto? direction, TransitGuide guide, string language) =>
+        direction is null
+            ? null
+            : direction with
+            {
+                Itineraries = direction.Itineraries.Select(i => i with
+                {
+                    Legs = i.Legs.Select(l => l.Mode == "WALK" ? l : l with { Ticket = TicketFor(l, guide, language) }).ToList()
+                }).ToList()
+            };
+
+    /// <summary>
+    /// The guide option for a ride: same line code first, then the operator named in the timetable, then an airport option of the
+    /// same kind of transport; otherwise the city's normal ticket (metro, bus and tram rides inside the city).
+    /// </summary>
+    public static LegTicketDto? TicketFor(TransitLegDto leg, TransitGuide guide, string language)
+    {
+        static bool Same(string? a, string? b) => a is not null && b is not null && string.Equals(a.Trim(), b.Trim(), StringComparison.OrdinalIgnoreCase);
+        static bool Contains(string? text, string? part) => text is not null && part is { Length: >= 2 } && text.Contains(part, StringComparison.OrdinalIgnoreCase);
+
+        var option = guide.Options.FirstOrDefault(o => leg.Line is not null && (o.Lines ?? []).Any(line => Same(line, leg.Line)))
+                     // Same operator only counts when the option is not tied to other lines (TMB's airport ticket is L9 Sud only, not L1).
+                     ?? guide.Options.FirstOrDefault(o => (o.Operators ?? []).Any(op => Contains(leg.Agency, op) || Contains(op, leg.Agency)) &&
+                                                          (o.Lines is not { Count: > 0 } || leg.Line is null))
+                     ?? guide.Options.FirstOrDefault(o => leg.Line is not null && Contains(o.Name, leg.Line) && leg.Line.Length >= 2 && KindOf(leg.Mode) == KindOf(o.Mode));
+        if (option is not null)
+        {
+            var buyUrl = NearbyLinks.CuratedHttps(option.BuyUrl);
+            return new LegTicketDto(option.Ticket?.In(language) ?? option.Name, option.Price, option.Currency, option.BuyOnline, buyUrl,
+                option.BuyNote?.In(language) ?? option.WhereToBuy?.In(language), NearbyLinks.CuratedHttps(option.Url), false);
+        }
+        if (KindOf(leg.Mode) is "metro" or "bus" or "tram")
+        {
+            var city = guide.CityTicket;
+            return new LegTicketDto(city?.Name?.In(language), city?.Price, city?.Currency, guide.CityBuyOnline, NearbyLinks.CuratedHttps(guide.CityBuyUrl),
+                guide.CityBuyNote?.In(language), null, true);
+        }
+        return null;
+    }
+
+    private static string KindOf(string mode) => mode.ToUpperInvariant() switch
+    {
+        "SUBWAY" or "METRO" => "metro",
+        "BUS" or "COACH" or "EXPRESS_BUS" => "bus",
+        "TRAM" => "tram",
+        "FERRY" => "ferry",
+        _ => "train"
+    };
 
     private async Task<RouteDirectionDto> DirectionAsync(string fromName, double fromLat, double fromLon, string toName, double toLat, double toLon,
         DateTime wished, TimeZoneInfo? zone, CancellationToken ct)
@@ -136,12 +195,13 @@ public sealed class GetStayRouteHandler(
             ? null
             : new TransitGuideDto(g.Airport,
                 g.Options.Select(o => new GuideOptionDto(o.Mode, o.Name, o.From, o.To, o.Ticket?.In(lang), o.Price, o.Currency, o.WhereToBuy?.In(lang),
-                    o.Payment?.In(lang), o.Duration?.In(lang), o.Frequency?.In(lang), NearbyLinks.CuratedHttps(o.Url))).ToList(),
+                    o.Payment?.In(lang), o.Duration?.In(lang), o.Frequency?.In(lang), NearbyLinks.CuratedHttps(o.Url),
+                    o.BuyOnline, NearbyLinks.CuratedHttps(o.BuyUrl), o.BuyNote?.In(lang))).ToList(),
                 Fare(g.CityTicket, lang), Fare(g.DayPass, lang), g.Contactless,
                 g.Apps.Where(a => !string.IsNullOrWhiteSpace(a.Name)).Select(a => a with { Url = NearbyLinks.CuratedHttps(a.Url) }).ToList(),
                 g.Tips.Select(t => t.In(lang)).OfType<string>().ToList(),
                 g.Sources.Select(NearbyLinks.CuratedHttps).OfType<string>().ToList(),
-                g.CheckedOn);
+                g.CheckedOn, g.CityBuyOnline, NearbyLinks.CuratedHttps(g.CityBuyUrl), g.CityBuyNote?.In(lang));
 
     private static GuideFareDto? Fare(TransitGuideFare? f, string lang) =>
         f is null || (f.Price is null && f.Name?.In(lang) is null) ? null : new GuideFareDto(f.Name?.In(lang), f.Price, f.Currency);

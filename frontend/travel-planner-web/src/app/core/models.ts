@@ -692,6 +692,19 @@ export interface TransitLegDto {
   agency?: string;
   stops?: number;
   color?: string;
+  ticket?: LegTicketDto;
+}
+
+/** How to pay for a ride: the matching airport ticket (or the city's ticket) and whether it can be bought online. */
+export interface LegTicketDto {
+  name?: string;
+  price?: number;
+  currency?: string;
+  buyOnline?: boolean;
+  buyUrl?: string;
+  note?: string;
+  infoUrl?: string;
+  cityTicket: boolean;
 }
 
 export interface TransitItineraryDto {
@@ -727,6 +740,9 @@ export interface GuideOptionDto {
   duration?: string;
   frequency?: string;
   url?: string;
+  buyOnline?: boolean;
+  buyUrl?: string;
+  buyNote?: string;
 }
 
 export interface GuideFareDto {
@@ -745,6 +761,9 @@ export interface TransitGuideDto {
   tips: string[];
   sources: string[];
   checkedOn?: string;
+  cityBuyOnline?: boolean;
+  cityBuyUrl?: string;
+  cityBuyNote?: string;
 }
 
 export interface StayRouteDto {

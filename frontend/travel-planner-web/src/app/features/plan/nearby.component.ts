@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, DestroyRef, computed, effect, inject, input, signal, untracked } from '@angular/core';
+import { ChangeDetectionStrategy, Component, DestroyRef, computed, effect, inject, input, output, signal, untracked } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ApiService } from '../../core/api.service';
 import { ApiError, toApiError } from '../../core/errors';
@@ -9,7 +9,6 @@ import { TranslatePipe } from '../../core/i18n/translate.pipe';
 import { HotelPriceDto, HotelPricesDto, NearbyPlacesDto, TransitMode, TripPlanSummaryDto } from '../../core/models';
 import { ErrorBannerComponent } from '../../shared/error-banner.component';
 import { SelectedStayService } from '../../core/selected-stay.service';
-import { StayRouteComponent } from './stay-route.component';
 import { IconComponent, IconName } from '../../shared/icon.component';
 import { DistancePipe, LocalDatePipe, MoneyPipe } from '../../shared/pipes';
 
@@ -33,11 +32,15 @@ const MODE_KEYS: Record<TransitMode, TranslationKey> = {
 @Component({
   selector: 'app-nearby',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TranslatePipe, IconComponent, DistancePipe, LocalDatePipe, MoneyPipe, ErrorBannerComponent, StayRouteComponent],
+  imports: [TranslatePipe, IconComponent, DistancePipe, LocalDatePipe, MoneyPipe, ErrorBannerComponent],
   templateUrl: './nearby.component.html',
 })
 export class NearbyComponent {
   readonly planId = input.required<string>();
+  /** Which section to show: the hotels, the airport's transport (getting around), or both. */
+  readonly part = input<'stay' | 'around' | 'all'>('all');
+  /** Emitted when the visitor marks a hotel (not when unmarking), so the page can show the route. */
+  readonly stayChosen = output<void>();
 
   protected readonly stays = inject(SelectedStayService);
 
@@ -45,7 +48,7 @@ export class NearbyComponent {
   protected selectStay(name: string, latitude: number, longitude: number): void {
     const wasSelected = this.stays.isSelected(this.planId(), latitude, longitude);
     this.stays.toggle(this.planId(), { name, latitude, longitude });
-    if (!wasSelected) document.getElementById('route')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (!wasSelected) this.stayChosen.emit();
   }
 
   protected hasViaTripAdvisor(h: HotelPriceDto): boolean {
