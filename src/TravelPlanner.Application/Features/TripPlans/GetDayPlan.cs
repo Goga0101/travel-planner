@@ -10,7 +10,12 @@ using TravelPlanner.Domain.Enums;
 namespace TravelPlanner.Application.Features.TripPlans;
 
 /// <summary>A day-by-day itinerary for a plan, built for the chosen interests and pace.</summary>
-public sealed record GetDayPlanQuery(Guid PlanId, IReadOnlyList<string> Interests, TripPace Pace) : IRequest<DayPlanDto>;
+/// <param name="Music">Music genres to keep among the music events (provider genre names); empty = all.</param>
+public sealed record GetDayPlanQuery(Guid PlanId, IReadOnlyList<string> Interests, TripPace Pace, IReadOnlyList<string>? Music = null)
+    : IRequest<DayPlanDto>;
+
+/// <summary>A music genre found among the city's events, with how many events have it.</summary>
+public sealed record MusicGenreDto(string Name, int Count);
 
 public sealed record ActivityPlaceDto(
     string Id,
@@ -43,7 +48,8 @@ public sealed record CityEventDto(
     decimal? PriceMax,
     string? Currency,
     string? Url,
-    string? DirectionsUrl);
+    string? DirectionsUrl,
+    string? SubGenre);
 
 public sealed record DayItemDto(string Slot, string Time, ActivityPlaceDto? Place, CityEventDto? Event, IReadOnlyList<ActivityPlaceDto> Alternatives);
 
@@ -59,7 +65,10 @@ public sealed record DayPlanDto(
     string? EventsProvider,
     string EventsSearchUrl,
     string? ArrivalTime,
-    string? DepartureTime);
+    string? DepartureTime,
+    IReadOnlyList<MusicGenreDto> MusicGenres,
+    IReadOnlyList<string> Music,
+    string? ResidentAdvisorUrl);
 
 public sealed class GetDayPlanValidator : AbstractValidator<GetDayPlanQuery>
 {
@@ -68,6 +77,8 @@ public sealed class GetDayPlanValidator : AbstractValidator<GetDayPlanQuery>
         RuleForEach(x => x.Interests).Must(i => Interests.Normalize(i) is not null).WithMessage(_ => T.Get("val.interest", string.Join(", ", Interests.All)));
         RuleFor(x => x.Interests.Count).LessThanOrEqualTo(Interests.All.Count);
         RuleFor(x => x.Pace).IsInEnum();
+        RuleFor(x => x.Music).Must(m => m is null || m.Count <= 20);
+        RuleForEach(x => x.Music).MaximumLength(60);
     }
 }
 
@@ -102,7 +113,16 @@ public sealed class GetDayPlanHandler(
                 plan.DepartureDate, plan.ReturnDate, language), cancellationToken)
             : Task.FromResult<IReadOnlyList<CityEvent>>([]);
         await Task.WhenAll(placesTask, eventsTask);
-        var cityEvents = eventsTask.Result.OrderBy(e => e.Date).ThenBy(e => e.Time).ToList();
+        var allEvents = eventsTask.Result.OrderBy(e => e.Date).ThenBy(e => e.Time).ToList();
+
+        // Music genres present in the city's events; a genre filter keeps the music events of those genres (and every non-music event).
+        var genres = allEvents.Where(IsMusic).Select(e => e.Genre ?? "Other").GroupBy(g => g, StringComparer.OrdinalIgnoreCase)
+            .Select(g => new MusicGenreDto(g.Key, g.Count())).OrderByDescending(g => g.Count).ThenBy(g => g.Name).ToList();
+        var music = (request.Music ?? []).Where(m => !string.IsNullOrWhiteSpace(m))
+            .Where(m => genres.Any(g => g.Name.Equals(m, StringComparison.OrdinalIgnoreCase))).Distinct(StringComparer.OrdinalIgnoreCase).ToList();
+        var cityEvents = music.Count == 0
+            ? allEvents
+            : allEvents.Where(e => !IsMusic(e) || music.Contains(e.Genre ?? "Other", StringComparer.OrdinalIgnoreCase)).ToList();
 
         var days = DayPlanner.Build(
             new DayPlanRequest(plan.DepartureDate, plan.ReturnDate, arrival, departure, interests, request.Pace, destination.Latitude, destination.Longitude),
@@ -122,7 +142,24 @@ public sealed class GetDayPlanHandler(
             events.IsConfigured ? events.Name : null,
             EventsSearchUrl(destination.CityIn("en"), plan.DepartureDate),
             arrival?.ToString("HH:mm", CultureInfo.InvariantCulture),
-            departure?.ToString("HH:mm", CultureInfo.InvariantCulture));
+            departure?.ToString("HH:mm", CultureInfo.InvariantCulture),
+            genres,
+            music,
+            ResidentAdvisorUrl(destination.CountryCode, destination.CityIn("en")));
+    }
+
+    private static bool IsMusic(CityEvent e) => (e.Segment ?? "").Contains("Music", StringComparison.OrdinalIgnoreCase);
+
+    /// <summary>
+    /// Resident Advisor's events page of the city (ra.co/events/{country}/{area}). RA has no public API and blocks automated
+    /// access, so this is only a link the visitor opens; RA uses "uk" for the United Kingdom and city names without spaces.
+    /// </summary>
+    public static string ResidentAdvisorUrl(string countryCode, string city)
+    {
+        var country = countryCode.Equals("GB", StringComparison.OrdinalIgnoreCase) ? "uk" : countryCode.ToLowerInvariant();
+        var normalized = city.Normalize(System.Text.NormalizationForm.FormD);
+        var area = new string(normalized.Where(c => char.IsAsciiLetterOrDigit(c)).ToArray()).ToLowerInvariant();
+        return $"https://ra.co/events/{country}/{area}";
     }
 
     private ActivityPlaceDto ToDto(PlannedPlace p, string city)
@@ -138,7 +175,8 @@ public sealed class GetDayPlanHandler(
     private CityEventDto ToDto(CityEvent e) =>
         new(e.Id, e.Name, e.Date, e.Time?.ToString("HH:mm", CultureInfo.InvariantCulture), e.Venue, e.Segment, e.Genre,
             NearbyLinks.CuratedHttps(e.ImageUrl), e.PriceMin, e.PriceMax, e.Currency, NearbyLinks.CuratedHttps(e.Url),
-            e.Latitude is { } lat && e.Longitude is { } lon ? linkPolicy.Sanitize(NearbyLinks.TransitDirectionsTo(lat, lon)) : null);
+            e.Latitude is { } lat && e.Longitude is { } lon ? linkPolicy.Sanitize(NearbyLinks.TransitDirectionsTo(lat, lon)) : null,
+            e.SubGenre);
 
     /// <summary>Without an event provider: a web search for events in the city during the trip month.</summary>
     public static string EventsSearchUrl(string city, DateOnly month) =>

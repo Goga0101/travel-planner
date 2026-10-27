@@ -98,7 +98,8 @@ public sealed class TicketmasterEventSource(
                 Decimal(price, "min"),
                 Decimal(price, "max"),
                 Str(price, "currency"),
-                Str(e, "url")));
+                Str(e, "url"),
+                ClassName(classification, "subGenre") is { } sub && sub != ClassName(classification, "genre") ? sub : null));
         }
         return result.Where(e => e.Name.Length > 0).DistinctBy(e => (e.Name, e.Date)).ToList();
     }

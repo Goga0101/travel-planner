@@ -937,6 +937,18 @@ a.ext-link.btn:hover { background: var(--primary-dark); border-color: var(--prim
 
 // ---------- Plan: day planner ----------
 .planner-controls { display: grid; gap: 0.9rem; margin: 0.75rem 0 1.25rem; padding: 0.9rem 1rem; border-radius: var(--radius-md); background: var(--surface-tint); border: 1px solid var(--border); }
+.music-filter { display: grid; gap: 0.9rem; margin: 0 0 1.25rem; padding: 0.9rem 1rem; border-radius: var(--radius-md); background: #faf5ff; border: 1px solid #e9d5ff; }
+.music-filter .chip-toggle.active { background: #6d28d9; border-color: #6d28d9; }
+.chip-count { font-size: 0.7rem; opacity: 0.7; font-variant-numeric: tabular-nums; }
+.ra-box { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1rem; padding-top: 0.85rem; border-top: 1px solid #e9d5ff; }
+.ra-box > div { flex: 1 1 18rem; }
+.ra-box p { margin: 0.15rem 0 0; }
+.ra-box a.ext-link.btn { margin-top: 0; background: #111; border-color: #111; }
+.ra-box a.ext-link.btn:hover { background: #333; border-color: #333; }
+.ra-badge {
+  display: inline-flex; align-items: center; justify-content: center; width: 2.6rem; height: 2.6rem; border-radius: var(--radius-xs);
+  background: #111; color: #fff; font-weight: 800; letter-spacing: 0.02em;
+}
 .day-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; transition: opacity 0.2s ease; }
 .day-list.is-loading { opacity: 0.55; }
 .day-card { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }

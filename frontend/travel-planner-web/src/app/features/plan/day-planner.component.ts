@@ -29,6 +29,7 @@ export const INTEREST_ICONS: Record<Interest, IconName> = {
 interface Preferences {
   interests: Interest[];
   pace: TripPace;
+  music: string[];
 }
 
 /** The visitor's last interests and pace (per browser); storage may be unavailable. */
@@ -38,9 +39,10 @@ function loadPreferences(): Preferences {
     const value = raw ? (JSON.parse(raw) as Partial<Preferences>) : {};
     const interests = (value.interests ?? []).filter((i): i is Interest => INTERESTS.includes(i as Interest));
     const pace = value.pace === 'Relaxed' || value.pace === 'Intense' ? value.pace : 'Normal';
-    return { interests: interests.length ? interests : DEFAULT_INTERESTS, pace };
+    const music = Array.isArray(value.music) ? value.music.filter((m): m is string => typeof m === 'string').slice(0, 20) : [];
+    return { interests: interests.length ? interests : DEFAULT_INTERESTS, pace, music };
   } catch {
-    return { interests: DEFAULT_INTERESTS, pace: 'Normal' };
+    return { interests: DEFAULT_INTERESTS, pace: 'Normal', music: [] };
   }
 }
 
@@ -98,6 +100,42 @@ function savePreferences(p: Preferences): void {
           </div>
         </div>
       </div>
+
+      @if (nightOut()) {
+        <div class="music-filter">
+          <div class="sp-section">
+            <div class="sp-section-head">
+              <span class="label" id="music-label">{{ 'days.music' | t }}</span>
+              <span class="hint">{{ 'days.musicHint' | t }}</span>
+            </div>
+            @if (plan()?.musicGenres?.length) {
+              <div class="chips" role="group" aria-labelledby="music-label">
+                <button type="button" class="chip-toggle" [class.active]="music().length === 0" [attr.aria-pressed]="music().length === 0" (click)="clearMusic()">
+                  {{ 'common.all' | t }}
+                </button>
+                @for (g of plan()!.musicGenres; track g.name) {
+                  <button type="button" class="chip-toggle" [class.active]="music().includes(g.name)" [attr.aria-pressed]="music().includes(g.name)"
+                          (click)="toggleMusic(g.name)">
+                    <app-icon name="music" [size]="14" /> {{ g.name }} <span class="chip-count">{{ g.count }}</span>
+                  </button>
+                }
+              </div>
+            } @else if (plan()) {
+              <p class="small muted">{{ 'days.noMusic' | t }}</p>
+            }
+          </div>
+          @if (plan()?.residentAdvisorUrl; as ra) {
+            <div class="ra-box">
+              <span class="ra-badge" aria-hidden="true">RA</span>
+              <div>
+                <strong>{{ 'days.raTitle' | t }}</strong>
+                <p class="small muted">{{ 'days.raText' | t }}</p>
+              </div>
+              <app-external-link [href]="ra" [label]="'days.raOpen' | t" [button]="true" />
+            </div>
+          }
+        </div>
+      }
 
       <app-error-banner [error]="error()" />
 
@@ -192,7 +230,7 @@ function savePreferences(p: Preferences): void {
                       <span class="event-date">{{ e.date | ldate: 'd MMM' }} @if (e.time) { · {{ e.time }} }</span>
                     </div>
                     <div class="event-body">
-                      <span class="slot-label">{{ e.genre ?? e.segment }}</span>
+                      <span class="slot-label">{{ e.genre ?? e.segment }}@if (e.subGenre) { · {{ e.subGenre }} }</span>
                       <strong>{{ e.name }}</strong>
                       @if (e.venue) { <span class="small muted">{{ e.venue }}</span> }
                       <span class="small">
@@ -233,13 +271,18 @@ export class DayPlannerComponent {
   private readonly initial = loadPreferences();
   protected readonly interests = signal<Interest[]>(this.initial.interests);
   protected readonly pace = signal<TripPace>(this.initial.pace);
+  protected readonly music = signal<string[]>(this.initial.music);
+  /** The music filter and Resident Advisor link belong to nights out. */
+  protected readonly nightOut = computed(() => this.interests().some((i) => i === 'nightlife' || i === 'bars' || i === 'shows'));
   protected readonly plan = signal<DayPlanDto | null>(null);
   protected readonly loading = signal(false);
   protected readonly error = signal<ApiError | null>(null);
   /** Which suggestion is shown per slot (0 = the planner's pick, then the alternatives). */
   private readonly choices = signal<Record<string, number>>({});
 
-  protected readonly request = computed(() => ({ id: this.planId(), interests: this.interests(), pace: this.pace(), lang: this.i18n.lang() }));
+  protected readonly request = computed(() => ({
+    id: this.planId(), interests: this.interests(), pace: this.pace(), music: this.music(), lang: this.i18n.lang(),
+  }));
 
   constructor() {
     effect((onCleanup) => {
@@ -247,7 +290,7 @@ export class DayPlannerComponent {
       this.loading.set(true);
       this.error.set(null);
       const sub = this.api
-        .getDayPlan(r.id, r.interests, r.pace)
+        .getDayPlan(r.id, r.interests, r.pace, r.music)
         .pipe(takeUntilDestroyed(this.destroyRef))
         .subscribe({
           next: (p) => {
@@ -268,12 +311,27 @@ export class DayPlannerComponent {
     const current = this.interests();
     const next = current.includes(i) ? current.filter((x) => x !== i) : [...current, i];
     this.interests.set(next.length ? next : current);
-    savePreferences({ interests: this.interests(), pace: this.pace() });
+    this.save();
   }
 
   protected setPace(p: TripPace): void {
     this.pace.set(p);
-    savePreferences({ interests: this.interests(), pace: p });
+    this.save();
+  }
+
+  protected toggleMusic(genre: string): void {
+    const current = this.music();
+    this.music.set(current.includes(genre) ? current.filter((g) => g !== genre) : [...current, genre]);
+    this.save();
+  }
+
+  protected clearMusic(): void {
+    this.music.set([]);
+    this.save();
+  }
+
+  private save(): void {
+    savePreferences({ interests: this.interests(), pace: this.pace(), music: this.music() });
   }
 
   protected choice(key: string): number {

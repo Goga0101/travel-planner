@@ -65,7 +65,8 @@ public sealed class TripPlansController(ISender sender) : ControllerBase
     [ProducesResponseType<ValidationProblemDetails>(StatusCodes.Status400BadRequest)]
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
     public Task<DayPlanDto> GetDayPlan(Guid id, [FromQuery] string? interests, [FromQuery] TripPace pace = TripPace.Normal,
-        CancellationToken cancellationToken = default) =>
+        [FromQuery] string? music = null, CancellationToken cancellationToken = default) =>
         sender.Send(new GetDayPlanQuery(id,
-            (interests ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries), pace), cancellationToken);
+            (interests ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries), pace,
+            (music ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries)), cancellationToken);
 }

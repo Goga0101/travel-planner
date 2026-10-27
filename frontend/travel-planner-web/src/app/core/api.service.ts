@@ -107,8 +107,9 @@ export class ApiService {
   }
 
   /** Day-by-day itinerary for the chosen interests and pace, with the city's events during the trip. */
-  getDayPlan(planId: string, interests: Interest[], pace: TripPace): Observable<DayPlanDto> {
-    const params = new HttpParams().set('interests', interests.join(',')).set('pace', pace);
+  getDayPlan(planId: string, interests: Interest[], pace: TripPace, music: string[] = []): Observable<DayPlanDto> {
+    let params = new HttpParams().set('interests', interests.join(',')).set('pace', pace);
+    if (music.length) params = params.set('music', music.join(','));
     return this.http.get<DayPlanDto>(`${BASE}/trip-plans/${encodeURIComponent(planId)}/day-plan`, { params });
   }
 

@@ -63,7 +63,8 @@ public sealed record CityEvent(
     decimal? PriceMin,
     decimal? PriceMax,
     string? Currency,
-    string? Url);
+    string? Url,
+    string? SubGenre = null);
 
 public sealed record EventQuery(string City, string CountryCode, double Latitude, double Longitude, DateOnly From, DateOnly To, string Language);
 

@@ -339,6 +339,12 @@ export interface CityEventDto {
   currency?: string;
   url?: string;
   directionsUrl?: string;
+  subGenre?: string;
+}
+
+export interface MusicGenreDto {
+  name: string;
+  count: number;
 }
 
 export interface DayItemDto {
@@ -366,6 +372,10 @@ export interface DayPlanDto {
   eventsSearchUrl: string;
   arrivalTime?: string;
   departureTime?: string;
+  /** Music genres among the city's events (with counts), the ones kept, and the city's Resident Advisor page. */
+  musicGenres: MusicGenreDto[];
+  music: string[];
+  residentAdvisorUrl?: string;
 }
 
 // ---- Item details (normalized JSON stored per plan item) ----

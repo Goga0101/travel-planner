@@ -97,6 +97,14 @@ public class DayPlannerTests
         Assert.True(relaxed[0].Items.Count < intense[0].Items.Count);
     }
 
+    [Theory]
+    [InlineData("ES", "Barcelona", "https://ra.co/events/es/barcelona")]
+    [InlineData("GB", "London", "https://ra.co/events/uk/london")]
+    [InlineData("US", "New York", "https://ra.co/events/us/newyork")]
+    [InlineData("PL", "Kraków", "https://ra.co/events/pl/krakow")]
+    public void Resident_Advisor_Link_Uses_Country_And_Area_Slug(string country, string city, string expected) =>
+        Assert.Equal(expected, TravelPlanner.Application.Features.TripPlans.GetDayPlanHandler.ResidentAdvisorUrl(country, city));
+
     [Fact]
     public void Ticketmaster_Events_Are_Mapped_With_Prices_And_Images()
     {
