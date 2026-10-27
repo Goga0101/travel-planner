@@ -17,6 +17,7 @@ using TravelPlanner.Infrastructure.Providers.Demo;
 using TravelPlanner.Infrastructure.Providers.Geoapify;
 using TravelPlanner.Infrastructure.Providers.Google;
 using TravelPlanner.Infrastructure.Providers.Travelpayouts;
+using TravelPlanner.Infrastructure.Providers.Ticketmaster;
 using TravelPlanner.Infrastructure.Providers.Xotelo;
 
 namespace TravelPlanner.Infrastructure;
@@ -87,10 +88,12 @@ public static class DependencyInjection
                 .AddStandardResilienceHandler(o => Configure(o, providers.Http));
             services.AddHostedService<NearbyCacheWarmer>();
             services.AddTransient<IAttractionSource, AttractionSource>();
+            services.AddTransient<IActivityPlaceSource, ActivityPlaceSource>();
         }
         else
         {
             services.AddSingleton<IAttractionSource, NoAttractionSource>();
+            services.AddSingleton<IActivityPlaceSource, NoActivityPlaceSource>();
         }
         // Wikimedia asks API clients to identify themselves with a descriptive User-Agent.
         services.AddHttpClient(AttractionSource.WikimediaClient, c =>
@@ -101,6 +104,17 @@ public static class DependencyInjection
             .AddStandardResilienceHandler(o => Configure(o, providers.Http));
         status.Add(new ProviderStatus("Places", GeoapifyPlacesClient.ProviderName, geoapify.IsConfigured, false,
             geoapify.IsConfigured ? "status.geoapifyOn" : "status.geoapifyOff"));
+
+        // Events for the day planner (real data in every mode; optional free key).
+        services.Configure<TicketmasterOptions>(configuration.GetSection(TicketmasterOptions.SectionName));
+        var ticketmaster = configuration.GetSection(TicketmasterOptions.SectionName).Get<TicketmasterOptions>() ?? new TicketmasterOptions();
+        if (ticketmaster.IsConfigured)
+            services.AddHttpClient<IEventSource, TicketmasterEventSource>(c => c.BaseAddress = BaseUri(ticketmaster.BaseUrl))
+                .AddStandardResilienceHandler(o => Configure(o, providers.Http));
+        else
+            services.AddSingleton<IEventSource, NoEventSource>();
+        status.Add(new ProviderStatus("Events", TicketmasterEventSource.ProviderName, ticketmaster.IsConfigured, false,
+            ticketmaster.IsConfigured ? "status.ticketmasterOn" : "status.ticketmasterOff"));
 
         // Indicative hotel prices (never part of a plan total). Off in Demo mode, where everything must be sample data.
         services.Configure<XoteloOptions>(configuration.GetSection(XoteloOptions.SectionName));

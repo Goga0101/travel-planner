@@ -29,6 +29,7 @@ import { SavedTripsService } from '../../core/local-lists';
 import { AttractionsComponent } from './attractions.component';
 import { NearbyComponent } from './nearby.component';
 import { WeatherComponent } from './weather.component';
+import { DayPlannerComponent } from './day-planner.component';
 import { FlightTicketsComponent, FlightTimelineComponent } from '../../shared/flight-route.component';
 import { DistancePipe, LocalDatePipe, LocalNumberPipe, MoneyPipe, StopsPipe, TimeSpanPipe } from '../../shared/pipes';
 
@@ -67,6 +68,7 @@ export function buildEmbedUrl(key: string, fromLat: number, fromLng: number, toL
     WeatherComponent,
     FlightTicketsComponent,
     FlightTimelineComponent,
+    DayPlannerComponent,
   ],
   templateUrl: './plan-detail.page.html',
 })

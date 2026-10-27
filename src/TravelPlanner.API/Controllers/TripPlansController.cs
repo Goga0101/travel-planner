@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.RateLimiting;
 using TravelPlanner.API.Infrastructure;
 using TravelPlanner.Application.Dtos;
 using TravelPlanner.Application.Features.TripPlans;
+using TravelPlanner.Application.Planning;
 
 namespace TravelPlanner.API.Controllers;
 
@@ -54,4 +55,17 @@ public sealed class TripPlansController(ISender sender) : ControllerBase
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
     public async Task<ActionResult<HotelPricesDto>> GetHotelPrices(Guid id, CancellationToken cancellationToken) =>
         await sender.Send(new GetHotelPricesQuery(id), cancellationToken) is { } prices ? prices : NoContent();
+
+    /// <summary>
+    /// A day-by-day itinerary for the chosen interests (comma separated: culture, museums, food, cafes, bars, nightlife, nature,
+    /// shopping, shows) and pace (Relaxed, Normal, Intense), with alternatives per slot and the city's events during the trip.
+    /// </summary>
+    [HttpGet("{id:guid}/day-plan")]
+    [ProducesResponseType<DayPlanDto>(StatusCodes.Status200OK)]
+    [ProducesResponseType<ValidationProblemDetails>(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
+    public Task<DayPlanDto> GetDayPlan(Guid id, [FromQuery] string? interests, [FromQuery] TripPace pace = TripPace.Normal,
+        CancellationToken cancellationToken = default) =>
+        sender.Send(new GetDayPlanQuery(id,
+            (interests ?? "").Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries), pace), cancellationToken);
 }

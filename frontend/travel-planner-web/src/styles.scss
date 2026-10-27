@@ -935,6 +935,56 @@ a.ext-link.btn:hover { background: var(--primary-dark); border-color: var(--prim
 .sight-stops li > .icon { color: var(--primary); }
 .sight-links { margin-top: auto; padding-top: 0.25rem; }
 
+// ---------- Plan: day planner ----------
+.planner-controls { display: grid; gap: 0.9rem; margin: 0.75rem 0 1.25rem; padding: 0.9rem 1rem; border-radius: var(--radius-md); background: var(--surface-tint); border: 1px solid var(--border); }
+.day-list { list-style: none; padding: 0; margin: 0; display: grid; gap: 1rem; transition: opacity 0.2s ease; }
+.day-list.is-loading { opacity: 0.55; }
+.day-card { border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; }
+.day-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.75rem; padding: 0.7rem 1rem; background: var(--bg); border-bottom: 1px solid var(--border); }
+.day-num {
+  display: inline-flex; align-items: center; padding: 0.12rem 0.6rem; border-radius: 999px; background: var(--primary-deep); color: #fff;
+  font-size: 0.74rem; font-weight: 700; letter-spacing: 0.04em; text-transform: uppercase;
+}
+.day-empty { margin: 0; padding: 0.9rem 1rem; }
+.day-timeline { list-style: none; margin: 0; padding: 0.4rem 1rem 0.8rem; display: grid; }
+.day-item { position: relative; display: grid; grid-template-columns: 3.4rem 96px minmax(0, 1fr); gap: 0.85rem; padding: 0.75rem 0; border-bottom: 1px dashed var(--border); }
+.day-item:last-child { border-bottom: 0; }
+.day-item::before { content: ''; position: absolute; left: 1.45rem; top: 2.1rem; bottom: -0.75rem; width: 2px; background: var(--border); }
+.day-item:last-child::before { display: none; }
+.day-time { font-weight: 700; font-variant-numeric: tabular-nums; color: var(--text); padding-top: 0.15rem; position: relative; z-index: 1; background: var(--surface); height: fit-content; }
+.day-media { width: 96px; height: 72px; border-radius: var(--radius-xs); overflow: hidden; background: var(--bg-warm); }
+.day-media img { width: 100%; height: 100%; object-fit: cover; }
+.media-icon { display: flex; align-items: center; justify-content: center; width: 100%; height: 100%; color: var(--primary-dark); background: var(--primary-soft); }
+.media-icon[data-interest='bars'], .media-icon[data-interest='nightlife'] { color: #6d28d9; background: #f3e8ff; }
+.media-icon[data-interest='food'], .media-icon[data-interest='cafes'] { color: #b45309; background: #fef3c7; }
+.media-icon[data-interest='nature'] { color: #15803d; background: #dcfce7; }
+.media-icon[data-interest='shopping'] { color: #be185d; background: #fce7f3; }
+.day-body { display: grid; gap: 0.2rem; min-width: 0; align-content: start; }
+.day-body h3 { margin: 0; font-size: 1rem; overflow-wrap: anywhere; }
+.day-body p { margin: 0; }
+.slot-label { display: inline-flex; align-items: center; gap: 0.3rem; font-size: 0.7rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: var(--muted); }
+.day-summary { color: var(--text-2); display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
+.day-facts { display: flex; flex-wrap: wrap; gap: 0.2rem 0.8rem; }
+.day-facts span { display: inline-flex; align-items: center; gap: 0.25rem; overflow-wrap: anywhere; }
+.day-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 1rem; margin-top: 0.3rem; font-size: 0.85rem; }
+.day-links .text-link { font-size: 0.85rem; padding: 0; color: var(--primary-dark); }
+.day-item.is-event { background: linear-gradient(90deg, #faf5ff 0%, transparent 70%); border-radius: var(--radius-xs); }
+@media (max-width: 560px) {
+  .day-item { grid-template-columns: 3rem minmax(0, 1fr); }
+  .day-media { grid-column: 2; width: 100%; height: 140px; }
+  .day-body { grid-column: 2; }
+  .day-item::before { left: 1.2rem; }
+}
+.events-block { margin-top: 1.5rem; }
+.events-block h3 { display: flex; align-items: center; gap: 0.45rem; font-size: 1.05rem; }
+.events-block h3 .icon { color: var(--primary-dark); }
+.event-grid { list-style: none; padding: 0; margin: 0.75rem 0; display: grid; gap: 0.9rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 240px), 1fr)); }
+.event-card { border: 1px solid var(--border); border-radius: var(--radius-md); overflow: hidden; display: flex; flex-direction: column; background: var(--surface); }
+.event-media { position: relative; aspect-ratio: 16 / 9; background: var(--bg-warm); }
+.event-media img { width: 100%; height: 100%; object-fit: cover; }
+.event-date { position: absolute; left: 0.6rem; bottom: 0.6rem; padding: 0.15rem 0.55rem; border-radius: 999px; background: var(--navy); color: #fff; font-size: 0.74rem; font-weight: 700; }
+.event-body { display: grid; gap: 0.25rem; padding: 0.75rem 0.85rem 0.9rem; }
+
 // ---------- Saved trips ----------
 .saved-grid { list-style: none; padding: 0; margin: 0; }
 .saved-card { cursor: default; }

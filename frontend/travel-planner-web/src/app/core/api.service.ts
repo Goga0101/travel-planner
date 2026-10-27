@@ -8,14 +8,17 @@ import {
   CreateTripSearchResponse,
   DestinationDetailDto,
   AttractionDto,
+  DayPlanDto,
   DestinationSummaryDto,
   FoundFlightDto,
   HotelPricesDto,
   NearbyPlacesDto,
   OutboundLinkDto,
   PagedResult,
+  Interest,
   PlaceDto,
   PlanSort,
+  TripPace,
   TripPlanDetailDto,
   TripPlanSummaryDto,
   TripSearchDto,
@@ -101,6 +104,12 @@ export class ApiService {
     return this.http
       .get<HotelPricesDto>(`${BASE}/trip-plans/${encodeURIComponent(id)}/hotel-prices`, { observe: 'response' })
       .pipe(map((r) => (r.status === 204 ? null : r.body)));
+  }
+
+  /** Day-by-day itinerary for the chosen interests and pace, with the city's events during the trip. */
+  getDayPlan(planId: string, interests: Interest[], pace: TripPace): Observable<DayPlanDto> {
+    const params = new HttpParams().set('interests', interests.join(',')).set('pace', pace);
+    return this.http.get<DayPlanDto>(`${BASE}/trip-plans/${encodeURIComponent(planId)}/day-plan`, { params });
   }
 
   getAttractions(destinationId: string): Observable<AttractionDto[]> {

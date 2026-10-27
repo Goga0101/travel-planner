@@ -65,6 +65,7 @@
 
   <div class="plan-toolbar no-print">
     <nav class="plan-subnav" [attr.aria-label]="'plan.sections' | t">
+      <a [routerLink]="[]" fragment="days">{{ 'plan.navDays' | t }}</a>
       <a [routerLink]="[]" fragment="costs">{{ 'plan.navCosts' | t }}</a>
       @if (flight()) { <a [routerLink]="[]" fragment="flight">{{ 'plan.flightTitle' | t }}</a> }
       <a [routerLink]="[]" fragment="stay">{{ 'nearby.stayTitle' | t }}</a>
@@ -261,6 +262,9 @@
       }
     </section>
   }
+
+  <!-- Day-by-day activities and events -->
+  <app-day-planner [planId]="s.id" />
 
   <!-- Hotels near the airport / centre and getting around (OpenStreetMap) -->
   <app-nearby [planId]="s.id" [summary]="s" />

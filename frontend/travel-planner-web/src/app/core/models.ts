@@ -298,6 +298,76 @@ export interface TripPlanSummaryDto {
   sources: SourceVerificationDto[];
 }
 
+// ---- Day planner ----
+
+export type Interest = 'culture' | 'museums' | 'food' | 'cafes' | 'bars' | 'nightlife' | 'nature' | 'shopping' | 'shows';
+export const INTERESTS: Interest[] = ['culture', 'museums', 'food', 'cafes', 'bars', 'nightlife', 'nature', 'shopping', 'shows'];
+export type TripPace = 'Relaxed' | 'Normal' | 'Intense';
+export type PlanDayKind = 'Arrival' | 'Full' | 'Departure';
+
+/** Distance and directions are from the previous stop of the day (the city centre for the first one). */
+export interface ActivityPlaceDto {
+  id: string;
+  name: string;
+  interest: Interest;
+  kind: string;
+  latitude: number;
+  longitude: number;
+  address?: string;
+  openingHours?: string;
+  website?: string;
+  cuisine?: string;
+  imageUrl?: string;
+  summary?: string;
+  notable: boolean;
+  distanceMeters: number;
+  mapUrl?: string;
+  directionsUrl?: string;
+}
+
+export interface CityEventDto {
+  id: string;
+  name: string;
+  date: string;
+  time?: string;
+  venue?: string;
+  segment?: string;
+  genre?: string;
+  imageUrl?: string;
+  priceMin?: number;
+  priceMax?: number;
+  currency?: string;
+  url?: string;
+  directionsUrl?: string;
+}
+
+export interface DayItemDto {
+  slot: string;
+  time: string;
+  place?: ActivityPlaceDto;
+  event?: CityEventDto;
+  alternatives: ActivityPlaceDto[];
+}
+
+export interface PlanDayDto {
+  number: number;
+  date: string;
+  kind: PlanDayKind;
+  items: DayItemDto[];
+}
+
+export interface DayPlanDto {
+  interests: Interest[];
+  pace: TripPace;
+  days: PlanDayDto[];
+  events: CityEventDto[];
+  eventsConfigured: boolean;
+  eventsProvider?: string;
+  eventsSearchUrl: string;
+  arrivalTime?: string;
+  departureTime?: string;
+}
+
 // ---- Item details (normalized JSON stored per plan item) ----
 
 export interface FlightSegment {
