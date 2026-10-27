@@ -18,6 +18,7 @@ import {
   Interest,
   PlaceDto,
   PlanSort,
+  RouteDirectionDto,
   StayRouteDto,
   TripPace,
   TripPlanDetailDto,
@@ -120,6 +121,16 @@ export class ApiService {
     let params = new HttpParams();
     if (stay) params = params.set('lat', stay.latitude).set('lon', stay.longitude).set('name', stay.name);
     return this.http.get<StayRouteDto>(`${BASE}/trip-plans/${encodeURIComponent(planId)}/route`, { params });
+  }
+
+  /** Public transport between two stops of a planned day, leaving on the date at the local time (HH:mm), with tickets. */
+  getHop(planId: string, from: { name: string; latitude: number; longitude: number }, to: { name: string; latitude: number; longitude: number },
+    date: string, time: string): Observable<RouteDirectionDto> {
+    const params = new HttpParams()
+      .set('fromLat', from.latitude).set('fromLon', from.longitude).set('fromName', from.name)
+      .set('toLat', to.latitude).set('toLon', to.longitude).set('toName', to.name)
+      .set('date', date).set('time', time);
+    return this.http.get<RouteDirectionDto>(`${BASE}/trip-plans/${encodeURIComponent(planId)}/hop`, { params });
   }
 
   getAttractions(destinationId: string): Observable<AttractionDto[]> {

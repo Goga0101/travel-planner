@@ -82,4 +82,17 @@ public sealed class TripPlansController(ISender sender) : ControllerBase
     public Task<StayRouteDto> GetRoute(Guid id, [FromQuery] double? lat, [FromQuery] double? lon, [FromQuery] string? name,
         CancellationToken cancellationToken) =>
         sender.Send(new GetStayRouteQuery(id, lat, lon, name), cancellationToken);
+
+    /// <summary>
+    /// Public-transport journeys between two stops of a planned day, leaving on the given date and local time (HH:mm),
+    /// with the ticket for each ride and map/taxi links.
+    /// </summary>
+    [HttpGet("{id:guid}/hop")]
+    [ProducesResponseType<RouteDirectionDto>(StatusCodes.Status200OK)]
+    [ProducesResponseType<ValidationProblemDetails>(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
+    public Task<RouteDirectionDto> GetHop(Guid id, [FromQuery] double fromLat, [FromQuery] double fromLon, [FromQuery] double toLat,
+        [FromQuery] double toLon, [FromQuery] DateOnly date, [FromQuery] TimeOnly time, [FromQuery] string? fromName = null,
+        [FromQuery] string? toName = null, CancellationToken cancellationToken = default) =>
+        sender.Send(new GetHopRouteQuery(id, fromLat, fromLon, fromName, toLat, toLon, toName, date, time), cancellationToken);
 }

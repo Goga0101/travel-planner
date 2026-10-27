@@ -1,3 +1,4 @@
+import { NgTemplateOutlet } from '@angular/common';
 import { ChangeDetectionStrategy, Component, DestroyRef, computed, effect, inject, input, signal } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ApiService } from '../../core/api.service';
@@ -5,12 +6,13 @@ import { ApiError, toApiError } from '../../core/errors';
 import { TranslationKey } from '../../core/i18n/en';
 import { I18nService } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
-import { ActivityPlaceDto, DayItemDto, DayPlanDto, INTERESTS, Interest, TripPace } from '../../core/models';
+import { ActivityPlaceDto, DayItemDto, DayPlanDto, INTERESTS, Interest, PlanDayDto, RouteDirectionDto, TripPace } from '../../core/models';
 import { ErrorBannerComponent } from '../../shared/error-banner.component';
 import { SelectedStayService } from '../../core/selected-stay.service';
 import { ExternalLinkComponent } from '../../shared/external-link.component';
 import { IconComponent, IconName } from '../../shared/icon.component';
 import { DistancePipe, LocalDatePipe, MoneyPipe } from '../../shared/pipes';
+import { ItineraryComponent } from './itinerary.component';
 
 const STORAGE_KEY = 'tp.dayPlanner';
 const DEFAULT_INTERESTS: Interest[] = ['culture', 'food'];
@@ -26,6 +28,124 @@ export const INTEREST_ICONS: Record<Interest, IconName> = {
   shopping: 'bag',
   shows: 'ticket',
 };
+
+export interface Stop {
+  name: string;
+  latitude: number;
+  longitude: number;
+}
+
+/** Getting from one stop of the day to the next: walk when it is short, otherwise public transport (loaded on demand). */
+export interface DayHop {
+  key: string;
+  from: Stop;
+  to: Stop;
+  meters: number;
+  walkMinutes: number;
+  walk: boolean;
+  date: string;
+  /** Local time to set off so the next stop starts on time. */
+  leave: string;
+  directionsUrl: string;
+}
+
+export interface DayChain {
+  start: Stop;
+  /** The hop that leads to each item (null when the item has no location). */
+  hops: (DayHop | null)[];
+  /** Back to the start at the end of the day (not on the departure day). */
+  back: DayHop | null;
+  mapUrl: string | null;
+}
+
+/** Hops up to this many minutes on foot are walked; longer ones suggest public transport. */
+export const WALK_LIMIT_MINUTES = 15;
+
+export function distanceMeters(a: Stop, b: Stop): number {
+  const rad = Math.PI / 180;
+  const dLat = (b.latitude - a.latitude) * rad;
+  const dLon = (b.longitude - a.longitude) * rad;
+  const h = Math.sin(dLat / 2) ** 2 + Math.cos(a.latitude * rad) * Math.cos(b.latitude * rad) * Math.sin(dLon / 2) ** 2;
+  return Math.round(2 * 6371000 * Math.asin(Math.sqrt(h)));
+}
+
+/** Streets are not straight lines (~1.3×), and people walk ~80 m a minute. */
+export function walkingMinutes(meters: number): number {
+  return Math.max(1, Math.round((meters * 1.3) / 80));
+}
+
+function toMinutes(hm: string): number {
+  const [h, m] = hm.split(':').map(Number);
+  return h * 60 + m;
+}
+
+function fromMinutes(total: number): string {
+  const t = Math.min(Math.max(total, 0), 23 * 60 + 55);
+  return `${String(Math.floor(t / 60)).padStart(2, '0')}:${String(t % 60).padStart(2, '0')}`;
+}
+
+const coord = (s: Stop) => `${s.latitude.toFixed(6)},${s.longitude.toFixed(6)}`;
+
+function directions(from: Stop, to: Stop, mode: 'walking' | 'transit'): string {
+  return `https://www.google.com/maps/dir/?api=1&origin=${coord(from)}&destination=${coord(to)}&travelmode=${mode}`;
+}
+
+function hop(from: Stop, to: Stop, date: string, leave: string): DayHop {
+  const meters = distanceMeters(from, to);
+  const walkMinutes = walkingMinutes(meters);
+  const walk = walkMinutes <= WALK_LIMIT_MINUTES;
+  return {
+    key: `${coord(from)}>${coord(to)}@${date}T${leave}`,
+    from, to, meters, walkMinutes, walk, date, leave,
+    directionsUrl: directions(from, to, walk ? 'walking' : 'transit'),
+  };
+}
+
+/** Set off early enough: the walk (or a rough ride estimate) plus a few minutes, rounded down to 5 minutes. */
+export function leaveFor(arriveAt: string, meters: number): string {
+  const walk = walkingMinutes(meters);
+  const travel = walk <= WALK_LIMIT_MINUTES ? walk : Math.round(walk / 3) + 12;
+  const t = toMinutes(arriveAt) - travel - 5;
+  return fromMinutes(t - (((t % 5) + 5) % 5));
+}
+
+/**
+ * The day as a chain: start → each stop in order → back to the start. Items without a location (some events) are
+ * skipped by the chain, which carries on from the last known stop.
+ */
+export function buildChain(day: PlanDayDto, start: Stop, stopOf: (item: DayItemDto, index: number) => Stop | null): DayChain {
+  const hops: (DayHop | null)[] = [];
+  const stops: Stop[] = [];
+  let previous = start;
+  let lastTime: string | null = null;
+  day.items.forEach((item, i) => {
+    const stop = stopOf(item, i);
+    if (!stop) {
+      hops.push(null);
+      return;
+    }
+    hops.push(hop(previous, stop, day.date, leaveFor(item.time, distanceMeters(previous, stop))));
+    stops.push(stop);
+    previous = stop;
+    lastTime = item.time;
+  });
+  const back = stops.length && day.kind !== 'Departure' && lastTime
+    ? hop(previous, start, day.date, fromMinutes(toMinutes(lastTime) + 90))
+    : null;
+  const end = back ? start : stops[stops.length - 1];
+  const via = (back ? stops : stops.slice(0, -1)).slice(0, 9);
+  const mapUrl = stops.length
+    ? `https://www.google.com/maps/dir/?api=1&origin=${coord(start)}&destination=${coord(end)}` +
+      (via.length ? `&waypoints=${encodeURIComponent(via.map(coord).join('|'))}` : '') + '&travelmode=walking'
+    : null;
+  return { start, hops, back, mapUrl };
+}
+
+interface HopState {
+  loading: boolean;
+  data?: RouteDirectionDto;
+  failed?: boolean;
+}
 
 interface Preferences {
   interests: Interest[];
@@ -62,7 +182,7 @@ function savePreferences(p: Preferences): void {
 @Component({
   selector: 'app-day-planner',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TranslatePipe, IconComponent, ExternalLinkComponent, LocalDatePipe, MoneyPipe, DistancePipe, ErrorBannerComponent],
+  imports: [TranslatePipe, IconComponent, ExternalLinkComponent, LocalDatePipe, MoneyPipe, DistancePipe, ErrorBannerComponent, NgTemplateOutlet, ItineraryComponent],
   template: `
     <section class="card day-planner" id="days" aria-labelledby="days-title">
       <div class="section-head">
@@ -77,6 +197,7 @@ function savePreferences(p: Preferences): void {
         }
       </div>
       <p class="muted small">{{ 'days.lead' | t }}</p>
+      <p class="small chain-hint"><app-icon name="walk" [size]="15" /> {{ 'days.chainHint' | t }}</p>
 
       <div class="planner-controls">
         <div class="sp-section">
@@ -160,9 +281,20 @@ function savePreferences(p: Preferences): void {
                   @else { {{ 'days.nothing' | t }} }
                 </p>
               }
+              @let chain = chains()[day.number];
               <ol class="day-timeline">
+                @if (chain?.mapUrl) {
+                  <li class="day-anchor">
+                    <span class="anchor-icon"><app-icon name="bed" [size]="16" /></span>
+                    <span class="anchor-text"><strong>{{ 'days.startAt' | t: { place: chain!.start.name } }}</strong></span>
+                    <app-external-link [href]="chain!.mapUrl!" [label]="'days.dayRoute' | t" />
+                  </li>
+                }
                 @for (item of day.items; track $index) {
                   @let key = day.number + '-' + $index;
+                  @if (chain?.hops?.[$index]; as h) {
+                    <ng-container [ngTemplateOutlet]="hopRow" [ngTemplateOutletContext]="{ $implicit: h }" />
+                  }
                   <li class="day-item" [class.is-event]="!!item.event">
                     <span class="day-time">{{ item.time }}</span>
                     @if (item.event; as e) {
@@ -199,7 +331,6 @@ function savePreferences(p: Preferences): void {
                             @if (place.address) { <span>{{ place.address }}</span> }
                           </p>
                           <div class="day-links">
-                            <app-external-link [href]="place.directionsUrl" [label]="('days.howToGet' | t) + ' · ' + (place.distanceMeters | distance)" />
                             <app-external-link [href]="place.mapUrl" [label]="'days.map' | t" />
                             @if (place.website) { <app-external-link [href]="place.website" [label]="'days.website' | t" /> }
                             @if (item.alternatives.length) {
@@ -213,10 +344,73 @@ function savePreferences(p: Preferences): void {
                     }
                   </li>
                 }
+                @if (chain?.back; as h) {
+                  <ng-container [ngTemplateOutlet]="hopRow" [ngTemplateOutletContext]="{ $implicit: h }" />
+                  <li class="day-anchor is-end">
+                    <span class="anchor-icon"><app-icon name="bed" [size]="16" /></span>
+                    <span class="anchor-text"><strong>{{ 'days.backTo' | t: { place: chain!.start.name } }}</strong></span>
+                  </li>
+                }
               </ol>
             </li>
           }
         </ol>
+
+        <ng-template #hopRow let-h>
+          <li class="day-hop" [class.is-walk]="h.walk" [class.open]="isOpen(h.key)">
+            <span class="hop-icon"><app-icon [name]="h.walk ? 'walk' : 'metro'" [size]="15" /></span>
+            <div class="hop-body">
+              <div class="hop-line">
+                <strong>{{ h.walk ? ('days.hopWalk' | t: { minutes: h.walkMinutes }) : ('days.hopRide' | t) }}</strong>
+                <span class="small muted">· {{ h.meters | distance }} · {{ 'days.hopLeave' | t: { time: h.leave } }}</span>
+                @if (!h.walk && h.walkMinutes <= 35) { <span class="small muted">· {{ 'days.hopOrWalk' | t: { minutes: h.walkMinutes } }}</span> }
+              </div>
+              <div class="hop-actions">
+                @if (!h.walk) {
+                  <button type="button" class="hop-toggle" [attr.aria-expanded]="isOpen(h.key)" (click)="toggleHop(h)">
+                    <app-icon name="ticket" [size]="14" /> {{ (isOpen(h.key) ? 'days.hopHide' : 'days.hopShow') | t }}
+                  </button>
+                }
+                <app-external-link [href]="h.directionsUrl" [label]="'days.hopDirections' | t" />
+              </div>
+              @if (isOpen(h.key)) {
+                @let st = hopState(h.key);
+                @if (st?.loading) {
+                  <p class="small muted"><span class="spinner" aria-hidden="true"></span> {{ 'days.hopLoading' | t }}</p>
+                } @else if (st?.data; as r) {
+                  @if (r.itineraries.length) {
+                    <ol class="route-options hop-options">
+                      @for (it of r.itineraries.slice(0, 2); track $index; let first = $first) {
+                        <li app-itinerary class="route-option" [class.best]="first" [itinerary]="it" [best]="first"></li>
+                      }
+                    </ol>
+                  } @else {
+                    <p class="small muted">{{ 'days.hopNone' | t }}</p>
+                  }
+                  @if (!r.itineraries.length && r.cityTicket; as tk) {
+                    <p class="leg-ticket hop-city-ticket" [class.online]="tk.buyOnline === true" [class.offline]="tk.buyOnline === false">
+                      <app-icon name="ticket" [size]="14" />
+                      <span>
+                        <strong>{{ 'route.cityTickets' | t }}: {{ tk.name ?? ('route.ticket' | t) }}</strong>
+                        @if (tk.price !== undefined && tk.price !== null) { · {{ tk.price | money: tk.currency }} }
+                        @if (tk.buyOnline === true) { · {{ 'route.buyOnlineYes' | t }} }
+                        @if (tk.buyOnline === false) { · {{ 'route.buyOnlineNo' | t }} }
+                        @if (tk.note) { <br /><span class="muted">{{ tk.note }}</span> }
+                      </span>
+                      @if (tk.buyUrl) { <a class="leg-buy" [href]="tk.buyUrl" target="_blank" rel="noopener noreferrer nofollow">{{ 'route.buy' | t }} <app-icon name="external" [size]="12" /></a> }
+                    </p>
+                  }
+                  <div class="route-alt">
+                    <app-external-link [href]="r.googleTransitUrl" [label]="'route.googleTransit' | t" />
+                    <app-external-link [href]="r.uberUrl" [label]="'days.hopTaxi' | t" />
+                  </div>
+                } @else if (st?.failed) {
+                  <p class="small muted">{{ 'days.hopNone' | t }}</p>
+                }
+              }
+            </div>
+          </li>
+        </ng-template>
 
         <div class="events-block">
           <h3><app-icon name="ticket" [size]="18" /> {{ 'days.eventsTitle' | t }}</h3>
@@ -291,6 +485,66 @@ export class DayPlannerComponent {
   protected readonly request = computed(() => ({
     id: this.planId(), interests: this.interests(), pace: this.pace(), music: this.music(), lang: this.i18n.lang(), stay: this.stay(),
   }));
+
+  /** Each day as a chain from the stay through the shown stops and back, following the visitor's swaps. */
+  protected readonly chains = computed<Record<number, DayChain>>(() => {
+    const p = this.plan();
+    if (!p) return {};
+    this.choices();
+    const stay = this.stay();
+    const start: Stop = stay
+      ? { name: stay.name, latitude: stay.latitude, longitude: stay.longitude }
+      : { name: this.i18n.t('days.cityCentre'), latitude: p.startLatitude, longitude: p.startLongitude };
+    const out: Record<number, DayChain> = {};
+    for (const day of p.days) {
+      out[day.number] = buildChain(day, start, (item, i) => {
+        if (item.event) {
+          const e = item.event;
+          return e.latitude != null && e.longitude != null ? { name: e.venue ?? e.name, latitude: e.latitude, longitude: e.longitude } : null;
+        }
+        const place = this.shown(day.number + '-' + i, item);
+        return place ? { name: place.name, latitude: place.latitude, longitude: place.longitude } : null;
+      });
+    }
+    return out;
+  });
+
+  private readonly hopStates = signal<Record<string, HopState>>({});
+  private readonly openHops = signal<ReadonlySet<string>>(new Set());
+
+  protected isOpen(key: string): boolean {
+    return this.openHops().has(key);
+  }
+
+  protected hopState(key: string): HopState | undefined {
+    return this.hopStates()[key];
+  }
+
+  /** Opens a hop's public-transport options, loading them the first time. */
+  protected toggleHop(h: DayHop): void {
+    const open = new Set(this.openHops());
+    if (open.has(h.key)) {
+      open.delete(h.key);
+      this.openHops.set(open);
+      return;
+    }
+    open.add(h.key);
+    this.openHops.set(open);
+    const known = this.hopStates()[h.key];
+    if (known && !known.failed) return;
+    this.setHop(h.key, { loading: true });
+    this.api
+      .getHop(this.planId(), h.from, h.to, h.date, h.leave)
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe({
+        next: (data) => this.setHop(h.key, { loading: false, data }),
+        error: () => this.setHop(h.key, { loading: false, failed: true }),
+      });
+  }
+
+  private setHop(key: string, state: HopState): void {
+    this.hopStates.set({ ...this.hopStates(), [key]: state });
+  }
 
   constructor() {
     effect((onCleanup) => {

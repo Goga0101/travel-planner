@@ -340,6 +340,8 @@ export interface CityEventDto {
   url?: string;
   directionsUrl?: string;
   subGenre?: string;
+  latitude?: number;
+  longitude?: number;
 }
 
 export interface MusicGenreDto {
@@ -376,6 +378,9 @@ export interface DayPlanDto {
   musicGenres: MusicGenreDto[];
   music: string[];
   residentAdvisorUrl?: string;
+  /** Where each day starts and ends: the chosen hotel, else the city centre. */
+  startLatitude: number;
+  startLongitude: number;
 }
 
 // ---- Item details (normalized JSON stored per plan item) ----
@@ -725,6 +730,8 @@ export interface RouteDirectionDto {
   googleTransitUrl?: string;
   googleDriveUrl?: string;
   uberUrl?: string;
+  /** The city's normal ticket (on day hops), also when no timetable is known. */
+  cityTicket?: LegTicketDto;
 }
 
 export interface GuideOptionDto {

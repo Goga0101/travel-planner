@@ -51,7 +51,9 @@ public sealed record CityEventDto(
     string? Currency,
     string? Url,
     string? DirectionsUrl,
-    string? SubGenre);
+    string? SubGenre,
+    double? Latitude = null,
+    double? Longitude = null);
 
 public sealed record DayItemDto(string Slot, string Time, ActivityPlaceDto? Place, CityEventDto? Event, IReadOnlyList<ActivityPlaceDto> Alternatives);
 
@@ -70,7 +72,9 @@ public sealed record DayPlanDto(
     string? DepartureTime,
     IReadOnlyList<MusicGenreDto> MusicGenres,
     IReadOnlyList<string> Music,
-    string? ResidentAdvisorUrl);
+    string? ResidentAdvisorUrl,
+    double StartLatitude = 0,
+    double StartLongitude = 0);
 
 public sealed class GetDayPlanValidator : AbstractValidator<GetDayPlanQuery>
 {
@@ -150,7 +154,9 @@ public sealed class GetDayPlanHandler(
             departure?.ToString("HH:mm", CultureInfo.InvariantCulture),
             genres,
             music,
-            ResidentAdvisorUrl(destination.CountryCode, destination.CityIn("en")));
+            ResidentAdvisorUrl(destination.CountryCode, destination.CityIn("en")),
+            request.FromLatitude ?? destination.Latitude,
+            request.FromLongitude ?? destination.Longitude);
     }
 
     private static bool IsMusic(CityEvent e) => (e.Segment ?? "").Contains("Music", StringComparison.OrdinalIgnoreCase);
@@ -181,7 +187,7 @@ public sealed class GetDayPlanHandler(
         new(e.Id, e.Name, e.Date, e.Time?.ToString("HH:mm", CultureInfo.InvariantCulture), e.Venue, e.Segment, e.Genre,
             NearbyLinks.CuratedHttps(e.ImageUrl), e.PriceMin, e.PriceMax, e.Currency, NearbyLinks.CuratedHttps(e.Url),
             e.Latitude is { } lat && e.Longitude is { } lon ? linkPolicy.Sanitize(NearbyLinks.TransitDirectionsTo(lat, lon)) : null,
-            e.SubGenre);
+            e.SubGenre, e.Latitude, e.Longitude);
 
     /// <summary>Without an event provider: a web search for events in the city during the trip month.</summary>
     public static string EventsSearchUrl(string city, DateOnly month) =>

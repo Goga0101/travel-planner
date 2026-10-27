@@ -15,6 +15,14 @@ namespace TravelPlanner.Application.Features.TripPlans;
 /// </summary>
 public sealed record GetStayRouteQuery(Guid PlanId, double? Latitude, double? Longitude, string? Name) : IRequest<StayRouteDto>;
 
+/// <summary>
+/// Public transport between two stops of a planned day (the hotel, a café, a sight…), leaving at Date + Time local time,
+/// with the ticket for each ride.
+/// </summary>
+public sealed record GetHopRouteQuery(
+    Guid PlanId, double FromLatitude, double FromLongitude, string? FromName, double ToLatitude, double ToLongitude, string? ToName,
+    DateOnly Date, TimeOnly Time) : IRequest<RouteDirectionDto>;
+
 /// <summary>How to pay for one ride: the matching guide option (or the city's normal ticket), and whether it can be bought online.</summary>
 public sealed record LegTicketDto(string? Name, decimal? Price, string? Currency, bool? BuyOnline, string? BuyUrl, string? Note, string? InfoUrl, bool CityTicket);
 
@@ -26,7 +34,8 @@ public sealed record TransitItineraryDto(int DurationMinutes, int Transfers, str
 
 public sealed record RouteDirectionDto(
     string FromName, string ToName, DateOnly TimetableDate, bool OnTravelDate, string WishedTime,
-    IReadOnlyList<TransitItineraryDto> Itineraries, string? GoogleTransitUrl, string? GoogleDriveUrl, string? UberUrl);
+    IReadOnlyList<TransitItineraryDto> Itineraries, string? GoogleTransitUrl, string? GoogleDriveUrl, string? UberUrl,
+    LegTicketDto? CityTicket = null);
 
 public sealed record GuideOptionDto(
     string Mode, string Name, string? From, string? To, string? Ticket, decimal? Price, string? Currency, string? WhereToBuy, string? Payment,
@@ -55,12 +64,25 @@ public sealed class GetStayRouteValidator : AbstractValidator<GetStayRouteQuery>
     }
 }
 
+public sealed class GetHopRouteValidator : AbstractValidator<GetHopRouteQuery>
+{
+    public GetHopRouteValidator()
+    {
+        RuleFor(x => x.FromLatitude).InclusiveBetween(-90, 90);
+        RuleFor(x => x.ToLatitude).InclusiveBetween(-90, 90);
+        RuleFor(x => x.FromLongitude).InclusiveBetween(-180, 180);
+        RuleFor(x => x.ToLongitude).InclusiveBetween(-180, 180);
+        RuleFor(x => x.FromName).MaximumLength(200);
+        RuleFor(x => x.ToName).MaximumLength(200);
+    }
+}
+
 public sealed class GetStayRouteHandler(
     IApplicationDbContext db,
     ITransitRouter router,
     ITransitGuideSource guides,
     IWorldPlaces world,
-    IOutboundLinkPolicy linkPolicy) : IRequestHandler<GetStayRouteQuery, StayRouteDto>
+    IOutboundLinkPolicy linkPolicy) : IRequestHandler<GetStayRouteQuery, StayRouteDto>, IRequestHandler<GetHopRouteQuery, RouteDirectionDto>
 {
     /// <summary>Time to leave the airport after landing (passport control, bags), and to reach it before take-off.</summary>
     private static readonly TimeSpan AfterLanding = TimeSpan.FromMinutes(50);
@@ -108,6 +130,23 @@ public sealed class GetStayRouteHandler(
         }
         return new StayRouteDto(airport?.IataCode, airport?.NameIn(language), stayName, stayIsCentre, toStay, toAirport,
             Guide(guide, language), router.IsConfigured ? router.Name : null);
+    }
+
+    public async Task<RouteDirectionDto> Handle(GetHopRouteQuery request, CancellationToken cancellationToken)
+    {
+        var plan = await TripPlanLoader.LoadAsync(db, request.PlanId, tracking: false, cancellationToken)
+                   ?? throw new NotFoundException("resource.tripPlan", request.PlanId);
+        var destination = plan.Destination!;
+        var airport = GetNearbyPlacesHandler.ArrivalAirport(plan);
+        var zone = TimeZoneFor(airport?.IataCode ?? destination.Code);
+        var direction = await DirectionAsync(Label(request.FromName), request.FromLatitude, request.FromLongitude,
+            Label(request.ToName), request.ToLatitude, request.ToLongitude, request.Date.ToDateTime(request.Time), zone, cancellationToken);
+        if (guides.Get(destination.Code) is not { } guide) return direction;
+        // The city's normal ticket also helps when no timetable is known (the visitor follows the map link).
+        var cityTicket = TicketFor(new TransitLegDto("BUS", null, null, "", "", "", "", 0, null, null, null), guide, T.CurrentLanguage);
+        return WithTickets(direction, guide, T.CurrentLanguage)! with { CityTicket = cityTicket };
+
+        static string Label(string? name) => name?.Trim() is { Length: > 0 } n ? n : "—";
     }
 
     private static RouteDirectionDto? WithTickets(RouteDirectionDto? direction, TransitGuide guide, string language) =>
