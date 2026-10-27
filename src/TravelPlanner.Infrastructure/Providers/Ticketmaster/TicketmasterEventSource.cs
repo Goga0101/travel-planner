@@ -48,10 +48,16 @@ public sealed class TicketmasterEventSource(
                 var c = CultureInfo.InvariantCulture;
                 var url = "discovery/v2/events.json?apikey=" + Uri.EscapeDataString(options.Value.ApiKey!) +
                           $"&latlong={query.Latitude.ToString("0.####", c)},{query.Longitude.ToString("0.####", c)}" +
-                          $"&radius={options.Value.RadiusKm}&unit=km&size=60&sort=date,asc&locale=*" +
+                          $"&radius={options.Value.RadiusKm}&unit=km&size=150&sort=date,asc&locale=*" +
                           $"&startDateTime={query.From:yyyy-MM-dd}T00:00:00Z&endDateTime={query.To:yyyy-MM-dd}T23:59:59Z";
                 var body = await httpClient.GetFromJsonAsync<JsonElement>(url, cancellationToken);
-                return (IReadOnlyList<CityEvent>)Map(body);
+                // Long-running events (exhibitions, attractions) list one entry per session: keep the first one in the trip of each.
+                return (IReadOnlyList<CityEvent>)Map(body)
+                    .Where(e => e.Date >= query.From && e.Date <= query.To)
+                    .GroupBy(e => e.Name, StringComparer.OrdinalIgnoreCase)
+                    .Select(g => g.OrderBy(e => e.Date).ThenBy(e => e.Time).First())
+                    .OrderBy(e => e.Date).ThenBy(e => e.Time)
+                    .ToList();
             }) ?? [];
         }
         catch (Exception ex) when (ex is HttpRequestException or JsonException or TaskCanceledException
