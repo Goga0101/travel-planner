@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary-container": "#131b2e", "secondary-container": "#86f2e4", "primary-fixed": "#dae2fd", "error-container": "#ffdad6", "secondary-fixed-dim": "#6bd8cb", "surface-dim": "#cbdbf5", "on-error": "#ffffff", "inverse-surface": "#213145", "on-secondary-fixed": "#00201d", "on-secondary": "#ffffff", "on-primary-fixed": "#131b2e", "on-error-container": "#93000a", "tertiary-fixed-dim": "#ffb599", "on-tertiary": "#ffffff", "tertiary": "#000000", "secondary": "#006a61", "secondary-fixed": "#89f5e7", "on-primary-container": "#7c839b", "on-surface-variant": "#45464d", "surface-container-high": "#dce9ff", "surface-tint": "#565e74", "on-tertiary-fixed-variant": "#7f2b00", "outline-variant": "#c6c6cd", "surface-bright": "#f8f9ff", "on-tertiary-fixed": "#370e00", "background": "#f8f9ff", "error": "#ba1a1a", "surface-container-highest": "#d3e4fe", "on-tertiary-container": "#e45405", "surface-container-lowest": "#ffffff", "on-primary-fixed-variant": "#3f465c", "primary-fixed-dim": "#bec6e0", "on-background": "#0b1c30", "on-secondary-container": "#006f66", "tertiary-container": "#370e00", "on-secondary-fixed-variant": "#005049", "primary": "#000000", "inverse-on-surface": "#eaf1ff", "tertiary-fixed": "#ffdbce", "surface-container-low": "#eff4ff", "on-surface": "#0b1c30", "surface-variant": "#d3e4fe", "outline": "#76777d", "surface": "#f8f9ff", "on-primary": "#ffffff", "surface-container": "#e5eeff", "inverse-primary": "#bec6e0" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter-sm": "1rem", "space-xl": "2.5rem", "gutter": "1.5rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "margin-sm": "1rem", "space-xs": "0.25rem", "space-md": "1rem", "margin": "2rem" }, "fontFamily": { "label-sm": ["Inter"], "headline-xl": ["Inter"], "label-md": ["Inter"], "body-sm": ["Inter"], "headline-sm": ["Inter"], "body-md": ["Inter"], "body-lg": ["Inter"], "title-md": ["Inter"], "headline-md": ["Inter"], "headline-lg": ["Inter"], "headline-lg-mobile": ["Inter"], "headline-xl-mobile": ["Inter"], "numeric-table": ["Inter"] }, "fontSize": { "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }], "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "title-md": ["18px", { "lineHeight": "26px", "fontWeight": "600" }], "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-xl-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "numeric-table": ["14px", { "lineHeight": "20px", "fontWeight": "500" }] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface"><header class="fixed top-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><a class="flex items-center gap-space-sm" data-path="search-and-compare" href="#"><img alt="TravelVista Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmNRmctRRIMUA2m-m1ZQ9kPfzb-aIxUuyFMGYBL0OqsKhGRo6X89kxAjZlhaRkNoI9JB27ESH3eC-EIy2bdtepj-wD3PnyHjCgnHHq927ox-mXX2JLqSARFgD751sYVSUYaSSEpYA46FtRqMjti0kLPMsRKI_PKdaxGDSAIKzE7NgB4KDmIn2tAuqJeVWaM9EbameQKOcY3_Y8rOwAL9REifCfeQcBSR-XJXKZ3CbJjxNhr3b7ylOK"/><div class="flex flex-col"><span class="font-title-md text-title-md text-on-surface tracking-tight leading-none">TravelVista</span><span class="font-label-sm text-label-sm text-on-surface-variant font-normal leading-none mt-space-xs">Smart Trip Budgeting</span></div></a></div><nav class="hidden lg:flex items-center gap-space-md" data-active-classes="text-on-surface bg-surface-container-low font-label-md px-space-md py-space-xs rounded-full"><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="destinations" href="#">Destinations / მიმართულებები</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="how-it-works" href="#">How it works / როგორ მუშაობს</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="about" href="#">About / ჩვენ შესახებ</a></nav><div class="flex items-center gap-space-sm"><div class="inline-flex items-center bg-surface-container p-space-xs rounded-full"><button class="font-label-sm text-label-sm px-space-sm py-space-xs rounded-full bg-surface-container-lowest text-on-surface shadow-[0_1px_2px_rgba(0,0,0,0.05)] transition-all" type="button">ქართ</button><button class="font-label-sm text-label-sm px-space-sm py-space-xs rounded-full text-on-surface-variant hover:text-on-surface transition-all" type="button">ENG</button></div><div class="hidden sm:flex items-center px-space-sm py-space-xs bg-surface-container-low text-on-surface rounded-lg font-numeric-table text-numeric-table"><span class="font-label-sm text-label-sm text-on-surface-variant mr-space-xs font-semibold">EUR</span><span class="text-on-surface">€</span></div><a class="hidden md:inline-flex items-center gap-space-xs px-space-md py-space-xs bg-secondary-container text-on-secondary-container rounded-full font-label-md text-label-md hover:bg-secondary-fixed transition-colors" data-path="saved-trips" href="#"><span class="material-symbols-outlined text-[16px]">bookmark</span><span>Saved Trips</span><span class="ml-space-xs px-space-xs py-0.5 rounded-full bg-surface-container-lowest text-on-surface font-label-sm text-label-sm">3</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface"><div class="flex flex-col w-full">
+<!-- Immersive Destination Hero (Bleeding naturally under translucent app shell header) -->
+<div class="relative w-full overflow-hidden bg-primary-container text-on-primary -mt-20 pt-20">
+<div class="absolute inset-0 bg-cover bg-center opacity-30 mix-blend-luminosity scale-105 transition-transform duration-1000 ease-out" data-alt="Stunning aerial panoramic view of Barcelona at golden dusk, showing Antoni Gaudí's Sagrada Família spires rising dramatically against the Mediterranean sea, soft sunset teal and slate atmospheric light, modern architectural magazine travel photography" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCIWcswNps3hPEZNqt944wMxyf1TXCF0xwi0hhPKBhYXvb-PAZcuzc82VdWpCVvQaFA0kdDMv63-0VNmv_JFZnBLMCnl7uJvx2cpB2c27jV87HkX-ZlCXlux409U9BZgVciR2ZfnbfElBG-sRmN854m7O6ykTmFrDAzT3Exu57bhRp_1btCvFkbaTtEa-GnAOUe6AS_Z-iXdziftpvlH2zH8uHmcVRaNfCdd09I3B6QxV7nAL8aFoEh')"></div>
+<div class="absolute inset-0 bg-gradient-to-t from-primary-container via-primary-container/80 to-transparent"></div>
+<!-- Hero Content Container -->
+<div class="relative max-w-7xl mx-auto px-gutter pt-12 pb-16 lg:pb-24">
+<!-- Breadcrumbs & Meta Badges -->
+<div class="flex flex-wrap items-center gap-space-sm mb-space-md text-on-primary-container">
+<span class="inline-flex items-center gap-space-xs font-label-sm text-label-sm uppercase tracking-wider bg-surface-container-highest/20 px-space-sm py-1 rounded-full text-secondary-container">
+<span class="material-symbols-outlined text-[14px]">flight_takeoff</span>
+          TBS → BCN via LON
+        </span>
+<span class="text-outline-variant">•</span>
+<span class="font-label-sm text-label-sm text-surface-container-high">Trip ID #BCN-2612</span>
+<span class="text-outline-variant">•</span>
+<span class="inline-flex items-center gap-space-xs font-label-sm text-label-sm text-secondary-fixed">
+<span class="material-symbols-outlined text-[14px]">verified</span>
+          Verified Cost Architecture
+        </span>
+</div>
+<!-- Main Destination Typography -->
+<div class="flex flex-col lg:flex-row lg:items-end justify-between gap-space-xl">
+<div class="max-w-3xl">
+<div class="flex items-center gap-space-sm mb-2">
+<span class="material-symbols-outlined text-secondary-fixed text-[28px]">explore</span>
+<span class="font-label-md text-label-md text-secondary-fixed tracking-widest uppercase">Custom Itinerary Dossier</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-surface-bright tracking-tight">
+            Barcelona Trip Plan <span class="text-secondary-fixed font-normal">· ბარსელონა</span>
+</h1>
+<p class="font-title-md text-title-md text-surface-container-high mt-space-xs flex items-center gap-space-sm">
+<span class="material-symbols-outlined text-[20px]">calendar_today</span>
+<span>5 Dec – 10 Dec 2026</span>
+<span class="bg-surface-container-highest/25 px-2 py-0.5 rounded text-secondary-fixed font-label-sm text-label-sm">6 Days / 5 Nights</span>
+</p>
+</div>
+<!-- Action Toolbar -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<button class="inline-flex items-center gap-space-xs px-space-md py-space-sm bg-surface-container-lowest text-on-surface font-label-md text-label-md rounded-xl shadow-md hover:bg-surface-container-low transition-all" id="saveTripBtn">
+<span class="material-symbols-outlined text-secondary text-[20px]" id="saveTripIcon">bookmark_border</span>
+<span id="saveTripText">Save Plan / შენახვა</span>
+</button>
+<button class="inline-flex items-center gap-space-xs px-space-md py-space-sm bg-surface-container-highest/30 backdrop-blur-md text-surface-bright font-label-md text-label-md rounded-xl hover:bg-surface-container-highest/40 transition-all">
+<span class="material-symbols-outlined text-[20px]">event</span>
+<span>Add to Calendar</span>
+</button>
+<button class="inline-flex items-center gap-space-xs px-space-sm py-space-sm bg-surface-container-highest/30 backdrop-blur-md text-surface-bright rounded-xl hover:bg-surface-container-highest/40 transition-all" title="Share dossier">
+<span class="material-symbols-outlined text-[20px]">share</span>
+</button>
+</div>
+</div>
+<!-- Financial Target vs Actual Summary Card (Floating Overlap) -->
+<div class="mt-space-xl p-space-lg rounded-2xl bg-surface-container-lowest text-on-surface shadow-xl grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-space-lg items-center">
+<!-- Budget Health -->
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Total Estimated Cost</span>
+<div class="flex items-baseline gap-space-xs mt-1">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface">€426.00</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">total bundle</span>
+</div>
+<span class="font-body-sm text-body-sm text-secondary font-medium mt-1">Flights + Hotel + Local Transit</span>
+</div>
+<!-- Budget Surplus -->
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Surplus / Budget Remaining</span>
+<div class="flex items-baseline gap-space-xs mt-1">
+<span class="font-headline-lg text-headline-lg font-bold text-secondary">+€374.00</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold bg-secondary-container/40 px-2 py-0.5 rounded-full">46.8% Saved</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-1">Target Ceiling: €800.00 max</span>
+</div>
+<!-- Visual Progress Meter -->
+<div class="flex flex-col lg:col-span-1">
+<div class="flex justify-between items-center mb-1.5 font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Budget Burn</span>
+<span class="text-on-surface font-semibold">53.2% Allocated</span>
+</div>
+<div class="w-full bg-surface-container rounded-full h-2.5 overflow-hidden flex">
+<div class="bg-primary h-full" style="width: 40.1%" title="Flights: €171"></div>
+<div class="bg-secondary h-full" style="width: 49.3%" title="Accommodation: €210"></div>
+<div class="bg-secondary-fixed-dim h-full" style="width: 10.6%" title="Transfers: €45"></div>
+</div>
+<div class="flex items-center gap-space-md mt-2 font-label-sm text-label-sm text-on-surface-variant">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-primary inline-block"></span> Flights</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-secondary inline-block"></span> Hotels</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-secondary-fixed-dim inline-block"></span> Transit</span>
+</div>
+</div>
+<!-- Live Exchange Note -->
+<div class="bg-surface-container-low p-space-md rounded-xl flex flex-col justify-between h-full">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface-variant uppercase">GEL Reference (₾)</span>
+<span class="material-symbols-outlined text-secondary text-[16px]">sync_alt</span>
+</div>
+<div class="font-title-md text-title-md font-bold text-on-surface mt-1">
+            ~₾1,235.40 GEL
+          </div>
+<span class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">National Bank Ref: 1 EUR = 2.90 GEL</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Primary Content Canvas -->
+<div class="max-w-7xl mx-auto px-gutter w-full py-space-xl space-y-space-xl">
+<!-- SECTION 1: COMPLETE COST BREAKDOWN TABLE -->
+<section class="bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden p-space-lg">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md mb-space-lg">
+<div>
+<div class="flex items-center gap-space-xs text-secondary mb-1">
+<span class="material-symbols-outlined text-[18px]">account_balance_wallet</span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider">Financial Precision Matrix</span>
+</div>
+<h2 class="font-headline-md text-headline-md text-on-surface">Itemized Cost Breakdown · ბიუჯეტის დეტალიზაცია</h2>
+</div>
+<div class="inline-flex items-center gap-space-xs px-space-md py-1.5 bg-surface-container-low rounded-xl text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-secondary text-[16px]">verified</span>
+          Zero Hidden Fees · Independent Rates Only
+        </div>
+</div>
+<!-- Cost Table with High Contrast Visual Hierarchy -->
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<th class="py-space-md px-space-md rounded-l-xl">Budget Category &amp; Components</th>
+<th class="py-space-md px-space-md">Allocation Parameters</th>
+<th class="py-space-md px-space-md">Data Source Verification</th>
+<th class="py-space-md px-space-md text-right rounded-r-xl">Cost (EUR €)</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container font-body-md text-body-md">
+<!-- Row 1: Flights -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">flight</span>
+</div>
+<div>
+<span class="font-title-md text-title-md text-on-surface font-semibold block">Roundtrip Flight Legs</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Tbilisi → London → Barcelona (Return: Direct/Split)</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-on-surface">
+                1 Passenger · Small Cabin Luggage included
+              </td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary inline-block"></span>
+                  Verified (Live partner price)
+                </span>
+</td>
+<td class="py-space-md px-space-md text-right font-numeric-table text-numeric-table font-bold text-on-surface">
+                €171.00
+              </td>
+</tr>
+<!-- Row 2: Accommodation -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]">hotel</span>
+</div>
+<div>
+<span class="font-title-md text-title-md text-on-surface font-semibold block">Accommodation (5 Nights)</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Private room in Eixample / Gràcia district</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-on-surface">
+                €42.00 / night median benchmark
+              </td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-outline inline-block"></span>
+                  Estimate (Booking &amp; Agoda median)
+                </span>
+</td>
+<td class="py-space-md px-space-md text-right font-numeric-table text-numeric-table font-bold text-on-surface">
+                €210.00
+              </td>
+</tr>
+<!-- Row 3: Airport Transfers -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[20px]">airport_shuttle</span>
+</div>
+<div>
+<span class="font-title-md text-title-md text-on-surface font-semibold block">BCN Airport Roundtrip Transit</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Aerobús Line A1 express to Plaça de Catalunya (Return)</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-on-surface">
+                2 trips (€6.75 × 2)
+              </td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-secondary-container/40 text-on-secondary-container font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary inline-block"></span>
+                  Verified (TMB Official rate)
+                </span>
+</td>
+<td class="py-space-md px-space-md text-right font-numeric-table text-numeric-table font-bold text-on-surface">
+                €13.50
+              </td>
+</tr>
+<!-- Row 4: Daily City Transport -->
+<tr class="hover:bg-surface-container-low/50 transition-colors">
+<td class="py-space-md px-space-md">
+<div class="flex items-center gap-space-md">
+<div class="w-10 h-10 rounded-xl bg-surface-container flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[20px]">directions_subway</span>
+</div>
+<div>
+<span class="font-title-md text-title-md text-on-surface font-semibold block">Intra-City Metro &amp; Bus Pass</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">T-Casual card passes (10 integrated journeys) + supplement</span>
+</div>
+</div>
+</td>
+<td class="py-space-md px-space-md text-on-surface">
+                5 days allocation (~€6.30/day)
+              </td>
+<td class="py-space-md px-space-md">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-on-surface-variant font-label-sm text-label-sm">
+<span class="w-1.5 h-1.5 rounded-full bg-outline inline-block"></span>
+                  Estimate (Recommended travel index)
+                </span>
+</td>
+<td class="py-space-md px-space-md text-right font-numeric-table text-numeric-table font-bold text-on-surface">
+                €31.50
+              </td>
+</tr>
+</tbody>
+<tfoot>
+<tr class="bg-surface-container-low/80 font-bold text-on-surface">
+<td class="py-space-md px-space-md rounded-l-xl font-title-md text-title-md" colspan="3">
+                Final Estimated Grand Total (ყველაფერი ერთად)
+              </td>
+<td class="py-space-md px-space-md text-right rounded-r-xl font-headline-sm text-headline-sm text-primary">
+                €426.00
+              </td>
+</tr>
+</tfoot>
+</table>
+</div>
+</section>
+<!-- SECTION 2: DETAILED FLIGHT ROUTING & CRITICAL SELF-TRANSFER WARNING -->
+<section class="space-y-space-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Itinerary Architecture</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Flight Logistics &amp; Connection Timeline</h2>
+</div>
+<span class="text-on-surface-variant font-body-sm text-body-sm">Prices linked direct to operating airlines</span>
+</div>
+<!-- CRITICAL PROMINENT WARNING CALLOUT BOX -->
+<div class="p-space-lg rounded-2xl bg-amber-50 text-amber-950 shadow-md">
+<div class="flex items-start gap-space-md">
+<div class="w-10 h-10 rounded-xl bg-amber-100 flex items-center justify-center shrink-0 text-amber-800">
+<span class="material-symbols-outlined text-[24px]">warning</span>
+</div>
+<div class="space-y-space-xs flex-1">
+<div class="flex flex-wrap items-center gap-space-sm">
+<h3 class="font-title-md text-title-md font-bold text-amber-950">
+                Self-Transfer Notice / ყურადღება: ცალკე ბილეთები
+              </h3>
+<span class="bg-amber-200/70 text-amber-900 font-label-sm text-label-sm px-2.5 py-0.5 rounded-full font-bold uppercase tracking-wider">
+                Unprotected Connection
+              </span>
+</div>
+<p class="font-body-md text-body-md text-amber-900 leading-relaxed">
+              You book each flight leg separately across airline websites. You will need to collect your baggage at London Stansted/Luton, arrange ground transit between airports if required, and check in again for your Barcelona flight. A delayed first flight <span class="font-bold underline decoration-amber-600">does not protect</span> the subsequent ticket. We advise minimum <strong>3 to 4 hours</strong> connection leeway and comprehensive flight insurance.
+            </p>
+</div>
+</div>
+</div>
+<!-- Flight Leg Cards Grid -->
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-space-lg">
+<!-- Outbound Leg 1 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-label-sm text-label-sm font-bold bg-surface-container-low text-on-surface px-space-sm py-1 rounded-full uppercase">
+                Leg 1 · Outbound Departure
+              </span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">€89.00</span>
+</div>
+<!-- Route Nodes -->
+<div class="flex items-center justify-between gap-space-sm py-space-sm">
+<div class="text-left">
+<span class="font-headline-md text-headline-md font-bold text-on-surface block">TBS</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">05:40 AM · 5 Dec</span>
+<span class="font-label-sm text-label-sm text-on-surface font-medium">Tbilisi Intl Airport</span>
+</div>
+<div class="flex-1 flex flex-col items-center px-space-sm">
+<span class="font-body-sm text-body-sm text-on-surface-variant mb-1">5h 25m direct</span>
+<div class="w-full relative flex items-center">
+<div class="w-full h-0.5 bg-secondary"></div>
+<span class="material-symbols-outlined text-secondary absolute right-0 -translate-y-1/2 text-[18px]">flight</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold mt-1">Airbus A321neo</span>
+</div>
+<div class="text-right">
+<span class="font-headline-md text-headline-md font-bold text-on-surface block">STN</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">08:05 AM · 5 Dec</span>
+<span class="font-label-sm text-label-sm text-on-surface font-medium">London Stansted</span>
+</div>
+</div>
+<!-- Layover Window Pill -->
+<div class="mt-space-md p-space-sm rounded-xl bg-surface-container-low flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-outline text-[18px]">schedule</span>
+                Layover Window &amp; Transfer Gap
+              </span>
+<span class="font-label-sm text-label-sm font-bold text-secondary">4h 45m buffer (Ample Safe Buffer)</span>
+</div>
+</div>
+<div class="mt-space-lg pt-space-md flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Operated by Wizz Air / Pegasus</span>
+<a class="inline-flex items-center gap-space-xs px-space-md py-space-sm bg-primary text-on-primary rounded-xl font-label-md text-label-md hover:bg-on-surface-variant transition-colors" href="https://wizzair.com" rel="noopener noreferrer" target="_blank">
+<span>Book on Airline Official Site</span>
+<span class="material-symbols-outlined text-[16px]">open_in_new</span>
+</a>
+</div>
+</div>
+<!-- Outbound Leg 2 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-2xl shadow-sm flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<span class="font-label-sm text-label-sm font-bold bg-surface-container-low text-on-surface px-space-sm py-1 rounded-full uppercase">
+                Leg 2 · Final Destination Arrival
+              </span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">€82.00</span>
+</div>
+<!-- Route Nodes -->
+<div class="flex items-center justify-between gap-space-sm py-space-sm">
+<div class="text-left">
+<span class="font-headline-md text-headline-md font-bold text-on-surface block">LTN</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">12:50 PM · 5 Dec</span>
+<span class="font-label-sm text-label-sm text-on-surface font-medium">London Luton Airport</span>
+</div>
+<div class="flex-1 flex flex-col items-center px-space-sm">
+<span class="font-body-sm text-body-sm text-on-surface-variant mb-1">2h 15m direct</span>
+<div class="w-full relative flex items-center">
+<div class="w-full h-0.5 bg-secondary"></div>
+<span class="material-symbols-outlined text-secondary absolute right-0 -translate-y-1/2 text-[18px]">flight</span>
+</div>
+<span class="font-label-sm text-label-sm text-secondary font-semibold mt-1">Boeing 737-800</span>
+</div>
+<div class="text-right">
+<span class="font-headline-md text-headline-md font-bold text-on-surface block">BCN</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant block">16:05 PM · 5 Dec</span>
+<span class="font-label-sm text-label-sm text-on-surface font-medium">Barcelona El Prat (T1)</span>
+</div>
+</div>
+<!-- Baggage Reminder -->
+<div class="mt-space-md p-space-sm rounded-xl bg-surface-container-low flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-outline text-[18px]">luggage</span>
+                Luggage Allowance Included
+              </span>
+<span class="font-label-sm text-label-sm font-bold text-on-surface">Under-seat bag (40×30×20cm)</span>
+</div>
+</div>
+<div class="mt-space-lg pt-space-md flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Operated by Ryanair / easyJet</span>
+<a class="inline-flex items-center gap-space-xs px-space-md py-space-sm bg-primary text-on-primary rounded-xl font-label-md text-label-md hover:bg-on-surface-variant transition-colors" href="https://ryanair.com" rel="noopener noreferrer" target="_blank">
+<span>Book on Airline Official Site</span>
+<span class="material-symbols-outlined text-[16px]">open_in_new</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 3: HOTEL PRICE ESTIMATES & STAYS -->
+<section class="space-y-space-lg">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Accommodations Strategy</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Stay Benchmark &amp; Recommended Stays</h2>
+</div>
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
+<span>Median across portals: <strong>€42 / night</strong></span>
+</div>
+</div>
+<!-- Rate Comparison Benchmark Banner -->
+<div class="bg-surface-container-lowest p-space-md rounded-2xl shadow-sm grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<a class="p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors flex items-center justify-between group" href="https://booking.com" rel="noopener noreferrer" target="_blank">
+<div class="flex items-center gap-space-sm">
+<span class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center font-bold text-on-surface text-label-md">B</span>
+<div>
+<span class="font-label-md text-label-md text-on-surface block">Booking.com Official</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Live benchmark rate</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-title-md text-title-md font-bold text-on-surface">€42<span class="font-body-sm text-body-sm text-on-surface-variant font-normal">/nt</span></span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant group-hover:text-primary transition-colors block ml-auto">open_in_new</span>
+</div>
+</a>
+<a class="p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors flex items-center justify-between group" href="https://agoda.com" rel="noopener noreferrer" target="_blank">
+<div class="flex items-center gap-space-sm">
+<span class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center font-bold text-on-surface text-label-md">A</span>
+<div>
+<span class="font-label-md text-label-md text-on-surface block">Agoda Partner</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Member discount active</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-title-md text-title-md font-bold text-secondary">€39<span class="font-body-sm text-body-sm text-on-surface-variant font-normal">/nt</span></span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant group-hover:text-primary transition-colors block ml-auto">open_in_new</span>
+</div>
+</a>
+<a class="p-space-md rounded-xl bg-surface-container-low hover:bg-surface-container transition-colors flex items-center justify-between group" href="https://trip.com" rel="noopener noreferrer" target="_blank">
+<div class="flex items-center gap-space-sm">
+<span class="w-8 h-8 rounded-lg bg-surface-container-highest flex items-center justify-center font-bold text-on-surface text-label-md">T</span>
+<div>
+<span class="font-label-md text-label-md text-on-surface block">Trip.com Verified</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Standard catalog fare</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-title-md text-title-md font-bold text-on-surface">€44<span class="font-body-sm text-body-sm text-on-surface-variant font-normal">/nt</span></span>
+<span class="material-symbols-outlined text-[16px] text-on-surface-variant group-hover:text-primary transition-colors block ml-auto">open_in_new</span>
+</div>
+</a>
+</div>
+<!-- 3 Recommended Neighborhood Hotels -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-lg">
+<!-- Hotel 1: Eixample -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div>
+<div class="relative h-48 w-full overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Interior of a modern boutique hotel room in Barcelona Eixample with high ceilings, modernist tiled floors, minimalist wooden desk, crisp white bed linens and soft ambient natural light" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuClafNjpizfoWCvsWLMiMPGUM34CTRWonlTWWwD_3vDEPoC1f_LUvuvN7YLJ5sz_1bAyUtnqHhpm5fFQH8o8RDzchC2f7mHiSFHPoEbYcU_0-JA8dG_ArNGUgLMJU_5ytJCuOkL2CV0RFQoNCQQmNZBtB-IZpEFko7ocFPHGn8TQtXh3nibX9IzvBK4noUtmgW5TLH_DHMPg1r4WGR9vdX66eL54VzpeVHfjXmePbJza5tVQ0hTvMks')"></div>
+<span class="absolute top-3 left-3 bg-surface-container-lowest/90 backdrop-blur-md px-2.5 py-1 rounded-full font-label-sm text-label-sm text-on-surface font-semibold">
+                Eixample District
+              </span>
+</div>
+<div class="p-space-md space-y-space-xs">
+<div class="flex items-center justify-between">
+<span class="flex items-center text-amber-500 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="ml-1 text-on-surface font-bold">4.2 / 5</span>
+<span class="text-on-surface-variant ml-1 font-normal">(420 reviews)</span>
+</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Free Cancellation</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface font-bold">Acta Antibes Hotel</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                10-min walk to Sagrada Família &amp; Monumental metro. Highly rated quiet location.
+              </p>
+</div>
+</div>
+<div class="p-space-md bg-surface-container-low/40 flex items-center justify-between">
+<div>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">€41</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ night</span>
+</div>
+<a class="inline-flex items-center gap-1 font-label-md text-label-md text-secondary hover:underline" href="https://google.com/maps/search/Acta+Antibes+Barcelona" rel="noopener noreferrer" target="_blank">
+<span>View Map</span>
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+</a>
+</div>
+</div>
+<!-- Hotel 2: Gothic Quarter -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div>
+<div class="relative h-48 w-full overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Cozy room in a historic stone townhouse in Barcelona Gothic Quarter with exposed stone walls, contemporary black furnishings, warm ambient wall sconce lights and balcony overlooking narrow lane" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuA0Lw2EGcj1UuCBvv3gr-FSjfk25KSEd6fxB30C36m6sqzenzDM0EkjS346pzcK8ylJXtuLeUIH8u1AaK0JP9W8IuPMpnMONJty6nxWJTWQNbH4Fl8SCWAIYbp2_HrBkPfKGN4JUnQhRup8iHlMJd_mzj3oyPQnI_v9R0Q61_pKpyF-PNbzZ1lOcjI3P5wAjkI9WxqFAQAPQdBj8oy2Iyhq6khzyLakHaE_sdeQ8vHY2DYzHyLmmTzE')"></div>
+<span class="absolute top-3 left-3 bg-surface-container-lowest/90 backdrop-blur-md px-2.5 py-1 rounded-full font-label-sm text-label-sm text-on-surface font-semibold">
+                Gothic Quarter (Barri Gòtic)
+              </span>
+</div>
+<div class="p-space-md space-y-space-xs">
+<div class="flex items-center justify-between">
+<span class="flex items-center text-amber-500 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="ml-1 text-on-surface font-bold">4.4 / 5</span>
+<span class="text-on-surface-variant ml-1 font-normal">(680 reviews)</span>
+</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">City Heart</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface font-bold">Hostal Fernando Historic</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Directly adjacent to Plaça Reial and Las Ramblas. Steps from Liceu Metro Station.
+              </p>
+</div>
+</div>
+<div class="p-space-md bg-surface-container-low/40 flex items-center justify-between">
+<div>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">€43</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ night</span>
+</div>
+<a class="inline-flex items-center gap-1 font-label-md text-label-md text-secondary hover:underline" href="https://google.com/maps/search/Hostal+Fernando+Barcelona" rel="noopener noreferrer" target="_blank">
+<span>View Map</span>
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+</a>
+</div>
+</div>
+<!-- Hotel 3: Gràcia -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div>
+<div class="relative h-48 w-full overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Sunlit trendy hotel studio in Gracia Barcelona with plant decor, Scandinavian wooden furniture, artisanal ceramic accents and sunny window overlooking charming plaza" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCkhv_pNK_YxQiKtUwpwfCXjQ1yXDZsh_DPX3IbQH079lYn3O0DnG3gbFts0hRLupWfdR-Z96rVeKJGvdG8rbLm-DUpVRJCUWnsV8KEs0imzeeBtl_aSQ4-TCEKiZIA5BR28zIaiOuwCVaJOaSwZIbjYLtrTIlzGyWRUco1QaH0FEGpme0i5VCPXb5j5se4Fo8RrvRu9ENxcFg2AYesG0Aho_Nyf5dvkazMSJE7FHk1aE4s5N1N1WMr')"></div>
+<span class="absolute top-3 left-3 bg-surface-container-lowest/90 backdrop-blur-md px-2.5 py-1 rounded-full font-label-sm text-label-sm text-on-surface font-semibold">
+                Gràcia Bohemian Quarter
+              </span>
+</div>
+<div class="p-space-md space-y-space-xs">
+<div class="flex items-center justify-between">
+<span class="flex items-center text-amber-500 font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">star</span>
+<span class="ml-1 text-on-surface font-bold">4.5 / 5</span>
+<span class="text-on-surface-variant ml-1 font-normal">(310 reviews)</span>
+</span>
+<span class="font-label-sm text-label-sm text-secondary font-semibold">Local Vibe</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface font-bold">Casa Gràcia Living</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Top-of-Passeig de Gràcia. Surrounded by local cafes, artisan workshops and tapas bars.
+              </p>
+</div>
+</div>
+<div class="p-space-md bg-surface-container-low/40 flex items-center justify-between">
+<div>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">€39</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ night</span>
+</div>
+<a class="inline-flex items-center gap-1 font-label-md text-label-md text-secondary hover:underline" href="https://google.com/maps/search/Casa+Gracia+Barcelona" rel="noopener noreferrer" target="_blank">
+<span>View Map</span>
+<span class="material-symbols-outlined text-[16px]">location_on</span>
+</a>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 4: AIRPORT TRANSPORT & CITY MOBILITY -->
+<section class="bg-surface-container-lowest rounded-2xl shadow-sm p-space-lg">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm mb-space-lg">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Ground Logistics Guide</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Barcelona-El Prat (BCN) Transfer Matrix</h2>
+</div>
+<a class="inline-flex items-center gap-1 text-on-surface-variant hover:text-primary font-label-sm text-label-sm" href="https://www.tmb.cat" rel="noopener noreferrer" target="_blank">
+<span>Official TMB Transit Portal</span>
+<span class="material-symbols-outlined text-[16px]">open_in_new</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Option 1: Aerobús Line A1 (Recommended) -->
+<div class="p-space-md rounded-xl bg-secondary-container/20 flex flex-col justify-between relative overflow-hidden">
+<div class="absolute top-2 right-2 bg-secondary text-on-secondary px-2 py-0.5 rounded text-[10px] font-bold uppercase">
+            Traveler Pick
+          </div>
+<div>
+<div class="flex items-center gap-space-xs text-secondary mb-2">
+<span class="material-symbols-outlined text-[20px]">directions_bus</span>
+<span class="font-label-sm text-label-sm font-bold uppercase">Aerobús Line A1</span>
+</div>
+<h4 class="font-title-md text-title-md font-bold text-on-surface">Plaça Catalunya Express</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Terminal 1 direct to city center with free Wi-Fi and luggage racks. Departs every 5 mins.
+            </p>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm font-bold text-secondary">€6.75</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">35 mins</span>
+</div>
+</div>
+<!-- Option 2: Metro Line L9 Sud -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-space-xs text-primary mb-2">
+<span class="material-symbols-outlined text-[20px]">subway</span>
+<span class="font-label-sm text-label-sm font-bold uppercase">Metro Line L9 Sud</span>
+</div>
+<h4 class="font-title-md text-title-md font-bold text-on-surface">Direct Underground</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Departs T1 &amp; T2 directly to Zona Universitària. Transfer required to L1 or L3 for central plazas.
+            </p>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">€5.15</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">32 mins</span>
+</div>
+</div>
+<!-- Option 3: Official Taxi (Black & Yellow) -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-space-xs text-primary mb-2">
+<span class="material-symbols-outlined text-[20px]">local_taxi</span>
+<span class="font-label-sm text-label-sm font-bold uppercase">Official City Taxi</span>
+</div>
+<h4 class="font-title-md text-title-md font-bold text-on-surface">Black &amp; Yellow Fleet</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Fixed queue outside T1/T2 doors. Regulated airport minimum fee applies. Cash &amp; credit accepted.
+            </p>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">~€35.00</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">25 mins</span>
+</div>
+</div>
+<!-- Option 4: Ride-Hailing (Cabify / Uber) -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col justify-between">
+<div>
+<div class="flex items-center gap-space-xs text-primary mb-2">
+<span class="material-symbols-outlined text-[20px]">smartphone</span>
+<span class="font-label-sm text-label-sm font-bold uppercase">App Cabify / Uber</span>
+</div>
+<h4 class="font-title-md text-title-md font-bold text-on-surface">Ride-Hailing App</h4>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+              Designated pick-up spot in parking structure P1. Dynamic pricing based on arrival traffic.
+            </p>
+</div>
+<div class="mt-space-md pt-space-xs flex items-center justify-between">
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">~€32.00</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">25 mins</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 5: FORECASTED WEATHER FOR 5–10 DEC 2026 -->
+<section class="bg-surface-container-lowest rounded-2xl shadow-sm p-space-lg">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm mb-space-md">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Climate Index &amp; Wardrobe Planning</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Forecasted Weather · 5–10 Dec 2026</h2>
+</div>
+<div class="inline-flex items-center gap-space-xs px-space-md py-1 bg-surface-container-low rounded-xl text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-amber-500 text-[18px]">checkroom</span>
+          Packing Advice: Light jacket, layers &amp; walking sneakers
+        </div>
+</div>
+<!-- 6-Day Weather Cards Grid -->
+<div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-space-md">
+<!-- Day 1: 5 Dec -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col items-center text-center">
+<span class="font-label-sm text-label-sm font-bold text-on-surface-variant">Fri 5 Dec</span>
+<span class="material-symbols-outlined text-amber-500 text-[36px] my-2">sunny</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Sunny &amp; Crisp</span>
+<div class="flex items-center gap-1.5 mt-2">
+<span class="font-title-md text-title-md font-bold text-on-surface">16°</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ 9°C</span>
+</div>
+</div>
+<!-- Day 2: 6 Dec -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col items-center text-center">
+<span class="font-label-sm text-label-sm font-bold text-on-surface-variant">Sat 6 Dec</span>
+<span class="material-symbols-outlined text-amber-500 text-[36px] my-2">partly_cloudy_day</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Mild Cloud</span>
+<div class="flex items-center gap-1.5 mt-2">
+<span class="font-title-md text-title-md font-bold text-on-surface">15°</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ 10°C</span>
+</div>
+</div>
+<!-- Day 3: 7 Dec -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col items-center text-center">
+<span class="font-label-sm text-label-sm font-bold text-on-surface-variant">Sun 7 Dec</span>
+<span class="material-symbols-outlined text-amber-500 text-[36px] my-2">sunny</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Clear Skies</span>
+<div class="flex items-center gap-1.5 mt-2">
+<span class="font-title-md text-title-md font-bold text-on-surface">17°</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ 8°C</span>
+</div>
+</div>
+<!-- Day 4: 8 Dec -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col items-center text-center">
+<span class="font-label-sm text-label-sm font-bold text-on-surface-variant">Mon 8 Dec</span>
+<span class="material-symbols-outlined text-outline text-[36px] my-2">cloud</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Overcast</span>
+<div class="flex items-center gap-1.5 mt-2">
+<span class="font-title-md text-title-md font-bold text-on-surface">14°</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ 9°C</span>
+</div>
+</div>
+<!-- Day 5: 9 Dec -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col items-center text-center">
+<span class="font-label-sm text-label-sm font-bold text-on-surface-variant">Tue 9 Dec</span>
+<span class="material-symbols-outlined text-amber-500 text-[36px] my-2">partly_cloudy_day</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Sun Intervals</span>
+<div class="flex items-center gap-1.5 mt-2">
+<span class="font-title-md text-title-md font-bold text-on-surface">16°</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ 8°C</span>
+</div>
+</div>
+<!-- Day 6: 10 Dec -->
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col items-center text-center">
+<span class="font-label-sm text-label-sm font-bold text-on-surface-variant">Wed 10 Dec</span>
+<span class="material-symbols-outlined text-amber-500 text-[36px] my-2">sunny</span>
+<span class="font-body-sm text-body-sm text-on-surface font-medium">Breezy &amp; Fine</span>
+<div class="flex items-center gap-1.5 mt-2">
+<span class="font-title-md text-title-md font-bold text-on-surface">15°</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ 7°C</span>
+</div>
+</div>
+</div>
+</section>
+<!-- SECTION 6: TOP SIGHTS & LOCAL HIGHLIGHTS -->
+<section class="space-y-space-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Itinerary Curation</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Top Sights &amp; Local Highlights</h2>
+</div>
+<span class="text-on-surface-variant font-body-sm text-body-sm">Advance booking highly recommended for UNESCO sites</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-lg">
+<!-- Sight 1: Sagrada Família -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div>
+<div class="relative h-44 w-full overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Intricate Nativity facade of the Sagrada Familia basilica in Barcelona under a clear morning sky, detailed stonework and architectural wonder, editorial travel photograph" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDFf02J8VoiDCXnm6QupunE1hhussafwbypbbGefLs46Yu8E24xi_I5KKL-PpHaE3K2sVztH1Uu1aUuCz9wQNdWHluk0ZaWuyTFRgKl62Fd8MM9MIZSdEU-6qhPyRDO3VntIusXr-BLi_VAsT7hMkevOdWIVh6ubsp-d-XpsSRSJkuAcjujpbqTFsQE7cKpHVH6ZK4ykiBTVDjcEKYLH7MUeptcR_q0pe_vBRtGV7yz5Z8FzDJJ87_v')"></div>
+<span class="absolute top-3 left-3 bg-primary text-on-primary px-2.5 py-0.5 rounded-full font-label-sm text-label-sm font-bold">
+                Must-See #1
+              </span>
+</div>
+<div class="p-space-md space-y-space-xs">
+<h3 class="font-title-md text-title-md font-bold text-on-surface">Basílica de la Sagrada Família</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Antoni Gaudí's unfinished masterpiece. Reserve official entry 2–3 weeks early.
+              </p>
+</div>
+</div>
+<div class="p-space-md pt-0 space-y-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-secondary text-[14px]">subway</span>
+              Metro L2 / L5 Sagrada Família
+            </span>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm pt-1">
+<span>Standard: €26.00</span>
+<span class="text-secondary font-bold">Book 3 wks ahead</span>
+</div>
+</div>
+</div>
+<!-- Sight 2: Park Güell -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div>
+<div class="relative h-44 w-full overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Park Güell serpentine mosaic bench overlooking Barcelona skyline and the Mediterranean sea with the iconic gingerbread pavilion towers in sunlight" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCWI0ULTOJsKbalSzZchm_jJjU5EmT6knJqzdhOn8Io5W88O2mD0gyn7Y9gGXHEa2vx-nkv2NC5LIXV-Bwh8QdPN2i7qrqKLW3AMuwMjCS0S19-nDHwub0X8r_dw_GqrBztRGGUN2xKfucWQHxtaIsk16HeRVLwtn0OoarwalpLcneSoZoUd5Ynaal5Z5y-iAN5F_MaAXdqdE9ZMefr75vfUYmlN9xS5rvucRKuG-2F2QRt-74bZySd')"></div>
+<span class="absolute top-3 left-3 bg-primary text-on-primary px-2.5 py-0.5 rounded-full font-label-sm text-label-sm font-bold">
+                Must-See #2
+              </span>
+</div>
+<div class="p-space-md space-y-space-xs">
+<h3 class="font-title-md text-title-md font-bold text-on-surface">Park Güell</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Scenic hilltop garden with vibrant mosaic works and panoramic vistas of Barcelona.
+              </p>
+</div>
+</div>
+<div class="p-space-md pt-0 space-y-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-secondary text-[14px]">subway</span>
+              Metro L3 Lesseps (+ bus 24)
+            </span>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm pt-1">
+<span>Standard: €10.00</span>
+<span class="text-secondary font-bold">Timed Entry Only</span>
+</div>
+</div>
+</div>
+<!-- Sight 3: Casa Batlló -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div>
+<div class="relative h-44 w-full overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Intricate modernist facade of Casa Batlló on Passeig de Gràcia in Barcelona with skeletal balconies, iridescent mosaic dragon roof and warm evening illumination" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBjHn7nyxy6WdfyIxw82dlnKmfmAJauq6ad_O0QokOHI10LTACIuJP-i53qMzYGlZlMRCVw1dYl0PlX_YwdjVeefR6ybdHqGgn9TDjNDW9ytQjcW3W5O62dLF7Rd_94HLQf7ZTgwuFEKOyKIR6PM_-MicO7mCEskTczX8ekYIW91DJwpC-joALM2EtCwYs7MlfNwRPX3w24HyXKyBaDYePbQ-g9nHVhz5kuW7osfmT0WjqFHmqNc1AG')"></div>
+<span class="absolute top-3 left-3 bg-primary text-on-primary px-2.5 py-0.5 rounded-full font-label-sm text-label-sm font-bold">
+                Must-See #3
+              </span>
+</div>
+<div class="p-space-md space-y-space-xs">
+<h3 class="font-title-md text-title-md font-bold text-on-surface">Casa Batlló</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Iconic dragon-roof architectural gem located right along vibrant Passeig de Gràcia.
+              </p>
+</div>
+</div>
+<div class="p-space-md pt-0 space-y-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-secondary text-[14px]">subway</span>
+              Metro L3 Passeig de Gràcia
+            </span>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm pt-1">
+<span>Standard: €29.00</span>
+<span class="text-secondary font-bold">Includes SmartGuide</span>
+</div>
+</div>
+</div>
+<!-- Sight 4: Gothic Quarter -->
+<div class="bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden flex flex-col justify-between group hover:shadow-md transition-shadow">
+<div>
+<div class="relative h-44 w-full overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Atmospheric narrow medieval street in Barcelona's Gothic Quarter with historic stone archway bridge, warm hanging lanterns and peaceful cobblestone passage" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAGicLk-przgQf9Ul-kSvewI1m7zkwHxgynBRgV37LNVLJu7nGqOBygeWKfKMHSt34FUk7ZWNV6Oyr_YAtC37CZMTXpMCxFN1rbPDvi2n4vG6NqCMJGcZw8oU60wrbTUV_WDdqQ3KxGNErnXDMgnuKB1LBw_GvSX7vkMVCFegsmtu7ht6z5v911GOTxql4rMWRqLX596E3Tk2LdFYKSXEOFZ6_v-qXzYRiXz7fYFPZ7Lle7a0lkTHcQ')"></div>
+<span class="absolute top-3 left-3 bg-secondary text-on-secondary px-2.5 py-0.5 rounded-full font-label-sm text-label-sm font-bold">
+                Free Exploration
+              </span>
+</div>
+<div class="p-space-md space-y-space-xs">
+<h3 class="font-title-md text-title-md font-bold text-on-surface">Barri Gòtic &amp; Cathedral</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+                Labyrinth of ancient alleys, Roman ruins, tapas bodegas and street guitarists.
+              </p>
+</div>
+</div>
+<div class="p-space-md pt-0 space-y-2">
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full bg-surface-container text-on-surface font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-secondary text-[14px]">subway</span>
+              Metro L4 Jaume I
+            </span>
+<div class="flex items-center justify-between text-on-surface-variant font-label-sm text-label-sm pt-1">
+<span>Public Access: Free</span>
+<span class="text-secondary font-bold">Walk anytime</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Interactive Interactive Itinerary Map Anchor Section -->
+<section class="bg-surface-container-lowest rounded-2xl shadow-sm overflow-hidden p-space-lg">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-sm mb-space-md">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-semibold">Spatial Context</span>
+<h2 class="font-headline-md text-headline-md text-on-surface">Catalonia &amp; Barcelona Route Map</h2>
+</div>
+<div class="flex items-center gap-space-sm text-on-surface-variant font-label-sm text-label-sm">
+<span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-primary inline-block"></span> Transit Nodes</span>
+<span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-secondary inline-block"></span> Hotel Hub</span>
+<span class="flex items-center gap-1"><span class="w-2.5 h-2.5 rounded-full bg-amber-500 inline-block"></span> UNESCO Sights</span>
+</div>
+</div>
+<div class="w-full h-80 rounded-xl bg-cover bg-center shadow-inner" data-location="Sagrada Familia, Barcelona, Spain" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDe3vHXUNSx0uKDUNtCGTxDNuJ6cLFUdiMYe0aR5pksmIwKGPjMBZfkKgxUUCa0Vs_6LL-kGFgTeEj21AOILNvyzRmBHMVsESZjeu2SwD08xmSPD30WeGlR-qym9hBVvMqYQcN_Ef7BonmfpSn0xvxl-cZmmnSUvsiB-_UKKOs6tAH0KorL3OM_GSEPCFQolSY6Wi6rv-DdOPrJZIWrWdEy3bHUYwAInKryRPXks7j1_RnGrX1es9n6')"></div>
+</section>
+</div>
+<!-- Inline Micro-interactions Script -->
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const saveBtn = document.getElementById('saveTripBtn');
+      const saveIcon = document.getElementById('saveTripIcon');
+      const saveText = document.getElementById('saveTripText');
+      let isSaved = false;
+
+      if (saveBtn) {
+        saveBtn.addEventListener('click', () => {
+          isSaved = !isSaved;
+          if (isSaved) {
+            saveIcon.textContent = 'bookmark';
+            saveIcon.style.fontVariationSettings = "'FILL' 1";
+            saveText.textContent = 'Plan Saved! / შენახულია';
+            saveBtn.classList.remove('bg-surface-container-lowest', 'text-on-surface');
+            saveBtn.classList.add('bg-secondary-container', 'text-on-secondary-container');
+          } else {
+            saveIcon.textContent = 'bookmark_border';
+            saveIcon.style.fontVariationSettings = "'FILL' 0";
+            saveText.textContent = 'Save Plan / შენახვა';
+            saveBtn.classList.remove('bg-secondary-container', 'text-on-secondary-container');
+            saveBtn.classList.add('bg-surface-container-lowest', 'text-on-surface');
+          }
+        });
+      }
+    });
+  </script>
+</div></main><footer class="w-full bg-surface-container-low mt-space-xl"><div class="max-w-7xl mx-auto px-gutter py-space-xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-xl mb-space-xl"><div><div class="flex items-center gap-space-sm mb-space-md"><span class="font-headline-sm text-headline-sm text-on-surface">TravelVista</span></div><p class="font-body-md text-body-md text-on-surface-variant mb-space-md">Unified flight, hotel, and layover budgeting matrix engineered for high-certainty travel planning.</p><div class="inline-flex items-center gap-space-xs px-space-md py-space-xs bg-surface-container rounded-lg"><span class="material-symbols-outlined text-secondary text-[18px]">translate</span><span class="font-label-sm text-label-sm text-on-surface-variant">Bilingual Support: ქართული / English 24/7</span></div></div><div><h3 class="font-label-md text-label-md text-on-surface uppercase tracking-wider mb-space-md">Explore Destinations</h3><ul class="space-y-space-sm"><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="destinations" href="#">Tbilisi (TBS) to Milan (BGY)</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="destinations" href="#">Kutaisi (KUT) to Berlin (BER)</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="destinations" href="#">Batumi (BUS) to Istanbul (IST)</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="destinations" href="#">European Weekend Getaways</a></li></ul></div><div><h3 class="font-label-md text-label-md text-on-surface uppercase tracking-wider mb-space-md">Guidance &amp; Trust</h3><ul class="space-y-space-sm"><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="faq" href="#">Frequently Asked Questions</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="baggage-guidelines" href="#">Airline Baggage Allowances</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="how-it-works" href="#">Self-Transfer Warning Rules</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="how-it-works" href="#">Transparent Pricing Policy</a></li></ul></div><div><h3 class="font-label-md text-label-md text-on-surface uppercase tracking-wider mb-space-md">Platform Disclaimer</h3><div class="p-space-md bg-surface-container rounded-xl text-on-surface-variant font-body-sm text-body-sm leading-relaxed"><div class="flex items-start gap-space-xs mb-space-xs text-on-surface"><span class="material-symbols-outlined text-secondary text-[18px]">verified_user</span><span class="font-label-sm text-label-sm font-semibold">Independent Comparison</span></div>TravelVista compares trips across official airlines and providers; final booking is completed directly on partner official sites. We never markup fare prices.</div></div></div><div class="pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md text-on-surface-variant font-body-sm text-body-sm"><p>© 2025 TravelVista. All rights reserved / ყველა უფლება დაცულია.</p><div class="flex items-center gap-space-lg"><a class="hover:text-on-surface transition-colors" data-path="about" href="#">Privacy Policy</a><a class="hover:text-on-surface transition-colors" data-path="about" href="#">Terms of Service</a><a class="hover:text-on-surface transition-colors" data-path="how-it-works" href="#">Cookie Preferences</a></div></div></div></footer></body></html>

@@ -19,7 +19,8 @@ public static class DtoMapper
     public static DestinationRefDto ToRef(this Destination d) => new(d.Id, d.Code, d.CityIn(Lang), d.CountryIn(Lang), d.CountryCode);
 
     public static DestinationSummaryDto ToSummary(this Destination d) =>
-        new(d.Id, d.Code, d.CityIn(Lang), d.CountryIn(Lang), d.CountryCode, d.Region, d.Airports.Select(a => a.IataCode).Order().ToList(), d.Popularity);
+        new(d.Id, d.Code, d.CityIn(Lang), d.CountryIn(Lang), d.CountryCode, d.Region, d.Airports.Select(a => a.IataCode).Order().ToList(), d.Popularity,
+            d.DescriptionIn(Lang));
 
     public static DestinationDetailDto ToDetail(this Destination d, IOutboundLinkPolicy linkPolicy) =>
         new(d.Id, d.Code, d.CityIn(Lang), d.CountryIn(Lang), d.CountryCode, d.Region, d.DescriptionIn(Lang), d.Latitude, d.Longitude, d.IsActive,

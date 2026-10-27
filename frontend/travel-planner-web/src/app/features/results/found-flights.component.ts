@@ -27,33 +27,37 @@ const maxStops = (f: FoundFlightDto) => Math.max(f.outbound.stops, f.inbound.sto
         <h2 id="flights-title">{{ 'flights.title' | t: { count: flights().length } }}</h2>
         <p class="muted small">{{ 'flights.lead' | t }}</p>
 
-        <div class="toolbar">
+        <div class="flights-filters">
           <div class="field inline">
-            <label for="flight-sort">{{ 'results.sortBy' | t }}</label>
-            <select id="flight-sort" [ngModel]="sort()" (ngModelChange)="sort.set($event); shown.set(PAGE)">
-              @for (o of sortOptions; track o.value) { <option [value]="o.value">{{ o.label | t }}</option> }
-            </select>
+            <span class="label" id="flight-sort">{{ 'results.sortBy' | t }}</span>
+            <div class="pill-group" role="radiogroup" aria-labelledby="flight-sort">
+              @for (o of sortOptions; track o.value) {
+                <button type="button" role="radio" class="pill-btn" [class.active]="sort() === o.value" [attr.aria-checked]="sort() === o.value"
+                        (click)="sort.set(o.value); shown.set(PAGE)">{{ o.label | t }}</button>
+              }
+            </div>
+          </div>
+          <div class="field inline">
+            <span class="label" id="flight-stops">{{ 'search.maxStops' | t }}</span>
+            <div class="pill-group" role="radiogroup" aria-labelledby="flight-stops">
+              @for (o of stopOptions; track o.value) {
+                <button type="button" role="radio" class="pill-btn" [class.active]="stops() === o.value" [attr.aria-checked]="stops() === o.value"
+                        (click)="stops.set(o.value)">{{ o.label | t: { count: o.value ?? 0 } }}</button>
+              }
+            </div>
+          </div>
+          <div class="field inline">
+            <span class="label" id="flight-type">{{ 'flights.type' | t }}</span>
+            <div class="pill-group" role="radiogroup" aria-labelledby="flight-type">
+              @for (o of typeOptions; track o.value) {
+                <button type="button" role="radio" class="pill-btn" [class.active]="type() === o.value" [attr.aria-checked]="type() === o.value"
+                        (click)="type.set(o.value)">{{ o.label | t }}</button>
+              }
+            </div>
           </div>
           <div class="field inline">
             <label for="flight-max">{{ 'flights.maxPrice' | t }}</label>
             <input id="flight-max" type="number" min="0" [placeholder]="'common.any' | t" (input)="setMaxPrice($any($event.target).value)" />
-          </div>
-          <div class="field inline">
-            <label for="flight-stops">{{ 'search.maxStops' | t }}</label>
-            <select id="flight-stops" [ngModel]="stops()" (ngModelChange)="stops.set($event === '' ? null : +$event)">
-              <option value="">{{ 'common.any' | t }}</option>
-              <option value="0">{{ 'search.directOnly' | t }}</option>
-              <option value="1">{{ 'search.upToStops' | t: { count: 1 } }}</option>
-              <option value="2">{{ 'search.upToStops' | t: { count: 2 } }}</option>
-            </select>
-          </div>
-          <div class="field inline">
-            <label for="flight-type">{{ 'flights.type' | t }}</label>
-            <select id="flight-type" [ngModel]="type()" (ngModelChange)="type.set($event)">
-              <option value="all">{{ 'common.all' | t }}</option>
-              <option value="single">{{ 'flights.typeSingle' | t }}</option>
-              <option value="self">{{ 'flights.typeSelf' | t }}</option>
-            </select>
           </div>
           @if (destinations().length > 1) {
             <div class="field inline">
@@ -101,7 +105,7 @@ const maxStops = (f: FoundFlightDto) => Math.max(f.outbound.stops, f.inbound.sto
                         <app-flight-tickets [tickets]="f.tickets" [selfTransfer]="f.selfTransfer" />
                       </details>
                     } @else {
-                      <app-external-link [href]="f.bookingUrl" [label]="'flights.book' | t" [fallback]="'flights.noLink' | t" />
+                      <app-external-link class="book-link" [href]="f.bookingUrl" [label]="'flights.book' | t" [fallback]="'flights.noLink' | t" />
                     }
                   </td>
                 </tr>
@@ -142,6 +146,18 @@ export class FoundFlightsComponent {
     { value: 'PriceDesc', label: 'flights.sort.PriceDesc' },
     { value: 'Duration', label: 'flights.sort.Duration' },
     { value: 'Departure', label: 'flights.sort.Departure' },
+  ];
+
+  protected readonly stopOptions: { value: number | null; label: TranslationKey }[] = [
+    { value: null, label: 'common.all' },
+    { value: 0, label: 'search.directOnly' },
+    { value: 1, label: 'search.upToStops' },
+    { value: 2, label: 'search.upToStops' },
+  ];
+  protected readonly typeOptions: { value: TicketFilter; label: TranslationKey }[] = [
+    { value: 'all', label: 'common.all' },
+    { value: 'single', label: 'flights.typeSingle' },
+    { value: 'self', label: 'flights.typeSelf' },
   ];
 
   protected readonly destinations = computed(() =>

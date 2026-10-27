@@ -12,122 +12,114 @@ import { destinationPhoto, destinationSrcset } from '../../core/destination-phot
 import { SavedTripsService } from '../../core/local-lists';
 import { IconComponent } from '../../shared/icon.component';
 import { LocalDatePipe, MinutesPipe, MoneyPipe, StopsPipe } from '../../shared/pipes';
-import { FlightRouteComponent } from '../../shared/flight-route.component';
+import { FlightRouteComponent, FlightTimelineComponent } from '../../shared/flight-route.component';
 
 @Component({
   selector: 'app-plan-card',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [LocalDatePipe, RouterLink, MoneyPipe, MinutesPipe, StopsPipe, TranslatePipe, CategoryPipe, BudgetFitBadgeComponent, VerificationBadgeComponent, IconComponent, FlightRouteComponent],
+  imports: [LocalDatePipe, RouterLink, MoneyPipe, MinutesPipe, StopsPipe, TranslatePipe, CategoryPipe, BudgetFitBadgeComponent, VerificationBadgeComponent, IconComponent, FlightRouteComponent, FlightTimelineComponent],
   template: `
     @let p = plan();
-    <article class="card plan-card" [class.plan-over]="p.budgetFit === 'OverBudget'" [class.has-photo]="!!photo()">
-      @if (photo(); as src) { <img class="plan-thumb" [src]="src" [attr.srcset]="srcset()" sizes="(min-width: 760px) 220px, 100vw" alt="" loading="lazy" decoding="async" width="400" height="300" /> }
+    <article class="card plan-card" [class.plan-over]="p.budgetFit === 'OverBudget'" [class.plan-top]="p.rank === 1"
+             [class.plan-self]="!!p.flight?.selfTransfer">
       <div class="plan-card-main">
-      <header class="plan-card-header">
-        <div>
-          <span class="rank" [attr.aria-label]="'card.rank' | t">#{{ p.rank }}</span>
-          <h3>{{ p.destination.city }}<span class="muted">, {{ p.destination.country }}</span></h3>
-          <p class="muted small">
-            {{ p.departureDate | ldate: 'EEE d MMM' }} – {{ p.returnDate | ldate: 'EEE d MMM y' }} · {{ 'unit.nights' | t: { count: p.nights } }}
-            · {{ 'unit.travelers' | t: { count: p.travelers } }}
-          </p>
-        </div>
-        <div class="plan-price">
-          <span class="price">{{ p.totalEstimatedCost | money: p.currency }}</span>
-          <span class="small" [class.text-danger]="p.remainingBudget < 0">
-            @if (p.remainingBudget >= 0) {
-              {{ 'card.left' | t: { amount: (p.remainingBudget | money: p.currency) } }}
-            } @else {
-              {{ 'card.over' | t: { amount: ((-p.remainingBudget) | money: p.currency) } }}
-            }
+        <header class="plan-card-header">
+          <span class="rank" [attr.aria-label]="'card.rank' | t">#{{ p.rank }} @if (p.rank === 1) { · {{ 'card.topPick' | t }} }</span>
+          <h3>{{ p.destination.city }}, {{ p.destination.country }}
+            <span class="plan-dates-inline">({{ p.departureDate | ldate: 'd MMM' }} – {{ p.returnDate | ldate: 'd MMM y' }})</span>
+          </h3>
+          <span class="plan-tags">
+            <span class="meta-chip"><app-icon name="bed" [size]="14" /> {{ 'unit.nights' | t: { count: p.nights } }}</span>
+            <span class="meta-chip"><app-icon name="users" [size]="14" /> {{ 'unit.travelers' | t: { count: p.travelers } }}</span>
+            @if (p.flight?.selfTransfer) { <span class="badge-self">{{ 'flight.selfTransferBadge' | t }}</span> }
           </span>
-          <app-budget-fit-badge [fit]="p.budgetFit" />
-          @if (prices(); as hp) {
-            <span class="small trip-estimate" [title]="'card.tripEstimateHint' | t">
-              {{ 'card.tripEstimate' | t: { amount: (hp.estimatedTripTotal | money: hp.currency) } }}
-            </span>
-          }
-        </div>
-      </header>
+        </header>
 
-      @if (p.isDemo) {
-        <p class="demo-tag">{{ 'card.demo' | t }}</p>
-      }
+        @if (p.isDemo) {
+          <p class="demo-tag">{{ 'card.demo' | t }}</p>
+        }
 
-      <div class="plan-sections">
-        <section>
-          <h4><app-icon name="plane" [size]="16" /> {{ 'card.flight' | t }}</h4>
+        <section class="plan-flight" [attr.aria-label]="'card.flight' | t">
           @if (p.flight; as f) {
-            @if (f.selfTransfer) { <p><span class="badge-self">{{ 'flight.selfTransferBadge' | t }}</span></p> }
-            @if (f.outbound; as o) {
-              <p><app-flight-route [leg]="o" /> · {{ o.departureLocal | ldate: 'd MMM HH:mm' }} · {{ o.durationMinutes | minutes }} · {{ o.stops | stops }}</p>
-            }
+            <div class="plan-flight-head">
+              <span class="block-title"><app-icon name="plane" [size]="16" /> {{ 'card.flight' | t }}</span>
+              <span class="small muted">{{ f.price | money: f.currency }} · {{ f.provider }}
+                @if (f.includedCheckedBags !== undefined) {
+                  · {{ f.includedCheckedBags > 0 ? ('unit.checkedBags' | t: { count: f.includedCheckedBags }) : ('card.noCheckedBag' | t) }}
+                }
+              </span>
+            </div>
+            @if (f.outbound; as o) { <app-flight-timeline [leg]="o" [selfTransfer]="f.selfTransfer" /> }
             @if (f.inbound; as i) {
-              <p><app-flight-route [leg]="i" /> · {{ i.departureLocal | ldate: 'd MMM HH:mm' }} · {{ i.durationMinutes | minutes }} · {{ i.stops | stops }}</p>
+              <p class="plan-return small">
+                <strong>{{ 'plan.return' | t }}:</strong> <app-flight-route [leg]="i" /> · {{ i.departureLocal | ldate: 'd MMM HH:mm' }}
+                · {{ i.durationMinutes | minutes }} · {{ i.stops | stops }}
+              </p>
             }
-            <p class="small">{{ f.price | money: f.currency }} · {{ f.provider }}
-              @if (f.includedCheckedBags !== undefined) {
-                · {{ f.includedCheckedBags > 0 ? ('unit.checkedBags' | t: { count: f.includedCheckedBags }) : ('card.noCheckedBag' | t) }}
-              }
-            </p>
           } @else {
             <p class="muted">{{ 'card.noFlight' | t }}</p>
           }
         </section>
 
-        <section>
-          <h4><app-icon name="bed" [size]="16" /> {{ 'card.stay' | t }}</h4>
-          @if (p.accommodation; as a) {
-            <p>{{ a.name }}</p>
-            @if (a.verification === 'Unavailable') {
-              @if (prices(); as hp) {
-                @if (hp.bookingComNightlyMin !== undefined && hp.bookingComNightlyMin !== null) {
-                  <p class="price-hint"><strong>Booking.com: {{ hp.bookingComNightlyMin | money: hp.currency }} – {{ hp.bookingComNightlyMax | money: hp.currency }}</strong> {{ 'card.perNight' | t }}</p>
+        <div class="plan-tiles">
+          <section class="plan-tile">
+            <app-icon name="bed" [size]="18" class="plan-tile-icon" />
+            <div>
+              <span class="block-title">{{ 'card.stay' | t }}</span>
+              @if (p.accommodation; as a) {
+                @if (a.verification === 'Unavailable') {
+                  @if (prices(); as hp) {
+                    @if (hp.bookingComNightlyMin !== undefined && hp.bookingComNightlyMin !== null) {
+                      <p class="price-hint"><strong>Booking.com: {{ hp.bookingComNightlyMin | money: hp.currency }} – {{ hp.bookingComNightlyMax | money: hp.currency }}</strong> {{ 'card.perNight' | t }}</p>
+                    } @else {
+                      <p class="price-hint"><strong>{{ 'card.fromPerNight' | t: { amount: (hp.lowestNightly | money: hp.currency) } }}</strong></p>
+                    }
+                    <p class="small">{{ 'card.stayEstimate' | t: { amount: (hp.estimatedStayTypical | money: hp.currency), nights: ('unit.nights' | t: { count: hp.nights }) } }}</p>
+                    <p class="small muted">{{ 'card.estimateNote' | t }}</p>
+                  } @else if (pricesLoading()) {
+                    <p class="small muted"><span class="spinner" aria-hidden="true"></span> {{ 'card.pricesLoading' | t }}</p>
+                  } @else {
+                    <p class="small muted">{{ 'card.stayPriceMissing' | t }} @if (a.hasBookingLink) { {{ 'card.searchLinkInDetails' | t }} }</p>
+                  }
                 } @else {
-                  <p class="price-hint"><strong>{{ 'card.fromPerNight' | t: { amount: (hp.lowestNightly | money: hp.currency) } }}</strong></p>
+                  <p>{{ a.name }}</p>
+                  <p class="small">
+                    @if (a.stars) { {{ a.stars }}★ · }
+                    @if (a.reviewScore) { {{ a.reviewScore }}/10 · }
+                    {{ a.price | money: a.currency }}
+                  </p>
                 }
-                <p class="small">{{ 'card.stayEstimate' | t: { amount: (hp.estimatedStayTypical | money: hp.currency), nights: ('unit.nights' | t: { count: hp.nights }) } }}</p>
-                <p class="small muted">{{ 'card.estimateNote' | t }}</p>
-              } @else if (pricesLoading()) {
-                <p class="small muted"><span class="spinner" aria-hidden="true"></span> {{ 'card.pricesLoading' | t }}</p>
               } @else {
-                <p class="small muted">{{ 'card.stayPriceMissing' | t }} @if (a.hasBookingLink) { {{ 'card.searchLinkInDetails' | t }} }</p>
+                <p class="muted">{{ 'card.noStay' | t }}</p>
               }
-            } @else {
-              <p class="small">
-                @if (a.stars) { {{ a.stars }}★ · }
-                @if (a.reviewScore) { {{ a.reviewScore }}/10 · }
-                {{ a.price | money: a.currency }}
-              </p>
-            }
-          } @else {
-            <p class="muted">{{ 'card.noStay' | t }}</p>
-          }
-        </section>
+            </div>
+          </section>
 
-        <section>
-          <h4><app-icon name="train" [size]="16" /> {{ 'card.transfer' | t }}</h4>
-          @if (p.transfer; as tr) {
-            <p>{{ tr.selectedOption ?? ('card.seeOptions' | t) }}</p>
-            <p class="small">
-              @if (tr.durationMinutes) { ~{{ tr.durationMinutes | minutes }} · }
-              @if (tr.estimatedCost !== undefined) {
-                {{ 'card.estEachWay' | t: { amount: (tr.estimatedCost | money: tr.currency) } }}
+          <section class="plan-tile">
+            <app-icon name="train" [size]="18" class="plan-tile-icon" />
+            <div>
+              <span class="block-title">{{ 'card.transfer' | t }}</span>
+              @if (p.transfer; as tr) {
+                <p>{{ tr.selectedOption ?? ('card.seeOptions' | t) }}</p>
+                <p class="small muted">
+                  @if (tr.durationMinutes) { ~{{ tr.durationMinutes | minutes }} · }
+                  @if (tr.estimatedCost !== undefined) {
+                    {{ 'card.estEachWay' | t: { amount: (tr.estimatedCost | money: tr.currency) } }}
+                  } @else {
+                    {{ 'card.costUnavailable' | t }}
+                  }
+                </p>
               } @else {
-                {{ 'card.costUnavailable' | t }}
+                <p class="muted">{{ 'card.noTransfer' | t }}</p>
               }
-            </p>
-          } @else {
-            <p class="muted">{{ 'card.noTransfer' | t }}</p>
-          }
-        </section>
-      </div>
+            </div>
+          </section>
+        </div>
 
-      @if (p.missingCostCategories.length) {
-        <p class="alert alert-warn small">{{ 'card.missingCosts' | t: { list: (p.missingCostCategories | category) } }}</p>
-      }
+        @if (p.missingCostCategories.length) {
+          <p class="alert alert-warn small">{{ 'card.missingCosts' | t: { list: (p.missingCostCategories | category) } }}</p>
+        }
 
-      <footer class="plan-card-footer">
         <div class="sources" [attr.aria-label]="'card.sources' | t">
           @for (s of p.sources; track $index) {
             <span class="source">
@@ -136,16 +128,33 @@ import { FlightRouteComponent } from '../../shared/flight-route.component';
             </span>
           }
         </div>
-        <div class="card-actions">
-        <button type="button" class="btn btn-sm save-toggle" [class.is-saved]="saved()" [attr.aria-pressed]="saved()" (click)="toggleSaved()"
-                [attr.aria-label]="(saved() ? 'plan.saved' : 'plan.save') | t">
-          <app-icon name="heart" [size]="16" /> {{ (saved() ? 'plan.saved' : 'plan.save') | t }}
-        </button>
-        <a class="btn btn-primary" [routerLink]="i18n.path('plans', p.id)">{{ 'card.viewDetails' | t }} <app-icon name="arrowRight" [size]="16" /></a>
-        </div>
-      </footer>
-      <p class="small muted">{{ 'card.score' | t: { score: p.score } }} @if (scoreText()) { ({{ scoreText() }}) }</p>
       </div>
+
+      <aside class="plan-side">
+        <span class="side-label">{{ 'card.total' | t }}</span>
+        <span class="price price-lg">{{ p.totalEstimatedCost | money: p.currency }}</span>
+        <span class="budget-delta" [class.over]="p.remainingBudget < 0">
+          @if (p.remainingBudget >= 0) {
+            {{ 'card.left' | t: { amount: (p.remainingBudget | money: p.currency) } }}
+          } @else {
+            {{ 'card.over' | t: { amount: ((-p.remainingBudget) | money: p.currency) } }}
+          }
+        </span>
+        <app-budget-fit-badge [fit]="p.budgetFit" />
+        @if (prices(); as hp) {
+          <span class="small trip-estimate" [title]="'card.tripEstimateHint' | t">
+            {{ 'card.tripEstimate' | t: { amount: (hp.estimatedTripTotal | money: hp.currency) } }}
+          </span>
+        }
+        <div class="plan-side-actions">
+          <a class="btn btn-dark" [routerLink]="i18n.path('plans', p.id)">{{ 'card.viewDetails' | t }} <app-icon name="arrowRight" [size]="16" /></a>
+          <button type="button" class="btn btn-sm btn-ghost save-toggle" [class.is-saved]="saved()" [attr.aria-pressed]="saved()" (click)="toggleSaved()"
+                  [attr.aria-label]="(saved() ? 'plan.saved' : 'plan.save') | t">
+            <app-icon name="heart" [size]="16" /> {{ (saved() ? 'plan.saved' : 'plan.save') | t }}
+          </button>
+        </div>
+        <p class="small muted plan-score" [title]="scoreText()">{{ 'card.score' | t: { score: p.score } }}</p>
+      </aside>
     </article>
   `,
 })

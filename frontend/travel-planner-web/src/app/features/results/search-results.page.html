@@ -14,14 +14,18 @@
         }
         @else { {{ s.criteria.originAirportIata }} → {{ destinationNames() }} }
       </h1>
-      <p class="muted">
-        {{ s.criteria.earliestDeparture | ldate: 'd MMM' }} – {{ s.criteria.latestReturn | ldate: 'd MMM y' }} ·
-        {{ 'unit.days' | t: { count: s.criteria.durationDays } }} / {{ 'unit.nights' | t: { count: s.criteria.nights } }} ·
-        {{ 'unit.travelers' | t: { count: s.criteria.travelers } }} ·
-        {{ 'results.budget' | t: { amount: (s.criteria.budgetAmount | money: s.criteria.budgetCurrency) } }}
-      </p>
+      <div class="summary-chips">
+        <span class="meta-chip"><app-icon name="plane" [size]="14" /> {{ s.criteria.originAirportIata }}</span>
+        <span class="meta-chip"><app-icon name="calendar" [size]="14" /> {{ s.criteria.earliestDeparture | ldate: 'd MMM' }} – {{ s.criteria.latestReturn | ldate: 'd MMM y' }}</span>
+        <span class="meta-chip"><app-icon name="clock" [size]="14" /> {{ 'unit.days' | t: { count: s.criteria.durationDays } }} / {{ 'unit.nights' | t: { count: s.criteria.nights } }}</span>
+        <span class="meta-chip"><app-icon name="users" [size]="14" /> {{ 'unit.travelers' | t: { count: s.criteria.travelers } }}</span>
+        <span class="meta-chip meta-chip-accent"><app-icon name="wallet" [size]="14" /> {{ 'results.budget' | t: { amount: (s.criteria.budgetAmount | money: s.criteria.budgetCurrency) } }}</span>
+      </div>
     </div>
-    @if (s.dataMode === 'Demo') { <span class="demo-tag">{{ 'common.demoData' | t }}</span> }
+    <div class="summary-actions">
+      @if (s.dataMode === 'Demo') { <span class="demo-tag">{{ 'common.demoData' | t }}</span> }
+      <a class="btn btn-sm" [routerLink]="i18n.path()"><app-icon name="sliders" [size]="16" /> {{ 'results.modify' | t }}</a>
+    </div>
   </section>
 
   @if (!s.isFinished) {
@@ -72,11 +76,14 @@
       }
 
       <div class="toolbar card">
-        <div class="field inline">
-          <label for="sort">{{ 'results.sortBy' | t }}</label>
-          <select id="sort" [ngModel]="sort()" (ngModelChange)="changeSort($event)">
-            @for (o of sortOptions; track o.value) { <option [value]="o.value">{{ o.label | t }}</option> }
-          </select>
+        <div class="field inline sort-pills">
+          <span class="label" id="sort-label">{{ 'results.sortBy' | t }}</span>
+          <div class="pill-group" role="radiogroup" aria-labelledby="sort-label">
+            @for (o of sortOptions; track o.value) {
+              <button type="button" role="radio" class="pill-btn" [class.active]="sort() === o.value" [attr.aria-checked]="sort() === o.value"
+                      (click)="changeSort(o.value)">{{ o.label | t }}</button>
+            }
+          </div>
         </div>
         <div class="field inline">
           <label for="maxTotal">{{ 'results.maxTotal' | t }}</label>

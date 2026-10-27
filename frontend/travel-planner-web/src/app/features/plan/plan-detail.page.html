@@ -13,27 +13,47 @@
     </div>
   </section>
 
-  <section class="card plan-header">
-    <div>
-      <p class="plan-dates"><app-icon name="calendar" [size]="18" />
-        {{ s.departureDate | ldate: 'EEE d MMM' }} – {{ s.returnDate | ldate: 'EEE d MMM y' }} · {{ 'unit.nights' | t: { count: s.nights } }}
-        · {{ 'unit.travelers' | t: { count: s.travelers } }}
-      </p>
-      @if (p.destination.description) { <p>{{ p.destination.description }}</p> }
-      @if (s.isDemo) { <p class="demo-tag">{{ 'plan.demo' | t }}</p> }
+  <section class="plan-intro">
+    <div class="summary-chips">
+      <span class="meta-chip"><app-icon name="calendar" [size]="14" /> {{ s.departureDate | ldate: 'EEE d MMM' }} – {{ s.returnDate | ldate: 'EEE d MMM y' }}</span>
+      <span class="meta-chip"><app-icon name="bed" [size]="14" /> {{ 'unit.nights' | t: { count: s.nights } }}</span>
+      <span class="meta-chip"><app-icon name="users" [size]="14" /> {{ 'unit.travelers' | t: { count: s.travelers } }}</span>
+      @if (s.flight?.selfTransfer) { <span class="badge-self">{{ 'flight.selfTransferBadge' | t }}</span> }
+      @if (s.isDemo) { <span class="demo-tag">{{ 'plan.demo' | t }}</span> }
     </div>
-    <div class="plan-price">
-      <span class="small muted">{{ 'plan.total' | t }}</span>
+    @if (p.destination.description) { <p class="muted">{{ p.destination.description }}</p> }
+  </section>
+
+  <section class="kpi-grid" [attr.aria-label]="'plan.total' | t">
+    <div class="kpi">
+      <span class="side-label">{{ 'plan.total' | t }}</span>
       <span class="price price-lg">{{ s.totalEstimatedCost | money: s.currency }}</span>
-      <span [class.text-danger]="s.remainingBudget < 0">
-        {{ 'plan.budgetLine' | t: { amount: (s.budgetAmount | money: s.currency) } }} ·
-        @if (s.remainingBudget >= 0) {
-          {{ 'plan.remaining' | t: { amount: (s.remainingBudget | money: s.currency) } }}
-        } @else {
-          {{ 'plan.over' | t: { amount: ((-s.remainingBudget) | money: s.currency) } }}
-        }
-      </span>
       <app-budget-fit-badge [fit]="s.budgetFit" />
+    </div>
+    <div class="kpi" [class.kpi-over]="s.remainingBudget < 0">
+      <span class="side-label">{{ 'plan.kpiRemaining' | t }}</span>
+      <span class="price price-lg kpi-delta">
+        {{ s.remainingBudget >= 0 ? '+' : '−' }}{{ (s.remainingBudget >= 0 ? s.remainingBudget : -s.remainingBudget) | money: s.currency }}
+      </span>
+      <span class="small muted">{{ 'plan.budgetLine' | t: { amount: (s.budgetAmount | money: s.currency) } }}</span>
+    </div>
+    <div class="kpi kpi-wide">
+      <div class="kpi-bar-head">
+        <span class="side-label">{{ 'plan.kpiBudgetUsed' | t }}</span>
+        <strong class="tabular">{{ budgetUsedPercent() }}%</strong>
+      </div>
+      <div class="budget-bar" role="img" [attr.aria-label]="'plan.kpiBudgetUsed' | t">
+        @for (b of budgetBar(); track b.category; let i = $index) {
+          <span class="budget-seg" [attr.data-i]="i" [style.width.%]="b.percent" [title]="(b.category | category) + ': ' + (b.amount | money: s.currency)"></span>
+        }
+      </div>
+      <ul class="budget-legend">
+        @for (b of budgetBar(); track b.category; let i = $index) {
+          <li><span class="budget-dot" [attr.data-i]="i"></span>{{ b.category | category }} {{ b.amount | money: s.currency }}</li>
+        }
+      </ul>
+    </div>
+    <div class="kpi kpi-actions">
       <button type="button" class="btn btn-secondary" (click)="refresh()" [disabled]="refreshing()">
         @if (refreshing()) { <span class="spinner" aria-hidden="true"></span> {{ 'plan.refreshing' | t }} } @else { <app-icon name="refresh" [size]="16" /> {{ 'plan.refresh' | t }} }
       </button>
@@ -153,7 +173,7 @@
         @for (leg of [{ label: 'plan.outbound', it: fi.outbound, summary: summary()?.flight?.outbound }, { label: 'plan.return', it: fi.inbound, summary: summary()?.flight?.inbound }]; track leg.label) {
           <div class="leg">
             <h3>{{ $any(leg.label) | t }}: {{ leg.it.departureAirport }} → {{ leg.it.arrivalAirport }}</h3>
-            @if (leg.summary; as s) { @if (s.via.length) { <p class="small"><app-flight-route [leg]="s" /></p> } }
+            @if (leg.summary; as ls) { <div class="leg-timeline"><app-flight-timeline [leg]="ls" [selfTransfer]="!!summary()?.flight?.selfTransfer" /></div> }
             <p class="small muted">
               {{ 'plan.departs' | t: { time: (leg.it.departureLocal | ldate: 'EEE d MMM HH:mm') } }}
               @if (leg.it.arrivalLocal) { · {{ 'plan.arrives' | t: { time: (leg.it.arrivalLocal | ldate: 'EEE d MMM HH:mm') } }} }

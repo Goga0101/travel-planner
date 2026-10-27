@@ -1,0 +1,652 @@
+<!DOCTYPE html>
+
+<html lang="en"><head><meta charset="utf-8"/><meta content="width=device-width, initial-scale=1.0" name="viewport"/><meta content="web_standard" name="shell-type"/><link href="https://fonts.googleapis.com" rel="preconnect"/><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config = { darkMode: "class", theme: { extend: { "colors": { "primary-container": "#131b2e", "secondary-container": "#86f2e4", "primary-fixed": "#dae2fd", "error-container": "#ffdad6", "secondary-fixed-dim": "#6bd8cb", "surface-dim": "#cbdbf5", "on-error": "#ffffff", "inverse-surface": "#213145", "on-secondary-fixed": "#00201d", "on-secondary": "#ffffff", "on-primary-fixed": "#131b2e", "on-error-container": "#93000a", "tertiary-fixed-dim": "#ffb599", "on-tertiary": "#ffffff", "tertiary": "#000000", "secondary": "#006a61", "secondary-fixed": "#89f5e7", "on-primary-container": "#7c839b", "on-surface-variant": "#45464d", "surface-container-high": "#dce9ff", "surface-tint": "#565e74", "on-tertiary-fixed-variant": "#7f2b00", "outline-variant": "#c6c6cd", "surface-bright": "#f8f9ff", "on-tertiary-fixed": "#370e00", "background": "#f8f9ff", "error": "#ba1a1a", "surface-container-highest": "#d3e4fe", "on-tertiary-container": "#e45405", "surface-container-lowest": "#ffffff", "on-primary-fixed-variant": "#3f465c", "primary-fixed-dim": "#bec6e0", "on-background": "#0b1c30", "on-secondary-container": "#006f66", "tertiary-container": "#370e00", "on-secondary-fixed-variant": "#005049", "primary": "#000000", "inverse-on-surface": "#eaf1ff", "tertiary-fixed": "#ffdbce", "surface-container-low": "#eff4ff", "on-surface": "#0b1c30", "surface-variant": "#d3e4fe", "outline": "#76777d", "surface": "#f8f9ff", "on-primary": "#ffffff", "surface-container": "#e5eeff", "inverse-primary": "#bec6e0" }, "borderRadius": { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" }, "spacing": { "gutter-sm": "1rem", "space-xl": "2.5rem", "gutter": "1.5rem", "space-sm": "0.5rem", "space-lg": "1.5rem", "margin-sm": "1rem", "space-xs": "0.25rem", "space-md": "1rem", "margin": "2rem" }, "fontFamily": { "label-sm": ["Inter"], "headline-xl": ["Inter"], "label-md": ["Inter"], "body-sm": ["Inter"], "headline-sm": ["Inter"], "body-md": ["Inter"], "body-lg": ["Inter"], "title-md": ["Inter"], "headline-md": ["Inter"], "headline-lg": ["Inter"], "headline-lg-mobile": ["Inter"], "headline-xl-mobile": ["Inter"], "numeric-table": ["Inter"] }, "fontSize": { "label-sm": ["11px", { "lineHeight": "14px", "letterSpacing": "0.04em", "fontWeight": "600" }], "headline-xl": ["40px", { "lineHeight": "48px", "letterSpacing": "-0.02em", "fontWeight": "700" }], "label-md": ["13px", { "lineHeight": "18px", "letterSpacing": "0.01em", "fontWeight": "600" }], "body-sm": ["12px", { "lineHeight": "16px", "fontWeight": "400" }], "headline-sm": ["20px", { "lineHeight": "28px", "letterSpacing": "-0.005em", "fontWeight": "600" }], "body-md": ["14px", { "lineHeight": "20px", "fontWeight": "400" }], "body-lg": ["16px", { "lineHeight": "24px", "fontWeight": "400" }], "title-md": ["18px", { "lineHeight": "26px", "fontWeight": "600" }], "headline-md": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-lg": ["32px", { "lineHeight": "40px", "letterSpacing": "-0.02em", "fontWeight": "600" }], "headline-lg-mobile": ["24px", { "lineHeight": "32px", "letterSpacing": "-0.01em", "fontWeight": "600" }], "headline-xl-mobile": ["28px", { "lineHeight": "36px", "letterSpacing": "-0.01em", "fontWeight": "700" }], "numeric-table": ["14px", { "lineHeight": "20px", "fontWeight": "500" }] } } } };</script></head><body class="bg-surface font-body-md text-body-md text-on-surface"><header class="fixed top-0 w-full z-50 bg-surface-container-lowest/90 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 max-w-7xl mx-auto px-gutter flex items-center justify-between gap-space-md"><div class="flex items-center gap-space-md"><a class="flex items-center gap-space-sm" data-path="search-and-compare" href="#"><img alt="TravelVista Logo" class="h-8 w-auto object-contain" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDmNRmctRRIMUA2m-m1ZQ9kPfzb-aIxUuyFMGYBL0OqsKhGRo6X89kxAjZlhaRkNoI9JB27ESH3eC-EIy2bdtepj-wD3PnyHjCgnHHq927ox-mXX2JLqSARFgD751sYVSUYaSSEpYA46FtRqMjti0kLPMsRKI_PKdaxGDSAIKzE7NgB4KDmIn2tAuqJeVWaM9EbameQKOcY3_Y8rOwAL9REifCfeQcBSR-XJXKZ3CbJjxNhr3b7ylOK"/><div class="flex flex-col"><span class="font-title-md text-title-md text-on-surface tracking-tight leading-none">TravelVista</span><span class="font-label-sm text-label-sm text-on-surface-variant font-normal leading-none mt-space-xs">Smart Trip Budgeting</span></div></a></div><nav class="hidden lg:flex items-center gap-space-md" data-active-classes="text-on-surface bg-surface-container-low font-label-md px-space-md py-space-xs rounded-full"><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="destinations" href="#">Destinations / მიმართულებები</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="how-it-works" href="#">How it works / როგორ მუშაობს</a><a class="font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-colors" data-path="about" href="#">About / ჩვენ შესახებ</a></nav><div class="flex items-center gap-space-sm"><div class="inline-flex items-center bg-surface-container p-space-xs rounded-full"><button class="font-label-sm text-label-sm px-space-sm py-space-xs rounded-full bg-surface-container-lowest text-on-surface shadow-[0_1px_2px_rgba(0,0,0,0.05)] transition-all" type="button">ქართ</button><button class="font-label-sm text-label-sm px-space-sm py-space-xs rounded-full text-on-surface-variant hover:text-on-surface transition-all" type="button">ENG</button></div><div class="hidden sm:flex items-center px-space-sm py-space-xs bg-surface-container-low text-on-surface rounded-lg font-numeric-table text-numeric-table"><span class="font-label-sm text-label-sm text-on-surface-variant mr-space-xs font-semibold">EUR</span><span class="text-on-surface">€</span></div><a class="hidden md:inline-flex items-center gap-space-xs px-space-md py-space-xs bg-secondary-container text-on-secondary-container rounded-full font-label-md text-label-md hover:bg-secondary-fixed transition-colors" data-path="saved-trips" href="#"><span class="material-symbols-outlined text-[16px]">bookmark</span><span>Saved Trips</span><span class="ml-space-xs px-space-xs py-0.5 rounded-full bg-surface-container-lowest text-on-surface font-label-sm text-label-sm">3</span></a><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-surface"><div class="flex flex-col w-full">
+<!-- HERO SECTION WITH INTEGRATED SEARCH FORM -->
+<section class="relative w-full -mt-20 pt-24 pb-16 lg:pb-24 overflow-hidden">
+<!-- Immersive Travel Background -->
+<div class="absolute inset-0 bg-cover bg-center -z-10 transform scale-105 filter brightness-95" data-alt="Cinematic aerial panoramic view of snow-capped dramatic alpine peaks bathed in morning golden hour sunlight with misty glacial valley, modern alpine road winding gently below, crisp turquoise sky with soft clouds, editorial architectural travel photography with emerald accents and crisp deep slate shadows." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBdwfDh3fjpDaufCPBTktIdXhi_oh9B-wDmcFe64qmyQfZf9pmG0sncAlBIvb0BRAddKbkAkWbU3_xPGonj2eIYVGLhdz_4lAI99TrDQY30zxrghsOe0bgNyaIhDn1dXvD0jGEzqZ8nLruLqIn_jIk6SzsY0bTSlFdFkiV4p6AS0GPUteLMYdH4u8tw57AdDqP53C87-y7fkFUfW5rQZ9I9dLC9DipEQscrYXtUP6iMgBAWxzkgZcGB')">
+</div>
+<!-- Soft scrim gradient for contrast and typography clarity -->
+<div class="absolute inset-0 bg-gradient-to-b from-primary-container/70 via-primary-container/45 to-surface -z-10 backdrop-blur-[2px]"></div>
+<div class="max-w-7xl mx-auto px-gutter relative z-10 pt-8 lg:pt-14">
+<!-- Title & Bilingual Subheadings -->
+<div class="max-w-3xl mb-8 lg:mb-12">
+<div class="inline-flex items-center gap-space-xs px-space-md py-space-xs rounded-full bg-surface-container-lowest/80 backdrop-blur-md shadow-sm mb-space-md">
+<span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+<span class="font-label-sm text-label-sm text-secondary tracking-wide uppercase">Intelligent Trip Budgeting Matrix</span>
+<span class="text-outline-variant">•</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-normal">ხელოვნური ინტელექტით შედარება</span>
+</div>
+<h1 class="font-headline-xl text-headline-xl text-surface-bright tracking-tight drop-shadow-sm mb-space-sm">
+          Explore the world on your terms
+        </h1>
+<p class="font-headline-md text-headline-md text-secondary-fixed font-medium drop-shadow-sm">
+          დაგეგმე მოგზაურობა შენი ბიუჯეტის მიხედვით
+        </p>
+<p class="font-body-md text-body-md text-surface-container-high/90 mt-space-xs max-w-xl">
+          Unified real-time airfare, verified stay bundles, and zero-markup layover routing calibrated to your precise financial ceiling.
+        </p>
+</div>
+<!-- ELEVATED EXPANDABLE SEARCH PANEL -->
+<div class="bg-surface-container-lowest rounded-xl shadow-xl p-space-md lg:p-space-lg transition-all duration-300">
+<!-- Top Toolbar: Mode Switcher & Airport Preset -->
+<div class="flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md pb-space-md">
+<!-- Mode Toggle Pill -->
+<div class="inline-flex p-space-xs rounded-full bg-surface-container-low self-start">
+<button class="px-space-md py-space-xs rounded-full font-label-md text-label-md bg-secondary text-on-secondary shadow-sm transition-all flex items-center gap-space-xs" id="mode-find" type="button">
+<span class="material-symbols-outlined text-[16px]">travel_explore</span>
+<span>Find for me / მომიძებნე</span>
+</button>
+<button class="px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-space-xs" id="mode-choose" type="button">
+<span class="material-symbols-outlined text-[16px]">location_city</span>
+<span>Choose cities / ქალაქების არჩევა</span>
+</button>
+</div>
+<!-- Suggested Departure Badge & Input Context -->
+<div class="flex items-center gap-space-sm bg-surface-container-low px-space-md py-space-xs rounded-lg">
+<span class="material-symbols-outlined text-secondary text-[18px]">near_me</span>
+<div class="flex flex-col sm:flex-row sm:items-center sm:gap-space-xs">
+<span class="font-label-sm text-label-sm text-secondary font-semibold">📍 Suggested from your location:</span>
+<span class="font-label-sm text-label-sm text-on-surface-variant">თქვენი ლოკაციით</span>
+</div>
+<span class="font-numeric-table text-numeric-table font-semibold text-on-surface bg-surface-container-lowest px-space-xs py-0.5 rounded shadow-sm">TBS</span>
+</div>
+</div>
+<!-- Departure Airport Autocomplete Bar -->
+<div class="mb-space-md">
+<div class="relative flex items-center bg-surface-container-low rounded-lg p-space-xs px-space-md focus-within:ring-2 focus-within:ring-secondary/40 transition-all">
+<span class="material-symbols-outlined text-secondary mr-space-sm">flight_takeoff</span>
+<div class="flex-1 flex flex-col">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Departure airport / გამგზავრების აეროპორტი</span>
+<div class="flex items-center gap-space-xs">
+<input class="bg-transparent font-title-md text-title-md text-on-surface focus:outline-none w-full font-semibold" id="departure-input" type="text" value="Tbilisi (TBS), Georgia"/>
+</div>
+</div>
+<div class="hidden sm:flex items-center gap-space-xs bg-surface-container-high/60 px-space-sm py-space-xs rounded text-on-surface font-label-sm text-label-sm">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+              Direct TBS Routes Ready
+            </div>
+</div>
+</div>
+<!-- Continent Filter Chips (Visible for "Find for me") -->
+<div class="mb-space-md" id="continent-group">
+<div class="flex items-center justify-between mb-space-xs">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Select target regions / აირჩიეთ კონტინენტები</span>
+<span class="font-label-sm text-label-sm text-secondary font-medium">Multi-select enabled</span>
+</div>
+<div class="flex flex-wrap items-center gap-space-xs">
+<button class="continent-chip active px-space-md py-space-xs rounded-full font-label-sm text-label-sm bg-primary text-on-primary shadow-sm transition-all flex items-center gap-space-xs" type="button">
+<span class="material-symbols-outlined text-[14px]">check</span>
+<span>Europe / ევროპა</span>
+</button>
+<button class="continent-chip px-space-md py-space-xs rounded-full font-label-sm text-label-sm bg-surface-container-low text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-space-xs" type="button">
+<span>Asia / აზია</span>
+</button>
+<button class="continent-chip px-space-md py-space-xs rounded-full font-label-sm text-label-sm bg-surface-container-low text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-space-xs" type="button">
+<span>Africa / აფრიკა</span>
+</button>
+<button class="continent-chip px-space-md py-space-xs rounded-full font-label-sm text-label-sm bg-surface-container-low text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-space-xs" type="button">
+<span>North America / ჩრდ. ამერიკა</span>
+</button>
+<button class="continent-chip px-space-md py-space-xs rounded-full font-label-sm text-label-sm bg-surface-container-low text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-space-xs" type="button">
+<span>South America / სამხრ. ამერიკა</span>
+</button>
+<button class="continent-chip px-space-md py-space-xs rounded-full font-label-sm text-label-sm bg-surface-container-low text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-space-xs" type="button">
+<span>Australia &amp; Oceania / ავსტრალია</span>
+</button>
+</div>
+</div>
+<!-- Dynamic Date, Length, Passenger, and Budget Matrix Input Row -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-space-sm mb-space-md">
+<!-- Earliest Departure -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-secondary">calendar_today</span>
+              Earliest departure / ადრეული
+            </span>
+<input class="mt-space-xs bg-transparent font-title-md text-title-md font-semibold text-on-surface focus:outline-none cursor-pointer" type="text" value="01 Dec 2026"/>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Flexible +/- 2 days</span>
+</div>
+<!-- Latest Return -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-secondary">event</span>
+              Latest return / გვიანი დაბრუნება
+            </span>
+<input class="mt-space-xs bg-transparent font-title-md text-title-md font-semibold text-on-surface focus:outline-none cursor-pointer" type="text" value="20 Dec 2026"/>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Window: 19 days total</span>
+</div>
+<!-- Trip Length -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-secondary">timer</span>
+              Trip length / ხანგრძლივობა
+            </span>
+<div class="flex items-center justify-between mt-space-xs">
+<span class="font-title-md text-title-md font-semibold text-on-surface">6 days / 5 nights</span>
+<span class="material-symbols-outlined text-outline-variant text-[18px]">unfold_more</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Mid-range optimal</span>
+</div>
+<!-- Travellers -->
+<div class="bg-surface-container-low p-space-sm rounded-lg flex flex-col justify-between">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-secondary">group</span>
+              Travellers / მგზავრები
+            </span>
+<div class="flex items-center justify-between mt-space-xs">
+<span class="font-title-md text-title-md font-semibold text-on-surface">1 adult traveller</span>
+<span class="material-symbols-outlined text-outline-variant text-[18px]">person</span>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Solo budget profile</span>
+</div>
+<!-- Total Budget -->
+<div class="bg-surface-container p-space-sm rounded-lg flex flex-col justify-between shadow-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[16px] text-secondary">payments</span>
+              Total max budget / ბიუჯეტი
+            </span>
+<div class="flex items-center gap-space-xs mt-space-xs">
+<span class="font-headline-sm text-headline-sm text-on-surface font-bold">€</span>
+<input class="w-full bg-transparent font-headline-sm text-headline-sm font-bold text-on-surface focus:outline-none" type="number" value="800"/>
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">EUR</span>
+</div>
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-secondary font-medium">Flights + Hotel + Shuttles</span>
+</div>
+</div>
+</div>
+<!-- High-Stakes Route Option: Checkbox callout -->
+<div class="p-space-sm bg-surface-container-low rounded-lg mb-space-md flex items-center justify-between flex-wrap gap-space-sm">
+<label class="flex items-center gap-space-sm cursor-pointer">
+<input checked="" class="w-4 h-4 rounded text-secondary accent-secondary focus:ring-0 cursor-pointer" type="checkbox"/>
+<span class="font-body-md text-body-md text-on-surface font-medium">
+              Also combine separate tickets with a change (often cheaper) / ცალკე ბილეთების კომბინირება გადაჯდომით (ხშირად უფრო იაფია)
+            </span>
+</label>
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary-fixed-variant">info</span>
+<span>Includes luggage transfer check indicators</span>
+</div>
+</div>
+<!-- Collapsible Accordion Trigger for Optional Preferences -->
+<div class="border-t-0">
+<button class="w-full py-space-xs flex items-center justify-between text-on-surface hover:text-secondary transition-colors" id="toggle-accordion" type="button">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[20px] text-secondary">tune</span>
+<span class="font-title-md text-title-md font-semibold">Optional preferences / დამატებითი პარამეტრები</span>
+<span class="font-label-sm text-label-sm px-space-xs py-0.5 rounded-full bg-surface-container text-on-surface-variant ml-space-xs">4 filters</span>
+</div>
+<span class="material-symbols-outlined transform transition-transform duration-300" id="accordion-icon">expand_more</span>
+</button>
+<!-- Accordion Panel (Collapsed / Expandable) -->
+<div class="hidden pt-space-md space-y-space-md" id="accordion-content">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md p-space-md bg-surface-container-low rounded-xl">
+<!-- Max Stops -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">MAX STOPS / გადაჯდომები</label>
+<select class="w-full bg-surface-container-lowest font-body-md text-body-md text-on-surface p-space-sm rounded-lg shadow-sm focus:outline-none">
+<option selected="">Up to 1 stop (Balanced speed)</option>
+<option>Direct flights only (Zero stops)</option>
+<option>Any number of stops (Max savings)</option>
+</select>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Recommended for long haul</span>
+</div>
+<!-- Max Flight Duration Slider -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">MAX FLIGHT DURATION</label>
+<span class="font-numeric-table text-numeric-table font-semibold text-secondary" id="flight-hours-display">Max 10h</span>
+</div>
+<input class="w-full accent-secondary mt-space-sm cursor-pointer" max="24" min="2" oninput="document.getElementById('flight-hours-display').innerText = 'Max ' + this.value + 'h'" type="range" value="10"/>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Including layover duration</span>
+</div>
+<!-- Baggage Allowance Toggle -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">BAGGAGE / ბარგი</label>
+<div class="grid grid-cols-2 gap-space-xs bg-surface-container p-space-xs rounded-lg">
+<button class="py-space-xs font-label-sm text-label-sm rounded bg-surface-container-lowest text-on-surface shadow-sm font-semibold" type="button">Cabin only</button>
+<button class="py-space-xs font-label-sm text-label-sm rounded text-on-surface-variant hover:text-on-surface" type="button">Checked 20kg</button>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Prevents surprise low-cost airline fees</span>
+</div>
+<!-- Departure Time Preference -->
+<div class="flex flex-col gap-space-xs">
+<label class="font-label-sm text-label-sm text-on-surface-variant font-semibold">DEPARTURE TIME / დრო</label>
+<div class="flex items-center gap-space-xs">
+<button class="flex-1 py-space-xs px-space-xs bg-surface-container-lowest rounded-lg font-label-sm text-label-sm text-on-surface shadow-sm text-center font-medium" type="button">🌅 Morning</button>
+<button class="flex-1 py-space-xs px-space-xs bg-surface-container rounded-lg font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface text-center" type="button">☀️ Day</button>
+<button class="flex-1 py-space-xs px-space-xs bg-surface-container rounded-lg font-label-sm text-label-sm text-on-surface-variant hover:text-on-surface text-center" type="button">🌙 Evening</button>
+</div>
+<span class="font-body-sm text-body-sm text-on-surface-variant">Applies to outbound leg</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Primary Call to Action Button & Meta Indicator -->
+<div class="mt-space-md pt-space-md flex flex-col sm:flex-row items-center justify-between gap-space-md">
+<div class="flex items-center gap-space-sm text-on-surface-variant font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-secondary text-[20px]">verified</span>
+<span>Checking 420+ airlines and 12,000 verified boutique hotels against €800 target budget</span>
+</div>
+<button class="w-full sm:w-auto px-space-xl py-space-md bg-secondary hover:bg-secondary-fixed-dim text-on-secondary rounded-xl font-headline-sm text-headline-sm font-semibold tracking-tight shadow-lg shadow-secondary/20 hover:scale-[1.01] transition-all flex items-center justify-center gap-space-sm" type="button">
+<span class="material-symbols-outlined text-[24px]">search</span>
+<span>Find your trip / იპოვე მოგზაურობა</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- POPULAR DESTINATIONS SECTION -->
+<section class="w-full py-space-xl bg-surface">
+<div class="max-w-7xl mx-auto px-gutter">
+<!-- Section Header -->
+<div class="flex flex-col md:flex-row md:items-end justify-between mb-space-lg">
+<div>
+<div class="inline-flex items-center gap-space-xs text-secondary font-label-sm text-label-sm tracking-wider uppercase mb-space-xs">
+<span class="material-symbols-outlined text-[16px]">stars</span>
+<span>Recommended for TBS Origin</span>
+</div>
+<h2 class="font-headline-lg text-headline-lg text-on-surface">
+            Popular destinations / პოპულარული მიმართულებები
+          </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-space-xs">
+            Curated complete holiday packages including flights, 4-star stays, and local transfers within budget range.
+          </p>
+</div>
+<div class="mt-space-md md:mt-0 flex items-center gap-space-sm">
+<span class="font-label-sm text-label-sm text-on-surface-variant">Currency: EUR (€)</span>
+<a class="inline-flex items-center gap-space-xs font-label-md text-label-md text-secondary hover:underline" href="#">
+<span>View all 48 destinations</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- 4 Curated Destination Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Card 1: Barcelona -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+<div class="relative h-64 w-full overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Stunning architectural aerial view of Barcelona Eixample street grid pattern and Sagrada Familia towering in the soft Mediterranean sunset light, warm terracotta rooftops, high detailed travel photography." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCtekZCq3TyWdU2KRXR9iQEi6Qbhbtf5tpjzykQ6VvkhbUan_KSHi4n6N0sd6TIZ5iAayQHHFcZ3Dr10COGCBQduIWlP_OnJi_PB8XWbA0nw5oV49s1R_lA5XXKtMA6yl8to1Sz0Z-G9TzVzobnZg69g0SqHhL0Mk9yp09EbnxHLkEMEArYjjl0p1F4kNwhJfevdQazdbXW9UPnyjIifeN9WvbbSVNMP78W-xnWr5Du5uUtvVmwchMF')">
+</div>
+<div class="absolute top-space-sm left-space-sm">
+<span class="px-space-sm py-space-xs rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-on-surface font-label-sm text-label-sm shadow-sm flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[14px] text-secondary">flight_takeoff</span>
+<span>Direct Flight (KUT/TBS)</span>
+</span>
+</div>
+<div class="absolute bottom-space-sm right-space-sm">
+<span class="px-space-sm py-space-xs rounded-full bg-primary/80 backdrop-blur-md text-on-primary font-numeric-table text-numeric-table font-semibold">
+                6 Days / 5 Nights
+              </span>
+</div>
+</div>
+<div class="p-space-md flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-baseline justify-between mb-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Barcelona</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Spain / ესპანეთი</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mb-space-md">
+                Gothic Quarter boutique hotel, direct return flight routing, and coastal metro pass bundle.
+              </p>
+<!-- Price Breakdown Matrix Chip -->
+<div class="bg-surface-container-low p-space-sm rounded-lg mb-space-md">
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm mb-1">
+<span>Estimated Total Trip</span>
+<span class="text-secondary font-semibold">Fits your €800 limit</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant">From</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface">€480</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ complete trip</span>
+</div>
+</div>
+</div>
+<button class="w-full py-space-sm px-space-md rounded-lg bg-surface-container hover:bg-secondary hover:text-on-secondary text-on-surface font-label-md text-label-md transition-all flex items-center justify-center gap-space-xs font-semibold" type="button">
+<span>Plan a trip / დაგეგმე</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Card 2: Paris -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+<div class="relative h-64 w-full overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Elegant street view of Paris with Parisian haussmannian apartments, café terrace, distant view of the Eiffel Tower under warm romantic autumn dusk glow, crisp tones, editorial magazine aesthetic." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCJGewUymAs4RXBcjSdBmHgP9pIGC8xj2EFmm5YC-Ydlk5NiAdosqQHczF1Xg1ljcX6p9gpG-dliMAbXPeGiRoDzAUvXqof6NPeOKyTnqAfx3FRZ-tbhEvganl56nGCmllUCLQs_LZdWhFt3NNaJw4aV33I65-YA2Pc0a1QyNu1eMB9j2Gk1IYVXX3x6TraorMMIC0EW8E9mLiN3tzwEr7YaWiPIwEf-8C8EzIGSbtXFIaWM3LU6esQ')">
+</div>
+<div class="absolute top-space-sm left-space-sm">
+<span class="px-space-sm py-space-xs rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-on-surface font-label-sm text-label-sm shadow-sm flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[14px] text-secondary">transfer_within_a_station</span>
+<span>1 Quick Layover</span>
+</span>
+</div>
+<div class="absolute bottom-space-sm right-space-sm">
+<span class="px-space-sm py-space-xs rounded-full bg-primary/80 backdrop-blur-md text-on-primary font-numeric-table text-numeric-table font-semibold">
+                5 Days / 4 Nights
+              </span>
+</div>
+</div>
+<div class="p-space-md flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-baseline justify-between mb-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Paris</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">France / საფრანგეთი</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mb-space-md">
+                Montmartre accommodation, airport RER express pass, and Air France or Georgian Airways pairing.
+              </p>
+<div class="bg-surface-container-low p-space-sm rounded-lg mb-space-md">
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm mb-1">
+<span>Estimated Total Trip</span>
+<span class="text-secondary font-semibold">€220 below target</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant">From</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface">€580</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ complete trip</span>
+</div>
+</div>
+</div>
+<button class="w-full py-space-sm px-space-md rounded-lg bg-surface-container hover:bg-secondary hover:text-on-secondary text-on-surface font-label-md text-label-md transition-all flex items-center justify-center gap-space-xs font-semibold" type="button">
+<span>Plan a trip / დაგეგმე</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Card 3: Tokyo -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+<div class="relative h-64 w-full overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Lively street of Tokyo Shinjuku at twilight with glowing holographic neon signs, pedestrians crossing, crisp modern architecture, reflections on clean asphalt, high production travel imagery." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDp6_lc5DVCQjztbyHJsPeEn9JwGLnklCMYkxeD0F_Jz2KritP0J44EMdVZfPHqoEwuEhwnc4EEjdO1B4gQ-Us_4L2QkyW-onAxw0mw8eC1ZlVoHRnaMQNFd_PfIB-qXxpvNUH19qW62zazBdE9ABumD1F6vlGz0SpliZLvNgn8VRB5RJ_Bm59VFn-XzL7UZ753yuRcorpC7qq42xvF29yXpieE9MRS9XYm5t4OB-0HiaMK4W-yU8QU')">
+</div>
+<div class="absolute top-space-sm left-space-sm">
+<span class="px-space-sm py-space-xs rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-on-surface font-label-sm text-label-sm shadow-sm flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[14px] text-tertiary-fixed-variant">savings</span>
+<span>Best Asian Deal</span>
+</span>
+</div>
+<div class="absolute bottom-space-sm right-space-sm">
+<span class="px-space-sm py-space-xs rounded-full bg-primary/80 backdrop-blur-md text-on-primary font-numeric-table text-numeric-table font-semibold">
+                8 Days / 7 Nights
+              </span>
+</div>
+</div>
+<div class="p-space-md flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-baseline justify-between mb-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Tokyo</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Japan / იაპონია</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mb-space-md">
+                Modern capsule &amp; boutique hotel stay in Shibuya, multi-carrier budget airfare with 1 Doha transfer.
+              </p>
+<div class="bg-surface-container-low p-space-sm rounded-lg mb-space-md">
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm mb-1">
+<span>Estimated Total Trip</span>
+<span class="text-on-surface-variant">Budget stretch</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant">From</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface">€890</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ complete trip</span>
+</div>
+</div>
+</div>
+<button class="w-full py-space-sm px-space-md rounded-lg bg-surface-container hover:bg-secondary hover:text-on-secondary text-on-surface font-label-md text-label-md transition-all flex items-center justify-center gap-space-xs font-semibold" type="button">
+<span>Plan a trip / დაგეგმე</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- Card 4: Sydney -->
+<div class="group bg-surface-container-lowest rounded-xl overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between">
+<div class="relative h-64 w-full overflow-hidden">
+<div class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-500" data-alt="Harbour panorama of Sydney Opera House and Harbour Bridge with deep blue ocean water, sailboats, bright sunny day with natural light and azure sky, vivid colors, modern architectural landscape." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuC8rJI2618JWgQDO40rkbxRpiam4zu-eQ78fpQ1si2qvCJHVHhMDq-pPlYNL8VWGlrvDyYo4YtkRbp6owcY-g8x6kZrBaI5aKhVo5q_yJL-cbMaYeaDxdvjuWRQxz3uUG4rHCUNjYeXhVHOemmVD2n98LhJBXADBZxyzP8bew6W3wV_aRWOZIh38y7V95KjazmV1ReSU0_8-nUixUCIjJrmwe0P4YEs8Tlrwmmnnx9XUsVfkjVW9bql')">
+</div>
+<div class="absolute top-space-sm left-space-sm">
+<span class="px-space-sm py-space-xs rounded-full bg-surface-container-lowest/90 backdrop-blur-md text-on-surface font-label-sm text-label-sm shadow-sm flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-[14px] text-secondary">explore</span>
+<span>Long Haul Journey</span>
+</span>
+</div>
+<div class="absolute bottom-space-sm right-space-sm">
+<span class="px-space-sm py-space-xs rounded-full bg-primary/80 backdrop-blur-md text-on-primary font-numeric-table text-numeric-table font-semibold">
+                10 Days / 9 Nights
+              </span>
+</div>
+</div>
+<div class="p-space-md flex-1 flex flex-col justify-between">
+<div>
+<div class="flex items-baseline justify-between mb-space-xs">
+<h3 class="font-headline-sm text-headline-sm text-on-surface font-bold">Sydney</h3>
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase">Australia / ავსტრალია</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2 mb-space-md">
+                Circular Quay harbour view stay, integrated airport express train pass, multi-stop optimized fares.
+              </p>
+<div class="bg-surface-container-low p-space-sm rounded-lg mb-space-md">
+<div class="flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm mb-1">
+<span>Estimated Total Trip</span>
+<span class="text-on-surface-variant">Multi-leg bundle</span>
+</div>
+<div class="flex items-baseline gap-space-xs">
+<span class="font-label-sm text-label-sm text-on-surface-variant">From</span>
+<span class="font-headline-md text-headline-md font-bold text-on-surface">€1,120</span>
+<span class="font-body-sm text-body-sm text-on-surface-variant">/ complete trip</span>
+</div>
+</div>
+</div>
+<button class="w-full py-space-sm px-space-md rounded-lg bg-surface-container hover:bg-secondary hover:text-on-secondary text-on-surface font-label-md text-label-md transition-all flex items-center justify-center gap-space-xs font-semibold" type="button">
+<span>Plan a trip / დაგეგმე</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- HOW IT WORKS SECTION (4 CLEAR PROCESS CARDS) -->
+<section class="w-full py-space-xl bg-surface-container-low">
+<div class="max-w-7xl mx-auto px-gutter">
+<!-- Section Header -->
+<div class="text-center max-w-2xl mx-auto mb-space-xl">
+<span class="font-label-sm text-label-sm text-secondary uppercase tracking-widest font-semibold">Precision Architecture</span>
+<h2 class="font-headline-lg text-headline-lg text-on-surface mt-space-xs">
+          How it works / როგორ მუშაობს
+        </h2>
+<p class="font-body-lg text-body-lg text-on-surface-variant mt-space-xs">
+          TravelVista eliminates hidden costs by indexing flights, stays, and ground transit together in an honest end-to-end itinerary.
+        </p>
+</div>
+<!-- 4 Process Step Cards Bento -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-md relative">
+<!-- Step 1 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between relative group hover:shadow-md transition-shadow">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<span class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center font-headline-sm text-headline-sm font-bold text-on-surface">
+                01
+              </span>
+<span class="material-symbols-outlined text-secondary text-[28px]">tune</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-space-xs">
+              Set budget &amp; dates
+            </h3>
+<p class="font-label-sm text-label-sm text-secondary font-semibold mb-space-sm">
+              მიუთითე ბიუჯეტი და თარიღები
+            </p>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Input your strict maximum spending cap, your origin city, and flexible calendar window. No guessing individual segment costs.
+            </p>
+</div>
+<!-- Micro-visual indicator -->
+<div class="mt-space-lg pt-space-sm bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Target cap:</span>
+<span class="font-numeric-table text-numeric-table font-bold text-secondary">€800 Max</span>
+</div>
+</div>
+<!-- Step 2 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between relative group hover:shadow-md transition-shadow">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<span class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center font-headline-sm text-headline-sm font-bold text-on-surface">
+                02
+              </span>
+<span class="material-symbols-outlined text-secondary text-[28px]">hub</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-space-xs">
+              Multi-provider AI match
+            </h3>
+<p class="font-label-sm text-label-sm text-secondary font-semibold mb-space-sm">
+              ჭკვიანი შედარება: ფრენა + სასტუმრო
+            </p>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Our matrix searches thousands of flight permutations, handpicked hotels, and airport transfers simultaneously to build real packages.
+            </p>
+</div>
+<!-- Micro-visual indicator -->
+<div class="mt-space-lg pt-space-sm bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Live comparisons:</span>
+<span class="font-numeric-table text-numeric-table font-bold text-on-surface">1,480 combos</span>
+</div>
+</div>
+<!-- Step 3 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between relative group hover:shadow-md transition-shadow">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<span class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center font-headline-sm text-headline-sm font-bold text-on-surface">
+                03
+              </span>
+<span class="material-symbols-outlined text-tertiary-fixed-variant text-[28px]">warning_amber</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-space-xs">
+              Self-transfer warning &amp; savings
+            </h3>
+<p class="font-label-sm text-label-sm text-secondary font-semibold mb-space-sm">
+              გამჭვირვალე გადაჯდომის გაფრთხილება
+            </p>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              We explicitly flag if a cheap flight requires collecting your baggage and re-checking, giving you full control with zero nasty surprises.
+            </p>
+</div>
+<!-- Micro-visual indicator -->
+<div class="mt-space-lg pt-space-sm bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Safety flag:</span>
+<span class="font-label-sm text-label-sm font-semibold text-tertiary-fixed-variant">Luggage Re-check</span>
+</div>
+</div>
+<!-- Step 4 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl shadow-sm flex flex-col justify-between relative group hover:shadow-md transition-shadow">
+<div>
+<div class="flex items-center justify-between mb-space-md">
+<span class="w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center font-headline-sm text-headline-sm font-bold text-on-surface">
+                04
+              </span>
+<span class="material-symbols-outlined text-secondary text-[28px]">verified_user</span>
+</div>
+<h3 class="font-title-md text-title-md text-on-surface mb-space-xs">
+              Direct booking, 0% markup
+            </h3>
+<p class="font-label-sm text-label-sm text-secondary font-semibold mb-space-sm">
+              ოფიციალურ საიტებზე დაჯავშნა
+            </p>
+<p class="font-body-md text-body-md text-on-surface-variant">
+              Lock in your deal directly on the airline or verified accommodation website. We do not charge booking fees or middleman commissions.
+            </p>
+</div>
+<!-- Micro-visual indicator -->
+<div class="mt-space-lg pt-space-sm bg-surface-container-low rounded-lg p-space-sm flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-on-surface-variant">Agency fee:</span>
+<span class="font-numeric-table text-numeric-table font-bold text-secondary">€0.00 (Free)</span>
+</div>
+</div>
+</div>
+<!-- Trust Metrics Inline Banner -->
+<div class="mt-space-xl p-space-lg bg-surface-container-lowest rounded-xl shadow-sm flex flex-col lg:flex-row items-center justify-between gap-space-lg">
+<div class="flex items-center gap-space-md">
+<div class="w-12 h-12 rounded-full bg-secondary-container flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-[24px]">travel_explore</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-on-surface">Built for Georgian and Global Travellers</h4>
+<p class="font-body-md text-body-md text-on-surface-variant">Real-time schedule monitoring from TBS (Tbilisi), KUT (Kutaisi), and BUS (Batumi).</p>
+</div>
+</div>
+<div class="flex items-center gap-space-xl text-center">
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">100%</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Transparent Pricing</div>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-on-surface font-bold">35+</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Airlines Tracked</div>
+</div>
+<div>
+<div class="font-headline-sm text-headline-sm text-secondary font-bold">€0</div>
+<div class="font-label-sm text-label-sm text-on-surface-variant">Platform Markup</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- INTERACTIVE CLIENT MICRO-INTERACTIONS SCRIPT -->
+<script>
+    // Accordion Toggle
+    const accordionBtn = document.getElementById('toggle-accordion');
+    const accordionContent = document.getElementById('accordion-content');
+    const accordionIcon = document.getElementById('accordion-icon');
+
+    if (accordionBtn && accordionContent) {
+      accordionBtn.addEventListener('click', () => {
+        const isHidden = accordionContent.classList.contains('hidden');
+        if (isHidden) {
+          accordionContent.classList.remove('hidden');
+          accordionIcon.style.transform = 'rotate(180deg)';
+        } else {
+          accordionContent.classList.add('hidden');
+          accordionIcon.style.transform = 'rotate(0deg)';
+        }
+      });
+    }
+
+    // Mode Toggle (Find for me vs Choose cities)
+    const modeFind = document.getElementById('mode-find');
+    const modeChoose = document.getElementById('mode-choose');
+    const continentGroup = document.getElementById('continent-group');
+
+    if (modeFind && modeChoose) {
+      modeFind.addEventListener('click', () => {
+        modeFind.className = 'px-space-md py-space-xs rounded-full font-label-md text-label-md bg-secondary text-on-secondary shadow-sm transition-all flex items-center gap-space-xs';
+        modeChoose.className = 'px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-space-xs';
+        if (continentGroup) continentGroup.style.display = 'block';
+      });
+
+      modeChoose.addEventListener('click', () => {
+        modeChoose.className = 'px-space-md py-space-xs rounded-full font-label-md text-label-md bg-secondary text-on-secondary shadow-sm transition-all flex items-center gap-space-xs';
+        modeFind.className = 'px-space-md py-space-xs rounded-full font-label-md text-label-md text-on-surface-variant hover:text-on-surface transition-all flex items-center gap-space-xs';
+        if (continentGroup) continentGroup.style.display = 'none';
+      });
+    }
+
+    // Continent Chips multi-selection
+    const continentChips = document.querySelectorAll('.continent-chip');
+    continentChips.forEach(chip => {
+      chip.addEventListener('click', () => {
+        const isActive = chip.classList.contains('bg-primary');
+        if (isActive) {
+          chip.classList.remove('bg-primary', 'text-on-primary');
+          chip.classList.add('bg-surface-container-low', 'text-on-surface-variant');
+          const checkIcon = chip.querySelector('.material-symbols-outlined');
+          if (checkIcon) checkIcon.remove();
+        } else {
+          chip.classList.remove('bg-surface-container-low', 'text-on-surface-variant');
+          chip.classList.add('bg-primary', 'text-on-primary');
+          const iconSpan = document.createElement('span');
+          iconSpan.className = 'material-symbols-outlined text-[14px]';
+          iconSpan.innerText = 'check';
+          chip.prepend(iconSpan);
+        }
+      });
+    });
+  </script>
+</div></main><footer class="w-full bg-surface-container-low mt-space-xl"><div class="max-w-7xl mx-auto px-gutter py-space-xl"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-space-xl mb-space-xl"><div><div class="flex items-center gap-space-sm mb-space-md"><span class="font-headline-sm text-headline-sm text-on-surface">TravelVista</span></div><p class="font-body-md text-body-md text-on-surface-variant mb-space-md">Unified flight, hotel, and layover budgeting matrix engineered for high-certainty travel planning.</p><div class="inline-flex items-center gap-space-xs px-space-md py-space-xs bg-surface-container rounded-lg"><span class="material-symbols-outlined text-secondary text-[18px]">translate</span><span class="font-label-sm text-label-sm text-on-surface-variant">Bilingual Support: ქართული / English 24/7</span></div></div><div><h3 class="font-label-md text-label-md text-on-surface uppercase tracking-wider mb-space-md">Explore Destinations</h3><ul class="space-y-space-sm"><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="destinations" href="#">Tbilisi (TBS) to Milan (BGY)</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="destinations" href="#">Kutaisi (KUT) to Berlin (BER)</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="destinations" href="#">Batumi (BUS) to Istanbul (IST)</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="destinations" href="#">European Weekend Getaways</a></li></ul></div><div><h3 class="font-label-md text-label-md text-on-surface uppercase tracking-wider mb-space-md">Guidance &amp; Trust</h3><ul class="space-y-space-sm"><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="faq" href="#">Frequently Asked Questions</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="baggage-guidelines" href="#">Airline Baggage Allowances</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="how-it-works" href="#">Self-Transfer Warning Rules</a></li><li class="font-body-md text-body-md text-on-surface-variant hover:text-on-surface transition-colors"><a data-path="how-it-works" href="#">Transparent Pricing Policy</a></li></ul></div><div><h3 class="font-label-md text-label-md text-on-surface uppercase tracking-wider mb-space-md">Platform Disclaimer</h3><div class="p-space-md bg-surface-container rounded-xl text-on-surface-variant font-body-sm text-body-sm leading-relaxed"><div class="flex items-start gap-space-xs mb-space-xs text-on-surface"><span class="material-symbols-outlined text-secondary text-[18px]">verified_user</span><span class="font-label-sm text-label-sm font-semibold">Independent Comparison</span></div>TravelVista compares trips across official airlines and providers; final booking is completed directly on partner official sites. We never markup fare prices.</div></div></div><div class="pt-space-lg flex flex-col md:flex-row items-center justify-between gap-space-md text-on-surface-variant font-body-sm text-body-sm"><p>© 2025 TravelVista. All rights reserved / ყველა უფლება დაცულია.</p><div class="flex items-center gap-space-lg"><a class="hover:text-on-surface transition-colors" data-path="about" href="#">Privacy Policy</a><a class="hover:text-on-surface transition-colors" data-path="about" href="#">Terms of Service</a><a class="hover:text-on-surface transition-colors" data-path="how-it-works" href="#">Cookie Preferences</a></div></div></div></footer></body></html>

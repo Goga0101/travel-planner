@@ -12,7 +12,7 @@ public sealed record PlaceDto(string CityCode, string City, string Country, stri
     IReadOnlyList<string> AirportCodes, Guid? DestinationId);
 
 public sealed record DestinationSummaryDto(Guid Id, string Code, string City, string Country, string CountryCode, string Region,
-    IReadOnlyList<string> AirportCodes, int Popularity);
+    IReadOnlyList<string> AirportCodes, int Popularity, string? Description = null);
 
 public sealed record TransportLinkDto(Guid Id, TransportLinkKind Kind, string Name, string? Url, string? Phone, string? Notes,
     bool IsVerified, DateOnly? VerifiedOn);

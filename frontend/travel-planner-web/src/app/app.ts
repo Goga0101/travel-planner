@@ -21,7 +21,7 @@ import { TranslatePipe } from './core/i18n/translate.pipe';
         <strong>{{ 'app.demoBannerStrong' | t }}</strong> – {{ 'app.demoBannerText' | t }}
       </div>
     }
-    <header class="topbar" [class.topbar-overlay]="isHome()">
+    <header class="topbar">
       <div class="topbar-inner container">
         <a [routerLink]="i18n.path()" class="brand" [attr.aria-label]="'app.brand' | t">
           <svg class="brand-mark" viewBox="0 0 40 28" width="40" height="28" aria-hidden="true">
@@ -69,8 +69,7 @@ import { TranslatePipe } from './core/i18n/translate.pipe';
       <div class="container footer-grid">
         <div>
           <p class="footer-brand">{{ 'app.brand' | t }}</p>
-          <p class="small">{{ 'app.tagline' | t }}</p>
-          <p class="small">{{ 'app.footerNote' | t }}</p>
+          <p class="small">{{ 'footer.about' | t }}</p>
         </div>
         <nav [attr.aria-label]="'footer.explore' | t">
           <p class="footer-head">{{ 'footer.explore' | t }}</p>
@@ -102,12 +101,23 @@ import { TranslatePipe } from './core/i18n/translate.pipe';
             </ul>
           </details>
         </div>
+        <div class="footer-note">
+          <strong><app-icon name="check" [size]="16" /> {{ 'footer.disclaimerTitle' | t }}</strong>
+          <span>{{ 'app.footerNote' | t }}</span>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <span>© {{ year }} {{ 'app.brand' | t }}</span>
+        @if (config.config(); as c) {
+          <span>{{ 'app.dataLabel' | t: { mode: ((c.dataMode === 'Demo' ? 'app.dataDemo' : 'app.dataLive') | t) } }}</span>
+        }
       </div>
     </footer>
   `,
 })
 export class App {
   protected readonly config = inject(ClientConfigService);
+  protected readonly year = new Date().getFullYear();
   protected readonly i18n = inject(I18nService);
   protected readonly saved = inject(SavedTripsService);
   private readonly router = inject(Router);

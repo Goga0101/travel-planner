@@ -29,7 +29,7 @@ import { SavedTripsService } from '../../core/local-lists';
 import { AttractionsComponent } from './attractions.component';
 import { NearbyComponent } from './nearby.component';
 import { WeatherComponent } from './weather.component';
-import { FlightRouteComponent, FlightTicketsComponent } from '../../shared/flight-route.component';
+import { FlightTicketsComponent, FlightTimelineComponent } from '../../shared/flight-route.component';
 import { DistancePipe, LocalDatePipe, LocalNumberPipe, MoneyPipe, StopsPipe, TimeSpanPipe } from '../../shared/pipes';
 
 /** Builds the Google Maps Embed directions URL from numbers only; returns null for invalid input. */
@@ -65,8 +65,8 @@ export function buildEmbedUrl(key: string, fromLat: number, fromLng: number, toL
     NearbyComponent,
     AttractionsComponent,
     WeatherComponent,
-    FlightRouteComponent,
     FlightTicketsComponent,
+    FlightTimelineComponent,
   ],
   templateUrl: './plan-detail.page.html',
 })
@@ -94,6 +94,17 @@ export class PlanDetailPage {
   });
 
   protected readonly summary = computed(() => this.plan()?.summary ?? null);
+  /** Share of the budget spent, per cost category (capped at 100% overall). */
+  protected readonly budgetBar = computed(() => {
+    const p = this.plan();
+    if (!p || p.summary.budgetAmount <= 0) return [];
+    const scale = Math.max(p.summary.budgetAmount, p.summary.totalEstimatedCost);
+    return p.costBreakdown.filter((c) => c.amount > 0).map((c) => ({ ...c, percent: (c.amount / scale) * 100 }));
+  });
+  protected readonly budgetUsedPercent = computed(() => {
+    const s = this.plan()?.summary;
+    return s && s.budgetAmount > 0 ? Math.round((s.totalEstimatedCost / s.budgetAmount) * 1000) / 10 : 0;
+  });
   protected readonly flight = computed(() => this.item('Flight'));
   protected readonly flightInfo = computed(() => (this.flight() ? flightDetails(this.flight()!) : null));
   protected readonly accommodation = computed(() => this.item('Accommodation'));

@@ -496,6 +496,20 @@ export const en = {
   'flights.overBudget': 'over budget',
   'flights.showMore': 'Show more ({count})',
   'flights.none': 'No flights match the filters.',
+  'footer.about': 'Complete trips (flights, stays and airport transfers) compared against your budget, with every price source labelled.',
+  'footer.disclaimerTitle': 'Independent comparison',
+  'search.originNearestShort': 'Suggested from your location',
+  'search.budgetHint': 'Flights + stay + transfers',
+  'search.footerAuto': 'We compare complete trips from your airport against your budget, every departure day of the window.',
+  'search.footerManual': 'We compare complete trips to the cities you picked, every departure day of the window.',
+  'home.popularLead': 'Hand-picked cities with official airport and transport information. Pick one to plan a trip.',
+  'home.planTrip': 'Plan a trip',
+  'card.topPick': 'Best value',
+  'plan.kpiRemaining': 'Budget left',
+  'plan.kpiBudgetUsed': 'Budget used (known costs)',
+  'card.total': 'Estimated total',
+  'results.modify': 'Modify search',
+  'home.howLead': 'Flights, stays and airport transfers in one honest total, with every price source labelled.',
 } satisfies Record<string, string>;
 
 export type TranslationKey = keyof typeof en;
