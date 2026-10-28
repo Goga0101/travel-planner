@@ -366,11 +366,10 @@ function savePreferences(p: Preferences): void {
                 @if (!h.walk && h.walkMinutes <= 35) { <span class="small muted">· {{ 'days.hopOrWalk' | t: { minutes: h.walkMinutes } }}</span> }
               </div>
               <div class="hop-actions">
-                @if (!h.walk) {
-                  <button type="button" class="hop-toggle" [attr.aria-expanded]="isOpen(h.key)" (click)="toggleHop(h)">
-                    <app-icon name="ticket" [size]="14" /> {{ (isOpen(h.key) ? 'days.hopHide' : 'days.hopShow') | t }}
-                  </button>
-                }
+                <!-- Walks too: the visitor may prefer a ride, and the ticket is useful either way. -->
+                <button type="button" class="hop-toggle" [attr.aria-expanded]="isOpen(h.key)" (click)="toggleHop(h)">
+                  <app-icon name="ticket" [size]="14" /> {{ (isOpen(h.key) ? 'days.hopHide' : 'days.hopShow') | t }}
+                </button>
                 <app-external-link [href]="h.directionsUrl" [label]="'days.hopDirections' | t" />
               </div>
               @if (isOpen(h.key)) {

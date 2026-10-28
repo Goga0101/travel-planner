@@ -1,8 +1,11 @@
 namespace TravelPlanner.Application.Providers;
 
-/// <summary>Public-transport journey request; Time is the wished local departure (date and time) at the origin.</summary>
+/// <summary>
+/// Public-transport journey request; Time is the wished local departure (date and time) at the origin. AnyDistance keeps
+/// intercity trains and long journeys (the free-form planner), which airport and in-city routes drop.
+/// </summary>
 public sealed record TransitRouteQuery(double FromLatitude, double FromLongitude, double ToLatitude, double ToLongitude, DateTime LocalDeparture,
-    TimeSpan UtcOffset);
+    TimeSpan UtcOffset, bool AnyDistance = false);
 
 /// <summary>
 /// One step of a journey. Mode is WALK, BUS, COACH, SUBWAY, METRO, TRAM, RAIL, SUBURBAN, REGIONAL_RAIL, FERRY …;

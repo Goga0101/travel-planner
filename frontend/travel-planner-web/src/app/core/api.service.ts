@@ -25,6 +25,10 @@ import {
   TripPlanDetailDto,
   TripPlanSummaryDto,
   TripSearchDto,
+  PlaceSuggestionDto,
+  JourneyDto,
+  LiveVehiclesDto,
+  TaxiOptionsDto,
 } from './models';
 
 const BASE = '/api/v1';
@@ -145,5 +149,37 @@ export class ApiService {
 
   getClientConfig(): Observable<ClientConfigDto> {
     return this.http.get<ClientConfigDto>(`${BASE}/client-config`);
+  }
+
+  findPlaces(text: string, near?: { latitude: number; longitude: number }): Observable<PlaceSuggestionDto[]> {
+    let params = new HttpParams().set('q', text);
+    if (near) params = params.set('lat', near.latitude.toFixed(3)).set('lon', near.longitude.toFixed(3));
+    return this.http.get<PlaceSuggestionDto[]>(`${BASE}/transit/places`, { params });
+  }
+
+  reversePlace(latitude: number, longitude: number): Observable<PlaceSuggestionDto | null> {
+    const params = new HttpParams().set('lat', latitude.toFixed(5)).set('lon', longitude.toFixed(5));
+    return this.http.get<PlaceSuggestionDto | null>(`${BASE}/transit/reverse`, { params });
+  }
+
+  getJourney(from: PlaceSuggestionDto, to: PlaceSuggestionDto, time?: string): Observable<JourneyDto> {
+    let params = new HttpParams()
+      .set('fromLat', from.latitude.toFixed(6)).set('fromLon', from.longitude.toFixed(6)).set('fromName', from.name)
+      .set('toLat', to.latitude.toFixed(6)).set('toLon', to.longitude.toFixed(6)).set('toName', to.name);
+    if (time) params = params.set('time', time);
+    return this.http.get<JourneyDto>(`${BASE}/transit/journey`, { params });
+  }
+
+  getVehicles(minLat: number, minLon: number, maxLat: number, maxLon: number): Observable<LiveVehiclesDto> {
+    const params = new HttpParams()
+      .set('minLat', minLat.toFixed(3)).set('minLon', minLon.toFixed(3)).set('maxLat', maxLat.toFixed(3)).set('maxLon', maxLon.toFixed(3));
+    return this.http.get<LiveVehiclesDto>(`${BASE}/transit/vehicles`, { params });
+  }
+
+  getTaxis(at: PlaceSuggestionDto, to?: PlaceSuggestionDto): Observable<TaxiOptionsDto> {
+    let params = new HttpParams().set('lat', at.latitude.toFixed(5)).set('lon', at.longitude.toFixed(5));
+    if (at.countryCode) params = params.set('country', at.countryCode);
+    if (to) params = params.set('toLat', to.latitude.toFixed(5)).set('toLon', to.longitude.toFixed(5));
+    return this.http.get<TaxiOptionsDto>(`${BASE}/transit/taxis`, { params });
   }
 }

@@ -1,6 +1,6 @@
 import { ChangeDetectionStrategy, Component, computed, effect, inject, untracked } from '@angular/core';
 import { toSignal } from '@angular/core/rxjs-interop';
-import { NavigationEnd, Router, RouterLink, RouterOutlet } from '@angular/router';
+import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { filter, map } from 'rxjs';
 import { PHOTOS } from './core/destination-photos';
 import { SavedTripsService } from './core/local-lists';
@@ -12,7 +12,7 @@ import { TranslatePipe } from './core/i18n/translate.pipe';
 @Component({
   selector: 'app-root',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterOutlet, RouterLink, TranslatePipe, IconComponent],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, TranslatePipe, IconComponent],
   host: { '[class.is-home]': 'isHome()' },
   template: `
     <a class="skip-link" href="#main">{{ 'app.skip' | t }}</a>
@@ -37,6 +37,7 @@ import { TranslatePipe } from './core/i18n/translate.pipe';
         <nav class="main-nav" [attr.aria-label]="'nav.main' | t">
           <a [routerLink]="i18n.path()">{{ 'nav.home' | t }}</a>
           <a [routerLink]="i18n.path()" fragment="destinations">{{ 'nav.destinations' | t }}</a>
+          <a [routerLink]="i18n.path('transit')" routerLinkActive="active" class="nav-live"><span class="live-pulse" aria-hidden="true"></span>{{ 'nav.transit' | t }}</a>
           <a [routerLink]="i18n.path()" fragment="how">{{ 'nav.how' | t }}</a>
           <a [routerLink]="i18n.path()" fragment="about">{{ 'nav.about' | t }}</a>
         </nav>
@@ -75,6 +76,7 @@ import { TranslatePipe } from './core/i18n/translate.pipe';
           <p class="footer-head">{{ 'footer.explore' | t }}</p>
           <ul class="footer-links">
             <li><a [routerLink]="i18n.path()" fragment="destinations">{{ 'nav.destinations' | t }}</a></li>
+            <li><a [routerLink]="i18n.path('transit')">{{ 'nav.transit' | t }}</a></li>
             <li><a [routerLink]="i18n.path()" fragment="how">{{ 'nav.how' | t }}</a></li>
             <li><a [routerLink]="i18n.path()" fragment="about">{{ 'nav.about' | t }}</a></li>
             <li><a [routerLink]="i18n.path('saved')">{{ 'saved.title' | t }}</a></li>

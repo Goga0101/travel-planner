@@ -33,7 +33,7 @@ function fold(line: string): string {
 }
 
 export function buildIcs(events: CalendarEvent[], now = new Date()): string {
-  const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//TravelVista//Trip planner//EN', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH'];
+  const lines = ['BEGIN:VCALENDAR', 'VERSION:2.0', 'PRODID:-//Tripora//Trip planner//EN', 'CALSCALE:GREGORIAN', 'METHOD:PUBLISH'];
   for (const e of events) {
     lines.push('BEGIN:VEVENT', `UID:${e.uid}`, `DTSTAMP:${utcStamp(now)}`, `DTSTART:${localStamp(e.start)}`);
     if (e.end) lines.push(`DTEND:${localStamp(e.end)}`);

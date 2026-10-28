@@ -154,7 +154,8 @@ a:hover { color: var(--primary-dark); }
 .lang-switch { background: var(--bg-warm); border-color: var(--border); }
 
 @media (max-width: 899px) {
-  .main-nav { order: 3; width: 100%; margin: 0 -0.5rem; padding-bottom: 0.5rem; overflow-x: auto; scrollbar-width: none; }
+  // Wraps instead of scrolling sideways: on phones every item stays visible.
+  .main-nav { order: 3; width: 100%; margin: 0 -0.5rem; padding-bottom: 0.5rem; flex-wrap: wrap; row-gap: 0.15rem; }
   .main-nav a { padding: 0.35rem 0.7rem; font-size: 0.88rem; }
 }
 @media (min-width: 900px) {
@@ -970,9 +971,11 @@ a.ext-link.btn:hover { background: var(--primary-dark); border-color: var(--prim
 .plan-sidebar .plan-actions .btn { width: 100%; font-size: 0.82rem; padding-inline: 0.5rem; }
 @media (max-width: 999px) {
   .sidebar-trip { display: none; }
-  .plan-sidebar { position: sticky; top: var(--header-h); z-index: 5; margin: 0 -1rem; padding: 0.4rem 1rem; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); }
-  .tab-nav { display: flex; gap: 0.3rem; overflow-x: auto; scrollbar-width: none; padding: 0.3rem; }
-  .tab-link { grid-template-columns: auto auto; width: auto; flex: 0 0 auto; padding: 0.45rem 0.7rem; }
+  .plan-sidebar { position: static; }
+  // All plan sections stay on screen (a sideways strip hid the route and day tabs on phones).
+  .tab-nav { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 9.5rem), 1fr)); gap: 0.3rem; padding: 0.3rem; }
+  .tab-link { grid-template-columns: auto minmax(0, 1fr); width: 100%; padding: 0.45rem 0.55rem; font-size: 0.85rem; }
+  .tab-label { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 0.85rem; }
   .tab-hint, .tab-step { display: none; }
   .tab-icon { width: 1.8rem; height: 1.8rem; }
   .tab-link.active::before { display: none; }
@@ -1089,6 +1092,7 @@ a.ext-link.btn:hover { background: var(--primary-dark); border-color: var(--prim
 .hop-line { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.4rem; }
 .hop-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.3rem 0.9rem; font-size: 0.85rem; }
 .day-hop.is-walk .hop-body { grid-template-columns: auto auto; justify-content: start; align-items: baseline; column-gap: 0.9rem; }
+.day-hop.is-walk .hop-body > :not(.hop-line):not(.hop-actions) { grid-column: 1 / -1; }
 .hop-toggle {
   display: inline-flex; align-items: center; gap: 0.3rem; padding: 0.25rem 0.7rem; border-radius: 999px; border: 1px solid var(--primary);
   background: var(--surface); color: var(--primary-dark); font: inherit; font-weight: 600; cursor: pointer;
@@ -1233,4 +1237,140 @@ a.ext-link.btn:hover { background: var(--primary-dark); border-color: var(--prim
 @media (max-width: 560px) {
   .finder-hit { grid-template-columns: auto minmax(0, 1fr); }
   .finder-actions { grid-column: 1 / -1; justify-content: flex-start; }
+}
+
+// ---------- Live transport page ----------
+.live-pulse {
+  display: inline-block; width: 0.55rem; height: 0.55rem; border-radius: 50%; background: #ef4444; margin-right: 0.35rem; vertical-align: 0.05em;
+  box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.6); animation: live-pulse 1.8s infinite;
+}
+@keyframes live-pulse { 70% { box-shadow: 0 0 0 7px rgba(239, 68, 68, 0); } 100% { box-shadow: 0 0 0 0 rgba(239, 68, 68, 0); } }
+.main-nav a.nav-live { display: inline-flex; align-items: center; }
+.main-nav a.active { background: var(--primary-soft); color: var(--primary-deep); }
+.transit-head { margin-bottom: 1rem; }
+.transit-head .page-title { margin: 0.2rem 0 0.4rem; }
+.transit-search { display: grid; gap: 0.9rem; position: relative; z-index: 3; }
+.transit-fields { display: grid; grid-template-columns: minmax(0, 1fr) auto minmax(0, 1fr); align-items: end; gap: 0.6rem; }
+.swap-btn {
+  display: inline-flex; align-items: center; justify-content: center; width: 2.75rem; height: 2.75rem; border-radius: 50%;
+  border: 1px solid var(--border-strong); background: var(--surface); color: var(--primary-dark); cursor: pointer;
+}
+.swap-btn:hover { background: var(--primary-soft); }
+.transit-when { display: flex; flex-wrap: wrap; align-items: center; gap: 0.6rem 0.9rem; }
+.transit-time { width: auto; min-width: 13rem; }
+.transit-go { margin-left: auto; }
+@media (max-width: 719px) {
+  .transit-fields { grid-template-columns: 1fr; }
+  .swap-btn { justify-self: end; margin: -0.4rem 0; width: 2.4rem; height: 2.4rem; transform: rotate(90deg); }
+  .transit-go { width: 100%; margin-left: 0; justify-content: center; }
+  .transit-time { width: 100%; }
+}
+.place-input { position: relative; display: grid; gap: 0.35rem; }
+.place-input .label { display: inline-flex; align-items: center; gap: 0.4rem; font-weight: 700; }
+.place-dot { width: 0.75rem; height: 0.75rem; border-radius: 50%; background: var(--primary); box-shadow: 0 0 0 3px var(--primary-soft); }
+.place-dot[data-end='to'] { background: #e11d48; box-shadow: 0 0 0 3px #ffe4e6; }
+.place-box { position: relative; display: flex; align-items: center; gap: 0.4rem; }
+// 16px keeps iOS Safari from zooming into the field.
+.place-box .input { flex: 1; min-width: 0; font-size: 1rem; }
+.place-box > .spinner { position: absolute; right: 0.75rem; }
+.place-box:has(.place-gps) > .spinner { right: 3.4rem; }
+.place-gps {
+  display: inline-flex; align-items: center; gap: 0.35rem; flex: none; height: 2.75rem; padding: 0 0.75rem; border-radius: var(--radius-sm);
+  border: 1px solid var(--primary); background: var(--primary-soft); color: var(--primary-deep); font: inherit; font-weight: 600; font-size: 0.85rem; cursor: pointer;
+}
+@media (max-width: 520px) { .place-gps-text { display: none; } .place-gps { padding: 0 0.7rem; } }
+.place-list {
+  position: absolute; z-index: 30; top: 100%; left: 0; right: 0; margin: 0.25rem 0 0; padding: 0.3rem; list-style: none;
+  max-height: min(22rem, 55vh); overflow-y: auto; background: var(--surface); border: 1px solid var(--border-strong); border-radius: var(--radius-md); box-shadow: var(--shadow-lg);
+}
+.place-list li { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.6rem; align-items: center; padding: 0.55rem 0.6rem; border-radius: var(--radius-xs); cursor: pointer; }
+.place-list li.active, .place-list li:hover { background: var(--primary-soft); }
+.place-kind { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border-radius: 50%; background: var(--bg-warm); color: var(--muted); }
+.place-kind[data-kind='stop'] { background: #dcfce7; color: #15803d; }
+.place-kind[data-kind='city'] { background: #e0e7ff; color: #4338ca; }
+.place-text { display: grid; min-width: 0; }
+.place-text strong, .place-text span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.place-empty { margin: 0.2rem 0 0; }
+
+.transit-sections {
+  position: sticky; top: var(--header-h); z-index: 4; display: flex; flex-wrap: wrap; gap: 0.4rem; margin: 1rem -1rem 0.75rem; padding: 0.5rem 1rem;
+  background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px);
+}
+.section-chip {
+  display: inline-flex; align-items: center; gap: 0.4rem; padding: 0.45rem 0.85rem; border-radius: 999px; border: 1px solid var(--border-strong);
+  background: var(--surface); color: var(--text); font-weight: 600; font-size: 0.9rem; text-decoration: none;
+}
+.section-chip:hover { background: var(--primary-soft); border-color: var(--primary); color: var(--primary-deep); }
+.transit-section { scroll-margin-top: calc(var(--header-h) + 4rem); margin-bottom: var(--gap); }
+.sub-head { font-size: 1rem; margin: 0.4rem 0 0.6rem; }
+.transit-intro { list-style: none; padding: 0; margin: 1.25rem 0 0; display: grid; gap: 0.75rem; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); }
+.transit-intro li { display: flex; gap: 0.8rem; padding: 1rem; border: 1px solid var(--border); border-radius: var(--radius); background: var(--surface); }
+.transit-intro p { margin: 0.2rem 0 0; }
+.intro-icon { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 2.8rem; height: 2.8rem; border-radius: 14px; background: var(--primary-deep); color: #fff; }
+
+.live-map-tools { margin-bottom: 0.6rem; }
+.mode-chip, .mode-dot, .vehicle { --mode: #16a34a; }
+.mode-dot { width: 0.6rem; height: 0.6rem; border-radius: 50%; background: var(--mode); }
+[data-mode='tram'] { --mode: #dc2626; }
+[data-mode='metro'] { --mode: #2563eb; }
+[data-mode='rail'] { --mode: #7c3aed; }
+[data-mode='ferry'] { --mode: #0891b2; }
+.live-map-wrap { position: relative; border-radius: var(--radius-md); overflow: hidden; border: 1px solid var(--border); isolation: isolate; }
+.live-map { height: min(68vh, 560px); min-height: 340px; background: #e5e7eb; }
+.live-status {
+  position: absolute; z-index: 500; left: 50%; top: 0.6rem; transform: translateX(-50%); display: inline-flex; align-items: center; gap: 0.3rem;
+  width: max-content; max-width: calc(100% - 6rem); padding: 0.35rem 0.8rem; border-radius: 999px; background: rgba(15, 23, 42, 0.85); color: #fff; font-size: 0.82rem; font-weight: 600; text-align: center;
+}
+.live-recenter {
+  position: absolute; z-index: 500; right: 0.6rem; bottom: 1.6rem; display: inline-flex; align-items: center; justify-content: center;
+  width: 2.6rem; height: 2.6rem; border-radius: 50%; border: 0; background: var(--surface); color: var(--primary-deep); box-shadow: var(--shadow-lg); cursor: pointer;
+}
+.live-legend { list-style: none; display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; padding: 0; margin: 0.6rem 0 0; color: var(--muted); }
+.live-legend li { display: inline-flex; align-items: center; gap: 0.4rem; }
+.legend-vehicle { width: 1.2rem; height: 0.8rem; border-radius: 4px; border: 2px dashed #16a34a; background: #fff; }
+.legend-vehicle.is-live { border-style: solid; background: #16a34a; }
+.legend-end, .end-marker span { display: inline-block; width: 0.9rem; height: 0.9rem; border-radius: 50%; border: 3px solid #fff; background: var(--primary); box-shadow: 0 0 0 2px var(--primary); }
+.legend-end[data-end='to'], .end-marker span[data-end='to'] { background: #e11d48; box-shadow: 0 0 0 2px #e11d48; }
+.end-marker span { width: 26px; height: 26px; box-sizing: border-box; }
+.vehicle-marker { background: none; border: 0; }
+.vehicle {
+  display: inline-flex; align-items: center; justify-content: center; min-width: 30px; height: 20px; padding: 0 3px; box-sizing: border-box;
+  border-radius: 6px; border: 2px dashed var(--line, var(--mode)); background: #fff; color: var(--line, var(--mode));
+  font: 700 10px/1 var(--font); white-space: nowrap; box-shadow: 0 1px 3px rgba(15, 23, 42, 0.3);
+}
+.vehicle.is-live { border-style: solid; background: var(--line, var(--mode)); color: #fff; }
+.is-far .vehicle { min-width: 10px; width: 10px; height: 10px; padding: 0; border-width: 2px; border-radius: 50%; font-size: 0; margin: 5px 10px; }
+.is-far .vehicle.is-mine { width: 14px; height: 14px; margin: 3px 8px; font-size: 0; }
+.vehicle.is-mine { transform: scale(1.3); box-shadow: 0 0 0 3px #facc15, 0 2px 6px rgba(15, 23, 42, 0.4); }
+// Glide between the once-a-second positions instead of jumping.
+.leaflet-marker-icon.vehicle-marker { transition: transform 1s linear; }
+.leaflet-zoom-anim .leaflet-marker-icon.vehicle-marker { transition: none; }
+
+.taxi-apps { list-style: none; padding: 0; margin: 0 0 0.5rem; display: grid; gap: 0.6rem; grid-template-columns: repeat(auto-fill, minmax(min(100%, 230px), 1fr)); }
+.taxi-app { display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 0.4rem 0.7rem; padding: 0.75rem 0.85rem; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); }
+.taxi-logo { display: inline-flex; align-items: center; justify-content: center; width: 2.4rem; height: 2.4rem; border-radius: 12px; background: var(--navy); color: #fff; font-weight: 800; }
+.taxi-app-links { grid-column: 1 / -1; display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.9rem; font-size: 0.88rem; }
+.taxi-local { list-style: none; padding: 0; margin: 0 0 0.8rem; display: grid; gap: 0.5rem; }
+.taxi-local li { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; align-items: center; gap: 0.7rem; padding: 0.6rem 0.75rem; border: 1px solid var(--border); border-radius: var(--radius-sm); }
+.taxi-icon { display: inline-flex; align-items: center; justify-content: center; width: 2.1rem; height: 2.1rem; border-radius: 50%; background: #fef9c3; color: #a16207; }
+.taxi-text { display: grid; min-width: 0; overflow-wrap: anywhere; }
+.taxi-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; align-items: center; gap: 0.3rem 0.8rem; font-size: 0.85rem; }
+@media (max-width: 560px) {
+  .taxi-local li { grid-template-columns: auto minmax(0, 1fr); }
+  .taxi-actions { grid-column: 1 / -1; justify-content: flex-start; }
+}
+
+// iPhone notch and home bar when opened from the home screen.
+@supports (padding: max(0px)) {
+  .topbar-inner { padding-left: max(1rem, env(safe-area-inset-left)); padding-right: max(1rem, env(safe-area-inset-right)); }
+  .footer { padding-bottom: max(1.5rem, env(safe-area-inset-bottom)); }
+}
+
+// On phones the wrapped header is tall: let it scroll away instead of covering a third of the screen.
+@media (max-width: 899px) {
+  .topbar { position: relative; }
+  .transit-sections { top: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.35rem; }
+  .section-chip { justify-content: center; padding: 0.45rem 0.4rem; font-size: 0.8rem; min-width: 0; white-space: nowrap; }
+  .section-label { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+  .transit-section { scroll-margin-top: 4rem; }
 }

@@ -845,3 +845,75 @@ export interface HotelSearchResultDto {
   bookingUrl?: string;
   mapUrl?: string;
 }
+
+// ---------- Live transit (any place → any place) ----------
+
+export type PlaceKind = 'address' | 'stop' | 'city' | 'place';
+
+export interface PlaceSuggestionDto {
+  name: string;
+  area?: string;
+  countryCode?: string;
+  latitude: number;
+  longitude: number;
+  kind: PlaceKind;
+}
+
+export interface JourneyDto {
+  fromName: string;
+  toName: string;
+  /** IANA zone of the origin; journey times are local there. */
+  timeZone?: string;
+  countryCode?: string;
+  distanceMeters: number;
+  direction: RouteDirectionDto;
+  routerName?: string;
+}
+
+/** Stop-to-stop stretch: Unix seconds, next stop, encoded polyline (precision 5). */
+export interface VehicleStretchDto {
+  departure: number;
+  arrival: number;
+  to: string;
+  shape: string;
+}
+
+export interface VehicleDto {
+  id: string;
+  mode: string;
+  line?: string;
+  color?: string;
+  realTime: boolean;
+  stretches: VehicleStretchDto[];
+}
+
+export interface LiveVehiclesDto {
+  serverTime: number;
+  tooLarge: boolean;
+  vehicles: VehicleDto[];
+  source?: string;
+}
+
+export interface TaxiAppDto {
+  name: string;
+  url: string;
+  rideUrl?: string;
+}
+
+export interface LocalTaxiDto {
+  name?: string;
+  operator?: string;
+  phone?: string;
+  website?: string;
+  distanceMeters: number;
+  mapUrl: string;
+  isCompany: boolean;
+}
+
+export interface TaxiOptionsDto {
+  countryCode?: string;
+  apps: TaxiAppDto[];
+  local: LocalTaxiDto[];
+  searchUrl: string;
+  source: string;
+}

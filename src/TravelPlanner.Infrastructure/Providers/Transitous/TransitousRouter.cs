@@ -39,7 +39,7 @@ public sealed class TransitousRouter(HttpClient httpClient, IMemoryCache cache, 
         if (!IsConfigured) return [];
         var departure = TimetableDate(query.LocalDeparture, timeProvider.GetUtcNow(), query.UtcOffset);
         var c = CultureInfo.InvariantCulture;
-        var key = $"transit|{query.FromLatitude:F4},{query.FromLongitude:F4}|{query.ToLatitude:F4},{query.ToLongitude:F4}|{departure:yyyy-MM-ddTHH:mm}";
+        var key = $"transit|{query.FromLatitude:F4},{query.FromLongitude:F4}|{query.ToLatitude:F4},{query.ToLongitude:F4}|{departure:yyyy-MM-ddTHH:mm}|{query.AnyDistance}";
         try
         {
             return await cache.GetOrCreateAsync(key, async entry =>
@@ -50,7 +50,7 @@ public sealed class TransitousRouter(HttpClient httpClient, IMemoryCache cache, 
                           $"&toPlace={query.ToLatitude.ToString("0.#####", c)},{query.ToLongitude.ToString("0.#####", c)}" +
                           $"&time={utc:yyyy-MM-ddTHH:mm:ssZ}";
                 var body = await httpClient.GetFromJsonAsync<JsonElement>(url, cancellationToken);
-                return (IReadOnlyList<TransitItinerary>)Map(body, query.UtcOffset, options.Value.MaxJourneyMinutes);
+                return (IReadOnlyList<TransitItinerary>)Map(body, query.UtcOffset, query.AnyDistance ? int.MaxValue : options.Value.MaxJourneyMinutes, query.AnyDistance);
             }) ?? [];
         }
         catch (Exception ex) when (ex is HttpRequestException or JsonException or TaskCanceledException
@@ -72,7 +72,7 @@ public sealed class TransitousRouter(HttpClient httpClient, IMemoryCache cache, 
         return date.Add(wished.TimeOfDay);
     }
 
-    public static List<TransitItinerary> Map(JsonElement body, TimeSpan offset, int maxMinutes)
+    public static List<TransitItinerary> Map(JsonElement body, TimeSpan offset, int maxMinutes, bool longDistance = false)
     {
         var result = new List<TransitItinerary>();
         if (!body.TryGetProperty("itineraries", out var itineraries) || itineraries.ValueKind != JsonValueKind.Array) return result;
@@ -97,7 +97,7 @@ public sealed class TransitousRouter(HttpClient httpClient, IMemoryCache cache, 
             }
             legs.RemoveAll(l => l.Mode == "WALK" && l.DurationMinutes == 0);
             var transit = legs.Where(l => l.Mode != "WALK").ToList();
-            if (legs.Count == 0 || transit.Any(l => LongDistance.Contains(l.Mode))) continue;
+            if (legs.Count == 0 || (!longDistance && transit.Any(l => LongDistance.Contains(l.Mode)))) continue;
             var duration = (int)Math.Round((legs[^1].ArrivalLocal - legs[0].DepartureLocal).TotalMinutes);
             if (duration > maxMinutes) continue;
             result.Add(new TransitItinerary(duration, Math.Max(0, transit.Count - 1), legs[0].DepartureLocal, legs[^1].ArrivalLocal, legs));

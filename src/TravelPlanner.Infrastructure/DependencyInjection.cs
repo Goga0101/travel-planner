@@ -126,6 +126,22 @@ public static class DependencyInjection
                 c.DefaultRequestHeaders.UserAgent.ParseAdd("TravelPlanner/1.0 (https://github.com/Goga0101/travel-planner)");
             })
             .AddStandardResilienceHandler(o => Configure(o, providers.Http));
+        // Live transit page: place search (Photon for any script + Transitous stops), vehicles on the map, local taxis (Overpass).
+        services.AddHttpClient<ILiveTransit, TransitousLive>(c =>
+            {
+                c.BaseAddress = BaseUri(transitous.BaseUrl);
+                c.DefaultRequestHeaders.UserAgent.ParseAdd("TravelPlanner/1.0 (https://github.com/Goga0101/travel-planner)");
+            })
+            .AddStandardResilienceHandler(o => Configure(o, providers.Http));
+        services.AddHttpClient(TransitousLive.PhotonClient, c =>
+            {
+                c.BaseAddress = new Uri("https://photon.komoot.io/");
+                c.DefaultRequestHeaders.UserAgent.ParseAdd("TravelPlanner/1.0 (https://github.com/Goga0101/travel-planner)");
+            })
+            .AddStandardResilienceHandler(o => Configure(o, providers.Http));
+        // No retry handler: the source gives each Overpass instance a few seconds and falls back to a mirror itself.
+        services.AddHttpClient<ILocalTaxiSource, OverpassTaxiSource>(c =>
+            c.DefaultRequestHeaders.UserAgent.ParseAdd("TravelPlanner/1.0 (https://github.com/Goga0101/travel-planner)"));
         status.Add(new ProviderStatus("Routes", TransitousRouter.ProviderName, transitous.Enabled, false,
             transitous.Enabled ? "status.transitousOn" : "status.transitousOff"));
 
