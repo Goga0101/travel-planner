@@ -66,13 +66,14 @@ public static class IntercityStations
     public static bool InTbilisi(double lat, double lon) =>
         TownAt(lat, lon) is null && NearbyLinks.DistanceMeters(lat, lon, Tbilisi.Latitude, Tbilisi.Longitude) <= CityRadiusMeters;
 
-    /// <summary>Minibuses between regions: no timetable, they leave when full; ~45 km/h on the road (×1.3 for bends) plus a wait.</summary>
+    /// <summary>Minibuses between regions: no timetable, they leave when full; ~45 km/h near the city, ~55 km/h on long runs (road ×1.3).</summary>
     public const int MinibusWaitMinutes = 10;
 
     public static TransitLegDto MinibusLeg(string fromName, double fromLat, double fromLon, string toName, double toLat, double toLon,
         DateTime start, string language)
     {
-        var minutes = Math.Max(10, (int)Math.Round(NearbyLinks.DistanceMeters(fromLat, fromLon, toLat, toLon) * 1.3 / 750));
+        var meters = NearbyLinks.DistanceMeters(fromLat, fromLon, toLat, toLon);
+        var minutes = Math.Max(10, (int)Math.Round(meters * 1.3 / (meters > 50_000 ? 920 : 750)));
         var hm = (DateTime t) => t.ToString("HH:mm", System.Globalization.CultureInfo.InvariantCulture);
         return new TransitLegDto("MINIBUS", null, toName, fromName, toName, hm(start), hm(start.AddMinutes(minutes)), minutes,
             language == "ka" ? "მარშრუტკა · გადის, როცა შეივსება" : "Marshrutka · leaves when full", null, null,

@@ -886,6 +886,8 @@ export interface JourneyDto {
   /** Rough estimates from the distance, so every trip says something; walking only when it is not too far. */
   drivingMinutes: number;
   walkingMinutes?: number;
+  /** Set for distances people usually fly (a Google Flights search). */
+  flightsUrl?: string;
 }
 
 export interface CoachStationDto {

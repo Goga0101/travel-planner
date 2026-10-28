@@ -16,12 +16,15 @@ public static class StopLineRoutes
     /// <summary>Shorter trips are walked.</summary>
     private const int MinRideMeters = 700;
     private const int MaxOptions = 3;
+    /// <summary>A ride along one city line; beyond this it is not a city trip (Tbilisi and Berlin both have metro stations).</summary>
+    private const int MaxTripMeters = 40_000;
     private const int WaitMinutes = 6;
 
     public static async Task<List<TransitItineraryDto>> FindAsync(ITransitStopSource stops, double fromLat, double fromLon, string fromName,
         double toLat, double toLon, string toName, DateTime departure, CancellationToken ct)
     {
-        if (!stops.IsConfigured || NearbyLinks.DistanceMeters(fromLat, fromLon, toLat, toLon) < MinRideMeters) return [];
+        var meters = NearbyLinks.DistanceMeters(fromLat, fromLon, toLat, toLon);
+        if (!stops.IsConfigured || meters < MinRideMeters || meters > MaxTripMeters) return [];
         var near = stops.FindAsync(fromLat, fromLon, StopRadiusMeters, ct);
         var far = stops.FindAsync(toLat, toLon, StopRadiusMeters, ct);
         return Build(await near, await far, fromLat, fromLon, fromName, toLat, toLon, toName, departure);

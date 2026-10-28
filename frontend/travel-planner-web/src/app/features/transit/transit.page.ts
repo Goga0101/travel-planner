@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy, Component, DestroyRef, computed, inject, signal, viewChild } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { RouterLink } from '@angular/router';
 import { Subscription, catchError, of } from 'rxjs';
 import { ApiService } from '../../core/api.service';
 import { ApiError, toApiError } from '../../core/errors';
@@ -30,7 +31,7 @@ const SECTIONS: { id: Section; icon: IconName; label: 'transit.secMap' | 'transi
 @Component({
   selector: 'app-transit-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TranslatePipe, IconComponent, ExternalLinkComponent, ErrorBannerComponent, DistancePipe, MinutesPipe, MoneyPipe, ItineraryComponent,
+  imports: [RouterLink, TranslatePipe, IconComponent, ExternalLinkComponent, ErrorBannerComponent, DistancePipe, MinutesPipe, MoneyPipe, ItineraryComponent,
     LiveMapComponent, PlaceInputComponent],
   template: `
     <div class="container page transit-page">
@@ -130,6 +131,19 @@ const SECTIONS: { id: Section; icon: IconName; label: 'transit.secMap' | 'transi
             <p class="muted"><span class="spinner" aria-hidden="true"></span> {{ 'transit.routesLoading' | t }}</p>
           } @else if (journey(); as j) {
             @let r = j.direction;
+            @if (j.flightsUrl) {
+              <div class="flight-advice">
+                <span class="flight-icon" aria-hidden="true"><app-icon name="plane" [size]="22" /></span>
+                <div>
+                  <strong>{{ 'transit.flightTitle' | t }}</strong>
+                  <p class="small">{{ 'transit.flightText' | t: { distance: (j.distanceMeters | distance) } }}</p>
+                  <div class="flight-links">
+                    <a class="btn btn-sm btn-deep" [routerLink]="i18n.path()"><app-icon name="plane" [size]="14" /> {{ 'transit.flightSearch' | t }}</a>
+                    <app-external-link [href]="j.flightsUrl" [label]="'transit.flightGoogle' | t" />
+                  </div>
+                </div>
+              </div>
+            }
             @if (r.itineraries.length) {
               @if (!r.onTravelDate) { <p class="small muted">{{ 'transit.timetableOther' | t }}</p> }
               <p class="small route-pick-hint"><app-icon name="pin" [size]="14" /> {{ 'transit.pickRoute' | t }}</p>
@@ -263,7 +277,7 @@ export class TransitPage {
   private readonly destroyRef = inject(DestroyRef);
   private readonly fromInput = viewChild<PlaceInputComponent>('fromInput');
   protected readonly geo = inject(GeolocationService);
-  private readonly i18n = inject(I18nService);
+  protected readonly i18n = inject(I18nService);
   /** Start from the device's live position (only the destination is typed) or from a typed place; remembered per browser. */
   protected readonly useGps = signal(loadStartMode());
   /** Where the trip starts: the device's position now, or the typed place. */

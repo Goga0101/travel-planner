@@ -565,7 +565,7 @@ export const en = {
   'route.mode.COACH': 'Intercity bus',
   'route.mode.TRAM': 'Tram',
   'route.mode.SUBWAY': 'Metro',
-  'route.mode.METRO': 'Metro',
+  'route.mode.METRO': 'Metro / city rail',
   'route.mode.RAIL': 'Train',
   'route.mode.SUBURBAN': 'Suburban train',
   'route.mode.REGIONAL_RAIL': 'Regional train',
@@ -762,6 +762,10 @@ export const en = {
   'transit.trackResume': 'Centre on me',
   'transit.summaryCar': 'by car ~{time}',
   'transit.summaryWalk': 'on foot ~{time}',
+  'transit.flightTitle': 'This is a flight distance',
+  'transit.flightText': 'Over {distance} people usually fly; overland it takes days with several changes.',
+  'transit.flightSearch': 'Plan a trip with flights',
+  'transit.flightGoogle': 'Google Flights',
 } satisfies Record<string, string>;
 
 export type TranslationKey = keyof typeof en;

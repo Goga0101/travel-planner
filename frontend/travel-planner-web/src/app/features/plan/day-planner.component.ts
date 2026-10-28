@@ -384,7 +384,7 @@ function savePreferences(p: Preferences): void {
                 } @else if (st?.data; as r) {
                   @if (r.itineraries.length) {
                     @if (st!.ends; as e) {
-                      <app-live-map class="hop-map" [vehicles]="false" [from]="e.from" [to]="e.to" [route]="r.itineraries[st!.pick ?? 0] ?? null" />
+                      <app-live-map class="hop-map" [vehicles]="false" [from]="e.from" [to]="e.to" [route]="r.itineraries[st!.pick ?? 0]" />
                     }
                     <ol class="route-options hop-options">
                       @for (it of r.itineraries.slice(0, 3); track $index; let first = $first; let i = $index) {

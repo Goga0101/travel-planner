@@ -30,10 +30,11 @@ public sealed record PlanJourneyQuery(
 /// TimeZone is the origin's IANA zone (times are local there); CountryCode drives the taxi section. Coaches lists the city's
 /// intercity minibus stations for trips to another region where timetables are not published (Tbilisi for now).
 /// DrivingMinutes and WalkingMinutes (null when too far to walk) are rough estimates from the distance, so every trip says something.
+/// FlightsUrl is set for distances people usually fly.
 /// </summary>
 public sealed record JourneyDto(
     string FromName, string ToName, string? TimeZone, string? CountryCode, int DistanceMeters, RouteDirectionDto Direction, string? RouterName,
-    IReadOnlyList<CoachStationDto> Coaches, int DrivingMinutes = 0, int? WalkingMinutes = null);
+    IReadOnlyList<CoachStationDto> Coaches, int DrivingMinutes = 0, int? WalkingMinutes = null, string? FlightsUrl = null);
 
 // ---------- Live vehicles ----------
 
@@ -201,7 +202,7 @@ public sealed class LiveTransitHandler(
         }
         var distance = NearbyLinks.DistanceMeters(request.FromLatitude, request.FromLongitude, request.ToLatitude, request.ToLongitude);
         // Anywhere else: between towns with no timetable connection, the bus stations OpenStreetMap knows at both ends.
-        if (combined.Count == 0 && distance >= IntercityMinMeters && direction.Itineraries.All(i => i.Estimated))
+        if (combined.Count == 0 && distance is >= IntercityMinMeters and <= IntercityMaxMeters && direction.Itineraries.All(i => i.Estimated))
         {
             if (await ViaBusStationsAsync(request.FromLatitude, request.FromLongitude, fromName, request.ToLatitude, request.ToLongitude, toName,
                     wished, offset, guide, cancellationToken) is { } coach)
@@ -211,8 +212,17 @@ public sealed class LiveTransitHandler(
             direction = direction with { Itineraries = direction.Itineraries.Concat(combined).OrderBy(i => i.DurationMinutes).ToList() };
 
         return new JourneyDto(fromName, toName, origin?.TimeZone, origin?.CountryCode, distance,
-            direction, router.IsConfigured ? router.Name : null, coaches, DrivingMinutes(distance), distance <= MaxWalkSummaryMeters ? WalkMinutes(distance) : null);
+            direction, router.IsConfigured ? router.Name : null, coaches, DrivingMinutes(distance), distance <= MaxWalkSummaryMeters ? WalkMinutes(distance) : null,
+            distance >= FlightMinMeters ? FlightsUrl(fromName, toName) : null);
     }
+
+    /// <summary>Beyond this one bus estimate from station to station is not credible (borders, changes, days on the road).</summary>
+    private const int IntercityMaxMeters = 600_000;
+    /// <summary>From this distance people usually fly; the page suggests it.</summary>
+    private const int FlightMinMeters = 500_000;
+
+    private static string FlightsUrl(string from, string to) =>
+        "https://www.google.com/travel/flights?q=" + Uri.EscapeDataString($"Flights from {from} to {to}");
 
     /// <summary>Trips this long without a timetable connection look for intercity buses.</summary>
     private const int IntercityMinMeters = 15_000;
@@ -245,7 +255,7 @@ public sealed class LiveTransitHandler(
             var legsIn = part.Itineraries.FirstOrDefault()?.Legs ?? [WalkLeg(fromName, fromLat, fromLon, a.Name, a.Latitude, a.Longitude, t)];
             legs.AddRange(legsIn);
             transfers += legsIn.Count(l => l.Mode != "WALK");
-            t = At(wished, legs[^1].ArrivalTime);
+            t = At(t, legs[^1].ArrivalTime);
         }
 
         var (alightLat, alightLon, alightName) = b is null ? (toLat, toLon, toName) : (b.Latitude, b.Longitude, b.Name);
@@ -262,8 +272,10 @@ public sealed class LiveTransitHandler(
             var legsOut = part.Itineraries.FirstOrDefault()?.Legs ?? [WalkLeg(b.Name, b.Latitude, b.Longitude, toName, toLat, toLon, t)];
             legs.AddRange(legsOut);
             transfers += legsOut.Count(l => l.Mode != "WALK");
+            // Times are clock times; count from the bus's arrival so a journey past midnight stays right.
+            t = At(t, legs[^1].ArrivalTime);
         }
-        var end = At(wished, legs[^1].ArrivalTime);
+        var end = t;
         return new TransitItineraryDto((int)(end - wished).TotalMinutes, transfers, Hm(wished), legs[^1].ArrivalTime, legs, Estimated: true);
     }
 

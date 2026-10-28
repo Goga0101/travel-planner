@@ -564,7 +564,7 @@ export const ka: Dictionary = {
   'route.mode.COACH': 'საქალაქთაშორისო ავტობუსი',
   'route.mode.TRAM': 'ტრამვაი',
   'route.mode.SUBWAY': 'მეტრო',
-  'route.mode.METRO': 'მეტრო',
+  'route.mode.METRO': 'მეტრო / საქალაქო მატარებელი',
   'route.mode.RAIL': 'მატარებელი',
   'route.mode.SUBURBAN': 'საგარეუბნო მატარებელი',
   'route.mode.REGIONAL_RAIL': 'რეგიონული მატარებელი',
@@ -761,4 +761,8 @@ export const ka: Dictionary = {
   'transit.trackResume': 'ჩემზე დაბრუნება',
   'transit.summaryCar': 'მანქანით ~{time}',
   'transit.summaryWalk': 'ფეხით ~{time}',
+  'transit.flightTitle': 'ეს თვითმფრინავის მანძილია',
+  'transit.flightText': '{distance}-ზე ჩვეულებრივ თვითმფრინავით მგზავრობენ; ხმელეთით რამდენიმე დღე და ბევრი გადაჯდომა სჭირდება.',
+  'transit.flightSearch': 'მოგზაურობის დაგეგმვა ფრენით',
+  'transit.flightGoogle': 'Google Flights',
 };

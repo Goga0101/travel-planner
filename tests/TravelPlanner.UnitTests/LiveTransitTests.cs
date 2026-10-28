@@ -119,6 +119,21 @@ public class LiveTransitTests
             CityMetros.Encode([new("a", "a", 38.5, -120.2), new("b", "b", 40.7, -120.95), new("c", "c", 43.252, -126.453)]));
     }
 
+    private sealed class AnyStops : Application.Providers.ITransitStopSource
+    {
+        public bool IsConfigured => true;
+        public Task<IReadOnlyList<Application.Providers.NearbyTransitStop>> FindAsync(double latitude, double longitude, int radiusMeters, CancellationToken ct) =>
+            Task.FromResult<IReadOnlyList<Application.Providers.NearbyTransitStop>>([new($"Metro {latitude:F2}", "subway", [], latitude, longitude)]);
+    }
+
+    [Fact]
+    public async Task Stations_In_Different_Cities_Are_Not_One_Ride()
+    {
+        // Tbilisi and Berlin both have metro stations; that is no journey.
+        Assert.Empty(await StopLineRoutes.FindAsync(new AnyStops(), 41.6934, 44.8015, "Tbilisi", 52.52, 13.405, "Berlin", DateTime.Today, CancellationToken.None));
+        Assert.NotEmpty(await StopLineRoutes.FindAsync(new AnyStops(), 41.6934, 44.8015, "Liberty Sq", 41.7225, 44.7958, "Station Sq", DateTime.Today, CancellationToken.None));
+    }
+
     [Fact]
     public void Short_Hops_Get_No_Estimated_Ride()
     {
