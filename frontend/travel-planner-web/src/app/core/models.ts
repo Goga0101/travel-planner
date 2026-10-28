@@ -58,6 +58,8 @@ export interface PlaceDto {
   continent: Continent;
   airportCodes: string[];
   destinationId?: string;
+  /** A town without an airport: distance to the nearest of airportCodes (its gateways). */
+  gatewayKm?: number;
 }
 
 export interface DestinationSummaryDto {
@@ -861,7 +863,7 @@ export interface HotelSearchResultDto {
 
 // ---------- Live transit (any place → any place) ----------
 
-export type PlaceKind = 'address' | 'stop' | 'city' | 'place';
+export type PlaceKind = 'address' | 'stop' | 'city' | 'place' | 'region';
 
 export interface PlaceSuggestionDto {
   name: string;

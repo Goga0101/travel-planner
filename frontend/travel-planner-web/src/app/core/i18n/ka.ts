@@ -561,6 +561,7 @@ export const ka: Dictionary = {
   'route.source': 'მარშრუტები: {source} (საზოგადოებრივი ტრანსპორტის ღია განრიგები).',
   'route.mode.BUS': 'ავტობუსი',
   'route.mode.MINIBUS': 'მიკროავტობუსი',
+  'route.mode.TAXI': 'ტაქსი',
   'route.mode.COACH': 'საქალაქთაშორისო ავტობუსი',
   'route.mode.TRAM': 'ტრამვაი',
   'route.mode.SUBWAY': 'მეტრო',
@@ -767,4 +768,5 @@ export const ka: Dictionary = {
   'transit.flightGoogle': 'Google Flights',
   'search.originChange': 'შეცვლა',
   'search.originSameCountry': 'სხვა აეროპორტები ({country}):',
+  'search.viaAirport': 'აეროპორტი არ აქვს · ფრენა {airports}-მდე, {km} კმ',
 };

@@ -15,16 +15,20 @@ public sealed record GetOutboundLinksQuery(Guid Id) : IRequest<IReadOnlyList<Out
 
 internal static class TripPlanLoader
 {
-    public static Task<TripPlan?> LoadAsync(IApplicationDbContext db, Guid id, bool tracking, CancellationToken ct)
+    public static async Task<TripPlan?> LoadAsync(IApplicationDbContext db, Guid id, bool tracking, CancellationToken ct)
     {
         var query = tracking ? db.TripPlans : db.TripPlans.AsNoTracking();
-        return query
+        var plan = await query
             .Include(p => p.Items)
             .Include(p => p.TripSearch)
             .Include(p => p.Destination).ThenInclude(d => d!.Airports)
             .Include(p => p.Destination).ThenInclude(d => d!.TransportLinks)
             .AsSplitQuery()
             .FirstOrDefaultAsync(p => p.Id == id, ct);
+        // A town's gateway airports, read-only only (on a tracked plan EF would move the airport to the town).
+        if (!tracking && plan?.Destination is { } destination)
+            await Features.TripSearches.GatewayAirports.LoadAsync(db, [destination], ct);
+        return plan;
     }
 }
 

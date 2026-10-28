@@ -562,6 +562,7 @@ export const en = {
   'route.source': 'Journeys from {source} (open public-transport timetables).',
   'route.mode.BUS': 'Bus',
   'route.mode.MINIBUS': 'Minibus',
+  'route.mode.TAXI': 'Taxi',
   'route.mode.COACH': 'Intercity bus',
   'route.mode.TRAM': 'Tram',
   'route.mode.SUBWAY': 'Metro',
@@ -768,6 +769,7 @@ export const en = {
   'transit.flightGoogle': 'Google Flights',
   'search.originChange': 'Change',
   'search.originSameCountry': 'Other airports in {country}:',
+  'search.viaAirport': 'no airport · fly to {airports}, {km} km away',
 } satisfies Record<string, string>;
 
 export type TranslationKey = keyof typeof en;

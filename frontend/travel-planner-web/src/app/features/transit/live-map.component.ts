@@ -554,6 +554,7 @@ const MODE_COLORS: Record<ModeGroup, string> = { bus: '#16a34a', tram: '#dc2626'
 
 /** The operator's line colour when it is a usable one, otherwise the colour of the kind of transport. */
 function lineColor(leg: TransitLegDto): string {
+  if (leg.mode === 'TAXI') return '#ca8a04';
   const c = leg.color?.toLowerCase();
   return c && /^[0-9a-f]{6}$/.test(c) && c !== 'ffffff' && c !== 'fefefe' ? `#${c}` : MODE_COLORS[modeGroup(leg.mode)];
 }

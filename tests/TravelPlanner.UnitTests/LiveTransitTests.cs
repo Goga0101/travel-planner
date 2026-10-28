@@ -166,6 +166,20 @@ public class LiveTransitTests
     }
 
     [Fact]
+    public void A_Town_Code_Round_Trips_And_Rejects_Junk()
+    {
+        var town = new Application.Features.TripSearches.TownPick("სიღნაღი", "GE", 41.61904, 45.92284, "საქართველო");
+        Assert.Equal("town|41.6190|45.9228|GE|სიღნაღი|საქართველო", town.Code);
+        Assert.Equal(town with { Latitude = 41.619, Longitude = 45.9228 }, Application.Features.TripSearches.TownPick.Parse(town.Code));
+        Assert.Equal("Mestia", Application.Features.TripSearches.TownPick.Parse("town|43.0438|42.7245|GE|Mestia")!.Name); // country optional
+
+        Assert.Null(Application.Features.TripSearches.TownPick.Parse("TBS"));
+        Assert.Null(Application.Features.TripSearches.TownPick.Parse("town|95|45|GE|x"));       // latitude out of range
+        Assert.Null(Application.Features.TripSearches.TownPick.Parse("town|41|45|GEO|x"));      // not a country code
+        Assert.Null(Application.Features.TripSearches.TownPick.Parse("town|41|45|GE| "));       // no name
+    }
+
+    [Fact]
     public void Overpass_Lists_Taxis_With_A_Phone_First()
     {
         var body = JsonDocument.Parse("""

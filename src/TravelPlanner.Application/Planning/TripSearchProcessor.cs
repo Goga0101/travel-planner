@@ -60,6 +60,8 @@ public sealed class TripSearchProcessor(
                     .ToListAsync(cancellationToken);
             }
 
+            // Towns without an airport fly to their gateway airports (untracked destinations, so nothing is saved).
+            await Features.TripSearches.GatewayAirports.LoadAsync(db, destinations, cancellationToken);
             var request = new PlanningRequest(origin, destinations, search.EarliestDeparture, search.LatestReturn, search.DurationDays,
                 search.Travelers, search.BudgetAmount, search.BudgetCurrency, search.Preferences);
 

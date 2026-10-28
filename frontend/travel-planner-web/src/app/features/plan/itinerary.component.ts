@@ -11,6 +11,7 @@ export const MODE_ICONS: Record<string, IconName> = {
   BUS: 'bus',
   COACH: 'bus',
   MINIBUS: 'bus',
+  TAXI: 'car',
   TRAM: 'tram',
   SUBWAY: 'metro',
   METRO: 'metro',

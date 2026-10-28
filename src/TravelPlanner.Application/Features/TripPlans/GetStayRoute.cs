@@ -85,8 +85,12 @@ public sealed class GetStayRouteHandler(
     ITransitGuideSource guides,
     IWorldPlaces world,
     IOutboundLinkPolicy linkPolicy,
-    ITransitStopSource stops) : IRequestHandler<GetStayRouteQuery, StayRouteDto>, IRequestHandler<GetHopRouteQuery, RouteDirectionDto>
+    ITransitStopSource stops,
+    ISender sender) : IRequestHandler<GetStayRouteQuery, StayRouteDto>, IRequestHandler<GetHopRouteQuery, RouteDirectionDto>
 {
+    /// <summary>From this distance a trip is between towns (minibuses and coaches), not inside one.</summary>
+    private const int IntercityMeters = 15_000;
+
     /// <summary>Time to leave the airport after landing (passport control, bags), and to reach it before take-off.</summary>
     private static readonly TimeSpan AfterLanding = TimeSpan.FromMinutes(50);
     private static readonly TimeSpan BeforeTakeOff = TimeSpan.FromHours(3);
@@ -116,13 +120,9 @@ public sealed class GetStayRouteHandler(
             var airportName = airport.NameIn(language);
             var arrive = (flight?.Outbound.ArrivalLocal ?? plan.DepartureDate.ToDateTime(new TimeOnly(12, 0))).Add(AfterLanding);
             var leave = (flight?.Inbound.DepartureLocal ?? plan.ReturnDate.ToDateTime(new TimeOnly(15, 0))).Subtract(BeforeTakeOff);
-            var tasks = new[]
-            {
-                DirectionAsync(airportName, airport.Latitude, airport.Longitude, stayName, stayLat, stayLon, arrive, zone, cancellationToken),
-                DirectionAsync(stayName, stayLat, stayLon, airportName, airport.Latitude, airport.Longitude, leave, zone, cancellationToken)
-            };
-            var results = await Task.WhenAll(tasks);
-            (toStay, toAirport) = (results[0], results[1]);
+            // One after the other: out of town both may plan through the database, which serves one query at a time per request.
+            toStay = await DirectionAsync(airportName, airport.Latitude, airport.Longitude, stayName, stayLat, stayLon, arrive, zone, cancellationToken);
+            toAirport = await DirectionAsync(stayName, stayLat, stayLon, airportName, airport.Latitude, airport.Longitude, leave, zone, cancellationToken);
         }
 
         var guide = guides.Get(destination.Code);
@@ -215,6 +215,13 @@ public sealed class GetStayRouteHandler(
             : await Features.Transit.StopLineRoutes.FindAsync(stops, fromLat, fromLon, fromName, toLat, toLon, toName, wished, ct);
         // The metro where the open timetable misses it (Tbilisi has only one direction of each line).
         options = Features.Transit.CityMetros.WithMetro(options, fromLat, fromLon, fromName, toLat, toLon, toName, wished, T.CurrentLanguage);
+        // Out of town (an airport-less town such as Sighnaghi, 80 km from Tbilisi airport): the intercity journey the live page
+        // builds — city transport to the bus station, the minibus, and on to the destination.
+        if (options.Count == 0 && NearbyLinks.DistanceMeters(fromLat, fromLon, toLat, toLon) >= IntercityMeters)
+        {
+            var journey = await sender.Send(new Features.Transit.PlanJourneyQuery(fromLat, fromLon, fromName, toLat, toLon, toName, wished), ct);
+            options = journey.Direction.Itineraries.ToList();
+        }
         return new RouteDirectionDto(fromName, toName, timetableDate, timetableDate == DateOnly.FromDateTime(wished),
             wished.ToString("HH:mm", CultureInfo.InvariantCulture),
             options,

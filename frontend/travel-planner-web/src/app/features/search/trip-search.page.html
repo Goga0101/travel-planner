@@ -126,7 +126,12 @@
             @for (p of worldOptions(); track p.cityCode) {
               <li>
                 <button type="button" role="option" aria-selected="false" (click)="addPlace(p)" [disabled]="selectedCount() >= maxManual()">
-                  <strong>{{ p.city }}</strong> <span class="muted">{{ p.country }} · {{ p.airportCodes.join(', ') }}</span>
+                  <strong>{{ p.city }}</strong>
+                  @if (p.gatewayKm != null) {
+                    <span class="muted">{{ p.country }} · {{ 'search.viaAirport' | t: { airports: p.airportCodes.join(', '), km: p.gatewayKm } }}</span>
+                  } @else {
+                    <span class="muted">{{ p.country }} · {{ p.airportCodes.join(', ') }}</span>
+                  }
                 </button>
               </li>
             }

@@ -27,6 +27,7 @@ internal sealed class DestinationConfiguration : IEntityTypeConfiguration<Destin
         b.Property(x => x.TaxiTariffSource).HasMaxLength(300);
         b.Ignore(x => x.HasTaxiTariff);
         b.Property(x => x.Translations).AsJsonb().IsRequired();
+        b.Property(x => x.GatewayAirports).IsRequired();
         b.HasIndex(x => new { x.IsActive, x.Popularity });
 
         b.HasMany(x => x.Airports).WithOne(a => a.Destination).HasForeignKey(a => a.DestinationId).OnDelete(DeleteBehavior.SetNull);

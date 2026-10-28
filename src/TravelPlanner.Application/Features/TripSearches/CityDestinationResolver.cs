@@ -13,6 +13,7 @@ public sealed class CityDestinationResolver(IApplicationDbContext db, IWorldPlac
 {
     public async Task<Destination?> ResolveAsync(string cityOrAirportCode, CancellationToken cancellationToken)
     {
+        if (TownPick.Parse(cityOrAirportCode) is { } town) return await ResolveTownAsync(town, cancellationToken);
         var city = world.FindCity(cityOrAirportCode);
         if (city is null) return null;
 
@@ -43,6 +44,42 @@ public sealed class CityDestinationResolver(IApplicationDbContext db, IWorldPlac
         destination.IsActive = true;
         foreach (var airport in airports.Where(a => a.DestinationId is null || a.DestinationId != destination.Id))
             airport.DestinationId = destination.Id;
+        return destination;
+    }
+
+    /// <summary>
+    /// A town without an airport becomes a non-catalog destination ("town-ge-41.62-45.92") at the town itself, reached through
+    /// its nearest airports (gateways); null when no airport is within reach.
+    /// </summary>
+    private async Task<Destination?> ResolveTownAsync(TownPick town, CancellationToken ct)
+    {
+        var gateways = await GatewayAirports.FindAsync(db, town.Latitude, town.Longitude, town.CountryCode, ct);
+        if (gateways.Count == 0) return null;
+
+        var code = string.Create(System.Globalization.CultureInfo.InvariantCulture,
+            $"town-{town.CountryCode.ToLowerInvariant()}-{town.Latitude:0.00}-{town.Longitude:0.00}");
+        var destination = db.Destinations.Local.FirstOrDefault(d => d.Code == code)
+                          ?? await db.Destinations.FirstOrDefaultAsync(d => d.Code == code, ct);
+        if (destination is null)
+        {
+            var gateway = gateways[0].Airport;
+            var country = world.FindCity(gateway.IataCode) is { } c && c.CountryCode == town.CountryCode ? c.Country : gateway.Country ?? town.CountryCode;
+            destination = new Destination(code, town.Name, town.CountryCode, country, town.Latitude, town.Longitude)
+            {
+                Region = world.FindCity(gateway.IataCode)?.Continent ?? "Europe",
+                IsCatalog = false,
+                Popularity = 0
+            };
+            db.Destinations.Add(destination);
+        }
+        destination.IsActive = true;
+        destination.GatewayAirports = gateways.Select(g => g.Airport.IataCode).ToList();
+        // The names as the visitor saw them ("სიღნაღი, საქართველო"); the English base country comes from the airport list.
+        if (town.Country is { } countryName)
+            destination.Translations = new Dictionary<string, Domain.Entities.DestinationTranslation>(destination.Translations)
+            {
+                [T.CurrentLanguage] = new() { City = town.Name, Country = countryName }
+            };
         return destination;
     }
 }

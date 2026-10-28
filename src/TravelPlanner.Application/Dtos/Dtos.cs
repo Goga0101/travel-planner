@@ -8,8 +8,12 @@ public sealed record AirportDto(Guid Id, string IataCode, string Name, string Ci
     bool IsDepartureOption, string? OfficialWebsiteUrl, string? CityCode = null, string? Country = null, string? Continent = null);
 
 /// <summary>A city anywhere in the world that can be picked as a destination; DestinationId is set for catalog cities.</summary>
+/// <summary>
+/// A city to travel to. For a town without an airport, CityCode is a TownPick code, AirportCodes are its gateway airports and
+/// GatewayKm the distance to the nearest one.
+/// </summary>
 public sealed record PlaceDto(string CityCode, string City, string Country, string CountryCode, string Continent,
-    IReadOnlyList<string> AirportCodes, Guid? DestinationId);
+    IReadOnlyList<string> AirportCodes, Guid? DestinationId, int? GatewayKm = null);
 
 public sealed record DestinationSummaryDto(Guid Id, string Code, string City, string Country, string CountryCode, string Region,
     IReadOnlyList<string> AirportCodes, int Popularity, string? Description = null);

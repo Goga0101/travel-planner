@@ -187,6 +187,14 @@ public sealed class LiveTransitHandler(
                     [IntercityStations.MinibusLeg(station.Name, station.Latitude, station.Longitude, toName, request.ToLatitude, request.ToLongitude, board, language)],
                     city.Transfers + 1));
             }
+            // No city connection in the open data (Tbilisi airport has none): a taxi to the station, then the minibus.
+            if (toStation.Itineraries.Count == 0)
+            {
+                var taxi = TaxiLeg(fromName, request.FromLatitude, request.FromLongitude, station.Name, station.Latitude, station.Longitude, wished, language);
+                var board = wished.AddMinutes(taxi.DurationMinutes + IntercityStations.MinibusWaitMinutes);
+                combined.Add(Join(wished, [taxi],
+                    [IntercityStations.MinibusLeg(station.Name, station.Latitude, station.Longitude, toName, request.ToLatitude, request.ToLongitude, board, language)], 1));
+            }
         }
         else if (IntercityStations.TownAt(request.FromLatitude, request.FromLongitude) is { } home &&
                  IntercityStations.InTbilisi(request.ToLatitude, request.ToLongitude))
@@ -199,6 +207,9 @@ public sealed class LiveTransitHandler(
             var inCity = await DirectionAsync(s.Latitude, s.Longitude, stationName, request.ToLatitude, request.ToLongitude, toName,
                 arrive.AddMinutes(3), offset, null, cancellationToken);
             foreach (var city in inCity.Itineraries.Take(2)) combined.Add(Join(wished, [minibus], city.Legs, city.Transfers + 1));
+            if (inCity.Itineraries.Count == 0)
+                combined.Add(Join(wished, [minibus],
+                    [TaxiLeg(stationName, s.Latitude, s.Longitude, toName, request.ToLatitude, request.ToLongitude, arrive.AddMinutes(3), language)], 1));
         }
         var distance = NearbyLinks.DistanceMeters(request.FromLatitude, request.FromLongitude, request.ToLatitude, request.ToLongitude);
         // Anywhere else: between towns with no timetable connection, the bus stations OpenStreetMap knows at both ends.
@@ -277,6 +288,16 @@ public sealed class LiveTransitHandler(
         }
         var end = t;
         return new TransitItineraryDto((int)(end - wished).TotalMinutes, transfers, Hm(wished), legs[^1].ArrivalTime, legs, Estimated: true);
+    }
+
+    /// <summary>A taxi / ride-hailing hop where the open data has no public transport (timed like a city drive).</summary>
+    private static TransitLegDto TaxiLeg(string fromName, double fromLat, double fromLon, string toName, double toLat, double toLon, DateTime start,
+        string language)
+    {
+        var minutes = DrivingMinutes(NearbyLinks.DistanceMeters(fromLat, fromLon, toLat, toLon));
+        return new TransitLegDto("TAXI", null, toName, fromName, toName, Hm(start), Hm(start.AddMinutes(minutes)), minutes,
+            language == "ka" ? "ტაქსი ან Bolt / Yandex Go · საზოგადოებრივი ტრანსპორტი აქ ვერ მოიძებნა" : "Taxi or ride-hailing · no public transport found here",
+            null, null, Path: new LegPath(fromLat, fromLon, toLat, toLon, null, 0));
     }
 
     private static TransitLegDto WalkLeg(string fromName, double fromLat, double fromLon, string toName, double toLat, double toLon, DateTime start)

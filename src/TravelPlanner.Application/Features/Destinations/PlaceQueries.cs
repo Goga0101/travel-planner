@@ -23,9 +23,49 @@ public sealed class SearchPlacesValidator : AbstractValidator<SearchPlacesQuery>
     }
 }
 
-public sealed class SearchPlacesHandler(IApplicationDbContext db, IWorldPlaces world) : IRequestHandler<SearchPlacesQuery, IReadOnlyList<PlaceDto>>
+public sealed class SearchPlacesHandler(IApplicationDbContext db, IWorldPlaces world, ILiveTransit places)
+    : IRequestHandler<SearchPlacesQuery, IReadOnlyList<PlaceDto>>
 {
+    /// <summary>A map place this close to a listed city is that city (a district, the same town under another name).</summary>
+    private const int SameCityKm = 15;
+    private const int MaxTowns = 5;
+
     public async Task<IReadOnlyList<PlaceDto>> Handle(SearchPlacesQuery request, CancellationToken cancellationToken)
+    {
+        var withAirports = await CitiesAsync(request, cancellationToken);
+        var towns = withAirports.Count >= request.Max ? [] : await TownsAsync(request.Search, withAirports, cancellationToken);
+        return withAirports.Concat(towns).Take(request.Max).ToList();
+    }
+
+    /// <summary>
+    /// Towns and villages without an airport (Sighnaghi, Mestia), found on the map in any language, each with the airports
+    /// it is reached through.
+    /// </summary>
+    private async Task<List<PlaceDto>> TownsAsync(string search, IReadOnlyList<PlaceDto> listed, CancellationToken ct)
+    {
+        var term = search.Trim();
+        if (term.Length < 2) return [];
+        var language = T.CurrentLanguage;
+        var listedCities = listed.Select(p => world.FindCity(p.CityCode)).OfType<WorldCity>().ToList();
+        var result = new List<PlaceDto>();
+        foreach (var p in (await places.GeocodeAsync(term, language, null, null, ct)).Where(p => p.Kind == "city" && p.CountryCode is { Length: 2 }))
+        {
+            if (result.Count >= MaxTowns) break;
+            if (listedCities.Any(c => Geo.DistanceKm(c.Latitude, c.Longitude, p.Latitude, p.Longitude) < SameCityKm) ||
+                result.Any(r => r.City == p.Name && r.CountryCode == p.CountryCode)) continue;
+            var gateways = await Features.TripSearches.GatewayAirports.FindAsync(db, p.Latitude, p.Longitude, p.CountryCode!, ct);
+            // At an airport city already (the world list knows it under its own name).
+            if (gateways.Count == 0 || gateways[0].Km < SameCityKm) continue;
+            var gateway = gateways[0].Airport;
+            var country = p.Area?.Split(',').LastOrDefault()?.Trim() is { Length: > 0 } c ? c : gateway.Country ?? p.CountryCode!;
+            result.Add(new PlaceDto(new Features.TripSearches.TownPick(p.Name, p.CountryCode!, p.Latitude, p.Longitude, country).Code, p.Name, country,
+                p.CountryCode!, world.FindCity(gateway.IataCode)?.Continent ?? "Europe", gateways.Select(g => g.Airport.IataCode).ToList(), null,
+                gateways[0].Km));
+        }
+        return result;
+    }
+
+    private async Task<IReadOnlyList<PlaceDto>> CitiesAsync(SearchPlacesQuery request, CancellationToken cancellationToken)
     {
         var cities = world.SearchCities(request.Search, request.Max);
         if (cities.Count == 0) return [];

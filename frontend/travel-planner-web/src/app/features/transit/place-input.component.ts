@@ -8,7 +8,7 @@ import { TranslatePipe } from '../../core/i18n/translate.pipe';
 import { PlaceKind, PlaceSuggestionDto } from '../../core/models';
 import { IconComponent, IconName } from '../../shared/icon.component';
 
-const KIND_ICONS: Record<PlaceKind, IconName> = { address: 'pin', stop: 'bus', city: 'globe', place: 'landmark' };
+const KIND_ICONS: Record<PlaceKind, IconName> = { address: 'pin', stop: 'bus', city: 'globe', place: 'landmark', region: 'globe' };
 
 /**
  * A place anywhere in the world, typed in any language: suggestions appear while typing (addresses, stops, landmarks)

@@ -157,7 +157,9 @@ public sealed class TransitousLive(HttpClient httpClient, IHttpClientFactory cli
         {
             "highway" when Str(p, "osm_value") is "bus_stop" => "stop",
             "public_transport" or "railway" => "stop",
-            "place" or "boundary" => "city",
+            "place" => "city",
+            // Municipalities and regions are areas, not places to go to.
+            "boundary" => "region",
             _ => Str(p, "type") is "house" or "street" ? "address" : "place"
         };
         return new GeocodedPlace(name, area.Length > 0 ? area : null, Str(p, "countrycode")?.ToUpperInvariant(), xy[1].GetDouble(), xy[0].GetDouble(), kind, null);

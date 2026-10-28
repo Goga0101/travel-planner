@@ -53,6 +53,12 @@ public class Destination : Entity
         Translations.TryGetValue(language, out var t) && !string.IsNullOrWhiteSpace(t.Description) ? t.Description : Description;
 
     public List<Airport> Airports { get; private set; } = [];
+
+    /// <summary>
+    /// IATA codes of the airports serving a town that has none of its own (Sighnaghi: TBS). Flights land there and the
+    /// transfer, hotels and day plan are around the town; read-only queries load them into Airports.
+    /// </summary>
+    public List<string> GatewayAirports { get; set; } = [];
     public List<DestinationTransportLink> TransportLinks { get; private set; } = [];
 
     public bool HasTaxiTariff => TaxiBaseFare.HasValue && TaxiPerKm.HasValue && !string.IsNullOrWhiteSpace(TaxiTariffCurrency);

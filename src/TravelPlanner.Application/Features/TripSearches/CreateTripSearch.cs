@@ -93,7 +93,8 @@ public sealed class CreateTripSearchValidator : AbstractValidator<CreateTripSear
                 .When(x => x.DestinationIds is { Count: > 0 } && ManualCount(x) <= MaxManualDestinations, ApplyConditionTo.CurrentValidator)
                 .WithMessage(_ => T.Get("val.manualUnknown"));
             RuleForEach(x => x.DestinationCityCodes)
-                .Must(code => code is { Length: 3 } && world.FindCity(code) is not null)
+                // A world city (IATA city/airport code) or a town picked on the map (TownPick code).
+                .Must(code => (code is { Length: 3 } && world.FindCity(code) is not null) || TownPick.Parse(code) is not null)
                 .WithMessage(_ => T.Get("val.cityUnknown"));
         });
 
