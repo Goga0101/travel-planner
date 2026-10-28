@@ -65,6 +65,35 @@ public class LiveTransitTests
     }
 
     [Fact]
+    public void Without_A_Timetable_A_Line_Calling_Near_Both_Ends_Becomes_An_Estimated_Ride()
+    {
+        // Monastiraki → Omonia area (Athens): line 035 calls near both ends, 227 only near the start.
+        var near = new List<Application.Providers.NearbyTransitStop>
+        {
+            new("ΜΟΝΑΣΤΗΡΑΚΙ", "bus", ["035", "227"], 37.9765, 23.7255),
+            new("ΘΗΣΕΙΟ", "bus", ["227"], 37.9770, 23.7200),
+        };
+        var far = new List<Application.Providers.NearbyTransitStop> { new("ΟΜΟΝΟΙΑ", "bus", ["035", "049"], 37.9840, 23.7280) };
+
+        var options = StopLineRoutes.Build(near, far, 37.9760, 23.7250, "Start", 37.9845, 23.7285, "End", new DateTime(2026, 10, 30, 12, 0, 0));
+
+        var it = Assert.Single(options);
+        Assert.True(it.Estimated);
+        var ride = it.Legs[1];
+        Assert.Equal(("BUS", "035", "ΜΟΝΑΣΤΗΡΑΚΙ", "ΟΜΟΝΟΙΑ"), (ride.Mode, ride.Line, ride.From, ride.To));
+        Assert.Equal(37.9765, ride.Path!.FromLatitude);
+        Assert.Equal("WALK", it.Legs[0].Mode);
+        Assert.Equal("12:00", it.DepartureTime);
+    }
+
+    [Fact]
+    public void Short_Hops_Get_No_Estimated_Ride()
+    {
+        var stop = new Application.Providers.NearbyTransitStop("A", "bus", ["1"], 37.97, 23.72);
+        Assert.Empty(StopLineRoutes.Build([stop], [stop with { Latitude = 37.9705 }], 37.97, 23.72, "a", 37.9705, 23.72, "b", DateTime.Today));
+    }
+
+    [Fact]
     public void Overpass_Lists_Taxis_With_A_Phone_First()
     {
         var body = JsonDocument.Parse("""

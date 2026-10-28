@@ -101,6 +101,7 @@ const MODES: ModeGroup[] = ['bus', 'tram', 'metro', 'rail', 'ferry'];
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [TranslatePipe, IconComponent],
   template: `
+    @if (vehicles()) {
     <div class="live-map-tools">
       <div class="chips" role="group" [attr.aria-label]="'transit.filter' | t">
         @for (m of modes; track m) {
@@ -117,8 +118,10 @@ const MODES: ModeGroup[] = ['bus', 'tram', 'metro', 'rail', 'ferry'];
         }
       </div>
     </div>
-    <div class="live-map-wrap">
+    }
+    <div class="live-map-wrap" [class.is-static]="!vehicles()">
       <div #map class="live-map" role="application" [attr.aria-label]="'transit.mapLabel' | t"></div>
+      @if (vehicles()) {
       <div class="live-status" aria-live="polite">
         @switch (status()) {
           @case ('loading') { <span class="spinner" aria-hidden="true"></span> {{ 'transit.vehiclesLoading' | t }} }
@@ -132,11 +135,14 @@ const MODES: ModeGroup[] = ['bus', 'tram', 'metro', 'rail', 'ferry'];
           }
         }
       </div>
+      }
       <button type="button" class="live-recenter" (click)="fit()" [title]="'transit.recenter' | t"><app-icon name="pin" [size]="18" /></button>
     </div>
     <ul class="live-legend small">
-      <li><span class="legend-vehicle is-live"></span> {{ 'transit.legendLive' | t }}</li>
-      <li><span class="legend-vehicle"></span> {{ 'transit.legendScheduled' | t }}</li>
+      @if (vehicles()) {
+        <li><span class="legend-vehicle is-live"></span> {{ 'transit.legendLive' | t }}</li>
+        <li><span class="legend-vehicle"></span> {{ 'transit.legendScheduled' | t }}</li>
+      }
       @if (route()) {
         <li><span class="legend-walk"></span> {{ 'transit.legendWalk' | t }}</li>
         <li><span class="stop-pin is-board legend-pin">№</span> {{ 'transit.legendBoard' | t }}</li>
@@ -153,6 +159,8 @@ export class LiveMapComponent implements AfterViewInit {
   readonly lines = input<string[]>([]);
   /** The chosen journey: drawn step by step (walks dotted, rides in the line's colour) with where to board and get off. */
   readonly route = input<TransitItineraryDto | null>(null);
+  /** False: a plain route map (the day plan), without the moving vehicles. */
+  readonly vehicles = input(true);
 
   private readonly api = inject(ApiService);
   private readonly zone = inject(NgZone);
@@ -231,14 +239,17 @@ export class LiveMapComponent implements AfterViewInit {
       const far = () => map.getContainer().classList.toggle('is-far', map.getZoom() < 14);
       map.on('zoomend', far);
       far();
-      map.on('moveend', () => {
-        clearTimeout(this.moveTimer);
-        this.moveTimer = setTimeout(() => this.load(), 400);
-      });
       this.map = map;
-      this.drawEnds(this.from(), this.to());
-      this.refreshTimer = setInterval(() => this.load(), REFRESH_MS);
-      this.tickTimer = setInterval(() => this.tick(), 1000);
+      // The route may already be known when the map is created (it draws the start and destination too).
+      this.drawRoute(this.route());
+      if (this.vehicles()) {
+        map.on('moveend', () => {
+          clearTimeout(this.moveTimer);
+          this.moveTimer = setTimeout(() => this.load(), 400);
+        });
+        this.refreshTimer = setInterval(() => this.load(), REFRESH_MS);
+        this.tickTimer = setInterval(() => this.tick(), 1000);
+      }
       // The container may get its final size after the first layout (tabs, fonts).
       setTimeout(() => map.invalidateSize(), 200);
     });

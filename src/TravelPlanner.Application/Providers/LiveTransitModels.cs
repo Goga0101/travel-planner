@@ -33,3 +33,17 @@ public interface ILocalTaxiSource
 {
     Task<IReadOnlyList<LocalTaxi>> FindAsync(double latitude, double longitude, int radiusMeters, CancellationToken cancellationToken);
 }
+
+/// <summary>Public-transport stops around a point with the lines that call there (OpenStreetMap route_ref), nearest first.</summary>
+public interface ITransitStopSource
+{
+    bool IsConfigured { get; }
+    Task<IReadOnlyList<NearbyTransitStop>> FindAsync(double latitude, double longitude, int radiusMeters, CancellationToken cancellationToken);
+}
+
+public sealed class NoTransitStopSource : ITransitStopSource
+{
+    public bool IsConfigured => false;
+    public Task<IReadOnlyList<NearbyTransitStop>> FindAsync(double latitude, double longitude, int radiusMeters, CancellationToken cancellationToken) =>
+        Task.FromResult<IReadOnlyList<NearbyTransitStop>>([]);
+}

@@ -92,9 +92,11 @@ public static class DependencyInjection
             services.AddHostedService<NearbyCacheWarmer>();
             services.AddTransient<IAttractionSource, AttractionSource>();
             services.AddTransient<IActivityPlaceSource, ActivityPlaceSource>();
+            services.AddTransient<ITransitStopSource, GeoapifyStopSource>();
         }
         else
         {
+            services.AddSingleton<ITransitStopSource, NoTransitStopSource>();
             services.AddSingleton<IAttractionSource, NoAttractionSource>();
             services.AddSingleton<IActivityPlaceSource, NoActivityPlaceSource>();
         }

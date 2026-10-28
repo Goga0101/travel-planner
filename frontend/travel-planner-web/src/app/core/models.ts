@@ -729,6 +729,8 @@ export interface TransitItineraryDto {
   departureTime: string;
   arrivalTime: string;
   legs: TransitLegDto[];
+  /** Built from the lines listed at nearby stops (no published timetable): times are rough. */
+  estimated?: boolean;
 }
 
 export interface RouteDirectionDto {

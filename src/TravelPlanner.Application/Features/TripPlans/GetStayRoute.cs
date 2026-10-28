@@ -30,7 +30,9 @@ public sealed record TransitLegDto(
     string Mode, string? Line, string? Headsign, string From, string To, string DepartureTime, string ArrivalTime, int DurationMinutes,
     string? Agency, int? Stops, string? Color, LegTicketDto? Ticket = null, LegPath? Path = null);
 
-public sealed record TransitItineraryDto(int DurationMinutes, int Transfers, string DepartureTime, string ArrivalTime, IReadOnlyList<TransitLegDto> Legs);
+/// <summary>Estimated: built from the lines OpenStreetMap lists at nearby stops (no published timetable); times are rough.</summary>
+public sealed record TransitItineraryDto(int DurationMinutes, int Transfers, string DepartureTime, string ArrivalTime, IReadOnlyList<TransitLegDto> Legs,
+    bool Estimated = false);
 
 public sealed record RouteDirectionDto(
     string FromName, string ToName, DateOnly TimetableDate, bool OnTravelDate, string WishedTime,
@@ -82,7 +84,8 @@ public sealed class GetStayRouteHandler(
     ITransitRouter router,
     ITransitGuideSource guides,
     IWorldPlaces world,
-    IOutboundLinkPolicy linkPolicy) : IRequestHandler<GetStayRouteQuery, StayRouteDto>, IRequestHandler<GetHopRouteQuery, RouteDirectionDto>
+    IOutboundLinkPolicy linkPolicy,
+    ITransitStopSource stops) : IRequestHandler<GetStayRouteQuery, StayRouteDto>, IRequestHandler<GetHopRouteQuery, RouteDirectionDto>
 {
     /// <summary>Time to leave the airport after landing (passport control, bags), and to reach it before take-off.</summary>
     private static readonly TimeSpan AfterLanding = TimeSpan.FromMinutes(50);
@@ -206,9 +209,13 @@ public sealed class GetStayRouteHandler(
             ? []
             : await router.PlanAsync(new TransitRouteQuery(fromLat, fromLon, toLat, toLon, wished, offset), ct);
         var timetableDate = itineraries.Count > 0 ? DateOnly.FromDateTime(itineraries[0].DepartureLocal) : DateOnly.FromDateTime(wished);
+        // No timetable here: fall back to the lines that call near both ends (OpenStreetMap).
+        var options = itineraries.Count > 0
+            ? itineraries.Select(ToDto).ToList()
+            : await Features.Transit.StopLineRoutes.FindAsync(stops, fromLat, fromLon, fromName, toLat, toLon, toName, wished, ct);
         return new RouteDirectionDto(fromName, toName, timetableDate, timetableDate == DateOnly.FromDateTime(wished),
             wished.ToString("HH:mm", CultureInfo.InvariantCulture),
-            itineraries.Select(ToDto).ToList(),
+            options,
             linkPolicy.Sanitize(NearbyLinks.TransitDirections(fromLat, fromLon, toLat, toLon)),
             linkPolicy.Sanitize(NearbyLinks.TransitDirections(fromLat, fromLon, toLat, toLon).Replace("travelmode=transit", "travelmode=driving")),
             linkPolicy.Sanitize(NearbyLinks.Uber(fromLat, fromLon, fromName, toLat, toLon, toName)));

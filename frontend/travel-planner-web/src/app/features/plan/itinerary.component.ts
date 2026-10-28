@@ -38,11 +38,17 @@ export function modeIcon(mode: string): IconName {
   template: `
       @let it = itinerary();
       <div class="route-option-head">
-        <strong class="route-time">{{ it.departureTime }} → {{ it.arrivalTime }}</strong>
-        <span class="meta-chip">{{ it.durationMinutes | minutes }}</span>
-        <span class="meta-chip">{{ it.transfers === 0 ? ('route.noTransfer' | t) : ('route.transfers' | t: { count: it.transfers }) }}</span>
-        @if (best()) { <span class="badge-best">{{ 'route.fastest' | t }}</span> }
+        @if (it.estimated) {
+          <strong class="route-time">~{{ it.durationMinutes | minutes }}</strong>
+          <span class="badge-estimate"><app-icon name="info" [size]="12" /> {{ 'route.estimated' | t }}</span>
+        } @else {
+          <strong class="route-time">{{ it.departureTime }} → {{ it.arrivalTime }}</strong>
+          <span class="meta-chip">{{ it.durationMinutes | minutes }}</span>
+          <span class="meta-chip">{{ it.transfers === 0 ? ('route.noTransfer' | t) : ('route.transfers' | t: { count: it.transfers }) }}</span>
+          @if (best()) { <span class="badge-best">{{ 'route.fastest' | t }}</span> }
+        }
       </div>
+      @if (it.estimated) { <p class="small muted estimate-note">{{ 'route.estimatedNote' | t }}</p> }
       <div class="route-chips">
         @for (l of transitLegs(it.legs); track $index) {
           @if (ticketLink(l); as href) {

@@ -6,13 +6,14 @@ import { ApiError, toApiError } from '../../core/errors';
 import { TranslationKey } from '../../core/i18n/en';
 import { I18nService } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
-import { ActivityPlaceDto, DayItemDto, DayPlanDto, INTERESTS, Interest, PlanDayDto, RouteDirectionDto, TripPace } from '../../core/models';
+import { ActivityPlaceDto, DayItemDto, DayPlanDto, INTERESTS, Interest, PlaceSuggestionDto, PlanDayDto, RouteDirectionDto, TripPace } from '../../core/models';
 import { ErrorBannerComponent } from '../../shared/error-banner.component';
 import { SelectedStayService } from '../../core/selected-stay.service';
 import { ExternalLinkComponent } from '../../shared/external-link.component';
 import { IconComponent, IconName } from '../../shared/icon.component';
 import { DistancePipe, LocalDatePipe, MoneyPipe } from '../../shared/pipes';
 import { ItineraryComponent } from './itinerary.component';
+import { LiveMapComponent } from '../transit/live-map.component';
 
 const STORAGE_KEY = 'tp.dayPlanner';
 const DEFAULT_INTERESTS: Interest[] = ['culture', 'food'];
@@ -145,6 +146,10 @@ interface HopState {
   loading: boolean;
   data?: RouteDirectionDto;
   failed?: boolean;
+  /** The hop's ends as map places (kept, so the map is not redrawn on every check). */
+  ends?: { from: PlaceSuggestionDto; to: PlaceSuggestionDto };
+  /** The option drawn on the hop's map. */
+  pick?: number;
 }
 
 interface Preferences {
@@ -182,7 +187,7 @@ function savePreferences(p: Preferences): void {
 @Component({
   selector: 'app-day-planner',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TranslatePipe, IconComponent, ExternalLinkComponent, LocalDatePipe, MoneyPipe, DistancePipe, ErrorBannerComponent, NgTemplateOutlet, ItineraryComponent],
+  imports: [TranslatePipe, IconComponent, ExternalLinkComponent, LocalDatePipe, MoneyPipe, DistancePipe, ErrorBannerComponent, NgTemplateOutlet, ItineraryComponent, LiveMapComponent],
   template: `
     <section class="card day-planner" id="days" aria-labelledby="days-title">
       <div class="section-head">
@@ -378,9 +383,13 @@ function savePreferences(p: Preferences): void {
                   <p class="small muted"><span class="spinner" aria-hidden="true"></span> {{ 'days.hopLoading' | t }}</p>
                 } @else if (st?.data; as r) {
                   @if (r.itineraries.length) {
+                    @if (st!.ends; as e) {
+                      <app-live-map class="hop-map" [vehicles]="false" [from]="e.from" [to]="e.to" [route]="r.itineraries[st!.pick ?? 0] ?? null" />
+                    }
                     <ol class="route-options hop-options">
-                      @for (it of r.itineraries.slice(0, 2); track $index; let first = $first) {
-                        <li app-itinerary class="route-option" [class.best]="first" [itinerary]="it" [best]="first"></li>
+                      @for (it of r.itineraries.slice(0, 3); track $index; let first = $first; let i = $index) {
+                        <li app-itinerary class="route-option is-pickable" [class.best]="first" [class.is-picked]="(st!.pick ?? 0) === i"
+                            [itinerary]="it" [best]="first && !it.estimated" (click)="pickHop(h.key, i)"></li>
                       }
                     </ol>
                   } @else {
@@ -536,9 +545,20 @@ export class DayPlannerComponent {
       .getHop(this.planId(), h.from, h.to, h.date, h.leave)
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe({
-        next: (data) => this.setHop(h.key, { loading: false, data }),
+        next: (data) => this.setHop(h.key, {
+          loading: false, data, pick: 0,
+          ends: {
+            from: { name: h.from.name, latitude: h.from.latitude, longitude: h.from.longitude, kind: 'place' },
+            to: { name: h.to.name, latitude: h.to.latitude, longitude: h.to.longitude, kind: 'place' },
+          },
+        }),
         error: () => this.setHop(h.key, { loading: false, failed: true }),
       });
+  }
+
+  protected pickHop(key: string, pick: number): void {
+    const st = this.hopStates()[key];
+    if (st && st.pick !== pick) this.setHop(key, { ...st, pick });
   }
 
   private setHop(key: string, state: HopState): void {

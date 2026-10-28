@@ -740,6 +740,8 @@ export const en = {
   'transit.coachBest': 'Your direction',
   'transit.coachHowTo': 'How to get to the station',
   'transit.coachNote': 'Minibuses usually leave when full. Check the departure time and fare at the station.',
+  'route.estimated': 'Estimated · no timetable',
+  'route.estimatedNote': 'This city publishes no timetables: the line calls at both stops according to OpenStreetMap; the time is a rough estimate. Check the stop sign.',
 } satisfies Record<string, string>;
 
 export type TranslationKey = keyof typeof en;

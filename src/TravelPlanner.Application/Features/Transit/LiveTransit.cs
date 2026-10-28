@@ -121,6 +121,7 @@ public sealed class LiveTransitHandler(
     ITransitGuideSource guides,
     IApplicationDbContext db,
     IOutboundLinkPolicy linkPolicy,
+    ITransitStopSource stops,
     TimeProvider timeProvider)
     : IRequestHandler<SearchPlacesQuery, IReadOnlyList<PlaceSuggestionDto>>,
       IRequestHandler<ReversePlaceQuery, PlaceSuggestionDto?>,
@@ -159,11 +160,16 @@ public sealed class LiveTransitHandler(
                 wished, offset, AnyDistance: true), cancellationToken)
             : [];
         var timetableDate = itineraries.Count > 0 ? DateOnly.FromDateTime(itineraries[0].DepartureLocal) : DateOnly.FromDateTime(wished);
+        // No timetable here: fall back to the lines that call near both ends (OpenStreetMap).
+        var estimated = itineraries.Count > 0
+            ? []
+            : await StopLineRoutes.FindAsync(stops, request.FromLatitude, request.FromLongitude, fromName, request.ToLatitude, request.ToLongitude,
+                toName, wished, cancellationToken);
         var direction = new RouteDirectionDto(fromName, toName, timetableDate, timetableDate == DateOnly.FromDateTime(wished),
             wished.ToString("HH:mm", CultureInfo.InvariantCulture),
             itineraries.Select(i => new TransitItineraryDto(i.DurationMinutes, i.Transfers, Hm(i.DepartureLocal), Hm(i.ArrivalLocal),
                 i.Legs.Select(l => new TransitLegDto(l.Mode, l.Line, l.Headsign, l.From, l.To, Hm(l.DepartureLocal), Hm(l.ArrivalLocal),
-                    l.DurationMinutes, l.Agency, l.Stops, l.Color, Path: l.Path)).ToList())).ToList(),
+                    l.DurationMinutes, l.Agency, l.Stops, l.Color, Path: l.Path)).ToList())).Concat(estimated).ToList(),
             linkPolicy.Sanitize(NearbyLinks.TransitDirections(request.FromLatitude, request.FromLongitude, request.ToLatitude, request.ToLongitude)),
             linkPolicy.Sanitize(NearbyLinks.TransitDirections(request.FromLatitude, request.FromLongitude, request.ToLatitude, request.ToLongitude)
                 .Replace("travelmode=transit", "travelmode=driving")),
