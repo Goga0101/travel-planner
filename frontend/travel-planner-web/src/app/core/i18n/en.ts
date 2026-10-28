@@ -729,6 +729,17 @@ export const en = {
   'transit.introMap': 'Buses, trams, metro and trains moving on the map — live where the city publishes it.',
   'transit.introRoutes': 'Step-by-step connections with lines, times, transfers and the ticket to buy.',
   'transit.introTaxi': 'The ride-hailing apps that work in the country and local taxi phone numbers.',
+  'route.toStop': 'Walk to “{stop}” (Google Maps)',
+  'transit.pickRoute': 'Tap an option to see it on the map: the walk to the stop, the line and where to get off.',
+  'transit.boardAt': 'Board here {time}',
+  'transit.getOffAt': 'Get off {time}',
+  'transit.legendWalk': 'Walk',
+  'transit.legendBoard': 'Board the line',
+  'transit.coachTitle': 'Intercity minibuses and buses',
+  'transit.coachLead': 'Minibuses between regions have no published timetables. Go to the station that serves your direction:',
+  'transit.coachBest': 'Your direction',
+  'transit.coachHowTo': 'How to get to the station',
+  'transit.coachNote': 'Minibuses usually leave when full. Check the departure time and fare at the station.',
 } satisfies Record<string, string>;
 
 export type TranslationKey = keyof typeof en;

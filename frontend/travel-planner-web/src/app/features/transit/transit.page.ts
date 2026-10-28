@@ -86,7 +86,7 @@ const SECTIONS: { id: Section; icon: IconName; label: 'transit.secMap' | 'transi
             <h2 id="sec-map-title"><app-icon name="compass" /> {{ 'transit.secMap' | t }}</h2>
             <span class="small muted">{{ 'transit.mapNote' | t }}</span>
           </div>
-          <app-live-map [from]="searchedFrom()" [to]="searchedTo()" [lines]="myLines()" />
+          <app-live-map [from]="searchedFrom()" [to]="searchedTo()" [lines]="myLines()" [route]="pickedRoute()" />
         </section>
 
         <section class="card transit-section" id="sec-routes" aria-labelledby="sec-routes-title">
@@ -100,13 +100,39 @@ const SECTIONS: { id: Section; icon: IconName; label: 'transit.secMap' | 'transi
             @let r = j.direction;
             @if (r.itineraries.length) {
               @if (!r.onTravelDate) { <p class="small muted">{{ 'transit.timetableOther' | t }}</p> }
+              <p class="small route-pick-hint"><app-icon name="pin" [size]="14" /> {{ 'transit.pickRoute' | t }}</p>
               <ol class="route-options">
-                @for (it of r.itineraries; track $index; let first = $first) {
-                  <li app-itinerary class="route-option" [class.best]="first" [itinerary]="it" [best]="first"></li>
+                @for (it of r.itineraries; track $index; let first = $first; let i = $index) {
+                  <li app-itinerary class="route-option is-pickable" [class.best]="first" [class.is-picked]="picked() === i" [itinerary]="it" [best]="first"
+                      tabindex="0" [attr.aria-current]="picked() === i" (click)="pick(i, $event)" (keydown.enter)="pick(i, $event)"></li>
                 }
               </ol>
             } @else {
               <p class="muted">{{ 'transit.noRoutes' | t }}</p>
+            }
+            @if (j.coaches.length) {
+              <div class="coach-guide">
+                <h3 class="sub-head"><app-icon name="bus" [size]="18" /> {{ 'transit.coachTitle' | t }}</h3>
+                <p class="small muted">{{ 'transit.coachLead' | t }}</p>
+                <ul class="coach-list">
+                  @for (c of j.coaches; track c.name) {
+                    <li class="coach-station" [class.is-recommended]="c.recommended">
+                      <div class="coach-head">
+                        <strong>{{ c.name }}</strong>
+                        @if (c.recommended) { <span class="badge-best">{{ 'transit.coachBest' | t }}</span> }
+                      </div>
+                      <p class="small">{{ c.towns.join(' · ') }}</p>
+                      <div class="coach-links">
+                        <a class="btn btn-sm btn-deep" [href]="c.directionsUrl" target="_blank" rel="noopener noreferrer">
+                          <app-icon name="metro" [size]="14" /> {{ 'transit.coachHowTo' | t }}
+                        </a>
+                        <app-external-link [href]="c.mapUrl" [label]="'days.map' | t" />
+                      </div>
+                    </li>
+                  }
+                </ul>
+                <p class="small muted">{{ 'transit.coachNote' | t }}</p>
+              </div>
             }
             @if (r.cityTicket; as tk) {
               <p class="leg-ticket" [class.online]="tk.buyOnline === true" [class.offline]="tk.buyOnline === false">
@@ -216,6 +242,16 @@ export class TransitPage {
   private subs: Subscription[] = [];
 
   /** Lines of the suggested journeys, highlighted on the map. */
+  /** The journey drawn on the map (the fastest until the visitor taps another). */
+  protected readonly picked = signal(0);
+  protected readonly pickedRoute = computed(() => this.journey()?.direction.itineraries[this.picked()] ?? null);
+
+  protected pick(i: number, e: Event): void {
+    this.picked.set(i);
+    // A tap on a link inside the card (ticket, Google Maps) opens it; anywhere else shows the route on the map.
+    if (!(e.target as Element | null)?.closest('a')) this.go('map');
+  }
+
   protected readonly myLines = computed(() => {
     const lines = new Set<string>();
     for (const it of this.journey()?.direction.itineraries ?? []) for (const l of it.legs) if (l.mode !== 'WALK' && l.line) lines.add(l.line);
@@ -250,6 +286,7 @@ export class TransitPage {
     this.searchedFrom.set(from);
     this.searchedTo.set(to);
     this.journey.set(null);
+    this.picked.set(0);
     this.taxis.set(null);
     this.loading.set(true);
     this.taxisLoading.set(true);

@@ -1374,3 +1374,27 @@ a.ext-link.btn:hover { background: var(--primary-dark); border-color: var(--prim
   .section-label { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
   .transit-section { scroll-margin-top: 4rem; }
 }
+
+// ---------- Live transport: the chosen route on the map ----------
+.route-pick-hint { display: flex; align-items: flex-start; gap: 0.4rem; color: var(--text-2); margin: 0 0 0.5rem; }
+.route-option.is-pickable { cursor: pointer; transition: border-color 0.15s ease, box-shadow 0.15s ease; }
+.route-option.is-pickable:hover { border-color: var(--primary); }
+.route-option.is-picked { border-color: var(--primary-deep); box-shadow: 0 0 0 3px var(--primary-ring); background: var(--surface-tint); }
+.stop-link { display: inline-flex; align-items: center; gap: 0.25rem; margin-top: 0.2rem; font-size: 0.85rem; font-weight: 600; color: var(--primary-dark); }
+.stop-pin-marker { background: none; border: 0; }
+.stop-pin {
+  display: inline-flex; align-items: center; justify-content: center; min-width: 24px; height: 24px; padding: 0 5px; box-sizing: border-box;
+  border-radius: 999px; border: 3px solid var(--line, #16a34a); background: #fff; color: var(--text); font: 800 11px/1 var(--font);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.35);
+}
+.stop-pin.is-board { min-width: 34px; background: var(--line, #16a34a); color: #fff; border-color: #fff; }
+.stop-tip { font: 600 12px/1.35 var(--font); padding: 4px 8px; border-radius: 8px; width: max-content; max-width: 210px; white-space: normal; }
+.legend-walk { width: 1.4rem; height: 0; border-top: 4px dotted #334155; }
+.legend-pin { min-width: 26px; height: 20px; font-size: 10px; --line: #16a34a; }
+.coach-guide { margin-top: 1.25rem; padding-top: 1rem; border-top: 1px solid var(--border); }
+.coach-guide p { margin: 0.2rem 0 0.6rem; }
+.coach-list { list-style: none; padding: 0; margin: 0 0 0.5rem; display: grid; gap: 0.6rem; }
+.coach-station { padding: 0.8rem 0.9rem; border: 1px solid var(--border); border-radius: var(--radius-md); background: var(--surface); }
+.coach-station.is-recommended { border-color: var(--primary); box-shadow: 0 0 0 2px var(--primary-ring); }
+.coach-head { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.6rem; }
+.coach-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.9rem; font-size: 0.88rem; }

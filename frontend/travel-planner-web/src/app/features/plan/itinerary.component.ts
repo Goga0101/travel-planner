@@ -75,6 +75,11 @@ export function modeIcon(mode: string): IconName {
                 <strong>{{ modeLabel(l.mode) }} {{ l.line }}</strong>
                 @if (l.headsign) { <span class="muted"> {{ 'route.towards' | t: { headsign: l.headsign } }}</span> }
                 <br /><span class="small">{{ l.from }} → {{ l.to }} · {{ l.durationMinutes | minutes }}@if (l.stops) { · {{ 'route.stops' | t: { count: l.stops } }} }</span>
+                @if (stopLink(l); as href) {
+                  <br /><a class="stop-link" [href]="href" target="_blank" rel="noopener noreferrer">
+                    <app-icon name="walk" [size]="13" /> {{ 'route.toStop' | t: { stop: l.from } }} <app-icon name="external" [size]="11" />
+                  </a>
+                }
                 @if (l.agency) { <br /><span class="small muted">{{ l.agency }}</span> }
                 @if (l.ticket; as tk) {
                   <span class="leg-ticket" [class.online]="tk.buyOnline === true" [class.offline]="tk.buyOnline === false">
@@ -109,6 +114,12 @@ export class ItineraryComponent {
   /** Where tapping a ride goes: the ticket purchase page, else the operator's official page. */
   protected ticketLink(l: TransitLegDto): string | null {
     return l.ticket?.buyUrl ?? l.ticket?.infoUrl ?? null;
+  }
+
+  /** Google Maps walking directions from where the visitor is now to the stop where this ride starts. */
+  protected stopLink(l: TransitLegDto): string | null {
+    const p = l.path;
+    return p ? `https://www.google.com/maps/dir/?api=1&destination=${p.fromLatitude.toFixed(6)},${p.fromLongitude.toFixed(6)}&travelmode=walking` : null;
   }
 
   protected transitLegs(legs: TransitLegDto[]): TransitLegDto[] {

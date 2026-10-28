@@ -7,7 +7,7 @@ import { ApiService } from '../../core/api.service';
 import { TranslationKey } from '../../core/i18n/en';
 import { I18nService } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
-import { PlaceSuggestionDto, VehicleDto } from '../../core/models';
+import { PlaceSuggestionDto, TransitItineraryDto, TransitLegDto, VehicleDto } from '../../core/models';
 import { IconComponent } from '../../shared/icon.component';
 
 export type ModeGroup = 'bus' | 'tram' | 'metro' | 'rail' | 'ferry';
@@ -22,8 +22,9 @@ export function modeGroup(mode: string): ModeGroup {
   }
 }
 
-/** Google encoded polyline (precision 5) → [lat, lon] points. */
-export function decodePolyline(s: string): [number, number][] {
+/** Google encoded polyline → [lat, lon] points (precision 5 for vehicles, 7 for journey legs). */
+export function decodePolyline(s: string, precision = 5): [number, number][] {
+  const factor = 10 ** precision;
   const out: [number, number][] = [];
   let i = 0, lat = 0, lon = 0;
   while (i < s.length) {
@@ -37,7 +38,7 @@ export function decodePolyline(s: string): [number, number][] {
       const d = result & 1 ? ~(result >> 1) : result >> 1;
       if (k === 0) lat += d; else lon += d;
     }
-    out.push([lat / 1e5, lon / 1e5]);
+    out.push([lat / factor, lon / factor]);
   }
   return out;
 }
@@ -136,6 +137,10 @@ const MODES: ModeGroup[] = ['bus', 'tram', 'metro', 'rail', 'ferry'];
     <ul class="live-legend small">
       <li><span class="legend-vehicle is-live"></span> {{ 'transit.legendLive' | t }}</li>
       <li><span class="legend-vehicle"></span> {{ 'transit.legendScheduled' | t }}</li>
+      @if (route()) {
+        <li><span class="legend-walk"></span> {{ 'transit.legendWalk' | t }}</li>
+        <li><span class="stop-pin is-board legend-pin">№</span> {{ 'transit.legendBoard' | t }}</li>
+      }
       <li><span class="legend-end" data-end="from"></span> {{ 'transit.from' | t }}</li>
       <li><span class="legend-end" data-end="to"></span> {{ 'transit.to' | t }}</li>
     </ul>
@@ -146,6 +151,8 @@ export class LiveMapComponent implements AfterViewInit {
   readonly to = input<PlaceSuggestionDto | null>(null);
   /** Lines of the suggested journeys ("397", "M1"): highlighted, and optionally the only ones shown. */
   readonly lines = input<string[]>([]);
+  /** The chosen journey: drawn step by step (walks dotted, rides in the line's colour) with where to board and get off. */
+  readonly route = input<TransitItineraryDto | null>(null);
 
   private readonly api = inject(ApiService);
   private readonly zone = inject(NgZone);
@@ -162,6 +169,8 @@ export class LiveMapComponent implements AfterViewInit {
 
   private map?: L.Map;
   private ends = L.layerGroup();
+  private routeLayer = L.layerGroup();
+  private routeBounds: L.LatLngBounds | null = null;
   private vehiclesLayer = L.layerGroup();
   private running = new Map<string, Running>();
   /** Server clock minus device clock, in seconds (phones are often a little off). */
@@ -170,13 +179,26 @@ export class LiveMapComponent implements AfterViewInit {
   private refreshTimer?: ReturnType<typeof setInterval>;
   private tickTimer?: ReturnType<typeof setInterval>;
   private moveTimer?: ReturnType<typeof setTimeout>;
-  private readonly mineSet = computed(() => new Set(this.lines().map((l) => l.toLowerCase())));
+  /** The chosen route's lines, or every suggested journey's lines when none is chosen. */
+  private readonly mineSet = computed(() => {
+    const route = this.route();
+    const lines = route ? route.legs.filter((l) => l.mode !== 'WALK' && l.line).map((l) => l.line!) : this.lines();
+    return new Set(lines.map((l) => l.toLowerCase()));
+  });
 
   constructor() {
     effect(() => {
       const from = this.from();
       const to = this.to();
       untracked(() => this.drawEnds(from, to));
+    });
+    effect(() => {
+      const route = this.route();
+      untracked(() => {
+        // With a route on the map, its own lines are what matters; the filter brings the rest back.
+        this.onlyMine.set(!!route);
+        this.drawRoute(route);
+      });
     });
     effect(() => {
       this.shown();
@@ -202,6 +224,7 @@ export class LiveMapComponent implements AfterViewInit {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> · <a href="https://transitous.org">Transitous</a>',
       }).addTo(map);
       this.vehiclesLayer.addTo(map);
+      this.routeLayer.addTo(map);
       this.ends.addTo(map);
       map.setView([41.7151, 44.8271], 13);
       // Far out, vehicles are dots (labels would pile up); close in, they show their line.
@@ -225,8 +248,61 @@ export class LiveMapComponent implements AfterViewInit {
     const map = this.map;
     if (!map) return;
     const pts = [this.from(), this.to()].filter((p): p is PlaceSuggestionDto => !!p).map((p) => L.latLng(p.latitude, p.longitude));
-    if (pts.length === 2) map.fitBounds(L.latLngBounds(pts), { padding: [40, 40], maxZoom: 15 });
+    const bounds = this.routeBounds ? L.latLngBounds(pts).extend(this.routeBounds) : L.latLngBounds(pts);
+    if (pts.length === 2 || this.routeBounds) map.fitBounds(bounds, { padding: [40, 40], maxZoom: 16 });
     else if (pts.length === 1) map.setView(pts[0], 15);
+  }
+
+  private drawRoute(route: TransitItineraryDto | null): void {
+    if (!this.map) return;
+    this.routeLayer.clearLayers();
+    this.routeBounds = null;
+    if (!route) {
+      this.drawEnds(this.from(), this.to());
+      return;
+    }
+    const all: L.LatLng[] = [];
+    for (const leg of route.legs) {
+      const p = leg.path;
+      if (!p) continue;
+      const points = p.shape ? decodePolyline(p.shape, p.precision) : [[p.fromLatitude, p.fromLongitude], [p.toLatitude, p.toLongitude]] as [number, number][];
+      points.forEach((pt) => all.push(L.latLng(pt[0], pt[1])));
+      if (leg.mode === 'WALK') {
+        L.polyline(points, { color: '#334155', weight: 4, opacity: 0.85, dashArray: '1 8', lineCap: 'round' }).addTo(this.routeLayer);
+        continue;
+      }
+      const color = lineColor(leg);
+      L.polyline(points, { color: '#fff', weight: 9, opacity: 0.9 }).addTo(this.routeLayer);
+      L.polyline(points, { color, weight: 5, opacity: 0.95 }).addTo(this.routeLayer);
+      const name = escapeHtml(`${this.modeName(leg.mode)} ${leg.line ?? ''}`.trim());
+      this.stopPin(p.fromLatitude, p.fromLongitude, color, leg.line ?? '•',
+        `<strong>${escapeHtml(this.i18n.t('transit.boardAt', { time: leg.departureTime }))}</strong> · ${name}<br>${escapeHtml(leg.from)}`, true);
+      this.stopPin(p.toLatitude, p.toLongitude, color, '⏏',
+        `<strong>${escapeHtml(this.i18n.t('transit.getOffAt', { time: leg.arrivalTime }))}</strong><br>${escapeHtml(leg.to)}`, false);
+    }
+    this.routeBounds = all.length ? L.latLngBounds(all) : null;
+    // Redraws the start and destination (without the straight placeholder line) and fits the map to the route.
+    this.drawEnds(this.from(), this.to());
+  }
+
+  /** A stop of the route: boarding stops carry the line number and keep their label open. */
+  private stopPin(lat: number, lon: number, color: string, label: string, html: string, board: boolean): void {
+    L.marker([lat, lon], {
+      icon: L.divIcon({
+        className: 'stop-pin-marker',
+        html: `<span class="stop-pin${board ? ' is-board' : ''}" style="--line:${color}">${escapeHtml(label.slice(0, 5))}</span>`,
+        iconSize: [34, 24],
+        iconAnchor: [17, 12],
+      }),
+      zIndexOffset: board ? 900 : 800,
+      keyboard: false,
+    })
+      .bindTooltip(html, { permanent: board, direction: 'top', offset: [0, -12], className: 'stop-tip' })
+      .addTo(this.routeLayer);
+  }
+
+  private modeName(mode: string): string {
+    return this.i18n.t(this.modeKey(modeGroup(mode)));
   }
 
   private drawEnds(from: PlaceSuggestionDto | null, to: PlaceSuggestionDto | null): void {
@@ -241,7 +317,7 @@ export class LiveMapComponent implements AfterViewInit {
         keyboard: false,
       }).bindTooltip(escapeHtml(p.name)).addTo(this.ends);
     }
-    if (from && to) {
+    if (from && to && !this.route()) {
       L.polyline([[from.latitude, from.longitude], [to.latitude, to.longitude]], { color: '#0f766e', weight: 2, dashArray: '6 8', opacity: 0.6 })
         .addTo(this.ends);
     }
@@ -382,6 +458,14 @@ export class LiveMapComponent implements AfterViewInit {
   private set(fn: () => void): void {
     this.zone.run(fn);
   }
+}
+
+const MODE_COLORS: Record<ModeGroup, string> = { bus: '#16a34a', tram: '#dc2626', metro: '#2563eb', rail: '#7c3aed', ferry: '#0891b2' };
+
+/** The operator's line colour when it is a usable one, otherwise the colour of the kind of transport. */
+function lineColor(leg: TransitLegDto): string {
+  const c = leg.color?.toLowerCase();
+  return c && /^[0-9a-f]{6}$/.test(c) && c !== 'ffffff' && c !== 'fefefe' ? `#${c}` : MODE_COLORS[modeGroup(leg.mode)];
 }
 
 function escapeHtml(s: string): string {

@@ -51,6 +51,20 @@ public class LiveTransitTests
     }
 
     [Fact]
+    public void Trips_From_Tbilisi_To_The_Regions_Point_To_The_Right_Station()
+    {
+        var sagarejo = IntercityStations.For(41.6934, 44.8015, 41.734, 45.330, "en");
+        Assert.Equal("Samgori (Navtlughi) bus station", sagarejo[0].Name);
+        Assert.True(sagarejo[0].Recommended);
+
+        var ozurgeti = IntercityStations.For(41.6934, 44.8015, 41.924, 42.006, "ka");
+        Assert.Equal("დიდუბის ავტოსადგური", ozurgeti[0].Name);
+
+        Assert.Empty(IntercityStations.For(41.6934, 44.8015, 41.7260, 44.7650, "en")); // a trip inside the city
+        Assert.Empty(IntercityStations.For(42.269, 42.705, 41.643, 41.636, "en"));     // starts outside Tbilisi
+    }
+
+    [Fact]
     public void Overpass_Lists_Taxis_With_A_Phone_First()
     {
         var body = JsonDocument.Parse("""

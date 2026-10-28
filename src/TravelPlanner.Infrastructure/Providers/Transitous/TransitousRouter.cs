@@ -88,10 +88,14 @@ public sealed class TransitousRouter(HttpClient httpClient, IMemoryCache cache, 
                 var stops = l.TryGetProperty("intermediateStops", out var s) && s.ValueKind == JsonValueKind.Array ? s.GetArrayLength() + 1 : (int?)null;
                 var leg = new TransitLeg(mode, Str(l, "routeShortName") ?? Str(l, "routeLongName"), Str(l, "headsign"),
                     PlaceName(l, "from"), PlaceName(l, "to"), start, end, Math.Max(minutes, 0), Str(l, "agencyName"),
-                    mode == "WALK" ? null : stops, Str(l, "routeColor"));
-                // Consecutive walks (e.g. inside a station) become one.
+                    mode == "WALK" ? null : stops, Str(l, "routeColor"), PathOf(l));
+                // Consecutive walks (e.g. inside a station) become one; the map joins them with a straight line.
                 if (mode == "WALK" && legs.Count > 0 && legs[^1].Mode == "WALK")
-                    legs[^1] = legs[^1] with { To = leg.To, ArrivalLocal = end, DurationMinutes = legs[^1].DurationMinutes + leg.DurationMinutes };
+                    legs[^1] = legs[^1] with
+                    {
+                        To = leg.To, ArrivalLocal = end, DurationMinutes = legs[^1].DurationMinutes + leg.DurationMinutes,
+                        Path = legs[^1].Path is { } p && leg.Path is { } q ? p with { ToLatitude = q.ToLatitude, ToLongitude = q.ToLongitude, Shape = null } : null
+                    };
                 else
                     legs.Add(leg);
             }
@@ -109,6 +113,16 @@ public sealed class TransitousRouter(HttpClient httpClient, IMemoryCache cache, 
             .OrderBy(i => i.DurationMinutes).ThenBy(i => i.Transfers)
             .Take(MaxItineraries)
             .ToList();
+    }
+
+    private static LegPath? PathOf(JsonElement leg)
+    {
+        if (!leg.TryGetProperty("from", out var f) || !leg.TryGetProperty("to", out var t) ||
+            !f.TryGetProperty("lat", out var fLat) || !f.TryGetProperty("lon", out var fLon) ||
+            !t.TryGetProperty("lat", out var tLat) || !t.TryGetProperty("lon", out var tLon)) return null;
+        var geometry = leg.TryGetProperty("legGeometry", out var g) ? g : default;
+        var precision = geometry.ValueKind == JsonValueKind.Object && geometry.TryGetProperty("precision", out var p) && p.TryGetInt32(out var pv) ? pv : 6;
+        return new LegPath(fLat.GetDouble(), fLon.GetDouble(), tLat.GetDouble(), tLon.GetDouble(), Str(geometry, "points"), precision);
     }
 
     private static bool TryTime(JsonElement e, string name, TimeSpan offset, out DateTime local)

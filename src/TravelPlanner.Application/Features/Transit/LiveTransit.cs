@@ -26,9 +26,13 @@ public sealed record PlanJourneyQuery(
     double FromLatitude, double FromLongitude, string? FromName, double ToLatitude, double ToLongitude, string? ToName, DateTime? LocalTime)
     : IRequest<JourneyDto>;
 
-/// <summary>TimeZone is the origin's IANA zone (times are local there); CountryCode drives the taxi section.</summary>
+/// <summary>
+/// TimeZone is the origin's IANA zone (times are local there); CountryCode drives the taxi section. Coaches lists the city's
+/// intercity minibus stations for trips to another region where timetables are not published (Tbilisi for now).
+/// </summary>
 public sealed record JourneyDto(
-    string FromName, string ToName, string? TimeZone, string? CountryCode, int DistanceMeters, RouteDirectionDto Direction, string? RouterName);
+    string FromName, string ToName, string? TimeZone, string? CountryCode, int DistanceMeters, RouteDirectionDto Direction, string? RouterName,
+    IReadOnlyList<CoachStationDto> Coaches);
 
 // ---------- Live vehicles ----------
 
@@ -159,7 +163,7 @@ public sealed class LiveTransitHandler(
             wished.ToString("HH:mm", CultureInfo.InvariantCulture),
             itineraries.Select(i => new TransitItineraryDto(i.DurationMinutes, i.Transfers, Hm(i.DepartureLocal), Hm(i.ArrivalLocal),
                 i.Legs.Select(l => new TransitLegDto(l.Mode, l.Line, l.Headsign, l.From, l.To, Hm(l.DepartureLocal), Hm(l.ArrivalLocal),
-                    l.DurationMinutes, l.Agency, l.Stops, l.Color)).ToList())).ToList(),
+                    l.DurationMinutes, l.Agency, l.Stops, l.Color, Path: l.Path)).ToList())).ToList(),
             linkPolicy.Sanitize(NearbyLinks.TransitDirections(request.FromLatitude, request.FromLongitude, request.ToLatitude, request.ToLongitude)),
             linkPolicy.Sanitize(NearbyLinks.TransitDirections(request.FromLatitude, request.FromLongitude, request.ToLatitude, request.ToLongitude)
                 .Replace("travelmode=transit", "travelmode=driving")),
@@ -181,7 +185,8 @@ public sealed class LiveTransitHandler(
 
         return new JourneyDto(fromName, toName, origin?.TimeZone, origin?.CountryCode,
             NearbyLinks.DistanceMeters(request.FromLatitude, request.FromLongitude, request.ToLatitude, request.ToLongitude),
-            direction, router.IsConfigured ? router.Name : null);
+            direction, router.IsConfigured ? router.Name : null,
+            IntercityStations.For(request.FromLatitude, request.FromLongitude, request.ToLatitude, request.ToLongitude, T.CurrentLanguage));
     }
 
     public async Task<LiveVehiclesDto> Handle(LiveVehiclesQuery request, CancellationToken cancellationToken)

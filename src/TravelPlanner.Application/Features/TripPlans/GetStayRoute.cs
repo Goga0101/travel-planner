@@ -28,7 +28,7 @@ public sealed record LegTicketDto(string? Name, decimal? Price, string? Currency
 
 public sealed record TransitLegDto(
     string Mode, string? Line, string? Headsign, string From, string To, string DepartureTime, string ArrivalTime, int DurationMinutes,
-    string? Agency, int? Stops, string? Color, LegTicketDto? Ticket = null);
+    string? Agency, int? Stops, string? Color, LegTicketDto? Ticket = null, LegPath? Path = null);
 
 public sealed record TransitItineraryDto(int DurationMinutes, int Transfers, string DepartureTime, string ArrivalTime, IReadOnlyList<TransitLegDto> Legs);
 
@@ -217,7 +217,7 @@ public sealed class GetStayRouteHandler(
     private static TransitItineraryDto ToDto(TransitItinerary i) =>
         new(i.DurationMinutes, i.Transfers, Hm(i.DepartureLocal), Hm(i.ArrivalLocal),
             i.Legs.Select(l => new TransitLegDto(l.Mode, l.Line, l.Headsign, l.From, l.To, Hm(l.DepartureLocal), Hm(l.ArrivalLocal),
-                l.DurationMinutes, l.Agency, l.Stops, l.Color)).ToList());
+                l.DurationMinutes, l.Agency, l.Stops, l.Color, Path: l.Path)).ToList());
 
     private static string Hm(DateTime t) => t.ToString("HH:mm", CultureInfo.InvariantCulture);
 

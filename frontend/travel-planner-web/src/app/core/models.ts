@@ -698,6 +698,17 @@ export interface TransitLegDto {
   stops?: number;
   color?: string;
   ticket?: LegTicketDto;
+  /** Where the leg starts and ends and the way it follows (encoded polyline with the given precision). */
+  path?: LegPath;
+}
+
+export interface LegPath {
+  fromLatitude: number;
+  fromLongitude: number;
+  toLatitude: number;
+  toLongitude: number;
+  shape?: string;
+  precision: number;
 }
 
 /** How to pay for a ride: the matching airport ticket (or the city's ticket) and whether it can be bought online. */
@@ -868,6 +879,16 @@ export interface JourneyDto {
   distanceMeters: number;
   direction: RouteDirectionDto;
   routerName?: string;
+  /** Intercity minibus stations for trips to another region (no open timetables); the best match first. */
+  coaches: CoachStationDto[];
+}
+
+export interface CoachStationDto {
+  name: string;
+  towns: string[];
+  recommended: boolean;
+  mapUrl: string;
+  directionsUrl: string;
 }
 
 /** Stop-to-stop stretch: Unix seconds, next stop, encoded polyline (precision 5). */

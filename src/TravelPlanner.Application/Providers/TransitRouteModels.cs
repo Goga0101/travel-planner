@@ -22,7 +22,14 @@ public sealed record TransitLeg(
     int DurationMinutes,
     string? Agency,
     int? Stops,
-    string? Color);
+    string? Color,
+    LegPath? Path = null);
+
+/// <summary>
+/// Where a leg starts and ends (the stop to walk to, the stop to get off) and the way it follows: an encoded polyline
+/// (Google format) with the given precision, null when unknown (the map then draws a straight line).
+/// </summary>
+public sealed record LegPath(double FromLatitude, double FromLongitude, double ToLatitude, double ToLongitude, string? Shape, int Precision);
 
 public sealed record TransitItinerary(int DurationMinutes, int Transfers, DateTime DepartureLocal, DateTime ArrivalLocal, IReadOnlyList<TransitLeg> Legs);
 
