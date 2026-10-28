@@ -1415,3 +1415,30 @@ a.ext-link.btn:hover { background: var(--primary-dark); border-color: var(--prim
 .route-tag[data-tag='leastWalking'] { background: #fef3c7; color: #92400e; }
 .route-tag[data-tag='metro'] { background: #fee2e2; color: #b91c1c; }
 .route-walk { display: inline-flex; align-items: center; gap: 0.2rem; font-size: 0.78rem; color: var(--muted); }
+
+// ---------- Live transport: start from my location, and me moving on the map ----------
+.start-mode { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem 0.9rem; }
+.start-mode .label { font-weight: 700; }
+.start-mode .pill-btn { display: inline-flex; align-items: center; gap: 0.3rem; }
+.gps-status { display: inline-flex; align-items: center; gap: 0.4rem; margin: 0; color: var(--primary-deep); font-weight: 600; }
+.gps-status.is-error { color: var(--danger); }
+.transit-fields.is-gps { grid-template-columns: 1fr; }
+.me-dot-inline { width: 0.7rem; height: 0.7rem; border-radius: 50%; background: #2563eb; box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.25); }
+.me-marker { background: none; border: 0; }
+.me-dot {
+  position: relative; display: block; width: 22px; height: 22px; box-sizing: border-box; border-radius: 50%; background: #2563eb; border: 3px solid #fff;
+  box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5), 0 1px 4px rgba(15, 23, 42, 0.4); animation: me-pulse 2s infinite;
+}
+@keyframes me-pulse { 70% { box-shadow: 0 0 0 12px rgba(37, 99, 235, 0), 0 1px 4px rgba(15, 23, 42, 0.4); } 100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0), 0 1px 4px rgba(15, 23, 42, 0.4); } }
+.me-heading {
+  position: absolute; left: 50%; top: 50%; width: 0; height: 0; margin: -22px 0 0 -6px; transform-origin: 6px 22px;
+  border-left: 6px solid transparent; border-right: 6px solid transparent; border-bottom: 10px solid #2563eb;
+}
+.live-track {
+  position: absolute; z-index: 500; left: 0.6rem; bottom: 1.6rem; display: inline-flex; align-items: center; gap: 0.35rem; max-width: calc(100% - 4.5rem);
+  padding: 0.5rem 0.8rem; border-radius: 999px; border: 0; background: var(--surface); color: #1d4ed8; font: inherit; font-size: 0.82rem; font-weight: 700;
+  box-shadow: var(--shadow-lg); cursor: pointer;
+}
+.live-track.is-on { background: #eff6ff; }
+.live-track.is-following { background: #2563eb; color: #fff; }
+.live-track-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }

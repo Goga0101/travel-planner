@@ -750,6 +750,15 @@ export const en = {
   'route.tag.leastWalking': 'Least walking',
   'route.tag.metro': 'By metro',
   'route.walkTotal': 'walk {minutes} min',
+  'transit.startMode': 'Start from',
+  'transit.startGps': 'My location',
+  'transit.startTyped': 'Two places',
+  'transit.gpsWaiting': 'Finding your location…',
+  'transit.gpsReady': 'Your location · accuracy ~{meters} m',
+  'transit.youAreHere': 'You are here',
+  'transit.trackMe': 'Show me moving on the map',
+  'transit.trackFollow': 'Following you — tap to stop',
+  'transit.trackResume': 'Centre on me',
 } satisfies Record<string, string>;
 
 export type TranslationKey = keyof typeof en;

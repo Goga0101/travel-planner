@@ -3,6 +3,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { Subscription, catchError, of } from 'rxjs';
 import { ApiService } from '../../core/api.service';
 import { ApiError, toApiError } from '../../core/errors';
+import { GeolocationService } from '../../core/geolocation.service';
+import { I18nService } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
 import { JourneyDto, PlaceSuggestionDto, TaxiOptionsDto } from '../../core/models';
 import { ErrorBannerComponent } from '../../shared/error-banner.component';
@@ -39,13 +41,33 @@ const SECTIONS: { id: Section; icon: IconName; label: 'transit.secMap' | 'transi
       </header>
 
       <form class="card transit-search" (submit)="$event.preventDefault(); search()">
-        <div class="transit-fields">
-          <app-place-input #fromInput inputId="transit-from" label="transit.from" placeholder="transit.fromPlaceholder" end="from" [gps]="true"
-                           [near]="to() ?? region()" [(value)]="from" />
-          <button type="button" class="swap-btn" (click)="swap()" [title]="'transit.swap' | t" [attr.aria-label]="'transit.swap' | t">
-            <app-icon name="shuffle" [size]="18" />
-          </button>
-          <app-place-input #toInput inputId="transit-to" label="transit.to" placeholder="transit.toPlaceholder" end="to" [near]="from() ?? region()" [(value)]="to" />
+        <div class="start-mode">
+          <span class="label" id="start-mode-label">{{ 'transit.startMode' | t }}</span>
+          <div class="pill-group" role="radiogroup" aria-labelledby="start-mode-label">
+            <button type="button" role="radio" class="pill-btn" [class.active]="useGps()" [attr.aria-checked]="useGps()" (click)="setGps(true)">
+              <app-icon name="compass" [size]="15" /> {{ 'transit.startGps' | t }}
+            </button>
+            <button type="button" role="radio" class="pill-btn" [class.active]="!useGps()" [attr.aria-checked]="!useGps()" (click)="setGps(false)">
+              <app-icon name="pin" [size]="15" /> {{ 'transit.startTyped' | t }}
+            </button>
+          </div>
+          @if (useGps()) {
+            <p class="small gps-status" [class.is-error]="!!geo.error()" aria-live="polite">
+              @if (geo.error(); as e) { {{ e | t }} }
+              @else if (geo.position(); as p) { <span class="me-dot-inline"></span> {{ 'transit.gpsReady' | t: { meters: p.accuracy } }} }
+              @else { <span class="spinner" aria-hidden="true"></span> {{ 'transit.gpsWaiting' | t }} }
+            </p>
+          }
+        </div>
+        <div class="transit-fields" [class.is-gps]="useGps()">
+          @if (!useGps()) {
+            <app-place-input #fromInput inputId="transit-from" label="transit.from" placeholder="transit.fromPlaceholder" end="from" [gps]="true"
+                             [near]="to() ?? region()" [(value)]="from" />
+            <button type="button" class="swap-btn" (click)="swap()" [title]="'transit.swap' | t" [attr.aria-label]="'transit.swap' | t">
+              <app-icon name="shuffle" [size]="18" />
+            </button>
+          }
+          <app-place-input #toInput inputId="transit-to" label="transit.to" placeholder="transit.toPlaceholder" end="to" [near]="start() ?? region()" [(value)]="to" />
         </div>
         <div class="transit-when">
           <div class="pill-group" role="radiogroup" [attr.aria-label]="'transit.when' | t">
@@ -60,7 +82,7 @@ const SECTIONS: { id: Section; icon: IconName; label: 'transit.secMap' | 'transi
             <input type="datetime-local" class="input transit-time" [value]="time()" (input)="time.set($any($event.target).value)"
                    [attr.aria-label]="'transit.leaveAt' | t" />
           }
-          <button type="submit" class="btn btn-primary transit-go" [disabled]="!from() || !to() || loading()">
+          <button type="submit" class="btn btn-primary transit-go" [disabled]="!start() || !to() || loading()">
             @if (loading()) { <span class="spinner" aria-hidden="true"></span> } @else { <app-icon name="search" [size]="18" /> }
             {{ 'transit.search' | t }}
           </button>
@@ -89,7 +111,7 @@ const SECTIONS: { id: Section; icon: IconName; label: 'transit.secMap' | 'transi
           @if (stationRoute(); as sr) {
             <p class="small map-to-station"><app-icon name="bus" [size]="14" /> {{ 'transit.mapToStation' | t: { station: sr.station.name } }}</p>
           }
-          <app-live-map [from]="searchedFrom()" [to]="mapTo()" [lines]="myLines()" [route]="mapRoute()" />
+          <app-live-map [from]="searchedFrom()" [to]="mapTo()" [lines]="myLines()" [route]="mapRoute()" [track]="useGps()" />
         </section>
 
         <section class="card transit-section" id="sec-routes" aria-labelledby="sec-routes-title">
@@ -232,7 +254,29 @@ const SECTIONS: { id: Section; icon: IconName; label: 'transit.secMap' | 'transi
 export class TransitPage {
   private readonly api = inject(ApiService);
   private readonly destroyRef = inject(DestroyRef);
-  private readonly fromInput = viewChild.required<PlaceInputComponent>('fromInput');
+  private readonly fromInput = viewChild<PlaceInputComponent>('fromInput');
+  protected readonly geo = inject(GeolocationService);
+  private readonly i18n = inject(I18nService);
+  /** Start from the device's live position (only the destination is typed) or from a typed place; remembered per browser. */
+  protected readonly useGps = signal(loadStartMode());
+  /** Where the trip starts: the device's position now, or the typed place. */
+  protected readonly start = computed<PlaceSuggestionDto | null>(() => {
+    if (!this.useGps()) return this.from();
+    const p = this.geo.position();
+    return p ? { name: this.i18n.t('transit.startGps'), latitude: p.latitude, longitude: p.longitude, kind: 'address' } : null;
+  });
+
+  protected setGps(on: boolean): void {
+    if (on === this.useGps()) return;
+    this.useGps.set(on);
+    if (on) this.geo.acquire();
+    else this.geo.release();
+    try {
+      localStorage.setItem(START_MODE_KEY, on ? 'gps' : 'typed');
+    } catch {
+      /* storage unavailable */
+    }
+  }
   private readonly toInput = viewChild.required<PlaceInputComponent>('toInput');
 
   protected readonly sections = SECTIONS;
@@ -294,7 +338,11 @@ export class TransitPage {
   });
 
   constructor() {
-    this.destroyRef.onDestroy(() => this.subs.forEach((s) => s.unsubscribe()));
+    if (this.useGps()) this.geo.acquire();
+    this.destroyRef.onDestroy(() => {
+      this.subs.forEach((s) => s.unsubscribe());
+      if (this.useGps()) this.geo.release();
+    });
     this.api
       .getNearestAirport()
       .pipe(catchError(() => of(null)), takeUntilDestroyed(this.destroyRef))
@@ -304,12 +352,13 @@ export class TransitPage {
   protected swap(): void {
     const from = this.from();
     const to = this.to();
-    this.fromInput().set(to);
+    this.fromInput()?.set(to);
     this.toInput().set(from);
   }
 
   protected search(): void {
-    const from = this.from();
+    // From "my location": the position at the moment of the search (the blue dot keeps moving on the map).
+    const from = this.start();
     const to = this.to();
     if (!from || !to) {
       this.hint.set(true);
@@ -357,6 +406,17 @@ export class TransitPage {
 
   protected tel(phone: string): string {
     return phone.split(/[;,]/)[0].replace(/[^\d+]/g, '');
+  }
+}
+
+const START_MODE_KEY = 'tp.transitStart';
+
+/** "From my location" unless the visitor last chose typed places (storage may be unavailable). */
+function loadStartMode(): boolean {
+  try {
+    return localStorage.getItem(START_MODE_KEY) !== 'typed';
+  } catch {
+    return true;
   }
 }
 

@@ -749,4 +749,13 @@ export const ka: Dictionary = {
   'route.tag.leastWalking': 'ნაკლები სიარული',
   'route.tag.metro': 'მეტროთი',
   'route.walkTotal': 'ფეხით {minutes} წთ',
+  'transit.startMode': 'საიდან',
+  'transit.startGps': 'ჩემი მდებარეობიდან',
+  'transit.startTyped': 'ორი ადგილი',
+  'transit.gpsWaiting': 'ვადგენთ თქვენს მდებარეობას…',
+  'transit.gpsReady': 'თქვენი მდებარეობა · სიზუსტე ~{meters} მ',
+  'transit.youAreHere': 'თქვენ აქ ხართ',
+  'transit.trackMe': 'ჩემი მოძრაობა რუკაზე',
+  'transit.trackFollow': 'რუკა მოგყვებათ — შეეხეთ გასათიშად',
+  'transit.trackResume': 'ჩემზე დაბრუნება',
 };

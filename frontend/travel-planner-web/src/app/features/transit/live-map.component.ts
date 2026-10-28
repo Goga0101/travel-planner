@@ -4,6 +4,7 @@ import {
 import * as L from 'leaflet';
 import { Subscription, catchError, of } from 'rxjs';
 import { ApiService } from '../../core/api.service';
+import { DevicePosition, GeolocationService } from '../../core/geolocation.service';
 import { TranslationKey } from '../../core/i18n/en';
 import { I18nService } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
@@ -137,6 +138,13 @@ const MODES: ModeGroup[] = ['bus', 'tram', 'metro', 'rail', 'ferry'];
       </div>
       }
       <button type="button" class="live-recenter" (click)="fit()" [title]="'transit.recenter' | t"><app-icon name="pin" [size]="18" /></button>
+      @if (geo.supported) {
+        @let trackLabel = (tracking() ? (following() ? 'transit.trackFollow' : 'transit.trackResume') : 'transit.trackMe') | t;
+        <button type="button" class="live-track" [class.is-on]="tracking()" [class.is-following]="tracking() && following()" (click)="toggleTracking()"
+                [attr.aria-pressed]="tracking()" [title]="trackLabel">
+          <app-icon name="compass" [size]="18" /> <span class="live-track-text">{{ trackLabel }}</span>
+        </button>
+      }
     </div>
     <ul class="live-legend small">
       @if (vehicles()) {
@@ -161,6 +169,16 @@ export class LiveMapComponent implements AfterViewInit {
   readonly route = input<TransitItineraryDto | null>(null);
   /** False: a plain route map (the day plan), without the moving vehicles. */
   readonly vehicles = input(true);
+  /** Start with the visitor's moving position shown and followed (they chose "from my location"). */
+  readonly track = input(false);
+
+  protected readonly geo = inject(GeolocationService);
+  protected readonly tracking = signal(false);
+  /** The map keeps the visitor in view until they move it themselves. */
+  protected readonly following = signal(true);
+  private meLayer = L.layerGroup();
+  private meMarker?: L.Marker;
+  private meCircle?: L.Circle;
 
   private readonly api = inject(ApiService);
   private readonly zone = inject(NgZone);
@@ -214,7 +232,16 @@ export class LiveMapComponent implements AfterViewInit {
       this.mineSet();
       untracked(() => this.tick());
     });
+    effect(() => {
+      if (this.track()) untracked(() => this.startTracking());
+    });
+    effect(() => {
+      const p = this.geo.position();
+      const on = this.tracking();
+      untracked(() => this.drawMe(on ? p : null));
+    });
     inject(DestroyRef).onDestroy(() => {
+      if (this.tracking()) this.geo.release();
       clearInterval(this.refreshTimer);
       clearInterval(this.tickTimer);
       clearTimeout(this.moveTimer);
@@ -240,6 +267,10 @@ export class LiveMapComponent implements AfterViewInit {
       map.on('zoomend', far);
       far();
       this.map = map;
+      this.meLayer.addTo(map);
+      this.drawMe(this.tracking() ? this.geo.position() : null);
+      // Moving the map by hand stops following; the button brings it back.
+      map.on('dragstart', () => this.set(() => this.following.set(false)));
       // The route may already be known when the map is created (it draws the start and destination too).
       this.drawRoute(this.route());
       if (this.vehicles()) {
@@ -262,6 +293,51 @@ export class LiveMapComponent implements AfterViewInit {
     const bounds = this.routeBounds ? L.latLngBounds(pts).extend(this.routeBounds) : L.latLngBounds(pts);
     if (pts.length === 2 || this.routeBounds) map.fitBounds(bounds, { padding: [40, 40], maxZoom: 16 });
     else if (pts.length === 1) map.setView(pts[0], 15);
+  }
+
+  protected toggleTracking(): void {
+    if (!this.tracking()) {
+      this.startTracking();
+    } else if (!this.following()) {
+      this.following.set(true);
+      const p = this.geo.position();
+      if (p && this.map) this.map.setView([p.latitude, p.longitude], Math.max(this.map.getZoom(), 16));
+    } else {
+      this.tracking.set(false);
+      this.geo.release();
+    }
+  }
+
+  private startTracking(): void {
+    if (this.tracking()) return;
+    this.tracking.set(true);
+    this.following.set(true);
+    this.geo.acquire();
+  }
+
+  /** The blue dot (with the GPS accuracy circle and the direction of travel) where the visitor is now. */
+  private drawMe(p: DevicePosition | null): void {
+    if (!this.map) return;
+    if (!p) {
+      this.meLayer.clearLayers();
+      this.meMarker = this.meCircle = undefined;
+      return;
+    }
+    const at = L.latLng(p.latitude, p.longitude);
+    const heading = p.heading != null ? `<span class="me-heading" style="transform:rotate(${Math.round(p.heading)}deg)"></span>` : '';
+    const icon = L.divIcon({ className: 'me-marker', html: `<span class="me-dot">${heading}</span>`, iconSize: [22, 22], iconAnchor: [11, 11] });
+    if (!this.meMarker) {
+      this.meCircle = L.circle(at, { radius: p.accuracy, color: '#2563eb', weight: 1, opacity: 0.4, fillColor: '#3b82f6', fillOpacity: 0.12, interactive: false })
+        .addTo(this.meLayer);
+      this.meMarker = L.marker(at, { icon, zIndexOffset: 2000, keyboard: false })
+        .bindTooltip(escapeHtml(this.i18n.t('transit.youAreHere')))
+        .addTo(this.meLayer);
+      if (this.following()) this.map.setView(at, Math.max(this.map.getZoom(), 16));
+      return;
+    }
+    this.meMarker.setLatLng(at).setIcon(icon);
+    this.meCircle?.setLatLng(at).setRadius(p.accuracy);
+    if (this.following()) this.map.panTo(at, { animate: true });
   }
 
   private drawRoute(route: TransitItineraryDto | null): void {
