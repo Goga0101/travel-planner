@@ -48,16 +48,26 @@ public sealed class SearchPlacesHandler(IApplicationDbContext db, IWorldPlaces w
         var language = T.CurrentLanguage;
         var listedCities = listed.Select(p => world.FindCity(p.CityCode)).OfType<WorldCity>().ToList();
         var result = new List<PlaceDto>();
-        foreach (var p in (await places.GeocodeAsync(term, language, null, null, ct)).Where(p => p.Kind == "city" && p.CountryCode is { Length: 2 }))
+        // Capitals are often mapped as an administrative area ("region"): they still count when an airport city is there.
+        foreach (var p in (await places.GeocodeAsync(term, language, null, null, ct)).Where(p => p.Kind is "city" or "region" && p.CountryCode is { Length: 2 }))
         {
             if (result.Count >= MaxTowns) break;
-            if (listedCities.Any(c => Geo.DistanceKm(c.Latitude, c.Longitude, p.Latitude, p.Longitude) < SameCityKm) ||
-                result.Any(r => r.City == p.Name && r.CountryCode == p.CountryCode)) continue;
+            if (listedCities.Any(c => Geo.DistanceKm(c.Latitude, c.Longitude, p.Latitude, p.Longitude) < SameCityKm)) continue;
             var gateways = await Features.TripSearches.GatewayAirports.FindAsync(db, p.Latitude, p.Longitude, p.CountryCode!, ct);
-            // At an airport city already (the world list knows it under its own name).
-            if (gateways.Count == 0 || gateways[0].Km < SameCityKm) continue;
+            if (gateways.Count == 0) continue;
             var gateway = gateways[0].Airport;
             var country = p.Area?.Split(',').LastOrDefault()?.Trim() is { Length: > 0 } c ? c : gateway.Country ?? p.CountryCode!;
+
+            // An airport city typed in another language ("თბილისი"): that city itself, named as typed.
+            if (world.FindCity(gateway.IataCode) is { } airportCity &&
+                Geo.DistanceKm(airportCity.Latitude, airportCity.Longitude, p.Latitude, p.Longitude) < SameCityKm)
+            {
+                if (result.All(r => r.CityCode != airportCity.CityCode))
+                    result.Add(new PlaceDto(airportCity.CityCode, p.Name, country, airportCity.CountryCode, airportCity.Continent, airportCity.AirportCodes, null));
+                continue;
+            }
+            // A municipality or region without an airport city is an area, not a place to stay.
+            if (p.Kind != "city" || result.Any(r => r.City == p.Name && r.CountryCode == p.CountryCode)) continue;
             result.Add(new PlaceDto(new Features.TripSearches.TownPick(p.Name, p.CountryCode!, p.Latitude, p.Longitude, country).Code, p.Name, country,
                 p.CountryCode!, world.FindCity(gateway.IataCode)?.Continent ?? "Europe", gateways.Select(g => g.Airport.IataCode).ToList(), null,
                 gateways[0].Km));
