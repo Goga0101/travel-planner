@@ -86,7 +86,10 @@ const SECTIONS: { id: Section; icon: IconName; label: 'transit.secMap' | 'transi
             <h2 id="sec-map-title"><app-icon name="compass" /> {{ 'transit.secMap' | t }}</h2>
             <span class="small muted">{{ 'transit.mapNote' | t }}</span>
           </div>
-          <app-live-map [from]="searchedFrom()" [to]="searchedTo()" [lines]="myLines()" [route]="pickedRoute()" />
+          @if (stationRoute(); as sr) {
+            <p class="small map-to-station"><app-icon name="bus" [size]="14" /> {{ 'transit.mapToStation' | t: { station: sr.station.name } }}</p>
+          }
+          <app-live-map [from]="searchedFrom()" [to]="mapTo()" [lines]="myLines()" [route]="mapRoute()" />
         </section>
 
         <section class="card transit-section" id="sec-routes" aria-labelledby="sec-routes-title">
@@ -108,7 +111,7 @@ const SECTIONS: { id: Section; icon: IconName; label: 'transit.secMap' | 'transi
                 }
               </ol>
             } @else {
-              <p class="muted">{{ 'transit.noRoutes' | t }}</p>
+              <p class="muted">{{ (j.coaches.length ? 'transit.noRoutesCoach' : 'transit.noRoutes') | t }}</p>
             }
             @if (j.coaches.length) {
               <div class="coach-guide">
@@ -122,6 +125,15 @@ const SECTIONS: { id: Section; icon: IconName; label: 'transit.secMap' | 'transi
                         @if (c.recommended) { <span class="badge-best">{{ 'transit.coachBest' | t }}</span> }
                       </div>
                       <p class="small">{{ c.towns.join(' · ') }}</p>
+                      @if (c.route?.itineraries?.length) {
+                        <p class="coach-route-title"><app-icon name="metro" [size]="15" /> {{ 'transit.coachRouteTitle' | t }}</p>
+                        <ol class="route-options">
+                          @for (it of c.route!.itineraries; track $index; let first = $first; let i = $index) {
+                            <li app-itinerary class="route-option is-pickable" [class.best]="first" [class.is-picked]="stationRoute() && stationPick() === i"
+                                [itinerary]="it" [best]="first && !it.estimated" tabindex="0" (click)="pickStation(i, $event)" (keydown.enter)="pickStation(i, $event)"></li>
+                          }
+                        </ol>
+                      }
                       <div class="coach-links">
                         <a class="btn btn-sm btn-deep" [href]="c.directionsUrl" target="_blank" rel="noopener noreferrer">
                           <app-icon name="metro" [size]="14" /> {{ 'transit.coachHowTo' | t }}
@@ -246,6 +258,27 @@ export class TransitPage {
   protected readonly picked = signal(0);
   protected readonly pickedRoute = computed(() => this.journey()?.direction.itineraries[this.picked()] ?? null);
 
+  /** No direct timetable connection but a minibus station for the direction: the map shows the way to the station instead. */
+  protected readonly stationRoute = computed(() => {
+    const j = this.journey();
+    if (!j || j.direction.itineraries.length) return null;
+    const station = j.coaches.find((c) => c.recommended && c.route?.itineraries.length);
+    if (!station) return null;
+    const place: PlaceSuggestionDto = { name: station.name, latitude: station.latitude, longitude: station.longitude, kind: 'stop' };
+    return { station, place };
+  });
+  protected readonly stationPick = signal(0);
+  protected readonly mapRoute = computed(() => {
+    const sr = this.stationRoute();
+    return sr ? sr.station.route!.itineraries[this.stationPick()] ?? null : this.pickedRoute();
+  });
+  protected readonly mapTo = computed(() => this.stationRoute()?.place ?? this.searchedTo());
+
+  protected pickStation(i: number, e: Event): void {
+    this.stationPick.set(i);
+    if (!(e.target as Element | null)?.closest('a')) this.go('map');
+  }
+
   protected pick(i: number, e: Event): void {
     this.picked.set(i);
     // A tap on a link inside the card (ticket, Google Maps) opens it; anywhere else shows the route on the map.
@@ -287,6 +320,7 @@ export class TransitPage {
     this.searchedTo.set(to);
     this.journey.set(null);
     this.picked.set(0);
+    this.stationPick.set(0);
     this.taxis.set(null);
     this.loading.set(true);
     this.taxisLoading.set(true);

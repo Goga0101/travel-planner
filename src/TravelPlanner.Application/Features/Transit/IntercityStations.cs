@@ -5,11 +5,15 @@ namespace TravelPlanner.Application.Features.Transit;
 /// <summary>A town served from a coach / minibus station, with its centre (to match the visitor's destination).</summary>
 public sealed record IntercityTown(string NameEn, string NameKa, double Latitude, double Longitude);
 
-/// <summary>A city's coach and minibus (marshrutka) station and the directions its vehicles leave for.</summary>
-public sealed record IntercityStation(string NameEn, string NameKa, string MapQuery, IReadOnlyList<IntercityTown> Towns);
+/// <summary>A city's coach and minibus (marshrutka) station (position from OpenStreetMap) and the directions its vehicles leave for.</summary>
+public sealed record IntercityStation(string NameEn, string NameKa, string MapQuery, double Latitude, double Longitude, IReadOnlyList<IntercityTown> Towns);
 
-/// <summary>Which station to go to, the towns it serves and map links (the station by name, and getting there from the start).</summary>
-public sealed record CoachStationDto(string Name, IReadOnlyList<string> Towns, bool Recommended, string MapUrl, string DirectionsUrl);
+/// <summary>
+/// Which station to go to, the towns it serves and map links (the station by name, and getting there from the start).
+/// Route: public transport from the start to the station, filled in for the recommended one.
+/// </summary>
+public sealed record CoachStationDto(string Name, IReadOnlyList<string> Towns, bool Recommended, string MapUrl, string DirectionsUrl,
+    double Latitude, double Longitude, RouteDirectionDto? Route = null);
 
 /// <summary>
 /// Georgia's intercity minibuses are not in any open timetable, so journeys between regions only find trains. This hand-made
@@ -27,20 +31,20 @@ public static class IntercityStations
 
     public static readonly IReadOnlyList<IntercityStation> TbilisiStations =
     [
-        new("Didube bus station", "დიდუბის ავტოსადგური", "Didube bus station, Tbilisi",
+        new("Didube bus station", "დიდუბის ავტოსადგური", "Didube bus station, Tbilisi", 41.7518, 44.7791,
         [
             new("Mtskheta", "მცხეთა", 41.845, 44.718), new("Gori", "გორი", 41.984, 44.113), new("Borjomi", "ბორჯომი", 41.839, 43.383),
             new("Akhaltsikhe", "ახალციხე", 41.639, 42.982), new("Kutaisi", "ქუთაისი", 42.269, 42.705), new("Zugdidi", "ზუგდიდი", 42.508, 41.870),
             new("Ozurgeti", "ოზურგეთი", 41.924, 42.006), new("Poti", "ფოთი", 42.146, 41.672), new("Batumi", "ბათუმი", 41.643, 41.636),
             new("Stepantsminda", "სტეფანწმინდა", 42.657, 44.643),
         ]),
-        new("Samgori (Navtlughi) bus station", "სამგორის (ნავთლუღის) ავტოსადგური", "Navtlughi bus station, Tbilisi",
+        new("Samgori (Navtlughi) bus station", "სამგორის (ნავთლუღის) ავტოსადგური", "Samgori bus station, Tbilisi", 41.6860, 44.8519,
         [
             new("Sagarejo", "საგარეჯო", 41.734, 45.330), new("Telavi", "თელავი", 41.919, 45.473), new("Gurjaani", "გურჯაანი", 41.743, 45.800),
             new("Sighnaghi", "სიღნაღი", 41.620, 45.922), new("Kvareli", "ყვარელი", 41.950, 45.809), new("Lagodekhi", "ლაგოდეხი", 41.826, 46.277),
             new("Dedoplistskaro", "დედოფლისწყარო", 41.465, 46.105),
         ]),
-        new("Ortachala bus station", "ორთაჭალის ავტოსადგური", "Ortachala bus station, Tbilisi",
+        new("Ortachala bus station", "ორთაჭალის ავტოსადგური", "Ortachala bus station, Tbilisi", 41.6756, 44.8343,
         [
             new("Yerevan", "ერევანი", 40.177, 44.513), new("Istanbul", "სტამბოლი", 41.008, 28.978),
         ]),
@@ -59,10 +63,10 @@ public static class IntercityStations
                 ka ? x.Station.NameKa : x.Station.NameEn,
                 x.Station.Towns.Select(t => ka ? t.NameKa : t.NameEn).ToList(),
                 i == 0 && x.Nearest <= MatchMeters,
-                NearbyLinks.MapSearch(x.Station.MapQuery),
-                $"https://www.google.com/maps/dir/?api=1&origin={C(fromLat)},{C(fromLon)}&destination={Uri.EscapeDataString(x.Station.MapQuery)}&travelmode=transit"))
+                NearbyLinks.MapPoint(x.Station.Latitude, x.Station.Longitude),
+                NearbyLinks.TransitDirections(fromLat, fromLon, x.Station.Latitude, x.Station.Longitude),
+                x.Station.Latitude, x.Station.Longitude))
             .ToList();
 
-        static string C(double v) => v.ToString("0.######", System.Globalization.CultureInfo.InvariantCulture);
     }
 }

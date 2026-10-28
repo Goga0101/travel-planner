@@ -891,6 +891,10 @@ export interface CoachStationDto {
   recommended: boolean;
   mapUrl: string;
   directionsUrl: string;
+  latitude: number;
+  longitude: number;
+  /** Public transport from the start to the station (the recommended one). */
+  route?: RouteDirectionDto;
 }
 
 /** Stop-to-stop stretch: Unix seconds, next stop, encoded polyline (precision 5). */

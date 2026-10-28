@@ -155,44 +155,58 @@ public sealed class LiveTransitHandler(
 
         var fromName = Label(request.FromName ?? origin?.Name);
         var toName = Label(request.ToName);
-        var itineraries = router.IsConfigured
-            ? await router.PlanAsync(new TransitRouteQuery(request.FromLatitude, request.FromLongitude, request.ToLatitude, request.ToLongitude,
-                wished, offset, AnyDistance: true), cancellationToken)
-            : [];
-        var timetableDate = itineraries.Count > 0 ? DateOnly.FromDateTime(itineraries[0].DepartureLocal) : DateOnly.FromDateTime(wished);
-        // No timetable here: fall back to the lines that call near both ends (OpenStreetMap).
-        var estimated = itineraries.Count > 0
-            ? []
-            : await StopLineRoutes.FindAsync(stops, request.FromLatitude, request.FromLongitude, fromName, request.ToLatitude, request.ToLongitude,
-                toName, wished, cancellationToken);
-        var direction = new RouteDirectionDto(fromName, toName, timetableDate, timetableDate == DateOnly.FromDateTime(wished),
-            wished.ToString("HH:mm", CultureInfo.InvariantCulture),
-            itineraries.Select(i => new TransitItineraryDto(i.DurationMinutes, i.Transfers, Hm(i.DepartureLocal), Hm(i.ArrivalLocal),
-                i.Legs.Select(l => new TransitLegDto(l.Mode, l.Line, l.Headsign, l.From, l.To, Hm(l.DepartureLocal), Hm(l.ArrivalLocal),
-                    l.DurationMinutes, l.Agency, l.Stops, l.Color, Path: l.Path)).ToList())).Concat(estimated).ToList(),
-            linkPolicy.Sanitize(NearbyLinks.TransitDirections(request.FromLatitude, request.FromLongitude, request.ToLatitude, request.ToLongitude)),
-            linkPolicy.Sanitize(NearbyLinks.TransitDirections(request.FromLatitude, request.FromLongitude, request.ToLatitude, request.ToLongitude)
-                .Replace("travelmode=transit", "travelmode=driving")),
-            linkPolicy.Sanitize(NearbyLinks.Uber(request.FromLatitude, request.FromLongitude, fromName, request.ToLatitude, request.ToLongitude, toName)));
+        var guide = await NearestGuideAsync(request.FromLatitude, request.FromLongitude, cancellationToken);
+        var direction = await DirectionAsync(request.FromLatitude, request.FromLongitude, fromName, request.ToLatitude, request.ToLongitude, toName,
+            wished, offset, guide, cancellationToken);
 
-        // In a catalog city, each ride also says which ticket to buy and where.
-        if (await NearestGuideAsync(request.FromLatitude, request.FromLongitude, cancellationToken) is { } guide)
+        // To another region without published timetables: how to reach the minibus station for that direction.
+        var coaches = IntercityStations.For(request.FromLatitude, request.FromLongitude, request.ToLatitude, request.ToLongitude, T.CurrentLanguage).ToList();
+        if (coaches.FindIndex(c => c.Recommended) is var i and >= 0)
         {
-            var language = T.CurrentLanguage;
-            direction = direction with
+            var station = coaches[i];
+            coaches[i] = station with
             {
-                Itineraries = direction.Itineraries.Select(i => i with
-                {
-                    Legs = i.Legs.Select(l => l.Mode == "WALK" ? l : l with { Ticket = GetStayRouteHandler.TicketFor(l, guide, language) }).ToList()
-                }).ToList(),
-                CityTicket = GetStayRouteHandler.TicketFor(new TransitLegDto("BUS", null, null, "", "", "", "", 0, null, null, null), guide, language)
+                Route = await DirectionAsync(request.FromLatitude, request.FromLongitude, fromName, station.Latitude, station.Longitude, station.Name,
+                    wished, offset, guide, cancellationToken)
             };
         }
 
         return new JourneyDto(fromName, toName, origin?.TimeZone, origin?.CountryCode,
             NearbyLinks.DistanceMeters(request.FromLatitude, request.FromLongitude, request.ToLatitude, request.ToLongitude),
-            direction, router.IsConfigured ? router.Name : null,
-            IntercityStations.For(request.FromLatitude, request.FromLongitude, request.ToLatitude, request.ToLongitude, T.CurrentLanguage));
+            direction, router.IsConfigured ? router.Name : null, coaches);
+    }
+
+    /// <summary>
+    /// Timetable journeys between two points (intercity trains included), else rides along lines OpenStreetMap lists at stops
+    /// near both ends; in a catalog city each ride also says which ticket to buy and where.
+    /// </summary>
+    private async Task<RouteDirectionDto> DirectionAsync(double fromLat, double fromLon, string fromName, double toLat, double toLon, string toName,
+        DateTime wished, TimeSpan offset, TransitGuide? guide, CancellationToken ct)
+    {
+        var itineraries = router.IsConfigured
+            ? await router.PlanAsync(new TransitRouteQuery(fromLat, fromLon, toLat, toLon, wished, offset, AnyDistance: true), ct)
+            : [];
+        var timetableDate = itineraries.Count > 0 ? DateOnly.FromDateTime(itineraries[0].DepartureLocal) : DateOnly.FromDateTime(wished);
+        var estimated = itineraries.Count > 0 ? [] : await StopLineRoutes.FindAsync(stops, fromLat, fromLon, fromName, toLat, toLon, toName, wished, ct);
+        var direction = new RouteDirectionDto(fromName, toName, timetableDate, timetableDate == DateOnly.FromDateTime(wished),
+            wished.ToString("HH:mm", CultureInfo.InvariantCulture),
+            itineraries.Select(i => new TransitItineraryDto(i.DurationMinutes, i.Transfers, Hm(i.DepartureLocal), Hm(i.ArrivalLocal),
+                i.Legs.Select(l => new TransitLegDto(l.Mode, l.Line, l.Headsign, l.From, l.To, Hm(l.DepartureLocal), Hm(l.ArrivalLocal),
+                    l.DurationMinutes, l.Agency, l.Stops, l.Color, Path: l.Path)).ToList())).Concat(estimated).ToList(),
+            linkPolicy.Sanitize(NearbyLinks.TransitDirections(fromLat, fromLon, toLat, toLon)),
+            linkPolicy.Sanitize(NearbyLinks.TransitDirections(fromLat, fromLon, toLat, toLon).Replace("travelmode=transit", "travelmode=driving")),
+            linkPolicy.Sanitize(NearbyLinks.Uber(fromLat, fromLon, fromName, toLat, toLon, toName)));
+        if (guide is null) return direction;
+
+        var language = T.CurrentLanguage;
+        return direction with
+        {
+            Itineraries = direction.Itineraries.Select(i => i with
+            {
+                Legs = i.Legs.Select(l => l.Mode == "WALK" ? l : l with { Ticket = GetStayRouteHandler.TicketFor(l, guide, language) }).ToList()
+            }).ToList(),
+            CityTicket = GetStayRouteHandler.TicketFor(new TransitLegDto("BUS", null, null, "", "", "", "", 0, null, null, null), guide, language)
+        };
     }
 
     public async Task<LiveVehiclesDto> Handle(LiveVehiclesQuery request, CancellationToken cancellationToken)

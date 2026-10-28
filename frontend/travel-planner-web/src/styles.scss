@@ -1405,3 +1405,6 @@ a.ext-link.btn:hover { background: var(--primary-dark); border-color: var(--prim
 .hop-map { display: block; margin: 0.5rem 0 0.3rem; }
 .hop-map .live-map { height: 260px; min-height: 0; }
 .hop-map .live-legend { margin-top: 0.4rem; }
+.coach-route-title { display: flex; align-items: center; gap: 0.35rem; margin: 0.6rem 0 0; font-weight: 700; color: var(--primary-deep); }
+.coach-station .route-options { margin: 0.5rem 0 0.7rem; }
+.map-to-station { display: flex; align-items: center; gap: 0.35rem; margin: 0 0 0.5rem; padding: 0.45rem 0.7rem; border-radius: var(--radius-xs); background: var(--primary-soft); color: var(--primary-deep); font-weight: 600; }
