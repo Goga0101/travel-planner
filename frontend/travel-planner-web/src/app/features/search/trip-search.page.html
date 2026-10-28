@@ -29,7 +29,7 @@
       <div class="field">
         <label for="origin">{{ 'search.origin' | t }}</label>
         <div class="combobox">
-          <input id="origin" type="text" role="combobox" autocomplete="off" aria-autocomplete="list" aria-controls="origin-options"
+          <input #originInput id="origin" type="text" role="combobox" autocomplete="off" aria-autocomplete="list" aria-controls="origin-options"
                  [attr.aria-expanded]="originOpen() && originOptions().length > 0" [attr.aria-invalid]="showError('originAirportIata')"
                  [attr.aria-activedescendant]="originActive() >= 0 ? 'origin-opt-' + originActive() : null"
                  [placeholder]="'search.originPlaceholder' | t" [value]="originQuery()"
@@ -50,7 +50,18 @@
         @for (msg of serverErrors('originAirportIata'); track msg) { <p class="field-error">{{ msg }}</p> }
       </div>
       @if (origin(); as o) { <span class="sp-origin-country muted small">{{ o.country ?? o.countryCode }}</span> }
+      <button type="button" class="origin-change" (click)="focusOrigin(originInput)"><app-icon name="search" [size]="14" /> {{ 'search.originChange' | t }}</button>
     </div>
+    @if (origin(); as o) {
+      @if (sameCountry().length) {
+        <div class="origin-quick small">
+          <span class="muted">{{ 'search.originSameCountry' | t: { country: o.country ?? o.countryCode } }}</span>
+          @for (a of sameCountry(); track a.iataCode) {
+            <button type="button" class="chip-toggle" (click)="setOrigin(a)"><app-icon name="plane" [size]="13" /> {{ a.city }} <span class="chip-count">{{ a.iataCode }}</span></button>
+          }
+        </div>
+      }
+    }
 
     @if (!isManual()) {
       <div class="sp-section">

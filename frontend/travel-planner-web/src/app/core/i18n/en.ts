@@ -460,7 +460,7 @@ export const en = {
   'sightKind.sight': 'Landmark',
 
   // Departure anywhere, continents, world cities, connections and the flights list
-  'search.originPlaceholder': 'City or airport, e.g. Dortmund or DTM',
+  'search.originPlaceholder': 'Any city or airport in the world, in any language: Kutaisi, Paris, 東京, JFK',
   'search.originNearest': 'Suggested from your location. Type to change it.',
   'search.continents': 'Continents',
   'search.continentsAll': 'No continent selected: the most popular cities are compared (mostly Europe).',
@@ -766,6 +766,8 @@ export const en = {
   'transit.flightText': 'Over {distance} people usually fly; overland it takes days with several changes.',
   'transit.flightSearch': 'Plan a trip with flights',
   'transit.flightGoogle': 'Google Flights',
+  'search.originChange': 'Change',
+  'search.originSameCountry': 'Other airports in {country}:',
 } satisfies Record<string, string>;
 
 export type TranslationKey = keyof typeof en;

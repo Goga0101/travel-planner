@@ -17,7 +17,7 @@ import {
   DestinationSummaryDto,
   PlaceDto,
 } from '../../core/models';
-import { Subject, catchError, debounceTime, distinctUntilChanged, of, switchMap } from 'rxjs';
+import { Subject, catchError, debounceTime, distinctUntilChanged, map, of, switchMap } from 'rxjs';
 import { TranslationKey } from '../../core/i18n/en';
 import { I18nService, TranslateParams } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
@@ -276,6 +276,27 @@ export class TripSearchPage {
     this.originOpen.set(false);
     const selected = this.origin();
     if (selected) this.originQuery.set(this.originLabel(selected));
+  }
+
+  /** Other airports in the departure airport's country, one tap away (Georgia: Kutaisi, Batumi). */
+  protected readonly sameCountry = toSignal(
+    toObservable(this.origin).pipe(
+      map((o) => (o ? { code: o.countryCode, iata: o.iataCode, term: o.country ?? o.countryCode } : null)),
+      distinctUntilChanged((a, b) => a?.iata === b?.iata),
+      switchMap((o) =>
+        !o ? of([] as AirportDto[]) : this.api.searchAirports(o.term).pipe(
+          map((list) => list.filter((a) => a.countryCode === o.code && a.iataCode !== o.iata).slice(0, 6)),
+          catchError(() => of([] as AirportDto[])),
+        ),
+      ),
+    ),
+    { initialValue: [] as AirportDto[] },
+  );
+
+  protected focusOrigin(input: HTMLInputElement): void {
+    input.focus();
+    input.select();
+    this.originOpen.set(true);
   }
 
   protected setOrigin(airport: AirportDto, remember = true): void {

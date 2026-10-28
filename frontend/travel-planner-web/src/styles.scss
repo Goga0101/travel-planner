@@ -1448,3 +1448,9 @@ a.ext-link.btn:hover { background: var(--primary-dark); border-color: var(--prim
 .flight-advice p { margin: 0.2rem 0 0.6rem; }
 .flight-icon { display: inline-flex; align-items: center; justify-content: center; flex: none; width: 2.6rem; height: 2.6rem; border-radius: 12px; background: #2563eb; color: #fff; }
 .flight-links { display: flex; flex-wrap: wrap; align-items: center; gap: 0.4rem 0.9rem; }
+// Departure airport: obviously changeable, with the country's other airports one tap away.
+.origin-change {
+  display: inline-flex; align-items: center; gap: 0.3rem; align-self: center; flex: none; padding: 0.35rem 0.75rem; border-radius: 999px;
+  border: 1px solid var(--primary); background: var(--primary-soft); color: var(--primary-deep); font: inherit; font-size: 0.82rem; font-weight: 700; cursor: pointer;
+}
+.origin-quick { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.45rem; margin: -0.25rem 0 0.25rem; }

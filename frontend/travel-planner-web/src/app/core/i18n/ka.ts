@@ -459,7 +459,7 @@ export const ka: Dictionary = {
   'sightKind.sight': 'ღირსშესანიშნაობა',
 
   // Departure anywhere, continents, world cities, connections and the flights list
-  'search.originPlaceholder': 'ქალაქი ან აეროპორტი, მაგ. Dortmund ან DTM',
+  'search.originPlaceholder': 'მსოფლიოს ნებისმიერი ქალაქი ან აეროპორტი, ნებისმიერ ენაზე: ქუთაისი, პარიზი, JFK',
   'search.originNearest': 'შერჩეულია თქვენი მდებარეობით. შესაცვლელად აკრიფეთ.',
   'search.continents': 'კონტინენტები',
   'search.continentsAll': 'კონტინენტი არ არის არჩეული: ყველაზე პოპულარულ ქალაქებს შევადარებთ (ძირითადად ევროპა).',
@@ -765,4 +765,6 @@ export const ka: Dictionary = {
   'transit.flightText': '{distance}-ზე ჩვეულებრივ თვითმფრინავით მგზავრობენ; ხმელეთით რამდენიმე დღე და ბევრი გადაჯდომა სჭირდება.',
   'transit.flightSearch': 'მოგზაურობის დაგეგმვა ფრენით',
   'transit.flightGoogle': 'Google Flights',
+  'search.originChange': 'შეცვლა',
+  'search.originSameCountry': 'სხვა აეროპორტები ({country}):',
 };
