@@ -1442,3 +1442,5 @@ a.ext-link.btn:hover { background: var(--primary-dark); border-color: var(--prim
 .live-track.is-on { background: #eff6ff; }
 .live-track.is-following { background: #2563eb; color: #fff; }
 .live-track-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.trip-summary { display: inline-flex; flex-wrap: wrap; align-items: center; gap: 0.2rem 0.75rem; color: var(--text-2); font-weight: 600; }
+.trip-summary > span { display: inline-flex; align-items: center; gap: 0.25rem; }

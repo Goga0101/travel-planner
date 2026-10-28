@@ -29,10 +29,11 @@ public sealed record PlanJourneyQuery(
 /// <summary>
 /// TimeZone is the origin's IANA zone (times are local there); CountryCode drives the taxi section. Coaches lists the city's
 /// intercity minibus stations for trips to another region where timetables are not published (Tbilisi for now).
+/// DrivingMinutes and WalkingMinutes (null when too far to walk) are rough estimates from the distance, so every trip says something.
 /// </summary>
 public sealed record JourneyDto(
     string FromName, string ToName, string? TimeZone, string? CountryCode, int DistanceMeters, RouteDirectionDto Direction, string? RouterName,
-    IReadOnlyList<CoachStationDto> Coaches);
+    IReadOnlyList<CoachStationDto> Coaches, int DrivingMinutes = 0, int? WalkingMinutes = null);
 
 // ---------- Live vehicles ----------
 
@@ -122,6 +123,7 @@ public sealed class LiveTransitHandler(
     IApplicationDbContext db,
     IOutboundLinkPolicy linkPolicy,
     ITransitStopSource stops,
+    IStationFinder stations,
     TimeProvider timeProvider)
     : IRequestHandler<SearchPlacesQuery, IReadOnlyList<PlaceSuggestionDto>>,
       IRequestHandler<ReversePlaceQuery, PlaceSuggestionDto?>,
@@ -197,13 +199,85 @@ public sealed class LiveTransitHandler(
                 arrive.AddMinutes(3), offset, null, cancellationToken);
             foreach (var city in inCity.Itineraries.Take(2)) combined.Add(Join(wished, [minibus], city.Legs, city.Transfers + 1));
         }
+        var distance = NearbyLinks.DistanceMeters(request.FromLatitude, request.FromLongitude, request.ToLatitude, request.ToLongitude);
+        // Anywhere else: between towns with no timetable connection, the bus stations OpenStreetMap knows at both ends.
+        if (combined.Count == 0 && distance >= IntercityMinMeters && direction.Itineraries.All(i => i.Estimated))
+        {
+            if (await ViaBusStationsAsync(request.FromLatitude, request.FromLongitude, fromName, request.ToLatitude, request.ToLongitude, toName,
+                    wished, offset, guide, cancellationToken) is { } coach)
+                combined.Add(coach);
+        }
         if (combined.Count > 0)
             direction = direction with { Itineraries = direction.Itineraries.Concat(combined).OrderBy(i => i.DurationMinutes).ToList() };
 
-        return new JourneyDto(fromName, toName, origin?.TimeZone, origin?.CountryCode,
-            NearbyLinks.DistanceMeters(request.FromLatitude, request.FromLongitude, request.ToLatitude, request.ToLongitude),
-            direction, router.IsConfigured ? router.Name : null, coaches);
+        return new JourneyDto(fromName, toName, origin?.TimeZone, origin?.CountryCode, distance,
+            direction, router.IsConfigured ? router.Name : null, coaches, DrivingMinutes(distance), distance <= MaxWalkSummaryMeters ? WalkMinutes(distance) : null);
     }
+
+    /// <summary>Trips this long without a timetable connection look for intercity buses.</summary>
+    private const int IntercityMinMeters = 15_000;
+    private const int StationRadiusKm = 8;
+    /// <summary>Intercity buses rarely have published times here; a typical wait at the station.</summary>
+    private const int CoachWaitMinutes = 15;
+    private const int MaxWalkSummaryMeters = 15_000;
+
+    /// <summary>
+    /// Start → (city transport or a walk) → the bus station near the start → intercity bus → the bus station near the destination
+    /// → (city transport or a walk) → destination. A missing station at one end means the bus is boarded or left at the point itself.
+    /// </summary>
+    private async Task<TransitItineraryDto?> ViaBusStationsAsync(double fromLat, double fromLon, string fromName, double toLat, double toLon,
+        string toName, DateTime wished, TimeSpan offset, TransitGuide? guide, CancellationToken ct)
+    {
+        var near = stations.BusStationNearAsync(fromLat, fromLon, StationRadiusKm, ct);
+        var far = stations.BusStationNearAsync(toLat, toLon, StationRadiusKm, ct);
+        var (a, b) = (await near, await far);
+        if (a is null && b is null) return null;
+        if (a is not null && b is not null && NearbyLinks.DistanceMeters(a.Latitude, a.Longitude, b.Latitude, b.Longitude) < 5_000) return null;
+
+        var language = T.CurrentLanguage;
+        var legs = new List<TransitLegDto>();
+        var transfers = 0;
+        var t = wished;
+        var (boardLat, boardLon, boardName) = a is null ? (fromLat, fromLon, fromName) : (a.Latitude, a.Longitude, a.Name);
+        if (a is not null && NearbyLinks.DistanceMeters(fromLat, fromLon, a.Latitude, a.Longitude) > 300)
+        {
+            var part = await DirectionAsync(fromLat, fromLon, fromName, a.Latitude, a.Longitude, a.Name, t, offset, guide, ct);
+            var legsIn = part.Itineraries.FirstOrDefault()?.Legs ?? [WalkLeg(fromName, fromLat, fromLon, a.Name, a.Latitude, a.Longitude, t)];
+            legs.AddRange(legsIn);
+            transfers += legsIn.Count(l => l.Mode != "WALK");
+            t = At(wished, legs[^1].ArrivalTime);
+        }
+
+        var (alightLat, alightLon, alightName) = b is null ? (toLat, toLon, toName) : (b.Latitude, b.Longitude, b.Name);
+        var start = t.AddMinutes(CoachWaitMinutes);
+        var minutes = Math.Max(10, (int)Math.Round(NearbyLinks.DistanceMeters(boardLat, boardLon, alightLat, alightLon) * 1.3 / 1000)); // ~60 km/h
+        legs.Add(new TransitLegDto("COACH", null, alightName, boardName, alightName, Hm(start), Hm(start.AddMinutes(minutes)), minutes,
+            language == "ka" ? "საქალაქთაშორისო ავტობუსი / მარშრუტკა · გასვლის დრო სადგურზე დააზუსტეთ" : "Intercity bus / minibus · check departures at the station",
+            null, null, Path: new LegPath(boardLat, boardLon, alightLat, alightLon, null, 0)));
+        t = start.AddMinutes(minutes);
+
+        if (b is not null && NearbyLinks.DistanceMeters(b.Latitude, b.Longitude, toLat, toLon) > 300)
+        {
+            var part = await DirectionAsync(b.Latitude, b.Longitude, b.Name, toLat, toLon, toName, t.AddMinutes(3), offset, guide, ct);
+            var legsOut = part.Itineraries.FirstOrDefault()?.Legs ?? [WalkLeg(b.Name, b.Latitude, b.Longitude, toName, toLat, toLon, t)];
+            legs.AddRange(legsOut);
+            transfers += legsOut.Count(l => l.Mode != "WALK");
+        }
+        var end = At(wished, legs[^1].ArrivalTime);
+        return new TransitItineraryDto((int)(end - wished).TotalMinutes, transfers, Hm(wished), legs[^1].ArrivalTime, legs, Estimated: true);
+    }
+
+    private static TransitLegDto WalkLeg(string fromName, double fromLat, double fromLon, string toName, double toLat, double toLon, DateTime start)
+    {
+        var minutes = WalkMinutes(NearbyLinks.DistanceMeters(fromLat, fromLon, toLat, toLon));
+        return new TransitLegDto("WALK", null, null, fromName, toName, Hm(start), Hm(start.AddMinutes(minutes)), minutes, null, null, null,
+            Path: new LegPath(fromLat, fromLon, toLat, toLon, null, 0));
+    }
+
+    /// <summary>Roads are ~1.3× the straight line; ~25 km/h in town, ~60 km/h between towns.</summary>
+    private static int DrivingMinutes(int meters) => Math.Max(1, (int)Math.Round(meters * 1.3 / (meters < IntercityMinMeters ? 420 : 1000)));
+
+    private static int WalkMinutes(int meters) => Math.Max(1, (int)Math.Round(meters * 1.3 / 80));
 
     /// <summary>
     /// Timetable journeys between two points (intercity trains included), else rides along lines OpenStreetMap lists at stops

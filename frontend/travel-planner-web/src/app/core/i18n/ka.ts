@@ -561,7 +561,7 @@ export const ka: Dictionary = {
   'route.source': 'მარშრუტები: {source} (საზოგადოებრივი ტრანსპორტის ღია განრიგები).',
   'route.mode.BUS': 'ავტობუსი',
   'route.mode.MINIBUS': 'მიკროავტობუსი',
-  'route.mode.COACH': 'ავტობუსი',
+  'route.mode.COACH': 'საქალაქთაშორისო ავტობუსი',
   'route.mode.TRAM': 'ტრამვაი',
   'route.mode.SUBWAY': 'მეტრო',
   'route.mode.METRO': 'მეტრო',
@@ -759,4 +759,6 @@ export const ka: Dictionary = {
   'transit.trackMe': 'ჩემი მოძრაობა რუკაზე',
   'transit.trackFollow': 'რუკა მოგყვებათ — შეეხეთ გასათიშად',
   'transit.trackResume': 'ჩემზე დაბრუნება',
+  'transit.summaryCar': 'მანქანით ~{time}',
+  'transit.summaryWalk': 'ფეხით ~{time}',
 };

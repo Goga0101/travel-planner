@@ -883,6 +883,9 @@ export interface JourneyDto {
   routerName?: string;
   /** Intercity minibus stations for trips to another region (no open timetables); the best match first. */
   coaches: CoachStationDto[];
+  /** Rough estimates from the distance, so every trip says something; walking only when it is not too far. */
+  drivingMinutes: number;
+  walkingMinutes?: number;
 }
 
 export interface CoachStationDto {

@@ -562,7 +562,7 @@ export const en = {
   'route.source': 'Journeys from {source} (open public-transport timetables).',
   'route.mode.BUS': 'Bus',
   'route.mode.MINIBUS': 'Minibus',
-  'route.mode.COACH': 'Coach',
+  'route.mode.COACH': 'Intercity bus',
   'route.mode.TRAM': 'Tram',
   'route.mode.SUBWAY': 'Metro',
   'route.mode.METRO': 'Metro',
@@ -760,6 +760,8 @@ export const en = {
   'transit.trackMe': 'Show me moving on the map',
   'transit.trackFollow': 'Following you — tap to stop',
   'transit.trackResume': 'Centre on me',
+  'transit.summaryCar': 'by car ~{time}',
+  'transit.summaryWalk': 'on foot ~{time}',
 } satisfies Record<string, string>;
 
 export type TranslationKey = keyof typeof en;

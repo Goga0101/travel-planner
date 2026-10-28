@@ -141,6 +141,7 @@ public static class DependencyInjection
                 c.DefaultRequestHeaders.UserAgent.ParseAdd("TravelPlanner/1.0 (https://github.com/Goga0101/travel-planner)");
             })
             .AddStandardResilienceHandler(o => Configure(o, providers.Http));
+        services.AddTransient<IStationFinder, PhotonStationFinder>();
         // No retry handler: the source gives each Overpass instance a few seconds and falls back to a mirror itself.
         services.AddHttpClient<ILocalTaxiSource, OverpassTaxiSource>(c =>
             c.DefaultRequestHeaders.UserAgent.ParseAdd("TravelPlanner/1.0 (https://github.com/Goga0101/travel-planner)"));

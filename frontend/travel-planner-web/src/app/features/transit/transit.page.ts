@@ -10,7 +10,7 @@ import { JourneyDto, PlaceSuggestionDto, TaxiOptionsDto } from '../../core/model
 import { ErrorBannerComponent } from '../../shared/error-banner.component';
 import { ExternalLinkComponent } from '../../shared/external-link.component';
 import { IconComponent, IconName } from '../../shared/icon.component';
-import { DistancePipe, MoneyPipe } from '../../shared/pipes';
+import { DistancePipe, MinutesPipe, MoneyPipe } from '../../shared/pipes';
 import { ItineraryComponent, routeTags } from '../plan/itinerary.component';
 import { LiveMapComponent } from './live-map.component';
 import { PlaceInputComponent } from './place-input.component';
@@ -30,7 +30,7 @@ const SECTIONS: { id: Section; icon: IconName; label: 'transit.secMap' | 'transi
 @Component({
   selector: 'app-transit-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TranslatePipe, IconComponent, ExternalLinkComponent, ErrorBannerComponent, DistancePipe, MoneyPipe, ItineraryComponent,
+  imports: [TranslatePipe, IconComponent, ExternalLinkComponent, ErrorBannerComponent, DistancePipe, MinutesPipe, MoneyPipe, ItineraryComponent,
     LiveMapComponent, PlaceInputComponent],
   template: `
     <div class="container page transit-page">
@@ -117,7 +117,14 @@ const SECTIONS: { id: Section; icon: IconName; label: 'transit.secMap' | 'transi
         <section class="card transit-section" id="sec-routes" aria-labelledby="sec-routes-title">
           <div class="section-head">
             <h2 id="sec-routes-title"><app-icon name="bus" /> {{ 'transit.secRoutes' | t }}</h2>
-            @if (journey(); as j) { <span class="small muted">{{ j.distanceMeters | distance }} · {{ 'transit.leaveAround' | t: { time: j.direction.wishedTime } }}</span> }
+            @if (journey(); as j) {
+              <span class="trip-summary small">
+                <span>{{ j.distanceMeters | distance }}</span>
+                <span><app-icon name="car" [size]="13" /> {{ 'transit.summaryCar' | t: { time: (j.drivingMinutes | minutes) } }}</span>
+                @if (j.walkingMinutes) { <span><app-icon name="walk" [size]="13" /> {{ 'transit.summaryWalk' | t: { time: (j.walkingMinutes | minutes) } }}</span> }
+                <span class="muted">{{ 'transit.leaveAround' | t: { time: j.direction.wishedTime } }}</span>
+              </span>
+            }
           </div>
           @if (loading() && !journey()) {
             <p class="muted"><span class="spinner" aria-hidden="true"></span> {{ 'transit.routesLoading' | t }}</p>

@@ -47,3 +47,9 @@ public sealed class NoTransitStopSource : ITransitStopSource
     public Task<IReadOnlyList<NearbyTransitStop>> FindAsync(double latitude, double longitude, int radiusMeters, CancellationToken cancellationToken) =>
         Task.FromResult<IReadOnlyList<NearbyTransitStop>>([]);
 }
+
+/// <summary>The bus (coach) station nearest to a point, anywhere in the world (OpenStreetMap), or null.</summary>
+public interface IStationFinder
+{
+    Task<GeocodedPlace?> BusStationNearAsync(double latitude, double longitude, int radiusKm, CancellationToken cancellationToken);
+}
