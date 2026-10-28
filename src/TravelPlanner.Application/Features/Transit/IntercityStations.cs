@@ -1,4 +1,5 @@
 using TravelPlanner.Application.Features.TripPlans;
+using TravelPlanner.Application.Providers;
 
 namespace TravelPlanner.Application.Features.Transit;
 
@@ -50,11 +51,39 @@ public static class IntercityStations
         ]),
     ];
 
+    /// <summary>A point within this distance of a served town's centre is in that town (Mtskheta is only ~17 km from Tbilisi's centre).</summary>
+    private const int TownRadiusMeters = 8_000;
+
+    /// <summary>The served town at a point and the Tbilisi station its minibuses use, or null.</summary>
+    public static (IntercityStation Station, IntercityTown Town)? TownAt(double lat, double lon) =>
+        TbilisiStations
+            .SelectMany(s => s.Towns.Select(t => (Station: s, Town: t, Meters: NearbyLinks.DistanceMeters(lat, lon, t.Latitude, t.Longitude))))
+            .Where(x => x.Meters <= TownRadiusMeters)
+            .OrderBy(x => x.Meters)
+            .Select(x => ((IntercityStation, IntercityTown)?)(x.Station, x.Town))
+            .FirstOrDefault();
+
+    public static bool InTbilisi(double lat, double lon) =>
+        TownAt(lat, lon) is null && NearbyLinks.DistanceMeters(lat, lon, Tbilisi.Latitude, Tbilisi.Longitude) <= CityRadiusMeters;
+
+    /// <summary>Minibuses between regions: no timetable, they leave when full; ~45 km/h on the road (×1.3 for bends) plus a wait.</summary>
+    public const int MinibusWaitMinutes = 10;
+
+    public static TransitLegDto MinibusLeg(string fromName, double fromLat, double fromLon, string toName, double toLat, double toLon,
+        DateTime start, string language)
+    {
+        var minutes = Math.Max(10, (int)Math.Round(NearbyLinks.DistanceMeters(fromLat, fromLon, toLat, toLon) * 1.3 / 750));
+        var hm = (DateTime t) => t.ToString("HH:mm", System.Globalization.CultureInfo.InvariantCulture);
+        return new TransitLegDto("MINIBUS", null, toName, fromName, toName, hm(start), hm(start.AddMinutes(minutes)), minutes,
+            language == "ka" ? "მარშრუტკა · გადის, როცა შეივსება" : "Marshrutka · leaves when full", null, null,
+            Path: new LegPath(fromLat, fromLon, toLat, toLon, null, 0));
+    }
+
     /// <summary>The stations for a trip that starts in Tbilisi and leaves the city; empty otherwise. The best match comes first.</summary>
     public static IReadOnlyList<CoachStationDto> For(double fromLat, double fromLon, double toLat, double toLon, string language)
     {
-        if (NearbyLinks.DistanceMeters(fromLat, fromLon, Tbilisi.Latitude, Tbilisi.Longitude) > CityRadiusMeters ||
-            NearbyLinks.DistanceMeters(fromLat, fromLon, toLat, toLon) < MinTripMeters) return [];
+        if (!InTbilisi(fromLat, fromLon) ||
+            (TownAt(toLat, toLon) is null && NearbyLinks.DistanceMeters(fromLat, fromLon, toLat, toLon) < MinTripMeters)) return [];
         var ka = language == "ka";
         return TbilisiStations
             .Select(s => (Station: s, Nearest: s.Towns.Min(t => NearbyLinks.DistanceMeters(toLat, toLon, t.Latitude, t.Longitude))))

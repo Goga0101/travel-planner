@@ -138,7 +138,8 @@ public sealed class TransitousRouter(HttpClient httpClient, IMemoryCache cache, 
     private static string PlaceName(JsonElement leg, string name)
     {
         var n = leg.TryGetProperty(name, out var p) ? Str(p, "name") : null;
-        return n is null or "START" or "END" ? "" : n;
+        // Some feeds escape quotes twice: M/S ""Didube"" → M/S "Didube".
+        return n is null or "START" or "END" ? "" : n.Replace("\"\"", "\"");
     }
 
     private static string? Str(JsonElement e, string name) =>

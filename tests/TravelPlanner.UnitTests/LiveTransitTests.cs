@@ -127,6 +127,30 @@ public class LiveTransitTests
     }
 
     [Fact]
+    public void Mtskheta_Is_A_Town_Served_From_Didube_Not_Part_Of_Tbilisi()
+    {
+        var mtskheta = IntercityStations.TownAt(41.8424, 44.7194);
+        Assert.Equal("Mtskheta", mtskheta!.Value.Town.NameEn);
+        Assert.Equal("Didube bus station", mtskheta.Value.Station.NameEn);
+        Assert.False(IntercityStations.InTbilisi(41.8424, 44.7194));
+        Assert.True(IntercityStations.InTbilisi(41.72048, 44.71045));       // Vake
+        Assert.False(IntercityStations.InTbilisi(42.269, 42.705));          // Kutaisi
+
+        // Mtskheta is close (~15 km) but a different town: Tbilisi → Mtskheta gets the station guide.
+        Assert.Equal("Didube bus station", IntercityStations.For(41.72048, 44.71045, 41.8424, 44.7194, "en")[0].Name);
+    }
+
+    [Fact]
+    public void A_Minibus_Leg_Is_Timed_By_Road_Distance()
+    {
+        var leg = IntercityStations.MinibusLeg("Mtskheta", 41.8424, 44.7194, "Didube", 41.7518, 44.7791, new DateTime(2026, 10, 28, 15, 0, 0), "en");
+        Assert.Equal("MINIBUS", leg.Mode);
+        Assert.InRange(leg.DurationMinutes, 15, 25); // ~11 km in a straight line
+        Assert.Equal("15:00", leg.DepartureTime);
+        Assert.Equal(41.7518, leg.Path!.ToLatitude);
+    }
+
+    [Fact]
     public void Overpass_Lists_Taxis_With_A_Phone_First()
     {
         var body = JsonDocument.Parse("""

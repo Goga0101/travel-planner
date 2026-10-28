@@ -560,6 +560,7 @@ export const ka: Dictionary = {
   'route.drive': 'მანქანით / ტაქსით Google Maps-ში',
   'route.source': 'მარშრუტები: {source} (საზოგადოებრივი ტრანსპორტის ღია განრიგები).',
   'route.mode.BUS': 'ავტობუსი',
+  'route.mode.MINIBUS': 'მიკროავტობუსი',
   'route.mode.COACH': 'ავტობუსი',
   'route.mode.TRAM': 'ტრამვაი',
   'route.mode.SUBWAY': 'მეტრო',

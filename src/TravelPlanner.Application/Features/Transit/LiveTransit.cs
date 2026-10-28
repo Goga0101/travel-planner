@@ -171,6 +171,35 @@ public sealed class LiveTransitHandler(
             };
         }
 
+        // Minibus + city transport, both ways: to a region via its Tbilisi station, or from a regional town into the city.
+        var language = T.CurrentLanguage;
+        var combined = new List<TransitItineraryDto>();
+        if (coaches.FirstOrDefault(c => c.Recommended)?.Route is { } toStation && IntercityStations.TownAt(request.ToLatitude, request.ToLongitude) is not null)
+        {
+            var station = coaches.First(c => c.Recommended);
+            foreach (var city in toStation.Itineraries.Take(2))
+            {
+                var board = At(wished, city.ArrivalTime).AddMinutes(IntercityStations.MinibusWaitMinutes);
+                combined.Add(Join(wished, city.Legs,
+                    [IntercityStations.MinibusLeg(station.Name, station.Latitude, station.Longitude, toName, request.ToLatitude, request.ToLongitude, board, language)],
+                    city.Transfers + 1));
+            }
+        }
+        else if (IntercityStations.TownAt(request.FromLatitude, request.FromLongitude) is { } home &&
+                 IntercityStations.InTbilisi(request.ToLatitude, request.ToLongitude))
+        {
+            var s = home.Station;
+            var stationName = language == "ka" ? s.NameKa : s.NameEn;
+            var minibus = IntercityStations.MinibusLeg(fromName, request.FromLatitude, request.FromLongitude, stationName, s.Latitude, s.Longitude,
+                wished.AddMinutes(IntercityStations.MinibusWaitMinutes), language);
+            var arrive = wished.AddMinutes(IntercityStations.MinibusWaitMinutes + minibus.DurationMinutes);
+            var inCity = await DirectionAsync(s.Latitude, s.Longitude, stationName, request.ToLatitude, request.ToLongitude, toName,
+                arrive.AddMinutes(3), offset, null, cancellationToken);
+            foreach (var city in inCity.Itineraries.Take(2)) combined.Add(Join(wished, [minibus], city.Legs, city.Transfers + 1));
+        }
+        if (combined.Count > 0)
+            direction = direction with { Itineraries = direction.Itineraries.Concat(combined).OrderBy(i => i.DurationMinutes).ToList() };
+
         return new JourneyDto(fromName, toName, origin?.TimeZone, origin?.CountryCode,
             NearbyLinks.DistanceMeters(request.FromLatitude, request.FromLongitude, request.ToLatitude, request.ToLongitude),
             direction, router.IsConfigured ? router.Name : null, coaches);
@@ -267,6 +296,22 @@ public sealed class LiveTransitHandler(
             .OrderBy(d => d.Meters)
             .FirstOrDefault();
         return best.Code is null ? null : guides.Get(best.Code);
+    }
+
+    /// <summary>One journey from two parts (the minibus has no timetable, so the whole is an estimate).</summary>
+    private static TransitItineraryDto Join(DateTime start, IReadOnlyList<TransitLegDto> first, IReadOnlyList<TransitLegDto> second, int transfers)
+    {
+        var legs = first.Concat(second).ToList();
+        var end = At(start, legs[^1].ArrivalTime);
+        return new TransitItineraryDto((int)(end - start).TotalMinutes, transfers, Hm(start), legs[^1].ArrivalTime, legs, Estimated: true);
+    }
+
+    /// <summary>"HH:mm" as a moment on or after the reference (journeys may pass midnight).</summary>
+    private static DateTime At(DateTime reference, string hm)
+    {
+        if (!TimeOnly.TryParseExact(hm, "HH:mm", CultureInfo.InvariantCulture, DateTimeStyles.None, out var t)) return reference;
+        var at = reference.Date.Add(t.ToTimeSpan());
+        return at < reference.AddMinutes(-1) ? at.AddDays(1) : at;
     }
 
     private static PlaceSuggestionDto ToDto(GeocodedPlace p) => new(p.Name, p.Area, p.CountryCode, p.Latitude, p.Longitude, p.Kind);

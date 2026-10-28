@@ -561,6 +561,7 @@ export const en = {
   'route.drive': 'By car / taxi in Google Maps',
   'route.source': 'Journeys from {source} (open public-transport timetables).',
   'route.mode.BUS': 'Bus',
+  'route.mode.MINIBUS': 'Minibus',
   'route.mode.COACH': 'Coach',
   'route.mode.TRAM': 'Tram',
   'route.mode.SUBWAY': 'Metro',

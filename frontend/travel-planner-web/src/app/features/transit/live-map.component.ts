@@ -18,7 +18,7 @@ export function modeGroup(mode: string): ModeGroup {
     case 'TRAM': case 'CABLE_CAR': case 'FUNICULAR': return 'tram';
     case 'SUBWAY': case 'METRO': return 'metro';
     case 'FERRY': return 'ferry';
-    case 'BUS': case 'COACH': case 'TROLLEYBUS': case 'ODM': return 'bus';
+    case 'BUS': case 'COACH': case 'MINIBUS': case 'TROLLEYBUS': case 'ODM': return 'bus';
     default: return 'rail';
   }
 }
@@ -388,8 +388,11 @@ export class LiveMapComponent implements AfterViewInit {
       .addTo(this.routeLayer);
   }
 
+  /** The exact kind (minibus, regional train…) when there is a word for it, otherwise its group (bus, train…). */
   private modeName(mode: string): string {
-    return this.i18n.t(this.modeKey(modeGroup(mode)));
+    const key = `route.mode.${mode}` as TranslationKey;
+    const exact = this.i18n.t(key);
+    return exact !== key ? exact : this.i18n.t(this.modeKey(modeGroup(mode)));
   }
 
   private drawEnds(from: PlaceSuggestionDto | null, to: PlaceSuggestionDto | null): void {
