@@ -188,11 +188,13 @@ public sealed class LiveTransitHandler(
             : [];
         var timetableDate = itineraries.Count > 0 ? DateOnly.FromDateTime(itineraries[0].DepartureLocal) : DateOnly.FromDateTime(wished);
         var estimated = itineraries.Count > 0 ? [] : await StopLineRoutes.FindAsync(stops, fromLat, fromLon, fromName, toLat, toLon, toName, wished, ct);
+        var found = itineraries.Select(i => new TransitItineraryDto(i.DurationMinutes, i.Transfers, Hm(i.DepartureLocal), Hm(i.ArrivalLocal),
+            i.Legs.Select(l => new TransitLegDto(l.Mode, l.Line, l.Headsign, l.From, l.To, Hm(l.DepartureLocal), Hm(l.ArrivalLocal),
+                l.DurationMinutes, l.Agency, l.Stops, l.Color, Path: l.Path)).ToList())).Concat(estimated).ToList();
         var direction = new RouteDirectionDto(fromName, toName, timetableDate, timetableDate == DateOnly.FromDateTime(wished),
             wished.ToString("HH:mm", CultureInfo.InvariantCulture),
-            itineraries.Select(i => new TransitItineraryDto(i.DurationMinutes, i.Transfers, Hm(i.DepartureLocal), Hm(i.ArrivalLocal),
-                i.Legs.Select(l => new TransitLegDto(l.Mode, l.Line, l.Headsign, l.From, l.To, Hm(l.DepartureLocal), Hm(l.ArrivalLocal),
-                    l.DurationMinutes, l.Agency, l.Stops, l.Color, Path: l.Path)).ToList())).Concat(estimated).ToList(),
+            // The metro where the open timetable misses it (Tbilisi has only one direction of each line).
+            CityMetros.WithMetro(found, fromLat, fromLon, fromName, toLat, toLon, toName, wished, T.CurrentLanguage),
             linkPolicy.Sanitize(NearbyLinks.TransitDirections(fromLat, fromLon, toLat, toLon)),
             linkPolicy.Sanitize(NearbyLinks.TransitDirections(fromLat, fromLon, toLat, toLon).Replace("travelmode=transit", "travelmode=driving")),
             linkPolicy.Sanitize(NearbyLinks.Uber(fromLat, fromLon, fromName, toLat, toLon, toName)));

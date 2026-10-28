@@ -213,6 +213,8 @@ public sealed class GetStayRouteHandler(
         var options = itineraries.Count > 0
             ? itineraries.Select(ToDto).ToList()
             : await Features.Transit.StopLineRoutes.FindAsync(stops, fromLat, fromLon, fromName, toLat, toLon, toName, wished, ct);
+        // The metro where the open timetable misses it (Tbilisi has only one direction of each line).
+        options = Features.Transit.CityMetros.WithMetro(options, fromLat, fromLon, fromName, toLat, toLon, toName, wished, T.CurrentLanguage);
         return new RouteDirectionDto(fromName, toName, timetableDate, timetableDate == DateOnly.FromDateTime(wished),
             wished.ToString("HH:mm", CultureInfo.InvariantCulture),
             options,

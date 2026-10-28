@@ -9,7 +9,7 @@ import { ErrorBannerComponent } from '../../shared/error-banner.component';
 import { ExternalLinkComponent } from '../../shared/external-link.component';
 import { IconComponent, IconName } from '../../shared/icon.component';
 import { DistancePipe, MoneyPipe } from '../../shared/pipes';
-import { ItineraryComponent } from '../plan/itinerary.component';
+import { ItineraryComponent, routeTags } from '../plan/itinerary.component';
 import { LiveMapComponent } from './live-map.component';
 import { PlaceInputComponent } from './place-input.component';
 
@@ -106,7 +106,7 @@ const SECTIONS: { id: Section; icon: IconName; label: 'transit.secMap' | 'transi
               <p class="small route-pick-hint"><app-icon name="pin" [size]="14" /> {{ 'transit.pickRoute' | t }}</p>
               <ol class="route-options">
                 @for (it of r.itineraries; track $index; let first = $first; let i = $index) {
-                  <li app-itinerary class="route-option is-pickable" [class.best]="first" [class.is-picked]="picked() === i" [itinerary]="it" [best]="first"
+                  <li app-itinerary class="route-option is-pickable" [class.best]="first" [class.is-picked]="picked() === i" [itinerary]="it" [best]="first" [tags]="mainTags()[i]"
                       tabindex="0" [attr.aria-current]="picked() === i" (click)="pick(i, $event)" (keydown.enter)="pick(i, $event)"></li>
                 }
               </ol>
@@ -130,7 +130,7 @@ const SECTIONS: { id: Section; icon: IconName; label: 'transit.secMap' | 'transi
                         <ol class="route-options">
                           @for (it of c.route!.itineraries; track $index; let first = $first; let i = $index) {
                             <li app-itinerary class="route-option is-pickable" [class.best]="first" [class.is-picked]="stationRoute() && stationPick() === i"
-                                [itinerary]="it" [best]="first && !it.estimated" tabindex="0" (click)="pickStation(i, $event)" (keydown.enter)="pickStation(i, $event)"></li>
+                                [itinerary]="it" [best]="first && !it.estimated" [tags]="stationTags()[i]" tabindex="0" (click)="pickStation(i, $event)" (keydown.enter)="pickStation(i, $event)"></li>
                           }
                         </ol>
                       }
@@ -268,6 +268,8 @@ export class TransitPage {
     return { station, place };
   });
   protected readonly stationPick = signal(0);
+  protected readonly mainTags = computed(() => routeTags(this.journey()?.direction.itineraries ?? []));
+  protected readonly stationTags = computed(() => routeTags(this.journey()?.coaches.find((c) => c.recommended)?.route?.itineraries ?? []));
   protected readonly mapRoute = computed(() => {
     const sr = this.stationRoute();
     return sr ? sr.station.route!.itineraries[this.stationPick()] ?? null : this.pickedRoute();

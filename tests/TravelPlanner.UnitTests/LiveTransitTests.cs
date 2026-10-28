@@ -87,6 +87,39 @@ public class LiveTransitTests
     }
 
     [Fact]
+    public void Tbilisi_Metro_Rides_Towards_The_Centre_With_A_Change_At_Station_Square()
+    {
+        // Anna Politkovskaya St 16 (near State University) → Samgori bus station.
+        var it = CityMetros.Route(41.72048, 44.71045, "Start", 41.6860, 44.8519, "Samgori", new DateTime(2026, 10, 28, 14, 0, 0), "en")!;
+
+        var rides = it.Legs.Where(l => l.Mode == "SUBWAY").ToList();
+        Assert.Equal(["2", "1"], rides.Select(r => r.Line));
+        Assert.Equal(("State University", "Station Square"), (rides[0].From, rides[0].To));
+        Assert.Equal(("Station Square", "Samgori"), (rides[1].From, rides[1].To));
+        Assert.Equal(6, rides[0].Stops);
+        Assert.Equal("Station Square", rides[0].Headsign); // towards the line's end
+        Assert.True(it.Estimated);
+        Assert.Equal(1, it.Transfers);
+        Assert.Equal(it.Legs.Sum(l => l.DurationMinutes) + 4 + 3, it.DurationMinutes); // plus the waits
+    }
+
+    [Fact]
+    public void No_Metro_Option_Far_From_Stations_Or_Outside_The_City()
+    {
+        Assert.Null(CityMetros.Route(41.75, 44.70, "Dighomi edge", 41.80, 44.70, "x", DateTime.Today, "en"));
+        Assert.Null(CityMetros.Route(47.4979, 19.0402, "Budapest", 47.50, 19.06, "x", DateTime.Today, "en"));
+        Assert.Null(CityMetros.Route(41.7221, 44.7977, "Station Square", 41.7225, 44.7958, "next door", DateTime.Today, "en"));
+    }
+
+    [Fact]
+    public void Station_Shapes_Encode_As_Google_Polylines()
+    {
+        // Google's documented example points.
+        Assert.Equal("_p~iF~ps|U_ulLnnqC_mqNvxq`@",
+            CityMetros.Encode([new("a", "a", 38.5, -120.2), new("b", "b", 40.7, -120.95), new("c", "c", 43.252, -126.453)]));
+    }
+
+    [Fact]
     public void Short_Hops_Get_No_Estimated_Ride()
     {
         var stop = new Application.Providers.NearbyTransitStop("A", "bus", ["1"], 37.97, 23.72);

@@ -28,7 +28,7 @@ public sealed class TransitousRouter(HttpClient httpClient, IMemoryCache cache, 
     ILogger<TransitousRouter> logger) : ITransitRouter
 {
     public const string ProviderName = "Transitous";
-    private const int MaxItineraries = 3;
+    private const int MaxItineraries = 4;
     private static readonly HashSet<string> LongDistance = new(StringComparer.OrdinalIgnoreCase) { "LONG_DISTANCE", "AIRPLANE", "NIGHT_RAIL", "HIGHSPEED_RAIL" };
 
     public string Name => ProviderName;
@@ -48,7 +48,9 @@ public sealed class TransitousRouter(HttpClient httpClient, IMemoryCache cache, 
                 var utc = new DateTimeOffset(departure, query.UtcOffset).UtcDateTime;
                 var url = $"api/v1/plan?fromPlace={query.FromLatitude.ToString("0.#####", c)},{query.FromLongitude.ToString("0.#####", c)}" +
                           $"&toPlace={query.ToLatitude.ToString("0.#####", c)},{query.ToLongitude.ToString("0.#####", c)}" +
-                          $"&time={utc:yyyy-MM-ddTHH:mm:ssZ}";
+                          $"&time={utc:yyyy-MM-ddTHH:mm:ssZ}" +
+                          // Up to 20 minutes on foot to the first stop and from the last (a metro a bit further away often wins).
+                          "&maxPreTransitTime=1200&maxPostTransitTime=1200";
                 var body = await httpClient.GetFromJsonAsync<JsonElement>(url, cancellationToken);
                 return (IReadOnlyList<TransitItinerary>)Map(body, query.UtcOffset, query.AnyDistance ? int.MaxValue : options.Value.MaxJourneyMinutes, query.AnyDistance);
             }) ?? [];

@@ -741,10 +741,15 @@ export const en = {
   'transit.coachHowTo': 'How to get to the station',
   'transit.coachNote': 'Minibuses usually leave when full. Check the departure time and fare at the station.',
   'route.estimated': 'Estimated · no timetable',
-  'route.estimatedNote': 'This city publishes no timetables: the line calls at both stops according to OpenStreetMap; the time is a rough estimate. Check the stop sign.',
+  'route.estimatedNote': 'No exact departure times for this option: it is built from the lines that call at these stops (the metro runs every few minutes); the time is an estimate.',
   'transit.noRoutesCoach': 'No direct timetable connection — see below how to reach the minibus station for your direction.',
   'transit.coachRouteTitle': 'How to get to the station',
   'transit.mapToStation': 'On the map: the way to {station}',
+  'route.tag.fastest': 'Fastest',
+  'route.tag.fewestTransfers': 'Fewest changes',
+  'route.tag.leastWalking': 'Least walking',
+  'route.tag.metro': 'By metro',
+  'route.walkTotal': 'walk {minutes} min',
 } satisfies Record<string, string>;
 
 export type TranslationKey = keyof typeof en;

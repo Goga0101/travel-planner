@@ -6,13 +6,13 @@ import { ApiError, toApiError } from '../../core/errors';
 import { TranslationKey } from '../../core/i18n/en';
 import { I18nService } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
-import { ActivityPlaceDto, DayItemDto, DayPlanDto, INTERESTS, Interest, PlaceSuggestionDto, PlanDayDto, RouteDirectionDto, TripPace } from '../../core/models';
+import { ActivityPlaceDto, DayItemDto, DayPlanDto, INTERESTS, Interest, PlaceSuggestionDto, PlanDayDto, RouteDirectionDto, TransitItineraryDto, TripPace } from '../../core/models';
 import { ErrorBannerComponent } from '../../shared/error-banner.component';
 import { SelectedStayService } from '../../core/selected-stay.service';
 import { ExternalLinkComponent } from '../../shared/external-link.component';
 import { IconComponent, IconName } from '../../shared/icon.component';
 import { DistancePipe, LocalDatePipe, MoneyPipe } from '../../shared/pipes';
-import { ItineraryComponent } from './itinerary.component';
+import { ItineraryComponent, routeTags } from './itinerary.component';
 import { LiveMapComponent } from '../transit/live-map.component';
 
 const STORAGE_KEY = 'tp.dayPlanner';
@@ -389,7 +389,7 @@ function savePreferences(p: Preferences): void {
                     <ol class="route-options hop-options">
                       @for (it of r.itineraries.slice(0, 3); track $index; let first = $first; let i = $index) {
                         <li app-itinerary class="route-option is-pickable" [class.best]="first" [class.is-picked]="(st!.pick ?? 0) === i"
-                            [itinerary]="it" [best]="first && !it.estimated" (click)="pickHop(h.key, i)"></li>
+                            [itinerary]="it" [best]="first && !it.estimated" [tags]="tagsOf(r.itineraries)[i]" (click)="pickHop(h.key, i)"></li>
                       }
                     </ol>
                   } @else {
@@ -554,6 +554,10 @@ export class DayPlannerComponent {
         }),
         error: () => this.setHop(h.key, { loading: false, failed: true }),
       });
+  }
+
+  protected tagsOf(list: TransitItineraryDto[]): ReturnType<typeof routeTags> {
+    return routeTags(list.slice(0, 3));
   }
 
   protected pickHop(key: string, pick: number): void {

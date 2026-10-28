@@ -26,6 +26,31 @@ export const MODE_ICONS: Record<string, IconName> = {
   ferry: 'ship',
 };
 
+export type RouteTag = 'fastest' | 'fewestTransfers' | 'leastWalking' | 'metro';
+
+const walkMinutes = (it: TransitItineraryDto) => it.legs.filter((l) => l.mode === 'WALK').reduce((m, l) => m + l.durationMinutes, 0);
+const rides = (it: TransitItineraryDto) => it.legs.filter((l) => l.mode !== 'WALK');
+
+/**
+ * What sets each option apart, so the visitor can choose: the quickest, the one with fewest changes, the one with least
+ * walking, and those that use the metro. A tag only appears when the options actually differ on it.
+ */
+export function routeTags(list: TransitItineraryDto[]): RouteTag[][] {
+  const tags = list.map(() => [] as RouteTag[]);
+  if (!list.length) return tags;
+  const mark = (tag: RouteTag, value: (it: TransitItineraryDto) => number) => {
+    const values = list.map(value);
+    const best = Math.min(...values);
+    if (list.length > 1 && values.every((v) => v === best)) return;
+    tags[values.indexOf(best)].push(tag);
+  };
+  mark('fastest', (it) => it.durationMinutes);
+  mark('fewestTransfers', (it) => rides(it).length);
+  mark('leastWalking', walkMinutes);
+  list.forEach((it, i) => rides(it).some((l) => l.mode === 'SUBWAY' || l.mode === 'METRO') && tags[i].push('metro'));
+  return tags;
+}
+
 export function modeIcon(mode: string): IconName {
   return MODE_ICONS[mode] ?? 'train';
 }
@@ -45,9 +70,15 @@ export function modeIcon(mode: string): IconName {
           <strong class="route-time">{{ it.departureTime }} → {{ it.arrivalTime }}</strong>
           <span class="meta-chip">{{ it.durationMinutes | minutes }}</span>
           <span class="meta-chip">{{ it.transfers === 0 ? ('route.noTransfer' | t) : ('route.transfers' | t: { count: it.transfers }) }}</span>
-          @if (best()) { <span class="badge-best">{{ 'route.fastest' | t }}</span> }
+          @if (best() && !tags().length) { <span class="badge-best">{{ 'route.fastest' | t }}</span> }
         }
       </div>
+      @if (tags().length || walkTotal(it)) {
+        <div class="route-tags">
+          @for (tag of tags(); track tag) { <span class="route-tag" [attr.data-tag]="tag">{{ tagKey(tag) | t }}</span> }
+          <span class="route-walk"><app-icon name="walk" [size]="12" /> {{ 'route.walkTotal' | t: { minutes: walkTotal(it) } }}</span>
+        </div>
+      }
       @if (it.estimated) { <p class="small muted estimate-note">{{ 'route.estimatedNote' | t }}</p> }
       <div class="route-chips">
         @for (l of transitLegs(it.legs); track $index) {
@@ -114,6 +145,16 @@ export function modeIcon(mode: string): IconName {
 export class ItineraryComponent {
   readonly itinerary = input.required<TransitItineraryDto>();
   readonly best = input(false);
+  /** What sets this option apart from the others (see routeTags). */
+  readonly tags = input<RouteTag[]>([]);
+
+  protected walkTotal(it: TransitItineraryDto): number {
+    return walkMinutes(it);
+  }
+
+  protected tagKey(tag: RouteTag): TranslationKey {
+    return `route.tag.${tag}`;
+  }
 
   private readonly i18n = inject(I18nService);
 
