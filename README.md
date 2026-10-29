@@ -14,6 +14,8 @@ with sources, verification status and **official booking links**.
 | Tests | xUnit v3 (Microsoft.Testing.Platform), Testcontainers PostgreSQL, WebApplicationFactory |
 | Infra | Docker Compose (PostgreSQL, optional API and web containers) |
 
+Step-by-step guide in Georgian (setup on a new machine, daily start, tunnel, publishing, Google/Facebook sign-in): [`docs/RUNBOOK.md`](docs/RUNBOOK.md).
+
 ---
 
 ## 1. Quick start (demo mode, about 5 minutes)
