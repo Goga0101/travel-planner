@@ -4,6 +4,7 @@ import { TranslatePipe } from '../core/i18n/translate.pipe';
 import { FlightLegSummaryDto, FlightTicket } from '../core/models';
 import { LocalDatePipe, MinutesPipe, MoneyPipe, StopsPipe } from './pipes';
 import { ExternalLinkComponent } from './external-link.component';
+import { AirlineComponent } from './airline.component';
 
 /**
  * "Tbilisi (TBS) → London (LTN → STN, airport change) → Barcelona (BCN)": the connection cities of one direction.
@@ -51,7 +52,7 @@ export function viaLabels(leg: FlightLegSummaryDto, i18n: I18nService): string[]
 @Component({
   selector: 'app-flight-timeline',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [LocalDatePipe, MinutesPipe, StopsPipe],
+  imports: [LocalDatePipe, MinutesPipe, StopsPipe, AirlineComponent],
   template: `
     @let l = leg();
     <div class="timeline" [class.self]="selfTransfer() && l.stops > 0">
@@ -67,8 +68,12 @@ export function viaLabels(leg: FlightLegSummaryDto, i18n: I18nService): string[]
         <span class="tl-line" aria-hidden="true">
           @for (s of dots(); track $index) { <span class="tl-dot"></span> }
         </span>
+        <!-- The stops are already above the line: below it the time in the air and who flies it. -->
         <span class="tl-meta">
-          @if (l.durationMinutes) { {{ l.durationMinutes | minutes }} · }{{ l.stops | stops }}
+          @if (l.durationMinutes) { {{ l.durationMinutes | minutes }} · }
+          @if (l.carriers.length) {
+            @for (c of l.carriers; track c) { @if (!$first) { , }<app-airline [code]="c" /> }
+          } @else { {{ l.stops | stops }} }
         </span>
       </div>
       <div class="tl-end tl-right">
@@ -101,7 +106,7 @@ export class FlightTimelineComponent {
 @Component({
   selector: 'app-flight-tickets',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TranslatePipe, LocalDatePipe, MoneyPipe, ExternalLinkComponent],
+  imports: [TranslatePipe, LocalDatePipe, MoneyPipe, ExternalLinkComponent, AirlineComponent],
   template: `
     @if (selfTransfer()) {
       <p class="small text-warn"><span class="badge-self">{{ 'flight.selfTransferBadge' | t }}</span> {{ 'flight.selfTransferWarning' | t }}</p>
@@ -112,6 +117,7 @@ export class FlightTimelineComponent {
           <span>
             <strong>{{ (t.isReturn ? 'flight.ticketReturn' : 'flight.ticketOutbound') | t }}:</strong>
             {{ t.from }} → {{ t.to }} · {{ t.departureLocal | ldate: 'EEE d MMM HH:mm' }}
+            @if (t.carrier) { · <app-airline [code]="t.carrier" /> }
             @if (t.arrivalLocal) { – {{ t.arrivalLocal | ldate: 'HH:mm' }} }
             @if (overnight($index)) { · <em>{{ 'flight.overnight' | t }}</em> }
             · {{ t.price | money: t.currency }}

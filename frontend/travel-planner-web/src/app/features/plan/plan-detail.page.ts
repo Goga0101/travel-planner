@@ -20,6 +20,7 @@ import { CategoryPipe } from '../../core/i18n/category.pipe';
 import { TranslationKey } from '../../core/i18n/en';
 import { I18nService } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
+import { AirlineComponent } from '../../shared/airline.component';
 import { ErrorBannerComponent } from '../../shared/error-banner.component';
 import { ExternalLinkComponent } from '../../shared/external-link.component';
 import { IconComponent, IconName } from '../../shared/icon.component';
@@ -53,6 +54,7 @@ type PlanTab = (typeof TAB_IDS)[number];
   selector: 'app-plan-detail-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
+    AirlineComponent,
     LocalDatePipe,
     LocalNumberPipe,
     TranslatePipe,

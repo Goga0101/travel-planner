@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, computed, inject, input, output, si
 import { I18nService } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
 import { toIsoDate } from '../../core/format';
+import { AirlinePipe } from '../../core/airlines';
 import { FlightCalendarDayDto } from '../../core/models';
 import { IconComponent } from '../../shared/icon.component';
 import { LocalDatePipe, StopsPipe } from '../../shared/pipes';
@@ -28,7 +29,7 @@ interface Cell {
 @Component({
   selector: 'app-fare-months',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TranslatePipe, IconComponent, LocalDatePipe, StopsPipe],
+  imports: [TranslatePipe, IconComponent, LocalDatePipe, StopsPipe, AirlinePipe],
   styles: `
     :host { display: block; }
     .fm-nav { display: flex; align-items: center; justify-content: space-between; gap: 0.5rem; margin-bottom: 0.5rem; }
@@ -111,7 +112,7 @@ interface Cell {
                       <span class="fm-tip-date">{{ c.iso | ldate: 'EEEE, d MMMM' }}</span>
                       <span class="fm-tip-price">{{ price(f.price) }}</span>
                       <span class="fm-tip-meta">{{ f.time }} · {{ f.from }} → {{ f.to }}</span>
-                      <span class="fm-tip-meta">{{ f.stops | stops }}@if (f.airline) { · {{ f.airline }} }</span>
+                      <span class="fm-tip-meta">{{ f.stops | stops }}@if (f.airline) { · {{ f.airline | airline }} }</span>
                       <span class="fm-tip-cta"><app-icon name="shuffle" [size]="13" /> {{ 'fcal.tipCta' | t }}</span>
                     </span>
                   }

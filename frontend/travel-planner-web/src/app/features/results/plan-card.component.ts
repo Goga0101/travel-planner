@@ -12,12 +12,13 @@ import { destinationPhoto, destinationSrcset } from '../../core/destination-phot
 import { SavedTripsService } from '../../core/local-lists';
 import { IconComponent } from '../../shared/icon.component';
 import { LocalDatePipe, MinutesPipe, MoneyPipe, StopsPipe } from '../../shared/pipes';
+import { AirlineComponent } from '../../shared/airline.component';
 import { FlightRouteComponent, FlightTimelineComponent } from '../../shared/flight-route.component';
 
 @Component({
   selector: 'app-plan-card',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [LocalDatePipe, RouterLink, MoneyPipe, MinutesPipe, StopsPipe, TranslatePipe, CategoryPipe, BudgetFitBadgeComponent, VerificationBadgeComponent, IconComponent, FlightRouteComponent, FlightTimelineComponent],
+  imports: [LocalDatePipe, RouterLink, MoneyPipe, MinutesPipe, StopsPipe, TranslatePipe, CategoryPipe, BudgetFitBadgeComponent, VerificationBadgeComponent, IconComponent, FlightRouteComponent, FlightTimelineComponent, AirlineComponent],
   template: `
     @let p = plan();
     <article class="card plan-card" [class.plan-over]="p.budgetFit === 'OverBudget'" [class.plan-top]="p.rank === 1"
@@ -54,6 +55,7 @@ import { FlightRouteComponent, FlightTimelineComponent } from '../../shared/flig
               <p class="plan-return small">
                 <strong>{{ 'plan.return' | t }}:</strong>&nbsp;<app-flight-route [leg]="i" /> · {{ i.departureLocal | ldate: 'd MMM HH:mm' }}
                 · {{ i.durationMinutes | minutes }} · {{ i.stops | stops }}
+                @for (c of i.carriers; track c) { · <app-airline [code]="c" /> }
               </p>
             }
           } @else {

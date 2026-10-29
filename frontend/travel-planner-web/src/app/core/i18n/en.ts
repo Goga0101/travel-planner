@@ -476,6 +476,7 @@ export const en = {
   'continent.Oceania': 'Australia & Oceania',
   'sort.TotalCostDesc': 'Highest total cost',
   'flight.airportChange': '{from} → {to}, airport change',
+  'airline.lowcost': 'Low-cost airline: bags and seat choice are usually extra',
   'flight.selfTransferBadge': 'Separate tickets',
   'flight.selfTransferWarning': 'You book each ticket on its own, collect your bags and check in again at the connection. A delayed first flight does not protect the next one, so leave enough time.',
   'flight.tickets': 'Tickets to book',

@@ -5,6 +5,7 @@ import { ApiError, toApiError } from '../../core/errors';
 import { I18nService } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
 import { FlightCalendarDayDto, FlightOptionsDto } from '../../core/models';
+import { AirlineComponent } from '../../shared/airline.component';
 import { ErrorBannerComponent } from '../../shared/error-banner.component';
 import { ExternalLinkComponent } from '../../shared/external-link.component';
 import { IconComponent } from '../../shared/icon.component';
@@ -31,7 +32,7 @@ type Mode = 'ask' | 'round' | 'oneway';
 @Component({
   selector: 'app-trip-dialog',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TranslatePipe, IconComponent, ExternalLinkComponent, ErrorBannerComponent, LocalDatePipe, StopsPipe, FareMonthsComponent,
+  imports: [TranslatePipe, IconComponent, ExternalLinkComponent, ErrorBannerComponent, AirlineComponent, LocalDatePipe, StopsPipe, FareMonthsComponent,
     FlightOptionsComponent],
   styles: `
     dialog { width: min(1000px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 0; border: 0; border-radius: var(--radius-lg);
@@ -104,7 +105,7 @@ type Mode = 'ask' | 'round' | 'oneway';
             <span class="td-flight-icon"><app-icon name="plane" [size]="20" /></span>
             <div class="td-flight-main">
               <strong>{{ f.fare.time }} · {{ f.fare.from }} → {{ f.fare.to }}</strong>
-              <div class="small muted">{{ f.fare.stops | stops }}@if (f.fare.airline) { · {{ f.fare.airline }} } · {{ 'fcal.oneWayPerPerson' | t }}</div>
+              <div class="small muted">{{ f.fare.stops | stops }}@if (f.fare.airline) { · <app-airline [code]="f.fare.airline" /> } · {{ 'fcal.oneWayPerPerson' | t }}</div>
             </div>
             <div class="td-flight-side">
               <span class="td-price">{{ money(f.fare.price) }}</span>

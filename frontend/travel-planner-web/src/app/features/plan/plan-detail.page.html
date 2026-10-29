@@ -159,7 +159,7 @@
                       <ol class="segments">
                         @for (seg of leg.it.segments; track $index) {
                           <li>
-                            <strong>{{ seg.flightNumber }}</strong> {{ seg.departureAirport }} {{ seg.departureLocal | ldate: 'HH:mm' }}
+                            <strong><app-airline [code]="seg.flightNumber" [label]="seg.flightNumber" /></strong> {{ seg.departureAirport }} {{ seg.departureLocal | ldate: 'HH:mm' }}
                             → {{ seg.arrivalAirport }} @if (seg.arrivalLocal) { {{ seg.arrivalLocal | ldate: 'HH:mm' }} }
                             @if (seg.duration) { <span class="muted">({{ seg.duration | timespan }})</span> }
                           </li>

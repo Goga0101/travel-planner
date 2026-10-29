@@ -93,14 +93,12 @@ const single = (o: FlightOptionDto) => o.tickets.length <= 1;
             <li class="fo-card">
               <div class="fo-legs">
                 <div>
-                  <div class="fo-leg-head"><span class="fo-dir">{{ (o.inbound ? 'fcal.outbound' : 'fcal.oneWayLeg') | t }}</span>
-                    @if (o.outbound.carriers.length) { · {{ o.outbound.carriers.join(', ') }} }</div>
+                  <div class="fo-leg-head"><span class="fo-dir">{{ (o.inbound ? 'fcal.outbound' : 'fcal.oneWayLeg') | t }}</span></div>
                   <app-flight-timeline [leg]="o.outbound" [selfTransfer]="o.kind === 'SelfTransfer'" />
                 </div>
                 @if (o.inbound; as back) {
                   <div>
-                    <div class="fo-leg-head"><span class="fo-dir">{{ 'fcal.inbound' | t }}</span>
-                      @if (back.carriers.length) { · {{ back.carriers.join(', ') }} }</div>
+                    <div class="fo-leg-head"><span class="fo-dir">{{ 'fcal.inbound' | t }}</span></div>
                     <app-flight-timeline [leg]="back" [selfTransfer]="o.kind === 'SelfTransfer'" />
                   </div>
                 }
