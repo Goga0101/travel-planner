@@ -2,6 +2,7 @@ import { ChangeDetectionStrategy, Component, ElementRef, HostListener, computed,
 import { AuthService } from '../core/auth.service';
 import { I18nService } from '../core/i18n/i18n.service';
 import { TranslatePipe } from '../core/i18n/translate.pipe';
+import { RouterLink } from '@angular/router';
 
 const PANEL_BUTTON_WIDTH = 272;
 
@@ -12,7 +13,7 @@ const PANEL_BUTTON_WIDTH = 272;
 @Component({
   selector: 'app-account-menu',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TranslatePipe],
+  imports: [TranslatePipe, RouterLink],
   styles: `
     :host { position: relative; display: inline-flex; }
     .am-trigger { display: inline-flex; align-items: center; gap: 0.45rem; min-height: 2.5rem; padding: 0.25rem 0.85rem 0.25rem 0.3rem;
@@ -53,6 +54,14 @@ const PANEL_BUTTON_WIDTH = 272;
     .am-user-mail { margin: 0; color: var(--muted); font-size: 0.85rem; overflow-wrap: anywhere; }
     .am-providers { margin: 0.9rem 0 0; font-size: 0.82rem; color: var(--muted); }
     .am-signout { margin-top: 1rem; width: 100%; }
+    .am-delete { margin-top: 0.8rem; padding-top: 0.7rem; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap;
+      justify-content: space-between; gap: 0.4rem 1rem; }
+    .am-delete-q { margin: 0; width: 100%; font-size: 0.85rem; color: var(--text-2); }
+    .am-delete-actions { display: flex; width: 100%; justify-content: flex-end; gap: 0.8rem; align-items: center; }
+    .am-link { border: 0; background: none; padding: 0; font: inherit; font-size: 0.8rem; color: var(--muted); cursor: pointer; text-decoration: underline; }
+    .am-link:hover { color: var(--text); }
+    .am-danger { border: 0; border-radius: 999px; padding: 0.4rem 0.9rem; font: inherit; font-size: 0.82rem; font-weight: 600;
+      background: #b91c1c; color: #fff; cursor: pointer; }
 
     /* Laptops: the menu is long (Georgian especially), so the control is just the icon or the photo; the label is its tooltip. */
     @media (max-width: 1439px) {
@@ -112,6 +121,19 @@ const PANEL_BUTTON_WIDTH = 272;
           </div>
           <p class="am-providers">{{ 'auth.signedInWith' | t: { providers: u.providers.join(', ') } }}</p>
           <button type="button" class="btn btn-ghost am-signout" (click)="signOut()">{{ 'auth.signOut' | t }}</button>
+          <div class="am-delete">
+            @if (confirmDelete()) {
+              <p class="am-delete-q">{{ 'auth.deleteConfirm' | t }}</p>
+              <div class="am-delete-actions">
+                <button type="button" class="am-link" (click)="confirmDelete.set(false)">{{ 'auth.deleteKeep' | t }}</button>
+                <button type="button" class="am-danger" (click)="deleteAccount()">{{ 'auth.deleteYes' | t }}</button>
+              </div>
+              @if (auth.error(); as e) { <p class="am-status err" role="alert">{{ e | t }}</p> }
+            } @else {
+              <button type="button" class="am-link" (click)="confirmDelete.set(true)">{{ 'auth.delete' | t }}</button>
+              <a class="am-link" [routerLink]="i18n.path('privacy')" (click)="open.set(false)">{{ 'auth.privacyLink' | t }}</a>
+            }
+          </div>
         } @else {
           <p class="am-title">{{ 'auth.title' | t }}</p>
           <p class="am-lead">{{ 'auth.lead' | t }}</p>
@@ -142,7 +164,8 @@ const PANEL_BUTTON_WIDTH = 272;
             <p class="am-status err" role="alert">{{ e | t }}</p>
           }
           @if (!auth.available()) { <p class="am-soon">{{ 'auth.soon' | t }}</p> }
-          <p class="am-note">{{ 'auth.privacy' | t }}</p>
+          <p class="am-note">{{ 'auth.privacy' | t }}
+            <a [routerLink]="i18n.path('privacy')" (click)="open.set(false)">{{ 'auth.privacyLink' | t }}</a></p>
         }
       </div>
     }
@@ -150,7 +173,7 @@ const PANEL_BUTTON_WIDTH = 272;
 })
 export class AccountMenuComponent {
   protected readonly auth = inject(AuthService);
-  private readonly i18n = inject(I18nService);
+  protected readonly i18n = inject(I18nService);
   private readonly host = inject(ElementRef<HTMLElement>);
 
   protected readonly open = signal(false);
@@ -170,7 +193,7 @@ export class AccountMenuComponent {
     });
     // Signed in: the panel has done its job.
     effect(() => { if (this.auth.signedIn()) this.open.set(false); });
-    effect(() => { this.auth.user(); this.pictureFailed.set(false); });
+    effect(() => { this.auth.user(); this.pictureFailed.set(false); this.confirmDelete.set(false); });
   }
 
   protected toggle(): void {
@@ -179,6 +202,15 @@ export class AccountMenuComponent {
     if (next && !this.auth.signedIn()) {
       this.auth.error.set(null);
       this.auth.prepareFacebook();
+    }
+  }
+
+  protected readonly confirmDelete = signal(false);
+
+  protected async deleteAccount(): Promise<void> {
+    if (await this.auth.deleteAccount()) {
+      this.confirmDelete.set(false);
+      this.open.set(false);
     }
   }
 

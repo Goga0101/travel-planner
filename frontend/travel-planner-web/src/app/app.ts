@@ -85,6 +85,7 @@ import { TranslatePipe } from './core/i18n/translate.pipe';
             <li><a [routerLink]="i18n.path()" fragment="how">{{ 'nav.how' | t }}</a></li>
             <li><a [routerLink]="i18n.path()" fragment="about">{{ 'nav.about' | t }}</a></li>
             <li><a [routerLink]="i18n.path('saved')">{{ 'saved.title' | t }}</a></li>
+            <li><a [routerLink]="i18n.path('privacy')">{{ 'auth.privacyLink' | t }}</a></li>
           </ul>
         </nav>
         <div class="footer-details">

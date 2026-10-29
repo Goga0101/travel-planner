@@ -100,4 +100,20 @@ public class AuthTests
         Assert.Null(JwtAccessTokenIssuer.SigningKey(new AuthOptions.JwtSettings { Key = "<user-secrets: Auth:Jwt:Key>" }));
         Assert.False(new JwtAccessTokenIssuer(Microsoft.Extensions.Options.Options.Create(new AuthOptions()), TimeProvider.System).IsConfigured);
     }
+
+    [Fact]
+    public async Task Deleting_The_Account_Removes_The_User_And_The_Provider_Links()
+    {
+        await using var db = Db();
+        var google = new FakeVerifier(AuthProviders.Google, new("Google", "g-1", "Nino", "nino@example.com", true, null));
+        var signedIn = await Handler(db, google).Handle(new ExternalLoginCommand("Google", "good"), CancellationToken.None);
+
+        await new DeleteCurrentUserHandler(db).Handle(new DeleteCurrentUserCommand(signedIn.User.Id), CancellationToken.None);
+
+        Assert.Empty(db.Users);
+        Assert.Empty(db.UserLogins);
+        // Signing in again starts a fresh account.
+        var again = await Handler(db, google).Handle(new ExternalLoginCommand("Google", "good"), CancellationToken.None);
+        Assert.NotEqual(signedIn.User.Id, again.User.Id);
+    }
 }

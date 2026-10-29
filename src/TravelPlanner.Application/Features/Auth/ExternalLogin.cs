@@ -118,3 +118,18 @@ internal static class UserMapping
     public static UserDto ToDto(this User u) =>
         new(u.Id, u.Name, u.Email, u.PictureUrl, u.Logins.Select(l => l.Provider).Distinct().Order().ToList(), u.CreatedAtUtc);
 }
+
+/// <summary>Deletes the signed-in user and their provider links (what the privacy page promises).</summary>
+public sealed record DeleteCurrentUserCommand(Guid UserId) : IRequest;
+
+public sealed class DeleteCurrentUserHandler(IApplicationDbContext db) : IRequestHandler<DeleteCurrentUserCommand>
+{
+    public async Task Handle(DeleteCurrentUserCommand request, CancellationToken cancellationToken)
+    {
+        var user = await db.Users.Include(u => u.Logins).FirstOrDefaultAsync(u => u.Id == request.UserId, cancellationToken);
+        if (user is null) return;
+        db.UserLogins.RemoveRange(user.Logins);
+        db.Users.Remove(user);
+        await db.SaveChangesAsync(cancellationToken);
+    }
+}

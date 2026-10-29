@@ -80,6 +80,18 @@ export class AuthService {
     return s.token;
   }
 
+  /** Deletes the account on the server (profile and provider links), then signs out here. */
+  async deleteAccount(): Promise<boolean> {
+    try {
+      await firstValueFrom(this.api.deleteMe());
+      this.signOut();
+      return true;
+    } catch {
+      this.error.set('auth.deleteFailed');
+      return false;
+    }
+  }
+
   signOut(): void {
     this.store(null);
     window.google?.accounts.id.disableAutoSelect();

@@ -339,6 +339,7 @@ export const ka: Dictionary = {
 
   // Plan extras: nearby places, weather, saved trips, recent searches
   'title.saved': 'შენახული მოგზაურობები',
+  'title.privacy': 'კონფიდენციალურობის პოლიტიკა',
   'plan.sections': 'გეგმის ნაწილები',
   'plan.navCosts': 'ხარჯები',
   'plan.navTransport': 'გადაადგილება',
@@ -432,6 +433,12 @@ export const ka: Dictionary = {
   'auth.signedInWith': 'შესულია: {providers}',
   'auth.signOut': 'გასვლა',
   'auth.menu': 'ანგარიში: {name}',
+  'auth.privacyLink': 'კონფიდენციალურობის პოლიტიკა',
+  'auth.delete': 'ანგარიშის წაშლა',
+  'auth.deleteConfirm': 'წავშალოთ ანგარიში და მასთან დაკავშირებული ყველაფერი? ამის დაბრუნება შეუძლებელია.',
+  'auth.deleteKeep': 'არა, დავტოვოთ',
+  'auth.deleteYes': 'წაშლა',
+  'auth.deleteFailed': 'ანგარიში ვერ წაიშალა. სცადეთ თავიდან.',
   'recent.title': 'თქვენი ბოლო ძიებები',
   'recent.clear': 'გასუფთავება',
   'recent.anywhere': 'ნებისმიერი მიმართულება',

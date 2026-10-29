@@ -340,6 +340,7 @@ export const en = {
 
   // Plan extras: nearby places, weather, saved trips, recent searches
   'title.saved': 'Saved trips',
+  'title.privacy': 'Privacy policy',
   'plan.sections': 'Plan sections',
   'plan.navCosts': 'Costs',
   'plan.navTransport': 'Getting around',
@@ -433,6 +434,12 @@ export const en = {
   'auth.signedInWith': 'Signed in with {providers}',
   'auth.signOut': 'Sign out',
   'auth.menu': 'Account: {name}',
+  'auth.privacyLink': 'Privacy policy',
+  'auth.delete': 'Delete account',
+  'auth.deleteConfirm': 'Delete your account and everything linked to it? This cannot be undone.',
+  'auth.deleteKeep': 'Keep it',
+  'auth.deleteYes': 'Delete',
+  'auth.deleteFailed': 'The account could not be deleted. Please try again.',
   'recent.title': 'Your recent searches',
   'recent.clear': 'Clear',
   'recent.anywhere': 'anywhere',

@@ -168,6 +168,10 @@ export class ApiService {
     return this.http.post<AuthResultDto>(`${BASE}/auth/external`, { provider, token });
   }
 
+  deleteMe(): Observable<void> {
+    return this.http.delete<void>(`${BASE}/auth/me`);
+  }
+
   getMe(): Observable<UserDto> {
     return this.http.get<UserDto>(`${BASE}/auth/me`);
   }

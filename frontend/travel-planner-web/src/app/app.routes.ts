@@ -16,6 +16,7 @@ export const routes: Routes = [
       { path: 'flights', title: 'title.flights', loadComponent: () => import('./features/flights/flight-calendar.page').then((m) => m.FlightCalendarPage) },
       { path: 'transit', title: 'title.transit', loadComponent: () => import('./features/transit/transit.page').then((m) => m.TransitPage) },
       { path: 'saved', title: 'title.saved', loadComponent: () => import('./features/saved/saved-trips.page').then((m) => m.SavedTripsPage) },
+      { path: 'privacy', title: 'title.privacy', loadComponent: () => import('./features/legal/privacy.page').then((m) => m.PrivacyPage) },
       { path: 'plans/:id', title: 'title.plan', loadComponent: () => import('./features/plan/plan-detail.page').then((m) => m.PlanDetailPage) },
       { path: '**', redirectTo: '' },
     ],

@@ -44,4 +44,16 @@ public sealed class AuthController(ISender sender) : ControllerBase
             return Unauthorized(); // the account no longer exists: the browser signs out
         }
     }
+
+    /// <summary>Deletes the signed-in user's account: profile and provider links. The browser then signs out.</summary>
+    [HttpDelete("me")]
+    [Authorize]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    public async Task<IActionResult> DeleteMe(CancellationToken cancellationToken)
+    {
+        if (!Guid.TryParse(User.FindFirst(JwtRegisteredClaimNames.Sub)?.Value, out var id)) return Unauthorized();
+        await sender.Send(new DeleteCurrentUserCommand(id), cancellationToken);
+        return NoContent();
+    }
 }

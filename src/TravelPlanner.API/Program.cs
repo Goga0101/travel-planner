@@ -60,7 +60,7 @@ builder.Services.AddAuthorization();
 var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? [];
 builder.Services.AddCors(o => o.AddPolicy(ApiConstants.CorsPolicy, policy => policy
     .WithOrigins(allowedOrigins)
-    .WithMethods("GET", "POST")
+    .WithMethods("GET", "POST", "DELETE")
     .WithHeaders("Content-Type", "Accept", "Accept-Language", "Authorization")
     .WithExposedHeaders("Location", "Retry-After", "Content-Language")));
 
