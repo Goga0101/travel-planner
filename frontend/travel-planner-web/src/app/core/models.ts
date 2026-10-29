@@ -611,6 +611,9 @@ export interface ClientConfigDto {
   maxSearchWindowDays: number;
   maxManualDestinations: number;
   mapsEmbedApiKey?: string;
+  /** Public ids for the sign-in buttons; absent = that provider is off. */
+  googleClientId?: string;
+  facebookAppId?: string;
 }
 
 // Typed accessors for item details (the backend guarantees the shape per item type).
@@ -1005,4 +1008,22 @@ export interface TaxiOptionsDto {
   local: LocalTaxiDto[];
   searchUrl: string;
   source: string;
+}
+
+// Sign-in (Google / Facebook): the API checks the provider's token and answers with its own.
+export type AuthProvider = 'Google' | 'Facebook';
+
+export interface UserDto {
+  id: string;
+  name: string;
+  email?: string;
+  pictureUrl?: string;
+  providers: AuthProvider[];
+  createdAtUtc: string;
+}
+
+export interface AuthResultDto {
+  accessToken: string;
+  expiresAtUtc: string;
+  user: UserDto;
 }

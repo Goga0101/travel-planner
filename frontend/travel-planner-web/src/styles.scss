@@ -165,6 +165,14 @@ a:hover { color: var(--primary-dark); }
   .brand-tagline { display: none; }
   .lang-switch button { min-width: 2.6rem; padding-inline: 0.55rem; }
 }
+// Small phones (360px): tighter still, so the first row keeps logo, saved trips, language and account together.
+@media (max-width: 389px) {
+  .topbar-inner { column-gap: 0.35rem; }
+  .brand-name { font-size: 1.05rem; }
+  .brand { gap: 0.35rem; }
+  .topbar-end { gap: 0.3rem; }
+  .lang-switch button { min-width: 2.2rem; padding-inline: 0.4rem; font-size: 0.8rem; }
+}
 @media (min-width: 900px) {
   .topbar-inner { flex-wrap: nowrap; }
   :lang(ka) .main-nav a { padding-inline: 0.6rem; font-size: 0.88rem; }
@@ -175,7 +183,7 @@ a:hover { color: var(--primary-dark); }
   .main-nav { order: 3; width: 100%; margin: 0 -0.5rem; padding-bottom: 0.5rem; }
   .main-nav + .topbar-end { margin-left: auto; }
 }
-@media (min-width: 1100px) and (max-width: 1199px) {
+@media (min-width: 1100px) and (max-width: 1279px) {
   :lang(ka) .topbar-inner { flex-wrap: wrap; }
   :lang(ka) .main-nav { order: 3; width: 100%; margin: 0 -0.5rem; padding-bottom: 0.5rem; }
   :lang(ka) .main-nav + .topbar-end { margin-left: auto; }

@@ -2,6 +2,9 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable, inject } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import {
+  AuthProvider,
+  AuthResultDto,
+  UserDto,
   AirportDto,
   ClientConfigDto,
   CreateTripSearchCommand,
@@ -159,6 +162,14 @@ export class ApiService {
 
   getAttractions(destinationId: string): Observable<AttractionDto[]> {
     return this.http.get<AttractionDto[]>(`${BASE}/destinations/${encodeURIComponent(destinationId)}/attractions`);
+  }
+
+  signIn(provider: AuthProvider, token: string): Observable<AuthResultDto> {
+    return this.http.post<AuthResultDto>(`${BASE}/auth/external`, { provider, token });
+  }
+
+  getMe(): Observable<UserDto> {
+    return this.http.get<UserDto>(`${BASE}/auth/me`);
   }
 
   getClientConfig(): Observable<ClientConfigDto> {

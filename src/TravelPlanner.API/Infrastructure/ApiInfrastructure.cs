@@ -12,6 +12,7 @@ public static class ApiConstants
     public const string CorsPolicy = "frontend";
     public const string SearchCreatePolicy = "search-create";
     public const string RefreshPolicy = "price-refresh";
+    public const string SignInPolicy = "sign-in";
 }
 
 public sealed class RateLimitSettings
@@ -19,6 +20,7 @@ public sealed class RateLimitSettings
     public int GlobalPerMinute { get; set; } = 300;
     public int SearchesPerMinute { get; set; } = 10;
     public int RefreshesPerMinute { get; set; } = 20;
+    public int SignInsPerMinute { get; set; } = 10;
 }
 
 /// <summary>Maps exceptions to RFC 7807 problem details. Internal details and stack traces are never returned.</summary>
@@ -41,6 +43,9 @@ public sealed class ApiExceptionHandler(IProblemDetailsService problemDetails, I
                 break;
             case NotFoundException:
                 problem = new ProblemDetails { Status = StatusCodes.Status404NotFound, Title = T.Get("api.notFoundTitle"), Detail = exception.Message };
+                break;
+            case Application.Features.Auth.AuthenticationFailedException:
+                problem = new ProblemDetails { Status = StatusCodes.Status401Unauthorized, Title = T.Get("auth.failedTitle"), Detail = exception.Message };
                 break;
             case ConflictException:
                 problem = new ProblemDetails { Status = StatusCodes.Status409Conflict, Title = T.Get("api.conflictTitle"), Detail = exception.Message };

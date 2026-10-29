@@ -227,6 +227,11 @@ public static class T
         ["resource.tripSearch"] = "Trip search",
         ["resource.tripPlan"] = "Trip plan",
         ["resource.destination"] = "Destination",
+        ["resource.user"] = "User",
+        ["auth.unknownProvider"] = "Sign in with Google or Facebook.",
+        ["auth.notConfigured"] = "Signing in with this provider is not available yet.",
+        ["auth.invalidToken"] = "Sign-in could not be confirmed. Please try again.",
+        ["auth.failedTitle"] = "Sign-in failed",
 
         // Validation
         ["val.originRequired"] = "Departure airport is required.",
@@ -425,6 +430,11 @@ public static class T
         ["resource.tripSearch"] = "ძიება",
         ["resource.tripPlan"] = "გეგმა",
         ["resource.destination"] = "მიმართულება",
+        ["resource.user"] = "მომხმარებელი",
+        ["auth.unknownProvider"] = "შედით Google-ით ან Facebook-ით.",
+        ["auth.notConfigured"] = "ამ გზით შესვლა ჯერ არ არის ჩართული.",
+        ["auth.invalidToken"] = "შესვლა ვერ დადასტურდა. სცადეთ თავიდან.",
+        ["auth.failedTitle"] = "შესვლა ვერ მოხერხდა",
 
         ["val.originRequired"] = "მიუთითეთ გაფრენის აეროპორტი.",
         ["val.originFormat"] = "გაფრენის აეროპორტი უნდა იყოს 3-ასოიანი IATA კოდი.",

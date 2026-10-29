@@ -46,11 +46,22 @@ builder.Services.AddSwaggerGen(o =>
 
 builder.Services.AddHealthChecks().AddDbContextCheck<AppDbContext>("database", tags: ["ready"]);
 
+// The API's own sign-in token (issued after Google / Facebook sign-in), sent by the web client as "Authorization: Bearer".
+var jwt = builder.Configuration.GetSection(TravelPlanner.Infrastructure.Auth.AuthOptions.SectionName).Get<TravelPlanner.Infrastructure.Auth.AuthOptions>()?.Jwt
+          ?? new TravelPlanner.Infrastructure.Auth.AuthOptions.JwtSettings();
+builder.Services.AddAuthentication(Microsoft.AspNetCore.Authentication.JwtBearer.JwtBearerDefaults.AuthenticationScheme)
+    .AddJwtBearer(o =>
+    {
+        o.MapInboundClaims = false;
+        o.TokenValidationParameters = TravelPlanner.Infrastructure.Auth.JwtAccessTokenIssuer.ValidationParameters(jwt);
+    });
+builder.Services.AddAuthorization();
+
 var allowedOrigins = builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? [];
 builder.Services.AddCors(o => o.AddPolicy(ApiConstants.CorsPolicy, policy => policy
     .WithOrigins(allowedOrigins)
     .WithMethods("GET", "POST")
-    .WithHeaders("Content-Type", "Accept", "Accept-Language")
+    .WithHeaders("Content-Type", "Accept", "Accept-Language", "Authorization")
     .WithExposedHeaders("Location", "Retry-After", "Content-Language")));
 
 var rateLimits = builder.Configuration.GetSection("RateLimiting").Get<RateLimitSettings>() ?? new RateLimitSettings();
@@ -69,6 +80,8 @@ builder.Services.AddRateLimiter(o =>
         ClientKey(ctx), _ => new FixedWindowRateLimiterOptions { PermitLimit = rateLimits.GlobalPerMinute, Window = TimeSpan.FromMinutes(1) }));
     o.AddPolicy(ApiConstants.SearchCreatePolicy, ctx => RateLimitPartition.GetFixedWindowLimiter(
         ClientKey(ctx), _ => new FixedWindowRateLimiterOptions { PermitLimit = rateLimits.SearchesPerMinute, Window = TimeSpan.FromMinutes(1) }));
+    o.AddPolicy(ApiConstants.SignInPolicy, ctx => RateLimitPartition.GetFixedWindowLimiter(
+        ClientKey(ctx), _ => new FixedWindowRateLimiterOptions { PermitLimit = rateLimits.SignInsPerMinute, Window = TimeSpan.FromMinutes(1) }));
     o.AddPolicy(ApiConstants.RefreshPolicy, ctx => RateLimitPartition.GetFixedWindowLimiter(
         ClientKey(ctx), _ => new FixedWindowRateLimiterOptions { PermitLimit = rateLimits.RefreshesPerMinute, Window = TimeSpan.FromMinutes(1) }));
 });
@@ -111,6 +124,8 @@ app.Use(async (context, next) =>
 });
 app.UseCors(ApiConstants.CorsPolicy);
 app.UseRateLimiter();
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllers();
 app.MapHealthChecks("/health/live", new HealthCheckOptions { Predicate = _ => false });

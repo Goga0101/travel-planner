@@ -12,6 +12,8 @@ public interface IApplicationDbContext
     DbSet<TripSearch> TripSearches { get; }
     DbSet<TripPlan> TripPlans { get; }
     DbSet<TripPlanItem> TripPlanItems { get; }
+    DbSet<User> Users { get; }
+    DbSet<UserLogin> UserLogins { get; }
     Task<int> SaveChangesAsync(CancellationToken cancellationToken = default);
 }
 

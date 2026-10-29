@@ -545,6 +545,68 @@ namespace TravelPlanner.Infrastructure.Persistence.Migrations
                     b.ToTable("trip_search_destinations", (string)null);
                 });
 
+            modelBuilder.Entity("TravelPlanner.Domain.Entities.User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("CreatedAtUtc")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(320)
+                        .HasColumnType("character varying(320)");
+
+                    b.Property<DateTime>("LastLoginAtUtc")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
+
+                    b.Property<string>("PictureUrl")
+                        .HasMaxLength(2000)
+                        .HasColumnType("character varying(2000)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Email");
+
+                    b.ToTable("users", (string)null);
+                });
+
+            modelBuilder.Entity("TravelPlanner.Domain.Entities.UserLogin", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("LinkedAtUtc")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Provider")
+                        .IsRequired()
+                        .HasMaxLength(32)
+                        .HasColumnType("character varying(32)");
+
+                    b.Property<string>("ProviderUserId")
+                        .IsRequired()
+                        .HasMaxLength(255)
+                        .HasColumnType("character varying(255)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.HasIndex("Provider", "ProviderUserId")
+                        .IsUnique();
+
+                    b.ToTable("user_logins", (string)null);
+                });
+
             modelBuilder.Entity("TravelPlanner.Domain.Entities.Airport", b =>
                 {
                     b.HasOne("TravelPlanner.Domain.Entities.Destination", "Destination")
@@ -646,6 +708,15 @@ namespace TravelPlanner.Infrastructure.Persistence.Migrations
                     b.Navigation("Destination");
                 });
 
+            modelBuilder.Entity("TravelPlanner.Domain.Entities.UserLogin", b =>
+                {
+                    b.HasOne("TravelPlanner.Domain.Entities.User", null)
+                        .WithMany("Logins")
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
             modelBuilder.Entity("TravelPlanner.Domain.Entities.Destination", b =>
                 {
                     b.Navigation("Airports");
@@ -663,6 +734,11 @@ namespace TravelPlanner.Infrastructure.Persistence.Migrations
                     b.Navigation("Plans");
 
                     b.Navigation("SelectedDestinations");
+                });
+
+            modelBuilder.Entity("TravelPlanner.Domain.Entities.User", b =>
+                {
+                    b.Navigation("Logins");
                 });
 #pragma warning restore 612, 618
         }

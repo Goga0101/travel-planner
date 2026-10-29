@@ -114,8 +114,53 @@ Or use the `.env` file with Docker Compose (see `.env.example`, which contains p
 | `Budget:*` | Optional daily food and local-transport allowance per person, and a contingency percentage. Empty means disabled. |
 | `OutboundLinks:AllowedHosts` | Allow-list for every URL shown to users (exact host or subdomain, HTTPS only). |
 | `Cors:AllowedOrigins` | Frontend origins (default `http://localhost:4200`). |
-| `RateLimiting:*` | Per-IP limits: global, search creation and price refresh. |
+| `Auth:*` | Sign-in with Google and Facebook (§3a). `Auth:Jwt:Key` and `Auth:Facebook:AppSecret` are secrets; the Google client id and Facebook app id are public. |
+| `RateLimiting:*` | Per-IP limits: global, search creation, price refresh and sign-in. |
 | `Providers:*` | Mode, cache TTLs, HTTP resilience (attempt and total timeout, retries) and per-provider credentials. |
+
+
+### 3a. Sign-in with Google and Facebook
+
+The browser signs in with the provider's own SDK and receives a token: Google Identity Services gives an **ID token**, the
+Facebook JS SDK a **user access token**. The page sends it to `POST /api/v1/auth/external`. The API verifies it with the
+provider: for Google, the signature against Google's keys, the expiry and that its audience is our client id; for Facebook,
+`debug_token` with the app's own token confirms it was issued to our app. Then it creates or finds the user and returns its
+own signed JWT. The page keeps that JWT in `localStorage` and sends it as `Authorization: Bearer`. One person signing in with
+both providers gets one account when both report the same verified email.
+
+Nothing is enabled until it is configured. Without `Auth:Jwt:Key` all sign-in is off, and a provider without its ids is off.
+
+**Google** ([Google Cloud Console](https://console.cloud.google.com/)):
+
+1. Create or choose a project. Under **APIs & Services → OAuth consent screen**, choose *External* and fill in the app
+   name, support email and the authorized domain `goga0101.github.io`. Use the scopes `openid`, `email` and `profile`, and
+   publish the app (in *Testing*, only listed test users can sign in).
+2. Under **Credentials → Create credentials → OAuth client ID**, choose *Web application*, and add these
+   **Authorized JavaScript origins**: `https://goga0101.github.io`, `http://localhost:4200` and `http://localhost`. No
+   redirect URI is needed because sign-in uses a popup.
+3. Copy the **Client ID**, which looks like `….apps.googleusercontent.com`. The client secret is not used.
+
+**Facebook** ([Meta for Developers](https://developers.facebook.com/apps)):
+
+1. **Create app → Authenticate and request data from users with Facebook Login** (type *Consumer*).
+2. In **App settings → Basic**, set the app domain to `goga0101.github.io`, add a privacy policy URL (required before going
+   *Live*) and copy the **App ID** and the **App secret**.
+3. In **Facebook Login → Settings**, turn on *Login with the JavaScript SDK* and set **Allowed domains for the JavaScript
+   SDK** to `https://goga0101.github.io/` and `http://localhost:4200/`.
+4. Permissions: `public_profile` and `email`. These are standard and need no review. Switch the app to **Live**; in
+   *Development* only app roles (admins, testers) can sign in.
+
+**Configure the API** (secrets stay in user-secrets locally and in environment variables elsewhere):
+
+```bash
+cd src/TravelPlanner.API
+dotnet user-secrets set "Auth:Jwt:Key" "$(openssl rand -base64 48)"   # once; changing it signs everyone out
+dotnet user-secrets set "Auth:Google:ClientId" "<client-id>.apps.googleusercontent.com"
+dotnet user-secrets set "Auth:Facebook:AppId" "<app-id>"
+dotnet user-secrets set "Auth:Facebook:AppSecret" "<app-secret>"
+```
+
+Restart the API. The ids reach the page through `/api/v1/client-config`, so the frontend needs no rebuild.
 
 ---
 
@@ -167,7 +212,9 @@ docker compose down -v && docker compose up -d postgres
 | GET | `/api/v1/trip-plans/{id}/outbound-links` | Allow-listed booking, information and map links |
 | GET | `/api/v1/trip-plans/{id}/hotel-prices` | Indicative nightly hotel prices per agency for the plan's dates (204 when unavailable). Not part of the total. |
 | GET | `/api/v1/trip-plans/{id}/nearby` | Hotels near the arrival airport and the centre, transit lines at the airport and taxis, with Booking.com, Google Maps and Uber links pre-filled from the plan |
-| GET | `/api/v1/client-config` | Data mode, active providers and input limits (no secrets) |
+| POST | `/api/v1/auth/external` | `{ provider, token }` (provider `Google` or `Facebook`): verifies the provider token, creates the user on first sign-in, returns this API's bearer token (401 when rejected). Rate-limited. |
+| GET | `/api/v1/auth/me` | The signed-in user (`Authorization: Bearer …`; 401 otherwise) |
+| GET | `/api/v1/client-config` | Data mode, active providers, input limits and the public sign-in ids (no secrets) |
 | GET | `/health/live`, `/health/ready` | Liveness, and readiness including the database |
 
 Errors are RFC 7807 problem details: 400 with per-field `errors`, 404, 409, 429 with `Retry-After`, and 500 with no

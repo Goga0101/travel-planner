@@ -176,3 +176,32 @@ internal sealed class TripPlanItemConfiguration : IEntityTypeConfiguration<TripP
         b.HasIndex(x => x.ExpiresAtUtc);
     }
 }
+
+internal sealed class UserConfiguration : IEntityTypeConfiguration<User>
+{
+    public void Configure(EntityTypeBuilder<User> b)
+    {
+        b.ToTable("users");
+        b.HasKey(x => x.Id);
+        b.Property(x => x.Id).ValueGeneratedNever();
+        b.Property(x => x.Name).HasMaxLength(200).IsRequired();
+        b.Property(x => x.Email).HasMaxLength(320);
+        b.HasIndex(x => x.Email);
+        b.Property(x => x.PictureUrl).HasMaxLength(2000);
+        b.HasMany(x => x.Logins).WithOne().HasForeignKey(l => l.UserId).OnDelete(DeleteBehavior.Cascade);
+    }
+}
+
+internal sealed class UserLoginConfiguration : IEntityTypeConfiguration<UserLogin>
+{
+    public void Configure(EntityTypeBuilder<UserLogin> b)
+    {
+        b.ToTable("user_logins");
+        b.HasKey(x => x.Id);
+        b.Property(x => x.Id).ValueGeneratedNever();
+        b.Property(x => x.Provider).HasMaxLength(32).IsRequired();
+        b.Property(x => x.ProviderUserId).HasMaxLength(255).IsRequired();
+        // One provider account belongs to exactly one user.
+        b.HasIndex(x => new { x.Provider, x.ProviderUserId }).IsUnique();
+    }
+}

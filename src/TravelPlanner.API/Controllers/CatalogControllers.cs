@@ -110,12 +110,16 @@ public sealed record ClientConfigDto(
     int MaxTravelers,
     int MaxSearchWindowDays,
     int MaxManualDestinations,
-    string? MapsEmbedApiKey);
+    string? MapsEmbedApiKey,
+    // Public ids for the sign-in buttons; null = that provider is off.
+    string? GoogleClientId = null,
+    string? FacebookAppId = null);
 
 [ApiController]
 [Route(ApiConstants.RoutePrefix + "/client-config")]
 [Produces("application/json")]
-public sealed class ClientConfigController(ProviderStatusRegistry providers, IDataModeAccessor dataMode, IConfiguration configuration) : ControllerBase
+public sealed class ClientConfigController(ProviderStatusRegistry providers, IDataModeAccessor dataMode, IConfiguration configuration,
+    IEnumerable<Application.Features.Auth.IExternalIdentityVerifier> signIn, Application.Features.Auth.IAccessTokenIssuer tokens) : ControllerBase
 {
     /// <summary>Non-secret settings for the web client: data mode, active providers and input limits.</summary>
     [HttpGet]
@@ -131,5 +135,10 @@ public sealed class ClientConfigController(ProviderStatusRegistry providers, IDa
         Application.Features.TripSearches.CreateTripSearchValidator.MaxSearchWindowDays,
         Application.Features.TripSearches.CreateTripSearchValidator.MaxManualDestinations,
         // Browser key for the Maps Embed API: must be HTTP-referrer restricted in Google Cloud (it is public by design).
-        configuration["ClientConfig:MapsEmbedApiKey"] is { Length: > 0 } key && !key.StartsWith('<') ? key : null);
+        configuration["ClientConfig:MapsEmbedApiKey"] is { Length: > 0 } key && !key.StartsWith('<') ? key : null,
+        SignInId(Domain.Entities.AuthProviders.Google),
+        SignInId(Domain.Entities.AuthProviders.Facebook));
+
+    private string? SignInId(string provider) =>
+        tokens.IsConfigured ? signIn.FirstOrDefault(v => v.Provider == provider && v.IsConfigured)?.PublicClientId : null;
 }

@@ -47,6 +47,14 @@ public static class DependencyInjection
         services.Configure<BookingComLinkOptions>(configuration.GetSection(BookingComLinkOptions.SectionName));
         services.AddSingleton<IAccommodationSearchLinkBuilder, BookingComSearchLinkBuilder>();
 
+        // Sign-in with Google / Facebook; each is off until its ids (and Auth:Jwt:Key) are configured.
+        services.Configure<Auth.AuthOptions>(configuration.GetSection(Auth.AuthOptions.SectionName));
+        services.AddSingleton<Application.Features.Auth.IAccessTokenIssuer, Auth.JwtAccessTokenIssuer>();
+        services.AddHttpClient(nameof(Auth.GoogleIdentityVerifier), c => c.Timeout = TimeSpan.FromSeconds(10));
+        services.AddSingleton<Application.Features.Auth.IExternalIdentityVerifier, Auth.GoogleIdentityVerifier>();
+        services.AddHttpClient<Auth.FacebookIdentityVerifier>(c => c.Timeout = TimeSpan.FromSeconds(10));
+        services.AddTransient<Application.Features.Auth.IExternalIdentityVerifier>(sp => sp.GetRequiredService<Auth.FacebookIdentityVerifier>());
+
         services.AddSingleton<CatalogFileReader>();
         services.AddSingleton<WorldAirportsFileReader>();
         services.AddSingleton<IWorldPlaces, WorldPlaces>();

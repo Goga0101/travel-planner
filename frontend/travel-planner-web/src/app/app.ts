@@ -5,6 +5,7 @@ import { filter, map } from 'rxjs';
 import { PHOTOS } from './core/destination-photos';
 import { SavedTripsService } from './core/local-lists';
 import { IconComponent } from './shared/icon.component';
+import { AccountMenuComponent } from './shared/account-menu.component';
 import { ClientConfigService } from './core/client-config.service';
 import { I18nService, Lang, switchUrlLang } from './core/i18n/i18n.service';
 import { TranslatePipe } from './core/i18n/translate.pipe';
@@ -12,7 +13,7 @@ import { TranslatePipe } from './core/i18n/translate.pipe';
 @Component({
   selector: 'app-root',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, TranslatePipe, IconComponent],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, TranslatePipe, IconComponent, AccountMenuComponent],
   host: { '[class.is-home]': 'isHome()' },
   template: `
     <a class="skip-link" href="#main">{{ 'app.skip' | t }}</a>
@@ -62,6 +63,7 @@ import { TranslatePipe } from './core/i18n/translate.pipe';
               </button>
             }
           </div>
+          <app-account-menu />
         </div>
       </div>
     </header>

@@ -12,6 +12,8 @@ public sealed class AppDbContext(DbContextOptions<AppDbContext> options) : DbCon
     public DbSet<TripSearch> TripSearches => Set<TripSearch>();
     public DbSet<TripPlan> TripPlans => Set<TripPlan>();
     public DbSet<TripPlanItem> TripPlanItems => Set<TripPlanItem>();
+    public DbSet<User> Users => Set<User>();
+    public DbSet<UserLogin> UserLogins => Set<UserLogin>();
 
     protected override void OnModelCreating(ModelBuilder modelBuilder) =>
         modelBuilder.ApplyConfigurationsFromAssembly(typeof(AppDbContext).Assembly);

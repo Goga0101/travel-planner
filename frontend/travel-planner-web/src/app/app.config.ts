@@ -6,6 +6,7 @@ import { TitleStrategy, provideRouter, withComponentInputBinding, withInMemorySc
 
 import { routes } from './app.routes';
 import { I18nTitleStrategy, acceptLanguageInterceptor } from './core/i18n/lang-routing';
+import { authInterceptor } from './core/auth.service';
 import { apiBaseUrlInterceptor, loadRuntimeConfig } from './core/runtime-config';
 
 registerLocaleData(localeKa, 'ka');
@@ -15,7 +16,7 @@ export const appConfig: ApplicationConfig = {
     provideBrowserGlobalErrorListeners(),
     provideAppInitializer(() => loadRuntimeConfig()),
     // Order matters: Accept-Language matches relative '/api/' URLs before they are made absolute.
-    provideHttpClient(withFetch(), withInterceptors([acceptLanguageInterceptor, apiBaseUrlInterceptor])),
+    provideHttpClient(withFetch(), withInterceptors([acceptLanguageInterceptor, authInterceptor, apiBaseUrlInterceptor])),
     provideRouter(routes, withComponentInputBinding(), withInMemoryScrolling({ scrollPositionRestoration: 'top', anchorScrolling: 'enabled' })),
     { provide: TitleStrategy, useClass: I18nTitleStrategy },
   ],
