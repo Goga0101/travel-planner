@@ -35,10 +35,29 @@ public sealed partial class TravelpayoutsFlightProvider : IFlightCalendarSource
             .GroupBy(f => DateOnly.FromDateTime(f.Departure.DateTime))
             .Select(g => g.MinBy(f => f.Price)!)
             .OrderBy(f => f.Departure.DateTime)
-            .Select(f => new CalendarFare(f.From, f.To, f.Departure.DateTime, f.Transfers, f.Airline, f.Price, currency.ToUpperInvariant(),
-                _mapper.BuildLink(f.Link)))
+            .Select(f => ToCalendarFare(f, currency))
             .ToList();
     }
+
+    public async Task<IReadOnlyList<CalendarFare>> FaresOnAsync(string origin, string destination, DateOnly day, string currency,
+        CancellationToken cancellationToken)
+    {
+        var fares = await OneWayFaresAsync(origin, destination, Month(day), null, currency, cancellationToken);
+        return fares
+            .Where(f => DateOnly.FromDateTime(f.Departure.DateTime) == day)
+            .DistinctBy(f => f.Signature)
+            .OrderBy(f => f.Price)
+            .Select(f => ToCalendarFare(f, currency))
+            .ToList();
+    }
+
+    /// <summary>Aviasales search path: origin, ddMM, destination, return ddMM (round trip only), passengers — e.g. /search/LAX2511BUE19121.</summary>
+    public string? SearchLink(string origin, string destination, DateOnly day, DateOnly? returnDay, int adults) =>
+        _mapper.BuildLink(string.Create(System.Globalization.CultureInfo.InvariantCulture, $"/search/{origin}{day:ddMM}{destination}{returnDay:ddMM}{adults}"));
+
+    private CalendarFare ToCalendarFare(OneWayFare f, string currency) =>
+        new(f.From, f.To, f.Departure.DateTime, f.Transfers, f.Airline, f.Price, currency.ToUpperInvariant(), _mapper.BuildLink(f.Link),
+            f.Arrival - f.Departure, f.Via, f.Departure.Offset);
 }
 
 /// <summary>Demo mode, or no Travelpayouts token: no fare calendar.</summary>
@@ -51,4 +70,9 @@ public sealed class NoFlightCalendarSource : IFlightCalendarSource
 
     public Task<IReadOnlyList<CalendarFare>> CheapestByDayAsync(string origin, string destination, string month, string currency,
         CancellationToken cancellationToken) => Task.FromResult<IReadOnlyList<CalendarFare>>([]);
+
+    public Task<IReadOnlyList<CalendarFare>> FaresOnAsync(string origin, string destination, DateOnly day, string currency,
+        CancellationToken cancellationToken) => Task.FromResult<IReadOnlyList<CalendarFare>>([]);
+
+    public string? SearchLink(string origin, string destination, DateOnly day, DateOnly? returnDay, int adults) => null;
 }

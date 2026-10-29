@@ -11,7 +11,8 @@ namespace TravelPlanner.Application.Features.Flights;
 /// Codes are city or airport codes. Nearby airports are tried too, since cached fares are sparse for smaller airports
 /// (San Diego â†’ Buenos Aires has none, Los Angeles â†’ Buenos Aires has plenty).
 /// </summary>
-public sealed record GetFlightCalendarQuery(string Origin, string Destination, string Currency = "EUR", int Months = 12)
+/// <param name="Nearby">False for the route only (e.g. the return calendar of a route already chosen).</param>
+public sealed record GetFlightCalendarQuery(string Origin, string Destination, string Currency = "EUR", int Months = 12, bool Nearby = true)
     : IRequest<FlightCalendarDto>;
 
 /// <param name="Available">False when no fare source is configured (demo mode).</param>
@@ -52,6 +53,7 @@ public sealed class GetFlightCalendarHandler(IFlightCalendarSource source, IWorl
     private const int NearbyCandidates = 10;
     private const int MaxNearbyOrigins = 2;
     private const int MaxNearbyDestinations = 1;
+    private static readonly IReadOnlyList<(WorldCity City, int Km)> NoCities = [];
 
     public async Task<FlightCalendarDto> Handle(GetFlightCalendarQuery request, CancellationToken cancellationToken)
     {
@@ -64,8 +66,8 @@ public sealed class GetFlightCalendarHandler(IFlightCalendarSource source, IWorl
         var fromCode = request.Origin.ToUpperInvariant();
         var toCode = request.Destination.ToUpperInvariant();
 
-        var nearbyFrom = NearbyAsync(from, to, toCode, fromEnd: true, MaxNearbyOrigins, currency, cancellationToken);
-        var nearbyTo = NearbyAsync(to, from, fromCode, fromEnd: false, MaxNearbyDestinations, currency, cancellationToken);
+        var nearbyFrom = request.Nearby ? NearbyAsync(from, to, toCode, fromEnd: true, MaxNearbyOrigins, currency, cancellationToken) : Task.FromResult(NoCities);
+        var nearbyTo = request.Nearby ? NearbyAsync(to, from, fromCode, fromEnd: false, MaxNearbyDestinations, currency, cancellationToken) : Task.FromResult(NoCities);
         var pairs = new List<(WorldCity From, string FromCode, WorldCity To, string ToCode, int? FromKm, int? ToKm)> { (from, fromCode, to, toCode, null, null) };
         pairs.AddRange((await nearbyFrom).Select(n => (n.City, n.City.CityCode, to, toCode, (int?)n.Km, (int?)null)));
         pairs.AddRange((await nearbyTo).Select(n => (from, fromCode, n.City, n.City.CityCode, (int?)null, (int?)n.Km)));

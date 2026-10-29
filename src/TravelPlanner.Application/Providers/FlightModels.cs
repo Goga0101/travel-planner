@@ -137,7 +137,10 @@ public sealed record CalendarFare(
     string? Airline,
     decimal Price,
     string Currency,
-    string? BookingUrl);
+    string? BookingUrl,
+    TimeSpan? Duration = null,
+    IReadOnlyList<string>? Via = null,
+    TimeSpan? DepartureOffset = null);
 
 /// <summary>
 /// Cached one-way fares without fixed dates ("when can I fly from A to B?"). Codes may be city or airport codes.
@@ -151,6 +154,12 @@ public interface IFlightCalendarSource
 
     /// <summary>The cheapest fare of each day of the month (yyyy-MM) that has one.</summary>
     Task<IReadOnlyList<CalendarFare>> CheapestByDayAsync(string origin, string destination, string month, string currency, CancellationToken cancellationToken);
+
+    /// <summary>A live search for the dates on the fare site (one way when returnDay is null), for flights the cached fares miss.</summary>
+    string? SearchLink(string origin, string destination, DateOnly day, DateOnly? returnDay, int adults);
+
+    /// <summary>Every distinct one-way fare leaving on the day, cheapest first.</summary>
+    Task<IReadOnlyList<CalendarFare>> FaresOnAsync(string origin, string destination, DateOnly day, string currency, CancellationToken cancellationToken);
 }
 
 /// <summary>Maps a provider-specific response into application-owned flight offers.</summary>

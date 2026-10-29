@@ -86,6 +86,29 @@ export interface FlightCalendarRouteDto {
   days: FlightCalendarDayDto[];
 }
 
+/** OneWay, RoundTrip (one ticket both ways), TwoOneWays (a ticket each way), SelfTransfer (a change on separate tickets). */
+export type FlightOptionKind = 'OneWay' | 'RoundTrip' | 'TwoOneWays' | 'SelfTransfer';
+
+/** A flight for the chosen dates; price is for all travellers, tickets are the separately booked ones (empty for one ticket). */
+export interface FlightOptionDto {
+  kind: FlightOptionKind;
+  price: number;
+  currency: string;
+  outbound: FlightLegSummaryDto;
+  inbound: FlightLegSummaryDto | null;
+  bookingUrl: string | null;
+  tickets: FlightTicket[];
+}
+
+export interface FlightOptionsDto {
+  available: boolean;
+  currency: string;
+  adults: number;
+  options: FlightOptionDto[];
+  /** A live search for the same dates on the fare site. */
+  searchUrl: string | null;
+}
+
 export interface FlightCalendarDto {
   available: boolean;
   currency: string;

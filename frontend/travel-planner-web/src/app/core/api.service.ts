@@ -11,6 +11,7 @@ import {
   DayPlanDto,
   DestinationSummaryDto,
   FlightCalendarDto,
+  FlightOptionsDto,
   FoundFlightDto,
   HotelPricesDto,
   NearbyPlacesDto,
@@ -87,8 +88,15 @@ export class ApiService {
   }
 
   /** Cheapest known one-way fare of each day over the coming months, for the route and for nearby airports. */
-  getFlightCalendar(origin: string, destination: string, currency: string): Observable<FlightCalendarDto> {
-    return this.http.get<FlightCalendarDto>(`${BASE}/flights/calendar`, { params: { origin, destination, currency } });
+  getFlightCalendar(origin: string, destination: string, currency: string, nearby = true): Observable<FlightCalendarDto> {
+    return this.http.get<FlightCalendarDto>(`${BASE}/flights/calendar`, { params: { origin, destination, currency, nearby } });
+  }
+
+  /** Flights for the dates (one way without a return date), cheapest first, with their booking links. */
+  getFlightOptions(origin: string, destination: string, departure: string, returnDate: string | null, adults: number, currency: string): Observable<FlightOptionsDto> {
+    let params = new HttpParams().set('origin', origin).set('destination', destination).set('departure', departure).set('adults', adults).set('currency', currency);
+    if (returnDate) params = params.set('return', returnDate);
+    return this.http.get<FlightOptionsDto>(`${BASE}/flights/options`, { params });
   }
 
   /** Every flight a finished search found (all destinations and dates), cheapest first. */
