@@ -43,6 +43,57 @@ public sealed class WorldPlaces : IWorldPlaces
             .ToList();
     }
 
+    public IReadOnlyList<WorldCity> SearchCitiesLike(string latin, int max)
+    {
+        var t = Simplify(latin);
+        if (t.Length < 3) return [];
+        // One typo per ~4 letters: "barselona" (9) ↔ "barcelona" is 1, "tokio" ↔ "tokyo" is 1, but "rom" does not match "rio".
+        var allowed = Math.Max(1, t.Length / 4);
+        return _index.Value.Cities.Values
+            .Select(c => (City: c, Distance: Distance(t, Simplify(c.City), allowed)))
+            .Where(x => x.Distance <= allowed)
+            .OrderBy(x => x.Distance).ThenByDescending(x => x.City.AirportCodes.Count).ThenBy(x => x.City.City)
+            .Take(max)
+            .Select(x => x.City)
+            .ToList();
+    }
+
+    /// <summary>Lower-case letters and single spaces, without accents or hyphens ("Saint-Étienne" → "saint etienne").</summary>
+    private static string Simplify(string s)
+    {
+        var sb = new System.Text.StringBuilder(s.Length);
+        foreach (var ch in s.Normalize(System.Text.NormalizationForm.FormD))
+        {
+            if (System.Globalization.CharUnicodeInfo.GetUnicodeCategory(ch) == System.Globalization.UnicodeCategory.NonSpacingMark) continue;
+            var c = char.IsLetterOrDigit(ch) ? char.ToLowerInvariant(ch) : ' ';
+            if (c == ' ' && (sb.Length == 0 || sb[^1] == ' ')) continue;
+            sb.Append(c);
+        }
+        return sb.ToString().TrimEnd();
+    }
+
+    /// <summary>Levenshtein distance, giving up (returning limit + 1) once it exceeds the limit.</summary>
+    private static int Distance(string a, string b, int limit)
+    {
+        if (Math.Abs(a.Length - b.Length) > limit) return limit + 1;
+        var prev = new int[b.Length + 1];
+        var cur = new int[b.Length + 1];
+        for (var j = 0; j <= b.Length; j++) prev[j] = j;
+        for (var i = 1; i <= a.Length; i++)
+        {
+            cur[0] = i;
+            var best = cur[0];
+            for (var j = 1; j <= b.Length; j++)
+            {
+                cur[j] = Math.Min(Math.Min(prev[j] + 1, cur[j - 1] + 1), prev[j - 1] + (a[i - 1] == b[j - 1] ? 0 : 1));
+                best = Math.Min(best, cur[j]);
+            }
+            if (best > limit) return limit + 1;
+            (prev, cur) = (cur, prev);
+        }
+        return prev[b.Length];
+    }
+
     public IReadOnlyList<(WorldCity City, double Km)> CitiesNear(double latitude, double longitude, double maxKm, int max) =>
         _index.Value.Cities.Values
             .Select(c => (City: c, Km: DistanceKm(latitude, longitude, c.Latitude, c.Longitude)))

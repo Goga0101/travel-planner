@@ -77,7 +77,9 @@ public sealed class SearchPlacesHandler(IApplicationDbContext db, IWorldPlaces w
 
     private async Task<IReadOnlyList<PlaceDto>> CitiesAsync(SearchPlacesQuery request, CancellationToken cancellationToken)
     {
-        var cities = world.SearchCities(request.Search, request.Max);
+        var cities = Georgian.IsMatch(request.Search)
+            ? await GeorgianCitiesAsync(request.Search.Trim(), request.Max, cancellationToken)
+            : world.SearchCities(request.Search, request.Max);
         if (cities.Count == 0) return [];
 
         // Catalog cities keep their curated (translated) names and their destination id.
@@ -97,6 +99,49 @@ public sealed class SearchPlacesHandler(IApplicationDbContext db, IWorldPlaces w
                     c.AirportCodes, destination.Id);
         }).ToList();
     }
+
+    private static readonly System.Text.RegularExpressions.Regex Georgian = new("[ა-ჰ]");
+
+    /// <summary>
+    /// A world city typed in Georgian ("პარიზი", "ბარსელონა", "ბუენოს-აირესი"). The airport list has English names only and
+    /// the map search finds Tbilisi streets and shops of that name, so: the catalog's Georgian city names first, then the
+    /// name transliterated ("barselona") and matched with a typo or two (Barcelona).
+    /// </summary>
+    private async Task<IReadOnlyList<WorldCity>> GeorgianCitiesAsync(string term, int max, CancellationToken ct)
+    {
+        // Partial words and other cases: "პარიზ", "პარიზში", "ბარსელონაში" all start like the name without its last letter.
+        var stem = term.Length > 3 && term[^1] is 'ი' or 'ა' ? term[..^1] : term;
+        var catalog = await db.Destinations.AsNoTracking().Where(d => d.IsCatalog && d.IsActive).Include(d => d.Airports).ToListAsync(ct);
+        var found = catalog
+            .Where(d => d.Translations.Values.Any(t => t.City is { Length: > 0 } city &&
+                (city.StartsWith(stem, StringComparison.OrdinalIgnoreCase) || term.StartsWith(city[..Math.Max(3, city.Length - 1)], StringComparison.OrdinalIgnoreCase))))
+            // "ვენა" is Vienna before Venice (ვენეცია), which only starts the same way.
+            .OrderByDescending(d => d.Translations.Values.Any(t => string.Equals(t.City, term, StringComparison.OrdinalIgnoreCase)))
+            .SelectMany(d => d.Airports.Select(a => world.FindCity(a.IataCode)).OfType<WorldCity>().Take(1))
+            .ToList();
+
+        var latin = Transliterate(term);
+        // Georgian adds "-ი" to foreign names: "ლონდონი" is London, "ბუენოს-აირესი" Buenos Aires.
+        var bare = latin.Length > 4 && latin.EndsWith('i') ? latin[..^1] : latin;
+        foreach (var form in new[] { bare, latin }.Distinct())
+        {
+            var prefix = world.SearchCities(form, max).Where(c => c.City.StartsWith(form, StringComparison.OrdinalIgnoreCase)).ToList();
+            found.AddRange(prefix.Count > 0 ? prefix : world.SearchCitiesLike(form, max));
+        }
+        return found.DistinctBy(c => c.CityCode).Take(max).ToList();
+    }
+
+    private static readonly Dictionary<char, string> Latin = new()
+    {
+        ['ა'] = "a", ['ბ'] = "b", ['გ'] = "g", ['დ'] = "d", ['ე'] = "e", ['ვ'] = "v", ['ზ'] = "z", ['თ'] = "t", ['ი'] = "i", ['კ'] = "k",
+        ['ლ'] = "l", ['მ'] = "m", ['ნ'] = "n", ['ო'] = "o", ['პ'] = "p", ['ჟ'] = "zh", ['რ'] = "r", ['ს'] = "s", ['ტ'] = "t", ['უ'] = "u",
+        ['ფ'] = "p", ['ქ'] = "k", ['ღ'] = "gh", ['ყ'] = "q", ['შ'] = "sh", ['ჩ'] = "ch", ['ც'] = "ts", ['ძ'] = "dz", ['წ'] = "ts", ['ჭ'] = "ch",
+        ['ხ'] = "kh", ['ჯ'] = "j", ['ჰ'] = "h",
+    };
+
+    /// <summary>Georgian national romanization, hyphens as spaces ("ბუენოს-აირესი" → "buenos airesi").</summary>
+    internal static string Transliterate(string georgian) =>
+        string.Concat(georgian.Select(ch => Latin.TryGetValue(ch, out var l) ? l : ch == '-' ? " " : char.ToLowerInvariant(ch).ToString())).Trim();
 }
 
 public sealed class GetNearestAirportHandler(IApplicationDbContext db, IVisitorLocator locator) : IRequestHandler<GetNearestAirportQuery, AirportDto?>

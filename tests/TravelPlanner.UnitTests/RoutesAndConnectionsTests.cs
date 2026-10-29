@@ -109,6 +109,19 @@ public class RoutesAndConnectionsTests
         Assert.Equal("LON", places.FindCity("LGW")!.CityCode);
     }
 
+    [Fact]
+    public void World_Cities_Transliterated_From_Georgian_Are_Found_Despite_Spelling()
+    {
+        var reader = new WorldAirportsFileReader(
+            Microsoft.Extensions.Options.Options.Create(new CatalogOptions { WorldAirportsPath = WorldAirportsPath() }),
+            new TestHostEnvironment());
+        var places = new WorldPlaces(reader);
+
+        Assert.Equal("BCN", places.SearchCitiesLike("barselona", 3)[0].CityCode); // ბარსელონა
+        Assert.Equal("TYO", places.SearchCitiesLike("tokio", 3)[0].CityCode);     // ტოკიო
+        Assert.Empty(places.SearchCitiesLike("qqqqqq", 3));
+    }
+
     private static string WorldAirportsPath()
     {
         var dir = new DirectoryInfo(AppContext.BaseDirectory);

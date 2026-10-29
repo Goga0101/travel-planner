@@ -21,6 +21,12 @@ public interface IWorldPlaces
     /// <summary>Cities matching a name, country or IATA code, best matches first.</summary>
     IReadOnlyList<WorldCity> SearchCities(string term, int max);
 
+    /// <summary>
+    /// Cities whose name is spelled almost like <paramref name="latin"/> (a name transliterated from another script:
+    /// "barselona" → Barcelona, "tokio" → Tokyo), closest spelling first.
+    /// </summary>
+    IReadOnlyList<WorldCity> SearchCitiesLike(string latin, int max);
+
     /// <summary>Cities within <paramref name="maxKm"/> of a point, nearest first, with their distance.</summary>
     IReadOnlyList<(WorldCity City, double Km)> CitiesNear(double latitude, double longitude, double maxKm, int max);
 }
