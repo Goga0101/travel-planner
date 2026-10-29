@@ -66,18 +66,40 @@ public static class IntercityStations
     public static bool InTbilisi(double lat, double lon) =>
         TownAt(lat, lon) is null && NearbyLinks.DistanceMeters(lat, lon, Tbilisi.Latitude, Tbilisi.Longitude) <= CityRadiusMeters;
 
-    /// <summary>Minibuses between regions: no timetable, they leave when full; ~45 km/h near the city, ~55 km/h on long runs (road ×1.3).</summary>
+    /// <summary>Minibuses between regions: no timetable, they leave when full; ~45 km/h near the city, ~48 km/h on long runs (road ×1.3, mountain roads).</summary>
     public const int MinibusWaitMinutes = 10;
+
+    /// <summary>
+    /// Intercity minibuses and buses without a timetable run in the daytime only (assumed ~07:00–19:30; the last ones to the
+    /// regions usually leave in the early evening). Outside it the trip waits for the morning, and a taxi is offered instead.
+    /// </summary>
+    private static readonly TimeSpan FirstDeparture = new(7, 0, 0);
+    private static readonly TimeSpan LastDeparture = new(19, 30, 0);
+
+    public static bool InService(DateTime t) => t.TimeOfDay >= FirstDeparture && t.TimeOfDay <= LastDeparture;
+
+    /// <summary>The time itself in the daytime, otherwise the next morning's first departure.</summary>
+    public static DateTime NextService(DateTime t) =>
+        InService(t) ? t : t.TimeOfDay < FirstDeparture ? t.Date + FirstDeparture : t.Date.AddDays(1) + FirstDeparture;
+
+    public static string ServiceNote(bool night, string language, bool minibus) => (night, language == "ka") switch
+    {
+        (true, true) => "ღამით არ დადის · პირველი რეისი დილით, ჩვეულებრივ ~07:00-ზე · ღამით ტაქსი უფრო მოსახერხებელია",
+        (true, false) => "Does not run at night · first departure in the morning, usually ~07:00 · at night a taxi is easier",
+        (false, true) => minibus ? "მარშრუტკა · გადის, როცა შეივსება" : "საქალაქთაშორისო ავტობუსი / მარშრუტკა · გასვლის დრო სადგურზე დააზუსტეთ",
+        (false, false) => minibus ? "Marshrutka · leaves when full" : "Intercity bus / minibus · check departures at the station"
+    };
 
     public static TransitLegDto MinibusLeg(string fromName, double fromLat, double fromLon, string toName, double toLat, double toLon,
         DateTime start, string language)
     {
         var meters = NearbyLinks.DistanceMeters(fromLat, fromLon, toLat, toLon);
-        var minutes = Math.Max(10, (int)Math.Round(meters * 1.3 / (meters > 50_000 ? 920 : 750)));
+        var minutes = Math.Max(10, (int)Math.Round(meters * 1.3 / (meters > 50_000 ? 800 : 750)));
+        var depart = NextService(start);
         var hm = (DateTime t) => t.ToString("HH:mm", System.Globalization.CultureInfo.InvariantCulture);
-        return new TransitLegDto("MINIBUS", null, toName, fromName, toName, hm(start), hm(start.AddMinutes(minutes)), minutes,
-            language == "ka" ? "მარშრუტკა · გადის, როცა შეივსება" : "Marshrutka · leaves when full", null, null,
-            Path: new LegPath(fromLat, fromLon, toLat, toLon, null, 0));
+        return new TransitLegDto("MINIBUS", null, toName, fromName, toName, hm(depart), hm(depart.AddMinutes(minutes)), minutes,
+            ServiceNote(depart != start, language, minibus: true), null, null,
+            Path: new LegPath(fromLat, fromLon, toLat, toLon, null, 0), WaitsForMorning: depart != start);
     }
 
     /// <summary>The stations for a trip that starts in Tbilisi and leaves the city; empty otherwise. The best match comes first.</summary>

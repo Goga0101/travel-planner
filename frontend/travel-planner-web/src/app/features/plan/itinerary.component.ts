@@ -68,7 +68,7 @@ export function modeIcon(mode: string): IconName {
         @if (it.estimated) {
           <strong class="route-time">~{{ it.durationMinutes | minutes }}</strong>
           <span class="badge-estimate"><app-icon name="info" [size]="12" /> {{ 'route.estimated' | t }}</span>
-        } @else {
+          @if (waitsForMorning(it)) { <span class="badge-morning"><app-icon name="clock" [size]="12" /> {{ 'route.waitsForMorning' | t }}</span> }        } @else {
           <strong class="route-time">{{ it.departureTime }} → {{ it.arrivalTime }}</strong>
           <span class="meta-chip">{{ it.durationMinutes | minutes }}</span>
           <span class="meta-chip">{{ it.transfers === 0 ? ('route.noTransfer' | t) : ('route.transfers' | t: { count: it.transfers }) }}</span>
@@ -78,10 +78,10 @@ export function modeIcon(mode: string): IconName {
       @if (tags().length || walkTotal(it)) {
         <div class="route-tags">
           @for (tag of tags(); track tag) { <span class="route-tag" [attr.data-tag]="tag">{{ tagKey(tag) | t }}</span> }
-          <span class="route-walk"><app-icon name="walk" [size]="12" /> {{ 'route.walkTotal' | t: { minutes: walkTotal(it) } }}</span>
+          @if (walkTotal(it)) { <span class="route-walk"><app-icon name="walk" [size]="12" /> {{ 'route.walkTotal' | t: { minutes: walkTotal(it) } }}</span> }
         </div>
       }
-      @if (it.estimated) { <p class="small muted estimate-note">{{ 'route.estimatedNote' | t }}</p> }
+      @if (it.estimated && !taxiOnly(it)) { <p class="small muted estimate-note">{{ 'route.estimatedNote' | t }}</p> }
       <div class="route-chips">
         @for (l of transitLegs(it.legs); track $index) {
           @if (ticketLink(l); as href) {
@@ -97,7 +97,7 @@ export function modeIcon(mode: string): IconName {
       <ol class="route-steps">
         @for (l of it.legs; track $index) {
           <li class="route-step" [attr.data-mode]="l.mode">
-            <span class="step-time">{{ l.departureTime }}</span>
+            <span class="step-time">{{ l.departureTime }}@if (l.waitsForMorning) { <span class="step-next">{{ 'route.nextMorning' | t }}</span> }</span>
             @if (ticketLink(l); as href) {
               <a class="step-icon is-link" [attr.data-mode]="l.mode" [href]="href" target="_blank" rel="noopener noreferrer nofollow"
                  [title]="'route.buyTicketFor' | t: { line: (l.line ?? modeLabel(l.mode)) }"
@@ -114,12 +114,21 @@ export function modeIcon(mode: string): IconName {
                 <strong>{{ modeLabel(l.mode) }} {{ l.line }}</strong>
                 @if (l.headsign) { <span class="muted"> {{ 'route.towards' | t: { headsign: l.headsign } }}</span> }
                 <br /><span class="small">{{ l.from }} → {{ l.to }} · {{ l.durationMinutes | minutes }}@if (l.stops) { · {{ 'route.stops' | t: { count: l.stops } }} }</span>
-                @if (stopLink(l); as href) {
+                @if (stopLink(l, it.legs[$index - 1]); as href) {
                   <br /><a class="stop-link" [href]="href" target="_blank" rel="noopener noreferrer">
-                    <app-icon name="walk" [size]="13" /> {{ 'route.toStop' | t: { stop: l.from } }} <app-icon name="external" [size]="11" />
+                    @if (l.mode === 'TAXI') {
+                      <app-icon name="car" [size]="13" /> {{ 'route.taxiMap' | t: { place: l.to } }}
+                    } @else {
+                      <app-icon name="walk" [size]="13" /> {{ 'route.toStop' | t: { stop: l.from } }}
+                    }
+                    <app-icon name="external" [size]="11" />
                   </a>
                 }
-                @if (l.agency) { <br /><span class="small muted">{{ l.agency }}</span> }
+                @if (l.agency) {
+                  @if (l.waitsForMorning) {
+                    <span class="leg-night"><app-icon name="alert" [size]="14" /> {{ l.agency }}</span>
+                  } @else { <br /><span class="small muted">{{ l.agency }}</span> }
+                }
                 @if (l.ticket; as tk) {
                   <span class="leg-ticket" [class.online]="tk.buyOnline === true" [class.offline]="tk.buyOnline === false">
                     <app-icon name="ticket" [size]="14" />
@@ -165,12 +174,29 @@ export class ItineraryComponent {
     return l.ticket?.buyUrl ?? l.ticket?.infoUrl ?? null;
   }
 
-  /** Google Maps walking directions from where the visitor is now to the stop where this ride starts. */
-  protected stopLink(l: TransitLegDto): string | null {
+  /**
+   * Google Maps walking directions from where the visitor is now to the stop where this ride starts;
+   * for a taxi (it picks you up) the drive itself, to show the driver or compare with the app's price.
+   * None after a taxi: it drops you at this stop.
+   */
+  protected stopLink(l: TransitLegDto, previous?: TransitLegDto): string | null {
     const p = l.path;
-    return p ? `https://www.google.com/maps/dir/?api=1&destination=${p.fromLatitude.toFixed(6)},${p.fromLongitude.toFixed(6)}&travelmode=walking` : null;
+    if (!p || (previous?.mode === 'TAXI' && l.mode !== 'TAXI')) return null;
+    const at = (lat: number, lon: number) => `${lat.toFixed(6)},${lon.toFixed(6)}`;
+    return l.mode === 'TAXI'
+      ? `https://www.google.com/maps/dir/?api=1&origin=${at(p.fromLatitude, p.fromLongitude)}&destination=${at(p.toLatitude, p.toLongitude)}&travelmode=driving`
+      : `https://www.google.com/maps/dir/?api=1&destination=${at(p.fromLatitude, p.fromLongitude)}&travelmode=walking`;
   }
 
+  /** By car the whole way: no timetable to explain. */
+  protected taxiOnly(it: TransitItineraryDto): boolean {
+    return it.legs.every((l) => l.mode === 'TAXI' || l.mode === 'WALK');
+  }
+
+  /** A minibus or bus in it only leaves in the morning. */
+  protected waitsForMorning(it: TransitItineraryDto): boolean {
+    return it.legs.some((l) => l.waitsForMorning);
+  }
   protected transitLegs(legs: TransitLegDto[]): TransitLegDto[] {
     return legs.filter((l) => l.mode !== 'WALK');
   }

@@ -28,7 +28,7 @@ public sealed record LegTicketDto(string? Name, decimal? Price, string? Currency
 
 public sealed record TransitLegDto(
     string Mode, string? Line, string? Headsign, string From, string To, string DepartureTime, string ArrivalTime, int DurationMinutes,
-    string? Agency, int? Stops, string? Color, LegTicketDto? Ticket = null, LegPath? Path = null);
+    string? Agency, int? Stops, string? Color, LegTicketDto? Ticket = null, LegPath? Path = null, bool WaitsForMorning = false);
 
 /// <summary>Estimated: built from the lines OpenStreetMap lists at nearby stops (no published timetable); times are rough.</summary>
 public sealed record TransitItineraryDto(int DurationMinutes, int Transfers, string DepartureTime, string ArrivalTime, IReadOnlyList<TransitLegDto> Legs,

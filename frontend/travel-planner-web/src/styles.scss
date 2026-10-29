@@ -1288,6 +1288,7 @@ a.ext-link.btn:hover { background: var(--primary-dark); border-color: var(--prim
 .place-kind { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border-radius: 50%; background: var(--bg-warm); color: var(--muted); }
 .place-kind[data-kind='stop'] { background: #dcfce7; color: #15803d; }
 .place-kind[data-kind='city'] { background: #e0e7ff; color: #4338ca; }
+.place-kind[data-kind='airport'] { background: #e0f2fe; color: #0369a1; }
 .place-text { display: grid; min-width: 0; }
 .place-text strong, .place-text span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .place-empty { margin: 0.2rem 0 0; }
@@ -1454,3 +1455,9 @@ a.ext-link.btn:hover { background: var(--primary-dark); border-color: var(--prim
   border: 1px solid var(--primary); background: var(--primary-soft); color: var(--primary-deep); font: inherit; font-size: 0.82rem; font-weight: 700; cursor: pointer;
 }
 .origin-quick { display: flex; flex-wrap: wrap; align-items: center; gap: 0.35rem 0.45rem; margin: -0.25rem 0 0.25rem; }
+
+// A minibus or bus that only leaves in the morning (no night service).
+.badge-morning { display: inline-flex; align-items: center; gap: 0.25rem; padding: 0.15rem 0.55rem; border-radius: 999px; background: var(--bg-warm); color: var(--text-2); border: 1px solid var(--border-strong); font-size: 0.74rem; font-weight: 700; }
+.step-next { display: block; font-size: 0.7rem; font-weight: 700; color: var(--warn); text-transform: uppercase; letter-spacing: 0.03em; }
+.leg-night { display: flex; align-items: flex-start; gap: 0.35rem; margin-top: 0.35rem; padding: 0.35rem 0.6rem; border-radius: var(--radius-xs); background: var(--warn-soft); border: 1px solid var(--warn-border); color: var(--warn); font-size: 0.82rem; font-weight: 600; }
+.leg-night app-icon { flex: none; margin-top: 0.1rem; }

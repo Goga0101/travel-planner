@@ -163,6 +163,21 @@ public class LiveTransitTests
         Assert.InRange(leg.DurationMinutes, 15, 25); // ~11 km in a straight line
         Assert.Equal("15:00", leg.DepartureTime);
         Assert.Equal(41.7518, leg.Path!.ToLatitude);
+        Assert.False(leg.WaitsForMorning);
+    }
+
+    [Fact]
+    public void A_Minibus_Does_Not_Leave_At_Night_But_The_Next_Morning()
+    {
+        // Samgori → Telavi after a late landing: no 23:37 minibus, the first one is in the morning.
+        var leg = IntercityStations.MinibusLeg("Samgori", 41.7106, 44.8586, "Telavi", 41.9198, 45.4731, new DateTime(2026, 10, 28, 23, 37, 0), "en");
+        Assert.Equal("07:00", leg.DepartureTime);
+        Assert.True(leg.WaitsForMorning);
+        Assert.Contains("night", leg.Agency);
+
+        Assert.Equal(new DateTime(2026, 10, 29, 7, 0, 0), IntercityStations.NextService(new DateTime(2026, 10, 28, 23, 37, 0)));
+        Assert.Equal(new DateTime(2026, 10, 29, 7, 0, 0), IntercityStations.NextService(new DateTime(2026, 10, 29, 4, 10, 0)));
+        Assert.Equal(new DateTime(2026, 10, 29, 12, 5, 0), IntercityStations.NextService(new DateTime(2026, 10, 29, 12, 5, 0)));
     }
 
     [Fact]

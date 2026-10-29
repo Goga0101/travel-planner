@@ -755,6 +755,8 @@ export interface TransitLegDto {
   ticket?: LegTicketDto;
   /** Where the leg starts and ends and the way it follows (encoded polyline with the given precision). */
   path?: LegPath;
+  /** A minibus or bus without a timetable that would only leave in the morning (none at night). */
+  waitsForMorning?: boolean;
 }
 
 export interface LegPath {
@@ -916,7 +918,7 @@ export interface HotelSearchResultDto {
 
 // ---------- Live transit (any place → any place) ----------
 
-export type PlaceKind = 'address' | 'stop' | 'city' | 'place' | 'region';
+export type PlaceKind = 'address' | 'stop' | 'city' | 'place' | 'region' | 'airport';
 
 export interface PlaceSuggestionDto {
   name: string;

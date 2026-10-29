@@ -139,9 +139,47 @@ public sealed class LiveTransitHandler(
 
     public async Task<IReadOnlyList<PlaceSuggestionDto>> Handle(SearchPlacesQuery request, CancellationToken cancellationToken)
     {
-        var places = await live.GeocodeAsync(request.Text, T.CurrentLanguage, request.NearLatitude, request.NearLongitude, cancellationToken);
-        return places.Select(ToDto).ToList();
+        var language = T.CurrentLanguage;
+        var airports = await AirportsAsync(request.Text, language, cancellationToken);
+        var places = await live.GeocodeAsync(request.Text, language, request.NearLatitude, request.NearLongitude, cancellationToken);
+        return airports.Concat(places.Select(ToDto)).ToList();
     }
+
+    /// <summary>"airport" in the languages visitors type it in (Georgian "აეროპორტი", "თბილისის აეროპორტში", Russian "аэропорт" …).</summary>
+    private static readonly string[] AirportWords = ["airport", "აეროპორტ", "аэропорт", "flughafen", "aeroport", "aéroport", "aeropuerto", "aeroporto", "havalimanı"];
+
+    /// <summary>
+    /// Arriving travellers start at an airport: its code ("TBS") or "&lt;city&gt; airport" in any language puts the airport first, at the
+    /// terminal, rather than a street or a bus stop of that name (the map has "თბილისის აეროპორტი" under no name).
+    /// </summary>
+    private async Task<IReadOnlyList<PlaceSuggestionDto>> AirportsAsync(string text, string language, CancellationToken ct)
+    {
+        var term = text.Trim();
+        var upper = term.ToUpperInvariant();
+        if (term.Length == 3 && term.All(char.IsAsciiLetter))
+            return (await db.Airports.AsNoTracking().Where(a => a.IataCode == upper).ToListAsync(ct)).Select(a => Airport(a, language)).ToList();
+
+        var word = AirportWords.FirstOrDefault(w => term.Contains(w, StringComparison.OrdinalIgnoreCase));
+        if (word is null) return [];
+        // The rest is the city, possibly inflected ("თბილისის", "Тбилиси"): compare by its stem.
+        var city = string.Join(' ', term.Split(' ', StringSplitOptions.RemoveEmptyEntries)
+            .Where(w => !w.Contains(word, StringComparison.OrdinalIgnoreCase) && !w.Equals("international", StringComparison.OrdinalIgnoreCase)));
+        if (city.Length < 3) return [];
+        var stem = city[..Math.Max(3, city.Length - 2)];
+        // Translated names live in a JSON column: other scripts are matched in memory, as the airport selector does.
+        var candidates = term.Any(c => c > 0x7F)
+            ? (await db.Airports.AsNoTracking().ToListAsync(ct)).Where(a => a.Translations.Count > 0).ToList()
+            : await db.Airports.AsNoTracking().Where(a => a.City.ToLower().StartsWith(stem.ToLower())).Take(50).ToListAsync(ct);
+        return candidates
+            .Where(a => a.CityIn(language).StartsWith(stem, StringComparison.OrdinalIgnoreCase) ||
+                        a.City.StartsWith(stem, StringComparison.OrdinalIgnoreCase) ||
+                        a.Translations.Values.Any(t => t.City?.StartsWith(stem, StringComparison.OrdinalIgnoreCase) == true))
+            .OrderByDescending(a => a.Translations.Count > 0).ThenBy(a => a.IataCode)
+            .Take(3).Select(a => Airport(a, language)).ToList();
+    }
+
+    private static PlaceSuggestionDto Airport(Domain.Entities.Airport a, string language) =>
+        new($"{a.NameIn(language)} ({a.IataCode})", a.CityIn(language), a.CountryCode, a.Latitude, a.Longitude, "airport");
 
     public async Task<PlaceSuggestionDto?> Handle(ReversePlaceQuery request, CancellationToken cancellationToken) =>
         await live.ReverseAsync(request.Latitude, request.Longitude, cancellationToken) is { } p ? ToDto(p) : null;
@@ -203,7 +241,8 @@ public sealed class LiveTransitHandler(
             var stationName = language == "ka" ? s.NameKa : s.NameEn;
             var minibus = IntercityStations.MinibusLeg(fromName, request.FromLatitude, request.FromLongitude, stationName, s.Latitude, s.Longitude,
                 wished.AddMinutes(IntercityStations.MinibusWaitMinutes), language);
-            var arrive = wished.AddMinutes(IntercityStations.MinibusWaitMinutes + minibus.DurationMinutes);
+            // From the minibus's own times: at night it only leaves in the morning.
+            var arrive = At(wished, minibus.ArrivalTime);
             var inCity = await DirectionAsync(s.Latitude, s.Longitude, stationName, request.ToLatitude, request.ToLongitude, toName,
                 arrive.AddMinutes(3), offset, null, cancellationToken);
             foreach (var city in inCity.Itineraries.Take(2)) combined.Add(Join(wished, [minibus], city.Legs, city.Transfers + 1));
@@ -219,6 +258,10 @@ public sealed class LiveTransitHandler(
                     wished, offset, guide, cancellationToken) is { } coach)
                 combined.Add(coach);
         }
+        // A minibus or bus that has to wait for the morning (hours longer than driving): at night a taxi all the way is realistic.
+        if (combined.Any(i => i.DurationMinutes > DrivingMinutes(distance) + 6 * 60))
+            combined.Add(Join(wished, [], [TaxiLeg(fromName, request.FromLatitude, request.FromLongitude, toName, request.ToLatitude, request.ToLongitude,
+                wished, language, night: true)], 0));
         if (combined.Count > 0)
             direction = direction with { Itineraries = direction.Itineraries.Concat(combined).OrderBy(i => i.DurationMinutes).ToList() };
 
@@ -270,11 +313,12 @@ public sealed class LiveTransitHandler(
         }
 
         var (alightLat, alightLon, alightName) = b is null ? (toLat, toLon, toName) : (b.Latitude, b.Longitude, b.Name);
-        var start = t.AddMinutes(CoachWaitMinutes);
+        var wait = t.AddMinutes(CoachWaitMinutes);
+        var start = IntercityStations.NextService(wait); // no night buses without a timetable
         var minutes = Math.Max(10, (int)Math.Round(NearbyLinks.DistanceMeters(boardLat, boardLon, alightLat, alightLon) * 1.3 / 1000)); // ~60 km/h
         legs.Add(new TransitLegDto("COACH", null, alightName, boardName, alightName, Hm(start), Hm(start.AddMinutes(minutes)), minutes,
-            language == "ka" ? "საქალაქთაშორისო ავტობუსი / მარშრუტკა · გასვლის დრო სადგურზე დააზუსტეთ" : "Intercity bus / minibus · check departures at the station",
-            null, null, Path: new LegPath(boardLat, boardLon, alightLat, alightLon, null, 0)));
+            IntercityStations.ServiceNote(start != wait, language, minibus: false),
+            null, null, Path: new LegPath(boardLat, boardLon, alightLat, alightLon, null, 0), WaitsForMorning: start != wait));
         t = start.AddMinutes(minutes);
 
         if (b is not null && NearbyLinks.DistanceMeters(b.Latitude, b.Longitude, toLat, toLon) > 300)
@@ -291,12 +335,19 @@ public sealed class LiveTransitHandler(
     }
 
     /// <summary>A taxi / ride-hailing hop where the open data has no public transport (timed like a city drive).</summary>
+    /// <param name="night">The whole way by car because the minibus or bus would only leave in the morning.</param>
     private static TransitLegDto TaxiLeg(string fromName, double fromLat, double fromLon, string toName, double toLat, double toLon, DateTime start,
-        string language)
+        string language, bool night = false)
     {
         var minutes = DrivingMinutes(NearbyLinks.DistanceMeters(fromLat, fromLon, toLat, toLon));
-        return new TransitLegDto("TAXI", null, toName, fromName, toName, Hm(start), Hm(start.AddMinutes(minutes)), minutes,
-            language == "ka" ? "ტაქსი ან Bolt / Yandex Go · საზოგადოებრივი ტრანსპორტი აქ ვერ მოიძებნა" : "Taxi or ride-hailing · no public transport found here",
+        var note = (night, language == "ka") switch
+        {
+            (true, true) => "ტაქსი ან Bolt / Yandex Go პირდაპირ · მარშრუტკები ღამით არ დადის, ასე დილამდე ლოდინი არ მოგიწევთ",
+            (true, false) => "Taxi or ride-hailing all the way · minibuses do not run at night, so no waiting until morning",
+            (false, true) => "ტაქსი ან Bolt / Yandex Go · საზოგადოებრივი ტრანსპორტი აქ ვერ მოიძებნა",
+            (false, false) => "Taxi or ride-hailing · no public transport found here",
+        };
+        return new TransitLegDto("TAXI", null, toName, fromName, toName, Hm(start), Hm(start.AddMinutes(minutes)), minutes, note,
             null, null, Path: new LegPath(fromLat, fromLon, toLat, toLon, null, 0));
     }
 
