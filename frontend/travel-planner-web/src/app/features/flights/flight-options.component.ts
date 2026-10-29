@@ -73,8 +73,10 @@ const single = (o: FlightOptionDto) => o.tickets.length <= 1;
       <div class="fo-filters">
         <div class="pill-group" role="radiogroup" [attr.aria-label]="'flights.type' | t">
           @for (o of ticketOptions; track o.value) {
+            @if (o.value === 'all' || count(o.value) > 0) {
             <button type="button" role="radio" class="pill-btn" [class.active]="tickets() === o.value" [attr.aria-checked]="tickets() === o.value"
                     (click)="tickets.set(o.value); shown.set(PAGE)">{{ o.label | t }} ({{ count(o.value) }})</button>
+            }
           }
         </div>
         <div class="pill-group" role="radiogroup" [attr.aria-label]="'search.maxStops' | t">
