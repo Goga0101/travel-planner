@@ -52,7 +52,7 @@ import { FlightRouteComponent, FlightTimelineComponent } from '../../shared/flig
             @if (f.outbound; as o) { <app-flight-timeline [leg]="o" [selfTransfer]="f.selfTransfer" /> }
             @if (f.inbound; as i) {
               <p class="plan-return small">
-                <strong>{{ 'plan.return' | t }}:</strong> <app-flight-route [leg]="i" /> · {{ i.departureLocal | ldate: 'd MMM HH:mm' }}
+                <strong>{{ 'plan.return' | t }}:</strong>&nbsp;<app-flight-route [leg]="i" /> · {{ i.departureLocal | ldate: 'd MMM HH:mm' }}
                 · {{ i.durationMinutes | minutes }} · {{ i.stops | stops }}
               </p>
             }
@@ -131,7 +131,7 @@ import { FlightRouteComponent, FlightTimelineComponent } from '../../shared/flig
       </div>
 
       <aside class="plan-side">
-        <span class="side-label">{{ 'card.total' | t }}</span>
+        <span class="side-label">{{ (p.missingCostCategories.length ? 'card.totalKnown' : 'card.total') | t }}</span>
         <span class="price price-lg">{{ p.totalEstimatedCost | money: p.currency }}</span>
         <span class="budget-delta" [class.over]="p.remainingBudget < 0">
           @if (p.remainingBudget >= 0) {
@@ -153,7 +153,7 @@ import { FlightRouteComponent, FlightTimelineComponent } from '../../shared/flig
             <app-icon name="heart" [size]="16" /> {{ (saved() ? 'plan.saved' : 'plan.save') | t }}
           </button>
         </div>
-        <p class="small muted plan-score" [title]="scoreText()">{{ 'card.score' | t: { score: p.score } }}</p>
+        <p class="small muted plan-score" [title]="scoreText()">{{ 'card.score' | t: { score: round(p.score) } }}</p>
       </aside>
     </article>
   `,
@@ -198,6 +198,8 @@ export class PlanCardComponent {
   protected toggleSaved(): void {
     this.savedTrips.toggle(this.plan());
   }
+
+  protected readonly round = Math.round;
 
   protected readonly scoreText = computed(() =>
     Object.entries(this.plan().scoreBreakdown)

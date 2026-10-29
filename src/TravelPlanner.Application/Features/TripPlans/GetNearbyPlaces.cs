@@ -105,6 +105,8 @@ public sealed class GetNearbyPlacesHandler(
 
         var centreName = destination.CityIn(lang);
         int FromAirport(double lat, double lon) => airport is null ? 0 : NearbyLinks.DistanceMeters(airport.Latitude, airport.Longitude, lat, lon);
+        // Some OpenStreetMap routes carry stop ids ("-440100") instead of names in from/to: show nothing rather than numbers.
+        static string? Place(string? name) => name is not null && name.Any(char.IsLetter) ? name : null;
 
         return new NearbyPlacesDto(
             snapshot?.Attribution ?? "© OpenStreetMap contributors",
@@ -112,7 +114,7 @@ public sealed class GetNearbyPlacesHandler(
             airport is null ? null : new NearbyAirportDto(airport.IataCode, airport.NameIn(lang), airport.Latitude, airport.Longitude, linkPolicy.Sanitize(airport.OfficialWebsiteUrl)),
             nearAirport?.Hotels.Select(Hotel).OrderBy(h => h.DistanceFromAirportMeters).ToList() ?? [],
             snapshot?.Centre.Hotels.Select(Hotel).OrderBy(h => h.DistanceFromCentreMeters).ToList() ?? [],
-            nearAirport?.TransitLines.Select(l => new TransitLineDto(l.Mode, l.Ref, l.Name, l.From, l.To, l.Operator, l.Network, NearbyLinks.CuratedHttps(l.Website))).ToList() ?? [],
+            nearAirport?.TransitLines.Select(l => new TransitLineDto(l.Mode, l.Ref, l.Name, Place(l.From), Place(l.To), l.Operator, l.Network, NearbyLinks.CuratedHttps(l.Website))).ToList() ?? [],
             nearAirport?.TransitStops.Select(st => new TransitStopDto(st.Name, st.Mode, st.Lines, FromAirport(st.Latitude, st.Longitude),
                 linkPolicy.Sanitize(NearbyLinks.MapPoint(st.Latitude, st.Longitude)))).ToList() ?? [],
             nearAirport?.TaxiRanks.Select(r => new TaxiRankDto(r.Name, r.Operator, r.Phone, FromAirport(r.Latitude, r.Longitude),

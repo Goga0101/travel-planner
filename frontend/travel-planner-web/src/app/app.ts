@@ -47,9 +47,10 @@ import { TranslatePipe } from './core/i18n/translate.pipe';
             <app-icon name="heart" [size]="20" />
             @if (saved.count()) { <span class="count-badge" aria-hidden="true">{{ saved.count() }}</span> }
           </a>
-          @if (config.config(); as c) {
-            @let mode = (c.dataMode === 'Demo' ? 'app.dataDemo' : 'app.dataLive') | t;
-            <span class="mode-label" [class.mode-demo]="c.dataMode === 'Demo'" [title]="'app.dataLabel' | t: { mode }">
+          <!-- Live data is the normal state (the footer says so); only demo data needs flagging up here. -->
+          @if (config.config()?.dataMode === 'Demo') {
+            @let mode = 'app.dataDemo' | t;
+            <span class="mode-label mode-demo" [title]="'app.dataLabel' | t: { mode }">
               <span class="visually-hidden">{{ 'app.dataLabel' | t: { mode: '' } }}</span>{{ mode }}
             </span>
           }

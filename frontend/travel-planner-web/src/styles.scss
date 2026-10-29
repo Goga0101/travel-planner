@@ -157,10 +157,28 @@ a:hover { color: var(--primary-dark); }
   // Wraps instead of scrolling sideways: on phones every item stays visible.
   .main-nav { order: 3; width: 100%; margin: 0 -0.5rem; padding-bottom: 0.5rem; flex-wrap: wrap; row-gap: 0.15rem; }
   .main-nav a { padding: 0.35rem 0.7rem; font-size: 0.88rem; }
+  .main-nav + .topbar-end { margin-left: auto; }
+}
+// Phones: the logo, saved trips and the language stay on one row, so the content starts higher.
+@media (max-width: 479px) {
+  .topbar-inner { column-gap: 0.5rem; }
+  .brand-tagline { display: none; }
+  .lang-switch button { min-width: 2.6rem; padding-inline: 0.55rem; }
 }
 @media (min-width: 900px) {
   .topbar-inner { flex-wrap: nowrap; }
   :lang(ka) .main-nav a { padding-inline: 0.6rem; font-size: 0.88rem; }
+}
+// On small laptops and tablets the menu takes its own row instead of running off the screen (Georgian labels are longer).
+@media (min-width: 900px) and (max-width: 1099px) {
+  .topbar-inner { flex-wrap: wrap; }
+  .main-nav { order: 3; width: 100%; margin: 0 -0.5rem; padding-bottom: 0.5rem; }
+  .main-nav + .topbar-end { margin-left: auto; }
+}
+@media (min-width: 1100px) and (max-width: 1199px) {
+  :lang(ka) .topbar-inner { flex-wrap: wrap; }
+  :lang(ka) .main-nav { order: 3; width: 100%; margin: 0 -0.5rem; padding-bottom: 0.5rem; }
+  :lang(ka) .main-nav + .topbar-end { margin-left: auto; }
 }
 // Demo mode keeps its full-width banner, so the compact label can go where space is tight.
 @media (min-width: 900px) and (max-width: 1199px) { .mode-label { display: none; } }
@@ -331,7 +349,7 @@ input[type='checkbox'] { width: 1.1rem; height: 1.1rem; accent-color: var(--prim
   display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
   font: inherit; font-weight: 600; text-decoration: none; cursor: pointer;
   border-radius: var(--radius-md); border: 1px solid var(--border-strong); background: var(--surface); color: var(--text-2);
-  padding: 0.6rem 1.15rem; min-height: 2.75rem; white-space: normal; text-align: center; overflow-wrap: anywhere;
+  padding: 0.6rem 1.15rem; min-height: 2.75rem; white-space: normal; text-align: center; overflow-wrap: break-word; // whole words: "anywhere" split Georgian labels mid-word
   transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
 }
 .btn:hover:not(:disabled) { border-color: var(--text); color: var(--text); }

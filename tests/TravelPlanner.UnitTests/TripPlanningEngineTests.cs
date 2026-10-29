@@ -142,7 +142,7 @@ public class TripPlanningEngineTests
             Assert.Contains(CostCategories.Accommodation, p.Budget.MissingCategories);
             Assert.Contains(p.Drafts, d => d is { Type: PlanItemType.Accommodation, Verification: VerificationStatus.Unavailable });
         });
-        Assert.Contains(result.Warnings, w => w.Contains("No accommodation provider"));
+        Assert.Contains(result.Warnings, w => w.Contains("exact hotel prices"));
     }
 
     [Fact]

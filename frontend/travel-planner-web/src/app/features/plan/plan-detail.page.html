@@ -65,7 +65,7 @@
 
           <section class="kpi-grid" [attr.aria-label]="'plan.total' | t">
             <div class="kpi">
-              <span class="side-label">{{ 'plan.total' | t }}</span>
+              <span class="side-label">{{ (s.missingCostCategories.length ? 'card.totalKnown' : 'plan.total') | t }}</span>
               <span class="price price-lg">{{ s.totalEstimatedCost | money: s.currency }}</span>
               <app-budget-fit-badge [fit]="s.budgetFit" />
             </div>
@@ -165,7 +165,7 @@
                           </li>
                         }
                       </ol>
-                    } @else if (!leg.it.via?.length) {
+                    } @else if (!leg.it.via?.length && leg.it.stops > 0) {
                       <p class="small muted">{{ 'plan.noSegments' | t }}</p>
                     }
                   </div>

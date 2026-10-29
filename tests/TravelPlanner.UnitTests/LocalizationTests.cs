@@ -91,7 +91,7 @@ public partial class LocalizationTests
         var plan = result.Plans[0];
         Assert.StartsWith("ორმხრივი ფრენა", plan.Drafts.Single(d => d.Type == PlanItemType.Flight).Title);
         Assert.Equal("განთავსება მიუწვდომელია", plan.Drafts.Single(d => d.Type == PlanItemType.Accommodation).Title);
-        Assert.Contains(result.Warnings, w => w.Contains("განთავსების პროვაიდერი"));
+        Assert.Contains(result.Warnings, w => w.Contains("სასტუმროს ზუსტი ფასები"));
         Assert.Contains(progress, m => m.StartsWith("ვეძებთ ფრენებს"));
         Assert.Contains("ტაქსის შეთავაზება არ არის", plan.Drafts.First(d => d.Type == PlanItemType.Transfer).DetailsJson);
     }

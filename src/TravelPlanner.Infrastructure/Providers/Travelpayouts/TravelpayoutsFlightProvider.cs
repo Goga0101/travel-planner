@@ -59,7 +59,7 @@ public sealed class TravelpayoutsTicket
 /// </summary>
 public sealed class TravelpayoutsFlightOfferMapper(TravelpayoutsOptions options) : IFlightOfferMapper<TravelpayoutsPricesResponse>
 {
-    public const string ProviderName = "Aviasales (Travelpayouts)";
+    public const string ProviderName = "Aviasales"; // what visitors know; Travelpayouts is only the affiliate network
 
     /// <summary>Tickets for exactly the requested departure and return dates.</summary>
     public IReadOnlyList<FlightOffer> Map(TravelpayoutsPricesResponse response, FlightSearchRequest request, DateTimeOffset retrievedAtUtc) =>

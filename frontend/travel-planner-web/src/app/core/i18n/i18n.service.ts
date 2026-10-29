@@ -30,10 +30,28 @@ export function translate(dict: Dictionary, key: TranslationKey, params?: Transl
     text = Number(params?.['count']) === 1 ? one : (other ?? one);
   }
   if (!params) return text;
-  return text.replace(/\{(\w+)\}/g, (match, name: string) => {
+  return text.replace(/\{(\w+)\}(-(?:ის|დან|ში|ზე))?/g, (match, name: string, suffix?: string) => {
     const value = params[name];
-    return value === null || value === undefined ? match : String(value);
+    if (value === null || value === undefined) return match;
+    return suffix ? decline(String(value), suffix.slice(1)) : String(value);
   });
+}
+
+/**
+ * "{city}-ის", "{city}-დან", "{city}-ში", "{city}-ზე" with a Georgian word take the case ending itself:
+ * ათენი → ათენის / ათენიდან / ათენში, პრაღა → პრაღის / პრაღიდან / პრაღაში, ტოკიო → ტოკიოს / ტოკიოდან.
+ * Anything else (TBS, Booking.com, €120) keeps the hyphen, as Georgian writes foreign words.
+ */
+export function decline(word: string, ending: string): string {
+  const last = word.at(-1) ?? '';
+  if (!/[ა-ჰ]/.test(last)) return `${word}-${ending}`;
+  const stem = word.slice(0, -1);
+  const truncates = last === 'ი' || last === 'ა';
+  switch (ending) {
+    case 'ის': return truncates ? `${stem}ის` : 'ეოუ'.includes(last) ? `${word}ს` : `${word}ის`;
+    case 'დან': return truncates ? `${stem}იდან` : 'ეოუ'.includes(last) ? `${word}დან` : `${word}იდან`;
+    default: return last === 'ი' ? `${stem}${ending}` : `${word}${ending}`; // ში, ზე
+  }
 }
 
 /** Georgian-first: an explicit stored choice wins, otherwise Georgian (also for Georgian browsers). */

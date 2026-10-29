@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { Router, provideRouter } from '@angular/router';
 import { en } from './en';
-import { DICTIONARIES, I18nService, LANG_STORAGE_KEY, preferredLang, switchUrlLang, translate } from './i18n.service';
+import { DICTIONARIES, I18nService, LANG_STORAGE_KEY, decline, preferredLang, switchUrlLang, translate } from './i18n.service';
 import { ka } from './ka';
 import { langGuard, redirectToPreferredLang } from './lang-routing';
 
@@ -42,6 +42,22 @@ describe('translate', () => {
 
   it('exposes both dictionaries', () => {
     expect(Object.keys(DICTIONARIES).sort()).toEqual(['en', 'ka']);
+  });
+});
+
+describe('Georgian case endings', () => {
+  it('decline Georgian names instead of hyphenating them', () => {
+    expect(translate(ka, 'nearby.allHotels', { city: 'ათენი' })).toBe('ათენის ყველა განთავსება Booking.com-ზე');
+    expect(translate(ka, 'results.tripsFrom', { origin: 'თბილისი' })).toBe('მოგზაურობები თბილისიდან');
+    expect(decline('პრაღა', 'ის')).toBe('პრაღის');
+    expect(decline('პრაღა', 'ში')).toBe('პრაღაში');
+    expect(decline('ტოკიო', 'დან')).toBe('ტოკიოდან');
+    expect(decline('ბაქო', 'ის')).toBe('ბაქოს');
+  });
+
+  it('keep the hyphen for codes and Latin names', () => {
+    expect(translate(ka, 'results.tripsFrom', { origin: 'TBS' })).toBe('მოგზაურობები TBS-დან');
+    expect(decline('Booking.com', 'ზე')).toBe('Booking.com-ზე');
   });
 });
 
