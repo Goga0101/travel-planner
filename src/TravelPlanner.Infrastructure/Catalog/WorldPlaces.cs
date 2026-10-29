@@ -43,6 +43,22 @@ public sealed class WorldPlaces : IWorldPlaces
             .ToList();
     }
 
+    public IReadOnlyList<(WorldCity City, double Km)> CitiesNear(double latitude, double longitude, double maxKm, int max) =>
+        _index.Value.Cities.Values
+            .Select(c => (City: c, Km: DistanceKm(latitude, longitude, c.Latitude, c.Longitude)))
+            .Where(x => x.Km <= maxKm)
+            .OrderBy(x => x.Km)
+            .Take(max)
+            .ToList();
+
+    private static double DistanceKm(double lat1, double lon1, double lat2, double lon2)
+    {
+        const double rad = Math.PI / 180;
+        var a = Math.Pow(Math.Sin((lat2 - lat1) * rad / 2), 2) +
+                Math.Cos(lat1 * rad) * Math.Cos(lat2 * rad) * Math.Pow(Math.Sin((lon2 - lon1) * rad / 2), 2);
+        return 2 * 6371 * Math.Asin(Math.Sqrt(a));
+    }
+
     private sealed record Index(Dictionary<string, WorldCity> Cities, Dictionary<string, string> CityOfAirport);
 
     private static Index Build(IReadOnlyList<WorldAirport> airports)

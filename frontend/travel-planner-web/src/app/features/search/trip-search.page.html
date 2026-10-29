@@ -61,6 +61,11 @@
           }
         </div>
       }
+      <p class="small">
+        <a class="text-link" [routerLink]="i18n.path('flights')" [queryParams]="{ from: o.iataCode, fromName: originLabel(o) }">
+          <app-icon name="calendar" [size]="14" /> {{ 'search.whenToFly' | t }}
+        </a>
+      </p>
     }
 
     @if (!isManual()) {

@@ -10,6 +10,7 @@ import {
   AttractionDto,
   DayPlanDto,
   DestinationSummaryDto,
+  FlightCalendarDto,
   FoundFlightDto,
   HotelPricesDto,
   NearbyPlacesDto,
@@ -83,6 +84,11 @@ export class ApiService {
   /** Cities anywhere in the world (with an airport), for destinations outside the catalog. */
   searchPlaces(term: string): Observable<PlaceDto[]> {
     return this.http.get<PlaceDto[]>(`${BASE}/places`, { params: { search: term } });
+  }
+
+  /** Cheapest known one-way fare of each day over the coming months, for the route and for nearby airports. */
+  getFlightCalendar(origin: string, destination: string, currency: string): Observable<FlightCalendarDto> {
+    return this.http.get<FlightCalendarDto>(`${BASE}/flights/calendar`, { params: { origin, destination, currency } });
   }
 
   /** Every flight a finished search found (all destinations and dates), cheapest first. */

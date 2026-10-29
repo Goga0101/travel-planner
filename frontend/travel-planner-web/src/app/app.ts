@@ -37,6 +37,7 @@ import { TranslatePipe } from './core/i18n/translate.pipe';
         <nav class="main-nav" [attr.aria-label]="'nav.main' | t">
           <a [routerLink]="i18n.path()">{{ 'nav.home' | t }}</a>
           <a [routerLink]="i18n.path()" fragment="destinations">{{ 'nav.destinations' | t }}</a>
+          <a [routerLink]="i18n.path('flights')" routerLinkActive="active">{{ 'nav.flights' | t }}</a>
           <a [routerLink]="i18n.path('transit')" routerLinkActive="active" class="nav-live"><span class="live-pulse" aria-hidden="true"></span>{{ 'nav.transit' | t }}</a>
           <a [routerLink]="i18n.path()" fragment="how">{{ 'nav.how' | t }}</a>
           <a [routerLink]="i18n.path()" fragment="about">{{ 'nav.about' | t }}</a>
@@ -76,6 +77,7 @@ import { TranslatePipe } from './core/i18n/translate.pipe';
           <p class="footer-head">{{ 'footer.explore' | t }}</p>
           <ul class="footer-links">
             <li><a [routerLink]="i18n.path()" fragment="destinations">{{ 'nav.destinations' | t }}</a></li>
+            <li><a [routerLink]="i18n.path('flights')">{{ 'nav.flights' | t }}</a></li>
             <li><a [routerLink]="i18n.path('transit')">{{ 'nav.transit' | t }}</a></li>
             <li><a [routerLink]="i18n.path()" fragment="how">{{ 'nav.how' | t }}</a></li>
             <li><a [routerLink]="i18n.path()" fragment="about">{{ 'nav.about' | t }}</a></li>

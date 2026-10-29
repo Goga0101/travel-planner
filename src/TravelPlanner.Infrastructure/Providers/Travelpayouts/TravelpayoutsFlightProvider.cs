@@ -250,13 +250,15 @@ public sealed partial class TravelpayoutsFlightProvider(
                 offers.DistinctBy(o => o.Signature).OrderBy(o => o.TotalPrice).Take(Math.Max(1, request.MaxResults)).ToList());
         }, cancellationToken);
 
-/// <summary>Round trip when returnAt is set, otherwise one way; origin or destination may be omitted ("from/to anywhere").</summary>
-    private async Task<ProviderResult<TravelpayoutsPricesResponse>> FetchAsync(string? origin, string? destination, string departureAt, string? returnAt,
+    /// <summary>
+    /// Round trip when returnAt is set, otherwise one way; origin or destination may be omitted ("from/to anywhere"), and so
+    /// may the departure date (the API then returns its cheapest fares of any date).
+    /// </summary>
+    private async Task<ProviderResult<TravelpayoutsPricesResponse>> FetchAsync(string? origin, string? destination, string? departureAt, string? returnAt,
         int? maxStops, string currency, int limit, CancellationToken cancellationToken)
     {
         var query = new Dictionary<string, string>
         {
-            ["departure_at"] = departureAt,
             ["one_way"] = returnAt is null ? "true" : "false",
             ["direct"] = maxStops == 0 ? "true" : "false",
             ["currency"] = currency.ToLowerInvariant(),
@@ -264,6 +266,7 @@ public sealed partial class TravelpayoutsFlightProvider(
             ["unique"] = "false",
             ["limit"] = Math.Clamp(limit, 1, MaxTicketsPerCall).ToString(CultureInfo.InvariantCulture)
         };
+        if (departureAt is not null) query["departure_at"] = departureAt;
         if (origin is not null) query["origin"] = origin;
         if (destination is not null) query["destination"] = destination;
         if (returnAt is not null) query["return_at"] = returnAt;

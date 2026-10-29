@@ -128,6 +128,31 @@ public interface IFlightWindowSearchProvider : IFlightSearchProvider
     Task<ProviderResult<IReadOnlyList<FlightOffer>>> SearchWindowAsync(FlightWindowRequest request, CancellationToken cancellationToken);
 }
 
+/// <summary>The cheapest known one-way fare of a day, per passenger. From/To are airport codes; the time is airport-local.</summary>
+public sealed record CalendarFare(
+    string From,
+    string To,
+    DateTime DepartureLocal,
+    int Stops,
+    string? Airline,
+    decimal Price,
+    string Currency,
+    string? BookingUrl);
+
+/// <summary>
+/// Cached one-way fares without fixed dates ("when can I fly from A to B?"). Codes may be city or airport codes.
+/// </summary>
+public interface IFlightCalendarSource
+{
+    bool IsAvailable { get; }
+
+    /// <summary>True when any fare at all is known between the two places (one cheap probe before pricing month by month).</summary>
+    Task<bool> HasFaresAsync(string origin, string destination, string currency, CancellationToken cancellationToken);
+
+    /// <summary>The cheapest fare of each day of the month (yyyy-MM) that has one.</summary>
+    Task<IReadOnlyList<CalendarFare>> CheapestByDayAsync(string origin, string destination, string month, string currency, CancellationToken cancellationToken);
+}
+
 /// <summary>Maps a provider-specific response into application-owned flight offers.</summary>
 public interface IFlightOfferMapper<in TProviderResponse>
 {

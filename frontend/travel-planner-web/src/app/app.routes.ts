@@ -13,6 +13,7 @@ export const routes: Routes = [
     children: [
       { path: '', title: 'title.search', loadComponent: () => import('./features/search/trip-search.page').then((m) => m.TripSearchPage) },
       { path: 'searches/:id', title: 'title.results', loadComponent: () => import('./features/results/search-results.page').then((m) => m.SearchResultsPage) },
+      { path: 'flights', title: 'title.flights', loadComponent: () => import('./features/flights/flight-calendar.page').then((m) => m.FlightCalendarPage) },
       { path: 'transit', title: 'title.transit', loadComponent: () => import('./features/transit/transit.page').then((m) => m.TransitPage) },
       { path: 'saved', title: 'title.saved', loadComponent: () => import('./features/saved/saved-trips.page').then((m) => m.SavedTripsPage) },
       { path: 'plans/:id', title: 'title.plan', loadComponent: () => import('./features/plan/plan-detail.page').then((m) => m.PlanDetailPage) },

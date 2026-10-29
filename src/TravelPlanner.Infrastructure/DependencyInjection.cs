@@ -179,6 +179,7 @@ public static class DependencyInjection
         services.AddSingleton<IFlightSearchProvider, DemoFlightSearchProvider>();
         services.AddSingleton<IAccommodationSearchProvider, DemoAccommodationProvider>();
         services.AddSingleton<ITransportSearchProvider, DemoTransportProvider>();
+        services.AddSingleton<IFlightCalendarSource, NoFlightCalendarSource>();
         foreach (var category in new[] { "Flights", "Accommodation", "Transfers" })
             status.Add(new ProviderStatus(category, "Demo data (not real)", true, true, "status.demo"));
     }
@@ -206,6 +207,11 @@ public static class DependencyInjection
                 .AddStandardResilienceHandler(o => Configure(o, providers.Http));
             services.AddTransient<IFlightSearchProvider>(sp => new CachingFlightWindowSearchProvider(
                 sp.GetRequiredService<TravelpayoutsFlightProvider>(), sp.GetRequiredService<IMemoryCache>(), TimeSpan.FromMinutes(providers.FlightCacheMinutes)));
+            services.AddTransient<IFlightCalendarSource>(sp => sp.GetRequiredService<TravelpayoutsFlightProvider>());
+        }
+        else
+        {
+            services.AddSingleton<IFlightCalendarSource, NoFlightCalendarSource>();
         }
         status.Add(new ProviderStatus("Flights", TravelpayoutsFlightOfferMapper.ProviderName, travelpayouts.IsConfigured, false,
             travelpayouts.IsConfigured ? "status.travelpayoutsOn" : "status.travelpayoutsOff"));

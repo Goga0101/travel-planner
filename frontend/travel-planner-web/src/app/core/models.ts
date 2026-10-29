@@ -62,6 +62,36 @@ export interface PlaceDto {
   gatewayKm?: number;
 }
 
+/** Cheapest known one-way fare of a day; price per passenger, time airport-local (HH:mm). */
+export interface FlightCalendarDayDto {
+  date: string;
+  time: string;
+  from: string;
+  to: string;
+  stops: number;
+  airline: string | null;
+  price: number;
+  bookingUrl: string | null;
+}
+
+/** One route of the fare calendar; fromKm/toKm are set when that end is a nearby city instead of the one asked. */
+export interface FlightCalendarRouteDto {
+  fromCode: string;
+  fromCity: string;
+  toCode: string;
+  toCity: string;
+  isRequested: boolean;
+  fromKm: number | null;
+  toKm: number | null;
+  days: FlightCalendarDayDto[];
+}
+
+export interface FlightCalendarDto {
+  available: boolean;
+  currency: string;
+  routes: FlightCalendarRouteDto[];
+}
+
 export interface DestinationSummaryDto {
   id: string;
   code: string;
