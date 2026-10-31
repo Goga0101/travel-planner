@@ -67,7 +67,17 @@ cd frontend\travel-planner-web; npm install; cd ..\..
 
 ### 2.3 საიდუმლო გასაღებები (user-secrets)
 
-გასაღებები **არ** ინახება კოდში. ისინი კომპიუტერზეა, `dotnet user-secrets`-ში. ახალ კომპიუტერზე ხელახლა უნდა ჩაიწეროს:
+გასაღებები **არ** ინახება კოდში. ისინი კომპიუტერზეა, `dotnet user-secrets`-ში.
+
+**სწრაფი გზა:** პროექტის საქაღალდეში არის `secrets.local.ps1`. git მას არ ხედავს (`*.local.ps1`), ამიტომ GitHub-ზე
+არ ხვდება. მასში ყველა გასაღებია და ერთი ბრძანებით ჩაწერს მათ user-secrets-ში:
+
+```powershell
+powershell -ExecutionPolicy Bypass -File secrets.local.ps1
+```
+
+ამ ფაილის ასლი შეინახე პაროლების მენეჯერში (Bitwarden, 1Password ან Google Password Manager-ის შენიშვნაში). ახალ კომპიუტერზე
+ჩადე პროექტის საქაღალდეში და გაუშვი. ხელით ჩაწერა ასე ხდება:
 
 ```powershell
 $api = "src/TravelPlanner.API"
