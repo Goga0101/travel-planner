@@ -6,6 +6,8 @@ using Microsoft.Extensions.Http.Resilience;
 using TravelPlanner.Application.Common;
 using TravelPlanner.Application.Providers;
 using TravelPlanner.Domain.Enums;
+using TravelPlanner.Application.Features.Journeys;
+using TravelPlanner.Infrastructure.Journeys;
 using TravelPlanner.Infrastructure.Catalog;
 using TravelPlanner.Infrastructure.ExchangeRates;
 using TravelPlanner.Infrastructure.Jobs;
@@ -20,6 +22,7 @@ using TravelPlanner.Infrastructure.Providers.Google;
 using TravelPlanner.Infrastructure.Providers.Travelpayouts;
 using TravelPlanner.Infrastructure.Providers.Ticketmaster;
 using TravelPlanner.Infrastructure.Providers.Transitous;
+using TravelPlanner.Infrastructure.Providers.Tripadvisor;
 using TravelPlanner.Infrastructure.Providers.Xotelo;
 
 namespace TravelPlanner.Infrastructure;
@@ -56,6 +59,8 @@ public static class DependencyInjection
         services.AddTransient<Application.Features.Auth.IExternalIdentityVerifier>(sp => sp.GetRequiredService<Auth.FacebookIdentityVerifier>());
 
         services.AddSingleton<CatalogFileReader>();
+        services.Configure<LeaderboardOptions>(configuration.GetSection(LeaderboardOptions.SectionName));
+        services.AddSingleton<ILeaderboardSamples, LeaderboardSamplesFile>();
         services.AddSingleton<WorldAirportsFileReader>();
         services.AddSingleton<IWorldPlaces, WorldPlaces>();
         services.AddSingleton<ITransitGuideSource, TransitGuideFile>();
@@ -178,6 +183,17 @@ public static class DependencyInjection
             services.AddSingleton<IHotelPriceSource, NoHotelPriceSource>();
         status.Add(new ProviderStatus("Accommodation", XoteloHotelPriceSource.SourceName, xoteloActive, false,
             xoteloActive ? "status.xoteloOn" : "status.xoteloOff"));
+
+        // Recent guest reviews of the hotel the visitor picks (Tripadvisor Terra API, paid per use; optional key).
+        services.Configure<TripadvisorOptions>(configuration.GetSection(TripadvisorOptions.SectionName));
+        var tripadvisor = configuration.GetSection(TripadvisorOptions.SectionName).Get<TripadvisorOptions>() ?? new TripadvisorOptions();
+        if (tripadvisor.IsConfigured)
+            services.AddHttpClient<IHotelReviewSource, TerraHotelReviewSource>(c => c.BaseAddress = BaseUri(tripadvisor.BaseUrl))
+                .AddStandardResilienceHandler(o => Configure(o, providers.Http));
+        else
+            services.AddSingleton<IHotelReviewSource, NoHotelReviewSource>();
+        status.Add(new ProviderStatus("Reviews", TerraHotelReviewSource.ProviderName, tripadvisor.IsConfigured, false,
+            tripadvisor.IsConfigured ? "status.tripadvisorOn" : "status.tripadvisorOff"));
 
         return services;
     }

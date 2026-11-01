@@ -18,7 +18,7 @@
       }
     </div>
     <app-hotel-finder [planId]="planId()" (chosen)="stayChosen.emit()" />
-    <p class="small muted">{{ 'nearby.priceNote' | t: { dates: dates(), guests: ('unit.guests' | t: { count: travelers() }) } }}</p>
+    <app-hotel-scene />
 
     <div class="segmented tabs" role="tablist" [attr.aria-label]="'nearby.stayTitle' | t">
       @if (prices()?.hotels?.length || pricesLoading()) {
@@ -40,18 +40,8 @@
     <div id="hotel-panel" role="tabpanel" [attr.aria-labelledby]="'tab-' + area()">
       @if (area() === 'prices') {
         @if (prices(); as hp) {
-          <div class="price-summary">
-            @if (hp.bookingComNightlyMin !== undefined && hp.bookingComNightlyMin !== null) {
-              <div><span class="small muted">{{ 'prices.bookingRange' | t }}</span>
-                <strong>{{ hp.bookingComNightlyMin | money: hp.currency }} – {{ hp.bookingComNightlyMax | money: hp.currency }}</strong></div>
-            }
-            <div><span class="small muted">{{ 'prices.typicalStay' | t: { nights: ('unit.nights' | t: { count: hp.nights }) } }}</span>
-              <strong>≈ {{ hp.estimatedStayTypical | money: hp.currency }}</strong></div>
-            <div><span class="small muted">{{ 'prices.tripWithStay' | t }}</span>
-              <strong>≈ {{ hp.estimatedTripTotal | money: hp.currency }}</strong></div>
-          </div>
-          <p class="small muted">{{ 'prices.note' | t: { rooms: ('unit.rooms' | t: { count: hp.rooms }), guests: ('unit.guests' | t: { count: hp.adults }) } }}</p>
-          <ul class="hotel-grid">
+          <app-route-hint />
+          <ul class="hotel-grid hotel-grid-prices">
             @for (ph of hp.hotels; track ph.name) {
               <li class="hotel-card">
                 <div class="hotel-head">

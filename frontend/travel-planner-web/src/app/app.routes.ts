@@ -14,6 +14,7 @@ export const routes: Routes = [
       { path: '', title: 'title.search', loadComponent: () => import('./features/search/trip-search.page').then((m) => m.TripSearchPage) },
       { path: 'searches/:id', title: 'title.results', loadComponent: () => import('./features/results/search-results.page').then((m) => m.SearchResultsPage) },
       { path: 'flights', title: 'title.flights', loadComponent: () => import('./features/flights/flight-calendar.page').then((m) => m.FlightCalendarPage) },
+      { path: 'news', title: 'title.news', loadComponent: () => import('./features/news/world-news.page').then((m) => m.WorldNewsPage) },
       { path: 'transit', title: 'title.transit', loadComponent: () => import('./features/transit/transit.page').then((m) => m.TransitPage) },
       { path: 'saved', title: 'title.saved', loadComponent: () => import('./features/saved/saved-trips.page').then((m) => m.SavedTripsPage) },
       { path: 'privacy', title: 'title.privacy', loadComponent: () => import('./features/legal/privacy.page').then((m) => m.PrivacyPage) },

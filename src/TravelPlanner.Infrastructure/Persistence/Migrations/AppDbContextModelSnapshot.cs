@@ -233,6 +233,61 @@ namespace TravelPlanner.Infrastructure.Persistence.Migrations
                     b.ToTable("destination_transport_links", (string)null);
                 });
 
+            modelBuilder.Entity("TravelPlanner.Domain.Entities.Journey", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .HasColumnType("uuid");
+
+                    b.Property<DateTime>("BookedAtUtc")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("City")
+                        .IsRequired()
+                        .HasMaxLength(128)
+                        .HasColumnType("character varying(128)");
+
+                    b.Property<DateTime?>("CompletedAtUtc")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.PrimitiveCollection<List<DateOnly>>("CompletedDays")
+                        .IsRequired()
+                        .HasColumnType("date[]");
+
+                    b.Property<string>("CountryCode")
+                        .IsRequired()
+                        .HasMaxLength(2)
+                        .HasColumnType("character(2)")
+                        .IsFixedLength();
+
+                    b.Property<string>("DestinationCode")
+                        .IsRequired()
+                        .HasMaxLength(64)
+                        .HasColumnType("character varying(64)");
+
+                    b.Property<DateOnly>("EndDate")
+                        .HasColumnType("date");
+
+                    b.Property<DateOnly>("StartDate")
+                        .HasColumnType("date");
+
+                    b.Property<Guid>("TripPlanId")
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompletedAtUtc");
+
+                    b.HasIndex("TripPlanId");
+
+                    b.HasIndex("UserId", "TripPlanId")
+                        .IsUnique();
+
+                    b.ToTable("journeys", (string)null);
+                });
+
             modelBuilder.Entity("TravelPlanner.Domain.Entities.TripPlan", b =>
                 {
                     b.Property<Guid>("Id")
@@ -622,6 +677,21 @@ namespace TravelPlanner.Infrastructure.Persistence.Migrations
                     b.HasOne("TravelPlanner.Domain.Entities.Destination", null)
                         .WithMany("TransportLinks")
                         .HasForeignKey("DestinationId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("TravelPlanner.Domain.Entities.Journey", b =>
+                {
+                    b.HasOne("TravelPlanner.Domain.Entities.TripPlan", null)
+                        .WithMany()
+                        .HasForeignKey("TripPlanId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("TravelPlanner.Domain.Entities.User", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

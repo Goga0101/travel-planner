@@ -857,6 +857,37 @@ export interface StayRouteDto {
   routerName?: string;
 }
 
+/** Guest reviews of the picked hotel (Tripadvisor), fetched live, never stored. */
+export interface HotelReviewDto {
+  id: string;
+  rating: number;
+  title?: string | null;
+  text: string;
+  language: string;
+  publishedAt: string;
+  travelDate?: string | null;
+  tripType?: string | null;
+  author?: string | null;
+  authorLocation?: string | null;
+  avatarUrl?: string | null;
+  url?: string | null;
+  ratingImageUrl?: string | null;
+  ownerResponse?: string | null;
+}
+
+export interface HotelReviewsDto {
+  source: string;
+  /** False: Tripadvisor does not know this hotel. */
+  matched: boolean;
+  hotelName?: string | null;
+  hotelUrl?: string | null;
+  windowDays: number;
+  /** False: nobody reviewed it in the window; the reviews are the latest few. */
+  recent: boolean;
+  averageRating?: number | null;
+  reviews: HotelReviewDto[];
+}
+
 export interface HotelPricesDto {
   source: string;
   currency: string;

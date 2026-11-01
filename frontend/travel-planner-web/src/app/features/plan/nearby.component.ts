@@ -1,8 +1,8 @@
+import { HotelSceneComponent, RouteHintComponent } from './stay-illustrations.component';
 import { ChangeDetectionStrategy, Component, DestroyRef, computed, effect, inject, input, output, signal, untracked } from '@angular/core';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ApiService } from '../../core/api.service';
 import { ApiError, toApiError } from '../../core/errors';
-import { formatLocalDate } from '../../core/format';
 import { TranslationKey } from '../../core/i18n/en';
 import { I18nService } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
@@ -33,7 +33,7 @@ const MODE_KEYS: Record<TransitMode, TranslationKey> = {
 @Component({
   selector: 'app-nearby',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TranslatePipe, IconComponent, DistancePipe, LocalDatePipe, MoneyPipe, ErrorBannerComponent, HotelFinderComponent],
+  imports: [HotelSceneComponent, RouteHintComponent, TranslatePipe, IconComponent, DistancePipe, LocalDatePipe, MoneyPipe, ErrorBannerComponent, HotelFinderComponent],
   templateUrl: './nearby.component.html',
 })
 export class NearbyComponent {
@@ -82,12 +82,6 @@ export class NearbyComponent {
   });
   protected readonly visibleHotels = computed(() => (this.showAll() ? this.hotels() : this.hotels().slice(0, this.pageSize)));
   protected readonly city = computed(() => this.summary().destination.city);
-  protected readonly travelers = computed(() => this.summary().travelers);
-  protected readonly dates = computed(() => {
-    const s = this.summary();
-    const lang = this.i18n.lang();
-    return `${formatLocalDate(s.departureDate, 'd MMM', lang)} – ${formatLocalDate(s.returnDate, 'd MMM', lang)}`;
-  });
 
   constructor() {
     // Reload when the plan or the language changes (names and links are localized by the API).

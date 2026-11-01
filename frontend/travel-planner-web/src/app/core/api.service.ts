@@ -16,7 +16,7 @@ import {
   FlightCalendarDto,
   FlightOptionsDto,
   FoundFlightDto,
-  HotelPricesDto,
+  HotelPricesDto, HotelReviewsDto,
   NearbyPlacesDto,
   OutboundLinkDto,
   PagedResult,
@@ -127,6 +127,16 @@ export class ApiService {
   /** Hotels around the destination whose name contains the text (the visitor's own find). */
   searchHotels(planId: string, text: string): Observable<HotelSearchResultDto[]> {
     return this.http.get<HotelSearchResultDto[]>(`${BASE}/trip-plans/${encodeURIComponent(planId)}/hotel-search`, { params: new HttpParams().set('q', text) });
+  }
+
+  /** Recent guest reviews of the picked hotel; null when no review source is configured. */
+  getHotelReviews(id: string, name: string, latitude: number, longitude: number): Observable<HotelReviewsDto | null> {
+    return this.http
+      .get<HotelReviewsDto>(`${BASE}/trip-plans/${encodeURIComponent(id)}/hotel-reviews`, {
+        observe: 'response',
+        params: { name, lat: latitude, lon: longitude },
+      })
+      .pipe(map((r) => (r.status === 204 ? null : r.body)));
   }
 
   getHotelPrices(id: string): Observable<HotelPricesDto | null> {

@@ -6,6 +6,8 @@ import { PHOTOS } from './core/destination-photos';
 import { SavedTripsService } from './core/local-lists';
 import { IconComponent } from './shared/icon.component';
 import { AccountMenuComponent } from './shared/account-menu.component';
+import { NewsDropComponent } from './shared/news-drop.component';
+import { NewsInboxComponent } from './shared/news-inbox.component';
 import { ClientConfigService } from './core/client-config.service';
 import { I18nService, Lang, switchUrlLang } from './core/i18n/i18n.service';
 import { TranslatePipe } from './core/i18n/translate.pipe';
@@ -13,7 +15,7 @@ import { TranslatePipe } from './core/i18n/translate.pipe';
 @Component({
   selector: 'app-root',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, TranslatePipe, IconComponent, AccountMenuComponent],
+  imports: [RouterOutlet, RouterLink, RouterLinkActive, TranslatePipe, IconComponent, AccountMenuComponent, NewsInboxComponent, NewsDropComponent],
   host: { '[class.is-home]': 'isHome()' },
   template: `
     <a class="skip-link" href="#main">{{ 'app.skip' | t }}</a>
@@ -39,11 +41,13 @@ import { TranslatePipe } from './core/i18n/translate.pipe';
           <a [routerLink]="i18n.path()">{{ 'nav.home' | t }}</a>
           <a [routerLink]="i18n.path()" fragment="destinations">{{ 'nav.destinations' | t }}</a>
           <a [routerLink]="i18n.path('flights')" routerLinkActive="active">{{ 'nav.flights' | t }}</a>
+          <a [routerLink]="i18n.path('news')" routerLinkActive="active">{{ 'nav.news' | t }}</a>
           <a [routerLink]="i18n.path('transit')" routerLinkActive="active" class="nav-live"><span class="live-pulse" aria-hidden="true"></span>{{ 'nav.transit' | t }}</a>
           <a [routerLink]="i18n.path()" fragment="how">{{ 'nav.how' | t }}</a>
           <a [routerLink]="i18n.path()" fragment="about">{{ 'nav.about' | t }}</a>
         </nav>
         <div class="topbar-end">
+          <app-news-inbox />
           <a class="saved-link-header" [routerLink]="i18n.path('saved')" [attr.aria-label]="'saved.headerLabel' | t: { count: saved.count() }">
             <app-icon name="heart" [size]="20" />
             @if (saved.count()) { <span class="count-badge" aria-hidden="true">{{ saved.count() }}</span> }
@@ -70,6 +74,7 @@ import { TranslatePipe } from './core/i18n/translate.pipe';
     <main id="main">
       <router-outlet />
     </main>
+    <app-news-drop />
     <footer class="footer">
       <div class="container footer-grid">
         <div>
@@ -81,6 +86,7 @@ import { TranslatePipe } from './core/i18n/translate.pipe';
           <ul class="footer-links">
             <li><a [routerLink]="i18n.path()" fragment="destinations">{{ 'nav.destinations' | t }}</a></li>
             <li><a [routerLink]="i18n.path('flights')">{{ 'nav.flights' | t }}</a></li>
+            <li><a [routerLink]="i18n.path('news')">{{ 'nav.news' | t }}</a></li>
             <li><a [routerLink]="i18n.path('transit')">{{ 'nav.transit' | t }}</a></li>
             <li><a [routerLink]="i18n.path()" fragment="how">{{ 'nav.how' | t }}</a></li>
             <li><a [routerLink]="i18n.path()" fragment="about">{{ 'nav.about' | t }}</a></li>

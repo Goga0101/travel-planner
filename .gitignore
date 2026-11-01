@@ -24,3 +24,6 @@ Thumbs.db
 .vscode/*
 !.vscode/extensions.json
 *.local.ps1
+
+# World news: downloaded headlines and the agent draft (rebuilt on every run)
+scripts/news/.cache/

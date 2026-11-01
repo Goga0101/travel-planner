@@ -12,6 +12,7 @@ import { IconComponent } from '../../shared/icon.component';
 import { LocalDatePipe, StopsPipe } from '../../shared/pipes';
 import { FareMonthsComponent } from './fare-months.component';
 import { FlightOptionsComponent } from './flight-options.component';
+import { TripNewsComponent } from '../../shared/trip-news.component';
 
 /** The day picked on a route's calendar: the route and the cheapest fare of that day. */
 export interface PickedFlight {
@@ -33,7 +34,7 @@ type Mode = 'ask' | 'round' | 'oneway';
   selector: 'app-trip-dialog',
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [TranslatePipe, IconComponent, ExternalLinkComponent, ErrorBannerComponent, AirlineComponent, LocalDatePipe, StopsPipe, FareMonthsComponent,
-    FlightOptionsComponent],
+    FlightOptionsComponent, TripNewsComponent],
   styles: `
     dialog { width: min(1000px, calc(100vw - 32px)); max-height: calc(100dvh - 32px); padding: 0; border: 0; border-radius: var(--radius-lg);
       background: var(--bg); color: var(--text); box-shadow: 0 30px 80px rgba(8, 24, 40, .35); overflow: hidden; }
@@ -92,6 +93,8 @@ type Mode = 'ask' | 'round' | 'oneway';
   template: `
     <dialog #dialog (close)="closed.emit()" (click)="backdropClick($event)" [attr.aria-labelledby]="'td-title'">
       @if (flight(); as f) {
+        <!-- Inside the dialog so the news cards and panel sit above its backdrop. -->
+        <app-trip-news [airport]="f.toCode" />
         <header class="td-head">
           <div>
             <h2 id="td-title">{{ f.fromName }} → {{ f.toName }}</h2>

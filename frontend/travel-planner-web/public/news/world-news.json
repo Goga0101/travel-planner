@@ -1,0 +1,1468 @@
+{
+  "$comment": "Written by scripts/news/build-news.mjs from the world-news-editor agent draft. Do not edit by hand.",
+  "generatedAt": "2026-11-01T20:32:14.917Z",
+  "countries": {
+    "AT": {
+      "name": {
+        "en": "Austria",
+        "ka": "ავსტრია"
+      },
+      "region": "europe"
+    },
+    "AU": {
+      "name": {
+        "en": "Australia",
+        "ka": "ავსტრალია"
+      },
+      "region": "oceania"
+    },
+    "BR": {
+      "name": {
+        "en": "Brazil",
+        "ka": "ბრაზილია"
+      },
+      "region": "americas"
+    },
+    "CA": {
+      "name": {
+        "en": "Canada",
+        "ka": "კანადა"
+      },
+      "region": "americas"
+    },
+    "EG": {
+      "name": {
+        "en": "Egypt",
+        "ka": "ეგვიპტე"
+      },
+      "region": "middleEastAfrica"
+    },
+    "ES": {
+      "name": {
+        "en": "Spain",
+        "ka": "ესპანეთი"
+      },
+      "region": "europe"
+    },
+    "FR": {
+      "name": {
+        "en": "France",
+        "ka": "საფრანგეთი"
+      },
+      "region": "europe"
+    },
+    "GB": {
+      "name": {
+        "en": "United Kingdom",
+        "ka": "გაერთიანებული სამეფო"
+      },
+      "region": "europe"
+    },
+    "GR": {
+      "name": {
+        "en": "Greece",
+        "ka": "საბერძნეთი"
+      },
+      "region": "europe"
+    },
+    "HK": {
+      "name": {
+        "en": "Hong Kong",
+        "ka": "ჰონგკონგი"
+      },
+      "region": "asia"
+    },
+    "IN": {
+      "name": {
+        "en": "India",
+        "ka": "ინდოეთი"
+      },
+      "region": "asia"
+    },
+    "IT": {
+      "name": {
+        "en": "Italy",
+        "ka": "იტალია"
+      },
+      "region": "europe"
+    },
+    "KR": {
+      "name": {
+        "en": "South Korea",
+        "ka": "სამხრეთ კორეა"
+      },
+      "region": "asia"
+    },
+    "PL": {
+      "name": {
+        "en": "Poland",
+        "ka": "პოლონეთი"
+      },
+      "region": "europe"
+    },
+    "PT": {
+      "name": {
+        "en": "Portugal",
+        "ka": "პორტუგალია"
+      },
+      "region": "europe"
+    },
+    "SG": {
+      "name": {
+        "en": "Singapore",
+        "ka": "სინგაპური"
+      },
+      "region": "asia"
+    },
+    "TH": {
+      "name": {
+        "en": "Thailand",
+        "ka": "ტაილანდი"
+      },
+      "region": "asia"
+    },
+    "TR": {
+      "name": {
+        "en": "Türkiye",
+        "ka": "თურქეთი"
+      },
+      "region": "europe"
+    },
+    "US": {
+      "name": {
+        "en": "United States",
+        "ka": "აშშ"
+      },
+      "region": "americas"
+    },
+    "ZA": {
+      "name": {
+        "en": "South Africa",
+        "ka": "სამხრეთ აფრიკა"
+      },
+      "region": "middleEastAfrica"
+    }
+  },
+  "sources": {
+    "rtve": {
+      "name": "RTVE",
+      "url": "https://www.rtve.es/noticias/",
+      "language": "es",
+      "kind": "Public broadcaster"
+    },
+    "sabc": {
+      "name": "SABC News",
+      "url": "https://www.sabcnews.com",
+      "language": "en",
+      "kind": "Public broadcaster"
+    },
+    "france24": {
+      "name": "France 24",
+      "url": "https://www.france24.com/fr/france/",
+      "language": "fr",
+      "kind": "Public broadcaster"
+    },
+    "ert": {
+      "name": "ERT News",
+      "url": "https://www.ertnews.gr",
+      "language": "el",
+      "kind": "Public broadcaster"
+    },
+    "agenciabrasil": {
+      "name": "Agência Brasil (EBC)",
+      "url": "https://agenciabrasil.ebc.com.br",
+      "language": "pt",
+      "kind": "Public broadcaster"
+    },
+    "cbc": {
+      "name": "CBC/Radio-Canada (ICI Radio-Canada)",
+      "url": "https://ici.radio-canada.ca/info",
+      "language": "fr",
+      "kind": "Public broadcaster"
+    },
+    "trt": {
+      "name": "TRT Haber",
+      "url": "https://www.trthaber.com",
+      "language": "tr",
+      "kind": "Public broadcaster"
+    },
+    "sis": {
+      "name": "State Information Service (SIS)",
+      "url": "https://sis.gov.eg/en/",
+      "language": "en",
+      "kind": "Public broadcaster"
+    },
+    "rthk": {
+      "name": "RTHK",
+      "url": "https://news.rthk.hk/rthk/en/",
+      "language": "en",
+      "kind": "Public broadcaster"
+    },
+    "cna": {
+      "name": "CNA (Mediacorp)",
+      "url": "https://www.channelnewsasia.com/singapore",
+      "language": "en",
+      "kind": "Public broadcaster"
+    },
+    "kbs": {
+      "name": "KBS World",
+      "url": "https://world.kbs.co.kr/service/news_list.htm?lang=e",
+      "language": "en",
+      "kind": "Public broadcaster"
+    },
+    "abc-au": {
+      "name": "ABC News (Australia)",
+      "url": "https://www.abc.net.au/news",
+      "language": "en",
+      "kind": "Public broadcaster"
+    },
+    "gdacs": {
+      "name": "GDACS (UN / European Commission)",
+      "url": "https://www.gdacs.org",
+      "language": "en",
+      "kind": "Disaster alerts"
+    },
+    "bbc": {
+      "name": "BBC News",
+      "url": "https://www.bbc.com/news/uk",
+      "language": "en",
+      "kind": "Public broadcaster"
+    },
+    "rtp": {
+      "name": "RTP Notícias",
+      "url": "https://www.rtp.pt/noticias/",
+      "language": "pt",
+      "kind": "Public broadcaster"
+    },
+    "polskieradio": {
+      "name": "Polskie Radio",
+      "url": "https://www.polskieradio.pl/395",
+      "language": "pl",
+      "kind": "Public broadcaster"
+    },
+    "thaipbs": {
+      "name": "Thai PBS World",
+      "url": "https://www.thaipbsworld.com",
+      "language": "en",
+      "kind": "Public broadcaster"
+    },
+    "fcdo": {
+      "name": "UK FCDO travel advice",
+      "url": "https://www.gov.uk/foreign-travel-advice",
+      "language": "en",
+      "kind": "Official travel advice"
+    },
+    "orf": {
+      "name": "ORF",
+      "url": "https://orf.at",
+      "language": "de",
+      "kind": "Public broadcaster"
+    }
+  },
+  "items": [
+    {
+      "id": "es-2026-10-28-toledo-high-speed-train-collision",
+      "country": "ES",
+      "category": "transport",
+      "importance": "notice",
+      "publishedAt": "2026-11-01T18:36:00.000Z",
+      "expiresAt": "2026-12-01T00:00:00.000Z",
+      "sourceId": "rtve",
+      "url": "https://www.rtve.es/noticias/20261101/accidente-tren-directo-ultima-hora-heridos/17295258.shtml",
+      "originalLanguage": "es",
+      "title": {
+        "ka": "ესპანეთი: ტოლედოს კატასტროფის შემდეგ მადრიდი–ანდალუსიის ჩქაროსნული ხაზი დაკეტილია, Renfe დეკემბრამდე ბილეთებს არ ყიდის",
+        "en": "Spain: Madrid–Andalusia high-speed line stays shut after Toledo crash; Renfe halts sales until December"
+      },
+      "summary": {
+        "ka": "RTVE-ის ცნობით, 28 ოქტომბერს ტოლედოს პროვინციაში, ურდასთან, ორი ჩქაროსნული მატარებლის შეჯახებას სულ მცირე 69 ადამიანის სიცოცხლე ემსხვერპლა. მას შემდეგ მადრიდი–ანდალუსიის ჩქაროსნულ ხაზზე მოძრაობა ორივე მიმართულებით შეჩერებულია, Renfe კი ამ მარშრუტზე ბილეთებს დეკემბრამდე აღარ ყიდის. სამხრეთ ესპანეთში მოსახვედრად RTVE ალტერნატივად თვითმფრინავს, ავტობუსსა და მანქანას ასახელებს.",
+        "en": "The collision of two high-speed trains near Urda, in the province of Toledo, on 28 October killed at least 69 people, RTVE reports. Since then the Madrid–Andalusia high-speed line has been closed in both directions, and Renfe has stopped selling tickets on the route until December. RTVE points to flights, coaches and cars as the ways to reach southern Spain for now."
+      },
+      "tip": {
+        "ka": "თუ მადრიდიდან ანდალუსიაში მატარებლით მგზავრობას გეგმავდით, წინასწარ მოიფიქრეთ ალტერნატივა: ფრენა, ავტობუსი ან მანქანა.",
+        "en": "If you planned to go by train between Madrid and Andalusia, arrange a flight, coach or car instead."
+      },
+      "places": [
+        {
+          "code": "madrid",
+          "city": {
+            "en": "Madrid",
+            "ka": "მადრიდი"
+          },
+          "iata": "MAD"
+        }
+      ]
+    },
+    {
+      "id": "za-2026-11-01-election-day-public-holiday",
+      "country": "ZA",
+      "category": "events",
+      "importance": "info",
+      "publishedAt": "2026-11-01T18:26:14.000Z",
+      "expiresAt": "2026-11-05T00:00:00.000Z",
+      "sourceId": "sabc",
+      "url": "https://www.sabcnews.com/sabcnews/1173906-2/",
+      "originalLanguage": "en",
+      "title": {
+        "ka": "სამხრეთ აფრიკა: 4 ნოემბერს ადგილობრივი არჩევნებია, დღე უქმედ გამოცხადდა",
+        "en": "South Africa: local elections on 4 November, declared a public holiday"
+      },
+      "summary": {
+        "ka": "სამხრეთ აფრიკაში ამ კვირაში ადგილობრივი არჩევნები იმართება: სპეციალური კენჭისყრა 2 და 3 ნოემბერს ტარდება, მთავარი საარჩევნო დღე, ოთხშაბათი, 4 ნოემბერი, კი უქმე დღედ გამოცხადდა. SABC-ის ცნობით, საარჩევნო კომისია აფრთხილებს, რომ კვაზულუ-ნატალის, ხაუტენგისა და მპუმალანგას ნაწილში წვიმაა მოსალოდნელი, რამდენიმე სხვა პროვინციაში კი — ცხელი ამინდი.",
+        "en": "South Africa holds local government elections this week: special voting takes place on 2 and 3 November, and the main voting day, Wednesday 4 November, has been declared a public holiday. The Electoral Commission expects rain in parts of KwaZulu-Natal, Gauteng and Mpumalanga and hot weather in several other provinces, SABC reports."
+      },
+      "tip": {
+        "ka": "4 ნოემბერს ზოგიერთი მაღაზია და დაწესებულება შეიძლება დაკეტილი იყოს — სამუშაო საათები წინასწარ გადაამოწმეთ.",
+        "en": "Some shops and offices may be closed on 4 November, so check opening hours in advance."
+      },
+      "places": []
+    },
+    {
+      "id": "fr-2026-11-01-national-strike-5-november",
+      "country": "FR",
+      "category": "transport",
+      "importance": "notice",
+      "publishedAt": "2026-11-01T14:39:46.000Z",
+      "expiresAt": "2026-11-07T00:00:00.000Z",
+      "sourceId": "france24",
+      "url": "https://www.france24.com/fr/france/20261101-lyc%C3%A9es-seront-bloqu%C3%A9s-pour-rentr%C3%A9e-mouvement-lyc%C3%A9ens-appelle-mobilisation",
+      "originalLanguage": "fr",
+      "title": {
+        "ka": "საფრანგეთში 5 ნოემბერს საერთო გაფიცვაა დაგეგმილი, სკოლების ბლოკირება 2 ნოემბრიდან იწყება",
+        "en": "France: nationwide strike day on 5 November, school blockades from 2 November"
+      },
+      "summary": {
+        "ka": "ხუთშაბათი, 5 ნოემბერი, საფრანგეთში დარგთაშორისი გაფიცვის დღედ არის გამოცხადებული. France 24-ის ცნობით, მოსწავლეთა და სტუდენტთა ორგანიზაციები 2 ნოემბრიდან სკოლების ბლოკირებას აპირებენ, 3 და 5 ნოემბერს კი — სკოლებისა და უნივერსიტეტების. სტატიაში ჯერ არ არის ნათქვამი, როგორ აისახება გაფიცვა მატარებლებზე, მეტროსა და ფრენებზე.",
+        "en": "Thursday 5 November is a cross-sector strike day in France. According to France 24, high-school and student groups plan to blockade schools from Monday 2 November, and schools and universities on 3 and 5 November. The report does not yet say how trains, the metro or flights will be affected."
+      },
+      "tip": {
+        "ka": "თუ 5 ნოემბრის ახლოს მოგზაურობთ, შეამოწმეთ SNCF-ის, RATP-ისა და თქვენი ავიაკომპანიის ინფორმაცია მოძრაობის ცვლილებების შესახებ.",
+        "en": "If you travel around 5 November, check SNCF, RATP and your airline for service changes."
+      },
+      "places": []
+    },
+    {
+      "id": "gr-2026-11-01-storms-epirus-floods-volos",
+      "country": "GR",
+      "category": "weather",
+      "importance": "notice",
+      "publishedAt": "2026-11-01T14:07:25.000Z",
+      "expiresAt": "2026-11-06T00:00:00.000Z",
+      "sourceId": "ert",
+      "url": "https://www.ertnews.gr/perifereiakoi-stathmoi/ioanina/isxyres-vroxes-kai-kataigides-apo-to-apogeyma-tis-deyteras-stin-ipeiro/",
+      "originalLanguage": "el",
+      "title": {
+        "ka": "საბერძნეთი: 2 ნოემბრიდან ეპირში ძლიერი წვიმა და ჭექა-ქუხილია მოსალოდნელი",
+        "en": "Greece: heavy rain and storms forecast in Epirus from 2 November"
+      },
+      "summary": {
+        "ka": "ERT-ის ცნობით, საბერძნეთის ეროვნულმა მეტეოროლოგიურმა სამსახურმა ამინდის გაუარესების შესახებ საგანგებო ბიულეტენი გამოსცა: 2 ნოემბრის მეორე ნახევრიდან ეპირში, ძირითადად სანაპიროზე, ძლიერი წვიმა, ჭექა-ქუხილი და ადგილებზე სეტყვაა მოსალოდნელი. ცნობაში ათენი ნახსენები არ არის.",
+        "en": "Greece's national weather service has issued an emergency bulletin on worsening weather, with heavy rain, thunderstorms and local hail expected in Epirus, mainly along the coast, from the afternoon of 2 November, ERT reports. The report does not mention Athens."
+      },
+      "tip": {
+        "ka": "როგორც ადგილობრივი სამსახურები გირჩევენ, ძლიერი წვიმის შემდეგ რამდენიმე საათი მოერიდეთ გზაზე გასვლას.",
+        "en": "As local officials advise, avoid driving for a few hours after heavy rain ends."
+      },
+      "places": []
+    },
+    {
+      "id": "br-2026-11-01-storm-warning-southeast",
+      "country": "BR",
+      "category": "weather",
+      "importance": "info",
+      "publishedAt": "2026-11-01T14:01:00.000Z",
+      "expiresAt": "2026-11-08T00:00:00.000Z",
+      "sourceId": "agenciabrasil",
+      "url": "https://agenciabrasil.ebc.com.br/meio-ambiente/noticia/2026-11/novembro-comeca-com-chuvas-no-norte-centro-oeste-e-sudeste",
+      "originalLanguage": "pt",
+      "title": {
+        "ka": "ბრაზილია: ნოემბრის დასაწყისში სამხრეთ-აღმოსავლეთში ჭექა-ქუხილის საფრთხეა",
+        "en": "Brazil: storm risk across the south-east as November begins"
+      },
+      "summary": {
+        "ka": "Agência Brasil-ის ცნობით, ბრაზილიის ეროვნულმა მეტეოროლოგიურმა ინსტიტუტმა (Inmet) ჭექა-ქუხილის შესაძლო საფრთხის გაფრთხილება გამოსცა სამხრეთ-აღმოსავლეთ რეგიონისთვის, სადაც რიო-დე-ჟანეიროც მდებარეობს, ასევე ცენტრალურ-დასავლეთისა და ჩრდილოეთის ნაწილისთვის. წვიმა თითქმის მთელ სამხრეთ-აღმოსავლეთშია მოსალოდნელი, ყველაზე ძლიერი ჭექა-ქუხილი — მინას-ჟერაისსა და ესპირიტუ-სანტუში.",
+        "en": "Brazil's national weather institute Inmet has issued a potential-danger storm warning for the south-east, the region that includes Rio de Janeiro, as well as for the centre-west and parts of the north, Agência Brasil reports. Rain is expected across almost the whole south-east, with the strongest storms likely in Minas Gerais and Espírito Santo."
+      },
+      "places": [
+        {
+          "code": "riodejaneiro",
+          "city": {
+            "en": "Rio de Janeiro",
+            "ka": "რიო-დე-ჟანეირო"
+          },
+          "iata": "GIG"
+        }
+      ]
+    },
+    {
+      "id": "ca-2026-11-01-british-columbia-keeps-summer-time",
+      "country": "CA",
+      "category": "transport",
+      "importance": "info",
+      "publishedAt": "2026-11-01T13:21:59.000Z",
+      "expiresAt": "2026-11-15T00:00:00.000Z",
+      "sourceId": "cbc",
+      "url": "https://ici.radio-canada.ca/nouvelle/2297392/changement-heure-perturbation-pct",
+      "originalLanguage": "fr",
+      "title": {
+        "ka": "კანადა: ქვეყნის უმეტეს ნაწილში საათები უკან გადაიწია, ბრიტანეთის კოლუმბია კი ზაფხულის დროზე დარჩა",
+        "en": "Canada: clocks went back in most of the country, but British Columbia kept summer time"
+      },
+      "summary": {
+        "ka": "1 ნოემბერს ჩრდილოეთ ამერიკის უმეტეს ნაწილში, მათ შორის ტორონტოში, საათები ერთი საათით უკან გადაწიეს. ბრიტანეთის კოლუმბიის დიდი ნაწილი კი სამუდამოდ ზაფხულის დროზე დარჩა და ახალ, წყნარი ოკეანის სასაათო სარტყელზე გადავიდა. Radio-Canada-ზე გამოქვეყნებული ცნობით, ამან შეიძლება კალენდრის აპლიკაციებში ადრე ჩაწერილი შეხვედრების დრო აურიოს, ხოლო ბრიტანეთის კოლუმბიასა და აშშ-ის ვაშინგტონის შტატს შორის მატარებლისა და ბორნის განრიგში მგზავრობის ხანგრძლივობა სხვანაირად გამოჩნდება.",
+        "en": "On 1 November most of North America, Toronto included, turned the clocks back one hour. Most of British Columbia instead stayed on summer time for good, under a new Pacific Time zone. A report published by Radio-Canada warns that calendar entries made before software updates may show the wrong time, and that train and ferry timetables between British Columbia and Washington State will show unusual journey lengths."
+      },
+      "tip": {
+        "ka": "თუ ბრიტანეთის კოლუმბიაში მიემგზავრებით ან იქიდან ბრუნდებით, გადაამოწმეთ ბილეთებსა და კალენდარში მითითებული დრო.",
+        "en": "If you travel to or from British Columbia, double-check the times on your tickets and in your calendar."
+      },
+      "places": []
+    },
+    {
+      "id": "tr-2026-11-01-istanbul-showers-cooler-thursday",
+      "country": "TR",
+      "category": "weather",
+      "importance": "info",
+      "publishedAt": "2026-11-01T11:49:00.000Z",
+      "expiresAt": "2026-11-08T00:00:00.000Z",
+      "sourceId": "trt",
+      "url": "https://www.trthaber.com/haber/turkiye/yeni-haftada-hava-durumu-nasil-olacak-961881.html",
+      "originalLanguage": "tr",
+      "title": {
+        "ka": "სტამბოლი: სამი დღე თავსხმა და ჭექა-ქუხილი, ხუთშაბათიდან აცივდება",
+        "en": "Istanbul: three days of showers and thunderstorms, cooler from Thursday"
+      },
+      "summary": {
+        "ka": "TRT Haber-ის ცნობით, სტამბოლში 2-დან 4 ნოემბრამდე თავსხმა და ადგილებზე ჭექა-ქუხილია მოსალოდნელი; ყველაზე ძლიერი წვიმა და ქარი ოთხშაბათს იქნება. დღის ტემპერატურა დაახლოებით 20°C-დან 15–16°C-მდე დაიწევს, ხუთშაბათიდან კი, დასავლეთის რეგიონებიდან დაწყებული, შესამჩნევად აცივდება. ძლიერი წვიმის გაფრთხილება მოქმედებს იზმირში, აიდინსა და მუღლაში.",
+        "en": "According to TRT Haber, Istanbul can expect showers and occasional thunderstorms from 2 to 4 November, with the heaviest rain and strong wind on Wednesday. Daytime highs drop from about 20°C to 15-16°C, and it turns noticeably colder from Thursday, starting in the west. Heavy-rain warnings are in force for İzmir, Aydın and Muğla."
+      },
+      "places": [
+        {
+          "code": "istanbul",
+          "city": {
+            "en": "Istanbul",
+            "ka": "სტამბოლი"
+          },
+          "iata": "IST"
+        }
+      ]
+    },
+    {
+      "id": "eg-2026-11-01-grand-egyptian-museum-first-year",
+      "country": "EG",
+      "category": "tourism",
+      "importance": "info",
+      "publishedAt": "2026-11-01T11:27:00.000Z",
+      "expiresAt": "2026-11-21T00:00:00.000Z",
+      "sourceId": "sis",
+      "url": "https://sis.gov.eg/en/media-center/news/grand-egyptian-museum-welcomes-more-than-5-million-visitors-in-1st-year/",
+      "originalLanguage": "en",
+      "title": {
+        "ka": "ეგვიპტე: დიდი ეგვიპტური მუზეუმი პირველ წლისთავს სინათლის შოუთი აღნიშნავს; ფრთხილად ყალბ საიტებთან",
+        "en": "Egypt: Grand Egyptian Museum marks its first year with a light show; watch out for fake websites"
+      },
+      "summary": {
+        "ka": "ეგვიპტის სახელმწიფო საინფორმაციო სამსახურის ცნობით, კაიროსთან მდებარე დიდ ეგვიპტურ მუზეუმს გახსნის შემდეგ 5 მილიონზე მეტი ადამიანი ეწვია. მუზეუმის აღმასრულებელმა დირექტორმა მთავარ პრობლემებად ხალხმრავლობა და ვიზიტორების შეცდომაში შემყვანი ყალბი ვებგვერდები დაასახელა. 1 ნოემბერს დიდ დარბაზში იწყება სინათლის ხელოვნების შოუ „მარადიული მზე“ — საიუბილეო ღონისძიებების პირველი ნაწილი, რომლებიც 2026 წლის ბოლომდე გაგრძელდება.",
+        "en": "The Grand Egyptian Museum near Cairo has welcomed more than 5 million visitors since it opened, its chief executive told Egypt's State Information Service. He named overcrowding and fake websites that mislead visitors as the main problems. Anniversary events begin on 1 November with the 'Eternal Sun' light-art show in the Grand Hall, the first in a series running to the end of 2026."
+      },
+      "tip": {
+        "ka": "ბილეთები მხოლოდ მუზეუმის ოფიციალური არხებით შეიძინეთ.",
+        "en": "Buy tickets only through the museum's official channels."
+      },
+      "places": [
+        {
+          "code": "cairo",
+          "city": {
+            "en": "Cairo",
+            "ka": "კაირო"
+          },
+          "iata": "CAI"
+        }
+      ]
+    },
+    {
+      "id": "hk-2026-11-01-warmest-october-on-record",
+      "country": "HK",
+      "category": "weather",
+      "importance": "info",
+      "publishedAt": "2026-11-01T10:27:16.000Z",
+      "expiresAt": "2026-11-10T00:00:00.000Z",
+      "sourceId": "rthk",
+      "url": "https://news.rthk.hk/rthk/en/component/k2/1876147-20261101.htm",
+      "originalLanguage": "en",
+      "title": {
+        "ka": "ჰონგკონგში ყველაზე თბილი ოქტომბერი დაფიქსირდა, უახლოეს დღეებში ოდნავ აგრილდება",
+        "en": "Hong Kong had its warmest October on record; slightly cooler days ahead"
+      },
+      "summary": {
+        "ka": "RTHK-ის ცნობით, ჰონგკონგის ობსერვატორიის მონაცემებით, 2026 წლის ოქტომბერი 1884 წლიდან, დაკვირვების დაწყების შემდეგ, ყველაზე თბილი იყო: საშუალო ტემპერატურამ 27,6°C შეადგინა. ობსერვატორია ამას ელ-ნინიოს, სუსტ ჩრდილო-აღმოსავლეთის მუსონსა და კლიმატის ცვლილებას უკავშირებს. უახლოეს დღეებში ძლიერი ჩრდილო-აღმოსავლეთის მუსონია მოსალოდნელი, რაც ტემპერატურას ოდნავ დასწევს.",
+        "en": "The Hong Kong Observatory says October 2026 was the warmest since records began in 1884, with a mean temperature of 27.6°C, RTHK reports. It links the warmth to El Niño, a weak north-east monsoon and climate change. A fresh to strong north-east monsoon is expected in the coming days, bringing slightly lower temperatures."
+      },
+      "places": [
+        {
+          "code": "hongkong",
+          "city": {
+            "en": "Hong Kong",
+            "ka": "ჰონგკონგი"
+          },
+          "iata": "HKG"
+        }
+      ]
+    },
+    {
+      "id": "sg-2026-11-01-deepavali-checkpoint-traffic",
+      "country": "SG",
+      "category": "transport",
+      "importance": "notice",
+      "publishedAt": "2026-11-01T05:50:59.000Z",
+      "expiresAt": "2026-11-10T00:00:00.000Z",
+      "sourceId": "cna",
+      "url": "https://www.channelnewsasia.com/singapore/heavy-traffic-woodlands-tuas-checkpoints-6510666",
+      "originalLanguage": "en",
+      "title": {
+        "ka": "სინგაპურ–მალაიზიის სახმელეთო გამშვებ პუნქტებზე 6–9 ნოემბერს დიდი რიგებია მოსალოდნელი",
+        "en": "Singapore–Malaysia land checkpoints: heavy traffic expected 6–9 November"
+      },
+      "summary": {
+        "ka": "სინგაპურის საიმიგრაციო და გამშვები პუნქტების სამსახური (ICA) აფრთხილებს, რომ დივალის გრძელი შაბათ-კვირის დროს, 6-დან 9 ნოემბრამდე, მალაიზიასთან სახმელეთო გამშვებ პუნქტებზე მოძრაობა გადატვირთული იქნება. სამსახური მგზავრებს ურჩევს, გზა წინასწარ დაგეგმონ და შეძლებისდაგვარად პიკის საათებს მოერიდონ.",
+        "en": "Singapore's Immigration and Checkpoints Authority has warned of heavy traffic at the land checkpoints with Malaysia over the Deepavali long weekend, from 6 to 9 November. It advises travellers to plan their trip ahead and cross outside peak hours where they can."
+      },
+      "places": [
+        {
+          "code": "singapore",
+          "city": {
+            "en": "Singapore",
+            "ka": "სინგაპური"
+          },
+          "iata": "SIN"
+        }
+      ]
+    },
+    {
+      "id": "kr-2026-11-01-seoul-rain-ends-colder-tuesday",
+      "country": "KR",
+      "category": "weather",
+      "importance": "info",
+      "publishedAt": "2026-11-01T05:26:52.000Z",
+      "expiresAt": "2026-11-06T00:00:00.000Z",
+      "sourceId": "kbs",
+      "url": "https://world.kbs.co.kr/service/news_view.htm?lang=e&Seq_Code=205267",
+      "originalLanguage": "en",
+      "title": {
+        "ka": "სეული: წვიმა 1 ნოემბრის ღამით შეწყდება, 3 ნოემბრიდან აცივდება",
+        "en": "Seoul: rain ends on the night of 1 November, colder from 3 November"
+      },
+      "summary": {
+        "ka": "KBS World-ის ცნობით, კორეის მეტეოროლოგიური სააგენტოს პროგნოზით, სეულსა და კანვონის პროვინციაში წვიმა 1 ნოემბრის ღამით შეწყდება, სხვა რეგიონებში კი 2 ნოემბრის დილამდე გაგრძელდება; ჯამში 5-დან 40 მილიმეტრამდე ნალექია მოსალოდნელი. სამშაბათს, 3 ნოემბერს, ტემპერატურა დაიწევს.",
+        "en": "Citing the Korea Meteorological Administration, KBS World reports that rain over Seoul and Gangwon Province should stop on the night of 1 November, while other regions see rain into the early hours of 2 November, with 5 to 40 mm in total. Temperatures are forecast to fall on Tuesday, 3 November."
+      },
+      "places": [
+        {
+          "code": "seoul",
+          "city": {
+            "en": "Seoul",
+            "ka": "სეული"
+          },
+          "iata": "ICN"
+        }
+      ]
+    },
+    {
+      "id": "au-2026-11-01-fremantle-walyalup-bridge-opens",
+      "country": "AU",
+      "category": "transport",
+      "importance": "info",
+      "publishedAt": "2026-11-01T03:01:20.000Z",
+      "sourceId": "abc-au",
+      "url": "https://www.abc.net.au/news/2026-11-01/fremantle-traffic-bridge-walyalup-bridge-opens-ahead-of-schedule/107311386",
+      "originalLanguage": "en",
+      "title": {
+        "ka": "პერთი: ფრიმანტლის ახალი ხიდი ვადაზე ოთხი თვით ადრე გაიხსნა",
+        "en": "Perth: new Fremantle traffic bridge opens four months early"
+      },
+      "summary": {
+        "ka": "ABC News-ის ცნობით, 1 ნოემბერს მდინარე სუონზე, ფრიმანტლსა და ჩრდილოეთ ფრიმანტლს შორის, ახალი ხიდი ვალიალუპი გაიხსნა — დღისით ფეხით მოსიარულეთათვის, საღამოს კი ავტომობილებისთვის. ის 2026 წლის თებერვალში დაკეტილ ძველ ხიდს ცვლის და უფრო ფართო ტროტუარები აქვს; რაიონში დამატებითი მატარებლები და ავტობუსებიც ამუშავდა.",
+        "en": "The Walyalup Bridge, the new Fremantle traffic bridge over the Swan River between Fremantle and North Fremantle, opened to pedestrians and then, in the evening, to vehicles on 1 November, ABC News reports. It replaces the old bridge closed in February 2026, has wider footpaths, and extra train and bus services have been added."
+      },
+      "expiresAt": "2026-11-15T03:01:20.000Z",
+      "places": [
+        {
+          "code": "perth",
+          "city": {
+            "en": "Perth",
+            "ka": "პერთი"
+          },
+          "iata": "PER"
+        }
+      ]
+    },
+    {
+      "id": "in-2026-11-01-cyclone-murasu-red-alert",
+      "country": "IN",
+      "category": "safety",
+      "importance": "alert",
+      "publishedAt": "2026-11-01T02:23:45.000Z",
+      "expiresAt": "2026-11-08T00:00:00.000Z",
+      "sourceId": "gdacs",
+      "url": "https://www.gdacs.org/report.aspx?eventtype=TC&eventid=1001346",
+      "originalLanguage": "en",
+      "title": {
+        "ka": "ინდოეთი: ტროპიკულ ციკლონ „მურასუზე“ წითელი გაფრთხილება გამოცხადდა",
+        "en": "India: red alert for Tropical Cyclone Murasu"
+      },
+      "summary": {
+        "ka": "გაეროსა და ევროკომისიის სტიქიური უბედურებების გამაფრთხილებელმა სისტემამ GDACS-მა ინდოეთის ოკეანის ჩრდილოეთ ნაწილში ტროპიკულ ციკლონ „მურასუზე“ წითელი გაფრთხილება გამოაცხადა; ქარის მაქსიმალური სიჩქარე დაახლოებით 130 კმ/სთ-ია. ინდოეთში დაახლოებით 1,2 მილიონი ადამიანი ციკლონური ძალის ქარის ზონაშია. GDACS-ის მიერ მოყვანილი მედიაცნობებით, ჩენაისა და ტირუვალურში 2 ნოემბერს სკოლები სიფრთხილის მიზნით დაიკეტა.",
+        "en": "GDACS, the UN and European Commission disaster alert system, has issued a red alert for Tropical Cyclone Murasu in the North Indian Ocean, with maximum sustained winds estimated at 130 km/h. About 1.2 million people in India are in areas exposed to cyclone-force winds. Media reports listed by GDACS say schools in Chennai and Tiruvallur were closed on 2 November as a precaution."
+      },
+      "tip": {
+        "ka": "თუ სამხრეთ ინდოეთში იმყოფებით ან იქ მიემგზავრებით, მიჰყევით ინდოეთის მეტეოროლოგიური დეპარტამენტისა და ადგილობრივი ხელისუფლების მითითებებს; საჭიროების შემთხვევაში დაუკავშირდით საქართველოს საგარეო საქმეთა სამინისტროს საკონსულო სამსახურს.",
+        "en": "If you are in or heading to southern India, follow the India Meteorological Department and local authorities; if you need help, contact the consular service of Georgia's Ministry of Foreign Affairs."
+      },
+      "places": []
+    },
+    {
+      "id": "gb-2026-11-01-airbnb-new-house-rules",
+      "country": "GB",
+      "category": "tourism",
+      "importance": "info",
+      "publishedAt": "2026-11-01T00:17:05.000Z",
+      "expiresAt": "2026-11-15T00:00:00.000Z",
+      "sourceId": "bbc",
+      "url": "https://www.bbc.co.uk/news/articles/ckjwez8g5dyeo",
+      "originalLanguage": "en",
+      "title": {
+        "ka": "Airbnb: მასპინძლებს აღარ შეუძლიათ სტუმრებს ჭურჭლის რეცხვა ან ნაგვის გატანა მოსთხოვონ",
+        "en": "Airbnb: hosts can no longer ask guests to wash up or take out the bins"
+      },
+      "summary": {
+        "ka": "BBC News-ის ცნობით, ნოემბრიდან ძალაში შესული Airbnb-ის ახალი წესებით, მასპინძლებს ეკრძალებათ სტუმრებისთვის ჭურჭლის რეცხვის ან ნაგვის გატანის მოთხოვნა. ცვლილებამ დიდ ბრიტანეთში მასპინძლებსა და სტუმრებს შორის აზრთა სხვადასხვაობა გამოიწვია.",
+        "en": "Under Airbnb rules that take effect in November, hosts must stop asking guests to do the washing-up or take out the rubbish, BBC News reports. The change has divided hosts and guests in the UK."
+      },
+      "places": [
+        {
+          "code": "london",
+          "city": {
+            "en": "London",
+            "ka": "ლონდონი"
+          },
+          "iata": "LHR"
+        }
+      ]
+    },
+    {
+      "id": "pt-2026-10-31-lisbon-rossio-protest-camp",
+      "country": "PT",
+      "category": "safety",
+      "importance": "notice",
+      "publishedAt": "2026-10-31T23:10:17.000Z",
+      "sourceId": "rtp",
+      "url": "https://www.rtp.pt/noticias/pais/manifestantes-montam-tendas-no-rossio-e-na-praca-d-joao-i_e1775855",
+      "originalLanguage": "pt",
+      "title": {
+        "ka": "ლისაბონი: საცხოვრებლის მოთხოვნით მომიტინგეებმა როსიუს მოედანზე კარვები გაშალეს",
+        "en": "Lisbon: housing protesters camp in Rossio square"
+      },
+      "summary": {
+        "ka": "ხელმისაწვდომი საცხოვრებლის მოთხოვნით მომიტინგეებმა ლისაბონის ცენტრში, როსიუს მოედანზე, კარვები გაშალეს და იქ ყოველ საღამოს კრებებს მართავენ; მსგავსი აქცია პორტუშიც, დომ ჟოაუ I-ის მოედანზე გაიმართა. RTP-ის ცნობით, ორივე ქალაქში პოლიციამ აქციის მონაწილეების წინააღმდეგ ძალა გამოიყენა. ორგანიზატორებს არ უთქვამთ, როდემდე დარჩებიან მოედნებზე.",
+        "en": "Housing protesters have pitched tents in Rossio, in central Lisbon, and hold assemblies there every evening; a similar protest took place in Porto's Praça D. João I. According to RTP, police moved against demonstrators in both cities, and the organisers have not said how long the camps will stay."
+      },
+      "expiresAt": "2026-11-21T23:10:17.000Z",
+      "places": [
+        {
+          "code": "lisbon",
+          "city": {
+            "en": "Lisbon",
+            "ka": "ლისაბონი"
+          },
+          "iata": "LIS"
+        }
+      ]
+    },
+    {
+      "id": "pl-2026-10-31-warsaw-constitutional-tribunal-protests",
+      "country": "PL",
+      "category": "safety",
+      "importance": "info",
+      "publishedAt": "2026-10-31T17:05:00.000Z",
+      "sourceId": "polskieradio",
+      "url": "https://www.polskieradio.pl/395/7784/Artykul/3747962,polish-president-holds-talks-with-parliamentary-leaders-as-protests-continue",
+      "originalLanguage": "en",
+      "title": {
+        "ka": "ვარშავა: აქციები და პოლიციის კორდონები საკონსტიტუციო ტრიბუნალთან",
+        "en": "Warsaw: protests and police cordons outside the Constitutional Tribunal"
+      },
+      "summary": {
+        "ka": "პოლონეთის საკონსტიტუციო ტრიბუნალის გარშემო პოლიტიკური დავის ფონზე, 31 ოქტომბერს ვარშავაში სასამართლოს შენობასთან მომიტინგეები კვლავ იკრიბებოდნენ, იუწყება Polskie Radio. ადგილზე პოლიცია რჩებოდა და უსაფრთხოების კორდონები შენარჩუნებული იყო. ძალადობის ან გზების გადაკეტვის შესახებ ცნობებში არაფერია ნათქვამი.",
+        "en": "Amid a political dispute over Poland's Constitutional Tribunal, protesters kept gathering outside the court's headquarters in Warsaw on 31 October, Polskie Radio reports. Police stayed at the scene and security cordons remained in place. The report mentions no violence or road closures."
+      },
+      "expiresAt": "2026-11-14T17:05:00.000Z",
+      "places": [
+        {
+          "code": "warsaw",
+          "city": {
+            "en": "Warsaw",
+            "ka": "ვარშავა"
+          },
+          "iata": "WAW"
+        }
+      ]
+    },
+    {
+      "id": "hk-2026-10-31-flu-season-vaccination-call",
+      "country": "HK",
+      "category": "safety",
+      "importance": "info",
+      "publishedAt": "2026-10-31T10:30:16.000Z",
+      "sourceId": "rthk",
+      "url": "https://news.rthk.hk/rthk/en/component/k2/1876066-20261031.htm",
+      "originalLanguage": "en",
+      "title": {
+        "ka": "ჰონგკონგი: გრიპის სეზონი გრძელდება, ჯანდაცვის დეპარტამენტი აცრისკენ მოუწოდებს",
+        "en": "Hong Kong: flu season not over, health officials urge vaccination"
+      },
+      "summary": {
+        "ka": "RTHK-ის ცნობით, ჰონგკონგის ჯანდაცვის დეპარტამენტი აცხადებს, რომ გრიპის სეზონი ჯერ არ დასრულებულა, და მოსახლეობას აცრისკენ მოუწოდებს. მოწოდება მას შემდეგ გაისმა, რაც თანმხლები დაავადების მქონე შვიდი წლის გოგონა A ტიპის გრიპით კრიტიკულ მდგომარეობაში მოხვდა.",
+        "en": "Hong Kong's Department of Health says the flu season is not over and is urging people to get vaccinated, after a seven-year-old girl with an underlying illness became critically ill with influenza A, RTHK reports."
+      },
+      "expiresAt": "2026-11-14T10:30:16.000Z",
+      "places": [
+        {
+          "code": "hongkong",
+          "city": {
+            "en": "Hong Kong",
+            "ka": "ჰონგკონგი"
+          },
+          "iata": "HKG"
+        }
+      ]
+    },
+    {
+      "id": "pt-2026-10-31-november-strikes-and-marches",
+      "country": "PT",
+      "category": "events",
+      "importance": "info",
+      "publishedAt": "2026-10-31T10:04:42.000Z",
+      "expiresAt": "2026-11-25T00:00:00.000Z",
+      "sourceId": "rtp",
+      "url": "https://www.rtp.pt/noticias/pais/novembro-promete-ser-mes-de-luta-com-varias-greves-e-manifestacoes-agendadas_n1775808",
+      "originalLanguage": "pt",
+      "title": {
+        "ka": "პორტუგალია: ნოემბერში გაფიცვები და მსვლელობებია დაგეგმილი",
+        "en": "Portugal: strikes and marches planned through November"
+      },
+      "summary": {
+        "ka": "RTP-ის ცნობით, ნოემბერი საპროტესტო თვე იქნება: 14 ნოემბერს, 15:00 საათზე, საცხოვრებლის მოთხოვნით მსვლელობები გაიმართება ლისაბონში (ალამედა დომ აფონსუ ენრიკესიდან) და პორტუში; 20 ნოემბერს საჯარო სექტორი იფიცება, რაც ჩვეულებრივ სკოლებსა და ჯანდაცვაზე აისახება; 21 ნოემბერს ლისაბონში პროფკავშირების მსვლელობაა, 24 ნოემბერს კი — შეკრება პარლამენტთან. ტრანსპორტის გაფიცვები ჩამონათვალში არ არის.",
+        "en": "RTP lists a busy month of protests: housing marches at 3 pm on 14 November in Lisbon (from Alameda Dom Afonso Henriques) and Porto, a public-sector strike on 20 November that usually affects schools and health services, a union march in Lisbon on 21 November and a gathering outside parliament on 24 November. No transport strikes are on the list."
+      },
+      "places": [
+        {
+          "code": "lisbon",
+          "city": {
+            "en": "Lisbon",
+            "ka": "ლისაბონი"
+          },
+          "iata": "LIS"
+        }
+      ]
+    },
+    {
+      "id": "fr-2026-10-31-paris-protests-night-curfew",
+      "country": "FR",
+      "category": "safety",
+      "importance": "notice",
+      "publishedAt": "2026-10-31T08:49:56.000Z",
+      "expiresAt": "2026-11-09T00:00:00.000Z",
+      "sourceId": "france24",
+      "url": "https://www.france24.com/fr/france/20261031-acte-iii-de-la-col%C3%A8re-sociale-320-000-manifestants-en-france-selon-le-minist%C3%A8re-de-l-int%C3%A9rieur",
+      "originalLanguage": "fr",
+      "title": {
+        "ka": "საფრანგეთში პროტესტი გრძელდება: შეტაკებები პარიზში და ღამის კომენდანტის საათი ქალაქის ნაწილში",
+        "en": "Protests in France: clashes in Paris and a night curfew in parts of the city"
+      },
+      "summary": {
+        "ka": "31 ოქტომბერს საფრანგეთში ცხოვრების გაძვირების წინააღმდეგ საპროტესტო აქციების მესამე დღე გაიმართა — შინაგან საქმეთა სამინისტროს მონაცემებით, 320 ათასი მონაწილით. საღამოს შეტაკებები მოხდა პარიზსა და მარსელში. France 24-ის ცნობით, პარიზის ზოგიერთ უბანში 31 ოქტომბრისა და 1 ნოემბრის ღამეებში 23:00-დან 06:00-მდე კომენდანტის საათი მოქმედებდა, მსგავსი ზომები კი სხვა ქალაქებშიც ვრცელდება.",
+        "en": "France held a third nationwide day of protests against the cost of living on 31 October; the Interior Ministry counted 320,000 marchers, and there were clashes in Paris and Marseille in the evening. According to France 24, an 11 pm to 6 am curfew applied in parts of Paris on the nights of 31 October and 1 November, and similar measures are spreading to other cities."
+      },
+      "tip": {
+        "ka": "საღამოს გასვლამდე შეამოწმეთ პარიზის პოლიციის პრეფექტურის განცხადებები კომენდანტის საათისა და აქციების მარშრუტების შესახებ.",
+        "en": "Before going out in the evening, check the Paris police prefecture's announcements on curfew zones and protest routes."
+      },
+      "places": [
+        {
+          "code": "paris",
+          "city": {
+            "en": "Paris",
+            "ka": "პარიზი"
+          },
+          "iata": "CDG"
+        }
+      ]
+    },
+    {
+      "id": "th-2026-10-31-cambodia-border-stays-closed",
+      "country": "TH",
+      "category": "rules",
+      "importance": "notice",
+      "publishedAt": "2026-10-31T00:00:00.000Z",
+      "sourceId": "thaipbs",
+      "url": "https://www.thaipbsworld.com/around-thailand/571961",
+      "originalLanguage": "en",
+      "title": {
+        "ka": "ტაილანდისა და კამბოჯის სახმელეთო საზღვარი დაკეტილი რჩება, გახსნის ვადა უცნობია",
+        "en": "Thailand–Cambodia land border stays closed with no reopening date"
+      },
+      "summary": {
+        "ka": "Thai PBS World-ის ცნობით, ტაილანდ-კამბოჯის სახმელეთო საზღვრის შვიდივე გამშვები პუნქტი ადამიანებისა და ტვირთისთვის კვლავ დაკეტილია, როგორც 2025 წლის ივნისიდან. პრემიერ-მინისტრმა ანუტინ ჩარნვირაკულმა 31 ოქტომბერს განაცხადა, რომ საზღვრის გახსნის ვადას ვერ დაასახელებს. ამიტომ ორ ქვეყანას შორის სახმელეთო გზით გადასვლა შეუძლებელია.",
+        "en": "All seven checkpoints on the Thai–Cambodian land border remain closed to people and goods, as they have been since June 2025, Thai PBS World reports. Prime Minister Anutin Charnvirakul said on 31 October that he could not say when they will reopen, so crossing between the two countries overland is not possible."
+      },
+      "expiresAt": "2026-11-21T00:00:00.000Z",
+      "places": []
+    },
+    {
+      "id": "th-2026-10-31-suvarnabhumi-night-runway-repairs",
+      "country": "TH",
+      "category": "transport",
+      "importance": "info",
+      "publishedAt": "2026-10-31T00:00:00.000Z",
+      "expiresAt": "2026-11-12T00:00:00.000Z",
+      "sourceId": "thaipbs",
+      "url": "https://www.thaipbsworld.com/around-thailand/571953",
+      "originalLanguage": "en",
+      "title": {
+        "ka": "ბანგკოკის სუვარნაბჰუმის აეროპორტში ასაფრენ ზოლებს ღამით არემონტებენ",
+        "en": "Bangkok Suvarnabhumi: overnight runway repairs after a plane got stuck"
+      },
+      "summary": {
+        "ka": "28 ოქტომბერს სუვარნაბჰუმის აეროპორტში China Airlines-ის თვითმფრინავის ბორბლები ასაფრენ ზოლში ჩაეფლო, რასაც აეროპორტების ოპერატორი AOT ძლიერ წვიმასა და გრუნტის წყლებს უკავშირებს. Thai PBS World-ის ცნობით, ზოლებს დაახლოებით ათი დღე, 20:00-დან 06:00-მდე, შეამოწმებენ და შეაკეთებენ; AOT-ის თქმით, ზოლს მთლიანად არ დახურავენ.",
+        "en": "After the wheels of a China Airlines plane sank into a runway at Suvarnabhumi on 28 October, which operator AOT blames on heavy rain and groundwater, the runways are being inspected and repaired overnight, from 8 pm to 6 am, for about ten days, Thai PBS World reports. AOT says it will not close a whole runway."
+      },
+      "places": [
+        {
+          "code": "bangkok",
+          "city": {
+            "en": "Bangkok",
+            "ka": "ბანგკოკი"
+          },
+          "iata": "BKK"
+        }
+      ]
+    },
+    {
+      "id": "us-2026-10-30-ebola-health-form-from-3-november",
+      "country": "US",
+      "category": "rules",
+      "importance": "notice",
+      "publishedAt": "2026-10-30T16:55:54.000Z",
+      "expiresAt": "2026-11-30T00:00:00.000Z",
+      "sourceId": "fcdo",
+      "url": "https://www.gov.uk/foreign-travel-advice/usa/entry-requirements",
+      "originalLanguage": "en",
+      "title": {
+        "ka": "აშშ: 3 ნოემბრიდან მგზავრებმა ებოლასთან დაკავშირებული ფორმა უნდა შეავსონ",
+        "en": "USA: travellers must complete an Ebola health form from 3 November"
+      },
+      "summary": {
+        "ka": "დიდი ბრიტანეთის საგარეო საქმეთა სამინისტროს ცნობით, 2026 წლის 3 ნოემბრიდან აშშ-ში ფრენისას ან აშშ-ის გავლით ტრანზიტისას მგზავრმა უნდა შეავსოს ფორმა, სადაც მიუთითებს, იმყოფებოდა თუ არა ბოლო 21 დღის განმავლობაში კონგოს დემოკრატიულ რესპუბლიკაში. ფორმის გარეშე შესაძლოა თვითმფრინავში არ ჩაგსვან. ბოლო დროს კონგოს დრ-ში, უგანდასა ან სამხრეთ სუდანში მყოფ ზოგიერთ პირზე დროებითი შეზღუდვებიც ვრცელდება.",
+        "en": "From 3 November 2026, anyone flying to or transiting through the United States must complete a form stating whether they have been in the Democratic Republic of the Congo in the previous 21 days, the UK Foreign Office says. Passengers without it may be refused boarding. Temporary entry restrictions also apply to some people recently in the DRC, Uganda or South Sudan."
+      },
+      "tip": {
+        "ka": "ფრენამდე თქვენს ავიაკომპანიაში დააზუსტეთ, როგორ და სად უნდა წარადგინოთ ფორმა.",
+        "en": "Before your flight, check with your airline how and where to submit the form."
+      },
+      "places": []
+    },
+    {
+      "id": "it-2026-10-29-riots-northern-cities-milan",
+      "country": "IT",
+      "category": "safety",
+      "importance": "notice",
+      "publishedAt": "2026-10-29T14:15:12.000Z",
+      "sourceId": "fcdo",
+      "url": "https://www.gov.uk/foreign-travel-advice/italy",
+      "originalLanguage": "en",
+      "title": {
+        "ka": "ბრიტანეთის რეკომენდაცია: არეულობა იტალიის ჩრდილოეთ ქალაქებში, მილანში პოლიცია გაძლიერებულია",
+        "en": "UK travel advice: riots in northern Italian cities, more police in Milan"
+      },
+      "summary": {
+        "ka": "დიდი ბრიტანეთის საგარეო საქმეთა სამინისტროს ცნობით, ბოლო დღეებში იტალიის ჩრდილოეთის რამდენიმე ქალაქში დემონსტრაციები ძალადობრივ არეულობასა და მაღაზიების ძარცვაში გადაიზარდა. მილანში პოლიციისა და სამხედროების რაოდენობა გაზრდილია. სამინისტრო აფრთხილებს, რომ დიდ ქალაქებში ახალი აქციებია მოსალოდნელი.",
+        "en": "The UK Foreign Office says recent demonstrations in several northern Italian cities turned into violent riots and looting, and that there is a larger police and military presence in Milan. It warns that more demonstrations may take place in major cities."
+      },
+      "tip": {
+        "ka": "მოერიდეთ დემონსტრაციებს და დაემორჩილეთ ადგილობრივი პოლიციის მითითებებს.",
+        "en": "Keep away from demonstrations and follow the instructions of local police."
+      },
+      "expiresAt": "2026-11-19T14:15:12.000Z",
+      "places": [
+        {
+          "code": "milan",
+          "city": {
+            "en": "Milan",
+            "ka": "მილანი"
+          },
+          "iata": "MXP"
+        }
+      ]
+    },
+    {
+      "id": "th-2026-10-29-phuket-patong-landslide",
+      "country": "TH",
+      "category": "weather",
+      "importance": "notice",
+      "publishedAt": "2026-10-29T00:00:00.000Z",
+      "sourceId": "thaipbs",
+      "url": "https://www.thaipbsworld.com/around-thailand/571833",
+      "originalLanguage": "en",
+      "title": {
+        "ka": "ფუკეტი: ფათონგში წყალდიდობის შემდეგ მეწყერი ჩამოწვა, საფრთხის ზონიდან მოსახლეობა გაიყვანეს",
+        "en": "Phuket: landslide in Patong after floods, residents of risk areas moved out"
+      },
+      "summary": {
+        "ka": "Thai PBS World-ის ცნობით, ფუკეტზე, ფათონგში, მეწყერმა ნა ნაი 3-ის ქუჩა მიწითა და ქვებით დაფარა და ის დაკეტილია; მუნიციპალიტეტმა საფრთხის ზონის მაცხოვრებლები დროებით თავშესაფრებში გადაიყვანა. 26 ოქტომბერს კუნძულზე წყალდიდობამ და ღვარცოფებმა სახლები, სასტუმროები და გზები დააზიანა, ახალმა წვიმებმა კი შესაძლოა კიდევ გამოიწვიოს მეწყრები.",
+        "en": "A landslide has buried Na Nai 3 Road in Patong, Phuket, which is now closed, and the municipality has moved residents of high-risk areas to temporary shelters, Thai PBS World reports. Flash floods and mudslides hit the island on 26 October, damaging homes, hotels and roads, and more rain could trigger further landslides."
+      },
+      "tip": {
+        "ka": "თუ ფათონგში ჩერდებით, ადევნეთ თვალი ადგილობრივი ხელისუფლების განცხადებებს და მოერიდეთ მეწყერსაშიშ ადგილებს.",
+        "en": "If you are staying in Patong, follow local authority announcements and keep away from landslide-prone slopes."
+      },
+      "expiresAt": "2026-11-19T00:00:00.000Z",
+      "places": []
+    },
+    {
+      "id": "at-2026-10-28-vienna-christmas-markets-open",
+      "country": "AT",
+      "category": "events",
+      "importance": "info",
+      "publishedAt": "2026-10-28T11:55:00.000Z",
+      "expiresAt": "2026-11-20T00:00:00.000Z",
+      "sourceId": "orf",
+      "url": "https://wien.orf.at/stories/3377142/",
+      "originalLanguage": "de",
+      "title": {
+        "ka": "ავსტრია: ვენის საშობაო ბაზრობები 6 და 13 ნოემბერს იხსნება",
+        "en": "Austria: Vienna's Christmas markets open on 6 and 13 November"
+      },
+      "summary": {
+        "ka": "ORF-ის ცნობით, ვენაში საშობაო ბაზრობების სეზონი 6 ნოემბერს შტეფანსპლაცის ბაზრობით იწყება. მთავარი ბაზრობა მერიის წინ, რატჰაუსპლაცზე, 13 ნოემბერს გაიხსნება და იმავე დღეს აინთება ფორარლბერგიდან, დამიულსიდან ჩამოტანილი ნაძვის ხე, რომელიც მოედანზე 28 ოქტომბერს დადგეს. სამუშაო საათები ბაზრობის ოფიციალურ ვებგვერდზე, christkindlmarkt.at-ზეა გამოქვეყნებული.",
+        "en": "Vienna's Christmas market season starts on 6 November with the market on Stephansplatz, ORF reports. The main market in front of City Hall, on Rathausplatz, opens on 13 November, when the spruce from Damüls in Vorarlberg, put up on the square on 28 October, will be lit. Opening hours are on the market's official website, christkindlmarkt.at."
+      },
+      "places": [
+        {
+          "code": "vienna",
+          "city": {
+            "en": "Vienna",
+            "ka": "ვენა"
+          },
+          "iata": "VIE"
+        }
+      ]
+    },
+    {
+      "id": "es-2026-10-22-general-strike-11-november",
+      "country": "ES",
+      "category": "transport",
+      "importance": "notice",
+      "publishedAt": "2026-10-22T19:38:00.000Z",
+      "expiresAt": "2026-11-12T00:00:00.000Z",
+      "sourceId": "rtve",
+      "url": "https://www.rtve.es/noticias/20261022/ceoe-renuncia-recurrir-convocatoria-huelga-general-11-noviembre/17279386.shtml",
+      "originalLanguage": "es",
+      "title": {
+        "ka": "ესპანეთი: 11 ნოემბერს ქვეყნის მასშტაბით 24-საათიანი საყოველთაო გაფიცვაა",
+        "en": "Spain: nationwide 24-hour general strike on 11 November"
+      },
+      "summary": {
+        "ka": "ესპანეთის უმსხვილესმა პროფკავშირებმა, CCOO-მ და UGT-მ, რამდენიმე სხვა ორგანიზაციასთან ერთად, 11 ნოემბრისთვის 24-საათიანი საყოველთაო გაფიცვა გამოაცხადეს. მთავარი მოთხოვნები საცხოვრებლის ხელმისაწვდომობა და ხელფასების ზრდაა. დამსაქმებელთა კონფედერაციამ CEOE-მ გაფიცვის გასაჩივრებაზე უარი თქვა. RTVE-ის ცნობით, მინიმალური მომსახურება კანონით დაცულია, თუმცა პროფკავშირები შუადღის შემდეგ მასშტაბურ მსვლელობებს გეგმავენ, ამიტომ ტრანსპორტი და სხვა სერვისები შეიძლება შეფერხდეს.",
+        "en": "Spain's largest unions, CCOO and UGT, joined by several other organisations, have called a 24-hour general strike for 11 November over housing costs and wages. The employers' federation CEOE has dropped its plan to challenge it. Minimum services are protected by law, but according to RTVE the unions are counting on mass marches in the afternoon, so transport and other services may be disrupted."
+      },
+      "tip": {
+        "ka": "11 ნოემბერს გასვლამდე გადაამოწმეთ მატარებლის, მეტროსა და ფრენის განრიგი და შუადღის შემდეგ მოერიდეთ ქალაქის ცენტრში მიმდინარე მსვლელობებს.",
+        "en": "On 11 November, check train, metro and flight times before you set out and keep away from afternoon marches in city centres."
+      },
+      "places": [
+        {
+          "code": "madrid",
+          "city": {
+            "en": "Madrid",
+            "ka": "მადრიდი"
+          },
+          "iata": "MAD"
+        },
+        {
+          "code": "barcelona",
+          "city": {
+            "en": "Barcelona",
+            "ka": "ბარსელონა"
+          },
+          "iata": "BCN"
+        }
+      ]
+    }
+  ],
+  "lookup": {
+    "cities": {
+      "barcelona": "ES",
+      "paris": "FR",
+      "london": "GB",
+      "rome": "IT",
+      "amsterdam": "NL",
+      "prague": "CZ",
+      "vienna": "AT",
+      "budapest": "HU",
+      "berlin": "DE",
+      "lisbon": "PT",
+      "athens": "GR",
+      "milan": "IT",
+      "madrid": "ES",
+      "munich": "DE",
+      "warsaw": "PL",
+      "krakow": "PL",
+      "istanbul": "TR",
+      "copenhagen": "DK",
+      "venice": "IT",
+      "larnaca": "CY",
+      "sydney": "AU",
+      "melbourne": "AU",
+      "brisbane": "AU",
+      "perth": "AU",
+      "auckland": "NZ",
+      "tokyo": "JP",
+      "bangkok": "TH",
+      "singapore": "SG",
+      "bali": "ID",
+      "seoul": "KR",
+      "dubai": "AE",
+      "hongkong": "HK",
+      "kualalumpur": "MY",
+      "delhi": "IN",
+      "newyork": "US",
+      "losangeles": "US",
+      "miami": "US",
+      "toronto": "CA",
+      "cancun": "MX",
+      "riodejaneiro": "BR",
+      "buenosaires": "AR",
+      "cairo": "EG",
+      "marrakech": "MA",
+      "capetown": "ZA"
+    },
+    "airports": {
+      "BCN": "ES",
+      "CDG": "FR",
+      "LHR": "GB",
+      "FCO": "IT",
+      "AMS": "NL",
+      "PRG": "CZ",
+      "VIE": "AT",
+      "BUD": "HU",
+      "BER": "DE",
+      "LIS": "PT",
+      "ATH": "GR",
+      "MXP": "IT",
+      "MAD": "ES",
+      "MUC": "DE",
+      "WAW": "PL",
+      "KRK": "PL",
+      "IST": "TR",
+      "CPH": "DK",
+      "VCE": "IT",
+      "LCA": "CY",
+      "SYD": "AU",
+      "MEL": "AU",
+      "AVV": "AU",
+      "BNE": "AU",
+      "PER": "AU",
+      "AKL": "NZ",
+      "HND": "JP",
+      "NRT": "JP",
+      "BKK": "TH",
+      "DMK": "TH",
+      "SIN": "SG",
+      "DPS": "ID",
+      "ICN": "KR",
+      "GMP": "KR",
+      "DXB": "AE",
+      "DWC": "AE",
+      "HKG": "HK",
+      "KUL": "MY",
+      "DEL": "IN",
+      "JFK": "US",
+      "EWR": "US",
+      "LGA": "US",
+      "LAX": "US",
+      "MIA": "US",
+      "YYZ": "CA",
+      "CUN": "MX",
+      "GIG": "BR",
+      "SDU": "BR",
+      "EZE": "AR",
+      "AEP": "AR",
+      "CAI": "EG",
+      "SPX": "EG",
+      "RAK": "MA",
+      "CPT": "ZA"
+    },
+    "countryNames": {
+      "ES": {
+        "en": "Spain",
+        "ka": "ესპანეთი"
+      },
+      "FR": {
+        "en": "France",
+        "ka": "საფრანგეთი"
+      },
+      "GB": {
+        "en": "United Kingdom",
+        "ka": "გაერთიანებული სამეფო"
+      },
+      "IT": {
+        "en": "Italy",
+        "ka": "იტალია"
+      },
+      "NL": {
+        "en": "Netherlands",
+        "ka": "ნიდერლანდები"
+      },
+      "CZ": {
+        "en": "Czechia",
+        "ka": "ჩეხეთი"
+      },
+      "AT": {
+        "en": "Austria",
+        "ka": "ავსტრია"
+      },
+      "HU": {
+        "en": "Hungary",
+        "ka": "უნგრეთი"
+      },
+      "DE": {
+        "en": "Germany",
+        "ka": "გერმანია"
+      },
+      "PT": {
+        "en": "Portugal",
+        "ka": "პორტუგალია"
+      },
+      "GR": {
+        "en": "Greece",
+        "ka": "საბერძნეთი"
+      },
+      "PL": {
+        "en": "Poland",
+        "ka": "პოლონეთი"
+      },
+      "TR": {
+        "en": "Türkiye",
+        "ka": "თურქეთი"
+      },
+      "DK": {
+        "en": "Denmark",
+        "ka": "დანია"
+      },
+      "CY": {
+        "en": "Cyprus",
+        "ka": "კვიპროსი"
+      },
+      "AU": {
+        "en": "Australia",
+        "ka": "ავსტრალია"
+      },
+      "NZ": {
+        "en": "New Zealand",
+        "ka": "ახალი ზელანდია"
+      },
+      "JP": {
+        "en": "Japan",
+        "ka": "იაპონია"
+      },
+      "TH": {
+        "en": "Thailand",
+        "ka": "ტაილანდი"
+      },
+      "SG": {
+        "en": "Singapore",
+        "ka": "სინგაპური"
+      },
+      "ID": {
+        "en": "Indonesia",
+        "ka": "ინდონეზია"
+      },
+      "KR": {
+        "en": "South Korea",
+        "ka": "სამხრეთ კორეა"
+      },
+      "AE": {
+        "en": "United Arab Emirates",
+        "ka": "არაბთა გაერთიანებული საამიროები"
+      },
+      "HK": {
+        "en": "Hong Kong",
+        "ka": "ჰონგკონგი"
+      },
+      "MY": {
+        "en": "Malaysia",
+        "ka": "მალაიზია"
+      },
+      "IN": {
+        "en": "India",
+        "ka": "ინდოეთი"
+      },
+      "US": {
+        "en": "United States",
+        "ka": "აშშ"
+      },
+      "CA": {
+        "en": "Canada",
+        "ka": "კანადა"
+      },
+      "MX": {
+        "en": "Mexico",
+        "ka": "მექსიკა"
+      },
+      "BR": {
+        "en": "Brazil",
+        "ka": "ბრაზილია"
+      },
+      "AR": {
+        "en": "Argentina",
+        "ka": "არგენტინა"
+      },
+      "EG": {
+        "en": "Egypt",
+        "ka": "ეგვიპტე"
+      },
+      "MA": {
+        "en": "Morocco",
+        "ka": "მაროკო"
+      },
+      "ZA": {
+        "en": "South Africa",
+        "ka": "სამხრეთ აფრიკა"
+      }
+    },
+    "cityNames": {
+      "barcelona": {
+        "en": "Barcelona",
+        "ka": "ბარსელონა"
+      },
+      "paris": {
+        "en": "Paris",
+        "ka": "პარიზი"
+      },
+      "london": {
+        "en": "London",
+        "ka": "ლონდონი"
+      },
+      "rome": {
+        "en": "Rome",
+        "ka": "რომი"
+      },
+      "amsterdam": {
+        "en": "Amsterdam",
+        "ka": "ამსტერდამი"
+      },
+      "prague": {
+        "en": "Prague",
+        "ka": "პრაღა"
+      },
+      "vienna": {
+        "en": "Vienna",
+        "ka": "ვენა"
+      },
+      "budapest": {
+        "en": "Budapest",
+        "ka": "ბუდაპეშტი"
+      },
+      "berlin": {
+        "en": "Berlin",
+        "ka": "ბერლინი"
+      },
+      "lisbon": {
+        "en": "Lisbon",
+        "ka": "ლისაბონი"
+      },
+      "athens": {
+        "en": "Athens",
+        "ka": "ათენი"
+      },
+      "milan": {
+        "en": "Milan",
+        "ka": "მილანი"
+      },
+      "madrid": {
+        "en": "Madrid",
+        "ka": "მადრიდი"
+      },
+      "munich": {
+        "en": "Munich",
+        "ka": "მიუნხენი"
+      },
+      "warsaw": {
+        "en": "Warsaw",
+        "ka": "ვარშავა"
+      },
+      "krakow": {
+        "en": "Kraków",
+        "ka": "კრაკოვი"
+      },
+      "istanbul": {
+        "en": "Istanbul",
+        "ka": "სტამბოლი"
+      },
+      "copenhagen": {
+        "en": "Copenhagen",
+        "ka": "კოპენჰაგენი"
+      },
+      "venice": {
+        "en": "Venice",
+        "ka": "ვენეცია"
+      },
+      "larnaca": {
+        "en": "Larnaca",
+        "ka": "ლარნაკა"
+      },
+      "sydney": {
+        "en": "Sydney",
+        "ka": "სიდნეი"
+      },
+      "melbourne": {
+        "en": "Melbourne",
+        "ka": "მელბურნი"
+      },
+      "brisbane": {
+        "en": "Brisbane",
+        "ka": "ბრისბენი"
+      },
+      "perth": {
+        "en": "Perth",
+        "ka": "პერთი"
+      },
+      "auckland": {
+        "en": "Auckland",
+        "ka": "ოკლენდი"
+      },
+      "tokyo": {
+        "en": "Tokyo",
+        "ka": "ტოკიო"
+      },
+      "bangkok": {
+        "en": "Bangkok",
+        "ka": "ბანგკოკი"
+      },
+      "singapore": {
+        "en": "Singapore",
+        "ka": "სინგაპური"
+      },
+      "bali": {
+        "en": "Bali",
+        "ka": "ბალი"
+      },
+      "seoul": {
+        "en": "Seoul",
+        "ka": "სეული"
+      },
+      "dubai": {
+        "en": "Dubai",
+        "ka": "დუბაი"
+      },
+      "hongkong": {
+        "en": "Hong Kong",
+        "ka": "ჰონგკონგი"
+      },
+      "kualalumpur": {
+        "en": "Kuala Lumpur",
+        "ka": "კუალა-ლუმპური"
+      },
+      "delhi": {
+        "en": "Delhi",
+        "ka": "დელი"
+      },
+      "newyork": {
+        "en": "New York",
+        "ka": "ნიუ-იორკი"
+      },
+      "losangeles": {
+        "en": "Los Angeles",
+        "ka": "ლოს-ანჯელესი"
+      },
+      "miami": {
+        "en": "Miami",
+        "ka": "მაიამი"
+      },
+      "toronto": {
+        "en": "Toronto",
+        "ka": "ტორონტო"
+      },
+      "cancun": {
+        "en": "Cancún",
+        "ka": "კანკუნი"
+      },
+      "riodejaneiro": {
+        "en": "Rio de Janeiro",
+        "ka": "რიო-დე-ჟანეირო"
+      },
+      "buenosaires": {
+        "en": "Buenos Aires",
+        "ka": "ბუენოს-აირესი"
+      },
+      "cairo": {
+        "en": "Cairo",
+        "ka": "კაირო"
+      },
+      "marrakech": {
+        "en": "Marrakech",
+        "ka": "მარაქეში"
+      },
+      "capetown": {
+        "en": "Cape Town",
+        "ka": "კეიპტაუნი"
+      }
+    },
+    "cityAirports": {
+      "barcelona": "BCN",
+      "paris": "CDG",
+      "london": "LHR",
+      "rome": "FCO",
+      "amsterdam": "AMS",
+      "prague": "PRG",
+      "vienna": "VIE",
+      "budapest": "BUD",
+      "berlin": "BER",
+      "lisbon": "LIS",
+      "athens": "ATH",
+      "milan": "MXP",
+      "madrid": "MAD",
+      "munich": "MUC",
+      "warsaw": "WAW",
+      "krakow": "KRK",
+      "istanbul": "IST",
+      "copenhagen": "CPH",
+      "venice": "VCE",
+      "larnaca": "LCA",
+      "sydney": "SYD",
+      "melbourne": "MEL",
+      "brisbane": "BNE",
+      "perth": "PER",
+      "auckland": "AKL",
+      "tokyo": "HND",
+      "bangkok": "BKK",
+      "singapore": "SIN",
+      "bali": "DPS",
+      "seoul": "ICN",
+      "dubai": "DXB",
+      "hongkong": "HKG",
+      "kualalumpur": "KUL",
+      "delhi": "DEL",
+      "newyork": "JFK",
+      "losangeles": "LAX",
+      "miami": "MIA",
+      "toronto": "YYZ",
+      "cancun": "CUN",
+      "riodejaneiro": "GIG",
+      "buenosaires": "EZE",
+      "cairo": "CAI",
+      "marrakech": "RAK",
+      "capetown": "CPT"
+    }
+  }
+}

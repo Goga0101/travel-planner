@@ -192,6 +192,27 @@ internal sealed class UserConfiguration : IEntityTypeConfiguration<User>
     }
 }
 
+internal sealed class JourneyConfiguration : IEntityTypeConfiguration<Journey>
+{
+    public void Configure(EntityTypeBuilder<Journey> b)
+    {
+        b.ToTable("journeys");
+        b.HasKey(x => x.Id);
+        b.Property(x => x.Id).ValueGeneratedNever();
+        b.Property(x => x.DestinationCode).HasMaxLength(64).IsRequired();
+        b.Property(x => x.City).HasMaxLength(128).IsRequired();
+        b.Property(x => x.CountryCode).HasMaxLength(2).IsFixedLength().IsRequired();
+        b.Property(x => x.CompletedDays).IsRequired();
+        b.Ignore(x => x.DayCount);
+        b.Ignore(x => x.IsCompleted);
+        // One journey per traveller and plan; deleting the account deletes its journeys.
+        b.HasIndex(x => new { x.UserId, x.TripPlanId }).IsUnique();
+        b.HasIndex(x => x.CompletedAtUtc);
+        b.HasOne<User>().WithMany().HasForeignKey(x => x.UserId).OnDelete(DeleteBehavior.Cascade);
+        b.HasOne<TripPlan>().WithMany().HasForeignKey(x => x.TripPlanId).OnDelete(DeleteBehavior.Cascade);
+    }
+}
+
 internal sealed class UserLoginConfiguration : IEntityTypeConfiguration<UserLogin>
 {
     public void Configure(EntityTypeBuilder<UserLogin> b)

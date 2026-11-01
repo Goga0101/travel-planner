@@ -84,6 +84,21 @@ public sealed class TripPlansController(ISender sender) : ControllerBase
         sender.Send(new GetStayRouteQuery(id, lat, lon, name), cancellationToken);
 
     /// <summary>
+    /// Recent guest reviews (Tripadvisor) of the hotel picked for this plan, found by its name and position: the last
+    /// two weeks, or the latest few when there are none (Recent = false). 204 when no review source is configured.
+    /// Each call is a paid Tripadvisor request, so it shares the price-refresh rate limit.
+    /// </summary>
+    [HttpGet("{id:guid}/hotel-reviews")]
+    [EnableRateLimiting(ApiConstants.RefreshPolicy)]
+    [ProducesResponseType<HotelReviewsDto>(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType<ValidationProblemDetails>(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<HotelReviewsDto>> GetHotelReviews(
+        Guid id, [FromQuery] string name, [FromQuery] double lat, [FromQuery] double lon, CancellationToken cancellationToken) =>
+        await sender.Send(new GetHotelReviewsQuery(id, name ?? "", lat, lon, "en"), cancellationToken) is { } reviews ? reviews : NoContent();
+
+    /// <summary>
     /// Hotels around the destination whose name contains the text (full or partial), so a hotel found elsewhere can be
     /// chosen as the stay. Each result has a Booking.com search link for the trip dates.
     /// </summary>

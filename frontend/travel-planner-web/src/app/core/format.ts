@@ -79,3 +79,25 @@ function parseIsoDate(value: string): number | null {
   const m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(value ?? '');
   return m ? Date.UTC(Number(m[1]), Number(m[2]) - 1, Number(m[3])) : null;
 }
+
+/**
+ * "2 hours ago" / "2 საათის წინ". Browsers ship no Georgian relative-time data (Intl falls back to English), so Georgian
+ * is written out here; English uses Intl.
+ */
+export function relativeTime(iso: string, lang: FormatLang, now = Date.now()): string {
+  const seconds = (Date.parse(iso) - now) / 1000;
+  const abs = Math.abs(seconds);
+  const [value, unit]: [number, Intl.RelativeTimeFormatUnit] =
+    abs < 3600 ? [Math.round(seconds / 60), 'minute']
+    : abs < 86_400 ? [Math.round(seconds / 3600), 'hour']
+    : abs < 30 * 86_400 ? [Math.round(seconds / 86_400), 'day']
+    : [Math.round(seconds / (30 * 86_400)), 'month'];
+  if (lang === 'en') return new Intl.RelativeTimeFormat('en-GB', { numeric: 'auto' }).format(value, unit);
+  if (unit === 'minute' && Math.abs(value) < 1) return 'ახლახან';
+  if (unit === 'day' && value === -1) return 'გუშინ';
+  if (unit === 'day' && value === 1) return 'ხვალ';
+  const key = unit as 'minute' | 'hour' | 'day' | 'month';
+  const past = { minute: 'წუთის', hour: 'საათის', day: 'დღის', month: 'თვის' }[key];
+  const future = { minute: 'წუთში', hour: 'საათში', day: 'დღეში', month: 'თვეში' }[key];
+  return value < 0 ? `${-value} ${past} წინ` : `${value} ${future}`;
+}

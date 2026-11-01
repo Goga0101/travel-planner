@@ -3,6 +3,8 @@
 
 @if (plan(); as p) {
   @let s = p.summary;
+  <!-- Recent news from the destination country: cards slide in once, then a button opens them. -->
+  <app-trip-news [country]="p.destination.countryCode" [city]="p.destination.code" />
   <p class="breadcrumb"><a [routerLink]="i18n.path('searches', s.tripSearchId)"><app-icon name="arrowLeft" [size]="16" /> {{ 'plan.back' | t }}</a></p>
 
   <div class="plan-layout">
@@ -240,10 +242,12 @@
           }
 
 
+          <app-hotel-reviews [planId]="s.id" />
           <app-nearby [planId]="s.id" [summary]="s" part="stay" (stayChosen)="setTab('route')" />
         }
         @case ('route') {
           <app-stay-route [planId]="s.id" />
+          <app-hotel-reviews [planId]="s.id" />
           <app-nearby [planId]="s.id" [summary]="s" part="around" />
         }
         @case ('days') {

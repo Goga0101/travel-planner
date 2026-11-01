@@ -1,4 +1,4 @@
-import { daysBetween, formatDistance, formatMinutes, formatMoney, formatTimeSpan, parseTimeSpanMinutes } from './format';
+import { daysBetween, formatDistance, formatMinutes, formatMoney, formatTimeSpan, parseTimeSpanMinutes, relativeTime } from './format';
 
 describe('TimeSpan parsing', () => {
   it('parses hh:mm:ss', () => {
@@ -52,5 +52,25 @@ describe('formatting', () => {
     expect(daysBetween('2026-11-20', '2026-11-24')).toBe(4);
     expect(daysBetween('2026-03-28', '2026-03-30')).toBe(2); // across a DST change in Europe
     expect(daysBetween('bad', '2026-11-24')).toBeNull();
+  });
+});
+
+describe('relativeTime', () => {
+  const now = Date.parse('2026-11-02T12:00:00Z');
+  const ago = (seconds: number) => new Date(now - seconds * 1000).toISOString();
+
+  it('writes Georgian itself, since browsers have no Georgian relative-time data', () => {
+    expect(relativeTime(ago(20), 'ka', now)).toBe('ახლახან');
+    expect(relativeTime(ago(5 * 60), 'ka', now)).toBe('5 წუთის წინ');
+    expect(relativeTime(ago(2 * 3600), 'ka', now)).toBe('2 საათის წინ');
+    expect(relativeTime(ago(86_400), 'ka', now)).toBe('გუშინ');
+    expect(relativeTime(ago(3 * 86_400), 'ka', now)).toBe('3 დღის წინ');
+    expect(relativeTime(ago(-3 * 86_400), 'ka', now)).toBe('3 დღეში');
+    expect(relativeTime(ago(65 * 86_400), 'ka', now)).toBe('2 თვის წინ');
+  });
+
+  it('uses Intl for English', () => {
+    expect(relativeTime(ago(2 * 3600), 'en', now)).toBe('2 hours ago');
+    expect(relativeTime(ago(86_400), 'en', now)).toBe('yesterday');
   });
 });

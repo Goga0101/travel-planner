@@ -32,6 +32,8 @@ import { SavedTripsService } from '../../core/local-lists';
 import { AttractionsComponent } from './attractions.component';
 import { NearbyComponent } from './nearby.component';
 import { WeatherComponent } from './weather.component';
+import { TripNewsComponent } from '../../shared/trip-news.component';
+import { HotelReviewsComponent } from './hotel-reviews.component';
 import { DayPlannerComponent } from './day-planner.component';
 import { FlightTicketsComponent, FlightTimelineComponent } from '../../shared/flight-route.component';
 import { DistancePipe, LocalDatePipe, LocalNumberPipe, MoneyPipe, StopsPipe, TimeSpanPipe } from '../../shared/pipes';
@@ -73,6 +75,8 @@ type PlanTab = (typeof TAB_IDS)[number];
     NearbyComponent,
     AttractionsComponent,
     WeatherComponent,
+    TripNewsComponent,
+    HotelReviewsComponent,
     FlightTicketsComponent,
     FlightTimelineComponent,
     DayPlannerComponent,
