@@ -132,11 +132,12 @@ public sealed class TripSearchWorker(
             var prices = scope.ServiceProvider.GetRequiredService<IHotelPriceSource>();
             var stays = await db.TripPlans.AsNoTracking()
                 .Where(p => p.TripSearchId == searchId)
-                .Select(p => new { p.Destination!.Code, p.DepartureDate, p.ReturnDate, p.Travelers, p.Currency })
+                .Select(p => new { p.Destination!.Code, p.Destination.Latitude, p.Destination.Longitude, p.DepartureDate, p.ReturnDate, p.Travelers, p.Currency })
                 .Distinct()
                 .ToListAsync(ct);
             await Task.WhenAll(stays.Select(x => prices.GetAsync(
-                new HotelPriceQuery(x.Code, x.DepartureDate, x.ReturnDate, x.Travelers, Math.Max(1, (x.Travelers + 1) / 2), x.Currency), ct)));
+                new HotelPriceQuery(x.Code, x.DepartureDate, x.ReturnDate, x.Travelers, Math.Max(1, (x.Travelers + 1) / 2), x.Currency,
+                    x.Latitude, x.Longitude), ct)));
         }
         catch (Exception ex) when (ex is not OperationCanceledException)
         {

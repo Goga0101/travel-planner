@@ -63,7 +63,8 @@ public sealed class GetHotelPricesHandler(
         if (nights <= 0) return null;
 
         var result = await prices.GetAsync(
-            new HotelPriceQuery(destination.Code, plan.DepartureDate, plan.ReturnDate, plan.Travelers, rooms, plan.Currency), cancellationToken);
+            new HotelPriceQuery(destination.Code, plan.DepartureDate, plan.ReturnDate, plan.Travelers, rooms, plan.Currency,
+                destination.Latitude, destination.Longitude), cancellationToken);
         if (result is null || result.Hotels.Count == 0) return null;
 
         var airport = GetNearbyPlacesHandler.ArrivalAirport(plan);

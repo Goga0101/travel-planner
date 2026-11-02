@@ -186,6 +186,13 @@ public static class DependencyInjection
         services.Configure<XoteloOptions>(configuration.GetSection(XoteloOptions.SectionName));
         var xotelo = configuration.GetSection(XoteloOptions.SectionName).Get<XoteloOptions>() ?? new XoteloOptions();
         var xoteloActive = xotelo.Enabled && providers.Mode == DataMode.Live;
+        services.AddHttpClient<WikidataTripAdvisorGeo>(c =>
+        {
+            c.BaseAddress = new Uri("https://query.wikidata.org/");
+            c.Timeout = TimeSpan.FromSeconds(15);
+            // Wikidata asks for a descriptive agent with a contact URL.
+            c.DefaultRequestHeaders.UserAgent.ParseAdd("TriporaTravelPlanner/1.0 (+https://goga0101.github.io/travel-planner/)");
+        });
         if (xoteloActive)
             services.AddHttpClient<IHotelPriceSource, XoteloHotelPriceSource>(c => c.BaseAddress = BaseUri(xotelo.BaseUrl))
                 .AddStandardResilienceHandler(o => Configure(o, providers.Http));

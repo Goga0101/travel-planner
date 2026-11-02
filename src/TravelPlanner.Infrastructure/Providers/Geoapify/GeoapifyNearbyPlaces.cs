@@ -198,14 +198,28 @@ public sealed class NearbyPlacesService(
         await Task.WhenAll(airportTasks.Cast<Task>().Append(centreHotelsTask).Append(centreStopsTask));
         var results = airportTasks.Select(t => t.Result).ToList();
         var airportLines = results.SelectMany(r => r.AirportLines).ToHashSet(StringComparer.OrdinalIgnoreCase);
-        var centreStops = StopPoints(centreStopsTask.Result);
+        var centreHotels = centreHotelsTask.Result;
+        var centreStopFeatures = centreStopsTask.Result;
+        // A world city's point comes from the airport list and can sit a few kilometres from the real centre (Tbilisi's
+        // has one hotel within 1.2 km, the old town over a hundred): widen the circle until there are enough hotels.
+        foreach (var factor in new[] { 2.5, 5.0 })
+        {
+            if (BestHotels(centreHotels, o.MaxHotels).Count >= Math.Max(1, o.MaxHotels / 2)) break;
+            var radius = (int)(o.CentreHotelRadiusMeters * factor);
+            var wider = geoapify.SearchAsync(GeoapifyMapper.HotelCategories, query.CentreLatitude, query.CentreLongitude, radius, o.MaxHotels * 2, ct);
+            var widerStops = geoapify.SearchAsync(GeoapifyMapper.StopCategories, query.CentreLatitude, query.CentreLongitude, radius + stopReach, 300, ct);
+            await Task.WhenAll(wider, widerStops);
+            centreHotels = wider.Result;
+            centreStopFeatures = widerStops.Result;
+        }
+        var centreStops = StopPoints(centreStopFeatures);
 
         return new NearbySnapshot(
             query.DestinationCode,
             DateOnly.FromDateTime(DateTime.UtcNow),
             $"{NearbyPlacesFile.DefaultAttribution} · {GeoapifyPlacesClient.ProviderName}",
             results.Select(r => r.Airport with { Hotels = WithStops(r.Airport.Hotels, r.AreaStops, airportLines, o.HotelStopWalkMeters) }).ToList(),
-            new NearbyArea(WithStops(BestHotels(centreHotelsTask.Result, o.MaxHotels), centreStops, airportLines, o.HotelStopWalkMeters)),
+            new NearbyArea(WithStops(BestHotels(centreHotels, o.MaxHotels), centreStops, airportLines, o.HotelStopWalkMeters)),
             []);
     }
 

@@ -20,7 +20,7 @@ public sealed class XoteloOptions
     public bool Enabled { get; set; } = true;
     public string BaseUrl { get; set; } = "https://data.xotelo.com";
     /// <summary>Hotels per city whose prices are fetched for the plan dates (one request each).</summary>
-    public int HotelsPerCity { get; set; } = 8;
+    public int HotelsPerCity { get; set; } = 16;
     public int ListCacheHours { get; set; } = 24;
     public int RatesCacheHours { get; set; } = 6;
     public int MaxConcurrentRequests { get; set; } = 8;
@@ -31,6 +31,7 @@ public sealed class XoteloHotelPriceSource(
     HttpClient http,
     CatalogFileReader catalog,
     IMemoryCache cache,
+    WikidataTripAdvisorGeo wikidata,
     IOptions<XoteloOptions> options,
     ILogger<XoteloHotelPriceSource> logger) : IHotelPriceSource
 {
@@ -39,9 +40,13 @@ public sealed class XoteloHotelPriceSource(
     public async Task<HotelPriceResult?> GetAsync(HotelPriceQuery query, CancellationToken cancellationToken)
     {
         var o = options.Value;
+        if (!o.Enabled || query.CheckOut <= query.CheckIn) return null;
         var geoKey = catalog.Document.Destinations
             .FirstOrDefault(d => string.Equals(d.Code, query.DestinationCode, StringComparison.OrdinalIgnoreCase))?.TripAdvisorGeoKey;
-        if (!o.Enabled || string.IsNullOrWhiteSpace(geoKey) || query.CheckOut <= query.CheckIn) return null;
+        // Cities outside the catalog (picked from the world list): their TripAdvisor location comes from Wikidata.
+        if (string.IsNullOrWhiteSpace(geoKey) && query.Latitude is { } lat && query.Longitude is { } lon)
+            geoKey = await wikidata.FindAsync(lat, lon, cancellationToken);
+        if (string.IsNullOrWhiteSpace(geoKey)) return null;
 
         try
         {
