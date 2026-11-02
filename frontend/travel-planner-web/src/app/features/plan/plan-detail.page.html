@@ -72,7 +72,7 @@
               <span class="price price-lg">{{ tt.total | money: s.currency }}</span>
               @if (tt.stay; as st) {
                 <span class="small muted kpi-split">{{ 'plan.knownPart' | t: { amount: (tt.known | money: s.currency) } }}
-                  + <span class="stay-est">{{ 'plan.stayPart' | t: { amount: (st.total | money: s.currency) } }}</span></span>
+                  + <span class="stay-est">{{ (st.source ? 'plan.stayPartSite' : 'plan.stayPart') | t: { amount: (st.total | money: s.currency), site: st.source ?? '' } }}</span></span>
               }
               <app-budget-fit-badge [fit]="s.budgetFit" />
             </div>
@@ -96,7 +96,7 @@
               </div>
               <ul class="budget-legend">
                 @for (b of budgetBar(); track b.category + b.estimate; let i = $index) {
-                  <li [class.stay-est]="b.estimate"><span class="budget-dot" [class.is-estimate]="b.estimate" [attr.data-i]="i"></span>{{ b.category | category }}@if (b.estimate) { ({{ 'plan.estimate' | t }})} {{ b.amount | money: s.currency }}</li>
+                  <li [class.stay-est]="b.estimate"><span class="budget-dot" [class.is-estimate]="b.estimate" [attr.data-i]="i"></span>{{ b.category | category }}@if (b.estimate) { ({{ tt.stay?.source ?? ('plan.estimate' | t) }})} {{ b.amount | money: s.currency }}</li>
                 }
               </ul>
             </div>
@@ -119,7 +119,13 @@
             <div class="alert alert-warn">{{ 'plan.missingCosts' | t: { list: (missingCosts() | category) } }}</div>
           }
           @if (tt.stay; as st) {
-            <div class="alert stay-note">{{ (st.typical ? 'plan.stayTypicalNote' : 'plan.stayNote') | t: { hotel: stays.get(s.id)?.name ?? '', nightly: (st.nightly | money: s.currency) } }}</div>
+            <div class="alert stay-note">
+              @if (st.typical || !st.source) {
+                {{ 'plan.stayTypicalNote' | t: { hotel: stays.get(s.id)?.name ?? '', nightly: (st.nightly | money: s.currency) } }}
+              } @else {
+                {{ 'plan.stayNote' | t: { hotel: stays.get(s.id)?.name ?? '', site: st.source, nightly: (st.nightly | money: s.currency), time: (st.retrievedAtUtc | ldate: 'd MMM HH:mm') } }}
+              }
+            </div>
           }
           @if (s.warnings.length) {
             <div class="alert alert-info">
@@ -275,7 +281,7 @@
                 <div class="breakdown-cat"><span class="muted small">{{ c.category | category }}</span><strong>{{ c.amount | money: s.currency }}</strong></div>
               }
               @if (tt.stay; as st) {
-                <div class="breakdown-cat stay-est"><span class="small">{{ 'Accommodation' | category }} ({{ 'plan.estimate' | t }})</span><strong>{{ st.total | money: s.currency }}</strong></div>
+                <div class="breakdown-cat stay-est"><span class="small">{{ 'Accommodation' | category }} ({{ st.source ?? ('plan.estimate' | t) }})</span><strong>{{ st.total | money: s.currency }}</strong></div>
               }
             </div>
             <div class="table-wrap">
@@ -319,7 +325,7 @@
                 </tbody>
                 <tfoot>
                   <tr>
-                    <th scope="row" colspan="3">{{ 'plan.total' | t }}@if (tt.stay) { <span class="small stay-est"> ({{ 'plan.withStay' | t }})</span>}</th>
+                    <th scope="row" colspan="3">{{ 'plan.total' | t }}@if (tt.stay) { <span class="small stay-est"> ({{ (tt.stay.source ? 'plan.withStaySite' : 'plan.withStay') | t: { site: tt.stay.source ?? '' } }})</span>}</th>
                     <td class="num"><strong>{{ tt.total | money: s.currency }}</strong></td>
                     <td colspan="2"></td>
                   </tr>

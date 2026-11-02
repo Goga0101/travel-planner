@@ -137,7 +137,7 @@ import { FlightRouteComponent, FlightTimelineComponent } from '../../shared/flig
         @let tt = totals();
         <span class="side-label">{{ (p.missingCostCategories.length && !tt.stay ? 'card.totalKnown' : 'card.total') | t }}</span>
         <span class="price price-lg">{{ tt.total | money: p.currency }}</span>
-        @if (tt.stay; as st) { <span class="small stay-est">{{ 'plan.stayPart' | t: { amount: (st.total | money: p.currency) } }}</span> }
+        @if (tt.stay; as st) { <span class="small stay-est">{{ (st.source ? 'plan.stayPartSite' : 'plan.stayPart') | t: { amount: (st.total | money: p.currency), site: st.source ?? '' } }}</span> }
         <span class="budget-delta" [class.over]="tt.remaining < 0">
           @if (tt.remaining >= 0) {
             {{ 'card.left' | t: { amount: (tt.remaining | money: p.currency) } }}

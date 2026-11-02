@@ -8,7 +8,7 @@ import { I18nService } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
 import { HotelPriceDto, HotelPricesDto, NearbyPlacesDto, TransitMode, TripPlanSummaryDto } from '../../core/models';
 import { ErrorBannerComponent } from '../../shared/error-banner.component';
-import { SelectedStayService, StayPrice } from '../../core/selected-stay.service';
+import { SelectedStayService, StayPrice, sitePrice, typicalPrice } from '../../core/selected-stay.service';
 import { IconComponent, IconName } from '../../shared/icon.component';
 import { DistancePipe, LocalDatePipe, MoneyPipe } from '../../shared/pipes';
 import { HotelFinderComponent } from './hotel-finder.component';
@@ -46,19 +46,17 @@ export class NearbyComponent {
   protected readonly stays = inject(SelectedStayService);
 
   /** Marks the hotel the visitor plans to book; the route and the day plan then start there. */
-  protected selectStay(name: string, latitude: number, longitude: number, nightly?: number): void {
+  protected selectStay(name: string, latitude: number, longitude: number, priced?: HotelPriceDto): void {
     const wasSelected = this.stays.isSelected(this.planId(), latitude, longitude);
-    this.stays.toggle(this.planId(), { name, latitude, longitude, price: this.stayPrice(nightly) });
+    this.stays.toggle(this.planId(), { name, latitude, longitude, price: this.stayPrice(priced) });
     if (!wasSelected) this.stayChosen.emit();
   }
 
-  /** The whole stay at the hotel's nightly rate, or at the city's typical rate when the hotel has none. */
-  private stayPrice(nightly?: number): StayPrice | undefined {
+  /** The hotel's published price (Booking.com first), or the city's typical price when the hotel has none here. */
+  private stayPrice(priced?: HotelPriceDto): StayPrice | undefined {
     const hp = this.prices();
     if (!hp) return undefined;
-    const rate = nightly ?? hp.typicalNightly;
-    if (!(rate > 0)) return undefined;
-    return { total: Math.round(rate * hp.nights * Math.max(1, hp.rooms) * 100) / 100, nightly: rate, currency: hp.currency, typical: nightly === undefined };
+    return priced ? sitePrice(hp, priced) : typicalPrice(hp);
   }
 
   protected hasViaTripAdvisor(h: HotelPriceDto): boolean {

@@ -24,7 +24,7 @@ import { AirlineComponent } from '../../shared/airline.component';
 import { ErrorBannerComponent } from '../../shared/error-banner.component';
 import { ExternalLinkComponent } from '../../shared/external-link.component';
 import { IconComponent, IconName } from '../../shared/icon.component';
-import { SelectedStayService, tripTotal } from '../../core/selected-stay.service';
+import { SelectedStayService, findPriced, sitePrice, tripTotal, typicalPrice } from '../../core/selected-stay.service';
 import { StayRouteComponent } from './stay-route.component';
 import { destinationPhoto } from '../../core/destination-photos';
 import { buildIcs, downloadFile } from '../../core/calendar';
@@ -220,6 +220,7 @@ export class PlanDetailPage {
         next: (p) => {
           this.plan.set(p);
           this.loadLinks();
+          this.refreshStayPrice(p.summary.id);
         },
         error: (e) => this.error.set(toApiError(e)),
       });
@@ -313,6 +314,22 @@ export class PlanDetailPage {
 
   private item(type: PlanItemDto['type']): PlanItemDto | null {
     return this.plan()?.items.find((i) => i.type === type) ?? null;
+  }
+
+  /**
+   * Fetches the hotel price list again (cached on the server for a few hours) and updates the picked hotel's price, so
+   * the total follows what the booking sites publish now. Quietly keeps the old price when nothing comes back.
+   */
+  private refreshStayPrice(planId: string): void {
+    if (!this.stays.get(planId)) return;
+    this.api.getHotelPrices(planId).pipe(takeUntilDestroyed(this.destroyRef)).subscribe({
+      next: (hp) => {
+        const stay = this.stays.get(planId);
+        if (!hp || !stay) return;
+        const hotel = findPriced(hp, stay);
+        this.stays.setPrice(planId, hotel ? sitePrice(hp, hotel) : stay.price?.typical || !stay.price ? typicalPrice(hp) : stay.price);
+      },
+    });
   }
 
   private loadLinks(): void {

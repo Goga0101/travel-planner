@@ -1046,6 +1046,8 @@ export const ka: Dictionary = {
   'plan.stayPart': "სასტუმრო ≈ {amount}",
   'plan.estimate': "სავარაუდო",
   'plan.withStay': "სასტუმროს სავარაუდო ფასით",
-  'plan.stayNote': "სასტუმრო: {hotel}, დაახლოებით {nightly} ღამეში. ეს შენი თარიღების სავარაუდო ფასია, საბოლოო ფასი ჯავშნის საიტზეა.",
+  'plan.stayNote': "სასტუმრო: {hotel}. ფასი {site}-ზე: {nightly} ღამეში შენს თარიღებში (განახლდა {time}). საბოლოო ფასი ჯავშნის საიტზეა.",
   'plan.stayTypicalNote': "სასტუმრო: {hotel}. მას აქ საკუთარი ფასი არ აქვს, ამიტომ ქალაქის ტიპური ფასი (დაახლოებით {nightly} ღამეში) გამოიყენება.",
+  'plan.stayPartSite': "სასტუმრო {site}-ზე {amount}",
+  'plan.withStaySite': "სასტუმროს ფასით {site}-ზე",
 };
