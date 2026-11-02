@@ -4,7 +4,8 @@ using TravelPlanner.Application.Providers;
 
 namespace TravelPlanner.Application.Features.TripPlans;
 
-public sealed record GetHotelPricesQuery(Guid Id) : IRequest<HotelPricesDto?>;
+/// <summary>MaxNightly: only hotels whose cheapest nightly rate fits (searched among many more of the city's hotels).</summary>
+public sealed record GetHotelPricesQuery(Guid Id, decimal? MaxNightly = null) : IRequest<HotelPricesDto?>;
 
 /// <summary>Url books with that agency: Booking.com directly (hotel and dates pre-filled), the others through the hotel's TripAdvisor page.</summary>
 public sealed record AgencyRateDto(string Code, string Name, decimal Nightly, string? Url, bool ViaTripAdvisor);
@@ -64,8 +65,13 @@ public sealed class GetHotelPricesHandler(
 
         var result = await prices.GetAsync(
             new HotelPriceQuery(destination.Code, plan.DepartureDate, plan.ReturnDate, plan.Travelers, rooms, plan.Currency,
-                destination.Latitude, destination.Longitude), cancellationToken);
+                destination.Latitude, destination.Longitude, request.MaxNightly is > 0 ? request.MaxNightly : null), cancellationToken);
         if (result is null || result.Hotels.Count == 0) return null;
+        if (request.MaxNightly is > 0 and var max)
+        {
+            result = result with { Hotels = result.Hotels.Where(h => h.Rates.Min(r => r.Nightly) <= max).ToList() };
+            if (result.Hotels.Count == 0) return null;
+        }
 
         var airport = GetNearbyPlacesHandler.ArrivalAirport(plan);
         var hotels = result.Hotels

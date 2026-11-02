@@ -1099,10 +1099,11 @@ export const ka: Dictionary = {
   'budget.night': "ღამეში",
   'budget.useRemaining': "დარჩენილი ბიუჯეტი: {amount}",
   'budget.clear': "გასუფთავება",
-  'budget.fit': "{total}-დან {count} სასტუმრო ჯდება",
-  'budget.noneFit': "ჩამოთვლილი სასტუმროებიდან არცერთი არ ჯდება.",
+  'budget.fit': "შენს ბიუჯეტში ჯდება {count} სასტუმრო",
+  'budget.noneFit': "ამ ბიუჯეტში სასტუმრო ვერ მოიძებნა.",
   'budget.cheapest': "ყველაზე იაფი მთელ ყოფნაზე {amount}-ია.",
   'budget.perNight': "ღამეში {amount}-მდე",
   'budget.moreOnBooking': "მეტი სასტუმრო Booking.com-ზე ღამეში {amount}-მდე",
   'budget.allOnBooking': "ყველა განთავსება Booking.com-ზე",
+  'budget.searching': "ვეძებთ ქალაქის სასტუმროებს შენს ბიუჯეტში…",
 };

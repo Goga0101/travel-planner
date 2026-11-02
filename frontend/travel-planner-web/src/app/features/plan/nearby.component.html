@@ -13,7 +13,7 @@
     </div>
     <app-stay-budget [(budget)]="stayBudget" [(perNight)]="budgetPerNight" [currency]="prices()?.currency ?? summary().currency"
                      [nights]="prices()?.nights ?? summary().nights" [rooms]="prices()?.rooms ?? 1" [remaining]="summary().remainingBudget"
-                     [fitCount]="pricedHotels().length" [total]="prices()?.hotels?.length ?? 0" [cheapestStay]="cheapestStay()"
+                     [fitCount]="pricedHotels().length" [total]="prices()?.hotels?.length ?? 0" [cheapestStay]="cheapestStay()" [searching]="budgetLoading()"
                      [searchUrl]="d.hotelSearchUrl" />
     <app-hotel-finder [planId]="planId()" (chosen)="stayChosen.emit()" />
     <app-hotel-scene />

@@ -77,6 +77,11 @@ export class NearbyComponent {
   /** What the traveller can pay for the stay (null = no limit) and whether that amount is per night. */
   protected readonly stayBudget = signal<number | null>(null);
   protected readonly budgetPerNight = signal(false);
+  /** Hotels the server found within the budget among a few hundred of the city's hotels (loaded in the background). */
+  protected readonly budgetPrices = signal<HotelPricesDto | null>(null);
+  protected readonly budgetLoading = signal(false);
+  private budgetTimer?: ReturnType<typeof setTimeout>;
+  private budgetSub?: { unsubscribe(): void };
   /**
    * The priced hotels within the budget (each at its cheapest site), best rated first; all of them, cheapest first, without
    * a budget.
@@ -87,7 +92,9 @@ export class NearbyComponent {
     const budget = this.stayBudget();
     if (budget === null) return hp.hotels;
     const limit = nightlyAllowance(budget, this.budgetPerNight(), hp.nights, hp.rooms);
-    return hp.hotels.filter((h) => h.lowestNightly <= limit)
+    const found = this.budgetPrices()?.hotels ?? [];
+    const all = [...hp.hotels, ...found.filter((f) => !hp.hotels.some((h) => h.name === f.name))];
+    return all.filter((h) => h.lowestNightly <= limit)
       .sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0) || b.lowestNightly - a.lowestNightly);
   });
   protected readonly cheapestStay = computed(() => {
@@ -112,10 +119,14 @@ export class NearbyComponent {
   protected readonly city = computed(() => this.summary().destination.city);
 
   constructor() {
-    // A budget is about the priced hotels: show that list.
+    // A budget is about the priced hotels: show that list, and search the city's wider list for more that fit.
     effect(() => {
-      if (this.stayBudget() !== null && untracked(() => this.prices()?.hotels.length)) untracked(() => this.area.set('prices'));
+      const budget = this.stayBudget();
+      const perNight = this.budgetPerNight();
+      if (budget !== null && untracked(() => this.prices()?.hotels.length)) untracked(() => this.area.set('prices'));
+      untracked(() => this.searchBudget(budget, perNight));
     });
+    this.destroyRef.onDestroy(() => { clearTimeout(this.budgetTimer); this.budgetSub?.unsubscribe(); });
     // Reload when the plan or the language changes (names and links are localized by the API).
     effect(() => {
       this.planId();
@@ -154,6 +165,23 @@ export class NearbyComponent {
         },
         error: () => this.pricesLoading.set(false),
       });
+  }
+
+  /** Waits for the typing to settle, then asks the server for hotels within the nightly allowance. */
+  private searchBudget(budget: number | null, perNight: boolean): void {
+    clearTimeout(this.budgetTimer);
+    this.budgetSub?.unsubscribe();
+    this.budgetPrices.set(null);
+    this.budgetLoading.set(budget !== null);
+    if (budget === null) return;
+    this.budgetTimer = setTimeout(() => {
+      const hp = this.prices();
+      const allowance = nightlyAllowance(budget, perNight, hp?.nights ?? this.summary().nights, hp?.rooms ?? 1);
+      this.budgetSub = this.api.getHotelPrices(this.planId(), allowance).subscribe({
+        next: (r) => { this.budgetPrices.set(r); this.budgetLoading.set(false); },
+        error: () => this.budgetLoading.set(false),
+      });
+    }, 600);
   }
 
   protected setArea(area: Area): void {

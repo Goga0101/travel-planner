@@ -142,9 +142,11 @@ export class ApiService {
       .pipe(map((r) => (r.status === 204 ? null : r.body)));
   }
 
-  getHotelPrices(id: string): Observable<HotelPricesDto | null> {
+  /** maxNightly: hotels within that nightly budget, searched among many more of the city's hotels. */
+  getHotelPrices(id: string, maxNightly?: number): Observable<HotelPricesDto | null> {
+    const params = maxNightly ? new HttpParams().set('maxNightly', Math.floor(maxNightly)) : undefined;
     return this.http
-      .get<HotelPricesDto>(`${BASE}/trip-plans/${encodeURIComponent(id)}/hotel-prices`, { observe: 'response' })
+      .get<HotelPricesDto>(`${BASE}/trip-plans/${encodeURIComponent(id)}/hotel-prices`, { observe: 'response', params })
       .pipe(map((r) => (r.status === 204 ? null : r.body)));
   }
 

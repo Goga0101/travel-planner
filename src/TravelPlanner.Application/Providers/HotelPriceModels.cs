@@ -11,9 +11,12 @@ public interface IHotelPriceSource
     Task<HotelPriceResult?> GetAsync(HotelPriceQuery query, CancellationToken cancellationToken);
 }
 
-/// <summary>Latitude/Longitude locate cities outside the catalog (their TripAdvisor location is looked up from them).</summary>
+/// <summary>
+/// Latitude/Longitude locate cities outside the catalog (their TripAdvisor location is looked up from them). MaxNightly
+/// asks for hotels within a nightly budget, picked from a much longer list of the city's hotels than the default few.
+/// </summary>
 public sealed record HotelPriceQuery(string DestinationCode, DateOnly CheckIn, DateOnly CheckOut, int Adults, int Rooms, string Currency,
-    double? Latitude = null, double? Longitude = null);
+    double? Latitude = null, double? Longitude = null, decimal? MaxNightly = null);
 
 public sealed record HotelPriceResult(string Source, string Currency, DateTimeOffset RetrievedAtUtc, IReadOnlyList<HotelPriceOffer> Hotels);
 

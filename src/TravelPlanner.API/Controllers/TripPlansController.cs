@@ -53,8 +53,8 @@ public sealed class TripPlansController(ISender sender) : ControllerBase
     [ProducesResponseType<HotelPricesDto>(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<HotelPricesDto>> GetHotelPrices(Guid id, CancellationToken cancellationToken) =>
-        await sender.Send(new GetHotelPricesQuery(id), cancellationToken) is { } prices ? prices : NoContent();
+    public async Task<ActionResult<HotelPricesDto>> GetHotelPrices(Guid id, [FromQuery] decimal? maxNightly, CancellationToken cancellationToken) =>
+        await sender.Send(new GetHotelPricesQuery(id, maxNightly), cancellationToken) is { } prices ? prices : NoContent();
 
     /// <summary>
     /// A day-by-day itinerary for the chosen interests (comma separated: culture, museums, food, cafes, bars, nightlife, nature,

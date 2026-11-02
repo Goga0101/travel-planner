@@ -21,6 +21,10 @@ public sealed class XoteloOptions
     public string BaseUrl { get; set; } = "https://data.xotelo.com";
     /// <summary>Hotels per city whose prices are fetched for the plan dates (one request each).</summary>
     public int HotelsPerCity { get; set; } = 16;
+    /// <summary>With a budget: how many of the city's hotels are screened by their typical price range (pages of 100).</summary>
+    public int BudgetListSize { get; set; } = 300;
+    /// <summary>With a budget: hotels whose rates for the dates are then fetched (best rated first).</summary>
+    public int BudgetCandidates { get; set; } = 24;
     public int ListCacheHours { get; set; } = 24;
     public int RatesCacheHours { get; set; } = 6;
     public int MaxConcurrentRequests { get; set; } = 8;
@@ -50,11 +54,13 @@ public sealed class XoteloHotelPriceSource(
 
         try
         {
-            var hotels = await cache.GetOrCreateAsync($"xotelo|list|{geoKey}", async entry =>
-            {
-                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(Math.Max(1, o.ListCacheHours));
-                return await ListAsync(geoKey, o.HotelsPerCity, cancellationToken);
-            }) ?? [];
+            var hotels = query.MaxNightly is { } max
+                ? await BudgetCandidatesAsync(geoKey, max, o, cancellationToken)
+                : await cache.GetOrCreateAsync($"xotelo|list|{geoKey}", async entry =>
+                {
+                    entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(Math.Max(1, o.ListCacheHours));
+                    return await ListAsync(geoKey, o.HotelsPerCity, cancellationToken);
+                }) ?? [];
 
             using var gate = new SemaphoreSlim(Math.Max(1, o.MaxConcurrentRequests));
             var priced = await Task.WhenAll(hotels.Select(async h =>
@@ -90,10 +96,32 @@ public sealed class XoteloHotelPriceSource(
         }
     }
 
-    private async Task<List<HotelPriceOffer>> ListAsync(string geoKey, int limit, CancellationToken ct)
+    private async Task<List<HotelPriceOffer>> ListAsync(string geoKey, int limit, CancellationToken ct, int offset = 0)
     {
-        var body = await http.GetFromJsonAsync<JsonElement>($"api/list?location_key={Uri.EscapeDataString(geoKey)}&limit={limit}&offset=0&sort=best_value", ct);
+        var body = await http.GetFromJsonAsync<JsonElement>(
+            $"api/list?location_key={Uri.EscapeDataString(geoKey)}&limit={limit}&offset={offset}&sort=best_value", ct);
         return XoteloMapper.ParseList(body);
+    }
+
+    /// <summary>
+    /// The city's hotels (a few hundred, cached a day) whose typical price range starts within the budget, best rated first.
+    /// The ranges are TripAdvisor's in US dollars and not for the dates, so the screen is generous; the dated rates decide.
+    /// </summary>
+    private async Task<List<HotelPriceOffer>> BudgetCandidatesAsync(string geoKey, decimal maxNightly, XoteloOptions o, CancellationToken ct)
+    {
+        var wide = await cache.GetOrCreateAsync($"xotelo|list-wide|{geoKey}", async entry =>
+        {
+            entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromHours(Math.Max(1, o.ListCacheHours));
+            var pages = new List<HotelPriceOffer>();
+            for (var offset = 0; offset < Math.Max(100, o.BudgetListSize); offset += 100)
+            {
+                var page = await ListAsync(geoKey, 100, ct, offset);
+                pages.AddRange(page);
+                if (page.Count < 100) break;
+            }
+            return pages;
+        }) ?? [];
+        return XoteloMapper.BudgetCandidates(wide, maxNightly, o.BudgetCandidates);
     }
 
     private async Task<List<HotelRate>> RatesAsync(string hotelKey, HotelPriceQuery q, CancellationToken ct)
@@ -107,6 +135,17 @@ public sealed class XoteloHotelPriceSource(
 
 public static class XoteloMapper
 {
+    /// <summary>
+    /// Hotels worth pricing for a nightly budget: typical range starting at most 30% above it (or unknown), best rated and
+    /// most reviewed first.
+    /// </summary>
+    public static List<HotelPriceOffer> BudgetCandidates(IEnumerable<HotelPriceOffer> hotels, decimal maxNightly, int take) =>
+        hotels.Where(h => h.TypicalNightlyMin is null || h.TypicalNightlyMin <= maxNightly * 1.3m)
+            .GroupBy(h => h.Key).Select(g => g.First())
+            .OrderByDescending(h => h.Rating ?? 0).ThenByDescending(h => h.ReviewCount ?? 0)
+            .Take(Math.Max(1, take))
+            .ToList();
+
     public static List<HotelPriceOffer> ParseList(JsonElement body)
     {
         if (!body.TryGetProperty("result", out var result) || result.ValueKind != JsonValueKind.Object ||

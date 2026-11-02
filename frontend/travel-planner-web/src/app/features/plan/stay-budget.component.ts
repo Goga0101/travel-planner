@@ -77,8 +77,11 @@ export function bookingWithMaxNightly(url: string, currency: string, maxNightly:
       </div>
       @if (budget() !== null && total() > 0) {
         <p class="sb-result" [class.none]="!fitCount()" aria-live="polite">
-          @if (fitCount()) {
-            <strong>{{ 'budget.fit' | t: { count: fitCount(), total: total() } }}</strong>
+          @if (searching()) {
+            <span class="spinner" aria-hidden="true"></span> {{ 'budget.searching' | t }}
+            @if (fitCount()) { · <strong>{{ 'budget.fit' | t: { count: fitCount() } }}</strong> }
+          } @else if (fitCount()) {
+            <strong>{{ 'budget.fit' | t: { count: fitCount() } }}</strong>
           } @else {
             <strong>{{ 'budget.noneFit' | t }}</strong> {{ 'budget.cheapest' | t: { amount: (cheapestStay() | money: currency()) } }}
           }
@@ -113,6 +116,8 @@ export class StayBudgetComponent {
   /** The whole stay at the cheapest listed hotel. */
   readonly cheapestStay = input(0);
   readonly searchUrl = input<string | undefined>();
+  /** The wider search for more hotels within the budget is running. */
+  readonly searching = input(false);
 
   protected readonly allowance = computed(() => nightlyAllowance(this.budget() ?? 0, this.perNight(), this.nights(), this.rooms()));
   protected readonly roundedRemaining = computed(() => Math.floor(this.remaining() / 10) * 10);
