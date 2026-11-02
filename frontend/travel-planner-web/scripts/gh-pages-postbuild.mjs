@@ -14,7 +14,7 @@ const apiBaseUrl = process.env.API_BASE_URL || fromFile || 'http://localhost:508
 
 copyFileSync(join(dist, 'index.html'), join(dist, '404.html'));
 for (const lang of ['ka', 'en']) {
-  for (const page of ['', 'flights', 'news', 'transit', 'saved', 'privacy']) {
+  for (const page of ['', 'flights', 'news', 'transit', 'lounges', 'account', 'saved', 'privacy']) {
     const dir = join(dist, lang, page);
     mkdirSync(dir, { recursive: true });
     copyFileSync(join(dist, 'index.html'), join(dir, 'index.html'));
