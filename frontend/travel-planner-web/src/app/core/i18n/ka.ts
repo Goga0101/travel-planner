@@ -1050,4 +1050,6 @@ export const ka: Dictionary = {
   'plan.stayTypicalNote': "სასტუმრო: {hotel}. მას აქ საკუთარი ფასი არ აქვს, ამიტომ ქალაქის ტიპური ფასი (დაახლოებით {nightly} ღამეში) გამოიყენება.",
   'plan.stayPartSite': "სასტუმრო {site}-ზე {amount}",
   'plan.withStaySite': "სასტუმროს ფასით {site}-ზე",
+  'prices.notOnBooking': "Booking.com-ზე არ იყიდება. ნაჩვენები ფასი {agency}-ისაა.",
+  'prices.checkAgency': "{agency}-ის შეთავაზების ნახვა",
 };

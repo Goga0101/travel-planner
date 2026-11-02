@@ -1051,6 +1051,8 @@ export const en = {
   'plan.stayTypicalNote': "Hotel: {hotel}. It has no price of its own here, so the city's typical rate (about {nightly} a night) is used as an estimate.",
   'plan.stayPartSite': "hotel on {site} {amount}",
   'plan.withStaySite': "with the hotel price on {site}",
+  'prices.notOnBooking': "Not sold on Booking.com. The price shown is from {agency}.",
+  'prices.checkAgency': "See the {agency} offer",
 } satisfies Record<string, string>;
 
 export type TranslationKey = keyof typeof en;

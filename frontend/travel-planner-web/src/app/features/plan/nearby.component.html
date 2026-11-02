@@ -94,8 +94,15 @@
                     <a class="btn btn-primary btn-sm" [href]="ph.bookingUrl" target="_blank" rel="noopener noreferrer nofollow">
                       {{ 'prices.checkBooking' | t }} <app-icon name="external" [size]="14" /><span class="visually-hidden">{{ 'link.newTab' | t }}</span>
                     </a>
+                  } @else {
+                    <p class="small muted not-on-booking">{{ 'prices.notOnBooking' | t: { agency: ph.lowestAgency } }}</p>
+                    @if (ph.compareUrl) {
+                      <a class="btn btn-primary btn-sm" [href]="ph.compareUrl" target="_blank" rel="noopener noreferrer nofollow">
+                        {{ 'prices.checkAgency' | t: { agency: ph.lowestAgency } }} <app-icon name="external" [size]="14" /><span class="visually-hidden">{{ 'link.newTab' | t }}</span>
+                      </a>
+                    }
                   }
-                  @if (ph.compareUrl) {
+                  @if (ph.compareUrl && ph.bookingUrl) {
                     <a class="btn btn-secondary btn-sm" [href]="ph.compareUrl" target="_blank" rel="noopener noreferrer nofollow">
                       {{ 'prices.allOffers' | t }} <app-icon name="external" [size]="14" /><span class="visually-hidden">{{ 'link.newTab' | t }}</span>
                     </a>

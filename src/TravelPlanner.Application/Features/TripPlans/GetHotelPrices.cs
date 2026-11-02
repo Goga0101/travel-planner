@@ -73,7 +73,9 @@ public sealed class GetHotelPricesHandler(
                 var lowest = h.Rates.MinBy(r => r.Nightly)!;
                 var booking = h.Rates.FirstOrDefault(r => r.Code == "BookingCom");
                 var hasGeo = h.Latitude is not null && h.Longitude is not null;
-                var bookingUrl = linkPolicy.Sanitize(bookingLinks.Build(h.Name, destination.City, plan.DepartureDate, plan.ReturnDate, plan.Travelers, rooms)?.Url);
+                // Only hotels with a Booking.com rate are sold there; a name search for any other hotel finds nothing.
+                var bookingUrl = booking is null ? null
+                    : linkPolicy.Sanitize(bookingLinks.Build(h.Name, destination.City, plan.DepartureDate, plan.ReturnDate, plan.Travelers, rooms)?.Url);
                 return new HotelPriceDto(
                     h.Name,
                     h.Rating,
