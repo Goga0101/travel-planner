@@ -1043,6 +1043,12 @@ export const en = {
   'account.settings': 'Account',
   'account.signInTitle': 'Sign in to see your account',
   'account.signInText': 'Your saved trips, their status and your place on the leaderboard, on every device.',
+  'plan.knownPart': "flights and known costs {amount}",
+  'plan.stayPart': "hotel ≈ {amount}",
+  'plan.estimate': "estimate",
+  'plan.withStay': "with the hotel estimate",
+  'plan.stayNote': "Hotel: {hotel}, about {nightly} a night. This is an estimate for your dates; the final price is on the booking site.",
+  'plan.stayTypicalNote': "Hotel: {hotel}. It has no price of its own here, so the city's typical rate (about {nightly} a night) is used as an estimate.",
 } satisfies Record<string, string>;
 
 export type TranslationKey = keyof typeof en;

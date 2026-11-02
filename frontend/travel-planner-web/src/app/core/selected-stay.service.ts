@@ -1,10 +1,38 @@
 import { Injectable, signal } from '@angular/core';
 
+/**
+ * Indicative price of the picked hotel for the whole stay (all nights and rooms), in the price list's currency.
+ * typical = the hotel had no price of its own, so the city's typical hotel price stands in.
+ */
+export interface StayPrice {
+  total: number;
+  nightly: number;
+  currency: string;
+  typical?: boolean;
+}
+
 /** The hotel the visitor intends to book for a plan; routes and the day plan start from it. */
 export interface SelectedStay {
   name: string;
   latitude: number;
   longitude: number;
+  price?: StayPrice;
+}
+
+/** The plan total with the picked hotel's estimate added (only when it is in the plan's currency). */
+export interface TripTotal {
+  /** Known costs from the plan (flights, transfers…). */
+  known: number;
+  /** The picked hotel's estimate, or null when none can be added. */
+  stay: StayPrice | null;
+  total: number;
+  remaining: number;
+}
+
+export function tripTotal(known: number, budget: number, currency: string, stay: SelectedStay | null): TripTotal {
+  const price = stay?.price && stay.price.currency === currency && stay.price.total > 0 ? stay.price : null;
+  const total = known + (price?.total ?? 0);
+  return { known, stay: price, total, remaining: budget - total };
 }
 
 const KEY = 'tp.selectedStays';

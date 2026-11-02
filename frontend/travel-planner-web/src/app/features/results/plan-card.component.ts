@@ -10,6 +10,7 @@ import { HotelPricesDto, SourceVerificationDto, TripPlanSummaryDto } from '../..
 import { BudgetFitBadgeComponent, VerificationBadgeComponent } from '../../shared/badges';
 import { destinationPhoto, destinationSrcset } from '../../core/destination-photos';
 import { SavedTripsService } from '../../core/local-lists';
+import { SelectedStayService, tripTotal } from '../../core/selected-stay.service';
 import { IconComponent } from '../../shared/icon.component';
 import { LocalDatePipe, MinutesPipe, MoneyPipe, StopsPipe } from '../../shared/pipes';
 import { AirlineComponent } from '../../shared/airline.component';
@@ -133,13 +134,15 @@ import { FlightRouteComponent, FlightTimelineComponent } from '../../shared/flig
       </div>
 
       <aside class="plan-side">
-        <span class="side-label">{{ (p.missingCostCategories.length ? 'card.totalKnown' : 'card.total') | t }}</span>
-        <span class="price price-lg">{{ p.totalEstimatedCost | money: p.currency }}</span>
-        <span class="budget-delta" [class.over]="p.remainingBudget < 0">
-          @if (p.remainingBudget >= 0) {
-            {{ 'card.left' | t: { amount: (p.remainingBudget | money: p.currency) } }}
+        @let tt = totals();
+        <span class="side-label">{{ (p.missingCostCategories.length && !tt.stay ? 'card.totalKnown' : 'card.total') | t }}</span>
+        <span class="price price-lg">{{ tt.total | money: p.currency }}</span>
+        @if (tt.stay; as st) { <span class="small stay-est">{{ 'plan.stayPart' | t: { amount: (st.total | money: p.currency) } }}</span> }
+        <span class="budget-delta" [class.over]="tt.remaining < 0">
+          @if (tt.remaining >= 0) {
+            {{ 'card.left' | t: { amount: (tt.remaining | money: p.currency) } }}
           } @else {
-            {{ 'card.over' | t: { amount: ((-p.remainingBudget) | money: p.currency) } }}
+            {{ 'card.over' | t: { amount: ((-tt.remaining) | money: p.currency) } }}
           }
         </span>
         <app-budget-fit-badge [fit]="p.budgetFit" />
@@ -168,6 +171,13 @@ export class PlanCardComponent {
   /** Indicative hotel prices for this plan's dates (loaded after the card renders; never part of the total). */
   protected readonly prices = signal<HotelPricesDto | null>(null);
   protected readonly pricesLoading = signal(false);
+  private readonly stays = inject(SelectedStayService);
+  /** The same total as the plan page: known costs plus the picked hotel's estimate. */
+  protected readonly totals = computed(() => {
+    const p = this.plan();
+    this.stays.all();
+    return tripTotal(p.totalEstimatedCost, p.budgetAmount, p.currency, this.stays.get(p.id));
+  });
 
   constructor() {
     effect(() => {

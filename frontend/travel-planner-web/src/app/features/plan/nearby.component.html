@@ -86,7 +86,7 @@
                 <div class="hotel-actions">
                   @if (ph.latitude != null && ph.longitude != null) {
                   <button type="button" class="btn btn-sm stay-select" [class.is-selected]="stays.isSelected(planId(), ph.latitude, ph.longitude)"
-                          [attr.aria-pressed]="stays.isSelected(planId(), ph.latitude, ph.longitude)" (click)="selectStay(ph.name, ph.latitude, ph.longitude)">
+                          [attr.aria-pressed]="stays.isSelected(planId(), ph.latitude, ph.longitude)" (click)="selectStay(ph.name, ph.latitude, ph.longitude, ph.lowestNightly)">
                     <app-icon name="check" [size]="14" /> {{ (stays.isSelected(planId(), ph.latitude, ph.longitude) ? 'stay.selected' : 'stay.select') | t }}
                   </button>
                   }

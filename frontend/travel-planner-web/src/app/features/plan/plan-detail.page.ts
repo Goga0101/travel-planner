@@ -24,7 +24,7 @@ import { AirlineComponent } from '../../shared/airline.component';
 import { ErrorBannerComponent } from '../../shared/error-banner.component';
 import { ExternalLinkComponent } from '../../shared/external-link.component';
 import { IconComponent, IconName } from '../../shared/icon.component';
-import { SelectedStayService } from '../../core/selected-stay.service';
+import { SelectedStayService, tripTotal } from '../../core/selected-stay.service';
 import { StayRouteComponent } from './stay-route.component';
 import { destinationPhoto } from '../../core/destination-photos';
 import { buildIcs, downloadFile } from '../../core/calendar';
@@ -92,7 +92,7 @@ export class PlanDetailPage {
   readonly tab = input<string | undefined>();
 
   private readonly router = inject(Router);
-  private readonly stays = inject(SelectedStayService);
+  protected readonly stays = inject(SelectedStayService);
 
   protected readonly activeTab = computed<PlanTab>(() => (TAB_IDS as readonly string[]).includes(this.tab() ?? '') ? (this.tab() as PlanTab) : 'overview');
 
@@ -118,7 +118,7 @@ export class PlanDetailPage {
       { id: 'days', icon: 'calendar', label: 'tab.days', description: 'tab.daysDesc', hint: t('tab.daysHint', { count: (s?.nights ?? 0) + 1 }) },
       { id: 'sights', icon: 'landmark', label: 'tab.sights', description: 'tab.sightsDesc', hint: t('tab.sightsHint') },
       { id: 'costs', icon: 'wallet', label: 'tab.costs', description: 'tab.costsDesc',
-        hint: s ? t('tab.costsHint', { total: money(s.totalEstimatedCost), left: money(Math.max(0, s.remainingBudget)) }) : '' },
+        hint: s ? t('tab.costsHint', { total: money(this.totals()!.total), left: money(Math.max(0, this.totals()!.remaining)) }) : '' },
     ];
     return rows.filter((r) => r.id !== 'flight' || !!this.flight());
   });
@@ -155,16 +155,33 @@ export class PlanDetailPage {
   });
 
   protected readonly summary = computed(() => this.plan()?.summary ?? null);
-  /** Share of the budget spent, per cost category (capped at 100% overall). */
+  /**
+   * The one total the whole page shows: the plan's known costs plus the estimate of the hotel the visitor picked (kept
+   * apart, so the budget stays honest about what is a provider price and what is an estimate).
+   */
+  protected readonly totals = computed(() => {
+    const s = this.plan()?.summary;
+    this.stays.all();
+    return s ? tripTotal(s.totalEstimatedCost, s.budgetAmount, s.currency, this.stays.get(s.id)) : null;
+  });
+  /** Missing cost categories, without the stay once a picked hotel's estimate covers it. */
+  protected readonly missingCosts = computed(() =>
+    (this.plan()?.summary.missingCostCategories ?? []).filter((c) => c !== 'Accommodation' || !this.totals()?.stay));
+  /** Share of the budget spent, per cost category, then the hotel estimate (capped at 100% overall). */
   protected readonly budgetBar = computed(() => {
     const p = this.plan();
-    if (!p || p.summary.budgetAmount <= 0) return [];
-    const scale = Math.max(p.summary.budgetAmount, p.summary.totalEstimatedCost);
-    return p.costBreakdown.filter((c) => c.amount > 0).map((c) => ({ ...c, percent: (c.amount / scale) * 100 }));
+    const tt = this.totals();
+    if (!p || !tt || p.summary.budgetAmount <= 0) return [];
+    const scale = Math.max(p.summary.budgetAmount, tt.total);
+    const rows = p.costBreakdown.filter((c) => c.amount > 0)
+      .map((c) => ({ category: c.category, amount: c.amount, percent: (c.amount / scale) * 100, estimate: false }));
+    if (tt.stay) rows.push({ category: 'Accommodation', amount: tt.stay.total, percent: (tt.stay.total / scale) * 100, estimate: true });
+    return rows;
   });
   protected readonly budgetUsedPercent = computed(() => {
     const s = this.plan()?.summary;
-    return s && s.budgetAmount > 0 ? Math.round((s.totalEstimatedCost / s.budgetAmount) * 1000) / 10 : 0;
+    const tt = this.totals();
+    return s && tt && s.budgetAmount > 0 ? Math.round((tt.total / s.budgetAmount) * 1000) / 10 : 0;
   });
   protected readonly flight = computed(() => this.item('Flight'));
   protected readonly flightInfo = computed(() => (this.flight() ? flightDetails(this.flight()!) : null));

@@ -8,7 +8,7 @@ import { I18nService } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
 import { HotelPriceDto, HotelPricesDto, NearbyPlacesDto, TransitMode, TripPlanSummaryDto } from '../../core/models';
 import { ErrorBannerComponent } from '../../shared/error-banner.component';
-import { SelectedStayService } from '../../core/selected-stay.service';
+import { SelectedStayService, StayPrice } from '../../core/selected-stay.service';
 import { IconComponent, IconName } from '../../shared/icon.component';
 import { DistancePipe, LocalDatePipe, MoneyPipe } from '../../shared/pipes';
 import { HotelFinderComponent } from './hotel-finder.component';
@@ -46,10 +46,19 @@ export class NearbyComponent {
   protected readonly stays = inject(SelectedStayService);
 
   /** Marks the hotel the visitor plans to book; the route and the day plan then start there. */
-  protected selectStay(name: string, latitude: number, longitude: number): void {
+  protected selectStay(name: string, latitude: number, longitude: number, nightly?: number): void {
     const wasSelected = this.stays.isSelected(this.planId(), latitude, longitude);
-    this.stays.toggle(this.planId(), { name, latitude, longitude });
+    this.stays.toggle(this.planId(), { name, latitude, longitude, price: this.stayPrice(nightly) });
     if (!wasSelected) this.stayChosen.emit();
+  }
+
+  /** The whole stay at the hotel's nightly rate, or at the city's typical rate when the hotel has none. */
+  private stayPrice(nightly?: number): StayPrice | undefined {
+    const hp = this.prices();
+    if (!hp) return undefined;
+    const rate = nightly ?? hp.typicalNightly;
+    if (!(rate > 0)) return undefined;
+    return { total: Math.round(rate * hp.nights * Math.max(1, hp.rooms) * 100) / 100, nightly: rate, currency: hp.currency, typical: nightly === undefined };
   }
 
   protected hasViaTripAdvisor(h: HotelPriceDto): boolean {

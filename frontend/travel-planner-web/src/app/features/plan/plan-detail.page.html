@@ -3,6 +3,7 @@
 
 @if (plan(); as p) {
   @let s = p.summary;
+  @let tt = totals()!;
   <!-- Recent news from the destination country: cards slide in once, then a button opens them. -->
   <app-trip-news [country]="p.destination.countryCode" [city]="p.destination.code" />
   <p class="breadcrumb"><a [routerLink]="i18n.path('searches', s.tripSearchId)"><app-icon name="arrowLeft" [size]="16" /> {{ 'plan.back' | t }}</a></p>
@@ -13,7 +14,7 @@
         @if (photo(); as src) { <img [src]="src" alt="" decoding="async" width="320" height="140" /> }
         <div>
           <strong>{{ p.destination.city }}</strong>
-          <span class="small muted">{{ s.departureDate | ldate: 'd MMM' }} – {{ s.returnDate | ldate: 'd MMM' }} · {{ s.totalEstimatedCost | money: s.currency }}</span>
+          <span class="small muted">{{ s.departureDate | ldate: 'd MMM' }} – {{ s.returnDate | ldate: 'd MMM' }} · {{ tt.total | money: s.currency }}</span>
         </div>
       </div>
       <nav class="tab-nav" role="tablist" [attr.aria-label]="'plan.sections' | t">
@@ -67,14 +68,18 @@
 
           <section class="kpi-grid" [attr.aria-label]="'plan.total' | t">
             <div class="kpi">
-              <span class="side-label">{{ (s.missingCostCategories.length ? 'card.totalKnown' : 'plan.total') | t }}</span>
-              <span class="price price-lg">{{ s.totalEstimatedCost | money: s.currency }}</span>
+              <span class="side-label">{{ (missingCosts().length ? 'card.totalKnown' : 'plan.total') | t }}</span>
+              <span class="price price-lg">{{ tt.total | money: s.currency }}</span>
+              @if (tt.stay; as st) {
+                <span class="small muted kpi-split">{{ 'plan.knownPart' | t: { amount: (tt.known | money: s.currency) } }}
+                  + <span class="stay-est">{{ 'plan.stayPart' | t: { amount: (st.total | money: s.currency) } }}</span></span>
+              }
               <app-budget-fit-badge [fit]="s.budgetFit" />
             </div>
-            <div class="kpi" [class.kpi-over]="s.remainingBudget < 0">
+            <div class="kpi" [class.kpi-over]="tt.remaining < 0">
               <span class="side-label">{{ 'plan.kpiRemaining' | t }}</span>
               <span class="price price-lg kpi-delta">
-                {{ s.remainingBudget >= 0 ? '+' : '−' }}{{ (s.remainingBudget >= 0 ? s.remainingBudget : -s.remainingBudget) | money: s.currency }}
+                {{ tt.remaining >= 0 ? '+' : '−' }}{{ (tt.remaining >= 0 ? tt.remaining : -tt.remaining) | money: s.currency }}
               </span>
               <span class="small muted">{{ 'plan.budgetLine' | t: { amount: (s.budgetAmount | money: s.currency) } }}</span>
             </div>
@@ -84,13 +89,14 @@
                 <strong class="tabular">{{ budgetUsedPercent() }}%</strong>
               </div>
               <div class="budget-bar" role="img" [attr.aria-label]="'plan.kpiBudgetUsed' | t">
-                @for (b of budgetBar(); track b.category; let i = $index) {
-                  <span class="budget-seg" [attr.data-i]="i" [style.width.%]="b.percent" [title]="(b.category | category) + ': ' + (b.amount | money: s.currency)"></span>
+                @for (b of budgetBar(); track b.category + b.estimate; let i = $index) {
+                  <span class="budget-seg" [class.is-estimate]="b.estimate" [attr.data-i]="i" [style.width.%]="b.percent"
+                        [title]="(b.category | category) + (b.estimate ? ' ~' : '') + ': ' + (b.amount | money: s.currency)"></span>
                 }
               </div>
               <ul class="budget-legend">
-                @for (b of budgetBar(); track b.category; let i = $index) {
-                  <li><span class="budget-dot" [attr.data-i]="i"></span>{{ b.category | category }} {{ b.amount | money: s.currency }}</li>
+                @for (b of budgetBar(); track b.category + b.estimate; let i = $index) {
+                  <li [class.stay-est]="b.estimate"><span class="budget-dot" [class.is-estimate]="b.estimate" [attr.data-i]="i"></span>{{ b.category | category }}@if (b.estimate) { ({{ 'plan.estimate' | t }})} {{ b.amount | money: s.currency }}</li>
                 }
               </ul>
             </div>
@@ -109,8 +115,11 @@
           @if (s.hasExpiredItems) {
             <div class="alert alert-warn" role="status">{{ 'plan.expiredWarning' | t }}</div>
           }
-          @if (s.missingCostCategories.length) {
-            <div class="alert alert-warn">{{ 'plan.missingCosts' | t: { list: (s.missingCostCategories | category) } }}</div>
+          @if (missingCosts().length) {
+            <div class="alert alert-warn">{{ 'plan.missingCosts' | t: { list: (missingCosts() | category) } }}</div>
+          }
+          @if (tt.stay; as st) {
+            <div class="alert stay-note">{{ (st.typical ? 'plan.stayTypicalNote' : 'plan.stayNote') | t: { hotel: stays.get(s.id)?.name ?? '', nightly: (st.nightly | money: s.currency) } }}</div>
           }
           @if (s.warnings.length) {
             <div class="alert alert-info">
@@ -265,6 +274,9 @@
               @for (c of p.costBreakdown; track c.category) {
                 <div class="breakdown-cat"><span class="muted small">{{ c.category | category }}</span><strong>{{ c.amount | money: s.currency }}</strong></div>
               }
+              @if (tt.stay; as st) {
+                <div class="breakdown-cat stay-est"><span class="small">{{ 'Accommodation' | category }} ({{ 'plan.estimate' | t }})</span><strong>{{ st.total | money: s.currency }}</strong></div>
+              }
             </div>
             <div class="table-wrap">
               <table class="items-table">
@@ -307,8 +319,8 @@
                 </tbody>
                 <tfoot>
                   <tr>
-                    <th scope="row" colspan="3">{{ 'plan.total' | t }}</th>
-                    <td class="num"><strong>{{ s.totalEstimatedCost | money: s.currency }}</strong></td>
+                    <th scope="row" colspan="3">{{ 'plan.total' | t }}@if (tt.stay) { <span class="small stay-est"> ({{ 'plan.withStay' | t }})</span>}</th>
+                    <td class="num"><strong>{{ tt.total | money: s.currency }}</strong></td>
                     <td colspan="2"></td>
                   </tr>
                 </tfoot>
