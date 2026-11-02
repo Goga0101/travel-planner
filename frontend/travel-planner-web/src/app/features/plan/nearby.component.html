@@ -10,13 +10,11 @@
   <section class="card nearby" id="stay" aria-labelledby="stay-title">
     <div class="section-head">
       <h2 id="stay-title"><app-icon name="bed" /> {{ 'nearby.stayTitle' | t }}</h2>
-      @if (d.hotelSearchUrl) {
-        <a class="text-link" [href]="d.hotelSearchUrl" target="_blank" rel="noopener noreferrer nofollow">
-          {{ 'nearby.allHotels' | t: { city: city() } }} <app-icon name="external" [size]="16" />
-          <span class="visually-hidden">{{ 'link.newTab' | t }}</span>
-        </a>
-      }
     </div>
+    <app-stay-budget [(budget)]="stayBudget" [(perNight)]="budgetPerNight" [currency]="prices()?.currency ?? summary().currency"
+                     [nights]="prices()?.nights ?? summary().nights" [rooms]="prices()?.rooms ?? 1" [remaining]="summary().remainingBudget"
+                     [fitCount]="pricedHotels().length" [total]="prices()?.hotels?.length ?? 0" [cheapestStay]="cheapestStay()"
+                     [searchUrl]="d.hotelSearchUrl" />
     <app-hotel-finder [planId]="planId()" (chosen)="stayChosen.emit()" />
     <app-hotel-scene />
 
@@ -42,7 +40,7 @@
         @if (prices(); as hp) {
           <app-route-hint />
           <ul class="hotel-grid hotel-grid-prices">
-            @for (ph of hp.hotels; track ph.name) {
+            @for (ph of pricedHotels(); track ph.name) {
               <li class="hotel-card">
                 <div class="hotel-head">
                   <h3>{{ ph.name }}</h3>

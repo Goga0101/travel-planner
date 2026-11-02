@@ -1093,6 +1093,19 @@ export const en = {
   'lounge.close': "Close",
   'lounge.change': "Change",
   'lounge.choose': "Choose",
+  'budget.title': "How much can you pay for the hotel?",
+  'budget.amount': "Amount",
+  'budget.placeholder': "e.g. 200",
+  'budget.total': "for {nights} night|for {nights} nights",
+  'budget.night': "per night",
+  'budget.useRemaining': "Use what is left: {amount}",
+  'budget.clear': "Clear",
+  'budget.fit': "{count} of {total} hotel fits|{count} of {total} hotels fit",
+  'budget.noneFit': "No listed hotel fits.",
+  'budget.cheapest': "The cheapest is {amount} for the stay.",
+  'budget.perNight': "up to {amount} a night",
+  'budget.moreOnBooking': "More hotels up to {amount} a night on Booking.com",
+  'budget.allOnBooking': "All places to stay on Booking.com",
 } satisfies Record<string, string>;
 
 export type TranslationKey = keyof typeof en;

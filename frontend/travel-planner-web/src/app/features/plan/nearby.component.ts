@@ -12,6 +12,7 @@ import { SelectedStayService, StayPrice, sitePrice, typicalPrice } from '../../c
 import { IconComponent, IconName } from '../../shared/icon.component';
 import { DistancePipe, LocalDatePipe, MoneyPipe } from '../../shared/pipes';
 import { HotelFinderComponent } from './hotel-finder.component';
+import { StayBudgetComponent, nightlyAllowance } from './stay-budget.component';
 
 type Area = 'prices' | 'airport' | 'centre';
 
@@ -33,7 +34,7 @@ const MODE_KEYS: Record<TransitMode, TranslationKey> = {
 @Component({
   selector: 'app-nearby',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [HotelSceneComponent, RouteHintComponent, TranslatePipe, IconComponent, DistancePipe, LocalDatePipe, MoneyPipe, ErrorBannerComponent, HotelFinderComponent],
+  imports: [HotelSceneComponent, RouteHintComponent, TranslatePipe, IconComponent, DistancePipe, LocalDatePipe, MoneyPipe, ErrorBannerComponent, HotelFinderComponent, StayBudgetComponent],
   templateUrl: './nearby.component.html',
 })
 export class NearbyComponent {
@@ -73,6 +74,26 @@ export class NearbyComponent {
   protected readonly error = signal<ApiError | null>(null);
   protected readonly area = signal<Area>('airport');
   protected readonly prices = signal<HotelPricesDto | null>(null);
+  /** What the traveller can pay for the stay (null = no limit) and whether that amount is per night. */
+  protected readonly stayBudget = signal<number | null>(null);
+  protected readonly budgetPerNight = signal(false);
+  /**
+   * The priced hotels within the budget (each at its cheapest site), best rated first; all of them, cheapest first, without
+   * a budget.
+   */
+  protected readonly pricedHotels = computed(() => {
+    const hp = this.prices();
+    if (!hp) return [];
+    const budget = this.stayBudget();
+    if (budget === null) return hp.hotels;
+    const limit = nightlyAllowance(budget, this.budgetPerNight(), hp.nights, hp.rooms);
+    return hp.hotels.filter((h) => h.lowestNightly <= limit)
+      .sort((a, b) => (b.rating ?? 0) - (a.rating ?? 0) || b.lowestNightly - a.lowestNightly);
+  });
+  protected readonly cheapestStay = computed(() => {
+    const hp = this.prices();
+    return hp?.hotels.length ? Math.min(...hp.hotels.map((h) => h.lowestNightly)) * hp.nights * Math.max(1, hp.rooms) : 0;
+  });
   protected readonly pricesLoading = signal(false);
   protected readonly showAll = signal(false);
   protected readonly showAllLines = signal(false);
@@ -91,6 +112,10 @@ export class NearbyComponent {
   protected readonly city = computed(() => this.summary().destination.city);
 
   constructor() {
+    // A budget is about the priced hotels: show that list.
+    effect(() => {
+      if (this.stayBudget() !== null && untracked(() => this.prices()?.hotels.length)) untracked(() => this.area.set('prices'));
+    });
     // Reload when the plan or the language changes (names and links are localized by the API).
     effect(() => {
       this.planId();
