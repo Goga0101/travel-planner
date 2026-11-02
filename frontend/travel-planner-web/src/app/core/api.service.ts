@@ -34,6 +34,7 @@ import {
   JourneyDto,
   BookedTripDto,
   LeaderboardDto,
+  SaveTripDetails,
   LiveVehiclesDto,
   TaxiOptionsDto,
 } from './models';
@@ -193,9 +194,14 @@ export class ApiService {
     return this.http.get<BookedTripDto[]>(`${BASE}/journeys`);
   }
 
-  /** "I booked this trip": starts tracking the plan's days (calling it again changes nothing). */
-  startTrip(planId: string): Observable<BookedTripDto> {
-    return this.http.put<BookedTripDto>(`${BASE}/journeys/${encodeURIComponent(planId)}`, {});
+  /** Saves the plan to "My trips" as a draft, or updates its saved hotel and language (the status stays). */
+  saveTrip(planId: string, details: SaveTripDetails): Observable<BookedTripDto> {
+    return this.http.put<BookedTripDto>(`${BASE}/journeys/${encodeURIComponent(planId)}`, details);
+  }
+
+  /** "I bought the tickets and the stay" (true), or back to a draft (false). */
+  setTripBooked(planId: string, booked: boolean): Observable<BookedTripDto> {
+    return this.http.put<BookedTripDto>(`${BASE}/journeys/${encodeURIComponent(planId)}/booked`, { booked });
   }
 
   cancelTrip(planId: string): Observable<void> {

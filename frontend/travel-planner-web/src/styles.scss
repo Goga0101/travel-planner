@@ -1621,6 +1621,8 @@ a.ext-link.btn:hover { background: var(--primary-dark); border-color: var(--prim
   margin: 0; padding: 0; border: 0; background: transparent; overflow: visible; color: var(--text);
 }
 .nd:not(:popover-open) { display: none; }
+// The postcards sit in the top layer, above everything: step aside while the account panel is open.
+body:has(.am-panel) .nd { visibility: hidden; }
 .nd-stack { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: minmax(0, 1fr); gap: 0.6rem; }
 .nd-card {
   --cat: var(--mail); --cat-soft: var(--mail-soft); --cat-line: var(--mail-line);

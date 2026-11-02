@@ -1059,7 +1059,10 @@ export interface AuthResultDto {
   user: UserDto;
 }
 
-// Booked trips ("journeys" on the API): the traveller ticks off each day; a trip with every day ticked counts on the leaderboard.
+// "My trips" ("journeys" on the API): saved as a draft, confirmed once bought, then each day ticked off; a trip with every
+// day ticked counts on the leaderboard.
+export type TripStatus = 'Draft' | 'Booked';
+
 export interface BookedTripDto {
   tripPlanId: string;
   destinationCode: string;
@@ -1068,9 +1071,22 @@ export interface BookedTripDto {
   startDate: string;
   endDate: string;
   dayCount: number;
+  status: TripStatus;
+  stayName?: string;
+  /** Local departure time of the outbound flight. */
+  departureLocal?: string;
   completedDays: string[];
-  bookedAtUtc: string;
+  savedAtUtc: string;
+  bookedAtUtc?: string;
   completedAtUtc?: string;
+}
+
+/** Saved with a trip: the hotel picked on the plan page and the site language (for the reminder e-mails). */
+export interface SaveTripDetails {
+  stayName?: string;
+  stayLatitude?: number;
+  stayLongitude?: number;
+  lang?: string;
 }
 
 /** One traveller: first name and the initial of the last name only; samples are illustrations until real travellers fill the board. */

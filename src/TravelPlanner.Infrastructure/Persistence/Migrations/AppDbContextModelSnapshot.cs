@@ -238,7 +238,7 @@ namespace TravelPlanner.Infrastructure.Persistence.Migrations
                     b.Property<Guid>("Id")
                         .HasColumnType("uuid");
 
-                    b.Property<DateTime>("BookedAtUtc")
+                    b.Property<DateTime?>("BookedAtUtc")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("City")
@@ -259,6 +259,9 @@ namespace TravelPlanner.Infrastructure.Persistence.Migrations
                         .HasColumnType("character(2)")
                         .IsFixedLength();
 
+                    b.Property<DateTime?>("DepartureLocal")
+                        .HasColumnType("timestamp without time zone");
+
                     b.Property<string>("DestinationCode")
                         .IsRequired()
                         .HasMaxLength(64)
@@ -267,8 +270,37 @@ namespace TravelPlanner.Infrastructure.Persistence.Migrations
                     b.Property<DateOnly>("EndDate")
                         .HasColumnType("date");
 
+                    b.Property<DateTime?>("FlightEmailSentAtUtc")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Lang")
+                        .IsRequired()
+                        .HasMaxLength(2)
+                        .HasColumnType("character varying(2)");
+
+                    b.Property<DateTime>("SavedAtUtc")
+                        .HasColumnType("timestamp with time zone");
+
                     b.Property<DateOnly>("StartDate")
                         .HasColumnType("date");
+
+                    b.Property<DateTime?>("StartEmailSentAtUtc")
+                        .HasColumnType("timestamp with time zone");
+
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(16)
+                        .HasColumnType("character varying(16)");
+
+                    b.Property<double?>("StayLatitude")
+                        .HasColumnType("double precision");
+
+                    b.Property<double?>("StayLongitude")
+                        .HasColumnType("double precision");
+
+                    b.Property<string>("StayName")
+                        .HasMaxLength(200)
+                        .HasColumnType("character varying(200)");
 
                     b.Property<Guid>("TripPlanId")
                         .HasColumnType("uuid");
@@ -281,6 +313,8 @@ namespace TravelPlanner.Infrastructure.Persistence.Migrations
                     b.HasIndex("CompletedAtUtc");
 
                     b.HasIndex("TripPlanId");
+
+                    b.HasIndex("Status", "StartDate");
 
                     b.HasIndex("UserId", "TripPlanId")
                         .IsUnique();

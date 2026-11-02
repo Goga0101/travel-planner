@@ -1,5 +1,8 @@
 import { ChangeDetectionStrategy, Component, ElementRef, HostListener, computed, effect, inject, signal, untracked, viewChild } from '@angular/core';
+import { ApiService } from '../core/api.service';
 import { AuthService } from '../core/auth.service';
+import { BookedTripDto } from '../core/models';
+import { LocalDatePipe } from './pipes';
 import { I18nService } from '../core/i18n/i18n.service';
 import { TranslatePipe } from '../core/i18n/translate.pipe';
 import { RouterLink } from '@angular/router';
@@ -13,7 +16,7 @@ const PANEL_BUTTON_WIDTH = 272;
 @Component({
   selector: 'app-account-menu',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [TranslatePipe, RouterLink],
+  imports: [TranslatePipe, RouterLink, LocalDatePipe],
   styles: `
     :host { position: relative; display: inline-flex; }
     .am-trigger { display: inline-flex; align-items: center; gap: 0.45rem; min-height: 2.5rem; padding: 0.25rem 0.85rem 0.25rem 0.3rem;
@@ -54,6 +57,18 @@ const PANEL_BUTTON_WIDTH = 272;
     .am-user-mail { margin: 0; color: var(--muted); font-size: 0.85rem; overflow-wrap: anywhere; }
     .am-providers { margin: 0.9rem 0 0; font-size: 0.82rem; color: var(--muted); }
     .am-signout { margin-top: 1rem; width: 100%; }
+    .am-trips { margin: 0.9rem 0 0; padding-top: 0.8rem; border-top: 1px solid var(--border); }
+    .am-trips-title { margin: 0 0 0.45rem; font-size: 0.82rem; font-weight: 700; color: var(--text-2); }
+    .am-trips ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.3rem; max-height: 14rem; overflow-y: auto; }
+    .am-trip { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 0.5rem; align-items: center; padding: 0.45rem 0.6rem;
+      border-radius: var(--radius-xs); border: 1px solid var(--border); color: var(--text); text-decoration: none; font-size: 0.85rem; }
+    .am-trip:hover { border-color: var(--primary); }
+    .am-trip small { display: block; color: var(--muted); font-size: 0.75rem; }
+    .am-trip-status { font-size: 0.66rem; font-weight: 700; padding: 0.08rem 0.45rem; border-radius: 999px; white-space: nowrap; }
+    .am-trip-status.Draft { border: 1px dashed var(--border-strong); color: var(--text-2); }
+    .am-trip-status.Booked { background: var(--primary); color: #fff; }
+    .am-trip-status.Done { background: #f5b301; color: #1b1300; }
+    .am-trips-empty { margin: 0; font-size: 0.8rem; color: var(--muted); }
     .am-delete { margin-top: 0.8rem; padding-top: 0.7rem; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap;
       justify-content: space-between; gap: 0.4rem 1rem; }
     .am-delete-q { margin: 0; width: 100%; font-size: 0.85rem; color: var(--text-2); }
@@ -120,6 +135,26 @@ const PANEL_BUTTON_WIDTH = 272;
             </div>
           </div>
           <p class="am-providers">{{ 'auth.signedInWith' | t: { providers: u.providers.join(', ') } }}</p>
+          <div class="am-trips">
+            <p class="am-trips-title">{{ 'trip.mine' | t }}</p>
+            @if (trips(); as list) {
+              <ul>
+                @for (tr of list; track tr.tripPlanId) {
+                  @let st = tr.completedAtUtc ? 'Done' : tr.status;
+                  <li>
+                    <a class="am-trip" [routerLink]="i18n.path('plans', tr.tripPlanId)" (click)="open.set(false)">
+                      <span>{{ tr.city }}<small>{{ tr.startDate | ldate: 'd MMM' }} – {{ tr.endDate | ldate: 'd MMM y' }}</small></span>
+                      <span class="am-trip-status" [class]="st">{{ (st === 'Done' ? 'trip.status.Done' : st === 'Booked' ? 'trip.status.Booked' : 'trip.status.Draft') | t }}</span>
+                    </a>
+                  </li>
+                } @empty {
+                  <li><p class="am-trips-empty">{{ 'trip.none' | t }}</p></li>
+                }
+              </ul>
+            } @else {
+              <p class="am-trips-empty"><span class="spinner" aria-hidden="true"></span></p>
+            }
+          </div>
           <button type="button" class="btn btn-ghost am-signout" (click)="signOut()">{{ 'auth.signOut' | t }}</button>
           <div class="am-delete">
             @if (confirmDelete()) {
@@ -176,7 +211,10 @@ export class AccountMenuComponent {
   protected readonly i18n = inject(I18nService);
   private readonly host = inject(ElementRef<HTMLElement>);
 
+  private readonly api = inject(ApiService);
   protected readonly open = signal(false);
+  /** The signed-in traveller's saved trips, loaded each time the panel opens. */
+  protected readonly trips = signal<BookedTripDto[] | null>(null);
   protected readonly pictureFailed = signal(false);
   private readonly googleButton = viewChild<ElementRef<HTMLElement>>('googleButton');
 
@@ -210,6 +248,10 @@ export class AccountMenuComponent {
   protected toggle(): void {
     const next = !this.open();
     this.open.set(next);
+    if (next && this.auth.signedIn()) {
+      this.trips.set(null);
+      this.api.getMyTrips().subscribe({ next: (t) => this.trips.set(t), error: () => this.trips.set([]) });
+    }
     if (next && !this.auth.signedIn()) {
       this.auth.error.set(null);
       this.auth.prepareFacebook();

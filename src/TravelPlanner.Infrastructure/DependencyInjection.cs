@@ -61,6 +61,16 @@ public static class DependencyInjection
         services.AddSingleton<CatalogFileReader>();
         services.Configure<LeaderboardOptions>(configuration.GetSection(LeaderboardOptions.SectionName));
         services.AddSingleton<ILeaderboardSamples, LeaderboardSamplesFile>();
+
+        // Trip reminder e-mails ("have a good flight", "your trip has begun") through Brevo; optional key.
+        services.Configure<TripReminderOptions>(configuration.GetSection(TripReminderOptions.SectionName));
+        services.Configure<EmailOptions>(configuration.GetSection(EmailOptions.SectionName));
+        var email = configuration.GetSection(EmailOptions.SectionName).Get<EmailOptions>() ?? new EmailOptions();
+        if (email.IsConfigured)
+            services.AddHttpClient<IEmailSender, BrevoEmailSender>(c => { c.BaseAddress = BaseUri(email.BaseUrl); c.Timeout = TimeSpan.FromSeconds(20); });
+        else
+            services.AddSingleton<IEmailSender, NoEmailSender>();
+        services.AddHostedService<TripReminderWorker>();
         services.AddSingleton<WorldAirportsFileReader>();
         services.AddSingleton<IWorldPlaces, WorldPlaces>();
         services.AddSingleton<ITransitGuideSource, TransitGuideFile>();

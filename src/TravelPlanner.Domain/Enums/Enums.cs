@@ -81,3 +81,11 @@ public enum TransportLinkKind
     TaxiOperator = 2,
     RideHailingPlatform = 3
 }
+
+public enum JourneyStatus
+{
+    /// <summary>Saved to "My trips" while the traveller is still deciding; nothing bought yet.</summary>
+    Draft = 0,
+    /// <summary>The traveller confirmed they bought the tickets and the stay: days can be ticked and reminders are e-mailed.</summary>
+    Booked = 1,
+}

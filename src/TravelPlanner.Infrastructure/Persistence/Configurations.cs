@@ -203,11 +203,17 @@ internal sealed class JourneyConfiguration : IEntityTypeConfiguration<Journey>
         b.Property(x => x.City).HasMaxLength(128).IsRequired();
         b.Property(x => x.CountryCode).HasMaxLength(2).IsFixedLength().IsRequired();
         b.Property(x => x.CompletedDays).IsRequired();
+        b.Property(x => x.Status).HasConversion<string>().HasMaxLength(16).IsRequired();
+        b.Property(x => x.StayName).HasMaxLength(200);
+        // A wall-clock time at the departure airport, not an instant.
+        b.Property(x => x.DepartureLocal).HasColumnType("timestamp without time zone");
+        b.Property(x => x.Lang).HasMaxLength(2).IsRequired();
         b.Ignore(x => x.DayCount);
         b.Ignore(x => x.IsCompleted);
         // One journey per traveller and plan; deleting the account deletes its journeys.
         b.HasIndex(x => new { x.UserId, x.TripPlanId }).IsUnique();
         b.HasIndex(x => x.CompletedAtUtc);
+        b.HasIndex(x => new { x.Status, x.StartDate });
         b.HasOne<User>().WithMany().HasForeignKey(x => x.UserId).OnDelete(DeleteBehavior.Cascade);
         b.HasOne<TripPlan>().WithMany().HasForeignKey(x => x.TripPlanId).OnDelete(DeleteBehavior.Cascade);
     }

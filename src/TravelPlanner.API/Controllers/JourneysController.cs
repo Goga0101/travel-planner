@@ -9,10 +9,11 @@ using TravelPlanner.Application.Features.Journeys;
 namespace TravelPlanner.API.Controllers;
 
 public sealed record JourneyDayRequest(bool Done);
+public sealed record JourneyBookedRequest(bool Booked);
 
 /// <summary>
-/// Booked trips of the signed-in traveller: "I booked this plan", then ticking off each day of the trip. A trip with every
-/// day ticked is completed and counts on the leaderboard.
+/// Trips of the signed-in traveller ("My trips"): saved as a draft from a plan, confirmed once bought, then each day of the
+/// trip ticked off. A trip with every day ticked is completed and counts on the leaderboard.
 /// </summary>
 [ApiController]
 [Authorize]
@@ -26,16 +27,25 @@ public sealed class JourneysController(ISender sender) : ControllerBase
     public async Task<ActionResult<IReadOnlyList<JourneyDto>>> Mine(CancellationToken cancellationToken) =>
         UserId() is { } id ? Ok(await sender.Send(new GetMyJourneysQuery(id), cancellationToken)) : Unauthorized();
 
-    /// <summary>"I booked this trip": starts tracking the plan's days. Idempotent.</summary>
+    /// <summary>Saves the plan as a draft trip (or updates the saved hotel and language). Idempotent.</summary>
     [HttpPut("{planId:guid}")]
     [EnableRateLimiting(ApiConstants.RefreshPolicy)]
     [ProducesResponseType<JourneyDto>(StatusCodes.Status200OK)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]
     [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
-    public async Task<ActionResult<JourneyDto>> Start(Guid planId, CancellationToken cancellationToken) =>
-        UserId() is { } id ? Ok(await sender.Send(new StartJourneyCommand(id, planId), cancellationToken)) : Unauthorized();
+    public async Task<ActionResult<JourneyDto>> Start(Guid planId, [FromBody] SaveJourneyDetails? details, CancellationToken cancellationToken) =>
+        UserId() is { } id ? Ok(await sender.Send(new StartJourneyCommand(id, planId, details), cancellationToken)) : Unauthorized();
 
-    /// <summary>Stops tracking the trip and forgets its ticked days.</summary>
+    /// <summary>"I bought the tickets and the stay" (true), or back to a draft (false).</summary>
+    [HttpPut("{planId:guid}/booked")]
+    [EnableRateLimiting(ApiConstants.RefreshPolicy)]
+    [ProducesResponseType<JourneyDto>(StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+    [ProducesResponseType<ProblemDetails>(StatusCodes.Status404NotFound)]
+    public async Task<ActionResult<JourneyDto>> SetBooked(Guid planId, [FromBody] JourneyBookedRequest request, CancellationToken cancellationToken) =>
+        UserId() is { } id ? Ok(await sender.Send(new SetJourneyBookedCommand(id, planId, request.Booked), cancellationToken)) : Unauthorized();
+
+    /// <summary>Removes the trip from "My trips" (with its ticked days).</summary>
     [HttpDelete("{planId:guid}")]
     [ProducesResponseType(StatusCodes.Status204NoContent)]
     [ProducesResponseType(StatusCodes.Status401Unauthorized)]

@@ -96,6 +96,11 @@ dotnet user-secrets set "Auth:Google:ClientId" "872910671859-o81bdgaqf2jjksmv7u6
 # dotnet user-secrets set "Auth:Facebook:AppId" "<App ID>" --project $api
 # dotnet user-secrets set "Auth:Facebook:AppSecret" "<App Secret>" --project $api
 
+# მოგზაურობის შეხსენების წერილები (Brevo): brevo.com → SMTP & API → API keys;
+# გამგზავნი მისამართი Brevo-ში დადასტურებული უნდა იყოს (Senders). გასაღების ჩამატების შემდეგ API თავიდან გაუშვი.
+dotnet user-secrets set "Email:BrevoApiKey" "<Brevo API key>" --project $api
+dotnet user-secrets set "Email:FromAddress" "<დადასტურებული ელფოსტა>" --project $api
+
 # ჩვენი შესვლის ბილეთის (JWT) ხელმოწერის გასაღები: შემთხვევითი, ერთხელ
 $b = New-Object byte[] 48; [Security.Cryptography.RandomNumberGenerator]::Create().GetBytes($b)
 dotnet user-secrets set "Auth:Jwt:Key" ([Convert]::ToBase64String($b)) --project $api

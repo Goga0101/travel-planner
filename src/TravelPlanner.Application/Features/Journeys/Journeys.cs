@@ -1,16 +1,23 @@
+using System.Text.Json;
 using FluentValidation;
 using FluentValidation.Results;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using TravelPlanner.Application.Common;
 using TravelPlanner.Application.Features.TripPlans;
+using TravelPlanner.Application.Planning;
 using TravelPlanner.Domain.Entities;
+using TravelPlanner.Domain.Enums;
 
 namespace TravelPlanner.Application.Features.Journeys;
 
 public sealed record JourneyDto(
     Guid TripPlanId, string DestinationCode, string City, string CountryCode, DateOnly StartDate, DateOnly EndDate, int DayCount,
-    IReadOnlyList<DateOnly> CompletedDays, DateTime BookedAtUtc, DateTime? CompletedAtUtc);
+    JourneyStatus Status, string? StayName, DateTime? DepartureLocal, IReadOnlyList<DateOnly> CompletedDays,
+    DateTime SavedAtUtc, DateTime? BookedAtUtc, DateTime? CompletedAtUtc);
+
+/// <summary>The hotel picked on the plan page and the site language (for the reminder e-mails), saved with the trip.</summary>
+public sealed record SaveJourneyDetails(string? StayName, double? StayLatitude, double? StayLongitude, string? Lang);
 
 /// <summary>
 /// One traveller on the leaderboard: first name and the initial of the last name only. Sample entries (IsSample) are
@@ -33,7 +40,15 @@ public interface ILeaderboardSamples
 public static class JourneyMapping
 {
     public static JourneyDto ToDto(this Journey j) =>
-        new(j.TripPlanId, j.DestinationCode, j.City, j.CountryCode, j.StartDate, j.EndDate, j.DayCount, j.CompletedDays, j.BookedAtUtc, j.CompletedAtUtc);
+        new(j.TripPlanId, j.DestinationCode, j.City, j.CountryCode, j.StartDate, j.EndDate, j.DayCount, j.Status, j.StayName, j.DepartureLocal,
+            j.CompletedDays, j.SavedAtUtc, j.BookedAtUtc, j.CompletedAtUtc);
+
+    public static void Apply(this Journey j, SaveJourneyDetails? details)
+    {
+        if (details is null) return;
+        j.SetStay(details.StayName is { Length: > 200 } n ? n[..200] : details.StayName, details.StayLatitude, details.StayLongitude);
+        if (details.Lang is "ka" or "en") j.Lang = details.Lang;
+    }
 
     /// <summary>
     /// The latest calendar date anywhere on Earth (UTC+14): a traveller in Sydney or Auckland may tick their day while it
@@ -69,28 +84,64 @@ public sealed class GetMyJourneysHandler(IApplicationDbContext db) : IRequestHan
     }
 }
 
-/// <summary>"I booked this trip": starts tracking the plan's days for the traveller. Calling it again changes nothing.</summary>
-public sealed record StartJourneyCommand(Guid UserId, Guid PlanId) : IRequest<JourneyDto>;
+/// <summary>
+/// Saves the plan to the traveller's trips as a draft (with the picked hotel), or updates the saved hotel and language of
+/// a trip already saved; its status stays as it is.
+/// </summary>
+public sealed record StartJourneyCommand(Guid UserId, Guid PlanId, SaveJourneyDetails? Details = null) : IRequest<JourneyDto>;
 
 public sealed class StartJourneyHandler(IApplicationDbContext db, TimeProvider clock) : IRequestHandler<StartJourneyCommand, JourneyDto>
 {
     public async Task<JourneyDto> Handle(StartJourneyCommand request, CancellationToken cancellationToken)
     {
         var existing = await db.Journeys.FirstOrDefaultAsync(j => j.UserId == request.UserId && j.TripPlanId == request.PlanId, cancellationToken);
-        if (existing is not null) return existing.ToDto();
+        if (existing is not null)
+        {
+            existing.Apply(request.Details);
+            await db.SaveChangesAsync(cancellationToken);
+            return existing.ToDto();
+        }
         if (!await db.Users.AnyAsync(u => u.Id == request.UserId, cancellationToken)) throw new NotFoundException("resource.user", request.UserId);
 
         var plan = await TripPlanLoader.LoadAsync(db, request.PlanId, tracking: false, cancellationToken)
                    ?? throw new NotFoundException("resource.tripPlan", request.PlanId);
         var d = plan.Destination!;
-        var journey = new Journey(request.UserId, plan.Id, d.Code, d.City, d.CountryCode, plan.DepartureDate, plan.ReturnDate, clock.GetUtcNow().UtcDateTime);
+        var journey = new Journey(request.UserId, plan.Id, d.Code, d.City, d.CountryCode, plan.DepartureDate, plan.ReturnDate, clock.GetUtcNow().UtcDateTime)
+        {
+            DepartureLocal = OutboundDeparture(plan),
+        };
+        journey.Apply(request.Details);
         db.Journeys.Add(journey);
+        await db.SaveChangesAsync(cancellationToken);
+        return journey.ToDto();
+    }
+
+    private static DateTime? OutboundDeparture(TripPlan plan)
+    {
+        var flight = plan.Items.FirstOrDefault(i => i.Type == PlanItemType.Flight);
+        if (flight is null) return null;
+        try { return JsonSerializer.Deserialize<FlightItemDetails>(flight.DetailsJson, AppJson.Options)?.Outbound.DepartureLocal; }
+        catch (JsonException) { return null; }
+    }
+}
+
+/// <summary>"I bought the tickets and the stay" (Booked = true), or back to a draft (false, ticked days are forgotten).</summary>
+public sealed record SetJourneyBookedCommand(Guid UserId, Guid PlanId, bool Booked) : IRequest<JourneyDto>;
+
+public sealed class SetJourneyBookedHandler(IApplicationDbContext db, TimeProvider clock) : IRequestHandler<SetJourneyBookedCommand, JourneyDto>
+{
+    public async Task<JourneyDto> Handle(SetJourneyBookedCommand request, CancellationToken cancellationToken)
+    {
+        var journey = await db.Journeys.FirstOrDefaultAsync(j => j.UserId == request.UserId && j.TripPlanId == request.PlanId, cancellationToken)
+                      ?? throw new NotFoundException("resource.journey", request.PlanId);
+        if (request.Booked) journey.ConfirmBooked(clock.GetUtcNow().UtcDateTime);
+        else journey.BackToDraft();
         await db.SaveChangesAsync(cancellationToken);
         return journey.ToDto();
     }
 }
 
-/// <summary>"I did not book it after all": stops tracking and forgets the ticked days.</summary>
+/// <summary>Removes the trip from the traveller's trips (with its ticked days).</summary>
 public sealed record CancelJourneyCommand(Guid UserId, Guid PlanId) : IRequest;
 
 public sealed class CancelJourneyHandler(IApplicationDbContext db) : IRequestHandler<CancelJourneyCommand>

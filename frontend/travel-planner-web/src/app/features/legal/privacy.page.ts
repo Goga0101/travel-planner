@@ -37,8 +37,11 @@ import { I18nService } from '../../core/i18n/i18n.service';
         <h2>რისთვის ვიყენებთ</h2>
         <p>მხოლოდ თქვენი ანგარიშისთვის: რომ შეხვიდეთ და საიტზე თქვენი სახელი და ფოტო გამოჩნდეს (და მომავალში — თქვენი შენახული მოგზაურობები
           ყველა მოწყობილობაზე). მონაცემებს არ ვყიდით, რეკლამისთვის არ ვიყენებთ და მესამე მხარეს არ გადავცემთ.</p>
-        <p>თუ მოგზაურობას „დავჯავშნე“-ით მონიშნავთ და ყველა დღეს აღნიშნავთ, მთავარ გვერდზე, მოგზაურთა ლიდერბორდზე გამოჩნდება თქვენი სახელი და გვარის
-          პირველი ასო (მაგ. „ნინო მ.“), დასრულებული მოგზაურობების, დღეებისა და ქვეყნების რაოდენობა. მოგზაურობის წაშლით ან ანგარიშის წაშლით იქიდან ქრებით.</p>
+        <p>თუ მოგზაურობას „ჩემს მოგზაურობებში“ შეინახავთ, ვინახავთ გეგმას, თარიღებს და თქვენ მიერ არჩეულ სასტუმროს. როცა დაადასტურებთ, რომ
+          მოგზაურობა შეიძინეთ, თქვენს ელფოსტაზე ორ შეხსენებას გამოგიგზავნით: გაფრენის დღეს და მოგზაურობის მეორე დილით (წერილებს Brevo აგზავნის,
+          ჩვენი სახელით). სხვა წერილებს ან რეკლამას არ ვაგზავნით.</p>
+        <p>თუ ყველა დღეს აღნიშნავთ, მთავარ გვერდზე, მოგზაურთა ლიდერბორდზე გამოჩნდება თქვენი სახელი და გვარის პირველი ასო (მაგ. „ნინო მ.“),
+          დასრულებული მოგზაურობების, დღეებისა და ქვეყნების რაოდენობა. მოგზაურობის ან ანგარიშის წაშლით იქიდან ქრებით.</p>
 
         <h2>სად ინახება</h2>
         <p>ანგარიში ინახება ჩვენს სერვერზე, მონაცემთა ბაზაში. შესვლის შემდეგ თქვენი ბრაუზერი ინახავს ჩვენს ხელმოწერილ ბილეთს (token), რომელიც 30 დღე მოქმედებს
@@ -72,9 +75,11 @@ import { I18nService } from '../../core/i18n/i18n.service';
         <h2>What we use it for</h2>
         <p>Only for your account: to sign you in and show your name and photo (and, later, your saved trips on all your devices). We do not
           sell the data, use it for advertising or pass it to third parties.</p>
-        <p>If you mark a trip with “I booked this trip” and tick off all its days, the travellers' leaderboard on the home page shows your first
-          name and the initial of your last name (e.g. “Nino M.”) with your number of completed trips, days and countries. Removing the trip or
-          deleting your account takes you off it.</p>
+        <p>If you save a trip to “My trips”, we keep the plan, its dates and the hotel you picked. Once you confirm you bought the trip, we send
+          two reminders to your e-mail: on the departure day and on the second morning of the trip (sent by Brevo on our behalf). We send no
+          other e-mails and no advertising.</p>
+        <p>If you tick off all its days, the travellers' leaderboard on the home page shows your first name and the initial of your last name
+          (e.g. “Nino M.”) with your number of completed trips, days and countries. Removing the trip or deleting your account takes you off it.</p>
 
         <h2>Where it is kept</h2>
         <p>Your account is stored in our database. After signing in, your browser keeps our signed token, valid for 30 days and removed when you

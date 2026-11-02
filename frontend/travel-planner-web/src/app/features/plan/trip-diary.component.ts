@@ -6,17 +6,22 @@ import { AuthService } from '../../core/auth.service';
 import { TripDay, tripDays, tripProgress } from '../../core/booked-trips';
 import { ApiError, toApiError } from '../../core/errors';
 import { toIsoDate } from '../../core/format';
+import { TranslationKey } from '../../core/i18n/en';
 import { I18nService } from '../../core/i18n/i18n.service';
 import { TranslatePipe } from '../../core/i18n/translate.pipe';
-import { BookedTripDto } from '../../core/models';
+import { BookedTripDto, SaveTripDetails } from '../../core/models';
+import { SelectedStayService } from '../../core/selected-stay.service';
 import { ErrorBannerComponent } from '../../shared/error-banner.component';
 import { IconComponent } from '../../shared/icon.component';
 import { LocalDatePipe } from '../../shared/pipes';
 
+type Step = 'saved' | 'booked' | 'done';
+
 /**
- * "I booked this trip", then one chip per day to tick off while travelling (days that have not begun stay locked).
- * With every day ticked the trip is complete and the traveller appears on the home page leaderboard. Needs a sign-in:
- * signed out, the button opens the account menu and the trip is marked as soon as the sign-in succeeds.
+ * "My trip" on the plan page, in three steps: save the plan to "My trips" as a draft (with the hotel picked), confirm once
+ * the tickets and the stay are bought (then reminder e-mails go out on the departure day and the second morning), and tick
+ * off each day during the trip; with every day ticked the traveller appears on the home page leaderboard. Needs a sign-in:
+ * signed out, the button opens the account menu and the trip is saved as soon as the sign-in succeeds.
  */
 @Component({
   selector: 'app-trip-diary',
@@ -24,13 +29,31 @@ import { LocalDatePipe } from '../../shared/pipes';
   imports: [TranslatePipe, IconComponent, LocalDatePipe, RouterLink, ErrorBannerComponent],
   styles: `
     :host { display: block; margin-bottom: var(--gap); }
-    .dy { display: grid; gap: 0.9rem; }
+    .dy { display: grid; gap: 1rem; }
     .dy-head { display: flex; gap: 0.9rem; align-items: flex-start; }
     .dy-icon { flex: none; width: 2.6rem; height: 2.6rem; border-radius: 999px; display: grid; place-items: center; font-size: 1.25rem;
       background: var(--primary-soft); color: var(--primary-deep); }
-    .dy-head h2 { margin: 0; font-size: 1.15rem; }
+    .dy-head h2 { margin: 0; font-size: 1.15rem; display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
     .dy-head p { margin: 0.15rem 0 0; }
-    .dy-start { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; }
+    .dy-status { font-size: 0.7rem; font-weight: 700; padding: 0.12rem 0.55rem; border-radius: 999px; letter-spacing: 0.02em; }
+    .dy-status.Draft { background: var(--surface-tint); color: var(--text-2); border: 1px dashed var(--border-strong); }
+    .dy-status.Booked { background: var(--primary); color: #fff; }
+
+    .dy-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem; counter-reset: s; }
+    .dy-step { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 0.5rem; align-items: center; padding: 0.55rem 0.7rem;
+      border-radius: var(--radius-md); background: var(--surface-tint); border: 1px solid var(--border); font-size: 0.8rem; color: var(--muted); }
+    .dy-step .n { width: 1.6rem; height: 1.6rem; border-radius: 50%; display: grid; place-items: center; font-weight: 800; background: var(--surface);
+      border: 1.5px solid var(--border-strong); color: var(--muted); }
+    .dy-step strong { display: block; color: var(--text); font-size: 0.85rem; }
+    .dy-step.done .n { background: var(--primary); border-color: var(--primary); color: #fff; }
+    .dy-step.current { border-color: var(--primary); background: var(--primary-soft); }
+    .dy-step.current .n { border-color: var(--primary); color: var(--primary-deep); }
+    @media (max-width: 599px) { .dy-steps { grid-template-columns: 1fr; } }
+
+    .dy-row { display: flex; flex-wrap: wrap; gap: 0.5rem 1rem; align-items: center; }
+    .dy-facts { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+    .dy-mail { display: flex; gap: 0.6rem; align-items: flex-start; padding: 0.7rem 0.85rem; border-radius: var(--radius-md); background: var(--surface-tint);
+      font-size: 0.85rem; color: var(--text-2); }
     .dy-progress { display: grid; gap: 0.35rem; }
     .dy-progress-head { display: flex; justify-content: space-between; gap: 1rem; font-size: 0.88rem; }
     .dy-bar { height: 0.55rem; border-radius: 999px; background: var(--border); overflow: hidden; }
@@ -58,16 +81,56 @@ import { LocalDatePipe } from '../../shared/pipes';
     .dy-danger { border: 0; border-radius: 999px; padding: 0.35rem 0.85rem; font: inherit; font-weight: 600; background: #b91c1c; color: #fff; cursor: pointer; }
   `,
   template: `
+    @let tr = trip();
     <section class="card dy" aria-labelledby="dy-title">
       <div class="dy-head">
-        <span class="dy-icon" aria-hidden="true">{{ trip()?.completedAtUtc ? '🏆' : '🧳' }}</span>
+        <span class="dy-icon" aria-hidden="true">{{ tr?.completedAtUtc ? '🏆' : tr?.status === 'Booked' ? '🧳' : '📌' }}</span>
         <div>
-          <h2 id="dy-title">{{ 'diary.title' | t }}</h2>
-          <p class="small muted">{{ (trip() ? 'diary.leadBooked' : 'diary.lead') | t }}</p>
+          <h2 id="dy-title">{{ 'diary.title' | t }}
+            @if (tr) { <span class="dy-status" [class]="tr.status">{{ (tr.status === 'Booked' ? 'trip.status.Booked' : 'trip.status.Draft') | t }}</span> }
+          </h2>
+          <p class="small muted">{{ lead() | t }}</p>
         </div>
       </div>
 
-      @if (trip(); as tr) {
+      <ol class="dy-steps" [attr.aria-label]="'diary.stepsLabel' | t">
+        @for (s of steps; track s.id; let i = $index) {
+          <li class="dy-step" [class.done]="stepDone(s.id)" [class.current]="currentStep() === s.id">
+            <span class="n" aria-hidden="true">@if (stepDone(s.id)) { ✓ } @else { {{ i + 1 }} }</span>
+            <span><strong>{{ s.title | t }}</strong>{{ s.text | t }}</span>
+          </li>
+        }
+      </ol>
+
+      @if (!tr) {
+        <div class="dy-row">
+          <button type="button" class="btn btn-primary" (click)="save()" [disabled]="busy() || loading()">
+            @if (busy()) { <span class="spinner" aria-hidden="true"></span> } @else { <app-icon name="heart" [size]="16" /> }
+            {{ 'diary.save' | t }}
+          </button>
+          <span class="small muted">{{ (auth.signedIn() ? 'diary.saveNote' : 'diary.signInNote') | t }}</span>
+        </div>
+      } @else if (tr.status === 'Draft') {
+        <div class="dy-facts">
+          <span class="meta-chip"><app-icon name="calendar" [size]="14" /> {{ tr.startDate | ldate: 'd MMM' }} – {{ tr.endDate | ldate: 'd MMM y' }}</span>
+          @if (tr.departureLocal) { <span class="meta-chip"><app-icon name="plane" [size]="14" /> {{ tr.departureLocal | ldate: 'd MMM HH:mm' }}</span> }
+          <span class="meta-chip"><app-icon name="bed" [size]="14" /> {{ tr.stayName ?? ('diary.noStay' | t) }}</span>
+        </div>
+        <div class="dy-row">
+          <button type="button" class="btn btn-primary" (click)="setBooked(true)" [disabled]="busy()">
+            @if (busy()) { <span class="spinner" aria-hidden="true"></span> } @else { <app-icon name="check" [size]="16" /> }
+            {{ 'diary.confirm' | t }}
+          </button>
+          <span class="small muted">{{ 'diary.confirmNote' | t }}</span>
+        </div>
+      } @else {
+        <div class="dy-mail">
+          <span aria-hidden="true">✉️</span>
+          <span>
+            @if (auth.user()?.email; as mail) { {{ 'diary.mailNote' | t: { email: mail } }} } @else { {{ 'diary.noMail' | t }} }
+          </span>
+        </div>
+
         <div class="dy-progress">
           <div class="dy-progress-head">
             <span>{{ 'diary.progress' | t: { done: doneCount(), count: days().length } }}</span>
@@ -103,28 +166,26 @@ import { LocalDatePipe } from '../../shared/pipes';
             <a [routerLink]="i18n.path()" fragment="leaderboard">{{ 'diary.toBoard' | t }} →</a>
           </div>
         } @else if (nextDay(); as nd) {
-          <p class="small muted">{{ 'diary.next' | t: { date: (nd.date | ldate: 'EEEE d MMMM') } }}</p>
+          <p class="small muted">{{ (nd.locked ? 'diary.firstDay' : 'diary.next') | t: { date: (nd.date | ldate: 'EEEE d MMMM') } }}</p>
         }
+      }
 
+      @if (tr) {
         <div class="dy-foot">
-          <span class="muted">{{ 'diary.bookedAt' | t: { date: (tr.bookedAtUtc | ldate: 'd MMM y') } }}</span>
-          @if (confirmCancel()) {
+          <span class="muted">
+            {{ (tr.bookedAtUtc ? 'diary.bookedAt' : 'diary.savedAt') | t: { date: ((tr.bookedAtUtc ?? tr.savedAtUtc) | ldate: 'd MMM y') } }}
+          </span>
+          @if (confirmRemove()) {
             <span>
-              {{ 'diary.cancelConfirm' | t }}
-              <button type="button" class="dy-link" (click)="confirmCancel.set(false)">{{ 'diary.cancelKeep' | t }}</button>
-              <button type="button" class="dy-danger" (click)="cancel()">{{ 'diary.cancelYes' | t }}</button>
+              {{ (tr.status === 'Booked' ? 'diary.unbookConfirm' : 'diary.removeConfirm') | t }}
+              <button type="button" class="dy-link" (click)="confirmRemove.set(false)">{{ 'diary.keep' | t }}</button>
+              <button type="button" class="dy-danger" (click)="tr.status === 'Booked' ? setBooked(false) : remove()">{{ 'diary.yes' | t }}</button>
             </span>
           } @else {
-            <button type="button" class="dy-link" (click)="confirmCancel.set(true)">{{ 'diary.cancel' | t }}</button>
+            <button type="button" class="dy-link" (click)="confirmRemove.set(true)">
+              {{ (tr.status === 'Booked' ? 'diary.unbook' : 'diary.remove') | t }}
+            </button>
           }
-        </div>
-      } @else {
-        <div class="dy-start">
-          <button type="button" class="btn btn-primary" (click)="start()" [disabled]="starting() || loading()">
-            @if (starting()) { <span class="spinner" aria-hidden="true"></span> } @else { <app-icon name="check" [size]="16" /> }
-            {{ 'diary.booked' | t }}
-          </button>
-          @if (!auth.signedIn()) { <span class="small muted">{{ 'diary.signInNote' | t }}</span> }
         </div>
       }
       <app-error-banner [error]="error()" />
@@ -137,17 +198,32 @@ export class TripDiaryComponent {
   protected readonly auth = inject(AuthService);
   protected readonly i18n = inject(I18nService);
   private readonly api = inject(ApiService);
+  private readonly stays = inject(SelectedStayService);
   private readonly destroyRef = inject(DestroyRef);
 
   protected readonly trip = signal<BookedTripDto | null>(null);
   protected readonly loading = signal(false);
-  protected readonly starting = signal(false);
+  protected readonly busy = signal(false);
   protected readonly busyDay = signal<string | null>(null);
-  protected readonly confirmCancel = signal(false);
+  protected readonly confirmRemove = signal(false);
   protected readonly error = signal<ApiError | null>(null);
-  /** "I booked" was pressed while signed out: mark the trip once the sign-in succeeds. */
-  private readonly startAfterSignIn = signal(false);
+  /** "Save" was pressed while signed out: save the trip once the sign-in succeeds. */
+  private readonly saveAfterSignIn = signal(false);
 
+  protected readonly steps: { id: Step; title: TranslationKey; text: TranslationKey }[] = [
+    { id: 'saved', title: 'diary.step1', text: 'diary.step1Text' },
+    { id: 'booked', title: 'diary.step2', text: 'diary.step2Text' },
+    { id: 'done', title: 'diary.step3', text: 'diary.step3Text' },
+  ];
+
+  protected readonly currentStep = computed<Step | null>(() => {
+    const t = this.trip();
+    return !t ? 'saved' : t.status === 'Draft' ? 'booked' : t.completedAtUtc ? null : 'done';
+  });
+  protected readonly lead = computed<TranslationKey>(() => {
+    const t = this.trip();
+    return !t ? 'diary.lead' : t.status === 'Draft' ? 'diary.leadDraft' : 'diary.leadBooked';
+  });
   protected readonly days = computed<TripDay[]>(() => {
     const t = this.trip();
     return t ? tripDays(t.startDate, t.endDate, toIsoDate(new Date()), t.completedDays) : [];
@@ -162,11 +238,11 @@ export class TripDiaryComponent {
       const signedIn = this.auth.signedIn();
       untracked(() => {
         this.trip.set(null);
-        this.confirmCancel.set(false);
+        this.confirmRemove.set(false);
         if (!signedIn) return;
-        if (this.startAfterSignIn()) {
-          this.startAfterSignIn.set(false);
-          this.start();
+        if (this.saveAfterSignIn()) {
+          this.saveAfterSignIn.set(false);
+          this.save();
           return;
         }
         this.loading.set(true);
@@ -176,20 +252,33 @@ export class TripDiaryComponent {
         });
       });
     });
+    // A hotel picked (or changed) after saving goes into the saved trip too.
+    effect(() => {
+      this.stays.all();
+      const t = this.trip();
+      const stay = this.stays.get(this.planId());
+      if (t && stay && stay.name !== t.stayName) untracked(() => this.api.saveTrip(this.planId(), this.details()).subscribe({ next: (r) => this.trip.set(r) }));
+    });
   }
 
-  protected start(): void {
+  protected stepDone(step: Step): boolean {
+    const t = this.trip();
+    return step === 'saved' ? !!t : step === 'booked' ? t?.status === 'Booked' : !!t?.completedAtUtc;
+  }
+
+  protected save(): void {
     this.error.set(null);
     if (!this.auth.signedIn()) {
-      this.startAfterSignIn.set(true);
+      this.saveAfterSignIn.set(true);
       this.auth.requestSignIn();
       return;
     }
-    this.starting.set(true);
-    this.api.startTrip(this.planId()).subscribe({
-      next: (t) => { this.trip.set(t); this.starting.set(false); },
-      error: (e) => { this.error.set(toApiError(e)); this.starting.set(false); },
-    });
+    this.run(this.api.saveTrip(this.planId(), this.details()));
+  }
+
+  protected setBooked(booked: boolean): void {
+    this.confirmRemove.set(false);
+    this.run(this.api.setTripBooked(this.planId(), booked));
   }
 
   protected toggleDay(day: TripDay): void {
@@ -202,11 +291,25 @@ export class TripDiaryComponent {
     });
   }
 
-  protected cancel(): void {
+  protected remove(): void {
     this.error.set(null);
     this.api.cancelTrip(this.planId()).subscribe({
-      next: () => { this.trip.set(null); this.confirmCancel.set(false); },
+      next: () => { this.trip.set(null); this.confirmRemove.set(false); },
       error: (e) => this.error.set(toApiError(e)),
+    });
+  }
+
+  private details(): SaveTripDetails {
+    const stay = this.stays.get(this.planId());
+    return { stayName: stay?.name, stayLatitude: stay?.latitude, stayLongitude: stay?.longitude, lang: this.i18n.lang() };
+  }
+
+  private run(request: ReturnType<ApiService['saveTrip']>): void {
+    this.error.set(null);
+    this.busy.set(true);
+    request.subscribe({
+      next: (t) => { this.trip.set(t); this.busy.set(false); },
+      error: (e) => { this.error.set(toApiError(e)); this.busy.set(false); },
     });
   }
 }
