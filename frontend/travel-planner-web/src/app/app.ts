@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, Component, computed, effect, inject, untracked } from '@angular/core';
+import { LoungeDialogComponent } from './shared/lounge.components';
 import { toSignal } from '@angular/core/rxjs-interop';
 import { NavigationEnd, Router, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { filter, map } from 'rxjs';
@@ -15,7 +16,7 @@ import { TranslatePipe } from './core/i18n/translate.pipe';
 @Component({
   selector: 'app-root',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [RouterOutlet, RouterLink, RouterLinkActive, TranslatePipe, IconComponent, AccountMenuComponent, NewsInboxComponent, NewsDropComponent],
+  imports: [LoungeDialogComponent, RouterOutlet, RouterLink, RouterLinkActive, TranslatePipe, IconComponent, AccountMenuComponent, NewsInboxComponent, NewsDropComponent],
   host: { '[class.is-home]': 'isHome()' },
   template: `
     <a class="skip-link" href="#main">{{ 'app.skip' | t }}</a>
@@ -42,6 +43,7 @@ import { TranslatePipe } from './core/i18n/translate.pipe';
           <a [routerLink]="i18n.path()" fragment="destinations">{{ 'nav.destinations' | t }}</a>
           <a [routerLink]="i18n.path('flights')" routerLinkActive="active">{{ 'nav.flights' | t }}</a>
           <a [routerLink]="i18n.path('news')" routerLinkActive="active">{{ 'nav.news' | t }}</a>
+          <a [routerLink]="i18n.path('lounges')" routerLinkActive="active">{{ 'nav.lounges' | t }}</a>
           <a [routerLink]="i18n.path('transit')" routerLinkActive="active" class="nav-live"><span class="live-pulse" aria-hidden="true"></span>{{ 'nav.transit' | t }}</a>
           <a [routerLink]="i18n.path()" fragment="how">{{ 'nav.how' | t }}</a>
           <a [routerLink]="i18n.path()" fragment="about">{{ 'nav.about' | t }}</a>
@@ -75,6 +77,7 @@ import { TranslatePipe } from './core/i18n/translate.pipe';
       <router-outlet />
     </main>
     <app-news-drop />
+    <app-lounge-dialog />
     <footer class="footer">
       <div class="container footer-grid">
         <div>

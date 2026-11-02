@@ -1,0 +1,2280 @@
+[
+  {
+    "iata": "AKL",
+    "airport": "Auckland Airport",
+    "city": "Auckland",
+    "country": "NZ",
+    "places": [
+      {
+        "name": "Strata Lounge",
+        "kind": "lounge",
+        "terminal": "International",
+        "airside": true,
+        "schengen": null,
+        "location": "International Terminal",
+        "hours": "04:30-00:30",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/new-zealand/auckland"
+      },
+      {
+        "name": "OMA Artisan Bakery & Cafe",
+        "kind": "dining",
+        "terminal": "International",
+        "airside": null,
+        "schengen": null,
+        "location": "International Terminal",
+        "hours": null,
+        "programs": [
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=AKL"
+      }
+    ],
+    "notes": "Only LoungeKey lists OMA Artisan Bakery & Cafe; it was not on the Priority Pass page. Programs cross-checked on: Priority Pass https://www.prioritypass.com/en-GB/lounges/new-zealand/auckland; LoungeKey https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=AKL; DragonPass https://www.dragonpass.com/explore/airport/A10037."
+  },
+  {
+    "iata": "BKK",
+    "airport": "Suvarnabhumi Airport",
+    "city": "Bangkok",
+    "country": "TH",
+    "places": [
+      {
+        "name": "Plaza Premium Lounge",
+        "kind": "lounge",
+        "terminal": "Main",
+        "airside": true,
+        "schengen": null,
+        "location": "International Concourse G",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/thailand/suvarnabhumi"
+      },
+      {
+        "name": "Miracle First Class Lounge",
+        "kind": "lounge",
+        "terminal": "Main",
+        "airside": true,
+        "schengen": null,
+        "location": "International Concourse G",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/thailand/suvarnabhumi"
+      },
+      {
+        "name": "The Coral Finest Business Class Lounge (Cocoon)",
+        "kind": "lounge",
+        "terminal": "Main",
+        "airside": true,
+        "schengen": null,
+        "location": "International Concourse C",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/thailand/suvarnabhumi"
+      },
+      {
+        "name": "Miracle Business Class Lounge",
+        "kind": "lounge",
+        "terminal": "Satellite 1",
+        "airside": true,
+        "schengen": null,
+        "location": "SAT-1 satellite concourse",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/thailand/suvarnabhumi"
+      },
+      {
+        "name": "Miracle Business Class Lounge",
+        "kind": "lounge",
+        "terminal": "Main",
+        "airside": true,
+        "schengen": null,
+        "location": "International Concourse D",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/thailand/suvarnabhumi"
+      },
+      {
+        "name": "The Coral Finest Business Class Lounge",
+        "kind": "lounge",
+        "terminal": "Main",
+        "airside": true,
+        "schengen": null,
+        "location": "International Concourse D",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/thailand/suvarnabhumi"
+      }
+    ],
+    "notes": "Priority Pass and LoungeKey also list Miracle First Class lounges in Concourses A, C and D and Miracle Business in Concourse F; DragonPass lists several Miracle/Coral lounges without concourse, so DragonPass is only marked where the location matched. Programs cross-checked on: Priority Pass https://www.prioritypass.com/en-GB/lounges/thailand/suvarnabhumi; LoungeKey https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=BKK; DragonPass https://www.dragonpass.com/explore/airport/A10030."
+  },
+  {
+    "iata": "DMK",
+    "airport": "Don Mueang International Airport",
+    "city": "Bangkok",
+    "country": "TH",
+    "places": [
+      {
+        "name": "Travel Club Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 1",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/thailand/don-mueang-international"
+      },
+      {
+        "name": "Miracle Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 1 (two locations)",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/thailand/don-mueang-international"
+      },
+      {
+        "name": "The Coral Executive Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 1, Level 3",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/thailand/don-mueang-international"
+      },
+      {
+        "name": "Nok Air Lounge",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 2",
+        "hours": "04:00-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/thailand/don-mueang-international"
+      },
+      {
+        "name": "The Coral Executive Lounge",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 2, Level 3",
+        "hours": "05:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/thailand/don-mueang-international"
+      },
+      {
+        "name": "Miracle Lounge",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 2",
+        "hours": "05:30-20:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/thailand/don-mueang-international"
+      }
+    ],
+    "notes": "Terminal 1 handles international flights, Terminal 2 domestic. The Coral Forest Lounge (T2) is also on Priority Pass/LoungeKey. Programs cross-checked on: Priority Pass https://www.prioritypass.com/en-GB/lounges/thailand/don-mueang-international; LoungeKey https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=DMK; DragonPass https://www.dragonpass.com/explore/airport/A10552."
+  },
+  {
+    "iata": "BNE",
+    "airport": "Brisbane Airport",
+    "city": "Brisbane",
+    "country": "AU",
+    "places": [
+      {
+        "name": "Escape Lounges",
+        "kind": "lounge",
+        "terminal": "International",
+        "airside": true,
+        "schengen": null,
+        "location": "International Terminal",
+        "hours": "06:00-01:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/australia/brisbane"
+      },
+      {
+        "name": "Plaza Premium Lounge",
+        "kind": "lounge",
+        "terminal": "International",
+        "airside": true,
+        "schengen": null,
+        "location": "International Terminal",
+        "hours": null,
+        "programs": [
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=BNE"
+      },
+      {
+        "name": "The Common",
+        "kind": "dining",
+        "terminal": "Domestic",
+        "airside": true,
+        "schengen": null,
+        "location": "Domestic Terminal",
+        "hours": "05:00-19:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/australia/brisbane"
+      },
+      {
+        "name": "Graze Grill & Bar",
+        "kind": "dining",
+        "terminal": "Domestic",
+        "airside": true,
+        "schengen": null,
+        "location": "Domestic Terminal",
+        "hours": "05:00-18:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/australia/brisbane"
+      },
+      {
+        "name": "The Independent",
+        "kind": "dining",
+        "terminal": "Domestic",
+        "airside": true,
+        "schengen": null,
+        "location": "Domestic Terminal",
+        "hours": "04:30-20:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/australia/brisbane"
+      }
+    ],
+    "notes": "Plaza Premium Lounge is listed by LoungeKey and DragonPass but not on the Priority Pass Brisbane page. Mezze Za Za (domestic) is also on PP/LoungeKey. Programs cross-checked on: Priority Pass https://www.prioritypass.com/en-GB/lounges/australia/brisbane; LoungeKey https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=BNE; DragonPass https://www.dragonpass.com/explore/airport/A10215."
+  },
+  {
+    "iata": "CUN",
+    "airport": "Cancun International Airport",
+    "city": "Cancun",
+    "country": "MX",
+    "places": [
+      {
+        "name": "The Lounge",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 3",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/mexico/cancun-international"
+      },
+      {
+        "name": "The Lounge in Partnership with Air Transat",
+        "kind": "lounge",
+        "terminal": "T4",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 4",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/mexico/cancun-international"
+      },
+      {
+        "name": "The Lounge by Global Lounge Network",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 2",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/mexico/cancun-international"
+      },
+      {
+        "name": "VIP Lounge by MERA",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": null,
+        "schengen": null,
+        "location": "Terminal 3 (DragonPass also lists a T3 Roof location)",
+        "hours": null,
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.dragonpass.com/explore/airport/A10276"
+      },
+      {
+        "name": "VIP Lounge by MERA International",
+        "kind": "lounge",
+        "terminal": "T4",
+        "airside": null,
+        "schengen": null,
+        "location": "Terminal 4",
+        "hours": null,
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.dragonpass.com/explore/airport/A10276"
+      }
+    ],
+    "notes": "DragonPass lists only 'VIP lounge by MERA' lounges (T2, T3, T3 Roof, T4 Domestic, T4 International); these may be the same rooms as the PP/LoungeKey 'The Lounge' entries under another name, which could not be confirmed, so they are kept separate. Programs cross-checked on: Priority Pass https://www.prioritypass.com/en-GB/lounges/mexico/cancun-international; LoungeKey https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=CUN; DragonPass https://www.dragonpass.com/explore/airport/A10276."
+  },
+  {
+    "iata": "DEL",
+    "airport": "Indira Gandhi International Airport",
+    "city": "New Delhi",
+    "country": "IN",
+    "places": [
+      {
+        "name": "Encalm Lounge (International)",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": null,
+        "location": "International departures security hold area, Food Court level, next to Encalm Spa",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/india/indira-gandhi-international/del15-encalm-lounge"
+      },
+      {
+        "name": "Encalm Lounge - Delhi Domestic T3",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 3 domestic departures",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/india/indira-gandhi-international"
+      },
+      {
+        "name": "Encalm Lounge - Delhi Domestic T2",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 2 domestic departures",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/india/indira-gandhi-international"
+      },
+      {
+        "name": "Encalm Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 1D domestic departures",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/india/indira-gandhi-international"
+      },
+      {
+        "name": "Encalm Lounge - DEL Arrivals",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": false,
+        "schengen": null,
+        "location": "Terminal 3 arrivals",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/india/indira-gandhi-international"
+      },
+      {
+        "name": "Domestic Lounge - New Delhi T3",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 3 domestic",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/india/indira-gandhi-international"
+      }
+    ],
+    "notes": "DragonPass also lists 'Encalm Lounge (T3 D49)'. Programs cross-checked on: Priority Pass https://www.prioritypass.com/en-GB/lounges/india/indira-gandhi-international; LoungeKey https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=DEL; DragonPass https://www.dragonpass.com/explore/airport/A10043."
+  },
+  {
+    "iata": "DPS",
+    "airport": "I Gusti Ngurah Rai International Airport",
+    "city": "Denpasar (Bali)",
+    "country": "ID",
+    "places": [
+      {
+        "name": "Concordia Lounge",
+        "kind": "lounge",
+        "terminal": "International",
+        "airside": true,
+        "schengen": null,
+        "location": "International Terminal",
+        "hours": "06:00-02:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/indonesia/ngurah-rai-international"
+      },
+      {
+        "name": "Flight Club DPS",
+        "kind": "dining",
+        "terminal": "International",
+        "airside": true,
+        "schengen": null,
+        "location": "International departures Level 2, opposite Gate 2",
+        "hours": "05:00-01:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "Priority Pass: one set menu per cardholder visit (counts as a lounge visit); alcohol extra",
+        "source": "https://www.prioritypass.com/en-GB/lounges/indonesia/ngurah-rai-international/dps10d-flight-club-dps"
+      },
+      {
+        "name": "Prayana Lounge",
+        "kind": "lounge",
+        "terminal": "Domestic",
+        "airside": true,
+        "schengen": null,
+        "location": "Domestic Terminal",
+        "hours": "05:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/indonesia/ngurah-rai-international"
+      },
+      {
+        "name": "Blue Sky Premier Lounge",
+        "kind": "lounge",
+        "terminal": "Domestic",
+        "airside": true,
+        "schengen": null,
+        "location": "Domestic Terminal",
+        "hours": "05:30-21:30",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/indonesia/ngurah-rai-international"
+      }
+    ],
+    "notes": "Programs cross-checked on: Priority Pass https://www.prioritypass.com/en-GB/lounges/indonesia/ngurah-rai-international; LoungeKey https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=DPS; DragonPass https://www.dragonpass.com/explore/airport/A10041."
+  },
+  {
+    "iata": "EWR",
+    "airport": "Newark Liberty International Airport",
+    "city": "Newark",
+    "country": "US",
+    "places": [
+      {
+        "name": "Be Relax Spa (Gate 7)",
+        "kind": "spa",
+        "terminal": "A",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal A near Gate 7",
+        "hours": "09:00-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-states-of-america/newark-liberty-international"
+      },
+      {
+        "name": "Minute Suites",
+        "kind": "sleep",
+        "terminal": "C",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal C",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-states-of-america/newark-liberty-international"
+      }
+    ],
+    "notes": "No lounges on these programs at EWR; Newark is not in the DragonPass airport list (https://www.dragonpass.com/airport). Programs cross-checked on: Priority Pass https://www.prioritypass.com/en-GB/lounges/united-states-of-america/newark-liberty-international; LoungeKey https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=EWR."
+  },
+  {
+    "iata": "EZE",
+    "airport": "Ministro Pistarini International Airport (Ezeiza)",
+    "city": "Buenos Aires",
+    "country": "AR",
+    "places": [
+      {
+        "name": "Ezeiza Lounge",
+        "kind": "lounge",
+        "terminal": "Main",
+        "airside": true,
+        "schengen": null,
+        "location": "International departures Level 2 near Gate 23, after passport control",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/argentina/ministro-pistarini-international/eze6-ezeiza-lounge"
+      },
+      {
+        "name": "Star Alliance Lounge Buenos Aires",
+        "kind": "lounge",
+        "terminal": "Main",
+        "airside": true,
+        "schengen": null,
+        "location": "Main Terminal",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/argentina/ministro-pistarini-international"
+      },
+      {
+        "name": "AMAE Lounge Domestico - Ezeiza",
+        "kind": "lounge",
+        "terminal": "Main",
+        "airside": true,
+        "schengen": null,
+        "location": "Domestic departures",
+        "hours": "03:30-18:30",
+        "programs": [
+          "PriorityPass",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/argentina/ministro-pistarini-international"
+      },
+      {
+        "name": "BBVA Lounge",
+        "kind": "lounge",
+        "terminal": "Main",
+        "airside": null,
+        "schengen": null,
+        "location": "Main Terminal",
+        "hours": null,
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.dragonpass.com/explore/airport/A10346"
+      },
+      {
+        "name": "LATAM Lounge",
+        "kind": "lounge",
+        "terminal": "Main",
+        "airside": null,
+        "schengen": null,
+        "location": "Main Terminal",
+        "hours": null,
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.dragonpass.com/explore/airport/A10346"
+      }
+    ],
+    "notes": "DragonPass also lists My Pod Boutique Capsule. Programs cross-checked on: Priority Pass https://www.prioritypass.com/en-GB/lounges/argentina/ministro-pistarini-international; LoungeKey https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=EZE; DragonPass https://www.dragonpass.com/explore/airport/A10346."
+  },
+  {
+    "iata": "AEP",
+    "airport": "Aeroparque Jorge Newbery",
+    "city": "Buenos Aires",
+    "country": "AR",
+    "places": [
+      {
+        "name": "AMAE Lounge Aeroparque",
+        "kind": "lounge",
+        "terminal": "Main",
+        "airside": null,
+        "schengen": null,
+        "location": "Main Terminal",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/argentina/jorge-newbery-airpark"
+      },
+      {
+        "name": "AMAE Lounge Aeroparque - Domestic",
+        "kind": "lounge",
+        "terminal": "Main",
+        "airside": true,
+        "schengen": null,
+        "location": "Main Terminal, domestic",
+        "hours": null,
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.dragonpass.com/explore/airport/A10452"
+      },
+      {
+        "name": "AMAE Lounge Aeroparque - Landside",
+        "kind": "lounge",
+        "terminal": "Main",
+        "airside": false,
+        "schengen": null,
+        "location": "Main Terminal, landside",
+        "hours": null,
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.dragonpass.com/explore/airport/A10452"
+      }
+    ],
+    "notes": "PP/LoungeKey list one AMAE lounge without saying which of DragonPass's two AMAE locations it is. Programs cross-checked on: Priority Pass https://www.prioritypass.com/en-GB/lounges/argentina/jorge-newbery-airpark; LoungeKey https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=AEP; DragonPass https://www.dragonpass.com/explore/airport/A10452."
+  },
+  {
+    "iata": "GIG",
+    "airport": "Rio de Janeiro/Galeao International Airport",
+    "city": "Rio de Janeiro",
+    "country": "BR",
+    "places": [
+      {
+        "name": "Lounge GOL Smiles (International)",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 2 international",
+        "hours": "05:00-23:00",
+        "programs": [
+          "PriorityPass",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/brazil/rio-de-janeiro-galeao-international"
+      },
+      {
+        "name": "FlyBondi by Global Lounge Network",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 2 international",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/brazil/rio-de-janeiro-galeao-international"
+      },
+      {
+        "name": "Bluma Wellness",
+        "kind": "spa",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 2 international",
+        "hours": null,
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/brazil/rio-de-janeiro-galeao-international"
+      },
+      {
+        "name": "Lounge GOL Smiles (Domestic)",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 2 domestic",
+        "hours": "06:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/brazil/rio-de-janeiro-galeao-international"
+      },
+      {
+        "name": "Plaza Premium Lounge",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 2 domestic",
+        "hours": null,
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/brazil/rio-de-janeiro-galeao-international"
+      },
+      {
+        "name": "Grand Cru",
+        "kind": "dining",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 2 domestic",
+        "hours": "06:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/brazil/rio-de-janeiro-galeao-international"
+      }
+    ],
+    "notes": "DragonPass lists two 'Lounge GOL Smiles' and three Plaza Premium Lounges (incl. arrivals) in T2 without wing details; DragonPass was matched to the GOL lounges only. A landside Plaza Premium Lounge is also on PP/LoungeKey. Programs cross-checked on: Priority Pass https://www.prioritypass.com/en-GB/lounges/brazil/rio-de-janeiro-galeao-international; LoungeKey https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=GIG; DragonPass https://www.dragonpass.com/explore/airport/A10198."
+  },
+  {
+    "iata": "SDU",
+    "airport": "Santos Dumont Airport",
+    "city": "Rio de Janeiro",
+    "country": "BR",
+    "places": [
+      {
+        "name": "Advantage VIP Lounge",
+        "kind": "lounge",
+        "terminal": "Main",
+        "airside": true,
+        "schengen": null,
+        "location": "Main terminal (two locations)",
+        "hours": "04:30-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/brazil/santos-dumont"
+      },
+      {
+        "name": "Bluma",
+        "kind": "spa",
+        "terminal": "Main",
+        "airside": null,
+        "schengen": null,
+        "location": "Main terminal",
+        "hours": "06:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/brazil/santos-dumont"
+      },
+      {
+        "name": "Emerald Lounge - Rio de Janeiro",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": null,
+        "schengen": null,
+        "location": "Terminal 2",
+        "hours": null,
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.dragonpass.com/explore/airport/A21838"
+      },
+      {
+        "name": "Living Heineken",
+        "kind": "dining",
+        "terminal": "Main",
+        "airside": null,
+        "schengen": null,
+        "location": "Main terminal",
+        "hours": null,
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.dragonpass.com/explore/airport/A21838"
+      }
+    ],
+    "notes": "Programs cross-checked on: Priority Pass https://www.prioritypass.com/en-GB/lounges/brazil/santos-dumont; LoungeKey https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=SDU; DragonPass https://www.dragonpass.com/explore/airport/A21838."
+  },
+  {
+    "iata": "GMP",
+    "airport": "Gimpo International Airport",
+    "city": "Seoul",
+    "country": "KR",
+    "places": [
+      {
+        "name": "Sky Hub Lounge",
+        "kind": "lounge",
+        "terminal": "International",
+        "airside": true,
+        "schengen": null,
+        "location": "International Terminal",
+        "hours": "06:30-20:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/south-korea/gimpo-international"
+      },
+      {
+        "name": "Sky Hub Lounge Premium",
+        "kind": "lounge",
+        "terminal": "International",
+        "airside": true,
+        "schengen": null,
+        "location": "International Terminal",
+        "hours": "06:30-20:10",
+        "programs": [
+          "PriorityPass",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/south-korea/gimpo-international"
+      }
+    ],
+    "notes": "Programs cross-checked on: Priority Pass https://www.prioritypass.com/en-GB/lounges/south-korea/gimpo-international; LoungeKey https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=GMP; DragonPass https://www.dragonpass.com/explore/airport/A10014."
+  },
+  {
+    "iata": "ICN",
+    "airport": "Incheon International Airport",
+    "city": "Seoul",
+    "country": "KR",
+    "places": [
+      {
+        "name": "Sky Hub Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 1 (East and West wings)",
+        "hours": "24h (closed 21:30-22:00)",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/south-korea/incheon-international"
+      },
+      {
+        "name": "Matina Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 1 (East and West wings)",
+        "hours": "06:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/south-korea/incheon-international"
+      },
+      {
+        "name": "Sky Hub Lounge",
+        "kind": "lounge",
+        "terminal": "T1 Concourse",
+        "airside": true,
+        "schengen": null,
+        "location": "Concourse A",
+        "hours": "06:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/south-korea/incheon-international"
+      },
+      {
+        "name": "Sky Hub Lounge",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 2 (East and West)",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/south-korea/incheon-international"
+      },
+      {
+        "name": "Matina",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 2",
+        "hours": "06:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/south-korea/incheon-international"
+      },
+      {
+        "name": "Asiana Business Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 1 (Central 06:00-21:00, West 06:00-00:30)",
+        "hours": null,
+        "programs": [
+          "PriorityPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/south-korea/incheon-international"
+      }
+    ],
+    "notes": "Programs cross-checked on: Priority Pass https://www.prioritypass.com/en-GB/lounges/south-korea/incheon-international; LoungeKey https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=ICN; DragonPass https://www.dragonpass.com/explore/airport/A10015."
+  },
+  {
+    "iata": "HKG",
+    "airport": "Hong Kong International Airport",
+    "city": "Hong Kong",
+    "country": "HK",
+    "places": [
+      {
+        "name": "Plaza Premium Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Three airside locations (DragonPass lists them near Gates 1, 35 and 60)",
+        "hours": "24h (one location 06:00-01:00)",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/hong-kong-sar/hong-kong-chek-lap-kok-intl"
+      },
+      {
+        "name": "Kyra Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 1 (two locations)",
+        "hours": "05:30-23:59",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/hong-kong-sar/hong-kong-chek-lap-kok-intl"
+      },
+      {
+        "name": "Intervals Sky Bar & Restaurant",
+        "kind": "dining",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Sky Bridge, Level 9 (escalators between Gates 12 and 24)",
+        "hours": "07:00-23:30",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "Priority Pass: one set menu per cardholder visit (counts as a lounge visit)",
+        "source": "https://www.prioritypass.com/en-GB/lounges/hong-kong-sar/hong-kong-chek-lap-kok-intl"
+      },
+      {
+        "name": "Putien",
+        "kind": "dining",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 1",
+        "hours": "08:00-19:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/hong-kong-sar/hong-kong-chek-lap-kok-intl"
+      },
+      {
+        "name": "Hong Kong Airlines Lounge (Club Autus)",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 1",
+        "hours": null,
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.dragonpass.com/explore/airport/A10052"
+      },
+      {
+        "name": "Be Relax Spa & Suites",
+        "kind": "spa",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 1",
+        "hours": null,
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.dragonpass.com/explore/airport/A10052"
+      }
+    ],
+    "notes": "LoungeKey also lists 'Taste by Priceless' (T1). Programs cross-checked on: Priority Pass https://www.prioritypass.com/en-GB/lounges/hong-kong-sar/hong-kong-chek-lap-kok-intl; LoungeKey https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=HKG; DragonPass https://www.dragonpass.com/explore/airport/A10052."
+  },
+  {
+    "iata": "HND",
+    "airport": "Tokyo Haneda Airport",
+    "city": "Tokyo",
+    "country": "JP",
+    "places": [
+      {
+        "name": "Sky Lounge South",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 3 (International)",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/japan/haneda"
+      },
+      {
+        "name": "TIAT Lounge",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 3 (International)",
+        "hours": "01:00-05:00",
+        "programs": [
+          "PriorityPass",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/japan/haneda"
+      },
+      {
+        "name": "Power Lounge Premium",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 2",
+        "hours": "06:30-01:30",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/japan/haneda"
+      },
+      {
+        "name": "Foot Bath Cafe & Body Care LUCK",
+        "kind": "spa",
+        "terminal": "T1",
+        "airside": null,
+        "schengen": null,
+        "location": "Terminal 1",
+        "hours": "10:00-20:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/japan/haneda"
+      },
+      {
+        "name": "Airport Cafe Lounge NODOKA",
+        "kind": "lounge",
+        "terminal": "Haneda Airport Garden",
+        "airside": false,
+        "schengen": null,
+        "location": "Haneda Airport Garden (by T3)",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/japan/haneda"
+      },
+      {
+        "name": "Body Care LUCK",
+        "kind": "spa",
+        "terminal": "Haneda Airport Garden",
+        "airside": false,
+        "schengen": null,
+        "location": "Haneda Airport Garden (by T3)",
+        "hours": "10:00-20:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/japan/haneda"
+      }
+    ],
+    "notes": "PP and DragonPass also list domestic Power Lounges (North/Central/South) and Lounge Us in T1/T2 (PP hours 09:00-16:00). TIAT Lounge PP hours shown as 01:00-05:00 only. Programs cross-checked on: Priority Pass https://www.prioritypass.com/en-GB/lounges/japan/haneda; LoungeKey https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=HND; DragonPass https://www.dragonpass.com/explore/airport/A10419."
+  },
+  {
+    "iata": "NRT",
+    "airport": "Narita International Airport",
+    "city": "Tokyo",
+    "country": "JP",
+    "places": [
+      {
+        "name": "NOA Lounge (IASS Superior Lounge)",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 1",
+        "hours": "07:30-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/japan/narita-international"
+      },
+      {
+        "name": "KoCoo Lounge (IASS Superior Lounge)",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 2",
+        "hours": "07:30-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/japan/narita-international"
+      },
+      {
+        "name": "IASS Executive Lounge 1",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": null,
+        "schengen": null,
+        "location": "Terminal 1",
+        "hours": "07:00-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/japan/narita-international"
+      },
+      {
+        "name": "IASS Executive Lounge 2",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": null,
+        "schengen": null,
+        "location": "Terminal 2",
+        "hours": "07:00-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/japan/narita-international"
+      },
+      {
+        "name": "9h nine hours Narita Airport",
+        "kind": "sleep",
+        "terminal": "T2",
+        "airside": false,
+        "schengen": null,
+        "location": "Terminal 2 (capsule hotel)",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/japan/narita-international"
+      },
+      {
+        "name": "Teppanyaki Dotonbori KURITA",
+        "kind": "dining",
+        "terminal": "T2",
+        "airside": null,
+        "schengen": null,
+        "location": "Terminal 2",
+        "hours": "07:30-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/japan/narita-international"
+      }
+    ],
+    "notes": "PP/LoungeKey dining also in T1 (Yakisuki Yanma, Tatsu) and T3 (Botejyu Express). Programs cross-checked on: Priority Pass https://www.prioritypass.com/en-GB/lounges/japan/narita-international; LoungeKey https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=NRT; DragonPass https://www.dragonpass.com/explore/airport/A10029."
+  },
+  {
+    "iata": "JFK",
+    "airport": "John F. Kennedy International Airport",
+    "city": "New York",
+    "country": "US",
+    "places": [
+      {
+        "name": "Air India Lounge",
+        "kind": "lounge",
+        "terminal": "T4",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 4",
+        "hours": "08:00-22:30",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-states-of-america/john-f-kennedy-international"
+      },
+      {
+        "name": "Primeclass Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 1",
+        "hours": "09:00-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-states-of-america/john-f-kennedy-international"
+      },
+      {
+        "name": "Turkish Airlines Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 1",
+        "hours": "09:00-00:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-states-of-america/john-f-kennedy-international"
+      },
+      {
+        "name": "Air France Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 1",
+        "hours": "07:00-00:00",
+        "programs": [
+          "PriorityPass",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-states-of-america/john-f-kennedy-international"
+      },
+      {
+        "name": "Virgin Atlantic Clubhouse",
+        "kind": "lounge",
+        "terminal": "T4",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 4",
+        "hours": "05:00-13:30",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-states-of-america/john-f-kennedy-international"
+      },
+      {
+        "name": "VIP ONE Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": false,
+        "schengen": null,
+        "location": "Landside, departure level behind counters E/F; international flights only, max 3h",
+        "hours": "08:00-00:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-states-of-america/john-f-kennedy-international/jfk25-vip-one-lounge"
+      }
+    ],
+    "notes": "Also: Lufthansa Business Lounge T1 (PP, LoungeKey), Korean Air Lounge T1 (PP, DragonPass), Minute Suites T4/T8, Xwell T4, Be Relax T1 (PP, LoungeKey); DragonPass dining offer Blinded Tiger (T8). Airline lounges in T1 may move as the New Terminal One opens. Programs cross-checked on: Priority Pass https://www.prioritypass.com/en-GB/lounges/united-states-of-america/john-f-kennedy-international; LoungeKey https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=JFK; DragonPass https://www.dragonpass.com/explore/airport/A10405."
+  },
+  {
+    "iata": "LGA",
+    "airport": "LaGuardia Airport",
+    "city": "New York",
+    "country": "US",
+    "places": [
+      {
+        "name": "Be Relax Spa",
+        "kind": "spa",
+        "terminal": "B",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal B",
+        "hours": "09:00-19:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-states-of-america/laguardia"
+      },
+      {
+        "name": "Air Canada Maple Leaf Lounge",
+        "kind": "lounge",
+        "terminal": "B",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal B",
+        "hours": null,
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.dragonpass.com/explore/airport/A10406"
+      }
+    ],
+    "notes": "Programs cross-checked on: Priority Pass https://www.prioritypass.com/en-GB/lounges/united-states-of-america/laguardia; LoungeKey https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=LGA; DragonPass https://www.dragonpass.com/explore/airport/A10406."
+  },
+  {
+    "iata": "LAX",
+    "airport": "Los Angeles International Airport",
+    "city": "Los Angeles",
+    "country": "US",
+    "places": [
+      {
+        "name": "Virgin Atlantic Clubhouse",
+        "kind": "lounge",
+        "terminal": "TBIT",
+        "airside": true,
+        "schengen": null,
+        "location": "Tom Bradley International Terminal; additional fee applies",
+        "hours": "08:00-22:30",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-states-of-america/los-angeles-international"
+      },
+      {
+        "name": "Be Relax Spa",
+        "kind": "spa",
+        "terminal": "TBIT",
+        "airside": true,
+        "schengen": null,
+        "location": "Tom Bradley International Terminal",
+        "hours": "09:00-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-states-of-america/los-angeles-international"
+      },
+      {
+        "name": "Be Relax Spa",
+        "kind": "spa",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 1",
+        "hours": "06:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-states-of-america/los-angeles-international"
+      },
+      {
+        "name": "Gameway",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 3 (gaming lounge; also in T6)",
+        "hours": "05:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-states-of-america/los-angeles-international"
+      }
+    ],
+    "notes": "LAX is not in the DragonPass airport list (https://www.dragonpass.com/airport). Programs cross-checked on: Priority Pass https://www.prioritypass.com/en-GB/lounges/united-states-of-america/los-angeles-international; LoungeKey https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=LAX."
+  },
+  {
+    "iata": "MEL",
+    "airport": "Melbourne Airport",
+    "city": "Melbourne",
+    "country": "AU",
+    "places": [
+      {
+        "name": "Plaza Premium Lounge",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 2 (International)",
+        "hours": "08:30-23:59",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/australia/melbourne"
+      },
+      {
+        "name": "Marhaba Lounge",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 2 (International)",
+        "hours": "05:00-23:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/australia/melbourne"
+      },
+      {
+        "name": "Aspire Lounge (The House)",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 2 (International)",
+        "hours": "07:00-23:59",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/australia/melbourne"
+      },
+      {
+        "name": "Bar Pulpo by MoVida",
+        "kind": "dining",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 2 (International)",
+        "hours": "06:00-23:30",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/australia/melbourne"
+      },
+      {
+        "name": "Pickett's Deli & Rotisserie",
+        "kind": "dining",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 2 (International)",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/australia/melbourne"
+      },
+      {
+        "name": "REX Lounge",
+        "kind": "lounge",
+        "terminal": "T4",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 4 (domestic)",
+        "hours": "06:00-19:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/australia/melbourne"
+      }
+    ],
+    "notes": "More PP/LoungeKey dining in T1, T2, T3 and T4 (Little Lygon, Cafe Sol, Urban Provodore, Biggie Smalls, Stomping Ground, Quikshots). Programs cross-checked on: Priority Pass https://www.prioritypass.com/en-GB/lounges/australia/melbourne; LoungeKey https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=MEL; DragonPass https://www.dragonpass.com/explore/airport/A10213."
+  },
+  {
+    "iata": "MIA",
+    "airport": "Miami International Airport",
+    "city": "Miami",
+    "country": "US",
+    "places": [
+      {
+        "name": "AV/TAP VIP Lounge",
+        "kind": "lounge",
+        "terminal": "South",
+        "airside": true,
+        "schengen": null,
+        "location": "South Terminal, Concourses H/J",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-states-of-america/miami-international"
+      },
+      {
+        "name": "Turkish Airlines Lounge",
+        "kind": "lounge",
+        "terminal": "South",
+        "airside": true,
+        "schengen": null,
+        "location": "South Terminal, Concourses H/J",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-states-of-america/miami-international"
+      },
+      {
+        "name": "Turkish Airlines Lounge",
+        "kind": "lounge",
+        "terminal": "North",
+        "airside": true,
+        "schengen": null,
+        "location": "North Terminal, Concourses D/E",
+        "hours": "05:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-states-of-america/miami-international"
+      },
+      {
+        "name": "Corona Beach House",
+        "kind": "dining",
+        "terminal": "North",
+        "airside": true,
+        "schengen": null,
+        "location": "Concourse D between Gates D23 and D24",
+        "hours": "06:30-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "Priority Pass: US$30 off the bill per visit (18% gratuity added)",
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-states-of-america/miami-international/mia10d-corona-beach-house"
+      },
+      {
+        "name": "XpresSpa",
+        "kind": "spa",
+        "terminal": "North",
+        "airside": true,
+        "schengen": null,
+        "location": "North Terminal, Concourses D/E",
+        "hours": "08:00-20:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-states-of-america/miami-international"
+      },
+      {
+        "name": "Shula's Bar & Grill",
+        "kind": "dining",
+        "terminal": "D",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal D",
+        "hours": null,
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.dragonpass.com/explore/airport/A10027"
+      }
+    ],
+    "notes": "DragonPass also lists dining offers The Counter (D) and Budlight Lounge (H). Programs cross-checked on: Priority Pass https://www.prioritypass.com/en-GB/lounges/united-states-of-america/miami-international; LoungeKey https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=MIA; DragonPass https://www.dragonpass.com/explore/airport/A10027."
+  },
+  {
+    "iata": "PER",
+    "airport": "Perth Airport",
+    "city": "Perth",
+    "country": "AU",
+    "places": [
+      {
+        "name": "International Aspire Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 1 (International)",
+        "hours": "04:00-02:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/australia/perth"
+      },
+      {
+        "name": "Hatchery Collective Bar & Grill",
+        "kind": "dining",
+        "terminal": "T4",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 4",
+        "hours": "04:30-00:30",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/australia/perth"
+      },
+      {
+        "name": "Coffee Quarter",
+        "kind": "dining",
+        "terminal": "T4",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 4",
+        "hours": "03:00-00:30",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/australia/perth"
+      }
+    ],
+    "notes": "Programs cross-checked on: Priority Pass https://www.prioritypass.com/en-GB/lounges/australia/perth; LoungeKey https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=PER; DragonPass https://www.dragonpass.com/explore/airport/A10214."
+  },
+  {
+    "iata": "SIN",
+    "airport": "Singapore Changi Airport",
+    "city": "Singapore",
+    "country": "SG",
+    "places": [
+      {
+        "name": "Plaza Premium Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 1 transit area",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/singapore/singapore-changi"
+      },
+      {
+        "name": "SATS Premier Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 1 transit area (also in T2 and T3)",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/singapore/singapore-changi"
+      },
+      {
+        "name": "Marhaba Lounge",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 3 transit area (also in T1)",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/singapore/singapore-changi"
+      },
+      {
+        "name": "Ambassador Transit Lounge",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 3 transit area (also in T2)",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/singapore/singapore-changi"
+      },
+      {
+        "name": "Blossom Lounge",
+        "kind": "lounge",
+        "terminal": "T4",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 4 (SATS & Plaza Premium)",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/singapore/singapore-changi"
+      },
+      {
+        "name": "Be Relax Spa",
+        "kind": "spa",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 3 transit area",
+        "hours": "06:00-01:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/singapore/singapore-changi"
+      },
+      {
+        "name": "The Kitchen by Wolfgang Puck",
+        "kind": "dining",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": null,
+        "location": "Transit South near B gates",
+        "hours": "06:00-01:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "Priority Pass: one set menu per cardholder visit (counts as a lounge visit)",
+        "source": "https://www.prioritypass.com/en-GB/lounges/singapore/singapore-changi-airport/sin38d-the-kitchen-by-wolfgang-puck"
+      }
+    ],
+    "notes": "Changi Lounge in Jewel (06:00-22:00) accepts all three programs but is landside, before immigration. Many more PP/LoungeKey dining offers exist in T1-T4. Programs cross-checked on: Priority Pass https://www.prioritypass.com/lounges/singapore/singapore-changi; LoungeKey https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=SIN; DragonPass https://www.dragonpass.com/explore/airport/A10036."
+  },
+  {
+    "iata": "SYD",
+    "airport": "Sydney Kingsford Smith Airport",
+    "city": "Sydney",
+    "country": "AU",
+    "places": [
+      {
+        "name": "Plaza Premium Lounge (International Departures)",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 1 (International)",
+        "hours": "06:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/australia/sydney-kingsford-smith"
+      },
+      {
+        "name": "The House (Aspire)",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 1 (International)",
+        "hours": "05:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/australia/sydney-kingsford-smith"
+      },
+      {
+        "name": "Peroni Bar",
+        "kind": "dining",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 1 (International)",
+        "hours": "04:00-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/australia/sydney-kingsford-smith"
+      },
+      {
+        "name": "Plaza Premium Lounge (International Arrivals)",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": false,
+        "schengen": null,
+        "location": "Terminal 1 arrivals",
+        "hours": "06:00-20:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/australia/sydney-kingsford-smith"
+      },
+      {
+        "name": "REX Lounge",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 2 (domestic)",
+        "hours": "05:30-19:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/australia/sydney-kingsford-smith"
+      },
+      {
+        "name": "Luke's Bistro & Bar",
+        "kind": "dining",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 3 (domestic)",
+        "hours": "05:00-20:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/australia/sydney-kingsford-smith"
+      }
+    ],
+    "notes": "DragonPass lists two Plaza Premium Lounges in T1 (assumed departures and arrivals). Programs cross-checked on: Priority Pass https://www.prioritypass.com/en-GB/lounges/australia/sydney-kingsford-smith; LoungeKey https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=SYD; DragonPass https://www.dragonpass.com/explore/airport/A10212."
+  },
+  {
+    "iata": "YYZ",
+    "airport": "Toronto Pearson International Airport",
+    "city": "Toronto",
+    "country": "CA",
+    "places": [
+      {
+        "name": "Plaza Premium Lounge (International Departures)",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 3 international departures",
+        "hours": "05:30-01:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/canada/toronto-pearson-international"
+      },
+      {
+        "name": "Plaza Premium Lounge (USA Departures)",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 3 US transborder",
+        "hours": "05:30-19:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/canada/toronto-pearson-international"
+      },
+      {
+        "name": "KLM Crown Lounge",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 3 (DragonPass: Air France-KLM Lounge)",
+        "hours": "08:00-22:30",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/canada/toronto-pearson-international"
+      },
+      {
+        "name": "Plaza Premium Lounge (USA Transborder)",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 1 US transborder",
+        "hours": "05:30-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/canada/toronto-pearson-international"
+      },
+      {
+        "name": "Plaza Premium Lounge (Domestic Departures)",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 1 domestic (also one in T3)",
+        "hours": "05:30-23:59",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/canada/toronto-pearson-international"
+      },
+      {
+        "name": "Be Relax Spa",
+        "kind": "spa",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": null,
+        "location": "Terminal 3 (also two in T1)",
+        "hours": "09:00-19:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/canada/toronto-pearson-international"
+      }
+    ],
+    "notes": "PP/LoungeKey also list a Plaza Premium Lounge at the IFC Concourse. Programs cross-checked on: Priority Pass https://www.prioritypass.com/en-GB/lounges/canada/toronto-pearson-international; LoungeKey https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=YYZ; DragonPass https://www.dragonpass.com/explore/airport/A10017."
+  },
+  {
+    "iata": "KUL",
+    "airport": "Kuala Lumpur International Airport",
+    "city": "Kuala Lumpur",
+    "country": "MY",
+    "places": [
+      {
+        "name": "Plaza Premium Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Contact Pier, international departures",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/malaysia/kuala-lumpur-international"
+      },
+      {
+        "name": "Sky Suite Airport Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Satellite building",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/malaysia/kuala-lumpur-international"
+      },
+      {
+        "name": "Travel Club Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Satellite building",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/malaysia/kuala-lumpur-international"
+      },
+      {
+        "name": "Plaza Premium Lounge",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "KLIA Terminal 2, Level 2M",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/malaysia/kuala-lumpur-international"
+      },
+      {
+        "name": "Sky Suite Airport Lounge",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "KLIA Terminal 2",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/malaysia/kuala-lumpur-international"
+      },
+      {
+        "name": "Capsule Transit (Airside)",
+        "kind": "sleep",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "KLIA Terminal 2 airside",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/malaysia/kuala-lumpur-international"
+      }
+    ],
+    "notes": "Also on all three: Travel Club Lounge T2, Kepler Club (landside + Satellite), Capsule Transit landside/MAX, Sphere Lounge (adjacent to T1). Programs cross-checked on: Priority Pass https://www.prioritypass.com/en-GB/lounges/malaysia/kuala-lumpur-international; LoungeKey https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=KUL; DragonPass https://www.dragonpass.com/explore/airport/A10023."
+  },
+  {
+    "iata": "AVV",
+    "airport": "Avalon Airport",
+    "city": "Melbourne (Avalon)",
+    "country": "AU",
+    "places": [],
+    "notes": "No lounge for these programs: Avalon is not on the Priority Pass Australia list (https://www.prioritypass.com/en-GB/lounges/australia), the LoungeKey finder returns nothing (https://www.loungekey.com/en/mylounges/lounge-finder/airport?airportcode=AVV), and it is not in the DragonPass airport list (https://www.dragonpass.com/airport)."
+  }
+]

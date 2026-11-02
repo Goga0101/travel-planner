@@ -1,0 +1,1667 @@
+[
+  {
+    "iata": "DUB",
+    "airport": "Dublin Airport",
+    "city": "Dublin",
+    "country": "IE",
+    "places": [
+      {
+        "name": "The Liffey Lounge",
+        "kind": "lounge",
+        "terminal": "Between T1 & T2",
+        "airside": true,
+        "schengen": null,
+        "location": "Airside lounge corridor between T1 and T2, next to the 400 gates; not available after US Preclearance",
+        "hours": "04:00-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/ireland/dublin/dub-liffey-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/ireland/dublin/dub-liffey-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10003/N00057"
+        ]
+      },
+      {
+        "name": "The Phoenix Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "T1 Mezzanine Level after Fast Track security, or between the security lanes after Central Search",
+        "hours": "04:00-21:00",
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.dragonpass.com/explore/lounge/A10003/N00056",
+        "sources": [
+          "https://www.dragonpass.com/explore/lounge/A10003/N00056"
+        ]
+      },
+      {
+        "name": "Garden Terrace",
+        "kind": "dining",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Departures, after security, Mezzanine Level; bar, cafe and grill",
+        "hours": null,
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "€23 off the bill per cardholder (uses one lounge visit)",
+        "source": "https://www.prioritypass.com/en-GB/lounges/ireland/dublin/dub4d-garden-terrace",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/ireland/dublin/dub4d-garden-terrace"
+        ]
+      }
+    ],
+    "notes": "Priority Pass lists the Liffey Lounge as between T1 and T2 (DragonPass lists it under T2, 04:00-19:00). Priority Pass currently marks Garden Terrace as \"unavailable\" with no hours, so check the app before going. Ireland is outside Schengen. Programme data was checked on 2026-11-02. LoungeKey acceptance comes from the outlet's programme list on prioritypass.com (Collinson runs both Priority Pass and LoungeKey). Mastercard Travel Pass uses the DragonPass network."
+  },
+  {
+    "iata": "BGY",
+    "airport": "Milan Bergamo Orio al Serio Airport",
+    "city": "Milan",
+    "country": "IT",
+    "places": [
+      {
+        "name": "HelloSky Milan Bergamo Lounge",
+        "kind": "lounge",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Airside after security, follow signs to B gates; on the right before passport control",
+        "hours": "05:00-23:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/italy/milan-bergamo-orio-al-serio/bgy2-hellosky-milan-bergamo-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/italy/milan-bergamo-orio-al-serio/bgy2-hellosky-milan-bergamo-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10371/N00602"
+        ]
+      }
+    ],
+    "notes": "The other programme lounge (Priority Pass \"Landside VIP Lounge\" / DragonPass \"VIP Lounge and Fast Track\") is landside, before security, so it is left out. Programme data was checked on 2026-11-02. LoungeKey acceptance comes from the outlet's programme list on prioritypass.com (Collinson runs both Priority Pass and LoungeKey). Mastercard Travel Pass uses the DragonPass network."
+  },
+  {
+    "iata": "STN",
+    "airport": "London Stansted Airport",
+    "city": "London",
+    "country": "GB",
+    "places": [
+      {
+        "name": "Essence by Escape Lounges",
+        "kind": "lounge",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Airside after security and duty free, between Terracotta Italian Kitchen and Pret; serves gates 1-19 only",
+        "hours": "04:00-19:30",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-kingdom/london-stansted/stn5-escape-lounges",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/united-kingdom/london-stansted/stn5-escape-lounges",
+          "https://www.dragonpass.com/explore/lounge/A10046/N00951"
+        ]
+      },
+      {
+        "name": "Bottega Prosecco Bar",
+        "kind": "dining",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Airside, centre of departure zone",
+        "hours": "04:00-21:30",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "£18 off the bill per cardholder (uses one lounge visit)",
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-kingdom/london-stansted/stn7d-bottega-prosecco-bar",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/united-kingdom/london-stansted/stn7d-bottega-prosecco-bar"
+        ]
+      },
+      {
+        "name": "The Camden Bar & Kitchen",
+        "kind": "dining",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Airside after security and duty free; first restaurant on the way to departures",
+        "hours": "03:30-20:00 (Fri to 22:00)",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "£18 off the bill per cardholder (uses one lounge visit)",
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-kingdom/london-stansted/stn6d-the-camden-bar-and-kitchen",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/united-kingdom/london-stansted/stn6d-the-camden-bar-and-kitchen"
+        ]
+      },
+      {
+        "name": "Sunny Side Cafe",
+        "kind": "dining",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Airside, departure hall",
+        "hours": "04:00-21:30",
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": "DragonPass dining offer (discount or voucher; amount shown in the DragonPass app)",
+        "source": "https://www.dragonpass.com/explore/dining-offer/A10046/R06553",
+        "sources": [
+          "https://www.dragonpass.com/explore/dining-offer/A10046/R06553"
+        ]
+      },
+      {
+        "name": "Terracotta Italian Kitchen",
+        "kind": "dining",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Airside, departure hall",
+        "hours": "04:00-21:30",
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": "DragonPass dining offer (discount or voucher; amount shown in the DragonPass app)",
+        "source": "https://www.dragonpass.com/explore/dining-offer/A10046/R06554",
+        "sources": [
+          "https://www.dragonpass.com/explore/dining-offer/A10046/R06554"
+        ]
+      },
+      {
+        "name": "The Perch Bar & Kitchen",
+        "kind": "dining",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Airside, departure hall",
+        "hours": "04:00-21:30",
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": "DragonPass dining offer (discount or voucher; amount shown in the DragonPass app)",
+        "source": "https://www.dragonpass.com/explore/dining-offer/A10046/R06555",
+        "sources": [
+          "https://www.dragonpass.com/explore/dining-offer/A10046/R06555"
+        ]
+      }
+    ],
+    "notes": "DragonPass lists Essence hours as 04:45-20:15; hours above are from Priority Pass. Dining-credit amounts per Priority Pass. Programme data was checked on 2026-11-02. LoungeKey acceptance comes from the outlet's programme list on prioritypass.com (Collinson runs both Priority Pass and LoungeKey). Mastercard Travel Pass uses the DragonPass network."
+  },
+  {
+    "iata": "LTN",
+    "airport": "London Luton Airport",
+    "city": "London",
+    "country": "GB",
+    "places": [
+      {
+        "name": "My Lounge",
+        "kind": "lounge",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Airside after security, next to Accessorize",
+        "hours": "04:00-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-kingdom/luton/ltn6-my-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/united-kingdom/luton/ltn6-my-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10187/N04612"
+        ]
+      },
+      {
+        "name": "No1 Lounge Luton",
+        "kind": "lounge",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Airside, ground floor next to Gate 17; pre-booking recommended",
+        "hours": "04:00-20:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-kingdom/luton/ltn5-no1-lounge-luton",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/united-kingdom/luton/ltn5-no1-lounge-luton"
+        ]
+      },
+      {
+        "name": "Nolito",
+        "kind": "dining",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Airside past duty free, right of Starbucks",
+        "hours": "04:30-21:30",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "£18 off the bill per cardholder (uses one lounge visit)",
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-kingdom/luton/ltn3d-nolito",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/united-kingdom/luton/ltn3d-nolito"
+        ]
+      },
+      {
+        "name": "Big Smoke Taphouse & Kitchen",
+        "kind": "dining",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Airside after duty free, on the right",
+        "hours": "04:00-21:30",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "£18 off the bill per cardholder (uses one lounge visit)",
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-kingdom/luton/ltn2d-big-smoke-taphouse-and-kitchen",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/united-kingdom/luton/ltn2d-big-smoke-taphouse-and-kitchen"
+        ]
+      },
+      {
+        "name": "The Smithfield",
+        "kind": "dining",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Airside after security, international departures",
+        "hours": "03:00-last flight",
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": "DragonPass dining offer (discount or voucher; amount shown in the DragonPass app)",
+        "source": "https://www.dragonpass.com/explore/dining-offer/A10187/R01811",
+        "sources": [
+          "https://www.dragonpass.com/explore/dining-offer/A10187/R01811"
+        ]
+      },
+      {
+        "name": "Sanfords",
+        "kind": "dining",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Airside after security, departures",
+        "hours": "first-last flight",
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": "DragonPass dining offer (discount or voucher; amount shown in the DragonPass app)",
+        "source": "https://www.dragonpass.com/explore/dining-offer/A10187/R05960",
+        "sources": [
+          "https://www.dragonpass.com/explore/dining-offer/A10187/R05960"
+        ]
+      }
+    ],
+    "notes": "DragonPass lists My Lounge as 04:00-20:00; Priority Pass says 04:00-21:00. Programme data was checked on 2026-11-02. LoungeKey acceptance comes from the outlet's programme list on prioritypass.com (Collinson runs both Priority Pass and LoungeKey). Mastercard Travel Pass uses the DragonPass network."
+  },
+  {
+    "iata": "FRA",
+    "airport": "Frankfurt Airport",
+    "city": "Frankfurt",
+    "country": "DE",
+    "places": [
+      {
+        "name": "Priority Lounge",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "After security and passport control, Level 5",
+        "hours": "06:15-21:15",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/germany/frankfurt/fra15-priority-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/germany/frankfurt/fra15-priority-lounge"
+        ]
+      },
+      {
+        "name": "SkyTeam Lounge",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "After security and passport control, Non-Schengen zone, Level 4",
+        "hours": "06:30-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/germany/frankfurt/fra16-skyteam-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/germany/frankfurt/fra16-skyteam-lounge"
+        ]
+      },
+      {
+        "name": "Air France Lounge",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "After security, Schengen zone, 5th Level",
+        "hours": "05:00-20:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/germany/frankfurt/fra17-air-france-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/germany/frankfurt/fra17-air-france-lounge"
+        ]
+      }
+    ],
+    "notes": "No programme lounge airside in T1/T2. LuxxLounge in T1 (Priority Pass, LoungeKey and DragonPass) is landside, before security and passport control, so it is left out. Where Priority Pass does not say Schengen or non-Schengen, the field is null. Programme data was checked on 2026-11-02. LoungeKey acceptance comes from the outlet's programme list on prioritypass.com (Collinson runs both Priority Pass and LoungeKey). Mastercard Travel Pass uses the DragonPass network."
+  },
+  {
+    "iata": "ZRH",
+    "airport": "Zurich Airport",
+    "city": "Zurich",
+    "country": "CH",
+    "places": [
+      {
+        "name": "Primeclass Lounge",
+        "kind": "lounge",
+        "terminal": "Gates E (Dock E)",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "3rd floor by Gate E46; non-Schengen flights only",
+        "hours": "06:00-22:30",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/switzerland/zurich/zrh6-primeclass-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/switzerland/zurich/zrh6-primeclass-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10247/N01677"
+        ]
+      },
+      {
+        "name": "Aspire Lounge (Aspire SKY Lounge)",
+        "kind": "lounge",
+        "terminal": "Gates E (Dock E)",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "3rd floor above Gate E52; non-Schengen flights only",
+        "hours": "06:00-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/switzerland/zurich/zrh1-aspire-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/switzerland/zurich/zrh1-aspire-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10247/N01187"
+        ]
+      },
+      {
+        "name": "Aspire Lounge (Aspire ONE Lounge)",
+        "kind": "lounge",
+        "terminal": "Airside Center",
+        "airside": true,
+        "schengen": null,
+        "location": "Airside Center 3rd floor, towards B gates; not for transit passengers",
+        "hours": "05:15-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/switzerland/zurich/zrh4-aspire-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/switzerland/zurich/zrh4-aspire-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10247/N00523"
+        ]
+      },
+      {
+        "name": "Marhaba Lounge",
+        "kind": "lounge",
+        "terminal": "Airside Center",
+        "airside": true,
+        "schengen": null,
+        "location": "Airside Center 2nd floor, towards B gates",
+        "hours": "05:15-20:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/switzerland/zurich/zur-marhaba-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/switzerland/zurich/zur-marhaba-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10247/N00421"
+        ]
+      }
+    ],
+    "notes": "Priority Pass calls both Aspire lounges \"Aspire Lounge\"; DragonPass calls them Aspire SKY (E gates) and Aspire ONE (Airside Center). They are matched by location. DragonPass lists the E-gates Aspire as 05:15-21:00. Programme data was checked on 2026-11-02. LoungeKey acceptance comes from the outlet's programme list on prioritypass.com (Collinson runs both Priority Pass and LoungeKey). Mastercard Travel Pass uses the DragonPass network."
+  },
+  {
+    "iata": "RIX",
+    "airport": "Riga International Airport",
+    "city": "Riga",
+    "country": "LV",
+    "places": [
+      {
+        "name": "Primeclass Riga Business Lounge",
+        "kind": "lounge",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": "both",
+        "location": "After security, lift by Gate B1 to 3rd floor; Schengen and non-Schengen international flights only",
+        "hours": "05:00-23:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/latvia/riga-international/rix3-primeclass-riga-business-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/latvia/riga-international/rix3-primeclass-riga-business-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10185/N00207"
+        ]
+      },
+      {
+        "name": "Kepler Club (Transit Area)",
+        "kind": "sleep",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Airside after security, near Gate B2 opposite Tickerdaze restaurant",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": "Free use of private rest pods, showers and lockers",
+        "source": "https://www.prioritypass.com/en-GB/lounges/latvia/riga-international/rix4-kepler-club",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/latvia/riga-international/rix4-kepler-club",
+          "https://www.dragonpass.com/explore/lounge/A10185/N04719"
+        ]
+      }
+    ],
+    "notes": "DragonPass also lists a landside Kepler Club. It is left out because this list is airside only. Programme data was checked on 2026-11-02. LoungeKey acceptance comes from the outlet's programme list on prioritypass.com (Collinson runs both Priority Pass and LoungeKey). Mastercard Travel Pass uses the DragonPass network."
+  },
+  {
+    "iata": "OTP",
+    "airport": "Bucharest Henri Coandă International Airport",
+    "city": "Bucharest",
+    "country": "RO",
+    "places": [],
+    "notes": "The Priority Pass airport page has no outlets (https://www.prioritypass.com/en-GB/lounges/romania/henri-coanda-international) and OTP is not in the DragonPass airport directory (https://www.dragonpass.com/airport). No programme lounge could be verified. Programme data was checked on 2026-11-02. LoungeKey acceptance comes from the outlet's programme list on prioritypass.com (Collinson runs both Priority Pass and LoungeKey). Mastercard Travel Pass uses the DragonPass network."
+  },
+  {
+    "iata": "SOF",
+    "airport": "Sofia Airport",
+    "city": "Sofia",
+    "country": "BG",
+    "places": [
+      {
+        "name": "Primeclass Lounge",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "After security and passport control, level 2, opposite duty free near Gate C1",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/bulgaria/sofia/sof6-primeclass-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/bulgaria/sofia/sof6-primeclass-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10008/N13811"
+        ]
+      },
+      {
+        "name": "BAR 09-27",
+        "kind": "dining",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "After security and passport control, level 1 near Gate C1",
+        "hours": "07:00-23:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "€24 off the bill per cardholder (uses one lounge visit)",
+        "source": "https://www.prioritypass.com/en-GB/lounges/bulgaria/sofia/sof5d-bar-09-27",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/bulgaria/sofia/sof5d-bar-09-27"
+        ]
+      }
+    ],
+    "notes": "No programme outlets in T1. Programme data was checked on 2026-11-02. LoungeKey acceptance comes from the outlet's programme list on prioritypass.com (Collinson runs both Priority Pass and LoungeKey). Mastercard Travel Pass uses the DragonPass network."
+  },
+  {
+    "iata": "CIA",
+    "airport": "Rome Ciampino Airport",
+    "city": "Rome",
+    "country": "IT",
+    "places": [],
+    "notes": "Not on Priority Pass (no CIA in the https://www.prioritypass.com/en-GB/lounges/italy list). DragonPass offers only a fast-track lane here, no lounge (https://www.dragonpass.com/explore/airport/A10703). Programme data was checked on 2026-11-02. LoungeKey acceptance comes from the outlet's programme list on prioritypass.com (Collinson runs both Priority Pass and LoungeKey). Mastercard Travel Pass uses the DragonPass network."
+  },
+  {
+    "iata": "WMI",
+    "airport": "Warsaw Modlin Airport",
+    "city": "Warsaw",
+    "country": "PL",
+    "places": [
+      {
+        "name": "Mazovia Premium Lounge",
+        "kind": "lounge",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "After security and passport control, Level 1 via lift or stairs, on the left",
+        "hours": "08:00-20:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/poland/warsaw-modlin/wmi2-mazovia-premium-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/poland/warsaw-modlin/wmi2-mazovia-premium-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10825/N05375"
+        ]
+      }
+    ],
+    "notes": "The lounge is after passport control, so Schengen flights probably cannot reach it. No other programme outlets. Programme data was checked on 2026-11-02. LoungeKey acceptance comes from the outlet's programme list on prioritypass.com (Collinson runs both Priority Pass and LoungeKey). Mastercard Travel Pass uses the DragonPass network."
+  },
+  {
+    "iata": "KTW",
+    "airport": "Katowice International Airport",
+    "city": "Katowice",
+    "country": "PL",
+    "places": [
+      {
+        "name": "Business Lounge (Terminal A)",
+        "kind": "lounge",
+        "terminal": "Terminal A",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "Airside near Gate 1, ground floor; non-Schengen flights only",
+        "hours": "04:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/poland/katowice-international/ktw3-business-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/poland/katowice-international/ktw3-business-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10317/N00488"
+        ]
+      },
+      {
+        "name": "Business Lounge (Terminal B)",
+        "kind": "lounge",
+        "terminal": "Terminal B",
+        "airside": true,
+        "schengen": null,
+        "location": "Airside, second floor",
+        "hours": "04:30-22:00",
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.dragonpass.com/explore/lounge/A10317/N00701",
+        "sources": [
+          "https://www.dragonpass.com/explore/lounge/A10317/N00701"
+        ]
+      }
+    ],
+    "notes": "Priority Pass and LoungeKey list only the Terminal A lounge. Programme data was checked on 2026-11-02. LoungeKey acceptance comes from the outlet's programme list on prioritypass.com (Collinson runs both Priority Pass and LoungeKey). Mastercard Travel Pass uses the DragonPass network."
+  },
+  {
+    "iata": "MMX",
+    "airport": "Malmö Airport",
+    "city": "Malmö",
+    "country": "SE",
+    "places": [],
+    "notes": "Not on Priority Pass (Sweden list: https://www.prioritypass.com/en-GB/lounges/sweden has only GOT, LPI, ARN, NYO) and not in the DragonPass airport directory. No programme lounge. Programme data was checked on 2026-11-02. LoungeKey acceptance comes from the outlet's programme list on prioritypass.com (Collinson runs both Priority Pass and LoungeKey). Mastercard Travel Pass uses the DragonPass network."
+  },
+  {
+    "iata": "DOH",
+    "airport": "Hamad International Airport",
+    "city": "Doha",
+    "country": "QA",
+    "places": [
+      {
+        "name": "Al Maha Lounge (South Node)",
+        "kind": "lounge",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Level 2 of Duty Free South (from the Teddy Bear, lift/escalator on left); near A, B, C gates",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/qatar/hamad-international/doh2-al-maha-lounge-south-node",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/qatar/hamad-international/doh2-al-maha-lounge-south-node",
+          "https://www.dragonpass.com/explore/lounge/A10250/N00493"
+        ]
+      },
+      {
+        "name": "Al Maha Lounge (North / Orchard)",
+        "kind": "lounge",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "North Node / Orchard, near Gate C14; international and transit flights",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/qatar/hamad-international/doh6-al-maha-lounge-north-node",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/qatar/hamad-international/doh6-al-maha-lounge-north-node",
+          "https://www.dragonpass.com/explore/lounge/A10250/N03532"
+        ]
+      },
+      {
+        "name": "Al Maha Lounge (Southeast)",
+        "kind": "lounge",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "1st floor towards C gates, near Gates C1-4",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/qatar/hamad-international/doh7-al-maha-lounge-southeast",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/qatar/hamad-international/doh7-al-maha-lounge-southeast"
+        ]
+      },
+      {
+        "name": "Sleepover (North Node, Gate C30)",
+        "kind": "sleep",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Transit area lower level, opposite Gates C30-31",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": "Nap pod: 1h + 30 min shower, or 2h pod without shower (one lounge visit)",
+        "source": "https://www.prioritypass.com/en-GB/lounges/qatar/hamad-international/doh5-sleepover-north-node",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/qatar/hamad-international/doh5-sleepover-north-node",
+          "https://www.dragonpass.com/explore/lounge/A10250/N03687"
+        ]
+      },
+      {
+        "name": "Sleepover (North Node, Gate C40)",
+        "kind": "sleep",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Level 1, opposite Gate C40",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": "Sleep pod: 1h + 30 min shower, or 2h pod without shower (one lounge visit)",
+        "source": "https://www.prioritypass.com/en-GB/lounges/qatar/hamad-international/doh8r-sleepover-doha-north-node-gate-c40",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/qatar/hamad-international/doh8r-sleepover-doha-north-node-gate-c40",
+          "https://www.dragonpass.com/explore/lounge/A10250/N13679"
+        ]
+      },
+      {
+        "name": "Sleepover (South Node)",
+        "kind": "sleep",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Luxury duty free area near B gates, near the Teddy Bear",
+        "hours": "08:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": "3h in a single FlexiSuite, max 1 person (one lounge visit)",
+        "source": "https://www.prioritypass.com/en-GB/lounges/qatar/hamad-international/doh3-sleepover-south-node",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/qatar/hamad-international/doh3-sleepover-south-node",
+          "https://www.dragonpass.com/explore/lounge/A10250/N02459"
+        ]
+      },
+      {
+        "name": "Be Relax Spa (Concourse C)",
+        "kind": "spa",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Level 1, opposite Gate C1",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": "15 min back or foot massage (US$43.50 value) or 30 min lounger massage + O2 (one lounge visit)",
+        "source": "https://www.prioritypass.com/en-GB/lounges/qatar/hamad-international/doh10s-be-relax-spa",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/qatar/hamad-international/doh10s-be-relax-spa",
+          "https://www.dragonpass.com/explore/lounge/A10250/N04320"
+        ]
+      },
+      {
+        "name": "Be Relax Spa (Concourse A)",
+        "kind": "spa",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Level 1 towards North/Orchard area",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": "15 min back or foot massage (US$43.50 value) or 30 min lounger massage + O2 (one lounge visit)",
+        "source": "https://www.prioritypass.com/en-GB/lounges/qatar/hamad-international/doh9s-be-relax-spa-doh-concourse-a",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/qatar/hamad-international/doh9s-be-relax-spa-doh-concourse-a",
+          "https://www.dragonpass.com/explore/lounge/A10250/N04319"
+        ]
+      }
+    ],
+    "notes": "Also on Priority Pass, LoungeKey and DragonPass: Be Relax Spa Concourse D/E. DragonPass also lists a landside Al Maha lounge, which is left out. Programme data was checked on 2026-11-02. LoungeKey acceptance comes from the outlet's programme list on prioritypass.com (Collinson runs both Priority Pass and LoungeKey). Mastercard Travel Pass uses the DragonPass network."
+  },
+  {
+    "iata": "DXB",
+    "airport": "Dubai International Airport",
+    "city": "Dubai",
+    "country": "AE",
+    "places": [
+      {
+        "name": "Plaza Premium Lounge (Concourse A)",
+        "kind": "lounge",
+        "terminal": "T3 Concourse A",
+        "airside": true,
+        "schengen": null,
+        "location": "West wing, lift from duty free to Level 4 (mezzanine), between Gates A2-A3",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-arab-emirates/dubai-international/dxb11-plaza-premium-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/united-arab-emirates/dubai-international/dxb11-plaza-premium-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10001/N02294"
+        ]
+      },
+      {
+        "name": "Marhaba Lounge (Concourse A)",
+        "kind": "lounge",
+        "terminal": "T3 Concourse A",
+        "airside": true,
+        "schengen": null,
+        "location": "Departure level, west end, between Gates A2 and A3; Emirates and Qantas codeshare flights",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-arab-emirates/dubai-international/dxb4-marhaba-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/united-arab-emirates/dubai-international/dxb4-marhaba-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10001/N00051"
+        ]
+      },
+      {
+        "name": "Marhaba Lounge (Concourse B)",
+        "kind": "lounge",
+        "terminal": "T3 Concourse B",
+        "airside": true,
+        "schengen": null,
+        "location": "North side near Gate B21, dedicated lift from Level 3; Emirates and Qantas codeshare flights",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-arab-emirates/dubai-international/dxb3-marhaba-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/united-arab-emirates/dubai-international/dxb3-marhaba-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10001/N00050"
+        ]
+      },
+      {
+        "name": "Ahlan Lounge @ C13",
+        "kind": "lounge",
+        "terminal": "T3 Concourse C",
+        "airside": true,
+        "schengen": null,
+        "location": "Next to / above Gate C13; international flights only",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-arab-emirates/dubai-international/dxb13-ahlan-lounge-c13",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/united-arab-emirates/dubai-international/dxb13-ahlan-lounge-c13",
+          "https://www.dragonpass.com/explore/lounge/A10001/N04058"
+        ]
+      },
+      {
+        "name": "Marhaba Lounge (Concourse D)",
+        "kind": "lounge",
+        "terminal": "T1 Concourse D",
+        "airside": true,
+        "schengen": null,
+        "location": "Lounge level above the boarding gates and duty free",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-arab-emirates/dubai-international/dxb8-marhaba-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/united-arab-emirates/dubai-international/dxb8-marhaba-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10001/N01170"
+        ]
+      },
+      {
+        "name": "Marhaba Lounge (Terminal 2)",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "Departure area after security, opposite Gates F3/F4",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-arab-emirates/dubai-international/dxb5-marhaba-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/united-arab-emirates/dubai-international/dxb5-marhaba-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10001/N00052"
+        ]
+      },
+      {
+        "name": "Sleepover (Concourse B)",
+        "kind": "sleep",
+        "terminal": "T3 Concourse B",
+        "airside": true,
+        "schengen": null,
+        "location": "Between Gates B14 and B18, near the Emirates Connections desk",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": "08:00-21:59: 3h nap pod with shower, or 3h Recharge Zone/Lounge Lite stay (one lounge visit)",
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-arab-emirates/dubai-international/dxb15-sleepover",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/united-arab-emirates/dubai-international/dxb15-sleepover",
+          "https://www.dragonpass.com/explore/lounge/A10001/N03686"
+        ]
+      },
+      {
+        "name": "Be Relax Spa @ B13",
+        "kind": "spa",
+        "terminal": "T3 Concourse B",
+        "airside": true,
+        "schengen": null,
+        "location": "Level 2, between Gates B13 and B15",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": "15 min back or foot massage (US$43.50 value) or 30 min lounger massage + O2 (one lounge visit)",
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-arab-emirates/dubai-international/dxb26s-be-relax-spa-b13",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/united-arab-emirates/dubai-international/dxb26s-be-relax-spa-b13",
+          "https://www.dragonpass.com/explore/lounge/A10001/N04317"
+        ]
+      }
+    ],
+    "notes": "There are many more programme outlets here: Ahlan lounges in Concourses A, B and D, the SkyTeam Lounge T1 (Priority Pass and LoungeKey), Sleepover in A, C and D, Game Space, more Be Relax spas and XpresSpa. See https://www.prioritypass.com/en-GB/lounges/united-arab-emirates/dubai-international and https://www.dragonpass.com/explore/airport/A10001. Programme data was checked on 2026-11-02. LoungeKey acceptance comes from the outlet's programme list on prioritypass.com (Collinson runs both Priority Pass and LoungeKey). Mastercard Travel Pass uses the DragonPass network."
+  },
+  {
+    "iata": "DWC",
+    "airport": "Dubai World Central – Al Maktoum International",
+    "city": "Dubai",
+    "country": "AE",
+    "places": [
+      {
+        "name": "Marhaba Lounge",
+        "kind": "lounge",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "After police security control, escalator to Level 1 (mezzanine above duty free), on the right",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-arab-emirates/al-maktoum-international/dwc-marhaba-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/united-arab-emirates/al-maktoum-international/dwc-marhaba-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10183/N00204"
+        ]
+      }
+    ],
+    "notes": "Programme data was checked on 2026-11-02. LoungeKey acceptance comes from the outlet's programme list on prioritypass.com (Collinson runs both Priority Pass and LoungeKey). Mastercard Travel Pass uses the DragonPass network."
+  },
+  {
+    "iata": "AUH",
+    "airport": "Zayed International Airport (Abu Dhabi)",
+    "city": "Abu Dhabi",
+    "country": "AE",
+    "places": [
+      {
+        "name": "Pearl Lounge",
+        "kind": "lounge",
+        "terminal": "Terminal A",
+        "airside": true,
+        "schengen": null,
+        "location": "Airside after security and passport control (Priority Pass: Level 1 near Gate D43; DragonPass: Level 5)",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-arab-emirates/abu-dhabi-international/auh12-pearl-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/united-arab-emirates/abu-dhabi-international/auh12-pearl-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10220/N04150"
+        ]
+      },
+      {
+        "name": "TGI Fridays",
+        "kind": "dining",
+        "terminal": "Terminal A",
+        "airside": true,
+        "schengen": null,
+        "location": "After security and passport control, Level 5, Pier C",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "AED99 off the bill per cardholder (uses one lounge visit)",
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-arab-emirates/abu-dhabi-international/auh13d-tgi-fridays",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/united-arab-emirates/abu-dhabi-international/auh13d-tgi-fridays"
+        ]
+      },
+      {
+        "name": "XpresSpa",
+        "kind": "spa",
+        "terminal": "Terminal A",
+        "airside": true,
+        "schengen": null,
+        "location": "Near Gates B10-B11; international and transit flights",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "Face mask + 20 min massage-lounger session (US$45 value; one lounge visit)",
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-arab-emirates/abu-dhabi-international/auh14s-xpresspa",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/united-arab-emirates/abu-dhabi-international/auh14s-xpresspa"
+        ]
+      }
+    ],
+    "notes": "Priority Pass and DragonPass give different floors for the Pearl Lounge. DragonPass also lists dining offers (Culto Cafe, So! Coffee), but under \"Terminal 1\", so they are left out. Programme data was checked on 2026-11-02. LoungeKey acceptance comes from the outlet's programme list on prioritypass.com (Collinson runs both Priority Pass and LoungeKey). Mastercard Travel Pass uses the DragonPass network."
+  },
+  {
+    "iata": "SHJ",
+    "airport": "Sharjah International Airport",
+    "city": "Sharjah",
+    "country": "AE",
+    "places": [
+      {
+        "name": "The Lounge",
+        "kind": "lounge",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Turn left after duty free, 1st floor, opposite the transfer desk",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/united-arab-emirates/sharjah-international/shj-the-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/united-arab-emirates/sharjah-international/shj-the-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10438/N00715"
+        ]
+      },
+      {
+        "name": "Peppers",
+        "kind": "dining",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Airside, inside the food court",
+        "hours": null,
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": "DragonPass dining offer (discount or voucher; amount shown in the DragonPass app)",
+        "source": "https://www.dragonpass.com/explore/dining-offer/A10438/R06465",
+        "sources": [
+          "https://www.dragonpass.com/explore/dining-offer/A10438/R06465"
+        ]
+      },
+      {
+        "name": "illy",
+        "kind": "dining",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Airside, inside the food court",
+        "hours": null,
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": "DragonPass dining offer (discount or voucher; amount shown in the DragonPass app)",
+        "source": "https://www.dragonpass.com/explore/dining-offer/A10438/R06466",
+        "sources": [
+          "https://www.dragonpass.com/explore/dining-offer/A10438/R06466"
+        ]
+      },
+      {
+        "name": "Filli",
+        "kind": "dining",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Airside, inside duty free next to the transit hotel",
+        "hours": null,
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": "DragonPass dining offer (discount or voucher; amount shown in the DragonPass app)",
+        "source": "https://www.dragonpass.com/explore/dining-offer/A10438/R06468",
+        "sources": [
+          "https://www.dragonpass.com/explore/dining-offer/A10438/R06468"
+        ]
+      }
+    ],
+    "notes": "Programme data was checked on 2026-11-02. LoungeKey acceptance comes from the outlet's programme list on prioritypass.com (Collinson runs both Priority Pass and LoungeKey). Mastercard Travel Pass uses the DragonPass network."
+  },
+  {
+    "iata": "CAI",
+    "airport": "Cairo International Airport",
+    "city": "Cairo",
+    "country": "EG",
+    "places": [
+      {
+        "name": "CAC Lounge by Plaza Premium Lounge & EAS (T1)",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "1st and 2nd floors after security and passport control (signs to First Class lounge area)",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/egypt/cairo-international/cai4-cac-lounge-by-plaza-premium-lounge-and-eas",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/egypt/cairo-international/cai4-cac-lounge-by-plaza-premium-lounge-and-eas",
+          "https://www.dragonpass.com/explore/lounge/A10431/N00695"
+        ]
+      },
+      {
+        "name": "AHLEIN Emerald Lounge",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "1st floor above immigration; international and transit flights",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/egypt/cairo-international/cai21-ahlein-emerald-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/egypt/cairo-international/cai21-ahlein-emerald-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10431/N05005"
+        ]
+      },
+      {
+        "name": "AHLEIN Premium Lounge (T2)",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "Ground floor, turn right before duty free",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/egypt/cairo-international/cai7-ahlein-premium-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/egypt/cairo-international/cai7-ahlein-premium-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10431/N02222"
+        ]
+      },
+      {
+        "name": "CAC Lounge by Plaza Premium Lounge & EAS (T2)",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "1st floor after immigration; international flights only",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/egypt/cairo-international/cai5-cac-lounge-by-plaza-premium-lounge-and-eas",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/egypt/cairo-international/cai5-cac-lounge-by-plaza-premium-lounge-and-eas"
+        ]
+      },
+      {
+        "name": "CAC Lounge by Plaza Premium Lounge & EAS (T3, F gates)",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": null,
+        "location": "After security, near / 1st floor above F gates",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/egypt/cairo-international/cai23-cac-lounge-by-plaza-premium-lounge-and-eas-t3-lounge-new",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/egypt/cairo-international/cai23-cac-lounge-by-plaza-premium-lounge-and-eas-t3-lounge-new",
+          "https://www.dragonpass.com/explore/lounge/A10431/N14296"
+        ]
+      },
+      {
+        "name": "CAC Lounge by Plaza Premium Lounge & EAS (T3, Zone E)",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": null,
+        "location": "3rd floor departure hall; after passport control turn left to Zone E; international flights only",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/egypt/cairo-international/cai-cac-lounge-by-plaza-premium-lounge-and-eas",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/egypt/cairo-international/cai-cac-lounge-by-plaza-premium-lounge-and-eas"
+        ]
+      },
+      {
+        "name": "AHLEIN Premium Lounge (T3)",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": null,
+        "location": "Departure level near Gates G and F",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/egypt/cairo-international/cai19-ahlein-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/egypt/cairo-international/cai19-ahlein-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10431/N04288"
+        ]
+      }
+    ],
+    "notes": "DragonPass lists several more CAC lounges in T2 and T3, but they cannot be matched to the Priority Pass entries with certainty. Those two CAC entries list only Priority Pass and LoungeKey. Programme data was checked on 2026-11-02. LoungeKey acceptance comes from the outlet's programme list on prioritypass.com (Collinson runs both Priority Pass and LoungeKey). Mastercard Travel Pass uses the DragonPass network."
+  },
+  {
+    "iata": "RAK",
+    "airport": "Marrakesh Menara Airport",
+    "city": "Marrakech",
+    "country": "MA",
+    "places": [
+      {
+        "name": "Aspire Lounge Marrakech",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "After security and passport control, 2nd floor opposite Gate A3",
+        "hours": null,
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/morocco/marrakesh-menara/rak4-aspire-lounge-marrakech",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/morocco/marrakesh-menara/rak4-aspire-lounge-marrakech",
+          "https://www.dragonpass.com/explore/lounge/A10473/N14377"
+        ]
+      }
+    ],
+    "notes": "Hours disagree: DragonPass says 05:00-23:00, Priority Pass shows 00:00-23:59 daily. Programme data was checked on 2026-11-02. LoungeKey acceptance comes from the outlet's programme list on prioritypass.com (Collinson runs both Priority Pass and LoungeKey). Mastercard Travel Pass uses the DragonPass network."
+  },
+  {
+    "iata": "CPT",
+    "airport": "Cape Town International Airport",
+    "city": "Cape Town",
+    "country": "ZA",
+    "places": [
+      {
+        "name": "Bidvest Premier Lounge (International, near Gate B)",
+        "kind": "lounge",
+        "terminal": "International Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Mezzanine; after passport control turn left past Gate A3, near the escalator to Gate B",
+        "hours": "04:00-00:30",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": "Entry from 4h before departure",
+        "source": "https://www.prioritypass.com/en-GB/lounges/south-africa/cape-town-international/cpt4-bidvest-premier-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/south-africa/cape-town-international/cpt4-bidvest-premier-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10358/N03152"
+        ]
+      },
+      {
+        "name": "CPT Premier Lounge (DragonPass: Bidvest Premier Lounge Cape Town International 1)",
+        "kind": "lounge",
+        "terminal": "International Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Directly after passport control in the departure hall, on the right",
+        "hours": "05:30-23:30 (Sat-Sun from 06:00)",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": "Entry from 4h before departure",
+        "source": "https://www.prioritypass.com/en-GB/lounges/south-africa/cape-town-international/cpt1-cpt-premier-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/south-africa/cape-town-international/cpt1-cpt-premier-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10358/N00573"
+        ]
+      },
+      {
+        "name": "Bidvest Premier Lounge (Domestic)",
+        "kind": "lounge",
+        "terminal": "Domestic Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "After security turn right, lift to 4th floor",
+        "hours": "04:30-19:30 (Sat-Sun to 18:30)",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/south-africa/cape-town-international/cpt-bidvest-premier-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/south-africa/cape-town-international/cpt-bidvest-premier-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10358/N00572"
+        ]
+      },
+      {
+        "name": "Yemaya Spa",
+        "kind": "spa",
+        "terminal": "Domestic Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Domestic departures, Gate A9",
+        "hours": "05:30-18:30",
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.dragonpass.com/explore/lounge/A10358/N04581",
+        "sources": [
+          "https://www.dragonpass.com/explore/lounge/A10358/N04581"
+        ]
+      }
+    ],
+    "notes": "Hours are from Priority Pass. DragonPass shows slightly different hours (International 1: 05:00-23:30, International 2: 05:30-23:30, Domestic: 04:30-21:00). Programme data was checked on 2026-11-02. LoungeKey acceptance comes from the outlet's programme list on prioritypass.com (Collinson runs both Priority Pass and LoungeKey). Mastercard Travel Pass uses the DragonPass network."
+  },
+  {
+    "iata": "TLV",
+    "airport": "Ben Gurion Airport",
+    "city": "Tel Aviv",
+    "country": "IL",
+    "places": [
+      {
+        "name": "Jetex C Lounge",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": null,
+        "location": "Airside after security, duty-free area of Concourse C",
+        "hours": "24h",
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.dragonpass.com/explore/lounge/A10180/N13782",
+        "sources": [
+          "https://www.dragonpass.com/explore/lounge/A10180/N13782"
+        ]
+      }
+    ],
+    "notes": "Priority Pass has no Israel lounges (no Israel page in https://www.prioritypass.com/en-GB/airport-lounges). DragonPass is the only verified programme here. Programme data was checked on 2026-11-02. LoungeKey acceptance comes from the outlet's programme list on prioritypass.com (Collinson runs both Priority Pass and LoungeKey). Mastercard Travel Pass uses the DragonPass network."
+  },
+  {
+    "iata": "ESB",
+    "airport": "Ankara Esenboğa Airport",
+    "city": "Ankara",
+    "country": "TR",
+    "places": [
+      {
+        "name": "Primeclass Lounge (International)",
+        "kind": "lounge",
+        "terminal": "International Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "After passport control, mezzanine floor; international flights only",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/turkey/ankara-esenboga-international/esb-primeclass-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/turkey/ankara-esenboga-international/esb-primeclass-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10032/N00058"
+        ]
+      },
+      {
+        "name": "Primeclass Lounge (Domestic)",
+        "kind": "lounge",
+        "terminal": "Domestic Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "Between Gates 109 and 110; domestic flights only",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/turkey/ankara-esenboga-international/esb1-primeclass-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/turkey/ankara-esenboga-international/esb1-primeclass-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10032/N00640"
+        ]
+      }
+    ],
+    "notes": "Priority Pass says the international Primeclass lounge is closed for refurbishment until further notice, with a temporary lounge about 150-200 m away. Programme data was checked on 2026-11-02. LoungeKey acceptance comes from the outlet's programme list on prioritypass.com (Collinson runs both Priority Pass and LoungeKey). Mastercard Travel Pass uses the DragonPass network."
+  },
+  {
+    "iata": "AYT",
+    "airport": "Antalya Airport",
+    "city": "Antalya",
+    "country": "TR",
+    "places": [
+      {
+        "name": "Comfort Lounge (FTA Comfort Lounge)",
+        "kind": "lounge",
+        "terminal": "International Terminal 2",
+        "airside": true,
+        "schengen": null,
+        "location": "After passport control, 3rd floor; international flights only",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/turkey/antalya/ayt5-comfort-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/turkey/antalya/ayt5-comfort-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10378/N00620"
+        ]
+      },
+      {
+        "name": "CIP Lounge Domestic",
+        "kind": "lounge",
+        "terminal": "Domestic Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "2nd floor, turn right after security, next to Gate 7; domestic flights only",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/turkey/antalya/ayt6-cip-lounge-domestic",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/turkey/antalya/ayt6-cip-lounge-domestic",
+          "https://www.dragonpass.com/explore/lounge/A10378/N02115"
+        ]
+      }
+    ],
+    "notes": "No programme lounge verified in International Terminal 1. Programme data was checked on 2026-11-02. LoungeKey acceptance comes from the outlet's programme list on prioritypass.com (Collinson runs both Priority Pass and LoungeKey). Mastercard Travel Pass uses the DragonPass network."
+  },
+  {
+    "iata": "EVN",
+    "airport": "Zvartnots International Airport",
+    "city": "Yerevan",
+    "country": "AM",
+    "places": [
+      {
+        "name": "Business Lounge (Converse Bank Business Lounge)",
+        "kind": "lounge",
+        "terminal": "Main Terminal",
+        "airside": true,
+        "schengen": null,
+        "location": "After security and passport control, towards duty free, lift to Floor 4",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/armenia/zvartnots-international/evn-business-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/armenia/zvartnots-international/evn-business-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10439/N00712"
+        ]
+      }
+    ],
+    "notes": "Programme data was checked on 2026-11-02. LoungeKey acceptance comes from the outlet's programme list on prioritypass.com (Collinson runs both Priority Pass and LoungeKey). Mastercard Travel Pass uses the DragonPass network."
+  },
+  {
+    "iata": "GYD",
+    "airport": "Heydar Aliyev International Airport",
+    "city": "Baku",
+    "country": "AZ",
+    "places": [
+      {
+        "name": "Absheron Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "After security, Level 4 near Gate N1",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/azerbaijan/heydar-aliyev-international/gyd-absheron-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/azerbaijan/heydar-aliyev-international/gyd-absheron-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10463/N00790"
+        ]
+      },
+      {
+        "name": "Premium Bank Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "Near Gates 14-15 (bus gate zone); international flights only; sleep pods",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/azerbaijan/heydar-aliyev-international/gyd5-premium-bank-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/azerbaijan/heydar-aliyev-international/gyd5-premium-bank-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10463/N02713"
+        ]
+      },
+      {
+        "name": "Mugam Lounge",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "After passport control turn right, 2nd floor in front of duty free; international flights only",
+        "hours": "24h",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/en-GB/lounges/azerbaijan/heydar-aliyev-international/gyd2-mugam-lounge",
+        "sources": [
+          "https://www.prioritypass.com/en-GB/lounges/azerbaijan/heydar-aliyev-international/gyd2-mugam-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10463/N01626"
+        ]
+      }
+    ],
+    "notes": "Left out: Salam Lounge (landside, before passport control) and Baku Club (arrivals hall, by the baggage belts). Both accept Priority Pass, LoungeKey and DragonPass. Programme data was checked on 2026-11-02. LoungeKey acceptance comes from the outlet's programme list on prioritypass.com (Collinson runs both Priority Pass and LoungeKey). Mastercard Travel Pass uses the DragonPass network."
+  }
+]

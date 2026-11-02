@@ -1,0 +1,559 @@
+{
+  "checked": "2026-11-02",
+  "notes": "Only facts read on the cited pages on 2026-11-02 are included. Since 1 Oct 2024 Visa premium cards issued in Georgia (Platinum, Signature, Infinite) reach airport lounges through the Visa Airport Companion app, with DragonPass running the lounges. Visa Georgia and the TBC, Tera and BoG/SOLO pages all say Priority Pass and LoungeKey memberships stopped working for Visa cards on that date. Some banks (Credo, Studio Liberty) still label the Visa benefit 'Lounge Key'. Those cards are filed under VisaAirportCompanion and the label is mentioned in their notes. No Georgian card was found that currently gives Priority Pass. No bank page says the benefit covers airport restaurants or dining. The only dining item found is the Mastercard Travel Pass dining offers on TBC Concept Mastercard World Elite. 'dining' is null wherever the source is silent.",
+  "programs": [
+    {
+      "id": "PriorityPass",
+      "name": "Priority Pass",
+      "summary_en": "Collinson's paid or bank-provided membership giving access to 1,900+ airport lounges and travel experiences in 856 airports. Members enter with the digital membership card in the Priority Pass app. No current Georgian bank card offering it was found. Some benefits are unavailable to members who get Priority Pass through a payment card.",
+      "summary_ka": "Collinson-ის წევრობა, რომელსაც ყიდულობ ან ბანკი გაძლევს. 856 აეროპორტში 1900-ზე მეტ ლაუნჯსა და სხვა სერვისზე დაშვებას იძლევა. ლაუნჯში შესასვლელად Priority Pass-ის აპლიკაციაში არსებული ციფრული ბარათი უნდა აჩვენო. ქართული ბანკის ბარათი, რომელიც ამჟამად Priority Pass-ს იძლევა, ვერ ვიპოვეთ. ბარათის მეშვეობით მიღებულ წევრობაზე ზოგიერთი სარგებელი არ ვრცელდება.",
+      "url": "https://www.prioritypass.com/membership-benefits"
+    },
+    {
+      "id": "LoungeKey",
+      "name": "LoungeKey (Mastercard)",
+      "summary_en": "Collinson's lounge program that card issuers provide; in Georgia it now comes only with Mastercard premium cards (1,200+ lounges). The cardholder shows the physical Mastercard plus boarding pass, or a QR code from the LoungeKey app or website. Visits beyond the free allowance and guests are charged to the card.",
+      "summary_ka": "Collinson-ის ლაუნჯების პროგრამა, რომელსაც ბარათის გამცემი ბანკი გაძლევს. საქართველოში ახლა მხოლოდ Mastercard-ის პრემიუმ ბარათებთან მოდის (1200-ზე მეტი ლაუნჯი). შესასვლელად ფიზიკური Mastercard ბარათი და ჩასხდომის ტალონი უნდა აჩვენო, ან LoungeKey-ის აპლიკაციიდან ან საიტიდან მიღებული QR კოდი. ლიმიტს ზემოთ ვიზიტისა და სტუმრის საფასური ბარათიდან ჩამოგეჭრება.",
+      "url": "https://www.loungekey.com/"
+    },
+    {
+      "id": "DragonPass",
+      "name": "DragonPass",
+      "summary_en": "A travel-benefits platform and app covering airport lounges, airport dining, Fast Track and more. In Georgia, holders of Visa premium cards reach DragonPass lounges through the Visa Airport Companion app, not a separate DragonPass membership.",
+      "summary_ka": "სამოგზაურო სერვისების პლატფორმა და აპლიკაცია: აეროპორტის ლაუნჯები, აეროპორტის კვება, Fast Track და სხვა. საქართველოში Visa-ს პრემიუმ ბარათის მფლობელები DragonPass-ის ლაუნჯებში Visa Airport Companion აპლიკაციით შედიან და ცალკე DragonPass-ის წევრობა არ სჭირდებათ.",
+      "url": "https://www.dragonpass.com/"
+    },
+    {
+      "id": "MastercardTravelPass",
+      "name": "Mastercard Travel Pass (provided by DragonPass)",
+      "summary_en": "A Mastercard app run by DragonPass that replaced Mastercard Travel Experiences. Eligible cardholders use it to book airport Fast Track, redeem airport dining offers and arrange airport transfers. TBC describes it as a Fast Track, dining and transfer platform and does not mention lounge entry.",
+      "summary_ka": "Mastercard-ის აპლიკაცია, რომელსაც DragonPass მართავს და რომელმაც Mastercard Travel Experiences ჩაანაცვლა. შესაბამისი ბარათით აქ შეგიძლია აეროპორტში Fast Track-ის დაჯავშნა, რესტორნების შეთავაზებების გამოყენება და ტრანსფერის შეკვეთა. TBC მას Fast Track-ის, კვებისა და ტრანსფერის პლატფორმად აღწერს, ლაუნჯში შესვლას არ ახსენებს.",
+      "url": "https://tbcconcept.ge/en/offers/fasttrack-mastercard"
+    },
+    {
+      "id": "VisaAirportCompanion",
+      "name": "Visa Airport Companion (lounges by DragonPass)",
+      "summary_en": "Since 1 Oct 2024, Visa Platinum, Signature and Infinite cards issued in Georgia give access to 1,200+ DragonPass lounges. The cardholder registers the card in the Visa Airport Companion app, or in TBC Mobilebank for TBC cards, and shows the membership QR code; the physical card is not accepted. Free visits depend on spending in the 35 days before each visit (Georgia rules: Platinum 6 a year and Signature 10 a year with 1,500 GEL; 5,000 GEL gives unlimited visits; Infinite is unlimited). Guests cost USD 32 each. Visa says the program runs until 31 Dec 2026.",
+      "summary_ka": "2024 წლის 1 ოქტომბრიდან საქართველოში გაცემული Visa Platinum, Signature და Infinite ბარათებით DragonPass-ის 1200-ზე მეტ ლაუნჯში შეგიძლია შესვლა. ბარათი Visa Airport Companion აპლიკაციაში (TBC-ის ბარათის შემთხვევაში TBC მობაილბანკშიც) უნდა დაარეგისტრირო და ლაუნჯში წევრობის QR კოდი აჩვენო. ფიზიკურ ბარათს არ იღებენ. უფასო ვიზიტების რაოდენობა ყოველ ვიზიტამდე ბოლო 35 დღის ხარჯზეა დამოკიდებული. 1500 ლარის ხარჯით Platinum-ზე წელიწადში 6 ვიზიტი გეკუთვნის, Signature-ზე 10. 5000 ლარის ხარჯით ვიზიტები ულიმიტოა. Infinite ულიმიტოა. სტუმარი 32 აშშ დოლარი ღირს. Visa-ს თქმით, პროგრამა 2026 წლის 31 დეკემბრამდე მოქმედებს.",
+      "url": "https://www.visa.com.ge/en_GE/pay-with-visa/promotions/lounge-key.html"
+    },
+    {
+      "id": "BankOwn",
+      "name": "Bank-branded lounge space",
+      "summary_en": "A bank's own area inside an airport lounge, such as the TBC Concept spaces at Tbilisi and Kutaisi. Entry rules are the bank's; at Kutaisi, Visa cardholders tap their card on the POS terminal at the lounge entrance.",
+      "summary_ka": "ბანკის საკუთარი სივრცე აეროპორტის ლაუნჯში, მაგალითად TBC Concept-ის სივრცეები თბილისსა და ქუთაისში. შესვლის წესებს ბანკი ადგენს. ქუთაისში Visa-ს ბარათის მფლობელი ლაუნჯის შესასვლელთან POS ტერმინალზე ბარათს მიადებს.",
+      "url": "https://tbcconcept.ge/en/offers/kutaisis-aeroportis-upiratesobebi"
+    },
+    {
+      "id": "Other",
+      "name": "Other (network-run lounges, e.g. Visa Kutaisi Business Lounge, Mastercard Business Lounge Tbilisi)",
+      "summary_en": "Lounges run with a card network outside the global programs: the Visa Business Lounge at Kutaisi (entry by tapping a Georgian Visa premium card at the POS terminal, with limits set by each bank) and the Mastercard Business Lounge at Tbilisi airport (World Elite Mastercard holders show the card).",
+      "summary_ka": "ლაუნჯები, რომლებიც გლობალური პროგრამების გარეთ, ბარათის სისტემასთან ერთად მუშაობს. ქუთაისის Visa-ს ბიზნეს ლაუნჯში საქართველოში გაცემული Visa-ს პრემიუმ ბარათის POS ტერმინალზე მიდებით შედიხარ, ლიმიტს კი თითოეული ბანკი ადგენს. თბილისის აეროპორტის Mastercard-ის ბიზნეს ლაუნჯში World Elite Mastercard-ის მფლობელი ბარათს აჩვენებს.",
+      "url": "https://www.mastercard.com/ge/en/personal/experience-mastercard/offers-and-promotions/travel/lounges.html"
+    }
+  ],
+  "cards": [
+    {
+      "id": "tbc-concept-visa-platinum",
+      "bank": "TBC Bank",
+      "bank_ka": "თიბისი ბანკი",
+      "card": "TBC Concept Visa Platinum (debit)",
+      "network": "Visa",
+      "programs": [
+        { "program": "VisaAirportCompanion", "visits_per_year": 6, "unlimited": false, "guest": "paid, USD 32 per guest per visit", "dining": null, "note": "6 free visits a year if at least 1,500 GEL was spent on the card in the 35 days before each visit. Spending of 5,000 GEL in that window gives unlimited visits. Entry by QR code from TBC Mobilebank (Offers > Travel Benefits, Tbilisi or international lounges) or from the Visa Airport Companion app." },
+        { "program": "Other", "visits_per_year": 6, "unlimited": false, "guest": "guests can use visits from the yearly allowance (max 2 accesses per day)", "dining": null, "note": "Kutaisi International Airport Visa Business Lounge (with a TBC Concept space) and Fast Track: 6 accesses a year in total, no spending requirement. Entry by tapping the card (physical, Apple Pay or Google Pay) at the POS terminal." }
+      ],
+      "conditions_en": "Included with the TBC Concept card package (Visa Platinum + Mastercard World Elite). Fee: 20 GEL a month or 200 GEL a year for residents, 25 GEL or 250 GEL for expats. Spending in the last 5 days of the 35-day window does not count. The offer is valid until 31 Dec 2026.",
+      "conditions_ka": "შედის TBC Concept-ის ბარათის პაკეტში (Visa Platinum + Mastercard World Elite). საფასური რეზიდენტისთვის თვეში 20 ლარია ან წელიწადში 200 ლარი, უცხოელისთვის 25 ან 250 ლარი. 35-დღიანი პერიოდის ბოლო 5 დღის ხარჯი არ ითვლება. შეთავაზება 2026 წლის 31 დეკემბრამდე მოქმედებს.",
+      "source": "https://tbcconcept.ge/en/offers/4FbYZJw8hhrEGtEWqRYGZR/visa-airport-companion",
+      "sources": [
+        "https://tbcconcept.ge/en/offers/4FbYZJw8hhrEGtEWqRYGZR/visa-airport-companion",
+        "https://tbcconcept.ge/en/offers/kutaisis-aeroportis-upiratesobebi",
+        "https://tbcconcept.ge/en/tbc-card/concept",
+        "https://tbcconcept.ge/en/cards"
+      ],
+      "notes": "TBC says Priority Pass and LoungeKey memberships stopped working on these cards on 1 Oct 2024."
+    },
+    {
+      "id": "tbc-ertguli-visa-platinum-credit",
+      "bank": "TBC Bank",
+      "bank_ka": "თიბისი ბანკი",
+      "card": "TBC Ertguli Visa Platinum credit card (renewed Ertguli credit card, Concept customers)",
+      "network": "Visa",
+      "programs": [
+        { "program": "VisaAirportCompanion", "visits_per_year": 6, "unlimited": false, "guest": "paid, USD 32 per guest per visit", "dining": null, "note": "Same terms as Concept Visa Platinum: 6 free visits a year with 1,500 GEL spent in the previous 35 days, unlimited with 5,000 GEL." }
+      ],
+      "conditions_en": "Credit card for TBC Concept customers. Lounge access follows the Concept Visa Platinum terms.",
+      "conditions_ka": "საკრედიტო ბარათი TBC Concept-ის მომხმარებლებისთვის. ლაუნჯით სარგებლობის პირობები Concept Visa Platinum-ის პირობებს ემთხვევა.",
+      "source": "https://tbcconcept.ge/en/ertguli-credit-card",
+      "sources": [
+        "https://tbcconcept.ge/en/ertguli-credit-card",
+        "https://tbcconcept.ge/en/offers/4FbYZJw8hhrEGtEWqRYGZR/visa-airport-companion"
+      ],
+      "notes": "The lounge page says 'renewed Ertguli Credit Card'. Ertguli credit cards issued before 09.12.2025 have separate legacy terms, which were not checked."
+    },
+    {
+      "id": "tbc-concept-360-visa-signature",
+      "bank": "TBC Bank",
+      "bank_ka": "თიბისი ბანკი",
+      "card": "TBC Concept 360 Visa Signature (debit)",
+      "network": "Visa",
+      "programs": [
+        { "program": "VisaAirportCompanion", "visits_per_year": 10, "unlimited": false, "guest": "paid, USD 32 per guest per visit", "dining": null, "note": "10 free visits a year with at least 1,500 GEL spent in the 35 days before each visit. Unlimited with 5,000 GEL." },
+        { "program": "Other", "visits_per_year": 10, "unlimited": false, "guest": "guests can use visits from the yearly allowance (max 2 accesses per day)", "dining": null, "note": "Kutaisi Visa Business Lounge and Fast Track: 10 accesses a year in total, no spending requirement, entry by tapping the card." }
+      ],
+      "conditions_en": "TBC Concept 360 package (Visa Signature + Mastercard World Elite). Fee: 40 GEL a month or 400 GEL a year for residents, 50 GEL or 500 GEL for expats. Eligibility: monthly income over 5,000 GEL, or loans over 100,000 GEL, or deposits over 100,000 GEL.",
+      "conditions_ka": "TBC Concept 360-ის პაკეტი (Visa Signature + Mastercard World Elite). საფასური რეზიდენტისთვის თვეში 40 ლარია ან წელიწადში 400 ლარი, უცხოელისთვის 50 ან 500 ლარი. პაკეტს მიიღებ, თუ თვიური შემოსავალი 5000 ლარს აღემატება, ან სესხები ან დეპოზიტები 100 000 ლარზე მეტია.",
+      "source": "https://tbcconcept.ge/en/offers/4FbYZJw8hhrEGtEWqRYGZR/visa-airport-companion",
+      "sources": [
+        "https://tbcconcept.ge/en/offers/4FbYZJw8hhrEGtEWqRYGZR/visa-airport-companion",
+        "https://tbcconcept.ge/en/tbc-card/360",
+        "https://tbcconcept.ge/en/offers/kutaisis-aeroportis-upiratesobebi"
+      ],
+      "notes": null
+    },
+    {
+      "id": "tbc-concept-miles-smiles-visa-signature-travel",
+      "bank": "TBC Bank",
+      "bank_ka": "თიბისი ბანკი",
+      "card": "Miles&Smiles TBC Concept Visa Signature Travel Card",
+      "network": "Visa",
+      "programs": [
+        { "program": "VisaAirportCompanion", "visits_per_year": 30, "unlimited": false, "guest": "free within the 30 visits (up to 4 guests per visit); USD 32 per guest once free visits run out", "dining": null, "note": "30 free visits a year without any spending requirement, counting the cardholder and up to 4 guests per visit. Unlimited with 5,000 GEL spent in the previous 35 days." },
+        { "program": "Other", "visits_per_year": 20, "unlimited": false, "guest": "within the 20 accesses (max 4 accesses per day)", "dining": null, "note": "Kutaisi Visa Business Lounge and Fast Track: 20 accesses a year in total, no spending requirement, entry by tapping the card." }
+      ],
+      "conditions_en": "Metal co-brand card with Turkish Airlines. Available only to new TBC Concept 360 customers. Also includes free business lounge access at Tbilisi airport.",
+      "conditions_ka": "Turkish Airlines-თან ერთობლივი ლითონის ბარათი, მხოლოდ TBC Concept 360-ის ახალი მომხმარებლებისთვის. თბილისის აეროპორტის ბიზნეს ლაუნჯშიც უფასოდ შეგიშვებენ.",
+      "source": "https://tbcconcept.ge/en/offers/4FbYZJw8hhrEGtEWqRYGZR/visa-airport-companion",
+      "sources": [
+        "https://tbcconcept.ge/en/offers/4FbYZJw8hhrEGtEWqRYGZR/visa-airport-companion",
+        "https://tbcconcept.ge/en/travel-card",
+        "https://tbcconcept.ge/en/offers/kutaisis-aeroportis-upiratesobebi"
+      ],
+      "notes": "The travel-card page promises 'free access to business lounges at Tbilisi Airport and over 1,200 airports worldwide' but does not say how many Tbilisi visits are included."
+    },
+    {
+      "id": "tbc-concept-visa-infinite",
+      "bank": "TBC Bank",
+      "bank_ka": "თიბისი ბანკი",
+      "card": "TBC Concept Visa Infinite (debit)",
+      "network": "Visa",
+      "programs": [
+        { "program": "VisaAirportCompanion", "visits_per_year": null, "unlimited": true, "guest": "paid, USD 32 per guest per visit", "dining": null, "note": "TBC lists Visa Infinite among eligible VAC cards but does not give its visit count. The unlimited-with-1,500-GEL rule comes from the Visa Georgia page." }
+      ],
+      "conditions_en": "Visa's Georgian rules: unlimited free visits if at least 1,500 GEL was spent on the card in the 35 days before each visit.",
+      "conditions_ka": "Visa-ს საქართველოს წესებით, ვიზიტები უფასო და ულიმიტოა, თუ ყოველ ვიზიტამდე ბოლო 35 დღეში ბარათით მინიმუმ 1500 ლარი დახარჯე.",
+      "source": "https://tbcconcept.ge/en/offers/4FbYZJw8hhrEGtEWqRYGZR/visa-airport-companion",
+      "sources": [
+        "https://tbcconcept.ge/en/offers/4FbYZJw8hhrEGtEWqRYGZR/visa-airport-companion",
+        "https://www.visa.com.ge/en_GE/pay-with-visa/promotions/lounge-key.html"
+      ],
+      "notes": "Current TBC Concept packages come with Visa Platinum or Visa Signature. TBC's offer pages do not say whether Visa Infinite is still issued."
+    },
+    {
+      "id": "tbc-concept-mastercard-world-elite",
+      "bank": "TBC Bank",
+      "bank_ka": "თიბისი ბანკი",
+      "card": "TBC Concept Mastercard World Elite",
+      "network": "Mastercard",
+      "programs": [
+        { "program": "MastercardTravelPass", "visits_per_year": null, "unlimited": false, "guest": null, "dining": true, "note": "Through the Mastercard Travel Pass app: Fast Track up to 10 times a year at about 180 airports, airport dining offers, and airport transfers. TBC's pages do not state any lounge entitlement for this card." }
+      ],
+      "conditions_en": "Comes with both TBC Concept and Concept 360. Fast Track limit is 10 a year.",
+      "conditions_ka": "მოდის როგორც TBC Concept-ის, ისე Concept 360-ის პაკეტთან. Fast Track-ით სარგებლობა წელიწადში 10-ჯერ შეიძლება.",
+      "source": "https://tbcconcept.ge/en/offers/fasttrack-mastercard",
+      "sources": [
+        "https://tbcconcept.ge/en/offers/fasttrack-mastercard",
+        "https://tbcconcept.ge/en/cards"
+      ],
+      "notes": "LoungeKey or other lounge access for TBC's Mastercard World Elite was not verified. Mastercard Georgia separately says World Elite holders get free entry to the Mastercard Business Lounge at Tbilisi airport (see tbilisi_bank_lounges). 'dining': true means discount offers at airport restaurants, not free meals."
+    },
+    {
+      "id": "bog-solo-x-mastercard-world-elite",
+      "bank": "Bank of Georgia (SOLO)",
+      "bank_ka": "საქართველოს ბანკი (SOLO)",
+      "card": "SOLO X Mastercard World Elite",
+      "network": "Mastercard",
+      "programs": [
+        { "program": "LoungeKey", "visits_per_year": 6, "unlimited": false, "guest": "paid (price not stated on SOLO page)", "dining": null, "note": "Up to 6 free visits a year if at least 1,000 GEL was spent with the card in the 35 days before each visit. Entry with the physical card or a QR code from the LoungeKey app or website." }
+      ],
+      "conditions_en": "Part of the SOLO X package. New cards get a 37-day welcome period of free visits, which count toward the yearly total. Cash withdrawals, P2P transfers, games and fee payments do not count, nor does spending in the last 5 days of the window.",
+      "conditions_ka": "შედის SOLO X-ის პაკეტში. ახალ ბარათზე 37-დღიანი მისასალმებელი პერიოდი მოქმედებს, როცა ვიზიტები უფასოა, თუმცა წლიურ ლიმიტში ითვლება. ხარჯში არ ითვლება თანხის განაღდება, P2P გადარიცხვა, თამაშებთან დაკავშირებული და საკომისიოს გადახდები, ასევე პერიოდის ბოლო 5 დღის ტრანზაქციები.",
+      "source": "https://solo.ge/en/solo/news/details/684025705df2090008804258",
+      "sources": [
+        "https://solo.ge/en/solo/news/details/684025705df2090008804258",
+        "https://solo.ge/en/solo/banking/cards/debit-cards"
+      ],
+      "notes": null
+    },
+    {
+      "id": "bog-solo-premium-mastercard-world-elite",
+      "bank": "Bank of Georgia (SOLO)",
+      "bank_ka": "საქართველოს ბანკი (SOLO)",
+      "card": "SOLO Premium Mastercard World Elite",
+      "network": "Mastercard",
+      "programs": [
+        { "program": "LoungeKey", "visits_per_year": 10, "unlimited": false, "guest": "paid (price not stated on SOLO page)", "dining": null, "note": "Up to 10 free visits a year if at least 1,500 GEL was spent with the card in the 35 days before each visit." }
+      ],
+      "conditions_en": "Part of the SOLO Premium package. Same welcome period and excluded transactions as SOLO X.",
+      "conditions_ka": "შედის SOLO Premium-ის პაკეტში. მისასალმებელი პერიოდი და ხარჯში არჩათვლილი ტრანზაქციები SOLO X-ის მსგავსია.",
+      "source": "https://solo.ge/en/solo/news/details/684025705df2090008804258",
+      "sources": [
+        "https://solo.ge/en/solo/news/details/684025705df2090008804258"
+      ],
+      "notes": null
+    },
+    {
+      "id": "bog-solo-club-mastercard-world-elite",
+      "bank": "Bank of Georgia (SOLO)",
+      "bank_ka": "საქართველოს ბანკი (SOLO)",
+      "card": "SOLO CLUB Mastercard World Elite",
+      "network": "Mastercard",
+      "programs": [
+        { "program": "LoungeKey", "visits_per_year": null, "unlimited": true, "guest": "free: up to 5 guests per visit, up to 10 guest visits a year", "dining": null, "note": "Unlimited free visits with no spending requirement." }
+      ],
+      "conditions_en": "Part of the SOLO CLUB package (top tier).",
+      "conditions_ka": "შედის SOLO CLUB-ის პაკეტში (უმაღლესი დონე).",
+      "source": "https://solo.ge/en/solo/news/details/684025705df2090008804258",
+      "sources": [
+        "https://solo.ge/en/solo/news/details/684025705df2090008804258"
+      ],
+      "notes": null
+    },
+    {
+      "id": "bog-solo-visa-platinum",
+      "bank": "Bank of Georgia (SOLO)",
+      "bank_ka": "საქართველოს ბანკი (SOLO)",
+      "card": "SOLO Visa (Visa Platinum class: SOLO X Visa / SOLO Premium Visa)",
+      "network": "Visa",
+      "programs": [
+        { "program": "VisaAirportCompanion", "visits_per_year": 6, "unlimited": false, "guest": "paid, USD 32 per guest (Visa Georgia rule)", "dining": null, "note": "6 free visits a year with at least 1,500 GEL spent in the 35 days before each visit. Unlimited with 5,000 GEL. Register the card in the Visa Airport Companion app." }
+      ],
+      "conditions_en": "SOLO package Visa card. A SOLO update dated 12 Oct 2026 says that from 14 Nov 2026 the packages include 'SOLO X Visa Premium' / 'SOLO Visa Premium' free of charge.",
+      "conditions_ka": "SOLO-ს პაკეტის Visa ბარათი. SOLO-ს 2026 წლის 12 ოქტომბრის განცხადების თანახმად, 14 ნოემბრიდან პაკეტებში უფასოდ შედის 'SOLO X Visa Premium' და 'SOLO Visa Premium'.",
+      "source": "https://solo.ge/en/solo/news/details/66f51347e3a6d20008e1a0b3",
+      "sources": [
+        "https://solo.ge/en/solo/news/details/66f51347e3a6d20008e1a0b3",
+        "https://solo.ge/en/solo/news/details/6a0c4996deba7a0007c3504c",
+        "https://www.visa.com.ge/en_GE/pay-with-visa/promotions/lounge-key.html"
+      ],
+      "notes": "The SOLO debit-card page still lists 'Lounge Key' for the Visa cards. SOLO's dedicated news item (Sept 2024) says DragonPass via Visa Airport Companion. It is not stated which Visa class 'SOLO Visa Premium' is, so verify the Platinum mapping."
+    },
+    {
+      "id": "bog-solo-club-visa-signature",
+      "bank": "Bank of Georgia (SOLO)",
+      "bank_ka": "საქართველოს ბანკი (SOLO)",
+      "card": "SOLO CLUB Visa Signature",
+      "network": "Visa",
+      "programs": [
+        { "program": "VisaAirportCompanion", "visits_per_year": 10, "unlimited": false, "guest": "paid, USD 32 per guest (Visa Georgia rule)", "dining": null, "note": "10 free visits a year with at least 1,500 GEL spent in the previous 35 days. Unlimited with 5,000 GEL. SOLO says Visa Signature holders get their first visit as a gift." }
+      ],
+      "conditions_en": "From 14 Nov 2026 the SOLO CLUB package includes SOLO CLUB Visa Signature free of charge.",
+      "conditions_ka": "2026 წლის 14 ნოემბრიდან SOLO CLUB-ის პაკეტში SOLO CLUB Visa Signature უფასოდ შედის.",
+      "source": "https://solo.ge/en/solo/news/details/66f51347e3a6d20008e1a0b3",
+      "sources": [
+        "https://solo.ge/en/solo/news/details/66f51347e3a6d20008e1a0b3",
+        "https://solo.ge/en/solo/news/details/6a0c4996deba7a0007c3504c"
+      ],
+      "notes": null
+    },
+    {
+      "id": "credo-rcheuli-mastercard-world-elite",
+      "bank": "Credo Bank",
+      "bank_ka": "კრედო ბანკი",
+      "card": "Credo Rcheuli Mastercard World Elite (debit)",
+      "network": "Mastercard",
+      "programs": [
+        { "program": "LoungeKey", "visits_per_year": 10, "unlimited": false, "guest": "paid, USD 35 per person (free only if guests are included in the program)", "dining": null, "note": "Up to 10 free visits a year, including Tbilisi and Batumi, if 1,500 GEL was spent in the 35-day window (30 days plus a 5-day gap before the flight). Visits that don't meet the rule are paid. Entry with the boarding pass plus the physical Mastercard or a QR code from the LoungeKey app." }
+      ],
+      "conditions_en": "Only for Credo Rcheuli (premium) customers. Card cost: 50 GEL for Georgian citizens, free for expats. Card service fee is free.",
+      "conditions_ka": "მხოლოდ Credo Rcheuli-ის (პრემიუმ) მომხმარებლებისთვის. ბარათი საქართველოს მოქალაქისთვის 50 ლარი ღირს, უცხოელისთვის უფასოა. ბარათის მომსახურება უფასოა.",
+      "source": "https://credobank.ge/en/products/mastercard-world-elite",
+      "sources": [
+        "https://credobank.ge/en/products/mastercard-world-elite",
+        "https://s3.eu-central-1.amazonaws.com/cms-storage.noxtton.com/709dc09e-7d2f-4250-99a3-21de47804ced.pdf",
+        "https://s3.eu-central-1.amazonaws.com/cms-storage.noxtton.com/3c136055-5498-48e1-9fee-bbbb2c7e0ceb.pdf"
+      ],
+      "notes": null
+    },
+    {
+      "id": "credo-rcheuli-visa-platinum",
+      "bank": "Credo Bank",
+      "bank_ka": "კრედო ბანკი",
+      "card": "Credo Rcheuli Visa Platinum (debit)",
+      "network": "Visa",
+      "programs": [
+        { "program": "VisaAirportCompanion", "visits_per_year": 6, "unlimited": false, "guest": "paid, USD 32 per guest (Visa Georgia rule)", "dining": null, "note": "First visit free. 6 free visits a year (including the first) with 1,500 GEL spent in 35 days. Unlimited with 5,000 GEL. Cash withdrawals and P2P transfers do not count. Register the card in the app, or with a Visa representative at Tbilisi airport (24/7)." },
+        { "program": "Other", "visits_per_year": 6, "unlimited": false, "guest": null, "dining": null, "note": "Kutaisi airport Premium Lounge and Fast Track: 6 free visits, no proof of card activity needed, max 2 per day." }
+      ],
+      "conditions_en": "Only for Credo Rcheuli customers, ordered through a personal banker. Fast Track is included twice a year.",
+      "conditions_ka": "მხოლოდ Credo Rcheuli-ის მომხმარებლებისთვის, პირადი ბანკირის მეშვეობით. Fast Track წელიწადში ორჯერ შეგიძლია გამოიყენო.",
+      "source": "https://credobank.ge/en/products/visa-platinum-card",
+      "sources": [
+        "https://credobank.ge/en/products/visa-platinum-card",
+        "https://www.visa.com.ge/en_GE/pay-with-visa/promotions/lounge-key.html"
+      ],
+      "notes": "Credo's page calls the benefit 'Lounge Key' but describes the post-1 Oct 2024 'new application' rules. Under Visa Georgia's rules this is Visa Airport Companion / DragonPass."
+    },
+    {
+      "id": "tera-visa-platinum",
+      "bank": "Tera Bank",
+      "bank_ka": "ტერა ბანკი",
+      "card": "Terabank Visa Platinum",
+      "network": "Visa",
+      "programs": [
+        { "program": "VisaAirportCompanion", "visits_per_year": 6, "unlimited": false, "guest": "paid, USD 32 per guest per visit (guests must be on the same flight)", "dining": null, "note": "First visit free. Then up to 6 a year with 1,500 GEL POS/e-commerce spending in the 35 days before each visit (ATM not counted). Unlimited with 5,000 GEL. Entry by QR code in the Visa Airport Companion app only." }
+      ],
+      "conditions_en": "Terabank premium (Select) debit card.",
+      "conditions_ka": "ტერა ბანკის პრემიუმ (Select) სადებეტო ბარათი.",
+      "source": "https://terabank.ge/en/select/benefits/lounge-key",
+      "sources": [
+        "https://terabank.ge/en/select/benefits/lounge-key"
+      ],
+      "notes": "The page is titled 'Lounge Key' but describes Visa Airport Companion / DragonPass."
+    },
+    {
+      "id": "tera-visa-infinite",
+      "bank": "Tera Bank",
+      "bank_ka": "ტერა ბანკი",
+      "card": "Terabank Visa Infinite",
+      "network": "Visa",
+      "programs": [
+        { "program": "VisaAirportCompanion", "visits_per_year": null, "unlimited": true, "guest": "paid, USD 32 per guest per visit", "dining": null, "note": "First visit free. After that, unlimited visits if 1,500 GEL was spent in the 35 days before each visit." }
+      ],
+      "conditions_en": "Premium debit card. The tariff table on the page lists 250 GEL, 100 GEL and free issuance fees; the page layout did not show which card each applies to, so they were not recorded.",
+      "conditions_ka": "პრემიუმ სადებეტო ბარათი. გვერდის ტარიფების ცხრილში გამოშვების საფასურად 250 ლარი, 100 ლარი და უფასო წერია, მაგრამ რომელი ბარათის საფასურია თითოეული, გვერდის განლაგებიდან არ ჩანს, ამიტომ არ ჩავწერეთ.",
+      "source": "https://terabank.ge/en/select/cards/2013-visa-inpiniti",
+      "sources": [
+        "https://terabank.ge/en/select/cards/2013-visa-inpiniti",
+        "https://terabank.ge/en/select/benefits/lounge-key"
+      ],
+      "notes": "The Infinite page also mentions airport pick-up/drop-off and travel insurance up to USD 1 million."
+    },
+    {
+      "id": "basis-visa-signature",
+      "bank": "Basisbank",
+      "bank_ka": "ბაზისბანკი",
+      "card": "Basisbank Visa Signature (Premium Service)",
+      "network": "Visa",
+      "programs": [
+        { "program": "VisaAirportCompanion", "visits_per_year": 10, "unlimited": false, "guest": null, "dining": null, "note": "First visit each calendar year free. Then up to 10 free visits a year with 1,500 GEL spent in the 35 days before each visit. Unlimited with 5,000 GEL." },
+        { "program": "Other", "visits_per_year": 10, "unlimited": false, "guest": "guests can use visits from the allowance (max 2 per day)", "dining": null, "note": "Kutaisi Visa Business Lounge and Fast Track: 10 shared free visits a year, entry by tapping the card or Apple Pay / Google Pay." }
+      ],
+      "conditions_en": "Basisbank premium card.",
+      "conditions_ka": "ბაზისბანკის პრემიუმ ბარათი.",
+      "source": "https://bb.ge/en/banking/cards/premium-cards/visa-signature",
+      "sources": [
+        "https://bb.ge/en/banking/cards/premium-cards/visa-signature",
+        "https://bb.ge/en/banking/kutaisi-lounge"
+      ],
+      "notes": "The card page does not name the app or network. VisaAirportCompanion is assumed from the identical Visa Georgia rules. The guest fee is not stated on the Basisbank page."
+    },
+    {
+      "id": "basis-unique-visa-infinite",
+      "bank": "Basisbank",
+      "bank_ka": "ბაზისბანკი",
+      "card": "Basisbank Unique Visa Infinite (Unique Banking)",
+      "network": "Visa",
+      "programs": [
+        { "program": "Other", "visits_per_year": null, "unlimited": true, "guest": "within the daily limit (max 4 lounge/Fast Track uses per day)", "dining": null, "note": "Kutaisi Visa Business Lounge and Fast Track: unlimited yearly visits, entry by tapping the card at the POS terminal." }
+      ],
+      "conditions_en": "For Basisbank Unique (private banking) customers. The card page lists 'pass to business lounges at international airports' without terms.",
+      "conditions_ka": "ბაზისბანკის Unique-ის (კერძო საბანკო მომსახურების) მომხმარებლებისთვის. ბარათის გვერდზე წერია 'საერთაშორისო აეროპორტების ბიზნეს ლაუნჯებში დაშვება', პირობების გარეშე.",
+      "source": "https://bb.ge/en/unique-banking/kutaisi-lounge",
+      "sources": [
+        "https://bb.ge/en/unique-banking/kutaisi-lounge",
+        "https://bb.ge/en/unique-banking/unic-services/unique-visa-infinite-card/unique-visa-infinite"
+      ],
+      "notes": "Terms for international lounges are not stated on Basisbank's pages. Visa Georgia's general rule for Infinite is unlimited with 1,500 GEL spent in 35 days, but this was not confirmed by Basisbank."
+    },
+    {
+      "id": "basis-mastercard-platinum",
+      "bank": "Basisbank",
+      "bank_ka": "ბაზისბანკი",
+      "card": "Basisbank Mastercard Platinum",
+      "network": "Mastercard",
+      "programs": [
+        { "program": "LoungeKey", "visits_per_year": 2, "unlimited": false, "guest": null, "dining": null, "note": "2 free LoungeKey visits a year. The page states a lounge visit cost of USD 32. Show the Basisbank Mastercard Platinum at the lounge, or use the LoungeKey app." }
+      ],
+      "conditions_en": "Premium Mastercard.",
+      "conditions_ka": "პრემიუმ Mastercard ბარათი.",
+      "source": "https://bb.ge/en/personal/cards/debit-cards/mastercard/platina",
+      "sources": [
+        "https://bb.ge/en/personal/cards/debit-cards/mastercard/platina"
+      ],
+      "notes": "This text sits at an older URL path. The current premium-cards page for Mastercard Platinum (https://bb.ge/en/banking/cards/premium-cards/mastercard-platinum) does not mention lounges, so these terms may be outdated."
+    },
+    {
+      "id": "liberty-studio-visa-platinum",
+      "bank": "Liberty Bank (Studio Liberty)",
+      "bank_ka": "ლიბერთი ბანკი (სტუდიო ლიბერთი)",
+      "card": "Studio Liberty Visa Platinum",
+      "network": "Visa",
+      "programs": [
+        { "program": "VisaAirportCompanion", "visits_per_year": null, "unlimited": false, "guest": null, "dining": null, "note": "The page says: first 2 visits free, then unlimited depending on card turnover. The turnover threshold is not stated." }
+      ],
+      "conditions_en": "Studio Liberty subscription: Premium 30 GEL a month or 300 GEL a year (with personal banker), Digital 20 GEL a month or 200 GEL a year. Each includes Visa Platinum / MC World Elite (3 cards free). Also 2 free Fast Track uses a year each in Tbilisi and abroad.",
+      "conditions_ka": "სტუდიო ლიბერთის ნაკრები: პრემიუმი თვეში 30 ლარი ან წელიწადში 300 ლარი (პირადი ბანკირით), ციფრული თვეში 20 ლარი ან წელიწადში 200 ლარი. ორივეში შედის Visa Platinum / MC World Elite (3 ბარათი უფასოდ). ასევე წელიწადში 2 უფასო Fast Track თბილისში და 2 საერთაშორისო აეროპორტებში.",
+      "source": "https://studioliberty.ge/ka/studio-subscription-plans",
+      "sources": [
+        "https://studioliberty.ge/ka/studio-subscription-plans",
+        "https://www.visa.com.ge/en_GE/pay-with-visa/promotions/lounge-key.html"
+      ],
+      "notes": "The site shows a 'test version' banner. The bank labels the benefit 'Lounge Key', but Visa cards in Georgia use Visa Airport Companion since Oct 2024. visits_per_year is left null because the wording ('first 2 free, unlimited depending on turnover') does not give a firm count. libertybank.ge itself lists no premium cards."
+    },
+    {
+      "id": "liberty-studio-mastercard-world-elite",
+      "bank": "Liberty Bank (Studio Liberty)",
+      "bank_ka": "ლიბერთი ბანკი (სტუდიო ლიბერთი)",
+      "card": "Studio Liberty Mastercard World Elite",
+      "network": "Mastercard",
+      "programs": [
+        { "program": "LoungeKey", "visits_per_year": null, "unlimited": true, "guest": null, "dining": null, "note": "'Unlimited, depending on turnover'. The turnover threshold is not stated." }
+      ],
+      "conditions_en": "Studio Liberty Premium or Digital subscription (see the Visa Platinum entry).",
+      "conditions_ka": "სტუდიო ლიბერთის პრემიუმ ან ციფრული ნაკრები (იხ. Visa Platinum-ის ჩანაწერი).",
+      "source": "https://studioliberty.ge/ka/studio-subscription-plans",
+      "sources": [
+        "https://studioliberty.ge/ka/studio-subscription-plans"
+      ],
+      "notes": "Spending conditions are unclear, so treat 'unlimited' as conditional."
+    },
+    {
+      "id": "procredit-mastercard-black-edition",
+      "bank": "ProCredit Bank Georgia",
+      "bank_ka": "პროკრედიტ ბანკი",
+      "card": "ProCredit Mastercard World Black Edition (Premium Set)",
+      "network": "Mastercard",
+      "programs": [
+        { "program": "LoungeKey", "visits_per_year": 10, "unlimited": false, "guest": null, "dining": null, "note": "10 free visits a year to 1,200+ lounges via the LoungeKey app. Also 10 free Fast Track passes a year." }
+      ],
+      "conditions_en": "Ordered as part of ProCredit's Premium Set.",
+      "conditions_ka": "შეგიძლია შეუკვეთო პროკრედიტ ბანკის Premium Set-ის ფარგლებში.",
+      "source": "https://www.procreditbank.ge/en/mastercard-black-edition-premium-card?mid=1699",
+      "sources": [
+        "https://www.procreditbank.ge/en/mastercard-black-edition-premium-card?mid=1699",
+        "https://www.procreditbank.ge/sites/default/files/mastercard_premium_card_benefits_-_2025_0.pdf"
+      ],
+      "notes": "The guest fee and the Premium Set price were not checked."
+    },
+    {
+      "id": "halyk-prestige-visa-platinum",
+      "bank": "Halyk Bank Georgia",
+      "bank_ka": "ხალიკ ბანკი საქართველო",
+      "card": "Halyk Bank Visa Platinum (Service Package 'Prestige')",
+      "network": "Visa",
+      "programs": [
+        { "program": "VisaAirportCompanion", "visits_per_year": 6, "unlimited": false, "guest": "companions can use the 6 visits", "dining": null, "note": "6 visits a year, free and with no conditions, shareable with accompanying persons. Valid until 31.12.2026." }
+      ],
+      "conditions_en": "Prestige package: 10 GEL a month. Includes Visa Platinum, Visa Gold, MasterCard World Debit and a digital card.",
+      "conditions_ka": "პაკეტი 'პრესტიჟი': თვეში 10 ლარი. შედის Visa Platinum, Visa Gold, MasterCard World Debit და ციფრული ბარათი.",
+      "source": "https://halykbank.ge/en/individuals/cards/5/service-package/15/service-package-_prestige",
+      "sources": [
+        "https://halykbank.ge/en/individuals/cards/5/service-package/15/service-package-_prestige"
+      ],
+      "notes": null
+    },
+    {
+      "id": "cartu-visa-platinum",
+      "bank": "Cartu Bank",
+      "bank_ka": "ბანკი ქართუ",
+      "card": "Cartu Bank Visa Platinum",
+      "network": "Visa",
+      "programs": [
+        { "program": "VisaAirportCompanion", "visits_per_year": 6, "unlimited": false, "guest": "paid, USD 35 per accompanying person", "dining": null, "note": "6 free visits, subject to spending." }
+      ],
+      "conditions_en": "Premium card. Also includes Visa Concierge and Fast Track.",
+      "conditions_ka": "პრემიუმ ბარათი. ასევე შედის Visa Concierge და Fast Track.",
+      "source": "https://www.cartubank.ge/index.php?m=423",
+      "sources": [
+        "https://www.cartubank.ge/index.php?m=423",
+        "https://www.visa.com.ge/en_GE/pay-with-visa/promotions/lounge-key.html"
+      ],
+      "notes": "Cartu's page does not name the program. Visa Airport Companion is inferred from Visa Georgia's notice covering all Georgian Visa premium cards. Cartu's guest price (USD 35) differs from Visa's USD 32."
+    },
+    {
+      "id": "cartu-visa-infinite",
+      "bank": "Cartu Bank",
+      "bank_ka": "ბანკი ქართუ",
+      "card": "Cartu Bank Visa Infinite",
+      "network": "Visa",
+      "programs": [
+        { "program": "VisaAirportCompanion", "visits_per_year": null, "unlimited": true, "guest": "2 guests free and unlimited; USD 35 from the 3rd person", "dining": null, "note": "Unlimited free visits plus 2 guests free, valid until 18 May 2027." }
+      ],
+      "conditions_en": "Premium card. Also includes Visa Concierge and Fast Track.",
+      "conditions_ka": "პრემიუმ ბარათი. ასევე შედის Visa Concierge და Fast Track.",
+      "source": "https://www.cartubank.ge/index.php?m=424",
+      "sources": [
+        "https://www.cartubank.ge/index.php?m=424"
+      ],
+      "notes": "The page does not name the program (see the Cartu Visa Platinum note)."
+    },
+    {
+      "id": "cartu-mastercard-world-black-edition",
+      "bank": "Cartu Bank",
+      "bank_ka": "ბანკი ქართუ",
+      "card": "Cartu Bank Mastercard World Black Edition",
+      "network": "Mastercard",
+      "programs": [
+        { "program": "LoungeKey", "visits_per_year": 10, "unlimited": false, "guest": "paid, USD 35 per guest", "dining": null, "note": "10 LoungeKey visits a year, subject to spending. Also Global Fast Track 10 a year via the Mastercard Travel Experiences (now Travel Pass) app." }
+      ],
+      "conditions_en": "Premium Mastercard. Also includes travel insurance and 1 GB of Flexiroam roaming data.",
+      "conditions_ka": "პრემიუმ Mastercard ბარათი. ასევე შედის სამოგზაურო დაზღვევა და Flexiroam-ის 1 GB როუმინგ ინტერნეტი.",
+      "source": "https://www.cartubank.ge/index.php?m=425",
+      "sources": [
+        "https://www.cartubank.ge/index.php?m=425"
+      ],
+      "notes": null
+    }
+  ],
+  "tbilisi_bank_lounges": [
+    {
+      "name": "TBC Concept space (inside the Tbilisi airport business lounge)",
+      "airport": "TBS",
+      "who_can_enter": "TBC Concept customers. TBC Mobilebank offers a 'Tbilisi lounges' option that generates a QR code. The Travel Visa Signature card advertises free Tbilisi lounge access. Exact per-card Tbilisi limits are not published.",
+      "who_can_enter_ka": "TBC Concept-ის მომხმარებლები. TBC მობაილბანკში არის 'თბილისის ლაუნჯები', სადაც QR კოდს აგენერირებ. Travel Visa Signature ბარათზე თბილისის ლაუნჯში უფასო დაშვება ცალკეა მითითებული. თითოეულ ბარათზე თბილისის ზუსტი ლიმიტი გამოქვეყნებული არ არის.",
+      "source": "https://georgiatoday.ge/tbc-concept-and-visa-expand-premium-travel-experience-in-georgia/",
+      "sources": [
+        "https://georgiatoday.ge/tbc-concept-and-visa-expand-premium-travel-experience-in-georgia/",
+        "https://tbcconcept.ge/en/offers/4FbYZJw8hhrEGtEWqRYGZR/visa-airport-companion",
+        "https://tbcconcept.ge/en/travel-card"
+      ],
+      "notes": "A 2023 TBC email said the TBC Concept space was opened together with Primeclass in Tbilisi. The May 2026 Georgia Today article calls Kutaisi TBC Concept's 'second' Georgian airport lounge."
+    },
+    {
+      "name": "Visa Business Lounge with TBC Concept space (and Fast Track)",
+      "airport": "KUT",
+      "who_can_enter": "Holders of Visa Platinum, Signature and Infinite cards issued in Georgia, within the yearly limits each bank sets (e.g. TBC Concept Platinum 6, Signature 10, Miles&Smiles Travel 20; Credo Platinum 6; Basisbank Signature 10, Unique Infinite unlimited). Entry by tapping the card at the POS terminal.",
+      "who_can_enter_ka": "საქართველოში გაცემული Visa Platinum, Signature და Infinite ბარათების მფლობელები, ბანკის მიერ დადგენილი წლიური ლიმიტის ფარგლებში. მაგალითად, TBC Concept Platinum-ზე 6 ვიზიტია, Signature-ზე 10, Miles&Smiles Travel-ზე 20. Credo Platinum-ზე 6, ბაზისბანკის Signature-ზე 10, Unique Infinite-ზე ულიმიტოა. შესასვლელად ბარათს POS ტერმინალზე მიადებ.",
+      "source": "https://tbcconcept.ge/en/offers/kutaisis-aeroportis-upiratesobebi",
+      "sources": [
+        "https://tbcconcept.ge/en/offers/kutaisis-aeroportis-upiratesobebi",
+        "https://georgiatoday.ge/tbc-concept-and-visa-expand-premium-travel-experience-in-georgia/",
+        "https://bb.ge/en/banking/kutaisi-lounge",
+        "https://credobank.ge/en/products/visa-platinum-card"
+      ],
+      "notes": "This entry is in Kutaisi, not Tbilisi. It is listed here because it is the only other bank-branded airport lounge space found in Georgia."
+    },
+    {
+      "name": "Mastercard Business Lounge, Shota Rustaveli Tbilisi International Airport (also Batumi)",
+      "airport": "TBS",
+      "who_can_enter": "World Elite Mastercard cardholders, free, by showing the card at the entrance. Children under 6 are free. Extra guests pay EUR 50.",
+      "who_can_enter_ka": "World Elite Mastercard-ის მფლობელები უფასოდ შედიან, შესასვლელთან ბარათს აჩვენებენ. 6 წლამდე ბავშვი უფასოა. დამატებითი სტუმარი 50 ევროს იხდის.",
+      "source": "https://www.mastercard.com/ge/en/personal/experience-mastercard/offers-and-promotions/travel/lounges.html",
+      "sources": [
+        "https://www.mastercard.com/ge/en/personal/experience-mastercard/offers-and-promotions/travel/lounges.html"
+      ],
+      "notes": "This lounge is run by the card network, not a bank. The page looks partly outdated: it also mentions Vienna, Prague, Budapest, Bucharest and Kyiv lounges, and 'cards issued in Russia, Belarus, Armenia and Kazakhstan'. Confirm before publishing."
+    }
+  ],
+  "not_verified": [
+    "Bank of Georgia American Express Platinum (SOLO CLUB only) and Amex Gold/Green: the SOLO and BoG credit-card pages list no lounge benefit.",
+    "Bank of Georgia: an undated Tbilisi airport (TAV) press release describes 'primeclass' lounge loyalty cards and an exclusive BoG area in the Tbilisi Primeclass lounge. Whether it is still in force could not be confirmed, so it is not listed.",
+    "TBC Concept Mastercard World Elite: no TBC page states LoungeKey or lounge visits.",
+    "Liberty Bank: libertybank.ge lists no premium cards. Data comes from studioliberty.ge, which shows a 'test version' banner.",
+    "Silk Bank / VTB: not researched.",
+    "No bank page says airport restaurant/dining access is included free. Mastercard Travel Pass offers discount dining offers.",
+    "Business cards (Visa Platinum Business / Signature Business) are covered by Visa's Georgian rules (2 and 6 free visits a year, no spending requirement), but no Georgian bank page listing them was checked."
+  ]
+}

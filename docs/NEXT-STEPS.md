@@ -16,8 +16,10 @@
 | **შეხსენების წერილები** (Brevo): გაფრენის დღეს 06:00-ზე, ან წინა საღამოს 20:00-ზე, თუ ფრენა 09:00-მდეა (მშვიდობიანი ფრენა + მადლობა); მოგზაურობის მე-2 დღეს 08:00-ზე (დღეების აღნიშვნა, შთაბეჭდილებები, ლიდერბორდი). დრო: თბილისის, ყოველი წერილი ერთხელ | `Application/Features/Journeys/TripReminders.cs`, `Infrastructure/Journeys/TripReminderEmails.cs` |
 | **მოგზაურთა ლიდერბორდი** – მთავარ გვერდზე (`#leaderboard`): კვარცხლბეკი 🥇🥈🥉, სია 4–10, „ნიმუში“/„შენ“, „როგორ მოხვდე აქ“ | `features/search/leaderboard.component.ts` |
 | journeys backend (`/api/v1/journeys`, `/api/v1/leaderboard`), ნიმუში მოგზაურები: `catalog/leaderboard-samples.json` (გამორთვა: `Leaderboard:IncludeSamples=false`) | `Features/Journeys/`, მიგრაცია `AddJourneys` |
+| **აეროპორტის ლაუნჯები** – გვერდი `/ka/lounges` (ქვეყანა → ბარათები → აეროპორტი), ფრენის ხაზთან ჩიპები „ლაუნჯები: SAW · 4 შენი ბარათით“ და დიალოგი. 24 ქართული ბარათი (9 ბანკი), 78 აეროპორტი, 298 ადგილი, ყველა წყაროთი (2026-11-02). Visa ბარათები → Visa Airport Companion = DragonPass-ის ლაუნჯები. მონაცემის განახლება: კვლევის ფაილები `scripts/lounges/research/`, მერე `node scripts/lounges/build-lounges.mjs` | `features/lounges/`, `shared/lounge.components.ts`, `core/lounges.ts`, `public/lounges/lounges.json` |
 
 ## 🟡 შესამოწმებელი
+- **ლაუნჯები, გამოტოვებული:** TBC Concept Mastercard World Elite (ლაუნჯში შესვლა ვერ დადასტურდა) და თბილისის Mastercard Business Lounge (Mastercard-ის გვერდი ნაწილობრივ მოძველებულია). გადამოწმების შემდეგ `build-lounges.mjs`-ში SKIP-ები მოხსენი. Visa Airport Companion-ის პირობები 2026-12-31-მდეა: იანვარში გადაამოწმე.
 - **Brevo** ჩართულია (2026-11-02, გამგზავნი goggliko@gmail.com, user-secrets: `Email:BrevoApiKey`, `Email:FromAddress`). ⚠️ გასაღები **90 დღის უმოქმედობის შემდეგ** და 2027-11-02-ს ვადას კარგავს: ახალი brevo.com → SMTP & API → API keys (Restricted, Transactional email = All). Gmail-ის გამგზავნით წერილი შეიძლება Spam-ში მოხვდეს; საბოლოოდ საჭიროა საკუთარი დომენი + DKIM/DMARC.
 - დასრულების 🏆 ბანერი რეალურ დასრულებულ მოგზაურობაზე ჯერ ბრაუზერში არ მინახავს (backend-ის ტესტები ფარავს); პირველი დასრულებული მოგზაურობისას შეამოწმე.
 

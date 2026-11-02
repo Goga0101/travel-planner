@@ -5,6 +5,7 @@ import { FlightLegSummaryDto, FlightTicket } from '../core/models';
 import { LocalDatePipe, MinutesPipe, MoneyPipe, StopsPipe } from './pipes';
 import { ExternalLinkComponent } from './external-link.component';
 import { AirlineComponent } from './airline.component';
+import { LoungeHintComponent } from './lounge.components';
 
 /**
  * "Tbilisi (TBS) → London (LTN → STN, airport change) → Barcelona (BCN)": the connection cities of one direction.
@@ -52,7 +53,7 @@ export function viaLabels(leg: FlightLegSummaryDto, i18n: I18nService): string[]
 @Component({
   selector: 'app-flight-timeline',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [LocalDatePipe, MinutesPipe, StopsPipe, AirlineComponent],
+  imports: [LocalDatePipe, MinutesPipe, StopsPipe, AirlineComponent, LoungeHintComponent],
   template: `
     @let l = leg();
     <div class="timeline" [class.self]="selfTransfer() && l.stops > 0">
@@ -84,6 +85,8 @@ export function viaLabels(leg: FlightLegSummaryDto, i18n: I18nService): string[]
         <span class="tl-city">{{ l.toCity ?? l.to }}</span>
       </div>
     </div>
+    <!-- Lounges at the departure and connection airports (the arrival airport is where the trip begins). -->
+    <app-lounge-hint [airports]="loungeAirports()" />
   `,
 })
 export class FlightTimelineComponent {
@@ -93,6 +96,7 @@ export class FlightTimelineComponent {
 
   protected readonly stops = computed(() => viaLabels(this.leg(), this.i18n));
   protected readonly dots = computed(() => Array.from({ length: Math.min(this.leg().stops, 4) }));
+  protected readonly loungeAirports = computed(() => [this.leg().from, ...this.leg().via.map((v) => v.iata)]);
   /** Days between departure and arrival dates (local), e.g. +1 for an overnight flight. */
   protected readonly dayShift = computed(() => {
     const l = this.leg();

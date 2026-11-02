@@ -1,0 +1,1923 @@
+[
+  {
+    "iata": "TBS",
+    "airport": "Tbilisi Shota Rustaveli International Airport",
+    "city": "Tbilisi",
+    "country": "GE",
+    "places": [
+      {
+        "name": "Primeclass Lounge",
+        "kind": "lounge",
+        "terminal": "International",
+        "airside": true,
+        "schengen": null,
+        "location": "after passport control, 2nd floor, right-hand side",
+        "hours": "00:00-24:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/georgia/tbilisi-international/tbs-primeclass-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/georgia/tbilisi-international/tbs-primeclass-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10303/N00566"
+        ]
+      }
+    ],
+    "notes": "Only one program lounge (Primeclass). Priority Pass lists it for international departures; max 3-hour stay."
+  },
+  {
+    "iata": "KUT",
+    "airport": "David the Builder Kutaisi International Airport",
+    "city": "Kutaisi",
+    "country": "GE",
+    "places": [],
+    "notes": "No lounge accepting Priority Pass, LoungeKey or DragonPass found: Kutaisi is not in the Priority Pass Georgia airport list (https://www.prioritypass.com/lounges/georgia) and DragonPass search for \"Kutaisi\" returns no airport."
+  },
+  {
+    "iata": "BUS",
+    "airport": "Batumi Alexander Kartveli International Airport",
+    "city": "Batumi",
+    "country": "GE",
+    "places": [
+      {
+        "name": "Primeclass Lounge",
+        "kind": "lounge",
+        "terminal": "Main",
+        "airside": true,
+        "schengen": null,
+        "location": "after passport control, right-hand side",
+        "hours": "00:00-24:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/georgia/batumi-international-alexander-kartveli-batumi-intl/bus-primeclass-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/georgia/batumi-international-alexander-kartveli-batumi-intl/bus-primeclass-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10302/N00565"
+        ]
+      }
+    ],
+    "notes": "Only one program lounge (Primeclass); max 3-hour stay."
+  },
+  {
+    "iata": "IST",
+    "airport": "Istanbul Airport",
+    "city": "Istanbul",
+    "country": "TR",
+    "places": [
+      {
+        "name": "IGA Lounge (International)",
+        "kind": "lounge",
+        "terminal": "International",
+        "airside": true,
+        "schengen": null,
+        "location": "after passport control turn left, mezzanine floor (Bosphorus duty-free area)",
+        "hours": "00:00-24:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/turkey/istanbul/ist9-iga-lounge-international",
+        "sources": [
+          "https://www.prioritypass.com/lounges/turkey/istanbul/ist9-iga-lounge-international",
+          "https://www.dragonpass.com/explore/lounge/A33437/N02235"
+        ]
+      },
+      {
+        "name": "IGA Pop-up Lounge",
+        "kind": "lounge",
+        "terminal": "International",
+        "airside": true,
+        "schengen": null,
+        "location": "after passport control, opposite gate A6",
+        "hours": "00:00-24:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/turkey/istanbul/ist12-pop-up-lounge-by-iga",
+        "sources": [
+          "https://www.prioritypass.com/lounges/turkey/istanbul/ist12-pop-up-lounge-by-iga",
+          "https://www.dragonpass.com/explore/lounge/A33437/N04152"
+        ]
+      },
+      {
+        "name": "IGA Lounge (Domestic)",
+        "kind": "lounge",
+        "terminal": "Domestic",
+        "airside": true,
+        "schengen": null,
+        "location": "after security, near gate G11 (domestic flights only)",
+        "hours": "00:00-24:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/turkey/istanbul/ist11-iga-lounge-dom",
+        "sources": [
+          "https://www.prioritypass.com/lounges/turkey/istanbul/ist11-iga-lounge-dom",
+          "https://www.dragonpass.com/explore/lounge/A33437/N02458"
+        ]
+      },
+      {
+        "name": "IGA Sleepod",
+        "kind": "sleep",
+        "terminal": "International",
+        "airside": true,
+        "schengen": null,
+        "location": "after passport control, near D gates",
+        "hours": "00:00-24:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/turkey/istanbul/ist10-iga-sleepod",
+        "sources": [
+          "https://www.prioritypass.com/lounges/turkey/istanbul/ist10-iga-sleepod",
+          "https://www.dragonpass.com/explore/lounge/A33437/N04281"
+        ]
+      },
+      {
+        "name": "iGA Shower",
+        "kind": "spa",
+        "terminal": "International",
+        "airside": true,
+        "schengen": null,
+        "location": "after passport control turn left, follow signs to IGA Lounge",
+        "hours": "00:00-24:00",
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": "Shower facility",
+        "source": "https://www.dragonpass.com/explore/lounge/A33437/N13215",
+        "sources": [
+          "https://www.dragonpass.com/explore/lounge/A33437/N13215"
+        ]
+      },
+      {
+        "name": "XpresSpa",
+        "kind": "spa",
+        "terminal": "International",
+        "airside": true,
+        "schengen": null,
+        "location": "near gate A3",
+        "hours": "00:00-24:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "Face mask + 20-min massage-lounger session (US$45 value) per visit",
+        "source": "https://www.prioritypass.com/lounges/turkey/istanbul/ist14s-xpresspa",
+        "sources": [
+          "https://www.prioritypass.com/lounges/turkey/istanbul/ist14s-xpresspa"
+        ]
+      },
+      {
+        "name": "XpresSpa",
+        "kind": "spa",
+        "terminal": "International",
+        "airside": true,
+        "schengen": null,
+        "location": "near gate B1",
+        "hours": "00:00-24:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "Face mask + 20-min massage-lounger session (US$45 value) per visit",
+        "source": "https://www.prioritypass.com/lounges/turkey/istanbul/ist13s-xpresspa",
+        "sources": [
+          "https://www.prioritypass.com/lounges/turkey/istanbul/ist13s-xpresspa"
+        ]
+      },
+      {
+        "name": "XpresSpa",
+        "kind": "spa",
+        "terminal": "International",
+        "airside": true,
+        "schengen": null,
+        "location": "follow signs to F gates, near gate F7",
+        "hours": "00:00-24:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "Face mask + 20-min massage-lounger session (US$45 value) per visit",
+        "source": "https://www.prioritypass.com/lounges/turkey/istanbul/ist16s-xpresspa",
+        "sources": [
+          "https://www.prioritypass.com/lounges/turkey/istanbul/ist16s-xpresspa"
+        ]
+      }
+    ],
+    "notes": "IGA lounges: DragonPass says entry only within 2 hours of boarding. A 4th Priority Pass XpresSpa (Bosphorus zone, before escalators to F gates) also exists. Turkey is outside Schengen, so schengen is null."
+  },
+  {
+    "iata": "SAW",
+    "airport": "Istanbul Sabiha Gokcen International Airport",
+    "city": "Istanbul",
+    "country": "TR",
+    "places": [
+      {
+        "name": "Plaza Premium Lounge - Marmara",
+        "kind": "lounge",
+        "terminal": "International",
+        "airside": true,
+        "schengen": null,
+        "location": "after passport control, near gate 204",
+        "hours": "00:00-24:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/turkey/sabiha-gokcen-international/saw3-plaza-premium-lounge-marmara",
+        "sources": [
+          "https://www.prioritypass.com/lounges/turkey/sabiha-gokcen-international/saw3-plaza-premium-lounge-marmara",
+          "https://www.dragonpass.com/explore/lounge/A10355/N00563"
+        ]
+      },
+      {
+        "name": "Plaza Premium Bosphorus Lounge",
+        "kind": "lounge",
+        "terminal": "International",
+        "airside": true,
+        "schengen": null,
+        "location": "after passport control turn right, near gate 205",
+        "hours": "00:00-24:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/turkey/sabiha-gokcen-international/saw-plaza-premium-bosphorus-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/turkey/sabiha-gokcen-international/saw-plaza-premium-bosphorus-lounge"
+        ]
+      },
+      {
+        "name": "Plaza Premium Lounge",
+        "kind": "lounge",
+        "terminal": "Domestic",
+        "airside": true,
+        "schengen": null,
+        "location": "after security, mezzanine floor (domestic flights)",
+        "hours": "00:00-24:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/turkey/sabiha-gokcen-international/saw1-plaza-premium-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/turkey/sabiha-gokcen-international/saw1-plaza-premium-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10355/N00564"
+        ]
+      },
+      {
+        "name": "Kepler Club",
+        "kind": "sleep",
+        "terminal": "International",
+        "airside": true,
+        "schengen": null,
+        "location": "after passport control turn left, mezzanine",
+        "hours": "00:00-24:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": "Visit entitlement covers a private resting unit (subject to availability); max 3 hours; no children under 7",
+        "source": "https://www.prioritypass.com/lounges/turkey/sabiha-gokcen-international/saw2-kepler-club",
+        "sources": [
+          "https://www.prioritypass.com/lounges/turkey/sabiha-gokcen-international/saw2-kepler-club",
+          "https://www.dragonpass.com/explore/lounge/A10355/N02725"
+        ]
+      }
+    ],
+    "notes": "Plaza Premium lounges: max 2-hour stay. DragonPass also lists a second entry \"Plaza Premium Lounge Marmara\" between gates 204-205 (https://www.dragonpass.com/explore/lounge/A10355/N04286); it may be the Bosphorus lounge, but DragonPass was not attributed to the Bosphorus lounge because the name does not match."
+  },
+  {
+    "iata": "AMS",
+    "airport": "Amsterdam Airport Schiphol",
+    "city": "Amsterdam",
+    "country": "NL",
+    "places": [
+      {
+        "name": "Aspire Lounge (No.26)",
+        "kind": "lounge",
+        "terminal": "Departure Hall 1",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "after security turn right, follow signs to Lounge 26",
+        "hours": "06:00-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/netherlands/amsterdam-schiphol/ams2-aspire-lounge-no-26",
+        "sources": [
+          "https://www.prioritypass.com/lounges/netherlands/amsterdam-schiphol/ams2-aspire-lounge-no-26",
+          "https://www.dragonpass.com/explore/lounge/A10209/N00347"
+        ]
+      },
+      {
+        "name": "Aspire Lounge (No.41)",
+        "kind": "lounge",
+        "terminal": "Departure Hall 2",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "Panorama Deck, 3rd floor, follow signs to Lounge 41 (via E gates)",
+        "hours": "06:00-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/netherlands/amsterdam-schiphol/ams-aspire-lounge-no-41",
+        "sources": [
+          "https://www.prioritypass.com/lounges/netherlands/amsterdam-schiphol/ams-aspire-lounge-no-41",
+          "https://www.dragonpass.com/explore/lounge/A10209/N00348"
+        ]
+      },
+      {
+        "name": "XpresSpa",
+        "kind": "spa",
+        "terminal": "Departure Hall 2",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "2nd floor opposite Starbucks, near gate D8",
+        "hours": "07:00-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "Face mask + 20-min massage-lounger session (US$45 value) per visit",
+        "source": "https://www.prioritypass.com/lounges/netherlands/amsterdam-schiphol/ams4s-xpresspa",
+        "sources": [
+          "https://www.prioritypass.com/lounges/netherlands/amsterdam-schiphol/ams4s-xpresspa"
+        ]
+      }
+    ],
+    "notes": "Aspire lounges: not accessible from M gates; entry max 3 hours before departure. DragonPass lists Lounge 41 hours as 06:00-22:00 vs Priority Pass 06:00-21:00."
+  },
+  {
+    "iata": "ATH",
+    "airport": "Athens International Airport Eleftherios Venizelos",
+    "city": "Athens",
+    "country": "GR",
+    "places": [
+      {
+        "name": "Goldair Handling Lounge Intra",
+        "kind": "lounge",
+        "terminal": "Hall B",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "Level 1, opposite gate B13",
+        "hours": "00:00-24:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/greece/athens-international-eleftherios-venizelos/ath2-goldair-handling-cip-intra-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/greece/athens-international-eleftherios-venizelos/ath2-goldair-handling-cip-intra-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10034/N00118"
+        ]
+      },
+      {
+        "name": "Skyserv Melina Merkouri Lounge",
+        "kind": "lounge",
+        "terminal": "Hall B",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "after security, across from gate B11",
+        "hours": "06:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/greece/athens-international-eleftherios-venizelos/ath5-skyserv-melina-merkouri-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/greece/athens-international-eleftherios-venizelos/ath5-skyserv-melina-merkouri-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10034/N00167"
+        ]
+      },
+      {
+        "name": "Skyserv Aristotle Onassis Lounge",
+        "kind": "lounge",
+        "terminal": "Hall A",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "after passport control, 2nd floor after duty free, near gate A7",
+        "hours": "05:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/greece/athens-international-eleftherios-venizelos/ath6-skyserv-aristotle-onassis-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/greece/athens-international-eleftherios-venizelos/ath6-skyserv-aristotle-onassis-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10034/N00166"
+        ]
+      },
+      {
+        "name": "Goldair Handling Lounge Extra",
+        "kind": "lounge",
+        "terminal": "Hall A",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "Level 2, near gate A07",
+        "hours": "07:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/greece/athens-international-eleftherios-venizelos/ath7-goldair-handling-lounge-extra",
+        "sources": [
+          "https://www.prioritypass.com/lounges/greece/athens-international-eleftherios-venizelos/ath7-goldair-handling-lounge-extra",
+          "https://www.dragonpass.com/explore/lounge/A10034/N03153"
+        ]
+      },
+      {
+        "name": "Goldair Handling Lounge x AIA",
+        "kind": "lounge",
+        "terminal": "Satellite",
+        "airside": true,
+        "schengen": "both",
+        "location": "satellite building, 2nd floor before passport control, near gate C34 (10-15 min walk)",
+        "hours": "07:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/greece/athens-international-eleftherios-venizelos/ath8-ath-satellite-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/greece/athens-international-eleftherios-venizelos/ath8-ath-satellite-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10034/N04731"
+        ]
+      }
+    ],
+    "notes": "Goldair x AIA (Satellite) hours conflict: Priority Pass list 07:00-22:00, its detail page 06:30-21:30, DragonPass 06:00-22:00. Hall A lounges are not reachable from Hall B / Satellite and vice versa. Skyserv hours differ between sources (DragonPass shows 06:00-20:00)."
+  },
+  {
+    "iata": "BCN",
+    "airport": "Josep Tarradellas Barcelona-El Prat Airport",
+    "city": "Barcelona",
+    "country": "ES",
+    "places": [
+      {
+        "name": "Sala VIP Pau Casals",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "after security, down to Sky Center, turn right, follow VIP signs",
+        "hours": "04:30-last flight",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/spain/barcelona-el-prat/bcn8-sala-vip-pau-casals",
+        "sources": [
+          "https://www.prioritypass.com/lounges/spain/barcelona-el-prat/bcn8-sala-vip-pau-casals",
+          "https://www.dragonpass.com/explore/lounge/A10066/N00184"
+        ]
+      },
+      {
+        "name": "Sala VIP Miro",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "after passport control turn left towards D gates, stairs down by Burger King",
+        "hours": "06:00-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/spain/barcelona-el-prat/bcn9-sala-vip-miro",
+        "sources": [
+          "https://www.prioritypass.com/lounges/spain/barcelona-el-prat/bcn9-sala-vip-miro",
+          "https://www.dragonpass.com/explore/lounge/A10066/N00185"
+        ]
+      },
+      {
+        "name": "Sala VIP Colomer",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "Barcelona-Madrid shuttle area (shuttle flights only)",
+        "hours": "06:00-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/spain/barcelona-el-prat/bcn10-sala-vip-colomer",
+        "sources": [
+          "https://www.prioritypass.com/lounges/spain/barcelona-el-prat/bcn10-sala-vip-colomer",
+          "https://www.dragonpass.com/explore/lounge/A10066/N00186"
+        ]
+      },
+      {
+        "name": "Sala VIP Canudas",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "after security past duty free, U gates, turn left",
+        "hours": "06:00-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/spain/barcelona-el-prat/bcn11-sala-vip-canudas",
+        "sources": [
+          "https://www.prioritypass.com/lounges/spain/barcelona-el-prat/bcn11-sala-vip-canudas",
+          "https://www.dragonpass.com/explore/lounge/A10066/N00187"
+        ]
+      },
+      {
+        "name": "ALAS",
+        "kind": "dining",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": null,
+        "location": "in front of the stairs to passport control",
+        "hours": "09:00-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "EUR 23 off the bill per cardholder visit",
+        "source": "https://www.prioritypass.com/lounges/spain/barcelona-el-prat/bcn14d-alas",
+        "sources": [
+          "https://www.prioritypass.com/lounges/spain/barcelona-el-prat/bcn14d-alas"
+        ]
+      },
+      {
+        "name": "Oliva & Bellota",
+        "kind": "dining",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "after security past duty free, next to the VIP lounge",
+        "hours": "05:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "EUR 23 off the bill per cardholder visit",
+        "source": "https://www.prioritypass.com/lounges/spain/barcelona-el-prat/bcn13d-enrique-tomas",
+        "sources": [
+          "https://www.prioritypass.com/lounges/spain/barcelona-el-prat/bcn13d-enrique-tomas"
+        ]
+      }
+    ],
+    "notes": "AENA Sala VIP lounges: one guest per cardholder, boarding pass name must match. Landside (not listed): Premium VIP Lounge T1 (Priority Pass/LoungeKey, https://www.prioritypass.com/lounges/spain/barcelona-el-prat/bcn12-premium-vip-lounge) and Sleep & Fly Business Center T1 (DragonPass)."
+  },
+  {
+    "iata": "BER",
+    "airport": "Berlin Brandenburg Airport",
+    "city": "Berlin",
+    "country": "DE",
+    "places": [
+      {
+        "name": "Lounge Tegel",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "level E1, opposite gate B17",
+        "hours": "05:00-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/germany/berlin-brandenburg/ber7-ber-lounge-tegel",
+        "sources": [
+          "https://www.prioritypass.com/lounges/germany/berlin-brandenburg/ber7-ber-lounge-tegel",
+          "https://www.dragonpass.com/explore/lounge/A10649/N02469"
+        ]
+      },
+      {
+        "name": "Lounge Tempelhof",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "level E1, near gate A20 (direct access to passport control for non-Schengen)",
+        "hours": "05:00-21:30",
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.dragonpass.com/explore/lounge/A10649/N02468",
+        "sources": [
+          "https://www.dragonpass.com/explore/lounge/A10649/N02468"
+        ]
+      },
+      {
+        "name": "NU Made with Love",
+        "kind": "dining",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": "both",
+        "location": "level E1, between gates B06 and B07",
+        "hours": "04:30-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "EUR 23 off the bill per cardholder visit",
+        "source": "https://www.prioritypass.com/lounges/germany/berlin-brandenburg/ber6d-nu-made-with-love",
+        "sources": [
+          "https://www.prioritypass.com/lounges/germany/berlin-brandenburg/ber6d-nu-made-with-love"
+        ]
+      },
+      {
+        "name": "Marché Café",
+        "kind": "dining",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "level E1, near gate 20",
+        "hours": "04:00-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "EUR 23 off the bill per cardholder visit",
+        "source": "https://www.prioritypass.com/lounges/germany/berlin-brandenburg/ber4d-moevenpick-cafe",
+        "sources": [
+          "https://www.prioritypass.com/lounges/germany/berlin-brandenburg/ber4d-moevenpick-cafe"
+        ]
+      }
+    ],
+    "notes": "Lounge entry no earlier than 3.5 hours before departure."
+  },
+  {
+    "iata": "BUD",
+    "airport": "Budapest Ferenc Liszt International Airport",
+    "city": "Budapest",
+    "country": "HU",
+    "places": [
+      {
+        "name": "Platinum Lounge (Schengen)",
+        "kind": "lounge",
+        "terminal": "T2A",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "departure level, opposite gate A8",
+        "hours": "05:00-20:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/hungary/budapest-ferenc-liszt-international/bud-platinum-lounge-schengen",
+        "sources": [
+          "https://www.prioritypass.com/lounges/hungary/budapest-ferenc-liszt-international/bud-platinum-lounge-schengen",
+          "https://www.dragonpass.com/explore/lounge/A10038/N00145"
+        ]
+      },
+      {
+        "name": "Platinum Lounge (Non-Schengen)",
+        "kind": "lounge",
+        "terminal": "T2B",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "mezzanine, stairs/lift next to gate B7",
+        "hours": "05:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/hungary/budapest-ferenc-liszt-international/bud3-platinum-lounge-non-schengen",
+        "sources": [
+          "https://www.prioritypass.com/lounges/hungary/budapest-ferenc-liszt-international/bud3-platinum-lounge-non-schengen",
+          "https://www.dragonpass.com/explore/lounge/A10038/N00146"
+        ]
+      },
+      {
+        "name": "Plaza Premium Lounge (Non-Schengen)",
+        "kind": "lounge",
+        "terminal": "T2B",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "after passport control, mezzanine level",
+        "hours": "05:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/hungary/budapest-ferenc-liszt-international/bud9-plaza-premium-lounge-non-schengen",
+        "sources": [
+          "https://www.prioritypass.com/lounges/hungary/budapest-ferenc-liszt-international/bud9-plaza-premium-lounge-non-schengen",
+          "https://www.dragonpass.com/explore/lounge/A10038/N03030"
+        ]
+      },
+      {
+        "name": "SkyCourt Lounge",
+        "kind": "lounge",
+        "terminal": "T2 SkyCourt",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "SkyCourt between 2A and 2B, mezzanine food-court level",
+        "hours": "04:30-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/hungary/budapest-ferenc-liszt-international/bud8-skycourt-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/hungary/budapest-ferenc-liszt-international/bud8-skycourt-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10038/N13344"
+        ]
+      }
+    ],
+    "notes": null
+  },
+  {
+    "iata": "CDG",
+    "airport": "Paris Charles de Gaulle Airport",
+    "city": "Paris",
+    "country": "FR",
+    "places": [
+      {
+        "name": "YotelAir Paris Charles de Gaulle",
+        "kind": "lounge",
+        "terminal": "T2E",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "shuttle train to gate L, follow signs Instant Paris/YOTEL",
+        "hours": "00:00-24:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/france/paris-charles-de-gaulle/cdg8-yotelair-paris-charles-de-gaulle",
+        "sources": [
+          "https://www.prioritypass.com/lounges/france/paris-charles-de-gaulle/cdg8-yotelair-paris-charles-de-gaulle"
+        ]
+      },
+      {
+        "name": "Salon Paris",
+        "kind": "lounge",
+        "terminal": "T2C",
+        "airside": true,
+        "schengen": null,
+        "location": "after passport control and security, next to the boarding area",
+        "hours": "14:00-22:00",
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.dragonpass.com/explore/lounge/A10245/N05019",
+        "sources": [
+          "https://www.dragonpass.com/explore/lounge/A10245/N05019"
+        ]
+      }
+    ],
+    "notes": "Very limited program coverage at CDG. Salon Paris (DragonPass): access 14:00-22:00 only, Air France passengers have priority."
+  },
+  {
+    "iata": "CPH",
+    "airport": "Copenhagen Airport Kastrup",
+    "city": "Copenhagen",
+    "country": "DK",
+    "places": [
+      {
+        "name": "Aspire Lounge",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "after security turn right, between piers A and B, 1st floor",
+        "hours": "06:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/denmark/copenhagen-kastrup/cop2-aspire-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/denmark/copenhagen-kastrup/cop2-aspire-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10298/N00472"
+        ]
+      },
+      {
+        "name": "Carlsberg Aviator Lounge",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "after security turn right, between piers A and B",
+        "hours": "05:00-20:30",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/denmark/copenhagen-kastrup/cop1-carlsberg-aviator-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/denmark/copenhagen-kastrup/cop1-carlsberg-aviator-lounge"
+        ]
+      },
+      {
+        "name": "Pearl Lounge",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "Pier C after passport control, next to gate C26",
+        "hours": "07:30-20:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/denmark/copenhagen-kastrup/cph1-eventyr-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/denmark/copenhagen-kastrup/cph1-eventyr-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10298/N01392"
+        ]
+      }
+    ],
+    "notes": "Schengen flag for Aspire/Carlsberg inferred from location (before passport control, piers A/B); not stated explicitly by the source."
+  },
+  {
+    "iata": "FCO",
+    "airport": "Rome Fiumicino Leonardo da Vinci Airport",
+    "city": "Rome",
+    "country": "IT",
+    "places": [
+      {
+        "name": "Prima Vista Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "boarding area A, mezzanine level",
+        "hours": "05:15-21:45",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/italy/leonardo-da-vinci-fiumicino/fco7-prima-vista-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/italy/leonardo-da-vinci-fiumicino/fco7-prima-vista-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10248/N13319"
+        ]
+      },
+      {
+        "name": "Plaza Premium Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "mezzanine level, Schengen departures",
+        "hours": "04:30-21:30",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/italy/leonardo-da-vinci-fiumicino/fco4-plaza-premium-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/italy/leonardo-da-vinci-fiumicino/fco4-plaza-premium-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10248/N03537"
+        ]
+      },
+      {
+        "name": "TAV Primeclass FCO",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "boarding area A (gates 61-83), lift to Level 2 mezzanine",
+        "hours": "05:30-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/italy/leonardo-da-vinci-fiumicino/fco3-tav-primeclass-fco",
+        "sources": [
+          "https://www.prioritypass.com/lounges/italy/leonardo-da-vinci-fiumicino/fco3-tav-primeclass-fco",
+          "https://www.dragonpass.com/explore/lounge/A10248/N04146"
+        ]
+      },
+      {
+        "name": "Plaza Premium Lounge",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "area E upper level, near gates E1-E4",
+        "hours": "05:00-22:30",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/italy/leonardo-da-vinci-fiumicino/fco2-plaza-premium-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/italy/leonardo-da-vinci-fiumicino/fco2-plaza-premium-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10248/N01654"
+        ]
+      },
+      {
+        "name": "Prima Vista Lounge - Portus",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "transit area, ground floor, near gates E51-E61",
+        "hours": "05:45-22:45",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/italy/leonardo-da-vinci-fiumicino/fco6-prima-vista-lounge-portus",
+        "sources": [
+          "https://www.prioritypass.com/lounges/italy/leonardo-da-vinci-fiumicino/fco6-prima-vista-lounge-portus",
+          "https://www.dragonpass.com/explore/lounge/A10248/N04135"
+        ]
+      }
+    ],
+    "notes": "TAV Primeclass Schengen flag inferred from boarding area A location."
+  },
+  {
+    "iata": "KRK",
+    "airport": "Krakow John Paul II International Airport",
+    "city": "Krakow",
+    "country": "PL",
+    "places": [
+      {
+        "name": "Business Lounge",
+        "kind": "lounge",
+        "terminal": "Main",
+        "airside": true,
+        "schengen": "both",
+        "location": "after security, 1st floor, opposite gate 2",
+        "hours": "04:30-22:00/23:30 (varies by day)",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/poland/john-paul-ii-international-krakow-balice/krk-business-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/poland/john-paul-ii-international-krakow-balice/krk-business-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10238/N01108"
+        ]
+      }
+    ],
+    "notes": "Non-Schengen passengers must re-clear control after leaving the lounge."
+  },
+  {
+    "iata": "LCA",
+    "airport": "Larnaca International Airport",
+    "city": "Larnaca",
+    "country": "CY",
+    "places": [
+      {
+        "name": "Skala Lounge",
+        "kind": "lounge",
+        "terminal": "Main",
+        "airside": true,
+        "schengen": null,
+        "location": "after security in duty free, lift next to Chanel to 3rd floor",
+        "hours": "00:00-24:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/cyprus/larnaca-international/lca1-skala-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/cyprus/larnaca-international/lca1-skala-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10354/N04606"
+        ]
+      }
+    ],
+    "notes": "Cyprus is not in Schengen; single program lounge."
+  },
+  {
+    "iata": "LHR",
+    "airport": "London Heathrow Airport",
+    "city": "London",
+    "country": "GB",
+    "places": [
+      {
+        "name": "No1 Lounge",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "after duty free, lifts by gate A18 to lower level",
+        "hours": "05:00-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/united-kingdom/heathrow/lhr33-no-1-lounge-heathrow-t2",
+        "sources": [
+          "https://www.prioritypass.com/lounges/united-kingdom/heathrow/lhr33-no-1-lounge-heathrow-t2",
+          "https://www.dragonpass.com/explore/lounge/A10047/N05369"
+        ]
+      },
+      {
+        "name": "Plaza Premium Lounge",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": null,
+        "location": "level 4 departures, next to transfer area (A3 lounge signs)",
+        "hours": "05:00-21:30",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/united-kingdom/heathrow/lhr11-plaza-premium-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/united-kingdom/heathrow/lhr11-plaza-premium-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10047/N00650"
+        ]
+      },
+      {
+        "name": "No1 Lounge Heathrow",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": null,
+        "location": "left of World Duty Free, follow signs Lounge F / gates 13-22, one floor up",
+        "hours": "05:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/united-kingdom/heathrow/lhr25-no1-lounge-heathrow",
+        "sources": [
+          "https://www.prioritypass.com/lounges/united-kingdom/heathrow/lhr25-no1-lounge-heathrow",
+          "https://www.dragonpass.com/explore/lounge/A10047/N00128"
+        ]
+      },
+      {
+        "name": "My Lounge",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": null,
+        "location": "follow All Airline Lounges signs towards gate 9, signposted Lounge D",
+        "hours": "05:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/united-kingdom/heathrow/lhr16-my-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/united-kingdom/heathrow/lhr16-my-lounge"
+        ]
+      },
+      {
+        "name": "Plaza Premium Lounge",
+        "kind": "lounge",
+        "terminal": "T4",
+        "airside": true,
+        "schengen": null,
+        "location": "2nd floor, opposite gates A10/B10",
+        "hours": "05:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/united-kingdom/heathrow/lhr13-plaza-premium-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/united-kingdom/heathrow/lhr13-plaza-premium-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10047/N00806"
+        ]
+      },
+      {
+        "name": "Club Aspire Lounge",
+        "kind": "lounge",
+        "terminal": "T5",
+        "airside": true,
+        "schengen": null,
+        "location": "main terminal, left of gate A18 (visit before going to satellites)",
+        "hours": "05:00-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/united-kingdom/heathrow/lhr14-club-aspire-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/united-kingdom/heathrow/lhr14-club-aspire-lounge"
+        ]
+      },
+      {
+        "name": "Plaza Premium Lounge",
+        "kind": "lounge",
+        "terminal": "T5",
+        "airside": true,
+        "schengen": null,
+        "location": "next to gate A7",
+        "hours": "05:30-21:30",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/united-kingdom/heathrow/lhr30-plaza-premium-lounge-terminal-5-departures",
+        "sources": [
+          "https://www.prioritypass.com/lounges/united-kingdom/heathrow/lhr30-plaza-premium-lounge-terminal-5-departures",
+          "https://www.dragonpass.com/explore/lounge/A10047/N01597"
+        ]
+      },
+      {
+        "name": "Evergreen Bar & Restaurant",
+        "kind": "dining",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": null,
+        "location": "after security, level 1 upper departures",
+        "hours": "05:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "GBP 18 off the bill per cardholder visit",
+        "source": "https://www.prioritypass.com/lounges/united-kingdom/heathrow/lhr32d-evergreen-bar-and-restaurant",
+        "sources": [
+          "https://www.prioritypass.com/lounges/united-kingdom/heathrow/lhr32d-evergreen-bar-and-restaurant"
+        ]
+      }
+    ],
+    "notes": "UK is not in Schengen (schengen null). Also in Priority Pass/LoungeKey: Clubrooms T3 (upgrade fee), Blush Lounge T4 (limited hours; also DragonPass), Plaza Premium T3 Arrivals (landside), The Globe Pub T5 (landside). Busy lounges often recommend paid pre-booking."
+  },
+  {
+    "iata": "LIS",
+    "airport": "Lisbon Humberto Delgado Airport",
+    "city": "Lisbon",
+    "country": "PT",
+    "places": [
+      {
+        "name": "ANA Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": "both",
+        "location": "after security, 6th floor above Praça Lisboa, near gate 22",
+        "hours": "04:00-23:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/portugal/lisbon-portela/lis6-ana-lounge-lisbon",
+        "sources": [
+          "https://www.prioritypass.com/lounges/portugal/lisbon-portela/lis6-ana-lounge-lisbon",
+          "https://www.dragonpass.com/explore/lounge/A10028/N00381"
+        ]
+      }
+    ],
+    "notes": "Only program lounge at LIS. Hours differ: Priority Pass airport list 04:00-23:00, lounge detail 06:00-22:00, DragonPass 04:00-22:00. Alcohol limited to 3 drinks."
+  },
+  {
+    "iata": "MAD",
+    "airport": "Adolfo Suarez Madrid-Barajas Airport",
+    "city": "Madrid",
+    "country": "ES",
+    "places": [
+      {
+        "name": "Sala VIP Cibeles",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "after passport control, 2nd floor, between gates B26-B29",
+        "hours": "00:00-24:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/spain/adolfo-suarez-madrid-barajas/madc-cibeles",
+        "sources": [
+          "https://www.prioritypass.com/lounges/spain/adolfo-suarez-madrid-barajas/madc-cibeles",
+          "https://www.dragonpass.com/explore/lounge/A10065/N00437"
+        ]
+      },
+      {
+        "name": "Sala VIP Puerta de Alcala",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "2nd floor near gate D60 (T2/T3 zones C-D)",
+        "hours": "00:00-24:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/spain/adolfo-suarez-madrid-barajas/mad6-puerta-de-alcala",
+        "sources": [
+          "https://www.prioritypass.com/lounges/spain/adolfo-suarez-madrid-barajas/mad6-puerta-de-alcala",
+          "https://www.dragonpass.com/explore/lounge/A10065/N00438"
+        ]
+      },
+      {
+        "name": "Sala VIP Puerta del Sol",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "stairs next to gate E69 to 1st floor",
+        "hours": "05:00-19:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/spain/adolfo-suarez-madrid-barajas/mad5-puerta-del-sol",
+        "sources": [
+          "https://www.prioritypass.com/lounges/spain/adolfo-suarez-madrid-barajas/mad5-puerta-del-sol",
+          "https://www.dragonpass.com/explore/lounge/A10065/N00439"
+        ]
+      },
+      {
+        "name": "Sala VIP Plaza Mayor",
+        "kind": "lounge",
+        "terminal": "T4",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "1st floor next to AENA exhibition room",
+        "hours": "05:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/spain/adolfo-suarez-madrid-barajas/mad3-plaza-mayor",
+        "sources": [
+          "https://www.prioritypass.com/lounges/spain/adolfo-suarez-madrid-barajas/mad3-plaza-mayor",
+          "https://www.dragonpass.com/explore/lounge/A10065/N00530"
+        ]
+      },
+      {
+        "name": "Sala VIP Retiro",
+        "kind": "lounge",
+        "terminal": "T4",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "after passport control, beside the T4 fast-track area",
+        "hours": "05:00-00:00",
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.dragonpass.com/explore/lounge/A10065/N13099",
+        "sources": [
+          "https://www.dragonpass.com/explore/lounge/A10065/N13099"
+        ]
+      },
+      {
+        "name": "Sala VIP Neptuno",
+        "kind": "lounge",
+        "terminal": "T4S",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "2nd floor, yellow sector",
+        "hours": "00:00-24:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/spain/adolfo-suarez-madrid-barajas/mad2-neptuno-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/spain/adolfo-suarez-madrid-barajas/mad2-neptuno-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10065/N00529"
+        ]
+      },
+      {
+        "name": "Sala VIP Gran Via",
+        "kind": "lounge",
+        "terminal": "T4S",
+        "airside": true,
+        "schengen": null,
+        "location": "next to the PMR (reduced mobility) help point",
+        "hours": "05:00-23:59",
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.dragonpass.com/explore/lounge/A10065/N13828",
+        "sources": [
+          "https://www.dragonpass.com/explore/lounge/A10065/N13828"
+        ]
+      },
+      {
+        "name": "GettSleep",
+        "kind": "sleep",
+        "terminal": "T4S",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "1st floor after passport control, next to pharmacy",
+        "hours": "00:00-24:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": "1-hour single capsule + shower per visit",
+        "source": "https://www.prioritypass.com/lounges/spain/adolfo-suarez-madrid-barajas/mad10r-gettsleep",
+        "sources": [
+          "https://www.prioritypass.com/lounges/spain/adolfo-suarez-madrid-barajas/mad10r-gettsleep",
+          "https://www.dragonpass.com/explore/lounge/A10065/N13462"
+        ]
+      },
+      {
+        "name": "Soho",
+        "kind": "dining",
+        "terminal": "T4S",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "central square near gate S26",
+        "hours": "05:00-00:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "EUR 23 off the bill per cardholder visit",
+        "source": "https://www.prioritypass.com/lounges/spain/adolfo-suarez-madrid-barajas/mad9d-soho",
+        "sources": [
+          "https://www.prioritypass.com/lounges/spain/adolfo-suarez-madrid-barajas/mad9d-soho"
+        ]
+      }
+    ],
+    "notes": "DragonPass notes Sala VIP Plaza Mayor (T4) is temporarily closed; Priority Pass still lists it as active - check before travel. More Priority Pass/LoungeKey dining at MAD: Olivia & Bellota T4 near gate K74, Pannus T3 near gate E69 (EUR 23 each). Aerotel T4 is landside."
+  },
+  {
+    "iata": "MUC",
+    "airport": "Munich Airport",
+    "city": "Munich",
+    "country": "DE",
+    "places": [
+      {
+        "name": "Airport Lounge Europe",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "module D, level 5 via transfer corridor",
+        "hours": "05:00-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/germany/munich/mune-airport-lounge-europe",
+        "sources": [
+          "https://www.prioritypass.com/lounges/germany/munich/mune-airport-lounge-europe",
+          "https://www.dragonpass.com/explore/lounge/A10240/N00428"
+        ]
+      },
+      {
+        "name": "Airport Lounge World",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "T1 pier / module B, lift to upper level by B gates",
+        "hours": "05:00-21:45",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/germany/munich/muc2-airport-lounge-world",
+        "sources": [
+          "https://www.prioritypass.com/lounges/germany/munich/muc2-airport-lounge-world",
+          "https://www.dragonpass.com/explore/lounge/A10240/N01895"
+        ]
+      },
+      {
+        "name": "Air France KLM Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "near gate D11",
+        "hours": "07:30-21:00",
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.dragonpass.com/explore/lounge/A10240/N02460",
+        "sources": [
+          "https://www.dragonpass.com/explore/lounge/A10240/N02460"
+        ]
+      }
+    ],
+    "notes": "No program lounge in Terminal 2 (Lufthansa). Air France KLM Lounge via DragonPass: 21+ only, no access 15:00-20:00, Air France guests have priority."
+  },
+  {
+    "iata": "MXP",
+    "airport": "Milan Malpensa Airport",
+    "city": "Milan",
+    "country": "IT",
+    "places": [
+      {
+        "name": "Monteverdi Classic Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "Schengen area, near gates A01-A10",
+        "hours": "06:00-21:30",
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.dragonpass.com/explore/lounge/A10249/N00606",
+        "sources": [
+          "https://www.dragonpass.com/explore/lounge/A10249/N00606"
+        ]
+      },
+      {
+        "name": "Pergolesi Classic Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "central satellite, near B gates (B71-B83)",
+        "hours": "06:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/italy/milan-malpensa/milp-pergolesi-classic-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/italy/milan-malpensa/milp-pergolesi-classic-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10249/N04718"
+        ]
+      },
+      {
+        "name": "Montale Exclusive Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "north satellite, near gates B50-B59",
+        "hours": "06:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/italy/milan-malpensa/mxp2-montale-exclusive-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/italy/milan-malpensa/mxp2-montale-exclusive-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10249/N00607"
+        ]
+      },
+      {
+        "name": "Alda Merini Classic Lounge",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": "both",
+        "location": "near gates D20-D22, before passport control",
+        "hours": "05:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/italy/milan-malpensa/mxp3-alda-merini-classic-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/italy/milan-malpensa/mxp3-alda-merini-classic-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10249/N04609"
+        ]
+      }
+    ],
+    "notes": "Priority Pass lounges: max 2-hour stay. Monteverdi (DragonPass only) has reduced capacity from 23 Sep 2026 due to works."
+  },
+  {
+    "iata": "PRG",
+    "airport": "Vaclav Havel Airport Prague",
+    "city": "Prague",
+    "country": "CZ",
+    "places": [
+      {
+        "name": "Erste Premier Lounge (T1)",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "after passport control, escalator to level 1, towards Pier B",
+        "hours": "05:30-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/czech-republic/vaclav-havel-prague/prg9-mastercard-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/czech-republic/vaclav-havel-prague/prg9-mastercard-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10019/N00142"
+        ]
+      },
+      {
+        "name": "Erste Premier Lounge (T2)",
+        "kind": "lounge",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "after security turn right, lift/stairs to level 3",
+        "hours": "05:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/czech-republic/vaclav-havel-prague/prg10-erste-premier-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/czech-republic/vaclav-havel-prague/prg10-erste-premier-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10019/N00143"
+        ]
+      },
+      {
+        "name": "Bottega Prosecco Bar",
+        "kind": "dining",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "Pier B, opposite gate B1",
+        "hours": "07:00-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "EUR 23 / CZK 550 off the bill per cardholder visit",
+        "source": "https://www.prioritypass.com/lounges/czech-republic/vaclav-havel-prague/prg11d-bottega-prosecco-bar",
+        "sources": [
+          "https://www.prioritypass.com/lounges/czech-republic/vaclav-havel-prague/prg11d-bottega-prosecco-bar"
+        ]
+      },
+      {
+        "name": "Pilsner Urquell Original Restaurant",
+        "kind": "dining",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "Pier A, near gate A3",
+        "hours": "07:00-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "EUR 23 / CZK 550 off the bill per cardholder visit",
+        "source": "https://www.prioritypass.com/lounges/czech-republic/vaclav-havel-prague/prg6d-pilsner-urquell-original-restaurant",
+        "sources": [
+          "https://www.prioritypass.com/lounges/czech-republic/vaclav-havel-prague/prg6d-pilsner-urquell-original-restaurant"
+        ]
+      },
+      {
+        "name": "Pilsner Urquell Original Restaurant",
+        "kind": "dining",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "Pier B, near gate B7",
+        "hours": "07:00-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "EUR 23 / CZK 550 off the bill per cardholder visit",
+        "source": "https://www.prioritypass.com/lounges/czech-republic/vaclav-havel-prague/prg7d-pilsner-urquell-original-restaurant",
+        "sources": [
+          "https://www.prioritypass.com/lounges/czech-republic/vaclav-havel-prague/prg7d-pilsner-urquell-original-restaurant"
+        ]
+      },
+      {
+        "name": "Bottega Prosecco Restaurant",
+        "kind": "dining",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "Pier D, next to gate D4",
+        "hours": "00:00-24:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "EUR 23 / CZK 550 off the bill per cardholder visit",
+        "source": "https://www.prioritypass.com/lounges/czech-republic/vaclav-havel-prague/prg12d-bottega-prosecco-restaurant",
+        "sources": [
+          "https://www.prioritypass.com/lounges/czech-republic/vaclav-havel-prague/prg12d-bottega-prosecco-restaurant"
+        ]
+      },
+      {
+        "name": "AeroPorto",
+        "kind": "dining",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "Pier D towards Pier C, near gates D1-D2",
+        "hours": "07:00-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "EUR 23 / CZK 550 off the bill per cardholder visit",
+        "source": "https://www.prioritypass.com/lounges/czech-republic/vaclav-havel-prague/prg8d-aeroporto",
+        "sources": [
+          "https://www.prioritypass.com/lounges/czech-republic/vaclav-havel-prague/prg8d-aeroporto"
+        ]
+      },
+      {
+        "name": "Pilsner Urquell Original Restaurant",
+        "kind": "dining",
+        "terminal": "T2",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "Pier C, near gate C4",
+        "hours": "07:00-21:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": "EUR 23 / CZK 550 off the bill per cardholder visit",
+        "source": "https://www.prioritypass.com/lounges/czech-republic/vaclav-havel-prague/prg5d-pilsner-urquell-original-restaurant",
+        "sources": [
+          "https://www.prioritypass.com/lounges/czech-republic/vaclav-havel-prague/prg5d-pilsner-urquell-original-restaurant"
+        ]
+      }
+    ],
+    "notes": "Priority Pass also lists a landside Pilsner Urquell restaurant in the T2 departure hall. Schengen flag for dining inferred from T1 = non-Schengen, T2 = Schengen."
+  },
+  {
+    "iata": "VCE",
+    "airport": "Venice Marco Polo Airport",
+    "city": "Venice",
+    "country": "IT",
+    "places": [
+      {
+        "name": "Marco Polo Club",
+        "kind": "lounge",
+        "terminal": "Main",
+        "airside": true,
+        "schengen": "both",
+        "location": "after security (before passport control), 2nd floor via escalator/lift",
+        "hours": "05:00-22:30",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/italy/venice-marco-polo/vce-marco-polo-club",
+        "sources": [
+          "https://www.prioritypass.com/lounges/italy/venice-marco-polo/vce-marco-polo-club",
+          "https://www.dragonpass.com/explore/lounge/A10058/N00172"
+        ]
+      }
+    ],
+    "notes": "Aspire Executive Lounge (Priority Pass, LoungeKey, DragonPass) is landside on level 2 above check-in, 08:00-20:00 - not listed as it is before security: https://www.prioritypass.com/lounges/italy/venice-marco-polo/vce3-aspire-executive-lounge"
+  },
+  {
+    "iata": "VIE",
+    "airport": "Vienna International Airport",
+    "city": "Vienna",
+    "country": "AT",
+    "places": [
+      {
+        "name": "Vienna Lounge",
+        "kind": "lounge",
+        "terminal": "T1",
+        "airside": true,
+        "schengen": "both",
+        "location": "after security, before passport control, 2nd floor (gates C/D)",
+        "hours": "04:30-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/austria/vienna-international/vie7-vienna-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/austria/vienna-international/vie7-vienna-lounge"
+        ]
+      },
+      {
+        "name": "SKY Lounge",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": "both",
+        "location": "after security, level 2, before passport control (gates F/G); automated passport exit inside",
+        "hours": "04:30-23:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/austria/vienna-international/vie2-sky-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/austria/vienna-international/vie2-sky-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10234/N00559"
+        ]
+      },
+      {
+        "name": "Austrian Business Lounge (Schengen)",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "level 2 near F gates",
+        "hours": "05:00-22:30",
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.dragonpass.com/explore/lounge/A10234/N02841",
+        "sources": [
+          "https://www.dragonpass.com/explore/lounge/A10234/N02841"
+        ]
+      },
+      {
+        "name": "Austrian Business Lounge (Non Schengen)",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "after passport control, level 3 right-hand side",
+        "hours": "05:30-23:00",
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.dragonpass.com/explore/lounge/A10234/N02842",
+        "sources": [
+          "https://www.dragonpass.com/explore/lounge/A10234/N02842"
+        ]
+      },
+      {
+        "name": "Austrian Business Lounge (Non Schengen, D gates)",
+        "kind": "lounge",
+        "terminal": "T3",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "level 2 near D gates",
+        "hours": "07:30-14:00",
+        "programs": [
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.dragonpass.com/explore/lounge/A10234/N03054",
+        "sources": [
+          "https://www.dragonpass.com/explore/lounge/A10234/N03054"
+        ]
+      }
+    ],
+    "notes": "Austrian Business Lounges are DragonPass-only (not in Priority Pass list)."
+  },
+  {
+    "iata": "WAW",
+    "airport": "Warsaw Chopin Airport",
+    "city": "Warsaw",
+    "country": "PL",
+    "places": [
+      {
+        "name": "Preludium Lounge",
+        "kind": "lounge",
+        "terminal": "Terminal A",
+        "airside": true,
+        "schengen": "schengen",
+        "location": "level 0, near gates 33-35",
+        "hours": "05:00-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/poland/warsaw-chopin/waw3-preludium-lounge",
+        "sources": [
+          "https://www.prioritypass.com/lounges/poland/warsaw-chopin/waw3-preludium-lounge",
+          "https://www.dragonpass.com/explore/lounge/A10237/N01111"
+        ]
+      },
+      {
+        "name": "Etiuda Executive Lounge",
+        "kind": "lounge",
+        "terminal": "Terminal A",
+        "airside": true,
+        "schengen": "non-schengen",
+        "location": "level 0, near gates 7-8 (Priority Pass; DragonPass says gates 19-22)",
+        "hours": "06:30-22:00",
+        "programs": [
+          "PriorityPass",
+          "LoungeKey",
+          "DragonPass"
+        ],
+        "offer": null,
+        "source": "https://www.prioritypass.com/lounges/poland/warsaw-chopin/waw4-etiuda-executive-lounge-ex-bolero",
+        "sources": [
+          "https://www.prioritypass.com/lounges/poland/warsaw-chopin/waw4-etiuda-executive-lounge-ex-bolero",
+          "https://www.dragonpass.com/explore/lounge/A10237/N00492"
+        ]
+      }
+    ],
+    "notes": "Entry max 3 hours before departure."
+  }
+]
