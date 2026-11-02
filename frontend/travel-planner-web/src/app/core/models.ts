@@ -1058,3 +1058,35 @@ export interface AuthResultDto {
   expiresAtUtc: string;
   user: UserDto;
 }
+
+// Booked trips ("journeys" on the API): the traveller ticks off each day; a trip with every day ticked counts on the leaderboard.
+export interface BookedTripDto {
+  tripPlanId: string;
+  destinationCode: string;
+  city: string;
+  countryCode: string;
+  startDate: string;
+  endDate: string;
+  dayCount: number;
+  completedDays: string[];
+  bookedAtUtc: string;
+  completedAtUtc?: string;
+}
+
+/** One traveller: first name and the initial of the last name only; samples are illustrations until real travellers fill the board. */
+export interface LeaderboardEntryDto {
+  rank: number;
+  name: string;
+  trips: number;
+  days: number;
+  countries: string[];
+  cities: string[];
+  lastCompletedAtUtc: string;
+  isSample: boolean;
+  isYou: boolean;
+}
+
+export interface LeaderboardDto {
+  entries: LeaderboardEntryDto[];
+  realTravellers: number;
+}

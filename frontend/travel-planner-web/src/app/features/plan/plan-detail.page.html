@@ -120,6 +120,7 @@
             </div>
           }
 
+          <app-trip-diary [planId]="s.id" />
 
           <section class="overview-grid" [attr.aria-label]="'tab.whatsInside' | t">
             @for (t of tabs().slice(1); track t.id) {

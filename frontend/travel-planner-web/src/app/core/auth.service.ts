@@ -54,6 +54,8 @@ export class AuthService {
   readonly googleClientId = computed(() => this.config.config()?.googleClientId ?? null);
   readonly facebookAppId = computed(() => this.config.config()?.facebookAppId ?? null);
   readonly available = computed(() => !!this.googleClientId() || !!this.facebookAppId());
+  /** Bumped when a feature needs a signed-in traveller; the account menu then opens its sign-in panel. */
+  readonly signInRequested = signal(0);
 
   private googleReady?: Promise<GoogleId>;
   private facebookReady?: Promise<FacebookSdk>;
@@ -78,6 +80,11 @@ export class AuthService {
       return null;
     }
     return s.token;
+  }
+
+  /** Asks the account menu to open its sign-in panel. */
+  requestSignIn(): void {
+    this.signInRequested.update((n) => n + 1);
   }
 
   /** Deletes the account on the server (profile and provider links), then signs out here. */

@@ -22,7 +22,7 @@ import { I18nService } from '../../core/i18n/i18n.service';
     <article class="container legal" id="privacy">
       @if (i18n.lang() === 'ka') {
         <h1>კონფიდენციალურობის პოლიტიკა</h1>
-        <p class="updated">განახლდა: 2026 წლის 29 ოქტომბერი</p>
+        <p class="updated">განახლდა: 2026 წლის 2 ნოემბერი</p>
         <p>Tripora მოგზაურობის დაგეგმვაში გეხმარებათ: ეძებს ფრენებს, სასტუმროებს და ტრანსპორტს და ოფიციალურ ჯავშნის საიტებზე გადაგამისამართებთ.
           აქ აღწერილია, რა მონაცემებს ვიღებთ და რას ვაკეთებთ მათთან.</p>
 
@@ -37,6 +37,8 @@ import { I18nService } from '../../core/i18n/i18n.service';
         <h2>რისთვის ვიყენებთ</h2>
         <p>მხოლოდ თქვენი ანგარიშისთვის: რომ შეხვიდეთ და საიტზე თქვენი სახელი და ფოტო გამოჩნდეს (და მომავალში — თქვენი შენახული მოგზაურობები
           ყველა მოწყობილობაზე). მონაცემებს არ ვყიდით, რეკლამისთვის არ ვიყენებთ და მესამე მხარეს არ გადავცემთ.</p>
+        <p>თუ მოგზაურობას „დავჯავშნე“-ით მონიშნავთ და ყველა დღეს აღნიშნავთ, მთავარ გვერდზე, მოგზაურთა ლიდერბორდზე გამოჩნდება თქვენი სახელი და გვარის
+          პირველი ასო (მაგ. „ნინო მ.“), დასრულებული მოგზაურობების, დღეებისა და ქვეყნების რაოდენობა. მოგზაურობის წაშლით ან ანგარიშის წაშლით იქიდან ქრებით.</p>
 
         <h2>სად ინახება</h2>
         <p>ანგარიში ინახება ჩვენს სერვერზე, მონაცემთა ბაზაში. შესვლის შემდეგ თქვენი ბრაუზერი ინახავს ჩვენს ხელმოწერილ ბილეთს (token), რომელიც 30 დღე მოქმედებს
@@ -55,7 +57,7 @@ import { I18nService } from '../../core/i18n/i18n.service';
         </div>
       } @else {
         <h1>Privacy policy</h1>
-        <p class="updated">Updated: 29 October 2026</p>
+        <p class="updated">Updated: 2 November 2026</p>
         <p>Tripora helps you plan trips: it searches flights, stays and transport and sends you to the official booking sites.
           This page explains what data we receive and what we do with it.</p>
 
@@ -70,6 +72,9 @@ import { I18nService } from '../../core/i18n/i18n.service';
         <h2>What we use it for</h2>
         <p>Only for your account: to sign you in and show your name and photo (and, later, your saved trips on all your devices). We do not
           sell the data, use it for advertising or pass it to third parties.</p>
+        <p>If you mark a trip with “I booked this trip” and tick off all its days, the travellers' leaderboard on the home page shows your first
+          name and the initial of your last name (e.g. “Nino M.”) with your number of completed trips, days and countries. Removing the trip or
+          deleting your account takes you off it.</p>
 
         <h2>Where it is kept</h2>
         <p>Your account is stored in our database. After signing in, your browser keeps our signed token, valid for 30 days and removed when you

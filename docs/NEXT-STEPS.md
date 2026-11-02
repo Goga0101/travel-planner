@@ -1,4 +1,4 @@
-# სად გავჩერდით და რა არის შემდეგი (2026-11-02)
+# სად გავჩერდით და რა არის შემდეგი (2026-11-02, საღამო)
 
 ხვალ Claude Code-ს უბრალოდ უთხარი: **„წაიკითხე docs/NEXT-STEPS.md და გავაგრძელოთ“**.
 
@@ -12,24 +12,12 @@
 | **სასტუმროს შეფასებები** (Tripadvisor Terra API, ბოლო 14 დღე, ბაზაში არაფერი ინახება) | backend: `Providers/Tripadvisor/`, frontend: `features/plan/hotel-reviews.component.ts` |
 | **სასტუმროების განყოფილება** – Stitch-ის ქუჩის სცენა + მარშრუტის ზოლი; ჩაკეცვისას ცარიელი ადგილი აღარ რჩება, რბილი ანიმაცია | `features/plan/stay-illustrations.component.ts`, `nearby.component.html` |
 | ქართული დრო („2 საათის წინ“), header-ის გადატანა ფართო ეკრანზე | `core/format.ts`, `styles.scss` |
+| **მოგზაურობის დღიური** – გეგმის „მიმოხილვაში“: „✓ დავჯავშნე“ (გამოსულს შესვლის პანელს უხსნის და შესვლისთანავე მონიშნავს), დღეების ჩიპები 🔒, პროგრესი, დასრულებისას 🏆 | `features/plan/trip-diary.component.ts`, `core/booked-trips.ts` |
+| **მოგზაურთა ლიდერბორდი** – მთავარ გვერდზე (`#leaderboard`): კვარცხლბეკი 🥇🥈🥉, სია 4–10, „ნიმუში“/„შენ“, „როგორ მოხვდე აქ“ | `features/search/leaderboard.component.ts` |
+| journeys backend (`/api/v1/journeys`, `/api/v1/leaderboard`), ნიმუში მოგზაურები: `catalog/leaderboard-samples.json` (გამორთვა: `Leaderboard:IncludeSamples=false`) | `Features/Journeys/`, მიგრაცია `AddJourneys` |
 
-## 🟡 ნახევრად გაკეთებული: მოგზაურობის დასრულება + ლიდერბორდი
-
-**Backend მზადაა და დატესტილია** (175 ტესტი გადის):
-- ცხრილი `journeys` (მიგრაცია `AddJourneys`), domain: `Domain/Entities/Journey.cs`
-- API: `GET/PUT/DELETE /api/v1/journeys/{planId}`, `PUT /api/v1/journeys/{planId}/days/{yyyy-MM-dd}` `{ "done": true }`, `GET /api/v1/leaderboard`
-- დღის მონიშვნა მხოლოდ დამდგარ დღეზე შეიძლება; ყველა დღე მონიშნული = მოგზაურობა დასრულებულია
-- ლიდერბორდზე ჩანს: სახელი + გვარის ინიციალი („ნინო მ.“), მოგზაურობები, დღეები, ქვეყნები
-- **ნიმუში მოგზაურები** (10 ცალი): `src/TravelPlanner.API/catalog/leaderboard-samples.json`. საიტზე უნდა ეწეროთ „ნიმუში“; გამორთვა: `Leaderboard:IncludeSamples=false`
-
-**დარჩენილია (frontend):**
-1. გეგმის გვერდზე ბლოკი „მოგზაურობის დღიური“: ღილაკი **„✓ დავჯავშნე“** (შესვლა საჭიროა; თუ არ არის შესული – გაიხსნას შესვლის პანელი: `AuthService`-ში `signInRequested` სიგნალი + `account-menu`-ში მოსმენა, `setTimeout`-ით, რადგან document click პანელს ხურავს)
-2. დღეების ჩიპები (დღე 1…N, თარიღი), მონიშვნა/მოხსნა, მომავალი დღეები გათიშული 🔒, პროგრესის ზოლი, „გაუქმება“
-3. დასრულებისას: ზეიმის ბანერი 🏆 + ბმული ლიდერბორდზე
-4. მთავარ გვერდზე სექცია **„მოგზაურთა ლიდერბორდი“** (`features/search/trip-search.page.html`, `#how`-მდე): ტოპ-3 კვარცხლბეკი 🥇🥈🥉 + სია 4–10, ქვეყნების კოდები, „ნიმუში“ ნიშანი, „შენ“ ნიშანი, ახსნა „როგორ მოხვდე აქ“ (3 ნაბიჯი)
-5. `core/models.ts`-ში `JourneyDto`, `LeaderboardDto`; `api.service.ts`-ში მეთოდები; `core/journeys.service.ts`
-6. ქართული/ინგლისური ტექსტები, ტესტები, build, ბრაუზერში შემოწმება (desktop + 390px)
-7. კონფიდენციალურობის გვერდზე (`/privacy`) ერთი წინადადება: დასრულებული მოგზაურობისას სახელი + ინიციალი ჩანს ლიდერბორდზე
+## 🟡 შესამოწმებელი
+- დასრულების 🏆 ბანერი რეალურ დასრულებულ მოგზაურობაზე ჯერ ბრაუზერში არ მინახავს (backend-ის ტესტები ფარავს); პირველი დასრულებული მოგზაურობისას შეამოწმე.
 
 ## 🔑 გასაღებები / გარე სერვისები
 - ჩაწერილია: Travelpayouts, Geoapify, Ticketmaster, Google Client ID, JWT (`secrets.local.ps1` – git-ში არ არის)

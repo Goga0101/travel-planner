@@ -26,6 +26,7 @@ import { RecentSearchesService } from '../../core/local-lists';
 import { LocalDatePipe, MoneyPipe } from '../../shared/pipes';
 import { ErrorBannerComponent } from '../../shared/error-banner.component';
 import { IconComponent, IconName } from '../../shared/icon.component';
+import { LeaderboardComponent } from './leaderboard.component';
 import { DATE_ERROR_KEYS, manualDestinationsValidator, tripDatesValidator } from './trip-search.validators';
 
 const ORIGIN_KEY = 'tp.origin';
@@ -61,7 +62,7 @@ function defaultDates(today: Date): { from: string; to: string } {
 @Component({
   selector: 'app-trip-search-page',
   changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [ReactiveFormsModule, RouterLink, ErrorBannerComponent, TranslatePipe, IconComponent, LocalDatePipe, MoneyPipe],
+  imports: [ReactiveFormsModule, RouterLink, ErrorBannerComponent, TranslatePipe, IconComponent, LocalDatePipe, MoneyPipe, LeaderboardComponent],
   templateUrl: './trip-search.page.html',
 })
 export class TripSearchPage {

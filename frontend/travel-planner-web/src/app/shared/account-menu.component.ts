@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ElementRef, HostListener, computed, effect, inject, signal, viewChild } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ElementRef, HostListener, computed, effect, inject, signal, untracked, viewChild } from '@angular/core';
 import { AuthService } from '../core/auth.service';
 import { I18nService } from '../core/i18n/i18n.service';
 import { TranslatePipe } from '../core/i18n/translate.pipe';
@@ -194,6 +194,17 @@ export class AccountMenuComponent {
     // Signed in: the panel has done its job.
     effect(() => { if (this.auth.signedIn()) this.open.set(false); });
     effect(() => { this.auth.user(); this.pictureFailed.set(false); this.confirmDelete.set(false); });
+    // Another part of the page asked for a sign-in. Deferred: the click that asked would otherwise reach onDocumentClick
+    // (outside this menu) and close the panel straight away.
+    effect(() => {
+      if (!this.auth.signInRequested() || untracked(() => this.auth.signedIn())) return;
+      setTimeout(() => {
+        this.open.set(true);
+        this.auth.error.set(null);
+        this.auth.prepareFacebook();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    });
   }
 
   protected toggle(): void {

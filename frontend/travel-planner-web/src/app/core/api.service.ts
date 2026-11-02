@@ -32,6 +32,8 @@ import {
   TripSearchDto,
   PlaceSuggestionDto,
   JourneyDto,
+  BookedTripDto,
+  LeaderboardDto,
   LiveVehiclesDto,
   TaxiOptionsDto,
 } from './models';
@@ -184,6 +186,29 @@ export class ApiService {
 
   getMe(): Observable<UserDto> {
     return this.http.get<UserDto>(`${BASE}/auth/me`);
+  }
+
+  /** The signed-in traveller's booked trips, latest first. */
+  getMyTrips(): Observable<BookedTripDto[]> {
+    return this.http.get<BookedTripDto[]>(`${BASE}/journeys`);
+  }
+
+  /** "I booked this trip": starts tracking the plan's days (calling it again changes nothing). */
+  startTrip(planId: string): Observable<BookedTripDto> {
+    return this.http.put<BookedTripDto>(`${BASE}/journeys/${encodeURIComponent(planId)}`, {});
+  }
+
+  cancelTrip(planId: string): Observable<void> {
+    return this.http.delete<void>(`${BASE}/journeys/${encodeURIComponent(planId)}`);
+  }
+
+  /** Ticks or unticks one day (yyyy-MM-dd); days that have not begun yet are refused. */
+  setTripDay(planId: string, day: string, done: boolean): Observable<BookedTripDto> {
+    return this.http.put<BookedTripDto>(`${BASE}/journeys/${encodeURIComponent(planId)}/days/${day}`, { done });
+  }
+
+  getLeaderboard(top = 10): Observable<LeaderboardDto> {
+    return this.http.get<LeaderboardDto>(`${BASE}/leaderboard`, { params: { top } });
   }
 
   getClientConfig(): Observable<ClientConfigDto> {

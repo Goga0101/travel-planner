@@ -35,6 +35,7 @@ import { WeatherComponent } from './weather.component';
 import { TripNewsComponent } from '../../shared/trip-news.component';
 import { HotelReviewsComponent } from './hotel-reviews.component';
 import { DayPlannerComponent } from './day-planner.component';
+import { TripDiaryComponent } from './trip-diary.component';
 import { FlightTicketsComponent, FlightTimelineComponent } from '../../shared/flight-route.component';
 import { DistancePipe, LocalDatePipe, LocalNumberPipe, MoneyPipe, StopsPipe, TimeSpanPipe } from '../../shared/pipes';
 
@@ -81,6 +82,7 @@ type PlanTab = (typeof TAB_IDS)[number];
     FlightTimelineComponent,
     DayPlannerComponent,
     StayRouteComponent,
+    TripDiaryComponent,
   ],
   templateUrl: './plan-detail.page.html',
 })
