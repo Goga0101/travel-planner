@@ -43,4 +43,14 @@ public class NearbyLinksTests
     {
         Assert.Equal(expected, NearbyLinks.CuratedHttps(input));
     }
+
+    [Fact]
+    public void TripAdvisor_Pages_Open_On_The_Trip_Dates()
+    {
+        var url = NearbyLinks.TripAdvisorWithStay("https://www.tripadvisor.com/Hotel_Review-g186338-d1-Reviews-X.html",
+            new DateOnly(2026, 11, 21), new DateOnly(2026, 11, 25), 2, 1);
+        Assert.Equal("https://www.tripadvisor.com/Hotel_Review-g186338-d1-Reviews-X.html?staydates=2026_11_21_2026_11_25&reqNum=1&rooms=1&adults=2", url);
+        Assert.Equal("https://example.com/hotel", NearbyLinks.TripAdvisorWithStay("https://example.com/hotel", new DateOnly(2026, 1, 1), new DateOnly(2026, 1, 2), 1, 1));
+        Assert.Null(NearbyLinks.TripAdvisorWithStay("http://www.tripadvisor.com/x", new DateOnly(2026, 1, 1), new DateOnly(2026, 1, 2), 1, 1));
+    }
 }

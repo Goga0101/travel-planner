@@ -190,5 +190,18 @@ public static class NearbyLinks
         return uri.AbsoluteUri;
     }
 
+    /// <summary>
+    /// A TripAdvisor hotel page opened on the trip's dates and party, so its offers ("View deal") are for those dates.
+    /// TripAdvisor reads "staydates=yyyy_MM_dd_yyyy_MM_dd" (it ignores checkIn/checkOut). Other URLs are returned unchanged.
+    /// </summary>
+    public static string? TripAdvisorWithStay(string? url, DateOnly checkIn, DateOnly checkOut, int adults, int rooms)
+    {
+        if (CuratedHttps(url) is not { } safe || !Uri.TryCreate(safe, UriKind.Absolute, out var uri)
+            || !(uri.Host == "tripadvisor.com" || uri.Host.EndsWith(".tripadvisor.com", StringComparison.OrdinalIgnoreCase))) return CuratedHttps(url);
+        static string D(DateOnly d) => d.ToString("yyyy_MM_dd", CultureInfo.InvariantCulture);
+        var query = $"staydates={D(checkIn)}_{D(checkOut)}&reqNum=1&rooms={Math.Max(1, rooms)}&adults={Math.Max(1, adults)}";
+        return new UriBuilder(uri) { Query = query }.Uri.AbsoluteUri;
+    }
+
     private static string Coord(double value) => value.ToString("0.######", CultureInfo.InvariantCulture);
 }

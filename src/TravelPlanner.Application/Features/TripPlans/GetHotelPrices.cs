@@ -73,6 +73,7 @@ public sealed class GetHotelPricesHandler(
                 var lowest = h.Rates.MinBy(r => r.Nightly)!;
                 var booking = h.Rates.FirstOrDefault(r => r.Code == "BookingCom");
                 var hasGeo = h.Latitude is not null && h.Longitude is not null;
+                var pageUrl = NearbyLinks.TripAdvisorWithStay(h.PageUrl, plan.DepartureDate, plan.ReturnDate, plan.Travelers, rooms);
                 // Only hotels with a Booking.com rate are sold there; a name search for any other hotel finds nothing.
                 var bookingUrl = booking is null ? null
                     : linkPolicy.Sanitize(bookingLinks.Build(h.Name, destination.City, plan.DepartureDate, plan.ReturnDate, plan.Travelers, rooms)?.Url);
@@ -87,13 +88,13 @@ public sealed class GetHotelPricesHandler(
                     lowest.Nightly * nights,
                     h.Rates.Select(r => r.Code == "BookingCom" && bookingUrl is not null
                         ? new AgencyRateDto(r.Code, r.Name, r.Nightly, bookingUrl, false)
-                        : new AgencyRateDto(r.Code, r.Name, r.Nightly, NearbyLinks.CuratedHttps(h.PageUrl), NearbyLinks.CuratedHttps(h.PageUrl) is not null)).ToList(),
+                        : new AgencyRateDto(r.Code, r.Name, r.Nightly, pageUrl, pageUrl is not null)).ToList(),
                     bookingUrl,
                     linkPolicy.Sanitize(NearbyLinks.MapSearch($"{h.Name}, {destination.City}")),
                     hasGeo && airport is not null
                         ? linkPolicy.Sanitize(NearbyLinks.TransitDirections(airport.Latitude, airport.Longitude, h.Latitude!.Value, h.Longitude!.Value))
                         : null,
-                    NearbyLinks.CuratedHttps(h.PageUrl),
+                    pageUrl,
                     h.Latitude,
                     h.Longitude);
             })
