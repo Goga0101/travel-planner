@@ -51,7 +51,8 @@ public sealed class RefreshTripPlanPricesHandler(
         {
             var old = drafts[flightIndex];
             var details = Deserialize<FlightItemDetails>(old.DetailsJson);
-            var provider = flightProviders.FirstOrDefault(p => p.Name == old.Provider);
+            // Older plans carry the former provider label, e.g. "Aviasales (Travelpayouts)" for "Aviasales".
+            var provider = flightProviders.FirstOrDefault(p => p.Name == old.Provider || old.Provider.StartsWith(p.Name + " (", StringComparison.Ordinal));
             if (provider is null || details is null)
             {
                 warnings.Add(T.Get("refresh.flightProviderMissing", old.Provider));

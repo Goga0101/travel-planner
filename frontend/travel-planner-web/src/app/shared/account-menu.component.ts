@@ -69,6 +69,8 @@ const PANEL_BUTTON_WIDTH = 272;
     .am-trip-status.Booked { background: var(--primary); color: #fff; }
     .am-trip-status.Done { background: #f5b301; color: #1b1300; }
     .am-trips-empty { margin: 0; font-size: 0.8rem; color: var(--muted); }
+    .am-trips-head { display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem; }
+    .am-cabinet { margin-top: 0.6rem; width: 100%; }
     .am-delete { margin-top: 0.8rem; padding-top: 0.7rem; border-top: 1px solid var(--border); display: flex; flex-wrap: wrap;
       justify-content: space-between; gap: 0.4rem 1rem; }
     .am-delete-q { margin: 0; width: 100%; font-size: 0.85rem; color: var(--text-2); }
@@ -136,10 +138,13 @@ const PANEL_BUTTON_WIDTH = 272;
           </div>
           <p class="am-providers">{{ 'auth.signedInWith' | t: { providers: u.providers.join(', ') } }}</p>
           <div class="am-trips">
-            <p class="am-trips-title">{{ 'trip.mine' | t }}</p>
+            <div class="am-trips-head">
+              <p class="am-trips-title">{{ 'trip.mine' | t }}</p>
+              @if ((trips()?.length ?? 0) > 3) { <a class="am-link" [routerLink]="i18n.path('account')" (click)="open.set(false)">{{ 'account.allTrips' | t: { count: trips()!.length } }}</a> }
+            </div>
             @if (trips(); as list) {
               <ul>
-                @for (tr of list; track tr.tripPlanId) {
+                @for (tr of list.slice(0, 3); track tr.tripPlanId) {
                   @let st = tr.completedAtUtc ? 'Done' : tr.status;
                   <li>
                     <a class="am-trip" [routerLink]="i18n.path('plans', tr.tripPlanId)" (click)="open.set(false)">
@@ -155,6 +160,7 @@ const PANEL_BUTTON_WIDTH = 272;
               <p class="am-trips-empty"><span class="spinner" aria-hidden="true"></span></p>
             }
           </div>
+          <a class="btn btn-primary btn-sm am-cabinet" [routerLink]="i18n.path('account')" (click)="open.set(false)">{{ 'account.open' | t }}</a>
           <button type="button" class="btn btn-ghost am-signout" (click)="signOut()">{{ 'auth.signOut' | t }}</button>
           <div class="am-delete">
             @if (confirmDelete()) {
