@@ -18,7 +18,7 @@
 | journeys backend (`/api/v1/journeys`, `/api/v1/leaderboard`), ნიმუში მოგზაურები: `catalog/leaderboard-samples.json` (გამორთვა: `Leaderboard:IncludeSamples=false`) | `Features/Journeys/`, მიგრაცია `AddJourneys` |
 
 ## 🟡 შესამოწმებელი
-- **Brevo-ს გასაღები აკლია**: სანამ არ ჩაიწერება (`Email:BrevoApiKey`, `Email:FromAddress`, იხ. RUNBOOK §2.3), წერილები არ იგზავნება. შეძენილი მოგზაურობის წერილები ლოდინში რჩება და გასაღების ჩაწერის შემდეგ გაიგზავნება, თუ მათი დრო ჯერ არ გასულა. გასაღების შემდეგ ერთი სატესტო მოგზაურობით შეამოწმე რეალური წერილი.
+- **Brevo** ჩართულია (2026-11-02, გამგზავნი goggliko@gmail.com, user-secrets: `Email:BrevoApiKey`, `Email:FromAddress`). ⚠️ გასაღები **90 დღის უმოქმედობის შემდეგ** და 2027-11-02-ს ვადას კარგავს: ახალი brevo.com → SMTP & API → API keys (Restricted, Transactional email = All). Gmail-ის გამგზავნით წერილი შეიძლება Spam-ში მოხვდეს; საბოლოოდ საჭიროა საკუთარი დომენი + DKIM/DMARC.
 - დასრულების 🏆 ბანერი რეალურ დასრულებულ მოგზაურობაზე ჯერ ბრაუზერში არ მინახავს (backend-ის ტესტები ფარავს); პირველი დასრულებული მოგზაურობისას შეამოწმე.
 
 ## 🔑 გასაღებები / გარე სერვისები
